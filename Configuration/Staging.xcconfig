@@ -1,0 +1,12 @@
+//
+//  Staging.xcconfig
+//
+//  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
+//
+
+#include "../Carthage/Checkouts/xcconfigs/Base/Configurations/Release.xcconfig"
+#include "../Carthage/Checkouts/xcconfigs/iOS/iOS-Application.xcconfig"
+#include "../Pods/Target Support Files/Pods/Pods.staging.xcconfig"
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) ENV_STAGING
+OTHER_SWIFT_FLAGS = $(inherited) -D ENV_STAGING

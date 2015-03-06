@@ -1,0 +1,12 @@
+//
+//  Development.xcconfig
+//
+//  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
+//
+
+#include "../Carthage/Checkouts/xcconfigs/Base/Configurations/Debug.xcconfig"
+#include "../Carthage/Checkouts/xcconfigs/iOS/iOS-Application.xcconfig"
+#include "../Pods/Target Support Files/Pods/Pods.development.xcconfig"
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) ENV_DEVELOPMENT
+OTHER_SWIFT_FLAGS = $(inherited) -D ENV_DEVELOPMENT

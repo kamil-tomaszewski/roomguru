@@ -1,0 +1,46 @@
+#
+#  circle.yml
+#
+#  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
+#
+
+machine:
+  environment:
+    LC_CTYPE: en_US.UTF-8
+    CERTS_DIR: "Certificates"
+    CERT_NAME: "iPhone Distribution: netguru sp. z o. o. (SK8PDF7SG9)"
+    PROJECT_NAME: "Project"
+    BUNDLE_ID: "co.netguru.project"
+    XCODE_WORKSPACE: "Project.xcworkspace"
+    XCODE_INFOPLIST_PATH: "Supporting Files/Project-Info.plist"
+    REVIEW_API: "https://api.netguru.co/review"
+
+dependencies:
+  cache_directories:
+    - "Pods"
+    - "Configuration/External"
+    - "vendor/bundle"
+
+checkout:
+  pre:
+    - curl -L https://raw.githubusercontent.com/netguru/review/master/check.rb | ruby
+  post:
+    - git submodule sync
+    - git submodule update --init --recursive
+
+test:
+  override:
+    - bundle exec rake test-unit
+    - bundle exec rake test-functional
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - bundle exec rake build-and-distribute:
+          timeout: 600
+  production:
+    branch: beta
+    commands:
+      - bundle exec rake build-and-distribute:
+          timeout: 600
