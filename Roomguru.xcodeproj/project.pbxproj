@@ -16,6 +16,7 @@
 		5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */; };
 		5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */; };
 		5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF11AA9CB770018F432 /* Main.storyboard */; };
+		5EFEBDF61AA9EABA00A31EF5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EFEBDF51AA9EABA00A31EF5 /* Crashlytics.framework */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Roomguru/Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Roomguru/Interfaces/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		5E8A7EF11AA9CB770018F432 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Roomguru/Interfaces/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		5EFEBDF51AA9EABA00A31EF5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EFEBDF61AA9EABA00A31EF5 /* Crashlytics.framework in Frameworks */,
 				96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +108,7 @@
 		303C9EE60D55FE95B1E4648B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EFEBDF51AA9EABA00A31EF5 /* Crashlytics.framework */,
 				5E0759062D32339F0F1B138E /* Pods.framework */,
 				E863DC0075B8561A39153AA0 /* Pods_Tests.framework */,
 			);
@@ -293,6 +297,7 @@
 				5E3A97E61AA72F0A00CE2F20 /* Resources */,
 				167F8D30F1ADCADD56793386 /* Embed Pods Frameworks */,
 				05CBF50C3479CFCF14DDF382 /* Copy Pods Resources */,
+				5EFEBDF41AA9EA6A00A31EF5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -458,6 +463,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5EFEBDF41AA9EA6A00A31EF5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 82a73e1e2bebf8b04ec1413ff530a075dbcc798d a0e30e14b192a250b3f5dcd6857cddb9ccf130fad6dea1db1b0e3618a86332bc";
 		};
 		B2751B7E0D423C87A390F7D6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -680,6 +698,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -696,6 +718,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -836,6 +862,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -934,6 +964,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

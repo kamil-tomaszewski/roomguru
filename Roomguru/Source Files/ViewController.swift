@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         label.textAlignment = .Center
         label.accessibilityLabel = "Hello, worldguru!";
         self.view.addSubview(label)
+        
     }
     
     override func viewWillLayoutSubviews() {
