@@ -79,11 +79,12 @@ def build_config
   }
 end
 
-def test_config(scheme, sdk_version: "iphonesimulator", configuration: "Test")
+def test_config(scheme, sdk_version: "iphonesimulator", configuration: "Test", destination: "platform=iOS Simulator,name=iPhone 5s,OS=8.1")
   build_config.merge(
     scheme: scheme,
     sdk: sdk_version,
     configuration: configuration,
+    destination: destination,
   )
 end
 
@@ -182,26 +183,25 @@ def build_and_distribute
 
   report_info "Building the application archive, this may take a while..."
   FileUtils.mkdir_p ipa_build_dir
-  sh "ipa build #{ipa_build_flags.join(" ")} | xcpretty -c"
+  sh "ipa build #{ipa_build_flags.join(" ")} | xcpretty -c; exit ${PIPESTATUS[0]}"
   report_failure "Failed to build the application archive", $?.exitstatus unless $?.success?
 
   FileUtils.cd ipa_build_dir do
-    testflight_api_token = ENV["TESTFLIGHT_API_TOKEN"]
-    testflight_team_token = ENV["TESTFLIGHT_TEAM_TOKEN"]
 
-    testflight_release_number = ENV["TRAVIS_BUILD_NUMBER"]
-    testflight_release_date = Time.new.strftime("%Y-%m-%d %H:%M:%S")
-    testflight_release_notes = "Build: #{testflight_release_number}\nUploaded: #{testflight_release_date}"
+    hockeyapp_release_number = ENV["TRAVIS_BUILD_NUMBER"]
+    hockeyapp_release_date = Time.new.strftime("%Y-%m-%d %H:%M:%S")
+    hockeyapp_release_notes = "Build: #{hockeyapp_release_number}\nUploaded: #{hockeyapp_release_date}"
 
+    hockeyapp_api_token = ENV["HOCKEYAPP_API_TOKEN"]
     ipa_distribute_flags = []
-    ipa_distribute_flags << "--api_token '#{testflight_api_token}'"
-    ipa_distribute_flags << "--team_token '#{testflight_team_token}'"
-    ipa_distribute_flags << "--notes '#{testflight_release_notes}'"
-    ipa_distribute_flags << "--lists '#{testflight_list}'"
+    ipa_distribute_flags << "-a '#{hockeyapp_api_token}'"
+    ipa_distribute_flags << "--notes '#{hockeyapp_release_notes}'"
 
-    report_info "Uploading the application archive to TestFlight, this may take a while..."
-    masked_sh "ipa distribute:testflight #{ipa_distribute_flags.join(" ")}", [testflight_api_token, testflight_team_token]
-    report_failure "Failed to upload the application archive to TestFlight", $?.exitstatus unless $?.success?
+    report_info "Uploading the application archive to Hockeyapp, this may take a while..."
+    masked_sh "ipa distribute:hockeyapp #{ipa_distribute_flags.join(" ")}; exit ${PIPESTATUS[0]}", [hockeyapp_api_token]
+    report_failure "Failed to upload the application archive to Hockeyapp", $?.exitstatus unless $?.success?
+
+
   end
 end
 
