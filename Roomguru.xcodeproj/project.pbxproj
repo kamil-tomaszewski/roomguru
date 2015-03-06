@@ -617,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -660,6 +661,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -697,6 +699,7 @@
 			baseConfigurationReference = 5E3A98541AA741FA00CE2F20 /* Test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = NO;
@@ -718,6 +721,7 @@
 			baseConfigurationReference = 5E3A98531AA741FA00CE2F20 /* Staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEFINES_MODULE = NO;
@@ -738,6 +742,7 @@
 			baseConfigurationReference = 5E3A98581AA741FA00CE2F20 /* Tests-Test.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -762,6 +767,7 @@
 			baseConfigurationReference = 5E3A98571AA741FA00CE2F20 /* Tests-Staging.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -780,6 +786,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98581AA741FA00CE2F20 /* Tests-Test.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -802,6 +809,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98571AA741FA00CE2F20 /* Tests-Staging.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -819,6 +827,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -863,6 +872,7 @@
 			baseConfigurationReference = 5E3A98511AA741FA00CE2F20 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = NO;
@@ -883,6 +893,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98551AA741FA00CE2F20 /* Tests-Development.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -906,6 +917,7 @@
 			baseConfigurationReference = 5E3A98551AA741FA00CE2F20 /* Tests-Development.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -929,6 +941,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -966,6 +979,7 @@
 			baseConfigurationReference = 5E3A98521AA741FA00CE2F20 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEFINES_MODULE = NO;
@@ -985,6 +999,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98561AA741FA00CE2F20 /* Tests-Production.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1003,6 +1018,7 @@
 			baseConfigurationReference = 5E3A98561AA741FA00CE2F20 /* Tests-Production.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
