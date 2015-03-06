@@ -12,7 +12,7 @@ machine:
     PROJECT_NAME: "Roomguru"
     BUNDLE_ID: "co.netguru.roomguru"
     XCODE_WORKSPACE: "Roomguru.xcworkspace"
-    XCODE_INFOPLIST_PATH: "Supporting Files/Project-Info.plist"
+    XCODE_INFOPLIST_PATH: "Supporting Files/Roomguru-Info.plist"
     REVIEW_API: "https://api.netguru.co/review"
 
 dependencies:

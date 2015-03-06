@@ -41,8 +41,8 @@
 /* Begin PBXFileReference section */
 		5E0759062D32339F0F1B138E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E147CB21AA8B2CA00EDD97C /* Functional-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Functional-Tests-Info.plist"; path = "Supporting Files/Functional-Tests-Info.plist"; sourceTree = "<group>"; };
-		5E147CB41AA8B2D300EDD97C /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Project-Bridging-Header.h"; path = "Supporting Files/Project-Bridging-Header.h"; sourceTree = "<group>"; };
-		5E147CB51AA8B2D300EDD97C /* Project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Project-Info.plist"; path = "Supporting Files/Project-Info.plist"; sourceTree = "<group>"; };
+		5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roomguru-Bridging-Header.h"; path = "Supporting Files/Roomguru-Bridging-Header.h"; sourceTree = "<group>"; };
+		5E147CB51AA8B2D300EDD97C /* Roomguru-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Roomguru-Info.plist"; path = "Supporting Files/Roomguru-Info.plist"; sourceTree = "<group>"; };
 		5E147CB71AA8B2DC00EDD97C /* Unit-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Unit-Tests-Bridging-Header.h"; path = "Supporting Files/Unit-Tests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		5E147CB81AA8B2DC00EDD97C /* Unit-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit-Tests-Info.plist"; path = "Supporting Files/Unit-Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5E1FF7661AA8A8BA00467837 /* MathSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathSpec.swift; sourceTree = "<group>"; };
@@ -192,8 +192,8 @@
 		5E3A98111AA72FAC00CE2F20 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				5E147CB41AA8B2D300EDD97C /* Project-Bridging-Header.h */,
-				5E147CB51AA8B2D300EDD97C /* Project-Info.plist */,
+				5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */,
+				5E147CB51AA8B2D300EDD97C /* Roomguru-Info.plist */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -702,10 +702,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
+				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Project-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -722,10 +722,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
+				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Project-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Staging;
@@ -866,10 +866,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
+				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Project-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -968,10 +968,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Supporting Files/Project-Info.plist";
+				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Project-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Production;
