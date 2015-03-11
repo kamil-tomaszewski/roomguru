@@ -16,6 +16,7 @@ xcodeproj 'Roomguru', 'Development' => :debug, 'Production' => :release, 'Stagin
 
 pod 'Alamofire', '~> 1.1'
 pod 'SwiftyJSON', '~> 2.1.3'
+pod 'Cartography', '~> 0.2.1'
 
 target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
 
@@ -53,16 +54,16 @@ class Xcodeproj::Project::Object::PBXNativeTarget
         unless config.nil?
             if config.kind_of?(Xcodeproj::Project::Object::XCBuildConfiguration)
                 config.build_settings[setting] = value
-                elsif config.kind_of?(String)
+            elsif config.kind_of?(String)
                 build_configurations
                 .select { |config_obj| config_obj.name == config }
                 .each { |config| set_build_setting(setting, value, config) }
-                elsif config.kind_of?(Array)
+            elsif config.kind_of?(Array)
                 config.each { |config| set_build_setting(setting, value, config) }
-                else
+            else
                 raise 'Unsupported configuration type: ' + config.class.inspect
             end
-            else
+        else
             set_build_setting(setting, value, build_configurations)
         end
     end
