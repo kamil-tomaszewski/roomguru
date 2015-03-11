@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Crashlytics
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Crashlytics.startWithAPIKey("82a73e1e2bebf8b04ec1413ff530a075dbcc798d")
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("e0b60ed8278c9ee0aed4007fffd86458");
+        BITHockeyManager.sharedHockeyManager().startManager();
+        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         
         let sharedSignIn = GPPSignIn.sharedInstance();
         sharedSignIn.clientID = "860224755984-fiktpv8httrrbgdefop68d554kvepshp.apps.googleusercontent.com"

@@ -23,8 +23,6 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.greenColor()
-        
         let sharedSignIn = GPPSignIn.sharedInstance()
         sharedSignIn.delegate = self
         sharedSignIn.shouldFetchGoogleUserID = true
@@ -39,10 +37,5 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
     
     func didDisconnectWithError(error: NSError!) {
         println(error)
-    }
-    
-    //MARK: UIControl Methods
-    @IBAction func signInButtonDidClick(sender: GPPSignInButton) {
-        
     }
 }

@@ -10,12 +10,18 @@
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5E1FF7671AA8A8BA00467837 /* MathSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7661AA8A8BA00467837 /* MathSpec.swift */; };
 		5E1FF7691AA8AB5A00467837 /* RootScreenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */; };
-		5E38FB3B1AAF23F00057DD8B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB371AAF23F00057DD8B /* Crashlytics.framework */; };
 		5E38FB3C1AAF23F10057DD8B /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */; };
 		5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */; };
 		5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
 		5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */; };
+		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
+		5E7A9E511AB060820042E16F /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */; };
+		5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */; };
+		5E7A9E541AB0609C0042E16F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E531AB0609C0042E16F /* CoreText.framework */; };
+		5E7A9E561AB060AC0042E16F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */; };
+		5E7A9E581AB060BB0042E16F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E571AB060BB0042E16F /* QuickLook.framework */; };
+		5E7A9E5A1AB060C60042E16F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
 		5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */; };
 		5E8A7EED1AA9CB660018F432 /* RGRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEC1AA9CB660018F432 /* RGRViewController.swift */; };
 		5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */; };
@@ -62,7 +68,6 @@
 		5E147CB81AA8B2DC00EDD97C /* Unit-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit-Tests-Info.plist"; path = "Supporting Files/Unit-Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5E1FF7661AA8A8BA00467837 /* MathSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathSpec.swift; sourceTree = "<group>"; };
 		5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootScreenSpec.swift; sourceTree = "<group>"; };
-		5E38FB371AAF23F00057DD8B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = Frameworks/GoogleOpenSource.framework; sourceTree = "<group>"; };
 		5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = Frameworks/GooglePlus.bundle; sourceTree = "<group>"; };
 		5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = Frameworks/GooglePlus.framework; sourceTree = "<group>"; };
@@ -80,6 +85,13 @@
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRLoginView.swift; path = "Roomguru/Source Files/RGRLoginView.swift"; sourceTree = SOURCE_ROOT; };
+		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
+		5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
+		5E7A9E531AB0609C0042E16F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5E7A9E571AB060BB0042E16F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		5E7A9E591AB060C60042E16F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Roomguru/Source Files/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEC1AA9CB660018F432 /* RGRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRViewController.swift; path = "Roomguru/Source Files/RGRViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Roomguru/Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -104,17 +116,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E7A9E5A1AB060C60042E16F /* QuartzCore.framework in Frameworks */,
+				5E7A9E581AB060BB0042E16F /* QuickLook.framework in Frameworks */,
+				5E7A9E561AB060AC0042E16F /* MobileCoreServices.framework in Frameworks */,
+				5E7A9E541AB0609C0042E16F /* CoreText.framework in Frameworks */,
 				5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */,
 				5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */,
 				5EAFD73E1AAF265300B75582 /* Security.framework in Frameworks */,
 				5EAFD73C1AAF264B00B75582 /* MediaPlayer.framework in Frameworks */,
 				5EAFD73A1AAF264300B75582 /* CoreGraphics.framework in Frameworks */,
 				5EAFD7381AAF263C00B75582 /* CoreMotion.framework in Frameworks */,
+				5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */,
 				5EAFD7361AAF263400B75582 /* CoreLocation.framework in Frameworks */,
 				5EAFD7341AAF262E00B75582 /* Foundation.framework in Frameworks */,
 				5EAFD7321AAF262400B75582 /* AssetsLibrary.framework in Frameworks */,
 				5EAFD7301AAF261E00B75582 /* AddressBook.framework in Frameworks */,
-				5E38FB3B1AAF23F00057DD8B /* Crashlytics.framework in Frameworks */,
 				5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */,
 				5E38FB3C1AAF23F10057DD8B /* GoogleOpenSource.framework in Frameworks */,
 				96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */,
@@ -150,6 +166,11 @@
 		303C9EE60D55FE95B1E4648B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E7A9E591AB060C60042E16F /* QuartzCore.framework */,
+				5E7A9E571AB060BB0042E16F /* QuickLook.framework */,
+				5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */,
+				5E7A9E531AB0609C0042E16F /* CoreText.framework */,
+				5E7A9E4B1AB060820042E16F /* HockeySDK.embeddedframework */,
 				5EAFD7411AAF266300B75582 /* UIKit.framework */,
 				5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */,
 				5EAFD73D1AAF265300B75582 /* Security.framework */,
@@ -160,7 +181,6 @@
 				5EAFD7331AAF262E00B75582 /* Foundation.framework */,
 				5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */,
 				5EAFD72F1AAF261E00B75582 /* AddressBook.framework */,
-				5E38FB371AAF23F00057DD8B /* Crashlytics.framework */,
 				5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */,
 				5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */,
 				5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */,
@@ -341,6 +361,25 @@
 			name = "Custom Views";
 			sourceTree = "<group>";
 		};
+		5E7A9E4B1AB060820042E16F /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A9E4C1AB060820042E16F /* HockeySDK.framework */,
+				5E7A9E4D1AB060820042E16F /* Resources */,
+			);
+			name = HockeySDK.embeddedframework;
+			path = Frameworks/HockeySDK.embeddedframework;
+			sourceTree = "<group>";
+		};
+		5E7A9E4D1AB060820042E16F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */,
+				5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -354,7 +393,6 @@
 				5E3A97E61AA72F0A00CE2F20 /* Resources */,
 				167F8D30F1ADCADD56793386 /* Embed Pods Frameworks */,
 				05CBF50C3479CFCF14DDF382 /* Copy Pods Resources */,
-				5EFEBDF41AA9EA6A00A31EF5 /* Crashlytics Run Script */,
 			);
 			buildRules = (
 			);
@@ -455,9 +493,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */,
+				5E7A9E511AB060820042E16F /* HockeySDK.xcconfig in Resources */,
 				5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */,
 				5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */,
 				5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */,
+				5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,20 +562,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		5EFEBDF41AA9EA6A00A31EF5 /* Crashlytics Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Crashlytics Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Frameworks/Crashlytics.framework/run 82a73e1e2bebf8b04ec1413ff530a075dbcc798d a0e30e14b192a250b3f5dcd6857cddb9ccf130fad6dea1db1b0e3618a86332bc";
 		};
 		B2751B7E0D423C87A390F7D6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -769,6 +795,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -793,6 +820,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -946,6 +974,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1055,6 +1084,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
