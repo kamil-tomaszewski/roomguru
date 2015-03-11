@@ -3,7 +3,7 @@
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 10.03.2015.
-//  Copyright (c) 2015 Patryk Kaczmarek. All rights reserved.
+//  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  SwiftKIFExtension.swift
 //  Project
 //
-//  Copyright (c) 2015 Patryk Kaczmarek. All rights reserved.
+//  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
 import KIF
