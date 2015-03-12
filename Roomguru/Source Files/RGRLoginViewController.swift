@@ -12,6 +12,8 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
     
     weak var aView: RGRLoginView?
     
+    //MARK: Lifecycle
+    
     override func loadView() {
         var view = RGRLoginView(frame: UIScreen.mainScreen().applicationFrame)
         view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
@@ -32,7 +34,12 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
     //MARK: GPPSignInDelegate Methods
     
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-        println(auth)
+        if (error != nil) {
+            println(error)
+        } else {
+            let rgrTabBarController = RGRTabBarController()
+            self.navigationController?.pushViewController(rgrTabBarController, animated: true)
+        }
     }
     
     func didDisconnectWithError(error: NSError!) {

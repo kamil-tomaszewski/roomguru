@@ -17,7 +17,6 @@ class RGRLoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -26,26 +25,26 @@ class RGRLoginView: UIView {
     }
     
     func commonInit() {
-        welcomeLabel.text = "Some Text"
+        welcomeLabel.text = NSLocalizedString("Welcome to Roomguru! Sign in with Google+ to start using the app.", comment: "")
         welcomeLabel.textAlignment = .Center
-        addSubview(signInButton)
+        welcomeLabel.numberOfLines = 2
+        
         addSubview(welcomeLabel)
+        addSubview(signInButton)
         
         defineConstraints()
     }
 
     func defineConstraints() {
-        
         layout(signInButton, welcomeLabel) { button, label in
+            
+            label.width == label.superview!.width
+            label.top == label.superview!.top + 120
             
             button.width ==  (CGRectGetWidth(self.bounds) - 50) * 0.5
             button.height  == 50
             button.centerX == button.superview!.centerX
-            button.centerY == button.superview!.centerY
-            
-            label.width == label.superview!.width
-            label.top == label.superview!.top
-            label.bottom == button.top
+            button.bottom == button.superview!.bottom - 100
         }
     }
 }

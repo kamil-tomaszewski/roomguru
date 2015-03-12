@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         setupVendors()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = setupTabBarController()
+        window!.rootViewController = UINavigationController(rootViewController: RGRLoginViewController())
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         
@@ -42,21 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     }
     
     //MARK Private Methods
-    
-    func setupTabBarController() -> UITabBarController {
-        
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [RGRDashboardViewController(), RGRSettingsViewController()]
-        
-        func controllerForIndex(index: Int) -> UITabBarItem {
-            return tabBarController.tabBar.items![index] as UITabBarItem
-        }
-        
-        controllerForIndex(0).title = NSLocalizedString("Dashboard", comment: "")
-        controllerForIndex(1).title = NSLocalizedString("Settings", comment: "")
-        
-        return tabBarController
-    }
     
     func setupVendors() {
         
