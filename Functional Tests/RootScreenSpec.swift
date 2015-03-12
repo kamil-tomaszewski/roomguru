@@ -19,7 +19,7 @@ class RootScreenSpec: XCTestCase {
     }
     
     func testShouldHelloTextBeVisible() {
-        self.tester().waitForViewWithAccessibilityLabel("Hello, worldguru!")
+        self.tester().waitForViewWithAccessibilityLabel("Welcome to Roomguru!")
     }
 
 }

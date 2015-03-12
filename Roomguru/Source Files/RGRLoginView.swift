@@ -26,6 +26,7 @@ class RGRLoginView: UIView {
     
     func commonInit() {
         welcomeLabel.text = NSLocalizedString("Welcome to Roomguru! Sign in with Google+ to start using the app.", comment: "")
+        welcomeLabel.accessibilityLabel = "Welcome to Roomguru!"
         welcomeLabel.textAlignment = .Center
         welcomeLabel.numberOfLines = 2
         
