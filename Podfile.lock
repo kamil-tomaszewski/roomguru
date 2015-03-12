@@ -6,7 +6,6 @@ PODS:
   - KIF/XCTest (3.1.2)
   - Nimble (0.3.1)
   - Quick (0.2.2)
-  - SwiftyJSON (2.1.3)
 
 DEPENDENCIES:
   - Alamofire (~> 1.1)
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - KIF (~> 3.0)
   - Nimble (from `git@github.com:Quick/Nimble.git`, branch `swift-1.1`)
   - Quick (from `git@github.com:Quick/Quick.git`, branch `swift-1.1`)
-  - SwiftyJSON (~> 2.1.3)
 
 EXTERNAL SOURCES:
   Nimble:
@@ -38,6 +36,5 @@ SPEC CHECKSUMS:
   KIF: 068074b24dd455025e7f2a488ba4fb07b9ce047b
   Nimble: 1b3c765852d63b9540a91e528e1e4f8afab79b6f
   Quick: 1bda8b4c8d43f6b4dd69ca001918b1767b3c9c93
-  SwiftyJSON: 48be7490a3989a58a3f511cd54167f0a2b466e76
 
 COCOAPODS: 0.36.0

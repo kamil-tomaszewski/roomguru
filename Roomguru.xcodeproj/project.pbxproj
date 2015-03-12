@@ -41,6 +41,7 @@
 		5EAFD7441AAF270C00B75582 /* RGRLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E3A61BC31AB1ACEA0072CEC4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A61BC21AB1ACEA0072CEC4 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRLoginViewController.swift; path = "Roomguru/Source Files/RGRLoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		E3A61BC21AB1ACEA0072CEC4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -334,6 +336,7 @@
 				5E51B7981AA9C3280018EDA9 /* Object & Models */,
 				5E51B7991AA9C3310018EDA9 /* View Controllers */,
 				5E51B79B1AA9C3540018EDA9 /* Custom Views */,
+				E3A61BC11AB1ACD60072CEC4 /* Libraries */,
 			);
 			path = "Source Files";
 			sourceTree = "<group>";
@@ -381,6 +384,14 @@
 				5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E3A61BC11AB1ACD60072CEC4 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E3A61BC21AB1ACEA0072CEC4 /* SwiftyJSON.swift */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -667,6 +678,7 @@
 				5EAFD7441AAF270C00B75582 /* RGRLoginViewController.swift in Sources */,
 				5E3871961AB0660500C7FEE8 /* RGRDashboardViewController.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
+				E3A61BC31AB1ACEA0072CEC4 /* SwiftyJSON.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
