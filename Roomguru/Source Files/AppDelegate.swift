@@ -34,6 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
         if error != nil {
             GPPSignIn.sharedInstance().signOut()
+        } else {
+            RGRNetworkManager.sharedInstance.setAuthentication(auth)
+            RGRNetworkManager.sharedInstance.calendarsList({ (response) -> () in
+                println(response)
+            }, failure: { (error) -> () in
+                println(error)
+            });
         }
     }
     
@@ -49,14 +56,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         BITHockeyManager.sharedHockeyManager().startManager();
         BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         
+        RGRNetworkManager.sharedInstance.setServerURL("https://www.googleapis.com/calendar/v3")
+        
         let sharedSignIn = GPPSignIn.sharedInstance();
         sharedSignIn.clientID = "860224755984-fiktpv8httrrbgdefop68d554kvepshp.apps.googleusercontent.com"
+        sharedSignIn.scopes = ["https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar"]
         sharedSignIn.delegate = self;
         
         if sharedSignIn.trySilentAuthentication() {
             println("success")
         } else {
             println("failure")
+            sharedSignIn.authenticate()
         }
     }
 }
