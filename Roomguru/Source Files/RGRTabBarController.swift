@@ -10,6 +10,8 @@ import Foundation
 
 class RGRTabBarController: UITabBarController {
     
+    // MARK: Lifecycle
+    
     override init() {
         super.init()
         
@@ -29,5 +31,18 @@ class RGRTabBarController: UITabBarController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if (!RGRNetworkManager.isUserSignedIn()) {
+
+            if (RGRNetworkManager.hasSilentAuthenticationSucceeded()) {
+                println("user is signed in")
+            } else {
+                self.presentViewController(RGRLoginViewController(), animated: true, completion: nil);
+            }
+        }
     }
 }

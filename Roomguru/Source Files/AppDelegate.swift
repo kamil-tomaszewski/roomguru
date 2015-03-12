@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupVendors()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = UINavigationController(rootViewController: RGRLoginViewController())
+        window!.rootViewController = RGRTabBarController()
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         

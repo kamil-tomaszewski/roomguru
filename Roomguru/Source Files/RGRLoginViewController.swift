@@ -36,9 +36,7 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
             println(error)
         } else {
             RGRNetworkManager.sharedInstance.setAuthentication(auth)
-
-            let rgrTabBarController = RGRTabBarController()
-            self.navigationController?.pushViewController(rgrTabBarController, animated: true)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
