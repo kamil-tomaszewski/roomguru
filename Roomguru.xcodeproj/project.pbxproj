@@ -42,6 +42,7 @@
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E3A61BC31AB1ACEA0072CEC4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A61BC21AB1ACEA0072CEC4 /* SwiftyJSON.swift */; };
+		E3A61BC71AB1BA3B0072CEC4 /* RGRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A61BC61AB1BA3B0072CEC4 /* RGRTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRLoginViewController.swift; path = "Roomguru/Source Files/RGRLoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		E3A61BC21AB1ACEA0072CEC4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = SOURCE_ROOT; };
+		E3A61BC61AB1BA3B0072CEC4 /* RGRTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGRTabBarController.swift; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */,
+				E3A61BC61AB1BA3B0072CEC4 /* RGRTabBarController.swift */,
 				5E3871931AB065B800C7FEE8 /* RGRSettingsViewController.swift */,
 				5E3871951AB0660500C7FEE8 /* RGRDashboardViewController.swift */,
 			);
@@ -679,6 +682,7 @@
 				5E3871961AB0660500C7FEE8 /* RGRDashboardViewController.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				E3A61BC31AB1ACEA0072CEC4 /* SwiftyJSON.swift in Sources */,
+				E3A61BC71AB1BA3B0072CEC4 /* RGRTabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
