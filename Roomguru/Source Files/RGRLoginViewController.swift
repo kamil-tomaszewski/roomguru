@@ -27,8 +27,6 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
         
         let sharedSignIn = GPPSignIn.sharedInstance()
         sharedSignIn.delegate = self
-        sharedSignIn.shouldFetchGoogleUserID = true
-        sharedSignIn.scopes = [kGTLAuthScopePlusLogin, "https://www.googleapis.com/auth/calendar"]
     }
     
     //MARK: GPPSignInDelegate Methods
@@ -37,6 +35,8 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
         if (error != nil) {
             println(error)
         } else {
+            RGRNetworkManager.sharedInstance.setAuthentication(auth)
+
             let rgrTabBarController = RGRTabBarController()
             self.navigationController?.pushViewController(rgrTabBarController, animated: true)
         }

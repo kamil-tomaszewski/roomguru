@@ -9,7 +9,7 @@ import UIKit
 import HockeySDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -31,24 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
-    func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-        if error != nil {
-            GPPSignIn.sharedInstance().signOut()
-        } else {
-            RGRNetworkManager.sharedInstance.setAuthentication(auth)
-            RGRNetworkManager.sharedInstance.calendarsList({ (response) -> () in
-                println(response)
-            }, failure: { (error) -> () in
-                println(error)
-            });
-        }
-    }
-    
-    func didDisconnectWithError(error: NSError!) {
-        println(error)
-    }
-    
-    //MARK Private Methods
+    //MARK: Private Methods
     
     func setupVendors() {
         
@@ -60,15 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         
         let sharedSignIn = GPPSignIn.sharedInstance();
         sharedSignIn.clientID = "860224755984-fiktpv8httrrbgdefop68d554kvepshp.apps.googleusercontent.com"
-        sharedSignIn.scopes = ["https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar"]
-        sharedSignIn.delegate = self;
-        
-        if sharedSignIn.trySilentAuthentication() {
-            println("success")
-        } else {
-            println("failure")
-            sharedSignIn.authenticate()
-        }
+        sharedSignIn.scopes = [kGTLAuthScopePlusLogin, "https://www.googleapis.com/auth/calendar"]
+        sharedSignIn.shouldFetchGoogleUserID = true
     }
 }
 
