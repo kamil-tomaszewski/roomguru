@@ -18,7 +18,6 @@
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
 		5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */; };
 		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
-		5E7A9E511AB060820042E16F /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */; };
 		5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */; };
 		5E7A9E541AB0609C0042E16F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E531AB0609C0042E16F /* CoreText.framework */; };
 		5E7A9E561AB060AC0042E16F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */; };
@@ -468,7 +467,7 @@
 		5E3A97E01AA72F0A00CE2F20 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Netguru Sp. z o.o.";
 				TargetAttributes = {
 					5E3A97E71AA72F0A00CE2F20 = {
@@ -510,7 +509,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */,
-				5E7A9E511AB060820042E16F /* HockeySDK.xcconfig in Resources */,
 				5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */,
 				5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */,
 				5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */,
