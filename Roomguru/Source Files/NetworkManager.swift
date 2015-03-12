@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Async
 
 class NetworkManager: NSObject {
     private var serverURL = ""
@@ -68,7 +69,29 @@ extension NetworkManager {
             if let responseError = error {
                 failure(error: responseError)
             } else {
-                success(response: json)
+                if let responseJSON: AnyObject = json {
+                    success(response: JSON(responseJSON))
+                }
+            }
+        }
+    }
+    
+    func eventsList(forCalendar calendarID: String, success: RGRResponseBlock, failure: RGRErrorBlock) {
+        let requestPath = serverURL + "/calendars/" + calendarID + "/events"
+        
+        Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
+            if let responseError = error {
+                failure(error: responseError)
+            } else {
+                if let responseJSON: AnyObject = json {
+                    var swiftyJSON: JSON? = nil
+                    
+                    Async.background {
+                        swiftyJSON = JSON(responseJSON)
+                    }.main {
+                        success(response: swiftyJSON)
+                    }
+                }
             }
         }
     }

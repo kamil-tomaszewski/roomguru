@@ -20,6 +20,9 @@ pod 'SwiftyUserDefaults', '~> 1.0.0'
 # SwiftyJSON is temporarily added to the project manually due to the this bug:
 # https://github.com/SwiftyJSON/SwiftyJSON/issues/129
 pod 'Cartography', '~> 0.2.1'
+pod 'Async',
+    :git => "https://github.com/duemunk/Async.git",
+    :tag => "1.1.1"
 
 target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
 

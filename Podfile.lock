@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (1.1.4)
+  - Async (1.1.1)
   - Cartography (0.2.1)
   - KIF (3.1.2):
     - KIF/XCTest (= 3.1.2)
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 1.1)
+  - Async (from `https://github.com/duemunk/Async.git`, tag `1.1.1`)
   - Cartography (~> 0.2.1)
   - KIF (~> 3.0)
   - Nimble (from `git@github.com:Quick/Nimble.git`, branch `swift-1.1`)
@@ -17,6 +19,9 @@ DEPENDENCIES:
   - SwiftyUserDefaults (~> 1.0.0)
 
 EXTERNAL SOURCES:
+  Async:
+    :git: https://github.com/duemunk/Async.git
+    :tag: 1.1.1
   Nimble:
     :branch: swift-1.1
     :git: git@github.com:Quick/Nimble.git
@@ -25,6 +30,9 @@ EXTERNAL SOURCES:
     :git: git@github.com:Quick/Quick.git
 
 CHECKOUT OPTIONS:
+  Async:
+    :git: https://github.com/duemunk/Async.git
+    :tag: 1.1.1
   Nimble:
     :commit: 1088d5f70497f34be946e3e2829a10529f7bea8e
     :git: git@github.com:Quick/Nimble.git
@@ -34,6 +42,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
+  Async: 4ba79915d3f43324db9e1e296db324cb896fa266
   Cartography: 9efb847f5068db052df1f8627e70382e37e17184
   KIF: 068074b24dd455025e7f2a488ba4fb07b9ce047b
   Nimble: 1b3c765852d63b9540a91e528e1e4f8afab79b6f

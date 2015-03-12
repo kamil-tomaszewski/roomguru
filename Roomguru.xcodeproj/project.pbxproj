@@ -54,6 +54,10 @@
 		BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C181AB1CF9F00A43D35 /* Defines.swift */; };
 		BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
+        BF527C1F1AB1D53700A43D35 /* RGRCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* RGRCalendar.swift */; };
+        BF527C201AB1D53700A43D35 /* RGREvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1D1AB1D53700A43D35 /* RGREvent.swift */; };
+        BF527C211AB1D53700A43D35 /* RGRModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* RGRModelObject.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +141,9 @@
 		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C181AB1CF9F00A43D35 /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Supporting Files/Defines.swift"; sourceTree = "<group>"; };
 		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1C1AB1D53700A43D35 /* RGRCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRCalendar.swift; path = "Roomguru/Source Files/RGRCalendar.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1D1AB1D53700A43D35 /* RGREvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGREvent.swift; path = "Roomguru/Source Files/RGREvent.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1E1AB1D53700A43D35 /* RGRModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRModelObject.swift; path = "Roomguru/Source Files/RGRModelObject.swift"; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -408,6 +415,9 @@
 		5E51B7981AA9C3280018EDA9 /* Object & Models */ = {
 			isa = PBXGroup;
 			children = (
+				BF527C1C1AB1D53700A43D35 /* RGRCalendar.swift */,
+				BF527C1D1AB1D53700A43D35 /* RGREvent.swift */,
+				BF527C1E1AB1D53700A43D35 /* RGRModelObject.swift */,
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
 				5E5F55901AB6CABA005F3CEE /* Settings */,
 			);
@@ -765,6 +775,8 @@
 				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
 				5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */,
 				5E3871961AB0660500C7FEE8 /* DashboardViewController.swift in Sources */,
+				BF527C1F1AB1D53700A43D35 /* RGRCalendar.swift in Sources */,
+				BF527C201AB1D53700A43D35 /* RGREvent.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				7B27043E1AB6EBEB00B6C606 /* GPPSignInExtensions.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
@@ -778,6 +790,7 @@
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
+				BF527C211AB1D53700A43D35 /* RGRModelObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
