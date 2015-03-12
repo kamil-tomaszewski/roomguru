@@ -74,6 +74,20 @@ extension RGRNetworkManager {
     }
 }
 
+// MARK: Helpers
+
+extension RGRNetworkManager {
+    
+    class func isUserSignedIn() -> Bool {
+        return GPPSignIn.sharedInstance().authentication != nil
+    }
+    
+    class func hasSilentAuthenticationSucceeded() -> Bool {
+        return GPPSignIn.sharedInstance().trySilentAuthentication()
+    }
+    
+}
+
 // MARK: Private
 
 private extension RGRNetworkManager {
