@@ -38,9 +38,9 @@
 		5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */; };
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
 		5EAFD7441AAF270C00B75582 /* RGRLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */; };
+		5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BF527C151AB1C85B00A43D35 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C141AB1C85B00A43D35 /* SwiftyJSON.swift */; };
 		BF527C171AB1CF8C00A43D35 /* RGRNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* RGRNetworkManager.swift */; };
 		BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C181AB1CF9F00A43D35 /* Defines.swift */; };
 		BF527C1B1AB1CFAE00A43D35 /* RGRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* RGRTabBarController.swift */; };
@@ -113,7 +113,7 @@
 		5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRLoginViewController.swift; path = "Roomguru/Source Files/RGRLoginViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BF527C141AB1C85B00A43D35 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Frameworks/SwiftyJSON.swift; sourceTree = "<group>"; };
 		BF527C161AB1CF8C00A43D35 /* RGRNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRNetworkManager.swift; path = "Roomguru/Source Files/RGRNetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C181AB1CF9F00A43D35 /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Supporting Files/Defines.swift"; sourceTree = "<group>"; };
 		BF527C1A1AB1CFAE00A43D35 /* RGRTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRTabBarController.swift; path = "Roomguru/Source Files/RGRTabBarController.swift"; sourceTree = SOURCE_ROOT; };
@@ -175,6 +175,7 @@
 		303C9EE60D55FE95B1E4648B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */,
 				5E7A9E591AB060C60042E16F /* QuartzCore.framework */,
 				5E7A9E571AB060BB0042E16F /* QuickLook.framework */,
 				5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */,
@@ -277,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				BF527C181AB1CF9F00A43D35 /* Defines.swift */,
-				BF527C141AB1C85B00A43D35 /* SwiftyJSON.swift */,
 				5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */,
 				5E147CB51AA8B2D300EDD97C /* Roomguru-Info.plist */,
 			);
@@ -681,13 +681,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF527C151AB1C85B00A43D35 /* SwiftyJSON.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* RGRNetworkManager.swift in Sources */,
 				5EAFD7441AAF270C00B75582 /* RGRLoginViewController.swift in Sources */,
 				5E3871961AB0660500C7FEE8 /* RGRDashboardViewController.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
+				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* RGRTabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */,
 			);
