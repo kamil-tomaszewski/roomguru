@@ -25,10 +25,12 @@ class RGRLoginView: UIView {
     }
     
     func commonInit() {
+        self.backgroundColor = UIColor.whiteColor()
+        
         welcomeLabel.text = NSLocalizedString("Welcome to Roomguru! Sign in with Google+ to start using the app.", comment: "")
         welcomeLabel.accessibilityLabel = "Welcome to Roomguru!"
         welcomeLabel.textAlignment = .Center
-        welcomeLabel.numberOfLines = 2
+        welcomeLabel.numberOfLines = 0
         
         addSubview(welcomeLabel)
         addSubview(signInButton)
@@ -39,11 +41,15 @@ class RGRLoginView: UIView {
     func defineConstraints() {
         layout(signInButton, welcomeLabel) { button, label in
             
-            label.width == label.superview!.width
-            label.top == label.superview!.top + 120
+            let margin: CGFloat = 20
             
-            button.width ==  (CGRectGetWidth(self.bounds) - 50) * 0.5
-            button.height  == 50
+            label.left == label.superview!.left + margin
+            label.right == label.superview!.right - margin
+            label.top == label.superview!.top + 120
+            label.centerX == label.superview!.centerX
+            
+            button.width == button.superview!.width - 2 * margin
+            button.height  == 45
             button.centerX == button.superview!.centerX
             button.bottom == button.superview!.bottom - 100
         }
