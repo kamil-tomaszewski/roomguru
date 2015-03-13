@@ -14,15 +14,7 @@ class RGRTabBarController: UITabBarController {
     
     override init() {
         super.init()
-        
-        self.viewControllers = [RGRDashboardViewController(), RGRSettingsViewController()]
-        
-        func controllerForIndex(index: Int) -> UITabBarItem {
-            return self.tabBar.items![index] as UITabBarItem
-        }
-        
-        controllerForIndex(0).title = NSLocalizedString("Dashboard", comment: "")
-        controllerForIndex(1).title = NSLocalizedString("Settings", comment: "")
+        setupEmbeddedViewControllers()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -44,5 +36,27 @@ class RGRTabBarController: UITabBarController {
                 self.presentViewController(RGRLoginViewController(), animated: true, completion: nil);
             }
         }
+    }
+    
+    // MARK: Private Methods
+    
+    private func setupEmbeddedViewControllers() {
+        
+        self.viewControllers = [
+            UINavigationController(rootViewController: RGRDashboardViewController()),
+            UINavigationController(rootViewController: RGRSettingsViewController()),
+        ]
+        
+        func setTitleForControllerAtIndex(index: Int, title: String) {
+            let tabBarItem = self.tabBar.items![index] as UITabBarItem
+            tabBarItem.title = title
+            
+            let navigation = self.viewControllers![index] as UINavigationController
+            let viewController = navigation.viewControllers.first as UIViewController
+            viewController.title = title
+        }
+        
+        setTitleForControllerAtIndex(0, NSLocalizedString("Dashboard", comment: ""))
+        setTitleForControllerAtIndex(1, NSLocalizedString("Settings", comment: ""))
     }
 }
