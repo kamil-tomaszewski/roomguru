@@ -24,7 +24,7 @@ class RGRLoginView: UIView {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         self.backgroundColor = UIColor.whiteColor()
         
         welcomeLabel.text = NSLocalizedString("Welcome to Roomguru! Sign in with Google+ to start using the app.", comment: "")
@@ -38,7 +38,7 @@ class RGRLoginView: UIView {
         defineConstraints()
     }
 
-    func defineConstraints() {
+    private func defineConstraints() {
         layout(signInButton, welcomeLabel) { button, label in
             
             let margin: CGFloat = 20

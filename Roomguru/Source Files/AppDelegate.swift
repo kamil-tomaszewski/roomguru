@@ -31,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
+    func signOut() {
+        GPPSignIn.sharedInstance().signOut()
+        let tabBarViewController = window!.rootViewController as RGRTabBarController
+        tabBarViewController.presenLoginViewController { () -> Void in
+            tabBarViewController.popNavigationStack()
+        }
+    }
+    
     //MARK: Private Methods
     
     func setupVendors() {
