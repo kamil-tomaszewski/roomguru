@@ -33,7 +33,7 @@ class RGRTabBarController: UITabBarController {
             if (GPPSignIn.hasSilentAuthenticationSucceeded()) {
                 println("user is signed in")
             } else {
-                presenLoginViewController(nil)
+                presentLoginViewController(nil)
             }
         }
     }
@@ -49,7 +49,7 @@ class RGRTabBarController: UITabBarController {
         }
     }
     
-    func presenLoginViewController(completion: (() -> Void)?) {
+    func presentLoginViewController(completion: (() -> Void)?) {
         self.presentViewController(RGRLoginViewController(), animated: true, completion: completion);
     }
     

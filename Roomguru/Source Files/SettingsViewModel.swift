@@ -23,7 +23,7 @@ class SettingsViewModel: NSObject {
 
     func configureCellForIndex(#cell: UITableViewCell, index: Int) {
         
-        let item: SettingsItem = items[index]
+        let item = items[index]
 
         if let theCell = cell as? RGRTableViewSwitchCell {
             theCell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
@@ -38,23 +38,23 @@ class SettingsViewModel: NSObject {
     }
     
     func identifierForIndex(index: Int) -> String {
-        return (items[index] as SettingsItem).signature().identifier
+        return items[index].signature().identifier
     }
     
     func signatures() -> [String : AnyClass] {
         var dictionary = Dictionary<String, AnyClass>()
-        for type: SettingsItem in items {
+        for type in items {
             dictionary[type.signature().identifier] = type.signature().registeredClass
         }
         return dictionary
     }
     
     func performActionForIndex(index: Int) {
-         (items[index] as SettingsItem).performActionWithTarget(self)
+         items[index].performActionWithTarget(self)
     }
     
     func selectable(index: Int) -> Bool {
-        return (items[index] as SettingsItem).selectable()
+        return items[index].selectable()
     }
     
     // MARK: Settings Item Action Handlers
