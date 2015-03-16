@@ -28,9 +28,9 @@ class RGRTabBarController: UITabBarController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        if (!RGRNetworkManager.isUserSignedIn()) {
+        if (!GPPSignIn.isUserSignedIn()) {
 
-            if (RGRNetworkManager.hasSilentAuthenticationSucceeded()) {
+            if (GPPSignIn.hasSilentAuthenticationSucceeded()) {
                 println("user is signed in")
             } else {
                 self.presentViewController(RGRLoginViewController(), animated: true, completion: nil);
