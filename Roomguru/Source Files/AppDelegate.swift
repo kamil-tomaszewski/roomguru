@@ -50,9 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RGRNetworkManager.sharedInstance.setServerURL("https://www.googleapis.com/calendar/v3")
         
         let sharedSignIn = GPPSignIn.sharedInstance();
-        sharedSignIn.clientID = "860224755984-fiktpv8httrrbgdefop68d554kvepshp.apps.googleusercontent.com"
+        sharedSignIn.clientID = gPlusClientID()
         sharedSignIn.scopes = [kGTLAuthScopePlusLogin, "https://www.googleapis.com/auth/calendar"]
         sharedSignIn.shouldFetchGoogleUserID = true
+    }
+    
+    func gPlusClientID() -> NSString {
+        #if ENV_STAGING
+            return "860224755984-etmsurv60hiq7dds925q79tdp3a62b1t.apps.googleusercontent.com"
+        #else
+            return "860224755984-fiktpv8httrrbgdefop68d554kvepshp.apps.googleusercontent.com"
+        #endif
     }
 }
 
