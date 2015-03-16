@@ -19,9 +19,9 @@
 		5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */; };
 		5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
-		5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */; };
-		5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* Settings.swift */; };
-		5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */; };
+		5E5F558B1AB62679005F3CEE /* RGRSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* RGRSettingsViewModel.swift */; };
+		5E5F558D1AB62839005F3CEE /* RGRSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* RGRSettings.swift */; };
+		5E5F558F1AB6CAB6005F3CEE /* RGRSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* RGRSettingsItem.swift */; };
 		5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */; };
 		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
 		5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */; };
@@ -101,9 +101,9 @@
 		5E3A98581AA741FA00CE2F20 /* Tests-Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Test.xcconfig"; path = "Configuration/Tests-Test.xcconfig"; sourceTree = "<group>"; };
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		5E5F558C1AB62839005F3CEE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Roomguru/Source Files/Settings.swift"; sourceTree = SOURCE_ROOT; };
-		5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsItem.swift; path = "Roomguru/Source Files/SettingsItem.swift"; sourceTree = SOURCE_ROOT; };
+		5E5F558A1AB62679005F3CEE /* RGRSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettingsViewModel.swift; path = "Roomguru/Source Files/RGRSettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E5F558C1AB62839005F3CEE /* RGRSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettings.swift; path = "Roomguru/Source Files/RGRSettings.swift"; sourceTree = SOURCE_ROOT; };
+		5E5F558E1AB6CAB6005F3CEE /* RGRSettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettingsItem.swift; path = "Roomguru/Source Files/RGRSettingsItem.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRLoginView.swift; path = "Roomguru/Source Files/RGRLoginView.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
@@ -239,6 +239,14 @@
 			children = (
 			);
 			name = Custom;
+			sourceTree = "<group>";
+		};
+		5E07202B1AB73CAD009C270E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5E5F558A1AB62679005F3CEE /* RGRSettingsViewModel.swift */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 		5E147CBB1AA8B40C00EDD97C /* Helper */ = {
@@ -385,6 +393,7 @@
 				5E51B7981AA9C3280018EDA9 /* Object & Models */,
 				7BD6CC721AB6EDB30031AED6 /* Extensions */,
 				5E51B7991AA9C3310018EDA9 /* View Controllers */,
+				5E07202B1AB73CAD009C270E /* ViewModels */,
 				5E51B79B1AA9C3540018EDA9 /* Custom Views */,
 			);
 			path = "Source Files";
@@ -423,9 +432,8 @@
 		5E5F55901AB6CABA005F3CEE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */,
-				5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */,
-				5E5F558C1AB62839005F3CEE /* Settings.swift */,
+				5E5F558E1AB6CAB6005F3CEE /* RGRSettingsItem.swift */,
+				5E5F558C1AB62839005F3CEE /* RGRSettings.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -748,18 +756,18 @@
 				5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* RGRNetworkManager.swift in Sources */,
-				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
+				5E5F558F1AB6CAB6005F3CEE /* RGRSettingsItem.swift in Sources */,
 				5EAFD7441AAF270C00B75582 /* RGRLoginViewController.swift in Sources */,
 				5E3871961AB0660500C7FEE8 /* RGRDashboardViewController.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				7B27043E1AB6EBEB00B6C606 /* GPPSignInExtensions.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
-				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
+				5E5F558D1AB62839005F3CEE /* RGRSettings.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
 				5E07202A1AB73846009C270E /* RGRDashboardView.swift in Sources */,
 				5E0720041AB6D8FF009C270E /* RGRTableViewSwitchCell.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* RGRSettingsView.swift in Sources */,
-				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
+				5E5F558B1AB62679005F3CEE /* RGRSettingsViewModel.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* RGRTabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */,
 			);

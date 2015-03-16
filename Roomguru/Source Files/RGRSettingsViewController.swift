@@ -11,7 +11,7 @@ import UIKit
 class RGRSettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     weak var aView: RGRSettingsView?
-    private let viewModel = SettingsViewModel()
+    private let viewModel = RGRSettingsViewModel()
     
     // MARK: View life cycle
 
@@ -39,7 +39,7 @@ class RGRSettingsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(viewModel.identifierForIndex(indexPath.row)) as UITableViewCell
-        viewModel.configureCellForIndex(cell: cell, index: indexPath.row)
+        viewModel.configureCell(cell, atIndex: indexPath.row)
         
         return cell;
     }

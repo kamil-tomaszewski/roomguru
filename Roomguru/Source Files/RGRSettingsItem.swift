@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SettingsItem {
+struct RGRSettingsItem {
     
     var title: String
     var type: aType
