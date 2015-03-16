@@ -7,21 +7,24 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
 private let notificationKey = "NotificationKey"
 
 class Settings {
     
     class func enableNotifcation(enable: Bool) {
-        NSUserDefaults.standardUserDefaults().setBool(enable, forKey: notificationKey)
+        Defaults[notificationKey] = enable
     }
     
     class func isNotifcationEnabled() -> Bool {
-        return NSUserDefaults.standardUserDefaults().boolForKey(notificationKey)
+        if let enabled = Defaults[notificationKey].bool {
+            return enabled
+        }
+        return false
     }
     
     class func reverseNotificationEnabled() {
-        var enabled = Settings.isNotifcationEnabled()
-        Settings.enableNotifcation(!enabled)
+        Settings.enableNotifcation(!Settings.isNotifcationEnabled() )
     }
 }

@@ -24,14 +24,14 @@ class SettingsViewModel: NSObject {
     func configureCellForIndex(#cell: UITableViewCell, index: Int) {
         
         let item: SettingsItem = items[index]
-        if item.type == .switchType {
-            (cell as RGRTableViewSwitchCell).switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
+
+        if let theCell = cell as? RGRTableViewSwitchCell {
+            theCell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
             
             switch(index) {
             default: //temporary in default statement. Play with indexes later if more cell will appear
-                (cell as RGRTableViewSwitchCell).switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
+                theCell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
             }
-            
         }
 
         cell.textLabel?.text = item.title
