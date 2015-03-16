@@ -15,11 +15,7 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
     //MARK: Lifecycle
     
     override func loadView() {
-        var view = RGRLoginView(frame: UIScreen.mainScreen().applicationFrame)
-        view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
-        
-        self.view = view
-        aView = view;
+        aView = loadViewWithClass(RGRLoginView.self) as? RGRLoginView
     }
     
     override func viewDidLoad() {

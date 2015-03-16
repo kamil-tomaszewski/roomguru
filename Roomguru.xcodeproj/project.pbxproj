@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5E0720041AB6D8FF009C270E /* RGRTableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */; };
+		5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
+		5E07202A1AB73846009C270E /* RGRDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* RGRDashboardView.swift */; };
 		5E1FF7671AA8A8BA00467837 /* MathSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7661AA8A8BA00467837 /* MathSpec.swift */; };
 		5E1FF7691AA8AB5A00467837 /* RootScreenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */; };
 		5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871931AB065B800C7FEE8 /* RGRSettingsViewController.swift */; };
@@ -71,6 +73,8 @@
 
 /* Begin PBXFileReference section */
 		5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRTableViewSwitchCell.swift; path = "Roomguru/Source Files/RGRTableViewSwitchCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720291AB73846009C270E /* RGRDashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRDashboardView.swift; path = "Roomguru/Source Files/RGRDashboardView.swift"; sourceTree = SOURCE_ROOT; };
 		5E0759062D32339F0F1B138E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E147CB21AA8B2CA00EDD97C /* Functional-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Functional-Tests-Info.plist"; path = "Supporting Files/Functional-Tests-Info.plist"; sourceTree = "<group>"; };
 		5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roomguru-Bridging-Header.h"; path = "Supporting Files/Roomguru-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 			children = (
 				5ECF36BC1AB325BD00BE6EA1 /* RGRSettingsView.swift */,
 				5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */,
+				5E0720291AB73846009C270E /* RGRDashboardView.swift */,
 			);
 			name = "Controllers' Views";
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				7B27043D1AB6EBEB00B6C606 /* GPPSignInExtensions.swift */,
+				5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -739,6 +745,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* RGRNetworkManager.swift in Sources */,
 				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
@@ -749,6 +756,7 @@
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
 				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
+				5E07202A1AB73846009C270E /* RGRDashboardView.swift in Sources */,
 				5E0720041AB6D8FF009C270E /* RGRTableViewSwitchCell.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* RGRSettingsView.swift in Sources */,
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,

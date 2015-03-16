@@ -16,11 +16,7 @@ class RGRSettingsViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: View life cycle
 
     override func loadView() {
-        var view = RGRSettingsView(frame: UIScreen.mainScreen().applicationFrame)
-        view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
-        
-        self.view = view
-        aView = view;
+        aView = loadViewWithClass(RGRSettingsView.self) as? RGRSettingsView
     }
     
     override func viewDidLoad() {

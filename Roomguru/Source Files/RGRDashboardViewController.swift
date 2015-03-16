@@ -10,4 +10,13 @@ import UIKit
 
 class RGRDashboardViewController: UIViewController {
 
+    weak var aView: RGRDashboardView?
+
+    // MARK: View life cycle
+
+    
+    override func loadView() {
+        aView = loadViewWithClass(RGRDashboardView.self) as? RGRDashboardView
+    }
+
 }
