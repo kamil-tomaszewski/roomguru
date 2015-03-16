@@ -11,8 +11,8 @@ import Foundation
 class SettingsViewModel: NSObject {
     
     private let items : [SettingsItem] = [
-        SettingsItem(title: NSLocalizedString("Sign out", comment: ""), type: .buttonType, action: "signOutHandler"),
-        SettingsItem(title: NSLocalizedString("Receive notifications", comment: ""), type: .switchType, action: "notificationSwitchHandler:")
+        SettingsItem(NSLocalizedString("Sign out", comment: ""), .buttonType, "signOutHandler"),
+        SettingsItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:")
     ]
     
     // MARK: Public Methods
@@ -25,8 +25,13 @@ class SettingsViewModel: NSObject {
         
         let item: SettingsItem = items[index]
         if item.type == .switchType {
-            (cell as RGRTableViewSwitchCell).aSwitch.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
-            (cell as RGRTableViewSwitchCell).aSwitch.setOn(Settings.isNotifcationEnabled(), animated: false)
+            (cell as RGRTableViewSwitchCell).switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
+            
+            switch(index) {
+            default: //temporary in default statement. Play with indexes later if more cell will appear
+                (cell as RGRTableViewSwitchCell).switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
+            }
+            
         }
 
         cell.textLabel?.text = item.title

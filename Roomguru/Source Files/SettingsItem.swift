@@ -14,7 +14,7 @@ struct SettingsItem {
     var type: aType
     var action: String
     
-    init(title: String, type: aType, action: String) {
+    init(_ title: String, _ type: aType, _ action: String) {
         self.title = title
         self.type = type
         self.action = action

@@ -11,7 +11,7 @@ import Cartography
 
 class RGRTableViewSwitchCell: UITableViewCell {
     
-    var aSwitch = UISwitch()
+    var switchControl = UISwitch()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,13 +24,13 @@ class RGRTableViewSwitchCell: UITableViewCell {
     }
     
     private func commonInit() {
-        addSubview(aSwitch)
+        addSubview(switchControl)
         defineConstraints()
     }
     
     private func defineConstraints() {
         
-        layout(aSwitch) { (aSwitch) in
+        layout(switchControl) { (aSwitch) in
             
             let margin: CGFloat = 20
             
