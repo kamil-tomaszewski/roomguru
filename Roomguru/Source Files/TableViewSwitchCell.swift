@@ -11,7 +11,14 @@ import Cartography
 
 class TableViewSwitchCell: UITableViewCell {
     
-    var switchControl = UISwitch()
+    private struct aStruct { static var staticVar: String = "TableViewSwitchCellReuseIdentifier"}
+    
+    class var reuseIdentifier: String {
+        get { return aStruct.staticVar }
+        set { aStruct.staticVar = newValue }
+    }
+    
+    let switchControl = UISwitch()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -33,7 +33,7 @@ struct SettingsItem {
     func signature() -> (identifier: String, registeredClass: AnyClass) {
         switch(self.type) {
         case .switchType:
-            return ("TableViewSwitchCell", TableViewSwitchCell.self)
+            return (TableViewSwitchCell.reuseIdentifier, TableViewSwitchCell.self)
         default:
             return ("SettingsCellReuseIdentifier", UITableViewCell.self)
         }

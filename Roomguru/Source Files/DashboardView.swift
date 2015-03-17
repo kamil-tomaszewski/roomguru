@@ -11,7 +11,7 @@ import Cartography
 
 class DashboardView: UIView {
     
-    var tableView = UITableView()
+    let tableView = UITableView(frame: CGRectZero, style: .Plain)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,9 +27,7 @@ class DashboardView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.alwaysBounceVertical = false
         tableView.separatorStyle = .None
-        
-        tableView.backgroundColor = UIColor.redColor()
-        
+        tableView.rowHeight = 60
         addSubview(tableView)
         
         defineConstraints()

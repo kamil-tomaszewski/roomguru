@@ -11,7 +11,7 @@ import Cartography
 
 class SettingsView: UIView {
     
-    var tableView = UITableView(frame: CGRectZero, style: .Grouped)
+    let tableView = UITableView(frame: CGRectZero, style: .Grouped)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
