@@ -16,4 +16,37 @@ class Calendar: ModelObject {
     var kind:       String?
     var summary:    String?
     var timezone:   String?
+    
+    class func map(jsonArray: [JSON]?) -> [Calendar]? {
+        if let _jsonArray: [JSON] = jsonArray {
+            if _jsonArray.isEmpty == true {
+                return nil
+            }
+            return _jsonArray.map({ Calendar(json: $0) })
+        }
+        
+        return nil
+    }
+    
+    override func toJSON() -> JSON {
+        var json = JSON([])
+        json["accessRole"].string = accessRole
+        json["name"].string = name
+        json["etag"].string = etag
+        json["identifier"].string = identifier
+        json["kind"].string = kind
+        json["summary"].string = summary
+        json["timezone"].string = timezone
+        return json
+    }
+    
+    override func map(json: JSON) {
+        accessRole = json["accessRole"].string
+        name = json["name"].string
+        etag = json["etag"].string
+        identifier = json["identifier"].string
+        kind = json["kind"].string
+        summary = json["summary"].string
+        timezone = json["timezone"].string
+    }
 }
