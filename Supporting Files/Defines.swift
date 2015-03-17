@@ -9,5 +9,5 @@
 import Foundation
 
 typealias VoidBlock = () -> ()
-typealias ResponseBlock = (response: AnyObject?) -> ()
+typealias ResponseBlock = (response: Any?) -> ()
 typealias ErrorBlock = (error: NSError) -> ()

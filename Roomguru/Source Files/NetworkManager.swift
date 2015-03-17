@@ -76,7 +76,7 @@ extension NetworkManager {
         }
     }
     
-    func eventsList(forCalendar calendarID: String, success: RGRResponseBlock, failure: RGRErrorBlock) {
+    func eventsList(forCalendar calendarID: String, success: ResponseBlock, failure: ErrorBlock) {
         let requestPath = serverURL + "/calendars/" + calendarID + "/events"
         
         Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in

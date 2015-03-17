@@ -23,12 +23,12 @@ class Event: ModelObject {
     var hangoutLink: String?
     var iCalUID:    String?
     
-    class func map(jsonArray: [JSON]?) -> [RGREvent]? {
+    class func map(jsonArray: [JSON]?) -> [Event]? {
         if let _jsonArray: [JSON] = jsonArray {
             if _jsonArray.isEmpty == true {
                 return nil
             }
-            return _jsonArray.map({ RGREvent(json: $0) })
+            return _jsonArray.map({ Event(json: $0) })
         }
         
         return nil
