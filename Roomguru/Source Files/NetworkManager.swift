@@ -63,6 +63,8 @@ extension NetworkManager {
     
     func calendarsList(success: ResponseBlock, failure: ErrorBlock) {
         
+        assert(self.clientID != "", "Client ID is not set!")
+        
         let requestPath = serverURL + "/users/me/calendarList"
         
         Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
@@ -77,6 +79,9 @@ extension NetworkManager {
     }
     
     func eventsList(forCalendar calendarID: String, success: ResponseBlock, failure: ErrorBlock) {
+        
+        assert(self.clientID != "", "Client ID is not set!")
+        
         let requestPath = serverURL + "/calendars/" + calendarID + "/events"
         
         Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
