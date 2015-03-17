@@ -1,5 +1,5 @@
 //
-//  RGREvent.swift
+//  Event.swift
 //  Roomguru
 //
 //  Created by Radoslaw Szeja on 11/03/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RGREvent: RGRModelObject {
+class Event: ModelObject {
     var kind:       String?
     var etag:       String?
     var identifier: String?

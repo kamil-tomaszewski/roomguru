@@ -1,5 +1,5 @@
 //
-//  RGRModelObject.swift
+//  ModelObject.swift
 //  Roomguru
 //
 //  Created by Radoslaw Szeja on 11/03/15.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol RGRModelJSONProtocol {
+protocol ModelJSONProtocol {
     func toJSON() -> JSON
     func map(json: JSON)
 }
 
-class RGRModelObject: NSObject, RGRModelJSONProtocol {
+class ModelObject: NSObject, ModelJSONProtocol {
 
     init(json: JSON) {
         super.init()

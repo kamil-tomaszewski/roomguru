@@ -1,5 +1,5 @@
 //
-//  RGRCalendar.swift
+//  Calendar.swift
 //  Roomguru
 //
 //  Created by Radoslaw Szeja on 11/03/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RGRCalendar: RGRModelObject {
+class Calendar: ModelObject {
     var accessRole: String?
     var name:       String?
     var etag:       String?
