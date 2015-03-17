@@ -11,3 +11,5 @@ import Foundation
 typealias VoidBlock = () -> ()
 typealias ResponseBlock = (response: Any?) -> ()
 typealias ErrorBlock = (error: NSError) -> ()
+
+let RoomguruGooglePlusAuthenticationFinished: String = "RoomguruGooglePlusAuthenticationFinished"

@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    //MARK: UITableViewDataSource Methods
+    // MARK: UITableViewDataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -44,7 +44,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell;
     }
     
-    //MARK: UITableViewDelegate Methods
+    // MARK: UITableViewDelegate Methods
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

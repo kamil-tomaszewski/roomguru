@@ -8,11 +8,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, GPPSignInDelegate  {
+class LoginViewController: UIViewController  {
 
     weak var aView: LoginView?
 
-    //MARK: Lifecycle
+    // MARK: Lifecycle
 
     override func loadView() {
         aView = loadViewWithClass(LoginView.self) as? LoginView
@@ -21,22 +21,16 @@ class LoginViewController: UIViewController, GPPSignInDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let sharedSignIn = GPPSignIn.sharedInstance()
-        sharedSignIn.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "googlePlusAuthorizationFinished", name: RoomguruGooglePlusAuthenticationFinished, object: nil)
     }
-
-    //MARK: GPPSignInDelegate Methods
-
-    func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-        if (error != nil) {
-            println(error)
-        } else {
-            NetworkManager.sharedInstance.setAuthentication(auth)
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-
-    func didDisconnectWithError(error: NSError!) {
-        println(error)
+    
+    // MARK: Google+ notification
+    
+    func googlePlusAuthorizationFinished() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

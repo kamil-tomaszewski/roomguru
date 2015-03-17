@@ -29,7 +29,6 @@ class TabBarController: UITabBarController {
         super.viewDidAppear(animated)
 
         if (!GPPSignIn.isUserSignedIn()) {
-
             if (GPPSignIn.hasSilentAuthenticationSucceeded()) {
                 println("user is signed in")
             } else {

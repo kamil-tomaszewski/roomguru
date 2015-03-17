@@ -7,9 +7,10 @@
 
 import UIKit
 import HockeySDK
+import Foundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
 
     var window: UIWindow?
 
@@ -25,7 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    //MARK: Google oAuth Methods
+    // MARK: GPPSignInDelegate Methods
+    
+    func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
+        NetworkManager.sharedInstance.setAuthentication(auth)
+        NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationFinished, object: nil)
+    }
+    
+    func didDisconnectWithError(error: NSError!) {
+        println(error)
+    }
+    
+    // MARK: Google oAuth Methods
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
@@ -39,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    //MARK: Private Methods
+    // MARK: Private Methods
     
     func setupVendors() {
         
@@ -53,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sharedSignIn.clientID = gPlusClientID()
         sharedSignIn.scopes = [kGTLAuthScopePlusLogin, "https://www.googleapis.com/auth/calendar"]
         sharedSignIn.shouldFetchGoogleUserID = true
+        sharedSignIn.delegate = self
     }
     
     func gPlusClientID() -> NSString {
