@@ -1,5 +1,5 @@
 //
-//  RGRSettingsViewController.swift
+//  SettingsViewController.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 11.03.2015.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class RGRSettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    weak var aView: RGRSettingsView?
-    private let viewModel = RGRSettingsViewModel()
+    weak var aView: SettingsView?
+    private let viewModel = SettingsViewModel()
     
     // MARK: View life cycle
 
     override func loadView() {
-        aView = loadViewWithClass(RGRSettingsView.self) as? RGRSettingsView
+        aView = loadViewWithClass(SettingsView.self) as? SettingsView
     }
     
     override func viewDidLoad() {

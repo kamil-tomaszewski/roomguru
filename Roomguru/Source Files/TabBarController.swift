@@ -1,5 +1,5 @@
 //
-//  RGRTabBarController.swift
+//  TabBarController.swift
 //  Roomguru
 //
 //  Created by Pawel Bialecki on 12.03.2015.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RGRTabBarController: UITabBarController {
+class TabBarController: UITabBarController {
     
     // MARK: Lifecycle
     
@@ -50,7 +50,7 @@ class RGRTabBarController: UITabBarController {
     }
     
     func presentLoginViewController(completion: (() -> Void)?) {
-        self.presentViewController(RGRLoginViewController(), animated: true, completion: completion);
+        self.presentViewController(LoginViewController(), animated: true, completion: completion);
     }
     
     // MARK: Private Methods
@@ -58,8 +58,8 @@ class RGRTabBarController: UITabBarController {
     private func setupEmbeddedViewControllers() {
         
         self.viewControllers = [
-            UINavigationController(rootViewController: RGRDashboardViewController()),
-            UINavigationController(rootViewController: RGRSettingsViewController()),
+            UINavigationController(rootViewController: DashboardViewController()),
+            UINavigationController(rootViewController: SettingsViewController()),
         ]
         
         func setTitleForControllerAtIndex(index: Int, title: String) {

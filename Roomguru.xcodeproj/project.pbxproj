@@ -8,23 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		5E0720041AB6D8FF009C270E /* RGRTableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */; };
+		5E0720041AB6D8FF009C270E /* TableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */; };
 		5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
-		5E07202A1AB73846009C270E /* RGRDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* RGRDashboardView.swift */; };
-		5E07202D1AB73E03009C270E /* RGRTableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202C1AB73E03009C270E /* RGRTableButtonCell.swift */; };
-		5E07202F1AB73F83009C270E /* RGRDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202E1AB73F83009C270E /* RGRDashboardViewModel.swift */; };
+		5E07202A1AB73846009C270E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* DashboardView.swift */; };
+		5E07202D1AB73E03009C270E /* TableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202C1AB73E03009C270E /* TableButtonCell.swift */; };
+		5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202E1AB73F83009C270E /* DashboardViewModel.swift */; };
 		5E1FF7671AA8A8BA00467837 /* MathSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7661AA8A8BA00467837 /* MathSpec.swift */; };
 		5E1FF7691AA8AB5A00467837 /* RootScreenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */; };
-		5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871931AB065B800C7FEE8 /* RGRSettingsViewController.swift */; };
-		5E3871961AB0660500C7FEE8 /* RGRDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871951AB0660500C7FEE8 /* RGRDashboardViewController.swift */; };
+		5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */; };
+		5E3871961AB0660500C7FEE8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871951AB0660500C7FEE8 /* DashboardViewController.swift */; };
 		5E38FB3C1AAF23F10057DD8B /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */; };
 		5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */; };
 		5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
-		5E5F558B1AB62679005F3CEE /* RGRSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* RGRSettingsViewModel.swift */; };
-		5E5F558D1AB62839005F3CEE /* RGRSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* RGRSettings.swift */; };
-		5E5F558F1AB6CAB6005F3CEE /* RGRSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* RGRSettingsItem.swift */; };
-		5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */; };
+		5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */; };
+		5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* Settings.swift */; };
+		5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */; };
+		5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* LoginView.swift */; };
 		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
 		5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */; };
 		5E7A9E541AB0609C0042E16F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E531AB0609C0042E16F /* CoreText.framework */; };
@@ -45,15 +45,15 @@
 		5EAFD73E1AAF265300B75582 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73D1AAF265300B75582 /* Security.framework */; };
 		5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */; };
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
-		5EAFD7441AAF270C00B75582 /* RGRLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */; };
-		5ECF36BD1AB325BD00BE6EA1 /* RGRSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF36BC1AB325BD00BE6EA1 /* RGRSettingsView.swift */; };
+		5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
+		5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */; };
 		5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B27043E1AB6EBEB00B6C606 /* GPPSignInExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B27043D1AB6EBEB00B6C606 /* GPPSignInExtensions.swift */; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BF527C171AB1CF8C00A43D35 /* RGRNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* RGRNetworkManager.swift */; };
+		BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C181AB1CF9F00A43D35 /* Defines.swift */; };
-		BF527C1B1AB1CFAE00A43D35 /* RGRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* RGRTabBarController.swift */; };
+		BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,11 +74,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRTableViewSwitchCell.swift; path = "Roomguru/Source Files/RGRTableViewSwitchCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewSwitchCell.swift; path = "Roomguru/Source Files/TableViewSwitchCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E0720291AB73846009C270E /* RGRDashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRDashboardView.swift; path = "Roomguru/Source Files/RGRDashboardView.swift"; sourceTree = SOURCE_ROOT; };
-		5E07202C1AB73E03009C270E /* RGRTableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRTableButtonCell.swift; path = "Roomguru/Source Files/RGRTableButtonCell.swift"; sourceTree = SOURCE_ROOT; };
-		5E07202E1AB73F83009C270E /* RGRDashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRDashboardViewModel.swift; path = "Roomguru/Source Files/RGRDashboardViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720291AB73846009C270E /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = "Roomguru/Source Files/DashboardView.swift"; sourceTree = SOURCE_ROOT; };
+		5E07202C1AB73E03009C270E /* TableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableButtonCell.swift; path = "Roomguru/Source Files/TableButtonCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E07202E1AB73F83009C270E /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewModel.swift; path = "Roomguru/Source Files/DashboardViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E0759062D32339F0F1B138E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E147CB21AA8B2CA00EDD97C /* Functional-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Functional-Tests-Info.plist"; path = "Supporting Files/Functional-Tests-Info.plist"; sourceTree = "<group>"; };
 		5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roomguru-Bridging-Header.h"; path = "Supporting Files/Roomguru-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 		5E147CB81AA8B2DC00EDD97C /* Unit-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit-Tests-Info.plist"; path = "Supporting Files/Unit-Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5E1FF7661AA8A8BA00467837 /* MathSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathSpec.swift; sourceTree = "<group>"; };
 		5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootScreenSpec.swift; sourceTree = "<group>"; };
-		5E3871931AB065B800C7FEE8 /* RGRSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettingsViewController.swift; path = "Roomguru/Source Files/RGRSettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5E3871951AB0660500C7FEE8 /* RGRDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRDashboardViewController.swift; path = "Roomguru/Source Files/RGRDashboardViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "Roomguru/Source Files/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E3871951AB0660500C7FEE8 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = "Roomguru/Source Files/DashboardViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = Frameworks/GoogleOpenSource.framework; sourceTree = "<group>"; };
 		5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = Frameworks/GooglePlus.bundle; sourceTree = "<group>"; };
 		5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = Frameworks/GooglePlus.framework; sourceTree = "<group>"; };
@@ -105,10 +105,10 @@
 		5E3A98581AA741FA00CE2F20 /* Tests-Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Test.xcconfig"; path = "Configuration/Tests-Test.xcconfig"; sourceTree = "<group>"; };
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		5E5F558A1AB62679005F3CEE /* RGRSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettingsViewModel.swift; path = "Roomguru/Source Files/RGRSettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		5E5F558C1AB62839005F3CEE /* RGRSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettings.swift; path = "Roomguru/Source Files/RGRSettings.swift"; sourceTree = SOURCE_ROOT; };
-		5E5F558E1AB6CAB6005F3CEE /* RGRSettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettingsItem.swift; path = "Roomguru/Source Files/RGRSettingsItem.swift"; sourceTree = SOURCE_ROOT; };
-		5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRLoginView.swift; path = "Roomguru/Source Files/RGRLoginView.swift"; sourceTree = SOURCE_ROOT; };
+		5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E5F558C1AB62839005F3CEE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Roomguru/Source Files/Settings.swift"; sourceTree = SOURCE_ROOT; };
+		5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsItem.swift; path = "Roomguru/Source Files/SettingsItem.swift"; sourceTree = SOURCE_ROOT; };
+		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/LoginView.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
 		5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
@@ -130,13 +130,13 @@
 		5EAFD73D1AAF265300B75582 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRLoginViewController.swift; path = "Roomguru/Source Files/RGRLoginViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5ECF36BC1AB325BD00BE6EA1 /* RGRSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRSettingsView.swift; path = "Roomguru/Source Files/RGRSettingsView.swift"; sourceTree = SOURCE_ROOT; };
+		5EAFD7431AAF270C00B75582 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Roomguru/Source Files/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
 		5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Frameworks/SwiftyJSON.swift; sourceTree = "<group>"; };
 		7B27043D1AB6EBEB00B6C606 /* GPPSignInExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPPSignInExtensions.swift; sourceTree = SOURCE_ROOT; };
-		BF527C161AB1CF8C00A43D35 /* RGRNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRNetworkManager.swift; path = "Roomguru/Source Files/RGRNetworkManager.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C181AB1CF9F00A43D35 /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Supporting Files/Defines.swift"; sourceTree = "<group>"; };
-		BF527C1A1AB1CFAE00A43D35 /* RGRTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRTabBarController.swift; path = "Roomguru/Source Files/RGRTabBarController.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -223,8 +223,8 @@
 		5E0720051AB6D908009C270E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */,
-				5E07202C1AB73E03009C270E /* RGRTableButtonCell.swift */,
+				5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */,
+				5E07202C1AB73E03009C270E /* TableButtonCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -232,9 +232,9 @@
 		5E0720061AB6D90D009C270E /* Controllers' Views */ = {
 			isa = PBXGroup;
 			children = (
-				5ECF36BC1AB325BD00BE6EA1 /* RGRSettingsView.swift */,
-				5E7A9E491AB04DB30042E16F /* RGRLoginView.swift */,
-				5E0720291AB73846009C270E /* RGRDashboardView.swift */,
+				5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */,
+				5E7A9E491AB04DB30042E16F /* LoginView.swift */,
+				5E0720291AB73846009C270E /* DashboardView.swift */,
 			);
 			name = "Controllers' Views";
 			sourceTree = "<group>";
@@ -249,8 +249,8 @@
 		5E07202B1AB73CAD009C270E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5E5F558A1AB62679005F3CEE /* RGRSettingsViewModel.swift */,
-				5E07202E1AB73F83009C270E /* RGRDashboardViewModel.swift */,
+				5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */,
+				5E07202E1AB73F83009C270E /* DashboardViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -417,10 +417,10 @@
 		5E51B7991AA9C3310018EDA9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF527C1A1AB1CFAE00A43D35 /* RGRTabBarController.swift */,
-				5EAFD7431AAF270C00B75582 /* RGRLoginViewController.swift */,
-				5E3871931AB065B800C7FEE8 /* RGRSettingsViewController.swift */,
-				5E3871951AB0660500C7FEE8 /* RGRDashboardViewController.swift */,
+				BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */,
+				5EAFD7431AAF270C00B75582 /* LoginViewController.swift */,
+				5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */,
+				5E3871951AB0660500C7FEE8 /* DashboardViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -438,8 +438,8 @@
 		5E5F55901AB6CABA005F3CEE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				5E5F558E1AB6CAB6005F3CEE /* RGRSettingsItem.swift */,
-				5E5F558C1AB62839005F3CEE /* RGRSettings.swift */,
+				5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */,
+				5E5F558C1AB62839005F3CEE /* Settings.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 		BF527C0F1AB1A70C00A43D35 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				BF527C161AB1CF8C00A43D35 /* RGRNetworkManager.swift */,
+				BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -760,24 +760,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */,
-				5E7A9E4A1AB04DB30042E16F /* RGRLoginView.swift in Sources */,
-				BF527C171AB1CF8C00A43D35 /* RGRNetworkManager.swift in Sources */,
-				5E5F558F1AB6CAB6005F3CEE /* RGRSettingsItem.swift in Sources */,
-				5EAFD7441AAF270C00B75582 /* RGRLoginViewController.swift in Sources */,
-				5E3871961AB0660500C7FEE8 /* RGRDashboardViewController.swift in Sources */,
+				5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */,
+				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
+				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
+				5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */,
+				5E3871961AB0660500C7FEE8 /* DashboardViewController.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				7B27043E1AB6EBEB00B6C606 /* GPPSignInExtensions.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
-				5E5F558D1AB62839005F3CEE /* RGRSettings.swift in Sources */,
+				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
-				5E07202A1AB73846009C270E /* RGRDashboardView.swift in Sources */,
-				5E07202D1AB73E03009C270E /* RGRTableButtonCell.swift in Sources */,
-				5E0720041AB6D8FF009C270E /* RGRTableViewSwitchCell.swift in Sources */,
-				5ECF36BD1AB325BD00BE6EA1 /* RGRSettingsView.swift in Sources */,
-				5E5F558B1AB62679005F3CEE /* RGRSettingsViewModel.swift in Sources */,
-				BF527C1B1AB1CFAE00A43D35 /* RGRTabBarController.swift in Sources */,
-				5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */,
-				5E07202F1AB73F83009C270E /* RGRDashboardViewModel.swift in Sources */,
+				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
+				5E07202D1AB73E03009C270E /* TableButtonCell.swift in Sources */,
+				5E0720041AB6D8FF009C270E /* TableViewSwitchCell.swift in Sources */,
+				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,
+				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
+				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
+				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
+				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

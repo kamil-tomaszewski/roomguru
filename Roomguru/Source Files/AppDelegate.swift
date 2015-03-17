@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupVendors()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = RGRTabBarController()
+        window!.rootViewController = TabBarController()
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func signOut() {
         GPPSignIn.sharedInstance().signOut()
-        let tabBarViewController = window!.rootViewController as RGRTabBarController
+        let tabBarViewController = window!.rootViewController as TabBarController
         tabBarViewController.presentLoginViewController { () -> Void in
             tabBarViewController.popNavigationStack()
         }
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BITHockeyManager.sharedHockeyManager().startManager();
         BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         
-        RGRNetworkManager.sharedInstance.setServerURL("https://www.googleapis.com/calendar/v3")
+        NetworkManager.sharedInstance.setServerURL("https://www.googleapis.com/calendar/v3")
         
         let sharedSignIn = GPPSignIn.sharedInstance();
         sharedSignIn.clientID = gPlusClientID()

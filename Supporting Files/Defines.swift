@@ -8,6 +8,6 @@
 
 import Foundation
 
-typealias RGRVoidBlock = () -> ()
-typealias RGRResponseBlock = (response: AnyObject?) -> ()
-typealias RGRErrorBlock = (error: NSError) -> ()
+typealias VoidBlock = () -> ()
+typealias ResponseBlock = (response: AnyObject?) -> ()
+typealias ErrorBlock = (error: NSError) -> ()

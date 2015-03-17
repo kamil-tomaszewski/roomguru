@@ -1,5 +1,5 @@
 //
-//  RGRTableViewSwitchCell.swift
+//  TableViewSwitchCell.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 16/03/15.
@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class RGRTableViewSwitchCell: UITableViewCell {
+class TableViewSwitchCell: UITableViewCell {
     
     var switchControl = UISwitch()
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RGRSettingsItem {
+struct SettingsItem {
     
     var title: String
     var type: aType
@@ -33,9 +33,9 @@ struct RGRSettingsItem {
     func signature() -> (identifier: String, registeredClass: AnyClass) {
         switch(self.type) {
         case .switchType:
-            return ("RGRTableViewSwitchCell", RGRTableViewSwitchCell.self)
+            return ("TableViewSwitchCell", TableViewSwitchCell.self)
         default:
-            return ("RGRSettingsCellReuseIdentifier", UITableViewCell.self)
+            return ("SettingsCellReuseIdentifier", UITableViewCell.self)
         }
     }
     

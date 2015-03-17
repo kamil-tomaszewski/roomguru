@@ -1,5 +1,5 @@
 //
-//  RGRDashboardViewController.swift
+//  DashboardViewController.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 11.03.2015.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class RGRDashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    weak var aView: RGRDashboardView?
-    private let viewModel = RGRDashboardViewModel()
+    weak var aView: DashboardView?
+    private let viewModel = DashboardViewModel()
 
     // MARK: View life cycle
 
     override func loadView() {
-        aView = loadViewWithClass(RGRDashboardView.self) as? RGRDashboardView
+        aView = loadViewWithClass(DashboardView.self) as? DashboardView
     }
     
     override func viewDidLoad() {

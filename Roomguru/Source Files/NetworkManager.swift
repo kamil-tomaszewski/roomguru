@@ -1,5 +1,5 @@
 //
-//  RGRNetworkManager.swift
+//  NetworkManager.swift
 //  Roomguru
 //
 //  Created by Radoslaw Szeja on 12/03/15.
@@ -9,13 +9,13 @@
 import UIKit
 import Alamofire
 
-class RGRNetworkManager: NSObject {
+class NetworkManager: NSObject {
     private var serverURL = ""
     private var clientID = ""
     
-    class var sharedInstance: RGRNetworkManager {
+    class var sharedInstance: NetworkManager {
         struct Static {
-            static let instance: RGRNetworkManager = RGRNetworkManager()
+            static let instance: NetworkManager = NetworkManager()
         }
         
         return Static.instance
@@ -30,7 +30,7 @@ class RGRNetworkManager: NSObject {
 
 // MARK: Authentication
 
-extension RGRNetworkManager {
+extension NetworkManager {
         
     func setAuthentication(token: GTMOAuth2Authentication) {
         self.clientID = token.clientID
@@ -58,9 +58,9 @@ private extension GTMOAuth2Authentication {
 
 // MARK: Requests
 
-extension RGRNetworkManager {
+extension NetworkManager {
     
-    func calendarsList(success: RGRResponseBlock, failure: RGRErrorBlock) {
+    func calendarsList(success: ResponseBlock, failure: ErrorBlock) {
         
         let requestPath = serverURL + "/users/me/calendarList"
         
@@ -76,7 +76,7 @@ extension RGRNetworkManager {
 
 // MARK: Private
 
-private extension RGRNetworkManager {
+private extension NetworkManager {
 
     private func key() -> String {
         return "?key=" + clientID

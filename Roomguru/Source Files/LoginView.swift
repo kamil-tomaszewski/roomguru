@@ -1,5 +1,5 @@
 //
-//  RGRLoginView.swift
+//  LoginView.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 11.03.2015.
@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class RGRLoginView: UIView {
+class LoginView: UIView {
     
     var signInButton = GPPSignInButton()
     var welcomeLabel = UILabel()

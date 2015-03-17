@@ -8,14 +8,14 @@
 
 import UIKit
 
-class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
+class LoginViewController: UIViewController, GPPSignInDelegate  {
     
-    weak var aView: RGRLoginView?
+    weak var aView: LoginView?
     
     //MARK: Lifecycle
     
     override func loadView() {
-        aView = loadViewWithClass(RGRLoginView.self) as? RGRLoginView
+        aView = loadViewWithClass(LoginView.self) as? LoginView
     }
     
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class RGRLoginViewController: UIViewController, GPPSignInDelegate  {
         if (error != nil) {
             println(error)
         } else {
-            RGRNetworkManager.sharedInstance.setAuthentication(auth)
+            NetworkManager.sharedInstance.setAuthentication(auth)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }

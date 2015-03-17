@@ -11,7 +11,7 @@ import SwiftyUserDefaults
 
 private let notificationKey = "NotificationKey"
 
-class RGRSettings {
+class Settings {
     
     class func enableNotifcation(enable: Bool) {
         Defaults[notificationKey] = enable
@@ -25,6 +25,6 @@ class RGRSettings {
     }
     
     class func reverseNotificationEnabled() {
-        RGRSettings.enableNotifcation(!RGRSettings.isNotifcationEnabled() )
+        Settings.enableNotifcation(!Settings.isNotifcationEnabled() )
     }
 }

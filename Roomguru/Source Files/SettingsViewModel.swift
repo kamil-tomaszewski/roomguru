@@ -8,11 +8,11 @@
 
 import Foundation
 
-class RGRSettingsViewModel: NSObject {
+class SettingsViewModel: NSObject {
     
-    private let items : [RGRSettingsItem] = [
-        RGRSettingsItem(NSLocalizedString("Sign out", comment: ""), .buttonType, "signOutHandler"),
-        RGRSettingsItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:")
+    private let items : [SettingsItem] = [
+        SettingsItem(NSLocalizedString("Sign out", comment: ""), .buttonType, "signOutHandler"),
+        SettingsItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:")
     ]
     
     // MARK: Public Methods
@@ -25,12 +25,12 @@ class RGRSettingsViewModel: NSObject {
         
         let item = items[row]
 
-        if let theCell = cell as? RGRTableViewSwitchCell {
+        if let theCell = cell as? TableViewSwitchCell {
             theCell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
             
             switch(index) {
             default: //temporary in default statement. Play with indexes later if more cell will appear
-                theCell.switchControl.setOn(RGRSettings.isNotifcationEnabled(), animated: false)
+                theCell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
             }
         }
 
@@ -64,7 +64,7 @@ class RGRSettingsViewModel: NSObject {
     }
     
     func notificationSwitchHandler(sender: UISwitch) {
-        RGRSettings.reverseNotificationEnabled()
+        Settings.reverseNotificationEnabled()
     }
     
 }

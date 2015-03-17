@@ -1,5 +1,5 @@
 //
-//  RGRDashboardView.swift
+//  DashboardView.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 16/03/15.
@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class RGRDashboardView: UIView {
+class DashboardView: UIView {
     
     var tableView = UITableView()
     
