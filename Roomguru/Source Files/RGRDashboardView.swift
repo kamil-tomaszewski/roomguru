@@ -7,7 +7,39 @@
 //
 
 import UIKit
+import Cartography
 
 class RGRDashboardView: UIView {
+    
+    var tableView = UITableView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        tableView.showsVerticalScrollIndicator = false
+        tableView.alwaysBounceVertical = false
+        tableView.separatorStyle = .None
+        
+        tableView.backgroundColor = UIColor.redColor()
+        
+        addSubview(tableView)
+        
+        defineConstraints()
+    }
+    
+    private func defineConstraints() {
+        
+        layout(tableView) { table in
+            table.edges == table.superview!.edges; return
+        }
+    }
 
 }

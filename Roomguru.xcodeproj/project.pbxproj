@@ -11,6 +11,8 @@
 		5E0720041AB6D8FF009C270E /* RGRTableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */; };
 		5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
 		5E07202A1AB73846009C270E /* RGRDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* RGRDashboardView.swift */; };
+		5E07202D1AB73E03009C270E /* RGRTableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202C1AB73E03009C270E /* RGRTableButtonCell.swift */; };
+		5E07202F1AB73F83009C270E /* RGRDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202E1AB73F83009C270E /* RGRDashboardViewModel.swift */; };
 		5E1FF7671AA8A8BA00467837 /* MathSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7661AA8A8BA00467837 /* MathSpec.swift */; };
 		5E1FF7691AA8AB5A00467837 /* RootScreenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */; };
 		5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871931AB065B800C7FEE8 /* RGRSettingsViewController.swift */; };
@@ -75,6 +77,8 @@
 		5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRTableViewSwitchCell.swift; path = "Roomguru/Source Files/RGRTableViewSwitchCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720291AB73846009C270E /* RGRDashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRDashboardView.swift; path = "Roomguru/Source Files/RGRDashboardView.swift"; sourceTree = SOURCE_ROOT; };
+		5E07202C1AB73E03009C270E /* RGRTableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRTableButtonCell.swift; path = "Roomguru/Source Files/RGRTableButtonCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E07202E1AB73F83009C270E /* RGRDashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RGRDashboardViewModel.swift; path = "Roomguru/Source Files/RGRDashboardViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E0759062D32339F0F1B138E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E147CB21AA8B2CA00EDD97C /* Functional-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Functional-Tests-Info.plist"; path = "Supporting Files/Functional-Tests-Info.plist"; sourceTree = "<group>"; };
 		5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roomguru-Bridging-Header.h"; path = "Supporting Files/Roomguru-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0720031AB6D8FF009C270E /* RGRTableViewSwitchCell.swift */,
+				5E07202C1AB73E03009C270E /* RGRTableButtonCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5F558A1AB62679005F3CEE /* RGRSettingsViewModel.swift */,
+				5E07202E1AB73F83009C270E /* RGRDashboardViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -765,11 +771,13 @@
 				5E5F558D1AB62839005F3CEE /* RGRSettings.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
 				5E07202A1AB73846009C270E /* RGRDashboardView.swift in Sources */,
+				5E07202D1AB73E03009C270E /* RGRTableButtonCell.swift in Sources */,
 				5E0720041AB6D8FF009C270E /* RGRTableViewSwitchCell.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* RGRSettingsView.swift in Sources */,
 				5E5F558B1AB62679005F3CEE /* RGRSettingsViewModel.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* RGRTabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* RGRSettingsViewController.swift in Sources */,
+				5E07202F1AB73F83009C270E /* RGRDashboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

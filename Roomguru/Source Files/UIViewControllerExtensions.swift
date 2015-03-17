@@ -21,9 +21,8 @@ extension UIViewController {
             retval.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
             self.view = retval
             return retval
-        } else {
-            return nil
         }
+        
+        return nil
     }
-    
 }
