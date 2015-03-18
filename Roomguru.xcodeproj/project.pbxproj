@@ -59,6 +59,10 @@
 		BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* Calendar.swift */; };
 		BF527C201AB1D53700A43D35 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1D1AB1D53700A43D35 /* Event.swift */; };
 		BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
+		BFB261C61ABA1913002BF0B2 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB261C41ABA1913002BF0B2 /* EventsListView.swift */; };
+		BFB261C71ABA1913002BF0B2 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB261C51ABA1913002BF0B2 /* EventsViewController.swift */; };
+		BFB261C91ABA1BCD002BF0B2 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB261C81ABA1BCD002BF0B2 /* ListViewModel.swift */; };
+		BFB261CB1ABA31D7002BF0B2 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB261CA1ABA31D7002BF0B2 /* Listable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +151,10 @@
 		BF527C1C1AB1D53700A43D35 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = "Roomguru/Source Files/Calendar.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1D1AB1D53700A43D35 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = "Roomguru/Source Files/Event.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1E1AB1D53700A43D35 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelObject.swift; path = "Roomguru/Source Files/ModelObject.swift"; sourceTree = SOURCE_ROOT; };
+		BFB261C41ABA1913002BF0B2 /* EventsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListView.swift; path = "Roomguru/Source Files/EventsListView.swift"; sourceTree = SOURCE_ROOT; };
+		BFB261C51ABA1913002BF0B2 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "Roomguru/Source Files/EventsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BFB261C81ABA1BCD002BF0B2 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = SOURCE_ROOT; };
+		BFB261CA1ABA31D7002BF0B2 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -259,6 +267,7 @@
 		5E07202B1AB73CAD009C270E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BFB261C81ABA1BCD002BF0B2 /* ListViewModel.swift */,
 				5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */,
 				5E07202E1AB73F83009C270E /* DashboardViewModel.swift */,
 			);
@@ -422,6 +431,7 @@
 				BF527C1E1AB1D53700A43D35 /* ModelObject.swift */,
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
 				5E5F55901AB6CABA005F3CEE /* Settings */,
+				BFB261CA1ABA31D7002BF0B2 /* Listable.swift */,
 			);
 			name = "Object & Models";
 			sourceTree = "<group>";
@@ -793,6 +803,7 @@
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
+				BFB261CB1ABA31D7002BF0B2 /* Listable.swift in Sources */,
 				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
 				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
@@ -803,6 +814,7 @@
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
+				BFB261C91ABA1BCD002BF0B2 /* ListViewModel.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
 				7BC955BB1AB9699800138716 /* Freebusy.swift in Sources */,
 				BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */,

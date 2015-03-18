@@ -9,7 +9,7 @@
 import Foundation
 
 typealias VoidBlock = () -> ()
-typealias ResponseBlock = (response: Any?) -> ()
+typealias ResponseBlock = (response: JSON?) -> ()
 typealias ErrorBlock = (error: NSError) -> ()
 
 let RoomguruGooglePlusAuthenticationDidFinishNotification: String = "RoomguruGooglePlusAuthenticationDidFinishNotification"
