@@ -17,7 +17,7 @@ Assuming the above tools are already installed, run the following commands after
 
 ### Coding guidelines
 
-- Respect [Ray Wenderlich's Objective-C style guide](https://github.com/raywenderlich/objective-c-style-guide).
+- Respect [Ray Wenderlich's Swift style guide](https://github.com/raywenderlich/swift-style-guide).
 - Use [clang-format Xcode plugin](https://github.com/travisjeffery/ClangFormat-Xcode). Enable the "File" and "Format on save" options. 
 - The code must be readable and self-explanatory - full variable names, meaningful methods, etc.
 - Write documentation comments in header files **only when needed** (eg. hacks, tricky parts).
