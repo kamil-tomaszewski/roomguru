@@ -33,10 +33,10 @@ class Calendar: ModelObject {
         json["accessRole"].string = accessRole
         json["name"].string = name
         json["etag"].string = etag
-        json["identifier"].string = identifier
+        json["id"].string = identifier
         json["kind"].string = kind
         json["summary"].string = summary
-        json["timezone"].string = timezone
+        json["timeZone"].string = timezone
         return json
     }
     
@@ -44,9 +44,9 @@ class Calendar: ModelObject {
         accessRole = json["accessRole"].string
         name = json["name"].string
         etag = json["etag"].string
-        identifier = json["identifier"].string
+        identifier = json["id"].string
         kind = json["kind"].string
         summary = json["summary"].string
-        timezone = json["timezone"].string
+        timezone = json["timeZone"].string
     }
 }
