@@ -29,23 +29,8 @@ class EventsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        indicator.startAnimating()
-        self.navigationItem.titleView = indicator
-        
-        let calendarID = "netguru.pl_2d36343438343933352d363234@resource.calendar.google.com"
-        NetworkManager.sharedInstance.eventsList(forCalendar: calendarID, success: { (response) -> () in
-            let array = response?["items"].array
-        
-            self.viewModel = ListViewModel<Event>(Event.map(array)!)
-            self.aView?.tableView.reloadData()
-            
-            self.navigationItem.titleView = self.roomSegmentedControl
-        }, { (error) -> () in
-            UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
-            self.navigationItem.titleView = self.roomSegmentedControl
-        })
+        roomSegmentedControl.selectedSegmentIndex = 1
+        segmentedControlChangedState(roomSegmentedControl)
     }
     
 }
@@ -55,8 +40,28 @@ class EventsViewController: UIViewController {
 extension EventsViewController {
 
     func segmentedControlChangedState(sender: UISegmentedControl) {
-        println("\(__FUNCTION__): \(sender.selectedSegmentIndex)")
-        println("reload table view")
+        
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        indicator.startAnimating()
+        self.navigationItem.titleView = indicator
+        
+        let index = roomSegmentedControl.selectedSegmentIndex
+        NetworkManager.sharedInstance.eventsList(forCalendar: Room[index], success: { (response) -> () in
+            
+            let array = response?["items"].array
+            
+            self.viewModel = ListViewModel<Event>(Event.map(array)!)
+            self.aView?.tableView.reloadData()
+            
+            self.navigationItem.titleView = self.roomSegmentedControl
+            
+            }, { (error) -> () in
+                
+                UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
+                self.navigationItem.titleView = self.roomSegmentedControl
+                
+        })
+
     }
     
 }
@@ -101,6 +106,7 @@ extension EventsViewController: UITableViewDataSource {
             basicCell.textLabel?.text = summary
             return basicCell
         }
+
     }
     
 }
@@ -110,7 +116,6 @@ extension EventsViewController: UITableViewDataSource {
 extension EventsViewController {
     
     private func setupRoomSegmentedControl() {
-        roomSegmentedControl.selectedSegmentIndex = 1
         roomSegmentedControl.addTarget(self, action: Selector("segmentedControlChangedState:"), forControlEvents: UIControlEvents.ValueChanged)
         self.navigationItem.titleView = roomSegmentedControl
     }

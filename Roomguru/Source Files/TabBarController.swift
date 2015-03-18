@@ -58,7 +58,8 @@ class TabBarController: UITabBarController {
         
         self.viewControllers = [
             UINavigationController(rootViewController: DashboardViewController()),
-            UINavigationController(rootViewController: SettingsViewController()),
+            UINavigationController(rootViewController: EventsViewController()),
+            UINavigationController(rootViewController: SettingsViewController())
         ]
         
         func setTitleForControllerAtIndex(index: Int, title: String) {
@@ -71,6 +72,7 @@ class TabBarController: UITabBarController {
         }
         
         setTitleForControllerAtIndex(0, NSLocalizedString("Dashboard", comment: ""))
-        setTitleForControllerAtIndex(1, NSLocalizedString("Settings", comment: ""))
+        setTitleForControllerAtIndex(1, NSLocalizedString("Events", comment: ""))
+        setTitleForControllerAtIndex(2, NSLocalizedString("Settings", comment: ""))
     }
 }
