@@ -21,7 +21,7 @@ class LoginViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "googlePlusAuthorizationFinished", name: RoomguruGooglePlusAuthenticationFinished, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "googlePlusAuthorizationFinished", name: RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
     }
     
     deinit {

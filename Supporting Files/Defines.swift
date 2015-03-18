@@ -12,4 +12,4 @@ typealias VoidBlock = () -> ()
 typealias ResponseBlock = (response: Any?) -> ()
 typealias ErrorBlock = (error: NSError) -> ()
 
-let RoomguruGooglePlusAuthenticationFinished: String = "RoomguruGooglePlusAuthenticationFinished"
+let RoomguruGooglePlusAuthenticationDidFinishNotification: String = "RoomguruGooglePlusAuthenticationDidFinishNotification"

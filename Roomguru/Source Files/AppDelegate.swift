@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
         NetworkManager.sharedInstance.setAuthentication(auth)
-        NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationFinished, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
     }
     
     func didDisconnectWithError(error: NSError!) {
