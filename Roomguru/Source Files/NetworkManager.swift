@@ -83,7 +83,7 @@ extension NetworkManager {
         assert(self.clientID != "", "Client ID is not set!")
         
         let requestPath = serverURL + "/calendars/" + calendarID + "/events"
-        
+//         parameters: ["orderBy": "startTime"]
         Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
             if let responseError = error {
                 failure(error: responseError)

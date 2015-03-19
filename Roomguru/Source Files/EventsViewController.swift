@@ -12,6 +12,7 @@ class EventsViewController: UIViewController {
 
     weak var aView: EventsListView?
     
+    let sortingKey: String = "startDate"
     var viewModel: ListViewModel<Event>?
     var roomSegmentedControl = UISegmentedControl(items: ["All", "Aqua", "Middle", "Cold"])
 
@@ -49,16 +50,23 @@ extension EventsViewController {
         NetworkManager.sharedInstance.eventsList(forCalendar: Room[index], success: { (response) -> () in
             
             let array = response?["items"].array
-            
-            self.viewModel = ListViewModel<Event>(Event.map(array)!)
-            self.aView?.tableView.reloadData()
+            if let events: [Event] = Event.map(array) {
+                let sortedEvents = Event.sortedByDate(events)
+                
+                println("\(sortedEvents.map({$0.shortDate}))\n")
+                
+                self.viewModel = ListViewModel<Event>(sortedEvents, sortingKey: "shortDate")
+                self.aView?.tableView.setContentOffset(CGPointMake(0, -64), animated: true)
+                self.aView?.tableView.reloadData()
+                
+            }
             
             self.navigationItem.titleView = self.roomSegmentedControl
             
-            }, { (error) -> () in
+        }, { (error) -> () in
                 
-                UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
-                self.navigationItem.titleView = self.roomSegmentedControl
+            UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
+            self.navigationItem.titleView = self.roomSegmentedControl
                 
         })
 
@@ -92,8 +100,16 @@ extension EventsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        let index = indexPath.row
-        let summary = viewModel?[index].summary
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        var summary: String?
+        
+        if viewModel?.sectionsCount() > 1 {
+            summary = viewModel?[section][row].summary
+        } else {
+            summary = viewModel?[row].summary
+        }
         
         let reuseIdentifier = "EventCellIdentifier";
         let cell: AnyObject? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)
@@ -107,6 +123,10 @@ extension EventsViewController: UITableViewDataSource {
             return basicCell
         }
 
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return (viewModel?[section] as Section).title
     }
     
 }

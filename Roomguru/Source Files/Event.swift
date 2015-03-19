@@ -22,6 +22,7 @@ class Event: ModelObject {
     var endDate:    String?
     var hangoutLink: String?
     var iCalUID:    String?
+    var shortDate:  NSDate?
     
     class func map(jsonArray: [JSON]?) -> [Event]? {
         if let _jsonArray: [JSON] = jsonArray {
@@ -63,5 +64,61 @@ class Event: ModelObject {
         endDate = json["end"]["dateTime"].string
         hangoutLink = json["hangoutLink"].string
         iCalUID = json["iCalUID"].string
+        
+        shortDate = startDate?.googleDateToShortDate()
     }
 }
+
+extension Event {
+    
+    class func sortedByDate(items: [Event]) -> [Event] {
+        return items.sorted({
+            if let secondDate = $1.shortDate {
+                return $0.shortDate?.compare(secondDate) == NSComparisonResult.OrderedDescending
+            }
+            return false
+        })
+    }
+    
+}
+
+extension String {
+
+    func googleDateToShortDateString(date: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.stringFromDate(date)        
+    }
+    
+    func googleDateToShortDate() -> NSDate? {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZ"
+        
+        // Convert time zone information from +00:00 to +0000 format
+        let correctedDateString = self.substringToIndex(advance(self.endIndex, -3)) + "00"
+        let correctedDate = formatter.dateFromString(correctedDateString)
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        if let _correctedDate = correctedDate {
+            let string = formatter.stringFromDate(_correctedDate)
+            return formatter.dateFromString(string)
+        }
+        
+        return nil
+    }
+}
+
+@objc protocol StringConvertible {
+    func string() -> String
+}
+
+extension NSDate: StringConvertible {
+    
+    func string() -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.stringFromDate(self)
+    }
+    
+}
+
