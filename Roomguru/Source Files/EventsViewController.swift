@@ -13,7 +13,7 @@ class EventsViewController: UIViewController {
     weak var aView: EventsListView?
     var viewModel: ListViewModel<Event>?
     
-    let sortingKey = "startDate"
+    let sortingKey = "shortDate"
     let reuseIdentifier = "EventCellIdentifier";
     let roomSegmentedControl = UISegmentedControl(items: ["All", "Aqua", "Middle", "Cold"])
 
