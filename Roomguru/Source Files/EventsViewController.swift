@@ -11,15 +11,14 @@ import UIKit
 class EventsViewController: UIViewController {
 
     weak var aView: EventsListView?
-    
-    let sortingKey: String = "startDate"
     var viewModel: ListViewModel<Event>?
-    var roomSegmentedControl = UISegmentedControl(items: ["All", "Aqua", "Middle", "Cold"])
+    
+    let sortingKey = "startDate"
+    let reuseIdentifier = "EventCellIdentifier";
+    let roomSegmentedControl = UISegmentedControl(items: ["All", "Aqua", "Middle", "Cold"])
 
     override func loadView() {
-        var view = EventsListView(frame: UIScreen.mainScreen().applicationFrame)
-        aView = view
-        self.view = view
+        aView = loadViewWithClass(EventsListView.self) as? EventsListView
     }
     
     override func viewDidLoad() {
@@ -53,8 +52,6 @@ extension EventsViewController {
             if let events: [Event] = Event.map(array) {
                 let sortedEvents = Event.sortedByDate(events)
                 
-                println("\(sortedEvents.map({$0.shortDate}))\n")
-                
                 self.viewModel = ListViewModel<Event>(sortedEvents, sortingKey: "shortDate")
                 self.aView?.tableView.setContentOffset(CGPointMake(0, -64), animated: true)
                 self.aView?.tableView.reloadData()
@@ -74,6 +71,7 @@ extension EventsViewController {
     
 }
 
+
 // MARK: UITableViewDelegate
 
 extension EventsViewController: UITableViewDelegate {
@@ -84,6 +82,9 @@ extension EventsViewController: UITableViewDelegate {
     }
     
 }
+
+
+// MARK: UITableViewDataSource
 
 extension EventsViewController: UITableViewDataSource {
     
@@ -111,18 +112,10 @@ extension EventsViewController: UITableViewDataSource {
             summary = viewModel?[row].summary
         }
         
-        let reuseIdentifier = "EventCellIdentifier";
-        let cell: AnyObject? = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier)
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
+        cell.textLabel?.text = summary
+        return cell
         
-        if let _cell: UITableViewCell = cell as? UITableViewCell {
-            _cell.textLabel?.text = summary
-            return _cell
-        } else {
-            let basicCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
-            basicCell.textLabel?.text = summary
-            return basicCell
-        }
-
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -141,8 +134,10 @@ extension EventsViewController {
     }
     
     private func setupTableView() {
-        aView?.tableView.dataSource = self
-        aView?.tableView.delegate = self
+        let tableView: UITableView? = aView?.tableView
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
 }
