@@ -68,6 +68,13 @@ class DashboardViewModel: NSObject {
     }
     
     func bookRoom(sender: UIButton) {
-        println("bookRoom")
+        
+        let allRooms = [Room.Aqua, Room.Cold, Room.Middle]
+        
+        NetworkManager.sharedInstance.freebusyList(allRooms, success: { (response: JSON?) -> () in
+                println(response)
+            }, failure: { (error: NSError) -> () in
+                println(error)
+            })
     }
 }

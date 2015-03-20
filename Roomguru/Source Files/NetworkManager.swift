@@ -100,6 +100,28 @@ extension NetworkManager {
             }
         }
     }
+    
+    func freebusyList(calendars: Array<String>, success: ResponseBlock, failure: ErrorBlock) {
+        
+        let parameters = self.parametersForFreebusy(calendars)
+        let requestPath = serverURL + "/freeBusy/"
+        
+        Alamofire.request(.POST, requestPath + key(), parameters: parameters, encoding:ParameterEncoding.JSON).responseJSON { (request, response, json, error) -> Void in
+            if let responseError = error {
+                failure(error: responseError)
+            } else {
+                if let responseJSON: AnyObject = json {
+                    var swiftyJSON: JSON? = nil
+                    
+                    Async.background {
+                        swiftyJSON = JSON(responseJSON)
+                        }.main {
+                            success(response: swiftyJSON)
+                    }
+                }
+            }
+        }
+    }
 }
 
 // MARK: Private
@@ -110,4 +132,31 @@ private extension NetworkManager {
         return "?key=" + clientID
     }
     
+    private func parametersForFreebusy(calendars: Array<String>) -> [String: AnyObject]? {
+        
+        let formatter: NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
+        formatter.timeZone = NSTimeZone(name: "Europe/Warsaw")
+
+        let twoDaysTimeInterval: NSTimeInterval = 3600 * 48
+        
+        let timeMinString: String = formatter.stringFromDate(NSDate())
+        let timeMaxString: String = formatter.stringFromDate(NSDate(timeIntervalSinceNow: twoDaysTimeInterval))
+        
+        var parameters: [String : AnyObject] = [
+            "timeMin" : timeMinString,
+            "timeMax" : timeMaxString,
+            "timeZone" : "Europe/Warsaw"
+        ]
+        
+        var calendarsArray: Array<[String : AnyObject]> = Array<[String : AnyObject]>()
+        
+        for calendar in calendars {
+            calendarsArray.append(["id" : calendar])
+        }
+        
+        parameters["items"] = calendarsArray
+        
+        return parameters
+    }
 }
