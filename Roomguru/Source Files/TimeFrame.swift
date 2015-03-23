@@ -15,7 +15,7 @@ struct TimeFrame: Printable {
     let availability: TimeFrameAvailability
     
     var description: String {
-        return "start date: \(self.startDate), end date: \(self.endDate), availability: \(self.availability)"
+        return "start: \(self.startDate), end: \(self.endDate), duration: \(self.duration()), availability: \(self.availability)"
     }
     
     init(startDate: NSDate, endDate: NSDate, availability: TimeFrameAvailability) {
