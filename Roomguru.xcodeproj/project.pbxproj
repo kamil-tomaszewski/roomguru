@@ -51,6 +51,7 @@
 		5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */; };
+		7B91D6E91AC01D110080DD91 /* CalendarAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E81AC01D110080DD91 /* CalendarAvailability.swift */; };
 		7BC955B91AB846AE00138716 /* GPPSignInExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC955B81AB846AE00138716 /* GPPSignInExtensions.swift */; };
 		7BC955BB1AB9699800138716 /* Freebusy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC955BA1AB9699800138716 /* Freebusy.swift */; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -147,6 +148,7 @@
 		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
 		5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Frameworks/SwiftyJSON.swift; sourceTree = "<group>"; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		7B91D6E81AC01D110080DD91 /* CalendarAvailability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarAvailability.swift; path = "Roomguru/Source Files/CalendarAvailability.swift"; sourceTree = SOURCE_ROOT; };
 		7BC955B81AB846AE00138716 /* GPPSignInExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPSignInExtensions.swift; path = "Roomguru/Source Files/GPPSignInExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		7BC955BA1AB9699800138716 /* Freebusy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Freebusy.swift; path = "Roomguru/Source Files/Freebusy.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E7381ABAC94100B12244 /* EventsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListView.swift; path = "Roomguru/Source Files/EventsListView.swift"; sourceTree = SOURCE_ROOT; };
@@ -440,6 +442,7 @@
 				5E5F55901AB6CABA005F3CEE /* Settings */,
 				BFBA2DDD1ABAC116001D70C5 /* Room.swift */,
 				BF26E73C1ABAF77400B12244 /* Listable.swift */,
+				7B91D6E81AC01D110080DD91 /* CalendarAvailability.swift */,
 			);
 			name = "Object & Models";
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,
 				BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */,
 				5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */,
+				7B91D6E91AC01D110080DD91 /* CalendarAvailability.swift in Sources */,
 				5E3871961AB0660500C7FEE8 /* DashboardViewController.swift in Sources */,
 				BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */,
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
