@@ -13,6 +13,7 @@ class EventsViewController: UIViewController {
 
     weak var aView: EventsListView?
     var viewModel: ListViewModel<Event>?
+    var query: EventsQuery = EventsQuery(calendarID: Room[0])
     
     let sortingKey = "shortDate"
     let reuseIdentifier = "EventCellIdentifier";
@@ -24,6 +25,12 @@ class EventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tableView = aView?.tableView
+        tableView?.tableHeaderView = buttonView(NSLocalizedString("Future", comment: ""), action: Selector("didTapFutureButton:"))
+        tableView?.tableFooterView = buttonView(NSLocalizedString("Past", comment: ""), action: Selector("didTapPastButton:"))
+        
+        self.setupQuery(Room[0])
         self.setupRoomSegmentedControl()
         self.setupTableView()
     }
@@ -36,41 +43,61 @@ class EventsViewController: UIViewController {
     
 }
 
-// MARK: Actions
+// MARK: Requests
 
 extension EventsViewController {
-
-    func segmentedControlChangedState(sender: UISegmentedControl) {
+    
+    func fetchEvents() {
         
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         indicator.startAnimating()
         self.navigationItem.titleView = indicator
         
-        let index = roomSegmentedControl.selectedSegmentIndex
-
-        let query = EventsQuery(calendarID: Room[index])
-        query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
-        query.timeMin = NSDate().midnight.days.substract(3).date
-
         NetworkManager.sharedInstance.eventsList(query, success: { (response) -> () in
             
             if let events: [Event] = response {
                 let sortedEvents = Event.sortedByDate(events)
                 
                 self.viewModel = ListViewModel(sortedEvents, sortingKey: "shortDate")
-                self.aView?.tableView.setContentOffset(CGPointMake(0, -64), animated: true)
                 self.aView?.tableView.reloadData()
             }
             
             self.navigationItem.titleView = self.roomSegmentedControl
             
-        }, failure: { (error) -> () in
-            
-            UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
-            self.navigationItem.titleView = self.roomSegmentedControl
-            
+            }, failure: { (error) -> () in
+                
+                UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
+                self.navigationItem.titleView = self.roomSegmentedControl
+                
         })
+    }
+    
+}
 
+// MARK: Actions
+
+extension EventsViewController {
+
+    func segmentedControlChangedState(sender: UISegmentedControl) {
+        let index = roomSegmentedControl.selectedSegmentIndex
+        setupQuery(Room[index])
+        fetchEvents()
+    }
+    
+    func didTapFutureButton(sender: UIButton) {
+        if let maxTime = query.timeMax {
+            query.timeMax = maxTime.days + 1
+        }
+        
+        fetchEvents()
+    }
+    
+    func didTapPastButton(sender: UIButton) {
+        if let minTime = query.timeMin {
+            query.timeMin = minTime.days - 1
+        }
+        
+        fetchEvents()
     }
     
 }
@@ -132,6 +159,16 @@ extension EventsViewController: UITableViewDataSource {
 
 extension EventsViewController {
     
+    private func setupQuery(calendarID: String) {
+        query = EventsQuery(calendarID: calendarID)
+        query.maxResults = 100
+        query.singleEvents = true
+        query.orderBy = "startTime"
+        query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
+        query.timeMin = NSDate().midnight.days.substract(3).date
+    }
+
+    
     private func setupRoomSegmentedControl() {
         roomSegmentedControl.addTarget(self, action: Selector("segmentedControlChangedState:"), forControlEvents: UIControlEvents.ValueChanged)
         self.navigationItem.titleView = roomSegmentedControl
@@ -142,6 +179,17 @@ extension EventsViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
         tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+    }
+    
+    private func buttonView(title: String, action: Selector) -> ButtonView {
+        let tableView = aView?.tableView
+        let frame = CGRectMake(0, 0, CGRectGetWidth(aView!.frame), 50)
+        
+        var buttonView = ButtonView(frame: frame)
+        buttonView.button.setTitle(title, forState: .Normal)
+        buttonView.button.addTarget(self, action: action)
+        
+        return buttonView
     }
     
 }
