@@ -8,18 +8,21 @@
 
 import Foundation
 
-struct TimeFrame {
+struct TimeFrame: Printable {
     
     let startDate: NSDate
     let endDate: NSDate
     let availability: TimeFrameAvailability
+    
+    var description: String {
+        return "start date: \(self.startDate), end date: \(self.endDate), availability: \(self.availability)"
+    }
     
     init(startDate: NSDate, endDate: NSDate, availability: TimeFrameAvailability) {
         self.startDate = startDate
         self.endDate = endDate
         self.availability = availability
     }
-    
 }
 
 extension TimeFrame {
@@ -27,22 +30,19 @@ extension TimeFrame {
     func duration() -> NSTimeInterval {
         return endDate.timeIntervalSinceDate(startDate)
     }
-    
 }
 
-struct TimeFrameAvailability {
+enum TimeFrameAvailability: Printable {
     
-    let Available = "available"
-    let NotAvailable = "not available"
+    case Available, NotAvailable
     
-    subscript(index: Int) -> String {
-        get {
-            switch index {
-                case 1: return self.Available
-                case 2: return self.NotAvailable
-                default: return self.NotAvailable
-            }
+    var description: String {
+        
+        switch self {
+        case .Available:
+            return "Available"
+        case .NotAvailable:
+            return "Not available"
         }
     }
-    
 }
