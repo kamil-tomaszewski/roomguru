@@ -13,6 +13,7 @@ struct NetguruRoom {
     let Aqua    = "netguru.pl_2d36343438343933352d363234@resource.calendar.google.com"
     let Middle  = "netguru.pl_2d36343339373131332d333131@resource.calendar.google.com"
     let Cold    = "netguru.pl_2d31333939333835343935@resource.calendar.google.com"
+    let Test    = "netguru.pl_oahrqgdhpvo9a49qk3q921am54@group.calendar.google.com"
     let Other   = ""
     
     subscript(index: Int) -> String {
@@ -21,6 +22,7 @@ struct NetguruRoom {
             case 1: return self.Aqua
             case 2: return self.Middle
             case 3: return self.Cold
+            case 4: return self.Test
             default: return self.Other
             }
         }
