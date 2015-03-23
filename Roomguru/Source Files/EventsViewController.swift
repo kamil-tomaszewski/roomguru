@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateKit
 
 class EventsViewController: UIViewController {
 
@@ -46,7 +47,12 @@ extension EventsViewController {
         self.navigationItem.titleView = indicator
         
         let index = roomSegmentedControl.selectedSegmentIndex
-        NetworkManager.sharedInstance.eventsList(forCalendar: Room[index], success: { (response) -> () in
+
+        let query = EventsQuery(calendarID: Room[index])
+        query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
+        query.timeMin = NSDate().midnight.days.substract(3).date
+
+        NetworkManager.sharedInstance.eventsList(query, success: { (response) -> () in
             
             if let events: [Event] = response {
                 let sortedEvents = Event.sortedByDate(events)
@@ -58,11 +64,11 @@ extension EventsViewController {
             
             self.navigationItem.titleView = self.roomSegmentedControl
             
-        }, { (error) -> () in
-                
+        }, failure: { (error) -> () in
+            
             UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
             self.navigationItem.titleView = self.roomSegmentedControl
-                
+            
         })
 
     }

@@ -8,9 +8,20 @@
 
 import Foundation
 
+
+// MARK: Types
+// MARK: - Closures
+
 typealias VoidBlock = () -> ()
 typealias ResponseBlock = (response: JSON?) -> ()
 typealias ListResponseBlock = (response: [AnyObject]?) -> ()
 typealias ErrorBlock = (error: NSError) -> ()
+
+// MARK: - Data types
+
+typealias QueryParameters = [String: AnyObject]
+
+
+// MARK: Notifications
 
 let RoomguruGooglePlusAuthenticationDidFinishNotification: String = "RoomguruGooglePlusAuthenticationDidFinishNotification"

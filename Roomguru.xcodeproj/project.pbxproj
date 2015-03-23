@@ -57,6 +57,9 @@
 		7BC955B91AB846AE00138716 /* GPPSignInExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC955B81AB846AE00138716 /* GPPSignInExtensions.swift */; };
 		7BC955BB1AB9699800138716 /* Freebusy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC955BA1AB9699800138716 /* Freebusy.swift */; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
+		BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
+		BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD21AC093A00020DFC4 /* Pageable.swift */; };
 		BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E7381ABAC94100B12244 /* EventsListView.swift */; };
 		BF26E73B1ABAC95000B12244 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73A1ABAC95000B12244 /* EventsViewController.swift */; };
 		BF26E73D1ABAF77400B12244 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73C1ABAF77400B12244 /* Listable.swift */; };
@@ -69,6 +72,7 @@
 		BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
 		BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */; };
 		BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA2DDD1ABAC116001D70C5 /* Room.swift */; };
+		BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +159,9 @@
 		7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCalendar.swift; path = "Roomguru/Source Files/AvailabilityCalendar.swift"; sourceTree = SOURCE_ROOT; };
 		7BC955B81AB846AE00138716 /* GPPSignInExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPSignInExtensions.swift; path = "Roomguru/Source Files/GPPSignInExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		7BC955BA1AB9699800138716 /* Freebusy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Freebusy.swift; path = "Roomguru/Source Files/Freebusy.swift"; sourceTree = SOURCE_ROOT; };
+		BF251ACC1AC083F30020DFC4 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queryable.swift; path = "Roomguru/Source Files/Queryable.swift"; sourceTree = SOURCE_ROOT; };
+		BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsQuery.swift; path = "Roomguru/Source Files/EventsQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF251AD21AC093A00020DFC4 /* Pageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pageable.swift; path = "Roomguru/Source Files/Pageable.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E7381ABAC94100B12244 /* EventsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListView.swift; path = "Roomguru/Source Files/EventsListView.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E73A1ABAC95000B12244 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "Roomguru/Source Files/EventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E73C1ABAF77400B12244 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listable.swift; path = "Roomguru/Source Files/Listable.swift"; sourceTree = SOURCE_ROOT; };
@@ -167,6 +174,7 @@
 		BF527C1E1AB1D53700A43D35 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelObject.swift; path = "Roomguru/Source Files/ModelObject.swift"; sourceTree = SOURCE_ROOT; };
 		BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = "Roomguru/Source Files/ArrayExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BFBA2DDD1ABAC116001D70C5 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Room.swift; path = "Roomguru/Source Files/Room.swift"; sourceTree = SOURCE_ROOT; };
+		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Requests.swift"; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -440,10 +448,11 @@
 		5E51B7981AA9C3280018EDA9 /* Object & Models */ = {
 			isa = PBXGroup;
 			children = (
-				7BC955BC1AB96CFD00138716 /* Google Calendar */,
-				BF527C1E1AB1D53700A43D35 /* ModelObject.swift */,
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
+				7BC955BC1AB96CFD00138716 /* Google Calendar */,
+				BFECD1131AC0B26200F60086 /* Queries */,
 				5E5F55901AB6CABA005F3CEE /* Settings */,
+				BF527C1E1AB1D53700A43D35 /* ModelObject.swift */,
 				BFBA2DDD1ABAC116001D70C5 /* Room.swift */,
 				BF26E73C1ABAF77400B12244 /* Listable.swift */,
 				7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */,
@@ -529,8 +538,19 @@
 			isa = PBXGroup;
 			children = (
 				BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */,
+				BFECD1101AC0AF5100F60086 /* Requests.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		BFECD1131AC0B26200F60086 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				BF251AD21AC093A00020DFC4 /* Pageable.swift */,
+				BF251ACC1AC083F30020DFC4 /* Queryable.swift */,
+				BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */,
+			);
+			name = Queries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -827,10 +847,13 @@
 				BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */,
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
+				BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
 				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
+				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
+				BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */,
 				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
 				7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */,
 				5E07202D1AB73E03009C270E /* TableButtonCell.swift in Sources */,
@@ -840,6 +863,7 @@
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
+				BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */,
 				BF26E73D1ABAF77400B12244 /* Listable.swift in Sources */,
 				BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
