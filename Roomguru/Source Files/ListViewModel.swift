@@ -61,7 +61,7 @@ extension ListViewModel {
             return item.valueForKeyPath(sortingKey) as? NSObject
         })
         
-        var uniques: [NSObject?] = []
+        var uniques: [NSObject] = []
         
         for item in values {
             if let _item = item {
@@ -72,7 +72,7 @@ extension ListViewModel {
         }
         
         for item in uniques {
-            let allMatchingItems = items.itemsMatching(item!, bySortingKey: sortingKey)
+            let allMatchingItems = items.itemsMatching(item, bySortingKey: sortingKey)
             let section = Section<T>(allMatchingItems)
             
             if let _item: StringConvertible = item as? StringConvertible {

@@ -16,6 +16,7 @@ xcodeproj 'Roomguru', 'Development' => :debug, 'Production' => :release, 'Stagin
 
 pod 'Alamofire', '~> 1.1'
 pod 'SwiftyUserDefaults', '~> 1.0.0'
+pod 'DateKit', '~> 0.1.1'
 # pod 'SwiftyJSON', '~> 2.1.3'
 # SwiftyJSON is temporarily added to the project manually due to the this bug:
 # https://github.com/SwiftyJSON/SwiftyJSON/issues/129

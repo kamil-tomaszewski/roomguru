@@ -48,14 +48,12 @@ extension EventsViewController {
         let index = roomSegmentedControl.selectedSegmentIndex
         NetworkManager.sharedInstance.eventsList(forCalendar: Room[index], success: { (response) -> () in
             
-            let array = response?["items"].array
-            if let events: [Event] = Event.map(array) {
+            if let events: [Event] = response {
                 let sortedEvents = Event.sortedByDate(events)
                 
-                self.viewModel = ListViewModel<Event>(sortedEvents, sortingKey: "shortDate")
+                self.viewModel = ListViewModel(sortedEvents, sortingKey: "shortDate")
                 self.aView?.tableView.setContentOffset(CGPointMake(0, -64), animated: true)
                 self.aView?.tableView.reloadData()
-                
             }
             
             self.navigationItem.titleView = self.roomSegmentedControl

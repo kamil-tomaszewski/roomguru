@@ -24,12 +24,12 @@ class Event: ModelObject {
     var iCalUID:    String?
     var shortDate:  NSDate?
     
-    class func map(jsonArray: [JSON]?) -> [Event]? {
+    override class func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
         if let _jsonArray: [JSON] = jsonArray {
             if _jsonArray.isEmpty == true {
                 return nil
             }
-            return _jsonArray.map({ Event(json: $0) })
+            return _jsonArray.map({ T(json: $0) })
         }
         
         return nil

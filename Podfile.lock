@@ -2,6 +2,7 @@ PODS:
   - Alamofire (1.1.4)
   - Async (1.1.1)
   - Cartography (0.2.1)
+  - DateKit (0.1.1)
   - KIF (3.1.2):
     - KIF/XCTest (= 3.1.2)
   - KIF/XCTest (3.1.2)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - Alamofire (~> 1.1)
   - Async (from `https://github.com/duemunk/Async.git`, tag `1.1.1`)
   - Cartography (~> 0.2.1)
+  - DateKit (~> 0.1.1)
   - KIF (~> 3.0)
   - Nimble (from `git@github.com:Quick/Nimble.git`, branch `swift-1.1`)
   - Quick (from `git@github.com:Quick/Quick.git`, branch `swift-1.1`)
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
   Async: 4ba79915d3f43324db9e1e296db324cb896fa266
   Cartography: 9efb847f5068db052df1f8627e70382e37e17184
+  DateKit: 397dc373dea1fee1d441b894fc1e2f1b6cd9ea3e
   KIF: 068074b24dd455025e7f2a488ba4fb07b9ce047b
   Nimble: 1b3c765852d63b9540a91e528e1e4f8afab79b6f
   Quick: 1bda8b4c8d43f6b4dd69ca001918b1767b3c9c93
