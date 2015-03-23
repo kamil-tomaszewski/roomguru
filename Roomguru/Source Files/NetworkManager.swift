@@ -63,16 +63,19 @@ extension NetworkManager {
     
     func calendarsList(success: ResponseBlock, failure: ErrorBlock) {
         
-        assert(self.clientID != "", "Client ID is not set!")
-        
-        let requestPath = serverURL + "/users/me/calendarList"
-        
-        Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
-            if let responseError = error {
-                failure(error: responseError)
-            } else {
-                if let responseJSON: AnyObject = json {
-                    success(response: JSON(responseJSON))
+        if (self.clientID == "") {
+            failure(error: NSError.errorWithMessage("Client ID is not set!"))
+        } else {
+            
+            let requestPath = serverURL + "/users/me/calendarList"
+            
+            Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
+                if let responseError = error {
+                    failure(error: responseError)
+                } else {
+                    if let responseJSON: AnyObject = json {
+                        success(response: JSON(responseJSON))
+                    }
                 }
             }
         }
@@ -80,21 +83,24 @@ extension NetworkManager {
     
     func eventsList(forCalendar calendarID: String, success: ResponseBlock, failure: ErrorBlock) {
         
-        assert(self.clientID != "", "Client ID is not set!")
-        
-        let requestPath = serverURL + "/calendars/" + calendarID + "/events"
-//         parameters: ["orderBy": "startTime"]
-        Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
-            if let responseError = error {
-                failure(error: responseError)
-            } else {
-                if let responseJSON: AnyObject = json {
-                    var swiftyJSON: JSON? = nil
-                    
-                    Async.background {
-                        swiftyJSON = JSON(responseJSON)
-                    }.main {
-                        success(response: swiftyJSON)
+        if (self.clientID == "") {
+            failure(error: NSError.errorWithMessage("Client ID is not set!"))
+        } else {
+            
+            let requestPath = serverURL + "/calendars/" + calendarID + "/events"
+            //         parameters: ["orderBy": "startTime"]
+            Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
+                if let responseError = error {
+                    failure(error: responseError)
+                } else {
+                    if let responseJSON: AnyObject = json {
+                        var swiftyJSON: JSON? = nil
+                        
+                        Async.background {
+                            swiftyJSON = JSON(responseJSON)
+                            }.main {
+                                success(response: swiftyJSON)
+                        }
                     }
                 }
             }
@@ -103,20 +109,25 @@ extension NetworkManager {
     
     func freebusyList(calendars: Array<String>, success: ResponseBlock, failure: ErrorBlock) {
         
-        let parameters = self.parametersForFreebusy(calendars)
-        let requestPath = serverURL + "/freeBusy/"
-        
-        Alamofire.request(.POST, requestPath + key(), parameters: parameters, encoding:ParameterEncoding.JSON).responseJSON { (request, response, json, error) -> Void in
-            if let responseError = error {
-                failure(error: responseError)
-            } else {
-                if let responseJSON: AnyObject = json {
-                    var swiftyJSON: JSON? = nil
-                    
-                    Async.background {
-                        swiftyJSON = JSON(responseJSON)
-                        }.main {
-                            success(response: swiftyJSON)
+        if (self.clientID == "") {
+            failure(error: NSError.errorWithMessage("Client ID is not set!"))
+        } else {
+            
+            let parameters = self.parametersForFreebusy(calendars)
+            let requestPath = serverURL + "/freeBusy/"
+            
+            Alamofire.request(.POST, requestPath + key(), parameters: parameters, encoding:ParameterEncoding.JSON).responseJSON { (request, response, json, error) -> Void in
+                if let responseError = error {
+                    failure(error: responseError)
+                } else {
+                    if let responseJSON: AnyObject = json {
+                        var swiftyJSON: JSON? = nil
+                        
+                        Async.background {
+                            swiftyJSON = JSON(responseJSON)
+                            }.main {
+                                success(response: swiftyJSON)
+                        }
                     }
                 }
             }
