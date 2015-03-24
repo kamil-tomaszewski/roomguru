@@ -24,6 +24,9 @@ class Event: ModelObject {
     var iCalUID:    String?
     var shortDate:  NSDate?
     
+    var startTime:  String?
+    var endTime:    String?
+    
     override class func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
         if let _jsonArray: [JSON] = jsonArray {
             if _jsonArray.isEmpty == true {
@@ -66,6 +69,8 @@ class Event: ModelObject {
         iCalUID = json["iCalUID"].string
         
         shortDate = startDate?.googleDateToShortDate()
+        startTime = startDate?.shortTime()
+        endTime = endDate?.shortTime()
     }
 }
 
@@ -88,6 +93,19 @@ extension String {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.stringFromDate(date)        
+    }
+    
+    func shortTime() -> String? {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZ"
+        
+        if let date = formatter.dateFromString(self) {
+            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            return formatter.stringFromDate(date)
+        }
+        
+        return nil
+        
     }
     
     func googleDateToShortDate() -> NSDate? {

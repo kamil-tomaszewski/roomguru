@@ -16,7 +16,6 @@ class EventsViewController: UIViewController {
     var query: EventsQuery = EventsQuery(calendarID: Room[0])
     
     let sortingKey = "shortDate"
-    let reuseIdentifier = "EventCellIdentifier";
     let roomSegmentedControl = UISegmentedControl(items: ["All", "Aqua", "Middle", "Cold"])
 
     override func loadView() {
@@ -135,22 +134,29 @@ extension EventsViewController: UITableViewDataSource {
         let section = indexPath.section
         let row = indexPath.row
         
-        var summary: String?
+        var event: Event?
         
         if viewModel?.sectionsCount() > 1 {
-            summary = viewModel?[section][row].summary
+            event = viewModel?[section][row]
         } else {
-            summary = viewModel?[row].summary
+            event = viewModel?[row]
         }
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
-        cell.textLabel?.text = summary
+        let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as EventCell
+        cell.indentationLevel = 7
+        cell.textLabel?.text = event?.summary
+        cell.timeMaxLabel.text = event?.endTime
+        cell.timeMinLabel.text = event?.startTime
         return cell
         
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return (viewModel?[section] as Section).title
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 65
     }
     
 }
@@ -178,7 +184,7 @@ extension EventsViewController {
         let tableView: UITableView? = aView?.tableView
         tableView?.dataSource = self
         tableView?.delegate = self
-        tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
     }
     
     private func buttonView(title: String, action: Selector) -> ButtonView {
