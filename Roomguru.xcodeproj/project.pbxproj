@@ -72,7 +72,7 @@
 		BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
 		BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */; };
 		BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA2DDD1ABAC116001D70C5 /* Room.swift */; };
-		BFBCE1821AC0C28500D96270 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1811AC0C28500D96270 /* ButtonView.swift */; };
+		BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1831AC1900D00D96270 /* ButtonView.swift */; };
 		BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
 /* End PBXBuildFile section */
 
@@ -175,7 +175,7 @@
 		BF527C1E1AB1D53700A43D35 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelObject.swift; path = "Roomguru/Source Files/ModelObject.swift"; sourceTree = SOURCE_ROOT; };
 		BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = "Roomguru/Source Files/ArrayExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BFBA2DDD1ABAC116001D70C5 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Room.swift; path = "Roomguru/Source Files/Room.swift"; sourceTree = SOURCE_ROOT; };
-		BFBCE1811AC0C28500D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = SOURCE_ROOT; };
+		BFBCE1831AC1900D00D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = "Roomguru/Source Files/ButtonView.swift"; sourceTree = SOURCE_ROOT; };
 		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Requests.swift"; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -283,7 +283,7 @@
 		5E0720071AB6D927009C270E /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				BFBCE1811AC0C28500D96270 /* ButtonView.swift */,
+				BFBCE1831AC1900D00D96270 /* ButtonView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -837,6 +837,7 @@
 			files = (
 				7B91D6EF1AC034410080DD91 /* AvailabilityCalendar.swift in Sources */,
 				5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */,
+				BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */,
 				BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */,
 				5ECAD56C1AB8317000DD0727 /* UIButtonExtension.swift in Sources */,
 				7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */,
@@ -870,7 +871,6 @@
 				BF26E73D1ABAF77400B12244 /* Listable.swift in Sources */,
 				BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
-				BFBCE1821AC0C28500D96270 /* ButtonView.swift in Sources */,
 				7BC955BB1AB9699800138716 /* Freebusy.swift in Sources */,
 				BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */,
 				BF26E73B1ABAC95000B12244 /* EventsViewController.swift in Sources */,
