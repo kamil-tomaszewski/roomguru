@@ -56,7 +56,6 @@ extension ListViewModel {
     
     private func sectionsFromItems(items: [T], bySortingKey sortingKey: String) -> Table? {
         
-        var sections: [Section<T>] = []
         let values: [NSObject?] = items.map({ (item: NSObject) -> NSObject? in
             return item.valueForKeyPath(sortingKey) as? NSObject
         })
@@ -71,16 +70,14 @@ extension ListViewModel {
             }
         }
         
-        for item in uniques {
+        let sections: [Section<T>] = uniques.map({ (item: NSObject) -> Section<T> in
             let allMatchingItems = items.itemsMatching(item, bySortingKey: sortingKey)
-            let section = Section<T>(allMatchingItems)
-            
-            if let _item: StringConvertible = item as? StringConvertible {
-                section.title = _item.string()
+            let section: Section<T> = Section<T>(allMatchingItems)
+            if let item = item as? StringConvertible {
+                section.title = item.string()
             }
-            
-            sections.append(section)
-        }
+            return section
+        })
         
         return Table(sections)
     }
