@@ -8,9 +8,10 @@
 
 import Foundation
 
-private struct CellItem {
+struct CellItem {
     
     let title: NSString
+    let target: AnyObject?
     let action: NSString
     let identifier : Identifier
     
@@ -21,10 +22,7 @@ private struct CellItem {
 
 class DashboardViewModel: NSObject {
     
-    private let items: [CellItem] = [
-        CellItem(title: "Revoke event", action: "revokeEvent:", identifier: .RevokeEvent),
-        CellItem(title: "Book first available room", action: "bookRoom", identifier: .BookRoom),
-    ]
+    var items: [CellItem] = []
     
     // MARK: Public Methods
     
@@ -32,38 +30,19 @@ class DashboardViewModel: NSObject {
         return items.count
     }
     
-    func configureCell(cell: UITableViewCell, inViewController viewController: UIViewController, atIndex row: Int) {
-        
-        if let cell = cell as? TableButtonCell {
-            
-            let item = items[row]
-            
-            cell.button.addTarget(viewController, action: Selector(item.action))
-            cell.button.setTitle(item.title)
-            
-            var color: UIColor?
-            switch(item.identifier) {
-            case .RevokeEvent:
-                color = UIColor.redColor()
-            case .BookRoom:
-                color = UIColor.blueColor()
-            }
-            
-            cell.button.backgroundColor = color
-        }
-    }
+    // MARK: Actions
     
-    func reuseIdentifier() -> String {
-        return TableButtonCell.reuseIdentifier
-    }
-    
-    func cellClass() -> AnyClass {
-        return TableButtonCell.self
-    }
-    
-    // MARK: UIControl Methods
-    
-    func revokeEvent(sender: UIButton) {
+    func revokeEvent() {
         println("revokeEvent")
+    }
+    
+    func bookRoom() {
+        let bookingManager = BookingManager()
+        
+        bookingManager.bookTheClosestAvailableRoom({ (response) -> () in
+            
+            }, failure: { (error) -> () in
+                println(error)
+        })
     }
 }

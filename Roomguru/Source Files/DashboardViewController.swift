@@ -22,9 +22,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.items = [
+            CellItem(title: "Revoke event", target:viewModel, action: "revokeEvent", identifier: .RevokeEvent),
+            CellItem(title: "Book first available room", target:viewModel, action: "bookRoom", identifier: .BookRoom)
+        ]
+        
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
-        aView?.tableView.registerClass(viewModel.cellClass(), forCellReuseIdentifier: viewModel.reuseIdentifier())
+        aView?.tableView.registerClass(TableButtonCell.self, forCellReuseIdentifier: TableButtonCell.reuseIdentifier)
         
         centralizeTableView()
     }
@@ -37,8 +42,25 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(viewModel.reuseIdentifier()) as UITableViewCell
-        viewModel.configureCell(cell, inViewController: self, atIndex: indexPath.row)
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableButtonCell.reuseIdentifier) as UITableViewCell
+        
+        if let _cell = cell as? TableButtonCell {
+            
+            let item = viewModel.items[indexPath.row]
+            
+            _cell.button.addTarget(item.target, action: Selector(item.action))
+            _cell.button.setTitle(item.title)
+            
+            var color: UIColor?
+            switch(item.identifier) {
+            case .RevokeEvent:
+                color = UIColor.redColor()
+            case .BookRoom:
+                color = UIColor.blueColor()
+            }
+            
+            _cell.button.backgroundColor = color
+        }
         
         return cell;
     }
@@ -70,17 +92,5 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let bottomInset = (self.tabBarController != nil) ? self.tabBarController!.tabBar.frame.size.height : 0
 
         return (aView != nil) ? aView!.bounds.height - topInset - bottomInset : 0
-    }
-    
-    // MARK: Actions
-    
-    func bookRoom() {
-        let bookingManager = BookingManager()
-        
-        bookingManager.bookTheClosestAvailableRoom({ (response) -> () in
-            
-        }, failure: { (error) -> () in
-            println(error)
-        })
     }
 }
