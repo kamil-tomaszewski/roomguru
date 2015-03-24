@@ -1,5 +1,5 @@
 //
-//  Timeframe.swift
+//  TimeFrame.swift
 //  Roomguru
 //
 //  Created by Pawel Bialecki on 23.03.2015.
@@ -8,15 +8,16 @@
 
 import Foundation
 
-struct TimeFrame: Printable {
+enum TimeFrameAvailability {
+    
+    case Available, NotAvailable
+}
+
+struct TimeFrame {
     
     let startDate: NSDate
     let endDate: NSDate
     let availability: TimeFrameAvailability
-    
-    var description: String {
-        return "start: \(self.startDate), end: \(self.endDate), duration: \(self.duration()), availability: \(self.availability)"
-    }
     
     init(startDate: NSDate, endDate: NSDate, availability: TimeFrameAvailability) {
         self.startDate = startDate
@@ -32,9 +33,16 @@ extension TimeFrame {
     }
 }
 
-enum TimeFrameAvailability: Printable {
+// MARK: Debug
+
+extension TimeFrame: Printable {
     
-    case Available, NotAvailable
+    var description: String {
+        return "start: \(self.startDate), end: \(self.endDate), duration: \(self.duration()), availability: \(self.availability)"
+    }
+}
+
+extension TimeFrameAvailability: Printable {
     
     var description: String {
         

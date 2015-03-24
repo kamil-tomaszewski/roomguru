@@ -29,7 +29,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         centralizeTableView()
     }
     
-    //MARK: UITableViewDataSource Methods
+    // MARK: UITableViewDataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -38,18 +38,18 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(viewModel.reuseIdentifier()) as UITableViewCell
-        viewModel.configureCell(cell, atIndex: indexPath.row)
+        viewModel.configureCell(cell, inViewController: self, atIndex: indexPath.row)
         
         return cell;
     }
     
-    //MARK: UITableViewDelegate Methods
+    // MARK: UITableViewDelegate Methods
     
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
     
-    //MARK: Private Methods
+    // MARK: Private Methods
     
     private func centralizeTableView() {
         let topInset = max(0, (contentViewHeight() - requiredHeight()) / 2)
@@ -70,5 +70,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let bottomInset = (self.tabBarController != nil) ? self.tabBarController!.tabBar.frame.size.height : 0
 
         return (aView != nil) ? aView!.bounds.height - topInset - bottomInset : 0
+    }
+    
+    // MARK: Actions
+    
+    func bookRoom() {
+        let bookingManager = BookingManager()
+        
+        bookingManager.bookTheClosestAvailableRoom({ (response) -> () in
+            
+        }, failure: { (error) -> () in
+            println(error)
+        })
     }
 }

@@ -10,9 +10,8 @@ import Foundation
 
 extension NSError {
     
-    class func errorWithMessage(message: String) -> NSError {
-        let error: NSError = NSError(domain: NSCocoaErrorDomain, code: 0, userInfo: ["message" : message])
-        return error
+    convenience init(message: String) {
+        self.init(domain: NSCocoaErrorDomain, code: 0, userInfo: ["message" : message])
     }
     
 }

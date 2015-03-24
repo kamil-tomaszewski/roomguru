@@ -1,5 +1,5 @@
 //
-//  FreeBusyCalendar.swift
+//  AvailabilityCalendar.swift
 //  Roomguru
 //
 //  Created by Pawel Bialecki on 23.03.2015.
@@ -10,13 +10,13 @@ import Foundation
 
 class AvailabilityCalendar: NSObject {
     
-    let id: String
+    let calendarID: String
     let startDate: NSDate
     let endDate: NSDate
-    var timeFrames: Array<TimeFrame>
+    var timeFrames: [TimeFrame]
     
     override var description: String {
-        var customDescription = "calendar id: \(self.id), time frames:\n"
+        var customDescription = "calendar id: \(self.calendarID), time frames:\n"
         
         for timeFrame in timeFrames {
             customDescription += "\(timeFrame)\n"
@@ -25,8 +25,8 @@ class AvailabilityCalendar: NSObject {
         return customDescription
     }
     
-    init(id: String, startDate: NSDate, endDate: NSDate, timeFrames: Array<TimeFrame>) {
-        self.id = id
+    init(calendarID: String, startDate: NSDate, endDate: NSDate, timeFrames: [TimeFrame]) {
+        self.calendarID = calendarID
         self.startDate = startDate
         self.endDate = endDate
         self.timeFrames = timeFrames

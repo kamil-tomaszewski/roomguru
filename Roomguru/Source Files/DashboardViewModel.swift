@@ -23,7 +23,7 @@ class DashboardViewModel: NSObject {
     
     private let items: [CellItem] = [
         CellItem(title: "Revoke event", action: "revokeEvent:", identifier: .RevokeEvent),
-        CellItem(title: "Book first available room", action: "bookRoom:", identifier: .BookRoom),
+        CellItem(title: "Book first available room", action: "bookRoom", identifier: .BookRoom),
     ]
     
     // MARK: Public Methods
@@ -32,13 +32,13 @@ class DashboardViewModel: NSObject {
         return items.count
     }
     
-    func configureCell(cell: UITableViewCell, atIndex row: Int) {
+    func configureCell(cell: UITableViewCell, inViewController viewController: UIViewController, atIndex row: Int) {
         
         if let cell = cell as? TableButtonCell {
             
             let item = items[row]
             
-            cell.button.addTarget(self, action: Selector(item.action))
+            cell.button.addTarget(viewController, action: Selector(item.action))
             cell.button.setTitle(item.title)
             
             var color: UIColor?
@@ -65,15 +65,5 @@ class DashboardViewModel: NSObject {
     
     func revokeEvent(sender: UIButton) {
         println("revokeEvent")
-    }
-    
-    func bookRoom(sender: UIButton) {
-        let bookingManager = BookingManager()
-        
-        bookingManager.bookTheClosestAvailableRoom({ (response) -> () in
-        
-        }, failure: { (error) -> () in
-            
-        })
     }
 }

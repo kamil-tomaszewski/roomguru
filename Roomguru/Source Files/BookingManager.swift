@@ -20,37 +20,40 @@ class BookingManager: NSObject {
             let formatter = NSDateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZ"
             
-            let calendarsFreeBusyDictionary: Dictionary<String, JSON> = response!["calendars"].dictionaryValue
+            let calendarsFreeBusyDictionary: [String : JSON]? = response?["calendars"].dictionaryValue
 
-            for calendar in calendarsFreeBusyDictionary {
-                
-                let dict: Dictionary<String, JSON> = calendar.1.dictionaryValue
-                let array: Array<JSON> = dict["busy"]!.arrayValue
-                
-                var timeFrames = Array<TimeFrame>()
-                
-                for item in array {
-                    let startString: String = item["start"].stringValue
-                    let endString: String = item["end"].stringValue
-                    let startDate: NSDate! = formatter.dateFromString(startString)
-                    let endDate: NSDate! = formatter.dateFromString(endString)
+            if let _calendarsFreeBusyDictionary = calendarsFreeBusyDictionary {
+                for calendar in _calendarsFreeBusyDictionary {
                     
-                    let timeframe: TimeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: TimeFrameAvailability.NotAvailable)
-                    timeFrames.append(timeframe)
+                    let dict: [String : JSON] = calendar.1.dictionaryValue
+                    let array: [JSON] = dict["busy"]!.arrayValue
+                    
+                    var timeFrames = [TimeFrame]()
+                    
+                    for item in array {
+                        let startString: String = item["start"].stringValue
+                        let endString: String = item["end"].stringValue
+                        let startDate: NSDate! = formatter.dateFromString(startString)
+                        let endDate: NSDate! = formatter.dateFromString(endString)
+                        
+                        let timeFrame: TimeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: TimeFrameAvailability.NotAvailable)
+                        timeFrames.append(timeFrame)
+                    }
+                    
+                    let formatterWithTimeZone = NSDateFormatter()
+                    formatterWithTimeZone.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"
+                    
+                    let timeMinString: String = response!["timeMin"].stringValue
+                    let timeMin: NSDate! = formatterWithTimeZone.dateFromString(timeMinString)
+                    let timeMaxString: String = response!["timeMax"].stringValue
+                    let timeMax: NSDate! = formatterWithTimeZone.dateFromString(timeMaxString)
+                    
+                    let availabilityCalendar = AvailabilityCalendar(calendarID: calendar.0, startDate: timeMin, endDate: timeMax, timeFrames: timeFrames)
+                    let closestFreeTimeFrame: TimeFrame? = availabilityCalendar.closestFreeTimeFrame()
+                    println(availabilityCalendar)
                 }
-                
-                let formatterWithTimeZone = NSDateFormatter()
-                formatterWithTimeZone.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"
-                
-                let timeMinString: String = response!["timeMin"].stringValue
-                let timeMin: NSDate! = formatterWithTimeZone.dateFromString(timeMinString)
-                let timeMaxString: String = response!["timeMax"].stringValue
-                let timeMax: NSDate! = formatterWithTimeZone.dateFromString(timeMaxString)
-                
-                let availabilityCalendar = AvailabilityCalendar(id: calendar.0, startDate: timeMin, endDate: timeMax, timeFrames: timeFrames)
-                let closestFreeTimeFrame: TimeFrame? = availabilityCalendar.closestFreeTimeFrame()
-                println(availabilityCalendar)
             }
+            
             
         }, failure: { (error: NSError) -> () in
             println(error)

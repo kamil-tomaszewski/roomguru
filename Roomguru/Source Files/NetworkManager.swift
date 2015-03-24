@@ -64,7 +64,7 @@ extension NetworkManager {
     func calendarsList(success: ResponseBlock, failure: ErrorBlock) {
         
         if (self.clientID == "") {
-            failure(error: NSError.errorWithMessage("Client ID is not set!"))
+            failure(error: NSError(message: "Client ID is not set!"))
         } else {
             
             let requestPath = serverURL + "/users/me/calendarList"
@@ -93,7 +93,7 @@ extension NetworkManager {
     func freebusyList(calendars: Array<String>, success: ResponseBlock, failure: ErrorBlock) {
         
         if (self.clientID == "") {
-            failure(error: NSError.errorWithMessage("Client ID is not set!"))
+            failure(error: NSError(message: "Client ID is not set!"))
         } else {
             let parameters = self.parametersForFreebusy(calendars)
             let requestPath = serverURL + "/freeBusy/"
@@ -143,7 +143,7 @@ private extension NetworkManager {
             "timeZone" : "Europe/Warsaw"
         ]
         
-        var calendarsArray: Array<[String : AnyObject]> = Array<[String : AnyObject]>()
+        var calendarsArray = [[String: AnyObject]]()
         
         for calendar in calendars {
             calendarsArray.append(["id" : calendar])
