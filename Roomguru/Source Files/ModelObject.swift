@@ -20,6 +20,8 @@ protocol ModelJSONProtocol {
 
 class ModelObject: NSObject, ModelJSONProtocol {
 
+    override init() {}
+    
     required init(json: JSON) {
         super.init()
         map(json)

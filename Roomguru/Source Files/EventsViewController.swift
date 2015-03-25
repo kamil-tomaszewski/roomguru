@@ -56,8 +56,9 @@ extension EventsViewController {
             
             if let events: [Event] = response {
                 let sortedEvents = Event.sortedByDate(events)
+                let eventsWithGaps = FreeEvent.eventsWithFreeGaps(sortedEvents)
                 
-                self.viewModel = ListViewModel(sortedEvents, sortingKey: "shortDate")
+                self.viewModel = ListViewModel(eventsWithGaps, sortingKey: "shortDate")
                 self.aView?.tableView.reloadData()
             }
             
@@ -142,12 +143,20 @@ extension EventsViewController: UITableViewDataSource {
             event = viewModel?[row]
         }
         
-        let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as EventCell
-        cell.indentationLevel = 7
-        cell.textLabel?.text = event?.summary
-        cell.timeMaxLabel.text = event?.endTime
-        cell.timeMinLabel.text = event?.startTime
-        return cell
+        if let freeEvent = event as? FreeEvent {
+            let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier) as FreeEventCell
+            let minutes = freeEvent.duration/60
+            let title = "Book for \(Int(minutes)) min"
+            cell.freeTimeButton.setTitle(title, forState: .Normal)
+            return cell
+        } else {
+            let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as EventCell
+            cell.indentationLevel = 7
+            cell.textLabel?.text = event?.summary
+            cell.timeMaxLabel.text = event?.endTime
+            cell.timeMinLabel.text = event?.startTime
+            return cell
+        }
         
     }
     
@@ -156,7 +165,11 @@ extension EventsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 65
+        let event = viewModel?[indexPath.section][indexPath.row]
+        if event is FreeEvent {
+            return 40.0
+        }
+        return 65.0
     }
     
 }
@@ -171,7 +184,7 @@ extension EventsViewController {
         query.singleEvents = true
         query.orderBy = "startTime"
         query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
-        query.timeMin = NSDate().midnight.days.substract(3).date
+        query.timeMin = NSDate().midnight
     }
 
     
@@ -185,6 +198,7 @@ extension EventsViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
         tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
+        tableView?.registerClass(FreeEventCell.self, forCellReuseIdentifier: FreeEventCell.reuseIdentifier)
     }
     
     private func buttonView(title: String, action: Selector) -> ButtonView {

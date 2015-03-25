@@ -64,6 +64,8 @@
 		BF26E73B1ABAC95000B12244 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73A1ABAC95000B12244 /* EventsViewController.swift */; };
 		BF26E73D1ABAF77400B12244 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73C1ABAF77400B12244 /* Listable.swift */; };
 		BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */; };
+		BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */; };
+		BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D61AC1B30F00A41786 /* FreeEvent.swift */; };
 		BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C181AB1CF9F00A43D35 /* Defines.swift */; };
 		BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
@@ -168,6 +170,8 @@
 		BF26E73A1ABAC95000B12244 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "Roomguru/Source Files/EventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E73C1ABAF77400B12244 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listable.swift; path = "Roomguru/Source Files/Listable.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "Roomguru/Source Files/ListViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEventCell.swift; path = "Roomguru/Source Files/FreeEventCell.swift"; sourceTree = SOURCE_ROOT; };
+		BF2755D61AC1B30F00A41786 /* FreeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEvent.swift; path = "Roomguru/Source Files/FreeEvent.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C181AB1CF9F00A43D35 /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Supporting Files/Defines.swift"; sourceTree = "<group>"; };
 		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
@@ -268,6 +272,7 @@
 				5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */,
 				5E07202C1AB73E03009C270E /* TableButtonCell.swift */,
 				BFBCE1851AC1920200D96270 /* EventCell.swift */,
+				BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */,
 				7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */,
 				7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */,
+				BF2755D61AC1B30F00A41786 /* FreeEvent.swift */,
 			);
 			name = "Object & Models";
 			sourceTree = "<group>";
@@ -848,6 +854,7 @@
 				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
 				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,
+				BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */,
 				BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */,
 				5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */,
 				BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */,
@@ -857,6 +864,7 @@
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
+				BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */,
 				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,

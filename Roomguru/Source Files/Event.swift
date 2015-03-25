@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateKit
 
 class Event: ModelObject {
     var kind:       String?
@@ -22,10 +23,21 @@ class Event: ModelObject {
     var endDate:    String?
     var hangoutLink: String?
     var iCalUID:    String?
+    
+    var start:      NSDate?
+    var end:        NSDate?
     var shortDate:  NSDate?
     
     var startTime:  String?
     var endTime:    String?
+    
+    override init() {
+        super.init()
+    }
+
+    required init(json: JSON) {
+        super.init(json: json)
+    }
     
     override class func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
         if let _jsonArray: [JSON] = jsonArray {
@@ -68,6 +80,9 @@ class Event: ModelObject {
         hangoutLink = json["hangoutLink"].string
         iCalUID = json["iCalUID"].string
         
+        start = startDate?.date()
+        end = endDate?.date()
+        
         shortDate = startDate?.googleDateToShortDate()
         startTime = startDate?.shortTime()
         endTime = endDate?.shortTime()
@@ -78,8 +93,10 @@ extension Event {
     
     class func sortedByDate(items: [Event]) -> [Event] {
         return items.sorted({
-            if let secondDate = $1.shortDate {
-                return $0.shortDate?.compare(secondDate) == NSComparisonResult.OrderedDescending
+            if let firstDate = $0.start {
+                if let secondDate = $1.start {
+                    return firstDate.compare(secondDate).descending
+                }
             }
             return false
         })
@@ -95,12 +112,16 @@ extension String {
         return formatter.stringFromDate(date)        
     }
     
-    func shortTime() -> String? {
+    func date() -> NSDate? {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZ"
-        
-        if let date = formatter.dateFromString(self) {
-            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        return formatter.dateFromString(self)
+    }
+    
+    func shortTime() -> String? {
+        if let date = self.date() {
+            let formatter = NSDateFormatter()
+            formatter.timeStyle = .ShortStyle
             return formatter.stringFromDate(date)
         }
         
