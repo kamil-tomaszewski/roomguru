@@ -112,6 +112,18 @@ extension EventsViewController: UITableViewDelegate {
         println("go to event detail")
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let freeEventCell = cell as? FreeEventCell {
+            freeEventCell.invalidate()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let freeEventCell = cell as? FreeEventCell {
+            freeEventCell.invalidate()
+        }
+    }
+    
 }
 
 
@@ -146,8 +158,13 @@ extension EventsViewController: UITableViewDataSource {
         if let freeEvent = event as? FreeEvent {
             let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier) as FreeEventCell
             let minutes = freeEvent.duration/60
-            let title = "Book for \(Int(minutes)) min"
+            let title = "Book \(Int(minutes)) min"
+            
+            cell.delegate = self
+            cell.timePeriod = freeEvent.duration
             cell.freeTimeButton.setTitle(title, forState: .Normal)
+            cell.invalidate()
+            
             return cell
         } else {
             let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as EventCell
@@ -170,6 +187,20 @@ extension EventsViewController: UITableViewDataSource {
             return 40.0
         }
         return 65.0
+    }
+    
+}
+
+extension EventsViewController: FreeEventCellDelegate {
+ 
+    func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval) {
+        if let indexPath = aView?.tableView.indexPathForCell(cell) {
+            let freeEvent = viewModel?[indexPath.section][indexPath.row]
+            
+            // book selected room for chosen time period
+            
+        }
+        
     }
     
 }

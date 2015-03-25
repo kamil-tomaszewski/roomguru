@@ -17,4 +17,8 @@ extension UIButton {
     func addTarget(target: AnyObject?, action: Selector) {
         self.addTarget(target, action: action, forControlEvents: .TouchUpInside)
     }
+    
+    func removeTarget(target: AnyObject?, action: Selector) {
+        self.removeTarget(target, action: action, forControlEvents: .TouchUpInside)
+    }
 }
