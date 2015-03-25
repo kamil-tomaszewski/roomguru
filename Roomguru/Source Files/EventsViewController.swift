@@ -191,6 +191,9 @@ extension EventsViewController: UITableViewDataSource {
     
 }
 
+
+// MARK: FreeEventCellDelegate
+
 extension EventsViewController: FreeEventCellDelegate {
  
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval) {

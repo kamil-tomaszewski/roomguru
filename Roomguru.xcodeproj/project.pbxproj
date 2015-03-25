@@ -67,6 +67,7 @@
 		BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */; };
 		BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D61AC1B30F00A41786 /* FreeEvent.swift */; };
 		BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */; };
+		BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */; };
 		BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C181AB1CF9F00A43D35 /* Defines.swift */; };
 		BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
@@ -174,6 +175,7 @@
 		BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEventCell.swift; path = "Roomguru/Source Files/FreeEventCell.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755D61AC1B30F00A41786 /* FreeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEvent.swift; path = "Roomguru/Source Files/FreeEvent.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingTimesView.swift; path = "Roomguru/Source Files/BookingTimesView.swift"; sourceTree = SOURCE_ROOT; };
+		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C181AB1CF9F00A43D35 /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Supporting Files/Defines.swift"; sourceTree = "<group>"; };
 		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
@@ -564,6 +566,7 @@
 				BF251AD21AC093A00020DFC4 /* Pageable.swift */,
 				BF251ACC1AC083F30020DFC4 /* Queryable.swift */,
 				BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */,
+				BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */,
 			);
 			name = Queries;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
 				7BC955BB1AB9699800138716 /* Freebusy.swift in Sources */,
+				BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */,
 				BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */,
 				BF26E73B1ABAC95000B12244 /* EventsViewController.swift in Sources */,
 			);

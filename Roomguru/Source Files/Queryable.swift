@@ -33,6 +33,9 @@ class Query: Queryable {
         _HTTPMethod = HTTPMethod
         _URLExtension = URLExtension
         _parameters = parameters
+        
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
+        formatter.timeZone = NSTimeZone(name: "Europe/Warsaw")
     }
  
     // MARK: Query parameters
@@ -41,6 +44,10 @@ class Query: Queryable {
     var URLExtension: String { get { return _URLExtension } }
     var parameters: QueryParameters? { get { return _parameters } }
     var fullPath: String { get { return _fullPath } }
+    
+    // MARK: Internal
+    
+    let formatter: NSDateFormatter = NSDateFormatter()
     
     // MARK: Private
     

@@ -23,6 +23,33 @@ class QueryRequest {
         return Alamofire.request(query.HTTPMethod, query.fullPath, parameters: query.parameters)
     }
     
+    func resume(success: ResponseBlock, failure: ErrorBlock) {
+        request = createRequest()
+        request.responseJSON { (request, response, json, error) -> Void in
+            
+            if let responseError: NSError = error as NSError? {
+                failure(error: responseError)
+                return
+            }
+            
+            if let responseJSON: AnyObject = json {
+                var swiftyJSON: JSON? = nil
+                
+                Async.background {
+                    swiftyJSON = JSON(responseJSON)
+                }.main {
+                    success(response: swiftyJSON)
+                }
+            } else {
+                let description = NSLocalizedString("Failed retrieving data", comment: "")
+                let otherError = NSError(domain: "com.ngr.roomguru", code: -1, userInfo: [NSLocalizedDescriptionKey: description])
+                
+                failure(error: otherError)
+            }
+            
+        }
+    }
+    
 }
 
 class PageableRequest<T: ModelJSONProtocol>: QueryRequest {

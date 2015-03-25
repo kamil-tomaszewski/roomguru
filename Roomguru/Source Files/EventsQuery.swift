@@ -21,9 +21,6 @@ class EventsQuery: PageableQuery {
     
 
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters?) {
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
-        formatter.timeZone = NSTimeZone(name: "Europe/Warsaw")
-        
         super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters)
     }
 
@@ -81,5 +78,4 @@ class EventsQuery: PageableQuery {
     private let OrderByKey = "orderBy"
     private let SingleEventsKey = "singleEvents"
     
-    private let formatter: NSDateFormatter = NSDateFormatter()
 }
