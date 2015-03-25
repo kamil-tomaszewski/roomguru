@@ -49,6 +49,7 @@ extension FreeEvent {
         var freeEvents: [Event] = []
         let eventsCount = events.count
         let today = NSDate()
+        let minimumPeriod = 30*60.0
         
         for (index: Int, event: Event) in enumerate(events) {
             let previousIndex = index + 1
@@ -63,9 +64,9 @@ extension FreeEvent {
                         }
                         
                         if eventStart.day == prevEventEnd.day && eventStart.day >= today.day && eventStart >= today {
-                            let timeDiff = eventStart.timeIntervalSinceDate(prevEventEnd)
+                            let timePeriod = eventStart.timeIntervalSinceDate(prevEventEnd)
                             
-                            if timeDiff >= 15*60 {
+                            if timePeriod >= minimumPeriod {
                                 freeEvents.append(FreeEvent(startDate: eventStart, endDate: prevEventEnd))
                             }
                         }
