@@ -66,7 +66,7 @@ extension EventsViewController {
             
             }, failure: { (error) -> () in
                 
-                UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
+                UIAlertView(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
                 self.navigationItem.titleView = self.roomSegmentedControl
                 
         })
