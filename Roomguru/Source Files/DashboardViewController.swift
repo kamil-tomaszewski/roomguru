@@ -8,10 +8,14 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DashboardViewController: UIViewController {
 
     weak var aView: DashboardView?
-    private let viewModel = DashboardViewModel()
+    
+    private let viewModel = DashboardViewModel(items: [
+        CellItem(title: "Revoke event", action: .Revoke),
+        CellItem(title: "Book first available room", action: .Book)
+    ])
     
     // MARK: View life cycle
 
@@ -21,20 +25,31 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.items = [
-            CellItem(title: "Revoke event", target:viewModel, action: "revokeEvent", identifier: .RevokeEvent),
-            CellItem(title: "Book first available room", target:viewModel, action: "bookRoom", identifier: .BookRoom)
-        ]
-        
-        aView?.tableView.delegate = self;
-        aView?.tableView.dataSource = self;
-        aView?.tableView.registerClass(TableButtonCell.self, forCellReuseIdentifier: TableButtonCell.reuseIdentifier)
-        
+        setupTableView()
         centralizeTableView()
     }
+
+}
+
+
+// MARK: Actions
+
+extension DashboardViewController {
+ 
+    func bookRoom(sender: UIButton) {
+        viewModel.bookRoom()
+    }
     
-    // MARK: UITableViewDataSource Methods
+    func revokeBookedRoom(sender: UIButton) {
+        viewModel.revokeBookedRoom()
+    }
+    
+}
+
+
+// MARK: UITableViewDataSource Methods
+
+extension DashboardViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -46,32 +61,42 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if let _cell = cell as? TableButtonCell {
             
-            let item = viewModel.items[indexPath.row]
+            let item = viewModel[indexPath.row]
+            let action = (item.action == .Book) ? Selector("bookRoom:") : Selector("revokeBookedRoom:")
             
-            _cell.button.addTarget(item.target, action: Selector(item.action))
             _cell.button.setTitle(item.title)
-            
-            var color: UIColor?
-            switch(item.identifier) {
-            case .RevokeEvent:
-                color = UIColor.redColor()
-            case .BookRoom:
-                color = UIColor.blueColor()
-            }
-            
-            _cell.button.backgroundColor = color
+            _cell.button.backgroundColor = item.color
+            _cell.button.addTarget(self, action: action)
+
         }
         
         return cell;
     }
     
-    // MARK: UITableViewDelegate Methods
-    
+}
+
+
+// MARK: UITableViewDelegate Methods
+
+extension DashboardViewController: UITableViewDelegate {
+
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
     
-    // MARK: Private Methods
+}
+
+// MARK: Private Methods
+
+extension DashboardViewController {
+    
+    private func setupTableView() {
+        let tableView = aView?.tableView
+        
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        tableView?.registerClass(TableButtonCell.self, forCellReuseIdentifier: TableButtonCell.reuseIdentifier)
+    }
     
     private func centralizeTableView() {
         let topInset = max(0, (contentViewHeight() - requiredHeight()) / 2)
@@ -90,7 +115,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let topInset = (self.navigationController != nil) ? self.navigationController!.navigationBar.frame.size.height : 0
         let bottomInset = (self.tabBarController != nil) ? self.tabBarController!.tabBar.frame.size.height : 0
-
+        
         return (aView != nil) ? aView!.bounds.height - topInset - bottomInset : 0
     }
+    
 }
+

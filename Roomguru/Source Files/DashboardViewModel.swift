@@ -8,23 +8,25 @@
 
 import Foundation
 
-struct CellItem {
-    
-    let title: NSString
-    let target: AnyObject?
-    let action: NSString
-    let identifier : Identifier
-    
-    enum Identifier {
-        case RevokeEvent, BookRoom
-    }
-}
-
 class DashboardViewModel: NSObject {
     
-    var items: [CellItem] = []
+    private var items: [CellItem]
     
-    // MARK: Public Methods
+    init(items: [CellItem]) {
+        self.items = items
+        super.init()
+    }
+    
+    subscript(index: Int) -> CellItem {
+        return items[index]
+    }
+    
+}
+
+
+// MARK: 
+
+extension DashboardViewModel {
     
     func numberOfItems() -> Int {
         return items.count
@@ -32,17 +34,40 @@ class DashboardViewModel: NSObject {
     
     // MARK: Actions
     
-    func revokeEvent() {
-        println("revokeEvent")
+    func revokeBookedRoom() {
+        println(__FUNCTION__)
     }
     
     func bookRoom() {
         let bookingManager = BookingManager()
         
         bookingManager.bookTheClosestAvailableRoom({ (response) -> () in
-            
-            }, failure: { (error) -> () in
-                println(error)
+            println(response)
+        }, failure: { (error) -> () in
+            println(error)
         })
     }
+
+}
+
+
+// MARK: CellItem
+
+class CellItem {
+    
+    enum CellItemAction { case Book, Revoke }
+    
+    let title: String
+    let action : CellItemAction
+    var color: UIColor { get { return _color } }
+    
+    init(title: String, action: CellItemAction) {
+        self.title = title
+        self.action = action
+        _color = (action == .Book) ? UIColor.redColor() : UIColor.blueColor()
+    }
+    
+    // MARK: Private
+    
+    private let _color: UIColor
 }
