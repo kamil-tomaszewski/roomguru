@@ -90,8 +90,7 @@ extension NetworkManager {
         
     }
     
-    func freebusyList(calendarsIDs: [String], success: ResponseBlock, failure: ErrorBlock) {
-        let query = FreeBusyQuery(calendarsIDs: calendarsIDs)
+    func freebusyList(query: Query, success: ResponseBlock, failure: ErrorBlock) {
         query.setFullPath(serverURL, authKey: key())
         QueryRequest(query).resume(success, failure: failure)
     }

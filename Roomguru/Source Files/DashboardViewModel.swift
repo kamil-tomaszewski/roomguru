@@ -31,22 +31,6 @@ extension DashboardViewModel {
     func numberOfItems() -> Int {
         return items.count
     }
-    
-    // MARK: Actions
-    
-    func revokeBookedRoom() {
-        println(__FUNCTION__)
-    }
-    
-    func bookRoom() {
-        let bookingManager = BookingManager()
-        
-        bookingManager.bookTheClosestAvailableRoom({ (response) -> () in
-            println(response)
-        }, failure: { (error) -> () in
-            println(error)
-        })
-    }
 
 }
 

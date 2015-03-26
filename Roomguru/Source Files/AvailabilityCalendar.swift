@@ -7,44 +7,102 @@
 //
 
 import Foundation
+import DateKit
+
+typealias CalendarTimeFrame = (TimeFrame?, String)
 
 class AvailabilityCalendar: NSObject {
     
     let calendarID: String
-    let startDate: NSDate
-    let endDate: NSDate
-    var timeFrames: [TimeFrame]
+    private var timeFrames: [TimeFrame]
     
-    override var description: String {
-        var customDescription = "calendar id: \(self.calendarID), time frames:\n"
+    init(calendarID: String, timeFrames: [TimeFrame]) {
+        self.calendarID = calendarID
+        self.timeFrames = timeFrames
+        self.timeFrames.sort{ $0.startDate <= $1.startDate }
+        super.init()
+    }
+    
+}
+
+
+extension AvailabilityCalendar {
+    
+    func closestFreeTimeFrame() -> CalendarTimeFrame? {
         
-        for timeFrame in timeFrames {
-            customDescription += "\(timeFrame)\n"
+        if let timeFree = checkEndOfADay() {
+            return timeFree
         }
         
-        return customDescription
-    }
-    
-    init(calendarID: String, startDate: NSDate, endDate: NSDate, timeFrames: [TimeFrame]) {
-        self.calendarID = calendarID
-        self.startDate = startDate
-        self.endDate = endDate
-        self.timeFrames = timeFrames
+        if let timeFree = checkFreeBeforeAnyBusy() {
+            return timeFree
+        }
         
-        super.init()
+        for (index, frame) in enumerate(timeFrames) {
+            
+            let nextIndex = index + 1
+            let timeFramesCount = timeFrames.count
+            let startDate = frame.endDate
+
+            if nextIndex < timeFramesCount {
+
+                let nextFrame = timeFrames[nextIndex]
+                
+                if startDate.day == nextFrame.endDate.day {
+                    
+                    let minutes = frame.endDate.timeIntervalSinceDate(nextFrame.startDate)/60
+                    
+                    if minutes >= 30 {
+                        let endDate = startDate.minutes + 30
+                        let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .Available)
+                        return (timeFrame, calendarID)
+                    }
+                    
+                }
+                
+            } else {
+                let endDate = frame.endDate.tomorrow.midnight.seconds - 1
+                let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .Available)
+                return (timeFrame, calendarID)
+            }
+            
+        }
         
-        self.fillWithAvailableTimeFrames()
-    }
-    
-    // sketches for further implementation
-    
-    private func fillWithAvailableTimeFrames() {
-        // self.timeFrames should be filled with *available* TimeFrame instances between not available ones (this will be seen locally only); this would make easy to check (just iterate through array) if we have a free 30 minutes time window to book a room.
-    }
-    
-    func closestFreeTimeFrame() -> TimeFrame? {
-        // returns the closest (in terms of time) free time frame (if we have one - calendar may be filled fully by other bookings)
         return nil
+        
+    }
+    
+    private func checkEndOfADay() -> CalendarTimeFrame? {
+        
+        let today = NSDate()
+        let firstFrame = timeFrames[0]
+        
+        if firstFrame.startDate.day > today.day {
+            let endDate = today.tomorrow.midnight.seconds - 1
+            let timeFrame = TimeFrame(startDate: today, endDate: endDate, availability: .Available)
+            return (timeFrame, calendarID)
+        }
+        
+        return nil;
+        
+    }
+    
+    private func checkFreeBeforeAnyBusy() -> CalendarTimeFrame? {
+        
+        let today = NSDate()
+        let firstFrame = timeFrames[0]
+        let firstFrameStartHour = firstFrame.startDate.hour        
+        let minutes = firstFrame.startDate.timeIntervalSinceDate(today)/60
+        
+        if firstFrameStartHour >= today.hour && minutes >= 30 {
+            let startDate = firstFrame.startDate.minutes - 30
+            let endDate = firstFrame.startDate
+            let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .Available)
+            return (timeFrame, calendarID)
+        }
+        
+        return nil
+
     }
     
 }

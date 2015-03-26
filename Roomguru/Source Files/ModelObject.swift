@@ -25,7 +25,7 @@ class ModelObject: NSObject, ModelJSONProtocol {
     required init(json: JSON) {
         super.init()
 
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZZZ"
         formatter.timeZone = NSTimeZone(name: "Europe/Warsaw")
 
         map(json)

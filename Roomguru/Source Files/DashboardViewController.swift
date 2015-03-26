@@ -37,11 +37,22 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController {
  
     func bookRoom(sender: UIButton) {
-        viewModel.bookRoom()
+        BookingManager.findClosestAvailableRoom({ (calendarTime: CalendarTimeFrame) -> Void in
+            // display confirmation view
+            BookingManager.bookTimeFrame(calendarTime, success: {
+                println("booking successful")
+            }, failure: { (error: NSError) -> () in
+                let errorMessage: String = error.userInfo?["message"] as String
+                println(errorMessage)
+            })
+        }, failure: { (error) -> () in
+            println(error)
+        })
+
     }
     
     func revokeBookedRoom(sender: UIButton) {
-        viewModel.revokeBookedRoom()
+        println(__FUNCTION__)
     }
     
 }
