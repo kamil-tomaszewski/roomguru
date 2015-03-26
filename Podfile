@@ -23,7 +23,7 @@ pod 'DateKit', '~> 0.1.1'
 pod 'Cartography', '~> 0.2.1'
 pod 'Async',
     :git => "https://github.com/duemunk/Async.git",
-    :tag => "1.1.1"
+    :commit => "ca009a904aa5d6cfaff5259e84b502cc47b62644"
 
 target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
 
