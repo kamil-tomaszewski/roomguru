@@ -24,6 +24,10 @@ class ModelObject: NSObject, ModelJSONProtocol {
     
     required init(json: JSON) {
         super.init()
+
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
+        formatter.timeZone = NSTimeZone(name: "Europe/Warsaw")
+
         map(json)
     }
     
@@ -40,5 +44,9 @@ class ModelObject: NSObject, ModelJSONProtocol {
         assert(false, "|\(__FUNCTION__)| function not implemented")
         return nil
     }
+    
+    // MARK: Internal
+    
+    let formatter: NSDateFormatter = NSDateFormatter()
     
 }
