@@ -54,11 +54,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     // MARK: Private Methods
     
     func setupVendors() {
-        
-        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("e0b60ed8278c9ee0aed4007fffd86458");
-        BITHockeyManager.sharedHockeyManager().startManager();
-        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
-        
+        #if !ENV_DEVELOPMENT
+            BITHockeyManager.sharedHockeyManager().configureWithIdentifier("e0b60ed8278c9ee0aed4007fffd86458");
+            BITHockeyManager.sharedHockeyManager().startManager();
+            BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
+        #endif
+
         NetworkManager.sharedInstance.setServerURL("https://www.googleapis.com/calendar/v3")
         
         let sharedSignIn = GPPSignIn.sharedInstance();
