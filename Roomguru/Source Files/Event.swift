@@ -126,19 +126,14 @@ extension String {
         }
         
         return nil
-        
     }
     
     func googleDateToShortDate() -> NSDate? {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZ"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZZZ"
         
-        // Convert time zone information from +00:00 to +0000 format
-        let correctedDateString = self.substringToIndex(advance(self.endIndex, -3)) + "00"
-        let correctedDate = formatter.dateFromString(correctedDateString)
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        if let _correctedDate = correctedDate {
+        if let _correctedDate = formatter.dateFromString(self) {
+            formatter.dateFormat = "yyyy-MM-dd"
             let string = formatter.stringFromDate(_correctedDate)
             return formatter.dateFromString(string)
         }
