@@ -13,12 +13,12 @@ import DateKit
 class FreeBusyQuery: Query {
     
     convenience init(calendarsIDs: [String]) {
-        self.init(.POST, URLExtension: "/freeBusy", parameters: nil)
+        self.init(.POST, URLExtension: "/freeBusy")
         self[ItemsKey] = calendarsIDs.map { ["id": $0] }
     }
     
-    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters?) {
-        super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters)
+    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .JSON) {
+        super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters, encoding: encoding)
         
         let today = NSDate()
         self[TimeMinKey] = formatter.stringFromDate(today)

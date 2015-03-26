@@ -20,7 +20,7 @@ class QueryRequest {
     }
     
     private func createRequest() -> Alamofire.Request {
-        return Alamofire.request(query.HTTPMethod, query.fullPath, parameters: query.parameters)
+        return Alamofire.request(query.HTTPMethod, query.fullPath, parameters: query.parameters, encoding: query.encoding)
     }
     
     func resume(success: ResponseBlock, failure: ErrorBlock) {

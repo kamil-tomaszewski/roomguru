@@ -11,12 +11,13 @@ import Alamofire
 
 
 protocol Queryable {
-    init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters?)
+    init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters?, encoding: Alamofire.ParameterEncoding)
     
     var HTTPMethod: Alamofire.Method { get }
     var URLExtension: String { get }
     var parameters: QueryParameters? { get }
     var fullPath: String { get }
+    var encoding: Alamofire.ParameterEncoding { get }
 }
 
 
@@ -29,10 +30,11 @@ class Query: Queryable {
     
     // MARK: Initializers
     
-    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil) {
+    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
         _HTTPMethod = HTTPMethod
         _URLExtension = URLExtension
         _parameters = parameters
+        _encoding = encoding
         
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
         formatter.timeZone = NSTimeZone(name: "Europe/Warsaw")
@@ -44,6 +46,7 @@ class Query: Queryable {
     var URLExtension: String { get { return _URLExtension } }
     var parameters: QueryParameters? { get { return _parameters } }
     var fullPath: String { get { return _fullPath } }
+    var encoding: Alamofire.ParameterEncoding { get { return _encoding } }
     
     // MARK: Internal
     
@@ -51,10 +54,11 @@ class Query: Queryable {
     
     // MARK: Private
     
-    private var _HTTPMethod: Alamofire.Method = .GET
-    private var _URLExtension: String = ""
+    private var _HTTPMethod: Alamofire.Method
+    private var _URLExtension: String
     private var _parameters: QueryParameters? = nil
     private var _fullPath = ""
+    private var _encoding: Alamofire.ParameterEncoding
 }
 
 

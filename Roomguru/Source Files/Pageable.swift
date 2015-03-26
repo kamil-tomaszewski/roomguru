@@ -18,8 +18,8 @@ class PageableQuery: Query, Pageable {
     
     // MARK: Initializers
     
-    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters?) {
-        super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters)
+    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
+        super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters, encoding: encoding)
     }
     
     // MARK: Query parameters

@@ -16,12 +16,12 @@ class EventsQuery: PageableQuery {
     
     convenience init(calendarID: String) {
         let URLExtension = "/calendars/" + calendarID + "/events"
-        self.init(.GET, URLExtension: URLExtension, parameters: nil)
+        self.init(.GET, URLExtension: URLExtension)
     }
     
 
-    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters?) {
-        super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters)
+    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
+        super.init(HTTPMethod, URLExtension: URLExtension)
     }
 
     
