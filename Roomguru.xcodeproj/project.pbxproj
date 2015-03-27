@@ -69,6 +69,7 @@
 		BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
 		BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD21AC093A00020DFC4 /* Pageable.swift */; };
 		BF26B27B1AC58E3000F95DD3 /* BookingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26B27A1AC58E3000F95DD3 /* BookingQuery.swift */; };
+		BF26B27D1AC59FCE00F95DD3 /* BookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */; };
 		BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E7381ABAC94100B12244 /* EventsListView.swift */; };
 		BF26E73B1ABAC95000B12244 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73A1ABAC95000B12244 /* EventsViewController.swift */; };
 		BF26E73D1ABAF77400B12244 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73C1ABAF77400B12244 /* Listable.swift */; };
@@ -84,6 +85,7 @@
 		BF527C201AB1D53700A43D35 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1D1AB1D53700A43D35 /* Event.swift */; };
 		BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
 		BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */; };
+		BF8077361AC93F7500B75096 /* BookingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */; };
 		BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA2DDD1ABAC116001D70C5 /* Room.swift */; };
 		BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1831AC1900D00D96270 /* ButtonView.swift */; };
 		BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1851AC1920200D96270 /* EventCell.swift */; };
@@ -186,6 +188,7 @@
 		BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsQuery.swift; path = "Roomguru/Source Files/EventsQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF251AD21AC093A00020DFC4 /* Pageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pageable.swift; path = "Roomguru/Source Files/Pageable.swift"; sourceTree = SOURCE_ROOT; };
 		BF26B27A1AC58E3000F95DD3 /* BookingQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingQuery.swift; path = "Roomguru/Source Files/BookingQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationView.swift; path = "Roomguru/Source Files/BookingConfirmationView.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E7381ABAC94100B12244 /* EventsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListView.swift; path = "Roomguru/Source Files/EventsListView.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E73A1ABAC95000B12244 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "Roomguru/Source Files/EventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF26E73C1ABAF77400B12244 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listable.swift; path = "Roomguru/Source Files/Listable.swift"; sourceTree = SOURCE_ROOT; };
@@ -201,6 +204,7 @@
 		BF527C1D1AB1D53700A43D35 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = "Roomguru/Source Files/Event.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1E1AB1D53700A43D35 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelObject.swift; path = "Roomguru/Source Files/ModelObject.swift"; sourceTree = SOURCE_ROOT; };
 		BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = "Roomguru/Source Files/ArrayExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewController.swift; path = "Roomguru/Source Files/BookingConfirmationViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFBA2DDD1ABAC116001D70C5 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Room.swift; path = "Roomguru/Source Files/Room.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1831AC1900D00D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = "Roomguru/Source Files/ButtonView.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1851AC1920200D96270 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = "Roomguru/Source Files/EventCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -317,6 +321,7 @@
 			children = (
 				BFBCE1831AC1900D00D96270 /* ButtonView.swift */,
 				BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */,
+				BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */,
 				5E3871951AB0660500C7FEE8 /* DashboardViewController.swift */,
 				5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */,
+				BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -883,6 +889,7 @@
 				BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */,
 				BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */,
 				BF26B27B1AC58E3000F95DD3 /* BookingQuery.swift in Sources */,
+				BF26B27D1AC59FCE00F95DD3 /* BookingConfirmationView.swift in Sources */,
 				5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */,
 				7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */,
@@ -905,6 +912,7 @@
 				BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */,
 				5EFC1ED91AC591EB00CE9D27 /* Attendee.swift in Sources */,
 				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
+				BF8077361AC93F7500B75096 /* BookingConfirmationViewController.swift in Sources */,
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,

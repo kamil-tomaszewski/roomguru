@@ -34,22 +34,30 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController {
  
-    func bookRoom(sender: UIButton) {
+    func didTapBookRoom(sender: UIButton) {
         BookingManager.findClosestAvailableRoom({ (calendarTime: CalendarTimeFrame) -> Void in
-            // display confirmation view
-            BookingManager.bookTimeFrame(calendarTime, success: {
-                println("booking successful")
-            }, failure: { (error: NSError) -> () in
-                let errorMessage: String = error.userInfo?["message"] as String
-                println(errorMessage)
-            })
+            let query = BookingQuery(calendarTime)
+            var confirmationViewController = BookingConfirmationViewController(calendarTime) {
+
+                BookingManager.bookTimeFrame(query, success: {
+                    println("booking successful")
+                }, failure: { (error: NSError) -> () in
+                    let errorMessage: String = error.userInfo?["message"] as String
+                    println(errorMessage)
+                })
+                
+            }
+            
+            let navigationVC = NavigationController(rootViewController: confirmationViewController)
+            self.presentViewController(navigationVC, animated: true, completion: nil)
+            
         }, failure: { (error) -> () in
             println(error)
         })
 
     }
     
-    func revokeBookedRoom(sender: UIButton) {
+    func didTapRevokeBookedRoom(sender: UIButton) {
         println(__FUNCTION__)
     }
 }
@@ -70,7 +78,7 @@ extension DashboardViewController: UITableViewDataSource {
         if let _cell = cell as? TableButtonCell {
             
             let item = viewModel[indexPath.row]
-            let action = (item.action == .Book) ? Selector("bookRoom:") : Selector("revokeBookedRoom:")
+            let action = (item.action == .Book) ? Selector("didTapBookRoom:") : Selector("didTapRevokeBookedRoom:")
             
             _cell.button.setTitle(item.title)
             _cell.button.backgroundColor = item.color

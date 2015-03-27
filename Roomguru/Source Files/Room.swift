@@ -36,4 +36,18 @@ struct NetguruRoom {
     ];
 }
 
+extension String {
+    
+    func roomName() -> String {
+        switch self {
+        case Room.Aqua: return Room.names[1]
+        case Room.Middle: return Room.names[2]
+        case Room.Cold: return Room.names[3]
+        case Room.Test: return "Test"
+        default: return ""
+        }
+    }
+    
+}
+
 let Room = NetguruRoom()

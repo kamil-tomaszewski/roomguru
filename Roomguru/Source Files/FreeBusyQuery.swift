@@ -12,8 +12,22 @@ import DateKit
 
 class FreeBusyQuery: Query {
     
-    var startDate: NSDate { get { return self[TimeMinKey] as NSDate } }
-    var endDate: NSDate { get { return self[TimeMaxKey] as NSDate } }
+    var startDate: NSDate? {
+        get {
+            if let dateString = self[TimeMinKey] as? String {
+                return formatter.dateFromString(dateString)
+            }
+            return nil
+        }
+    }
+    var endDate: NSDate? {
+        get {
+            if let dateString = self[TimeMaxKey] as? String {
+                return formatter.dateFromString(dateString)
+            }
+            return nil
+        }
+    }
     
     convenience init(calendarsIDs: [String]) {
         self.init(.POST, URLExtension: "/freeBusy")

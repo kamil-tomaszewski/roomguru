@@ -15,11 +15,10 @@ enum TimeFrameAvailability {
 
 class TimeFrame: ModelObject {
     
-    var calendarID: String?
     var startDate: NSDate = NSDate()
     var endDate: NSDate = NSDate()
     let availability: TimeFrameAvailability = .NotAvailable
-    
+        
     init(startDate: NSDate, endDate: NSDate, availability: TimeFrameAvailability) {
         self.startDate = startDate
         self.endDate = endDate

@@ -13,7 +13,7 @@ class BookingQuery: Query {
     
     // MARK: Initializers
     
-    convenience init(calendarTimeFrame: CalendarTimeFrame) {
+    convenience init(_ calendarTimeFrame: CalendarTimeFrame) {
         let URLExtension = "/calendars/" + calendarTimeFrame.1 + "/events"
         self.init(.GET, URLExtension: URLExtension)
         

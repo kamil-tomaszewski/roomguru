@@ -16,7 +16,7 @@ class BookingManager: NSObject {
         let query = FreeBusyQuery(calendarsIDs: allRooms)
 
         NetworkManager.sharedInstance.freebusyList(query, success: { (response: JSON?) -> () in
-            
+                        
             var calendars: [AvailabilityCalendar] = []
             
             if let _calendarsFreeBusyDictionary = response?["calendars"].dictionaryValue {
@@ -28,6 +28,11 @@ class BookingManager: NSObject {
                         calendars.append(AvailabilityCalendar(calendarID: calendar.0, timeFrames: timeFrames))
                     }
                 }
+                
+                if calendars.count == 0 {
+                    calendars.append(AvailabilityCalendar(calendarID: _calendarsFreeBusyDictionary.keys.first as String!, timeFrames: []))
+                }
+
             } else {
                 let message = NSLocalizedString("Failed retrieving data", comment: "")
                 failure(error: NSError(message: message))
@@ -46,9 +51,9 @@ class BookingManager: NSObject {
         })
     }
     
-    class func bookTimeFrame(calendarTime: CalendarTimeFrame, success: VoidBlock, failure: ErrorBlock) {
+    class func bookTimeFrame(query: BookingQuery, success: VoidBlock, failure: ErrorBlock) {
         // here come's booking code
-        println("calendarTime: \(calendarTime)")
+        println("calendarTime: \(query)")
         
     }
     
