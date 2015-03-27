@@ -139,6 +139,9 @@ extension EventsViewController {
 extension EventsViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let event = eventFromIndexPath(indexPath)
+        
         println("\(__FUNCTION__)")
         println("go to event detail")
     }
@@ -172,17 +175,8 @@ extension EventsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        let section = indexPath.section
-        let row = indexPath.row
         
-        var event: Event?
-        
-        if viewModel?.sectionsCount() > 1 {
-            event = viewModel?[section][row]
-        } else {
-            event = viewModel?[row]
-        }
+        let event = eventFromIndexPath(indexPath)
         
         if let freeEvent = event as? FreeEvent {
             let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier) as FreeEventCell
@@ -236,6 +230,14 @@ extension EventsViewController: FreeEventCellDelegate {
 // MARK: Private
 
 extension EventsViewController {
+    
+    private func eventFromIndexPath(indexPath: NSIndexPath) -> Event? {
+
+        if viewModel?.sectionsCount() > 1 {
+            return viewModel?[indexPath.section][indexPath.row]
+        }
+        return viewModel?[indexPath.row]
+    }
     
     private func setupQuery(calendarID: String) {
         self.query = EventsQuery(calendarID: calendarID)

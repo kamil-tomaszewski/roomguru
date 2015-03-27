@@ -23,6 +23,7 @@ class Event: ModelObject {
     var endDate:    String?
     var hangoutLink: String?
     var iCalUID:    String?
+    var attendees:  [Attendee]?
     
     var start:      NSDate?
     var end:        NSDate?
@@ -82,6 +83,11 @@ class Event: ModelObject {
         
         start = startDate?.date()
         end = endDate?.date()
+        
+        let array = json["attendees"].arrayValue
+        if let _array: [Attendee] = Attendee.map(array) {
+            attendees = _array
+        }
         
         shortDate = startDate?.googleDateToShortDate()
         startTime = startDate?.shortTime()
