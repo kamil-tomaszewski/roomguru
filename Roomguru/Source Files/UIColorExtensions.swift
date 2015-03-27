@@ -18,6 +18,10 @@ extension UIColor {
         return UIColor.rgb(243, 166, 62);
     }
     
+    class func ngRedColor() -> UIColor {
+        return UIColor.rgb(237, 110, 102);
+    }
+    
     class func rgb(r: NSInteger, _ g: NSInteger, _ b: NSInteger) -> UIColor {
         return UIColor.rgba(r, g, b, 1)
     }
@@ -25,5 +29,4 @@ extension UIColor {
     class func rgba(r: NSInteger, _ g: NSInteger, _ b: NSInteger, _ a: CGFloat) -> UIColor {
         return UIColor(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: a)
     }
-
 }

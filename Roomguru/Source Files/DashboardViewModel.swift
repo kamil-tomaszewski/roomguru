@@ -48,7 +48,7 @@ class CellItem {
     init(title: String, action: CellItemAction) {
         self.title = title
         self.action = action
-        _color = (action == .Book) ? UIColor.redColor() : UIColor.blueColor()
+        _color = (action == .Book) ? UIColor.ngRedColor() : UIColor.ngOrangeColor()
     }
     
     // MARK: Private

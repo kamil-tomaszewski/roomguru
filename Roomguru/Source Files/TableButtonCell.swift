@@ -32,6 +32,7 @@ class TableButtonCell: UITableViewCell {
     
     private func commonInit() {
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
         addSubview(button)
         defineConstraints()
     }
