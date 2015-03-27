@@ -8,6 +8,7 @@
 
 import UIKit
 import DateKit
+import Async
 
 class EventsViewController: UIViewController {
 
@@ -45,30 +46,57 @@ class EventsViewController: UIViewController {
 
 extension EventsViewController {
     
-    func fetchEvents() {
+    func fetchEventsForCalendars(calendars: [String]) {
         
+        var events: [Event] = []
+        
+        let failure: (error: NSError) -> () = { (error) -> () in
+            UIAlertView(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
+        }
+        
+        runActivityIndicator()
+        
+        let queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        let group: dispatch_group_t = dispatch_group_create();
+        
+        for calendarID in calendars {
+            dispatch_group_enter(group)
+            
+            let query = self.query.copy(calendarID: calendarID)
+            NetworkManager.sharedInstance.eventsList(query, success: { (response) -> () in
+                if let _response = response {
+                    events += _response
+                }
+                dispatch_group_leave(group)
+            }, failure: { (error) -> () in
+                self.stopActivityIndicator()
+                dispatch_group_leave(group)
+                failure(error: error)
+            })
+
+        }
+        
+        dispatch_group_notify(group, queue) {
+            let sortedEvents = Event.sortedByDate(events)
+            let eventsWithGaps = FreeEvent.eventsWithFreeGaps(sortedEvents)
+            self.viewModel = ListViewModel(eventsWithGaps, sortingKey: "shortDate")
+            Async.main {
+                self.stopActivityIndicator()
+                self.aView?.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    private func runActivityIndicator() {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         indicator.color = UIColor.ngOrangeColor()
         indicator.startAnimating()
         self.navigationItem.titleView = indicator
-        
-        NetworkManager.sharedInstance.eventsList(query, success: { (response) -> () in
-            
-            if let events: [Event] = response {
-                let sortedEvents = Event.sortedByDate(events)
-                let eventsWithGaps = FreeEvent.eventsWithFreeGaps(sortedEvents)
-                
-                self.viewModel = ListViewModel(eventsWithGaps, sortingKey: "shortDate")
-                self.aView?.tableView.reloadData()
-            }
-            
-            self.navigationItem.titleView = self.roomSegmentedControl
-            
-            }, failure: { (error) -> () in
-                
-                UIAlertView(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
-                self.navigationItem.titleView = self.roomSegmentedControl
-        })
+    }
+    
+    private func stopActivityIndicator() {
+        self.navigationItem.titleView = self.roomSegmentedControl
     }
 }
 
@@ -78,8 +106,13 @@ extension EventsViewController {
 
     func segmentedControlChangedState(sender: UISegmentedControl) {
         let index = roomSegmentedControl.selectedSegmentIndex
-        setupQuery(Room[index])
-        fetchEvents()
+        
+        if index == 0 {
+            fetchEventsForCalendars([Room.Aqua, Room.Middle, Room.Cold])
+        } else {
+            fetchEventsForCalendars([Room[index]])
+        }
+        
     }
     
     func didTapFutureButton(sender: UIButton) {
@@ -87,7 +120,8 @@ extension EventsViewController {
             query.timeMax = maxTime.days + 1
         }
         
-        fetchEvents()
+        let index = roomSegmentedControl.selectedSegmentIndex
+        fetchEventsForCalendars([Room[index]])
     }
     
     func didTapPastButton(sender: UIButton) {
@@ -95,7 +129,8 @@ extension EventsViewController {
             query.timeMin = minTime.days - 1
         }
         
-        fetchEvents()
+        let index = roomSegmentedControl.selectedSegmentIndex
+        fetchEventsForCalendars([Room[index]])
     }
 }
 
@@ -203,12 +238,12 @@ extension EventsViewController: FreeEventCellDelegate {
 extension EventsViewController {
     
     private func setupQuery(calendarID: String) {
-        query = EventsQuery(calendarID: calendarID)
-        query.maxResults = 100
-        query.singleEvents = true
-        query.orderBy = "startTime"
-        query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
-        query.timeMin = NSDate().midnight
+        self.query = EventsQuery(calendarID: calendarID)
+        self.query.maxResults = 100
+        self.query.singleEvents = true
+        self.query.orderBy = "startTime"
+        self.query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
+        self.query.timeMin = NSDate().midnight
     }
     
     private func setupRoomSegmentedControl() {
