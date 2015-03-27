@@ -24,6 +24,8 @@
 		5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */; };
 		5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* Settings.swift */; };
 		5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */; };
+		5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
+		5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */; };
 		5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* LoginView.swift */; };
 		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
 		5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */; };
@@ -140,6 +142,8 @@
 		5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E5F558C1AB62839005F3CEE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Roomguru/Source Files/Settings.swift"; sourceTree = SOURCE_ROOT; };
 		5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsItem.swift; path = "Roomguru/Source Files/SettingsItem.swift"; sourceTree = SOURCE_ROOT; };
+		5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = Frameworks/FontAwesome.swift; sourceTree = "<group>"; };
+		5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Roomguru/Resources/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
 		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/LoginView.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 		303C9EE60D55FE95B1E4648B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */,
 				5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */,
 				5E7A9E591AB060C60042E16F /* QuartzCore.framework */,
 				5E7A9E571AB060BB0042E16F /* QuickLook.framework */,
@@ -459,6 +464,7 @@
 		5E3A98471AA73FD500CE2F20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */,
 				5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */,
 			);
 			path = Resources;
@@ -706,6 +712,7 @@
 			files = (
 				5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */,
 				5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */,
+				5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */,
 				5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */,
 				5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */,
 				5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */,
@@ -883,6 +890,7 @@
 				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,
 				BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */,
+				5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */,
 				BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */,
 				5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */,
 				BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */,
