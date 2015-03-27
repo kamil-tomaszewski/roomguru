@@ -23,6 +23,18 @@ class EventsQuery: PageableQuery {
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
         super.init(HTTPMethod, URLExtension: URLExtension)
     }
+    
+    // MARK: Copy
+    
+    func copy(#calendarID: String) -> EventsQuery {
+        var query = EventsQuery(calendarID: calendarID)
+        query.maxResults = self.maxResults
+        query.timeMax = self.timeMax
+        query.timeMin = self.timeMin
+        query.orderBy = self.orderBy
+        query.singleEvents = self.singleEvents
+        return query
+    }
 
     
     // MARK: Query parameters
