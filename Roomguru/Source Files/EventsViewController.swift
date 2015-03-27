@@ -49,6 +49,7 @@ extension EventsViewController {
     func fetchEvents() {
         
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        indicator.color = UIColor.ngOrangeColor()
         indicator.startAnimating()
         self.navigationItem.titleView = indicator
         

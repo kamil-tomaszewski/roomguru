@@ -15,6 +15,9 @@ class TabBarController: UITabBarController {
     override init() {
         super.init()
         setupEmbeddedViewControllers()
+        
+        self.tabBar.tintColor = UIColor.ngOrangeColor()
+        self.tabBar.barTintColor = UIColor.ngGrayColor()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -57,9 +60,9 @@ class TabBarController: UITabBarController {
     private func setupEmbeddedViewControllers() {
         
         self.viewControllers = [
-            UINavigationController(rootViewController: DashboardViewController()),
-            UINavigationController(rootViewController: EventsViewController()),
-            UINavigationController(rootViewController: SettingsViewController())
+            NavigationController(rootViewController: DashboardViewController()),
+            NavigationController(rootViewController: EventsViewController()),
+            NavigationController(rootViewController: SettingsViewController())
         ]
         
         func setTitleForControllerAtIndex(index: Int, title: String) {

@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         
+        application.statusBarStyle = .LightContent
+        
         return true
     }
     

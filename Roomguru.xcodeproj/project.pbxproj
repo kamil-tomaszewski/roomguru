@@ -35,6 +35,8 @@
 		5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */; };
 		5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */; };
 		5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF11AA9CB770018F432 /* Main.storyboard */; };
+		5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */; };
+		5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */; };
 		5EAFD7301AAF261E00B75582 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD72F1AAF261E00B75582 /* AddressBook.framework */; };
 		5EAFD7321AAF262400B75582 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */; };
 		5EAFD7341AAF262E00B75582 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7331AAF262E00B75582 /* Foundation.framework */; };
@@ -46,7 +48,7 @@
 		5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */; };
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
 		5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
-		5ECAD56C1AB8317000DD0727 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtension.swift */; };
+		5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */; };
 		5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */; };
 		5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -145,6 +147,8 @@
 		5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Roomguru/Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Roomguru/Interfaces/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		5E8A7EF11AA9CB770018F432 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Roomguru/Interfaces/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = "Roomguru/Source Files/UIColorExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = "Roomguru/Source Files/NavigationController.swift"; sourceTree = SOURCE_ROOT; };
 		5EAFD72F1AAF261E00B75582 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5EAFD7331AAF262E00B75582 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,7 +160,7 @@
 		5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EAFD7431AAF270C00B75582 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Roomguru/Source Files/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5ECAD56B1AB8317000DD0727 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtension.swift; path = "Roomguru/Source Files/UIButtonExtension.swift"; sourceTree = SOURCE_ROOT; };
+		5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtensions.swift; path = "Roomguru/Source Files/UIButtonExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
 		5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Frameworks/SwiftyJSON.swift; sourceTree = "<group>"; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
@@ -482,8 +486,9 @@
 		5E51B7991AA9C3310018EDA9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF26E73A1ABAC95000B12244 /* EventsViewController.swift */,
 				BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */,
+				5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */,
+				BF26E73A1ABAC95000B12244 /* EventsViewController.swift */,
 				5EAFD7431AAF270C00B75582 /* LoginViewController.swift */,
 				5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */,
 				5E3871951AB0660500C7FEE8 /* DashboardViewController.swift */,
@@ -544,9 +549,10 @@
 			children = (
 				7BC955B81AB846AE00138716 /* GPPSignInExtensions.swift */,
 				5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */,
-				5ECAD56B1AB8317000DD0727 /* UIButtonExtension.swift */,
+				5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */,
 				BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */,
 				7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */,
+				5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -854,7 +860,7 @@
 				5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */,
 				BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */,
 				BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */,
-				5ECAD56C1AB8317000DD0727 /* UIButtonExtension.swift in Sources */,
+				5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */,
 				7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
@@ -865,6 +871,7 @@
 				5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */,
 				BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */,
 				5E3871961AB0660500C7FEE8 /* DashboardViewController.swift in Sources */,
+				5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */,
 				BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */,
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
@@ -875,6 +882,7 @@
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
+				5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */,
 				BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */,
 				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
 				7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */,

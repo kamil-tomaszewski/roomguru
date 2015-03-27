@@ -1,5 +1,5 @@
 //
-//  UIButtonExtension.swift
+//  UIButtonExtensions.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 17/03/15.
