@@ -34,6 +34,7 @@
 		5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */; };
 		5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */; };
 		5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */; };
+		5E8A31021AC5B13500E31DD3 /* EventDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A31011AC5B13500E31DD3 /* EventDetailsViewModel.swift */; };
 		5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */; };
 		5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */; };
 		5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */; };
@@ -150,6 +151,7 @@
 		5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = "Roomguru/Source Files/EventDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsView.swift; path = "Roomguru/Source Files/EventDetailsView.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtensions.swift; path = "Roomguru/Source Files/UITableViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E8A31011AC5B13500E31DD3 /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewModel.swift; path = "Roomguru/Source Files/EventDetailsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Roomguru/Source Files/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Roomguru/Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Roomguru/Interfaces/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
@@ -320,6 +322,7 @@
 				BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */,
 				5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */,
 				5E07202E1AB73F83009C270E /* DashboardViewModel.swift */,
+				5E8A31011AC5B13500E31DD3 /* EventDetailsViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */,
 				5E3871961AB0660500C7FEE8 /* DashboardViewController.swift in Sources */,
 				5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */,
+				5E8A31021AC5B13500E31DD3 /* EventDetailsViewModel.swift in Sources */,
 				BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */,
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,

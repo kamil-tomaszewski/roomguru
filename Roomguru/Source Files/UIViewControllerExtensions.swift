@@ -25,4 +25,16 @@ extension UIViewController {
         
         return nil
     }
+    
+    func hideBackBarButtonTitle() {
+        
+        let controllers = self.navigationController?.viewControllers
+        
+        if let _controllers = controllers {
+            if _controllers.count > 1 {
+                let controller = _controllers[_controllers.count - 2] as UIViewController
+                controller.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+            }
+        }
+    }
 }

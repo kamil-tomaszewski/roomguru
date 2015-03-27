@@ -8,10 +8,14 @@
 
 import UIKit
 
+enum Status: String {
+    case NeedsAction = "needsAction", Declined = "declined" , Tentative = "tentative", Accepted = "accepted", Undefined = "undefined"
+}
+
 class Attendee: ModelObject {
     var name:    String?
     var email:   String?
-    var status:  String?
+    var status = Status(rawValue: "undefined")
     
     var isOrganizer = false
     var isHuman     = true
@@ -31,14 +35,17 @@ class Attendee: ModelObject {
         var json = JSON([])
         json["displayName"].string = name
         json["email"].string = email
-        json["responseStatus"].string = status
+        json["responseStatus"].string = status?.rawValue
         return json
     }
     
     override func map(json: JSON) {
         name = json["displayName"].string
         email = json["email"].string
-        status = json["responseStatus"].string
+        
+        if let _string = json["responseStatus"].string {
+            status = Status(rawValue: _string)
+        }
 
         if json["resource"] {
             isHuman = !json["resource"].boolValue

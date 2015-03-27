@@ -11,16 +11,17 @@ import UIKit
 class EventDetailsViewController: UIViewController {
     
     weak var aView: EventDetailsView?
-    private var event: Event?
+    private let viewModel: EventDetailsViewModel
     
     // MARK: View life cycle
     
     init(event: Event?) {
-        self.event = event
+        self.viewModel = EventDetailsViewModel(event: event)
         super.init(nibName: nil, bundle: nil);
     }
 
     required init(coder aDecoder: NSCoder) {
+        self.viewModel = EventDetailsViewModel(event: nil)
         super.init(coder: aDecoder)
     }
     
@@ -31,7 +32,8 @@ class EventDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.event?.summary
+        self.hideBackBarButtonTitle()
+        self.title = self.viewModel.title()
         
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
@@ -56,7 +58,7 @@ extension EventDetailsViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("any") as UITableViewCell  //temporary
-        cell.textLabel?.text = event?.summary;
+        cell.textLabel?.text = "temporary";
         return cell
     }
     
