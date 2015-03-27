@@ -34,12 +34,12 @@ class BookingManager: NSObject {
                 return
             }
             
-//            if let closestFreeTime = self.closestFreeTimeFrameInCalendars(calendars) {
-//                success(calendarTime: closestFreeTime)
-//            } else {
+            if let closestFreeTime = self.closestFreeTimeFrameInCalendars(calendars) {
+                success(calendarTime: closestFreeTime)
+            } else {
                 let message = NSLocalizedString("No free rooms from", comment: "") + " \(query.startDate) " + NSLocalizedString("to", comment: "") + " \(query.endDate)"
                 failure(error: NSError(message: message))
-//            }
+            }
             
         }, failure: { (error: NSError) -> () in
             failure(error: error)
