@@ -28,6 +28,12 @@ struct NetguruRoom {
         }
     }
     
+    let names = [
+        NSLocalizedString("All", comment: ""),
+        NSLocalizedString("Aqua", comment: ""),
+        NSLocalizedString("Middle", comment: ""),
+        NSLocalizedString("Cold", comment: "")
+    ];
 }
 
 let Room = NetguruRoom()

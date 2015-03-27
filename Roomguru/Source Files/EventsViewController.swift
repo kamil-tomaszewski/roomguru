@@ -16,7 +16,7 @@ class EventsViewController: UIViewController {
     var query: EventsQuery = EventsQuery(calendarID: Room[0])
     
     let sortingKey = "shortDate"
-    let roomSegmentedControl = UISegmentedControl(items: ["All", "Aqua", "Middle", "Cold"])
+    let roomSegmentedControl = UISegmentedControl(items: Room.names)
 
     override func loadView() {
         aView = loadViewWithClass(EventsListView.self) as? EventsListView
@@ -39,7 +39,6 @@ class EventsViewController: UIViewController {
         roomSegmentedControl.selectedSegmentIndex = 1
         segmentedControlChangedState(roomSegmentedControl)
     }
-    
 }
 
 // MARK: Requests
@@ -69,10 +68,8 @@ extension EventsViewController {
                 
                 UIAlertView(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
                 self.navigationItem.titleView = self.roomSegmentedControl
-                
         })
     }
-    
 }
 
 // MARK: Actions
@@ -100,9 +97,7 @@ extension EventsViewController {
         
         fetchEvents()
     }
-    
 }
-
 
 // MARK: UITableViewDelegate
 
@@ -124,9 +119,7 @@ extension EventsViewController: UITableViewDelegate {
             freeEventCell.invalidate()
         }
     }
-    
 }
-
 
 // MARK: UITableViewDataSource
 
@@ -175,7 +168,6 @@ extension EventsViewController: UITableViewDataSource {
             cell.timeMinLabel.text = event?.startTime
             return cell
         }
-        
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -189,7 +181,6 @@ extension EventsViewController: UITableViewDataSource {
         }
         return 65.0
     }
-    
 }
 
 
@@ -204,9 +195,7 @@ extension EventsViewController: FreeEventCellDelegate {
             // book selected room for chosen time period
             
         }
-        
     }
-    
 }
 
 // MARK: Private
@@ -221,7 +210,6 @@ extension EventsViewController {
         query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
         query.timeMin = NSDate().midnight
     }
-
     
     private func setupRoomSegmentedControl() {
         roomSegmentedControl.addTarget(self, action: Selector("segmentedControlChangedState:"), forControlEvents: UIControlEvents.ValueChanged)
@@ -246,5 +234,4 @@ extension EventsViewController {
         
         return buttonView
     }
-    
 }

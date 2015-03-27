@@ -31,7 +31,6 @@ class EventCell: UITableViewCell {
         commonInit()
     }
     
-    
     // MARK: Private
     
     private func commonInit() {
