@@ -37,8 +37,13 @@ class EventsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        roomSegmentedControl.selectedSegmentIndex = 1
-        segmentedControlChangedState(roomSegmentedControl)
+        
+        if self.isMovingToParentViewController() {
+            roomSegmentedControl.selectedSegmentIndex = 1
+            segmentedControlChangedState(roomSegmentedControl)
+        } else {
+            self.aView?.tableView.deselectRowIfSelectedAnimated(true)
+        }
     }
 }
 
@@ -140,10 +145,8 @@ extension EventsViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let event = eventFromIndexPath(indexPath)
-        
-        println("\(__FUNCTION__)")
-        println("go to event detail")
+        let controller = EventDetailsViewController(event: eventFromIndexPath(indexPath))
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

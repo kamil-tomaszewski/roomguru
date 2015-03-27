@@ -31,6 +31,9 @@
 		5E7A9E561AB060AC0042E16F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */; };
 		5E7A9E581AB060BB0042E16F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E571AB060BB0042E16F /* QuickLook.framework */; };
 		5E7A9E5A1AB060C60042E16F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
+		5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */; };
+		5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */; };
+		5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */; };
 		5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */; };
 		5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */; };
 		5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */; };
@@ -144,6 +147,9 @@
 		5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5E7A9E571AB060BB0042E16F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		5E7A9E591AB060C60042E16F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = "Roomguru/Source Files/EventDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsView.swift; path = "Roomguru/Source Files/EventDetailsView.swift"; sourceTree = SOURCE_ROOT; };
+		5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtensions.swift; path = "Roomguru/Source Files/UITableViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Roomguru/Source Files/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Roomguru/Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Roomguru/Interfaces/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
@@ -294,6 +300,7 @@
 				5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */,
 				5E7A9E491AB04DB30042E16F /* LoginView.swift */,
 				5E0720291AB73846009C270E /* DashboardView.swift */,
+				5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */,
 			);
 			name = "Controllers' Views";
 			sourceTree = "<group>";
@@ -494,6 +501,7 @@
 				5EAFD7431AAF270C00B75582 /* LoginViewController.swift */,
 				5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */,
 				5E3871951AB0660500C7FEE8 /* DashboardViewController.swift */,
+				5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -555,6 +563,7 @@
 				BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */,
 				7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */,
 				5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */,
+				5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -885,8 +894,10 @@
 				5EFC1ED91AC591EB00CE9D27 /* Attendee.swift in Sources */,
 				5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */,
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
+				5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */,
 				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
+				5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */,
 				5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */,
 				BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */,
 				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
@@ -896,6 +907,7 @@
 				7BC955B91AB846AE00138716 /* GPPSignInExtensions.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
+				5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */,
 				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,

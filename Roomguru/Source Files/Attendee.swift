@@ -13,6 +13,9 @@ class Attendee: ModelObject {
     var email:   String?
     var status:  String?
     
+    var isOrganizer = false
+    var isHuman     = true
+    
     class func map(jsonArray: [JSON]?) -> [Attendee]? {
         if let _jsonArray: [JSON] = jsonArray {
             if _jsonArray.isEmpty == true {
@@ -36,5 +39,13 @@ class Attendee: ModelObject {
         name = json["displayName"].string
         email = json["email"].string
         status = json["responseStatus"].string
+
+        if json["resource"] {
+            isHuman = !json["resource"].boolValue
+        }
+        
+        if json["organizer"] {
+            isOrganizer = json["organizer"].boolValue
+        }
     }
 }

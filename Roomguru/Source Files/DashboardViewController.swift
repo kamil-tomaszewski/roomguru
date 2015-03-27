@@ -28,9 +28,7 @@ class DashboardViewController: UIViewController {
         setupTableView()
         centralizeTableView()
     }
-
 }
-
 
 // MARK: Actions
 
@@ -54,7 +52,6 @@ extension DashboardViewController {
     func revokeBookedRoom(sender: UIButton) {
         println(__FUNCTION__)
     }
-    
 }
 
 
@@ -83,7 +80,6 @@ extension DashboardViewController: UITableViewDataSource {
         
         return cell;
     }
-    
 }
 
 
@@ -94,7 +90,6 @@ extension DashboardViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
-    
 }
 
 // MARK: Private Methods
@@ -129,6 +124,5 @@ extension DashboardViewController {
         
         return (aView != nil) ? aView!.bounds.height - topInset - bottomInset : 0
     }
-    
 }
 
