@@ -41,8 +41,20 @@ class BookingQuery: Query {
         set { setDate(newValue, forKey: EndKey) }
     }
 
+    var timeZone: String {
+        get { return _timeZone }
+        set {
+            _timeZone = newValue
+            setTimeZone(_timeZone, forDateKey: StartKey)
+            setTimeZone(_timeZone, forDateKey: EndKey)
+        }
+    }
+    
     // MARK: Private
     
+    private var _timeZone: String = ""
+    
+    private let TimeZoneKey = "timeZone"
     private let SummaryKey = "summary"
     private let DateTimeKey = "dateTime"
     private let StartKey = "start"
@@ -56,11 +68,21 @@ class BookingQuery: Query {
     }
     
     private func setDate(date: NSDate?, forKey key: String) {
-        if let newStartDate = date {
-            self[key] = [DateTimeKey: formatter.stringFromDate(newStartDate)]
+        if let _date = date {
+            var dateDict = [DateTimeKey: formatter.stringFromDate(_date)]
+            
+            if !_timeZone.isEmpty {
+                dateDict[TimeZoneKey] = _timeZone
+            }
+            self[key] = dateDict
         } else {
             self[key] = nil
         }
     }
     
+    private func setTimeZone(timeZone: String, forDateKey key: String) {
+        if var dateDict: [String: AnyObject] = self[key] as? [String: AnyObject] {
+            dateDict[TimeZoneKey] = timeZone
+        }
+    }
 }
