@@ -94,6 +94,11 @@ extension NetworkManager {
         query.setFullPath(serverURL, authKey: key())
         QueryRequest(query).resume(success, failure: failure)
     }
+    
+    func createEventWithQuery(query: BookingQuery, success: ResponseBlock, failure: ErrorBlock) {
+        query.setFullPath(serverURL, authKey: key())
+        QueryRequest(query).resume(success, failure: failure)
+    }
 
 }
 

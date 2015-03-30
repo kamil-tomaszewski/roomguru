@@ -36,11 +36,11 @@ extension DashboardViewController {
  
     func didTapBookRoom(sender: UIButton) {
         BookingManager.findClosestAvailableRoom({ (calendarTime: CalendarTimeFrame) -> Void in
-            let query = BookingQuery(calendarTime)
             var confirmationViewController = BookingConfirmationViewController(calendarTime) {
 
-                BookingManager.bookTimeFrame(query, success: {
+                BookingManager.bookTimeFrame(calendarTime, success: { (event: Event) in
                     println("booking successful")
+                    println("booked event: \(event)")
                 }, failure: { (error: NSError) -> () in
                     let errorMessage: String = error.userInfo?["message"] as String
                     println(errorMessage)

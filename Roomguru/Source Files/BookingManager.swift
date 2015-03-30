@@ -51,10 +51,21 @@ class BookingManager: NSObject {
         })
     }
     
-    class func bookTimeFrame(query: BookingQuery, success: VoidBlock, failure: ErrorBlock) {
-        // here come's booking code
-        println("calendarTime: \(query)")
-        
+    class func bookTimeFrame(calendarTime: CalendarTimeFrame, success: (event: Event) -> Void, failure: ErrorBlock) {
+
+        let query = BookingQuery(calendarTime)
+        NetworkManager.sharedInstance.createEventWithQuery(query, success: { (response) in
+            
+            if let _response = response {
+                let event = Event(json: _response)
+                success(event: event)
+            } else {
+                let message = NSLocalizedString("Problem booking event occurred", comment: "")
+                let error = NSError(message: message)
+                failure(error: error)
+            }
+            
+        }, failure: failure)
     }
     
 }
