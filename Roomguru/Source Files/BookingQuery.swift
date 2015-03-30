@@ -15,7 +15,7 @@ class BookingQuery: Query {
     
     convenience init(_ calendarTimeFrame: CalendarTimeFrame) {
         let URLExtension = "/calendars/" + calendarTimeFrame.1 + "/events"
-        self.init(.GET, URLExtension: URLExtension)
+        self.init(.POST, URLExtension: URLExtension)
         
         self.startDate = calendarTimeFrame.0?.startDate
         self.endDate = calendarTimeFrame.0?.endDate
