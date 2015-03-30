@@ -75,12 +75,15 @@ extension AvailabilityCalendar {
     private func checkEndOfADay() -> CalendarTimeFrame? {
         
         let today = NSDate()
-        let firstFrame = timeFrames[0]
         
-        if firstFrame.startDate.day > today.day {
-            let endDate = today.tomorrow.midnight.seconds - 1
-            let timeFrame = TimeFrame(startDate: today, endDate: endDate, availability: .Available)
-            return (timeFrame, calendarID)
+        if let firstFrame = timeFrames.first {
+
+            if firstFrame.startDate.day > today.day {
+                let endDate = today.tomorrow.midnight.seconds - 1
+                let timeFrame = TimeFrame(startDate: today, endDate: endDate, availability: .Available)
+                return (timeFrame, calendarID)
+            }
+            
         }
         
         return nil;
@@ -90,15 +93,18 @@ extension AvailabilityCalendar {
     private func checkFreeBeforeAnyBusy() -> CalendarTimeFrame? {
         
         let today = NSDate()
-        let firstFrame = timeFrames[0]
-        let firstFrameStartHour = firstFrame.startDate.hour        
-        let minutes = firstFrame.startDate.timeIntervalSinceDate(today)/60
-        
-        if firstFrameStartHour >= today.hour && minutes >= 30 {
-            let startDate = firstFrame.startDate.minutes - 30
-            let endDate = firstFrame.startDate
-            let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .Available)
-            return (timeFrame, calendarID)
+        if let firstFrame = timeFrames.first {
+            
+            let firstFrameStartHour = firstFrame.startDate.hour
+            let minutes = firstFrame.startDate.timeIntervalSinceDate(today)/60
+            
+            if firstFrameStartHour >= today.hour && minutes >= 30 {
+                let startDate = firstFrame.startDate.minutes - 30
+                let endDate = firstFrame.startDate
+                let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .Available)
+                return (timeFrame, calendarID)
+            }
+            
         }
         
         return nil

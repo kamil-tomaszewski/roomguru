@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DateKit
 
 class BookingManager: NSObject {
     
@@ -54,6 +55,7 @@ class BookingManager: NSObject {
     class func bookTimeFrame(calendarTime: CalendarTimeFrame, success: (event: Event) -> Void, failure: ErrorBlock) {
 
         let query = BookingQuery(calendarTime)
+            
         NetworkManager.sharedInstance.createEventWithQuery(query, success: { (response) in
             
             if let _response = response {
@@ -74,9 +76,16 @@ extension BookingManager {
     
     class func closestFreeTimeFrameInCalendars(calendars: [AvailabilityCalendar]) -> CalendarTimeFrame? {
         
+        if calendars.isEmpty { return nil }
+        
         var frames = calendars.map { $0.closestFreeTimeFrame() }.filter { $0 != nil }
         
-        if frames.isEmpty { return nil }
+        if frames.isEmpty {
+            let now = NSDate()
+            let endDate = now.tomorrow.midnight.seconds - 1
+            let timeFrame = TimeFrame(startDate: now, endDate: endDate , availability: .Available)
+            return (timeFrame, calendars[0].calendarID)
+        }
         
         frames.sort {
             $0?.0?.startDate <= $1?.0?.startDate
