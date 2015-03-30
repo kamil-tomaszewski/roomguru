@@ -16,6 +16,9 @@ class BookingConfirmationViewController: UIViewController {
     init(_ calendarTime: CalendarTimeFrame, onConfirmation confirmation: VoidBlock) {
         self.calendarTime = calendarTime
         self.confirmation = confirmation
+        
+        self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        self.timeFormatter.timeZone = NSTimeZone.localTimeZone()
         self.dateFormatter.dateStyle = .ShortStyle
         self.timeFormatter.timeStyle = .ShortStyle
         

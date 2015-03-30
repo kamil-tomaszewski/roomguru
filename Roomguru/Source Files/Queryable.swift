@@ -36,8 +36,8 @@ class Query: Queryable {
         _parameters = parameters
         _encoding = encoding
         
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
-        formatter.timeZone = NSTimeZone(name: "Europe/Warsaw")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter.timeZone = NSTimeZone.localTimeZone()
     }
  
     // MARK: Query parameters

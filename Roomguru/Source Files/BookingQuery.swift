@@ -19,6 +19,7 @@ class BookingQuery: Query {
         
         self.startDate = calendarTimeFrame.0?.startDate
         self.endDate = calendarTimeFrame.0?.endDate
+        self.timeZone = NSTimeZone.localTimeZone().name
     }
     
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
