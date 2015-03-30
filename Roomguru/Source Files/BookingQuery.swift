@@ -15,7 +15,7 @@ class BookingQuery: Query {
     
     convenience init(_ calendarTimeFrame: CalendarTimeFrame) {
         let URLExtension = "/calendars/" + calendarTimeFrame.1 + "/events"
-        self.init(.POST, URLExtension: URLExtension)
+        self.init(.POST, URLExtension: URLExtension, parameters: nil, encoding: .JSON)
         
         self.startDate = calendarTimeFrame.0?.startDate
         self.endDate = calendarTimeFrame.0?.endDate
@@ -23,7 +23,7 @@ class BookingQuery: Query {
     }
     
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
-        super.init(HTTPMethod, URLExtension: URLExtension)
+        super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters, encoding: encoding)
     }
     
     var summary: String {
