@@ -13,7 +13,7 @@ class BookingConfirmationViewController: UIViewController {
     
     weak var aView: BookingConfirmationView?
     
-    init(_ calendarTime: CalendarTimeFrame, onConfirmation confirmation: VoidBlock) {
+    init(_ calendarTime: CalendarTimeFrame, onConfirmation confirmation: (CalendarTimeFrame) -> Void) {
         self.calendarTime = calendarTime
         self.confirmation = confirmation
         
@@ -59,7 +59,7 @@ class BookingConfirmationViewController: UIViewController {
     
     private var actualBookingTime: CalendarTimeFrame = (nil, "")
     private var calendarTime: CalendarTimeFrame = (nil, "")
-    private var confirmation: VoidBlock = {}
+    private var confirmation: (CalendarTimeFrame) -> Void = { calendarTime in }
     private var dateFormatter: NSDateFormatter = NSDateFormatter()
     private var timeFormatter: NSDateFormatter = NSDateFormatter()
     
@@ -72,7 +72,7 @@ extension BookingConfirmationViewController {
     
     func didTapConfirmButton(sender: UIButton) {
         dismissViewControllerAnimated(true) {
-            self.confirmation()
+            self.confirmation(self.actualBookingTime)
         }
     }
     
