@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         window!.makeKeyAndVisible()
         
         application.statusBarStyle = .LightContent
-        
+
         return true
     }
     

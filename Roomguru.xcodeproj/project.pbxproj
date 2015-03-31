@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5E003E631ACB290700AE55C1 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */; };
 		5E0720041AB6D8FF009C270E /* TableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */; };
 		5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
 		5E07202A1AB73846009C270E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* DashboardView.swift */; };
@@ -53,7 +54,6 @@
 		5EAFD7381AAF263C00B75582 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7371AAF263C00B75582 /* CoreMotion.framework */; };
 		5EAFD73A1AAF264300B75582 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7391AAF264300B75582 /* CoreGraphics.framework */; };
 		5EAFD73C1AAF264B00B75582 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73B1AAF264B00B75582 /* MediaPlayer.framework */; };
-		5EAFD73E1AAF265300B75582 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73D1AAF265300B75582 /* Security.framework */; };
 		5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */; };
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
 		5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
@@ -115,6 +115,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLExtensions.swift; path = "Roomguru/Source Files/NSURLExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewSwitchCell.swift; path = "Roomguru/Source Files/TableViewSwitchCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720291AB73846009C270E /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = "Roomguru/Source Files/DashboardView.swift"; sourceTree = SOURCE_ROOT; };
@@ -234,7 +235,6 @@
 				5E7A9E541AB0609C0042E16F /* CoreText.framework in Frameworks */,
 				5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */,
 				5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */,
-				5EAFD73E1AAF265300B75582 /* Security.framework in Frameworks */,
 				5EAFD73C1AAF264B00B75582 /* MediaPlayer.framework in Frameworks */,
 				5EAFD73A1AAF264300B75582 /* CoreGraphics.framework in Frameworks */,
 				5EAFD7381AAF263C00B75582 /* CoreMotion.framework in Frameworks */,
@@ -595,6 +595,7 @@
 				5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */,
 				5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */,
 				5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */,
+				5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -925,6 +926,7 @@
 				5EBCB76B1ACAA67F001F6D18 /* HeaderLabel.swift in Sources */,
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
+				5E003E631ACB290700AE55C1 /* NSURLExtensions.swift in Sources */,
 				BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */,
 				BF527C191AB1CF9F00A43D35 /* Defines.swift in Sources */,
 				BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */,

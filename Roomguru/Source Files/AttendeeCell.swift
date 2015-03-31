@@ -14,6 +14,7 @@ class AttendeeCell: UITableViewCell {
     let statusLabel = UILabel()
     let headerLabel = UILabel()
     let footerLabel = UILabel()
+    let avatarImageView = UIImageView()
     
     private struct aStruct { static var staticVar: String = "TableViewAttendeeCellReuseIdentifier"}
     
@@ -30,6 +31,11 @@ class AttendeeCell: UITableViewCell {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImageView.image = nil
     }
     
     // MARK: Public
@@ -69,14 +75,22 @@ class AttendeeCell: UITableViewCell {
         statusLabel.textAlignment = .Center
         contentView.addSubview(statusLabel)
         
+        avatarImageView.contentMode = .ScaleAspectFit
+        contentView.addSubview(avatarImageView)
+        
         defineConstraints()
     }
     
     private func defineConstraints() {
         
-        layout(headerLabel, footerLabel, statusLabel) { topLabel, bottomLabel, rightLabel in
+        layout(avatarImageView, statusLabel, headerLabel) { imageView, rightLabel, topLabel in
             
             let margins: (H: CGFloat, V: CGFloat) = (15, 10)
+            
+            imageView.top == imageView.superview!.top + margins.V
+            imageView.bottom == imageView.superview!.bottom - margins.V
+            imageView.left == rightLabel.superview!.left + margins.H
+            imageView.width == imageView.superview!.height - 2 * margins.V
             
             rightLabel.top == rightLabel.superview!.top + margins.V
             rightLabel.bottom == rightLabel.superview!.bottom - margins.V
@@ -84,8 +98,11 @@ class AttendeeCell: UITableViewCell {
             rightLabel.width == 30
             
             topLabel.top == rightLabel.top
-            topLabel.left == topLabel.superview!.left + margins.H
+            topLabel.left == imageView.right + 10
             topLabel.right == rightLabel.left
+        }
+        
+        layout(headerLabel, footerLabel) { topLabel, bottomLabel in
             
             bottomLabel.top == topLabel.bottom
             bottomLabel.left == topLabel.left

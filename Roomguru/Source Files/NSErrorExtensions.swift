@@ -13,5 +13,4 @@ extension NSError {
     convenience init(message: String) {
         self.init(domain: NSCocoaErrorDomain, code: 0, userInfo: ["message" : message])
     }
-    
 }

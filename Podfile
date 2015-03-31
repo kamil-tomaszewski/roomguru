@@ -15,8 +15,12 @@ use_frameworks!
 xcodeproj 'Roomguru', 'Development' => :debug, 'Production' => :release, 'Staging' => :release, 'Test' => :debug
 
 pod 'Alamofire', '~> 1.1'
+pod 'AFNetworking', '~> 2.5.2'
+
 pod 'SwiftyUserDefaults', '~> 1.0.0'
 pod 'DateKit', '~> 0.1.1'
+pod 'CryptoSwift', '~> 0.0.8'
+
 # pod 'SwiftyJSON', '~> 2.1.3'
 # SwiftyJSON is temporarily added to the project manually due to the this bug:
 # https://github.com/SwiftyJSON/SwiftyJSON/issues/129

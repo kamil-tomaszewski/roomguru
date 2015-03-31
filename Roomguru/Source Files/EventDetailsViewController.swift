@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class EventDetailsViewController: UIViewController {
     
@@ -86,6 +87,10 @@ extension EventDetailsViewController: UITableViewDataSource {
             _cell.headerLabel.text = info.name
             _cell.footerLabel.text = info.email
             _cell.setMarkWithStatus(info.status)
+            
+            if let url = NSURL.gravatarURLWithEmail(info.email) {
+                _cell.avatarImageView.setImageWithURL(url)
+            }
             cell = _cell
             
         case 4:

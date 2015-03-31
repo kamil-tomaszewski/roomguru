@@ -25,7 +25,6 @@ class NetworkManager: NSObject {
     func setServerURL(serverURL: String) {
         self.serverURL = serverURL
     }
-    
 }
 
 
@@ -37,7 +36,6 @@ extension NetworkManager {
         self.clientID = token.clientID
         Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token.tokenForAuthorizationHeader()]
     }
-    
 }
 
 private extension GTMOAuth2Authentication {
@@ -53,7 +51,6 @@ private extension GTMOAuth2Authentication {
     private func tokenForAuthorizationHeader() -> String {
         return self.tokenType() + " " + self.accessToken()
     }
-    
 }
 
 
@@ -99,7 +96,6 @@ extension NetworkManager {
         query.setFullPath(serverURL, authKey: key())
         QueryRequest(query).resume(success, failure: failure)
     }
-
 }
 
 // MARK: Private
