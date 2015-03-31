@@ -48,7 +48,12 @@ class EventDetailsViewController: UIViewController {
 extension EventDetailsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+        return true
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let con = EventDetailsViewController(event: nil)
+        self.navigationController?.pushViewController(con, animated: true);
     }
 }
 
@@ -90,7 +95,7 @@ extension EventDetailsViewController: UITableViewDataSource {
             
         case 4:
             let _cell = tableView.dequeueReusableCellWithIdentifier(TableButtonCell.reuseIdentifier) as TableButtonCell
-            _cell.button.setTitle(NSLocalizedString("Make a hangout call", comment: ""))
+            _cell.button.setTitle(NSLocalizedString("Join meeting!", comment: ""))
             _cell.button.addTarget(self, action: "didTapHangoutButton:", forControlEvents: .TouchUpInside)
             _cell.button.backgroundColor = UIColor.ngOrangeColor()
             cell = _cell

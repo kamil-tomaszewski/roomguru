@@ -10,27 +10,17 @@ import Foundation
 
 extension UIViewController {
    
-    func loadViewWithClass(aClass: AnyClass) -> AnyObject? {
+    func loadViewWithClass(view: UIView.Type) -> AnyObject? {
         
-        if !aClass.isSubclassOfClass(UIView) {
-            return nil
-        }
-        
-        if let view = aClass as? UIView.Type {
-            let retval = view(frame: UIScreen.mainScreen().applicationFrame)
-            retval.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
-            self.view = retval
-            return retval
-        }
-        
-        return nil
+        let _view = view(frame: UIScreen.mainScreen().applicationFrame)
+        _view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
+        self.view = _view
+        return _view
     }
     
     func hideBackBarButtonTitle() {
         
-        let controllers = self.navigationController?.viewControllers
-        
-        if let _controllers = controllers {
+        if let _controllers = self.navigationController?.viewControllers {
             if _controllers.count > 1 {
                 let controller = _controllers[_controllers.count - 2] as UIViewController
                 controller.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
