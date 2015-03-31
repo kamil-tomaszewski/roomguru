@@ -13,7 +13,7 @@ extension NSURL {
     
     class func gravatarURLWithEmail(email: String?) -> NSURL? {
         if let md5 = email?.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5() {
-            return NSURL(string: "http://www.gravatar.com/avatar/" + md5.lowercaseString)
+            return NSURL(string: "http://www.gravatar.com/avatar/" + md5.lowercaseString + "?d=mm")
         }
         return nil;
     }
