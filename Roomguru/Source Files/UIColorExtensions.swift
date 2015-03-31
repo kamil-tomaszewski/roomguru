@@ -10,16 +10,20 @@ import Foundation
 
 extension UIColor {
     
+    class func ngBarTranslucentGrayColor() -> UIColor {
+        return UIColor.rgb(39, 47, 61)
+    }
+    
     class func ngGrayColor() -> UIColor {
-        return UIColor.rgb(39, 47, 61);
+        return UIColor.rgb(69, 76, 87)
     }
     
     class func ngOrangeColor() -> UIColor {
-        return UIColor.rgb(243, 166, 62);
+        return UIColor.rgb(243, 166, 62)
     }
     
     class func ngRedColor() -> UIColor {
-        return UIColor.rgb(237, 110, 102);
+        return UIColor.rgb(237, 110, 102)
     }
     
     class func rgb(r: NSInteger, _ g: NSInteger, _ b: NSInteger) -> UIColor {

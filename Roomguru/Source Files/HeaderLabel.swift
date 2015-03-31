@@ -33,7 +33,7 @@ class HeaderLabel: UILabel {
     // MARK: Private
     
     private func commonInit() {
-        backgroundColor = UIColor.rgb(69, 76, 87)
+        backgroundColor = UIColor.ngGrayColor()
         textColor = UIColor.ngOrangeColor()
         font = UIFont.boldSystemFontOfSize(16)
     }

@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
         setupEmbeddedViewControllers()
         
         self.tabBar.tintColor = UIColor.ngOrangeColor()
-        self.tabBar.barTintColor = UIColor.ngGrayColor()
+        self.tabBar.barTintColor = UIColor.ngBarTranslucentGrayColor()
     }
     
     required init(coder aDecoder: NSCoder) {

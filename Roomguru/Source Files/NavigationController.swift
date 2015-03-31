@@ -16,7 +16,7 @@ class NavigationController: UINavigationController {
         super.init(rootViewController: rootViewController)
 
         self.navigationBar.tintColor = UIColor.ngOrangeColor()
-        self.navigationBar.barTintColor = UIColor.ngGrayColor()
+        self.navigationBar.barTintColor = UIColor.ngBarTranslucentGrayColor()
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.ngOrangeColor()]
     }
     
