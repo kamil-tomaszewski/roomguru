@@ -11,13 +11,15 @@ import Cartography
 
 class BookingConfirmationView: UIView {
 
-    var minutesToBookLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 70, 50))
+    var minutesToBookLabel: UILabel = UILabel()
     
-    var confirmButton: UIButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    var cancelButton: UIButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
+    var confirmButton: UIButton = UIButton()
+    var cancelButton: UIButton = UIButton()
     
-    var lessMinutesButton: UIButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    var moreMinutesButton: UIButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
+    var lessMinutesButton: UIButton = UIButton()
+    var moreMinutesButton: UIButton = UIButton()
+    
+    var summaryTextField: UITextField = UITextField()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +40,7 @@ class BookingConfirmationView: UIView {
         
         configureButtonsAppearance()
         configureLabelsAppearance()
+        configureTextFieldAppearance()
         
         addSubview(confirmButton)
         addSubview(cancelButton)
@@ -46,6 +49,8 @@ class BookingConfirmationView: UIView {
     
         addSubview(minutesToBookLabel)
         addSubview(minutesShortLabel)
+        
+        addSubview(summaryTextField)
         
         defineConstraints()
     }
@@ -90,6 +95,14 @@ class BookingConfirmationView: UIView {
             button.left == book.right
         }
         
+        layout(summaryTextField) { textField in
+            textField.top == textField.superview!.top + 84
+            textField.left == textField.superview!.left + 20
+            textField.right == textField.superview!.right - 20
+            textField.height == 30
+            return
+        }
+        
     }
     
     private func configureButtonsAppearance() {
@@ -123,5 +136,10 @@ class BookingConfirmationView: UIView {
         
         self.minutesToBookLabel.font = UIFont.boldSystemFontOfSize(28.0)
         self.minutesToBookLabel.textAlignment = .Center
+    }
+    
+    private func configureTextFieldAppearance() {
+        self.summaryTextField.placeholder = NSLocalizedString("Summary", comment: "")
+        self.summaryTextField.borderStyle = .RoundedRect
     }
 }

@@ -52,10 +52,11 @@ class BookingManager: NSObject {
         })
     }
     
-    class func bookTimeFrame(calendarTime: CalendarTimeFrame, success: (event: Event) -> Void, failure: ErrorBlock) {
+    class func bookTimeFrame(calendarTime: CalendarTimeFrame, summary: String, success: (event: Event) -> Void, failure: ErrorBlock) {
 
         let query = BookingQuery(calendarTime)
-            
+        query.summary = summary
+        
         NetworkManager.sharedInstance.createEventWithQuery(query, success: { (response) in
             
             if let _response = response {

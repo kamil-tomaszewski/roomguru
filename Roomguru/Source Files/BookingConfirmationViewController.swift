@@ -13,7 +13,7 @@ class BookingConfirmationViewController: UIViewController {
     
     weak var aView: BookingConfirmationView?
     
-    init(_ calendarTime: CalendarTimeFrame, onConfirmation confirmation: (CalendarTimeFrame) -> Void) {
+    init(_ calendarTime: CalendarTimeFrame, onConfirmation confirmation: (CalendarTimeFrame, String) -> Void) {
         self.calendarTime = calendarTime
         self.confirmation = confirmation
         
@@ -51,6 +51,8 @@ class BookingConfirmationViewController: UIViewController {
             }
         }
         
+        aView?.summaryTextField.delegate = self
+        
         updateActualBookingTimeLabel()
         connectActions()
     }
@@ -59,7 +61,8 @@ class BookingConfirmationViewController: UIViewController {
     
     private var actualBookingTime: CalendarTimeFrame = (nil, "")
     private var calendarTime: CalendarTimeFrame = (nil, "")
-    private var confirmation: (CalendarTimeFrame) -> Void = { calendarTime in }
+    private var summary: String = NSLocalizedString("Summary", comment: "")
+    private var confirmation: (CalendarTimeFrame, String) -> Void = { (calendarTime, summary) in }
     private var dateFormatter: NSDateFormatter = NSDateFormatter()
     private var timeFormatter: NSDateFormatter = NSDateFormatter()
     
@@ -72,7 +75,7 @@ extension BookingConfirmationViewController {
     
     func didTapConfirmButton(sender: UIButton) {
         dismissViewControllerAnimated(true) {
-            self.confirmation(self.actualBookingTime)
+            self.confirmation(self.actualBookingTime, self.summary)
         }
     }
     
@@ -95,6 +98,17 @@ extension BookingConfirmationViewController {
         sender.enabled = self.actualBookingTime.0?.duration() < self.calendarTime.0?.duration()
         
         aView?.lessMinutesButton.enabled = true
+    }
+    
+}
+
+
+// MARK: UITextFieldDelegate
+
+extension BookingConfirmationViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.summary = textField.text
     }
     
 }
