@@ -24,6 +24,8 @@ class EventDetailsView: UIView {
     }
     
     private func commonInit() {
+        
+        tableView.hideSeparatorForEmptyCells()
         addSubview(tableView)
         
         defineConstraints()

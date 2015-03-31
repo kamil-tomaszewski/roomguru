@@ -15,5 +15,9 @@ extension UITableView {
             self.deselectRowAtIndexPath(indexPath, animated: animated)
         }
     }
+    
+    func hideSeparatorForEmptyCells() {
+        self.tableFooterView = UIView(frame: CGRectZero)
+    }
 }
 
