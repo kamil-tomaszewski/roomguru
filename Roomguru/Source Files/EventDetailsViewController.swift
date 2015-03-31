@@ -58,6 +58,7 @@ extension EventDetailsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        case 1: return viewModel.numberOfLocations()
         case 3: return viewModel.numberOfGuests()
         default:
             return 1
@@ -82,6 +83,9 @@ extension EventDetailsViewController: UITableViewDataSource {
             _cell.headerLabel.text = info.name
             _cell.footerLabel.text = info.email
             _cell.setMarkWithStatus(info.status)
+
+            // hide for locations:
+            _cell.footerLabel.hidden = (indexPath.section == 1)
             
             if let url = NSURL.gravatarURLWithEmail(info.email) {
                 _cell.avatarImageView.setImageWithURL(url)
@@ -129,7 +133,7 @@ extension EventDetailsViewController: UITableViewDataSource {
         switch section {
         case 1: label.text = NSLocalizedString("Location", comment: "")
         case 2: label.text = NSLocalizedString("Organizer", comment: "")
-        case 3: label.text = NSLocalizedString("Guests", comment: "")
+        case 3: label.text = NSLocalizedString("Participants", comment: "")
         case 4: label.text = NSLocalizedString("Possibilities", comment: "")
         default:
             label.text = nil

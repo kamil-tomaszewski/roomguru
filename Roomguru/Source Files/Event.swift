@@ -24,6 +24,8 @@ class Event: ModelObject {
     var hangoutLink: String?
     var iCalUID:    String?
     var attendees:  [Attendee]?
+    var organizer:  Attendee?
+    var rooms:      [Attendee]?
     
     var start:      NSDate?
     var end:        NSDate?
@@ -63,6 +65,7 @@ class Event: ModelObject {
         json["location"].string = location
         json["start"].string = startDate
         json["end"].string = endDate
+        
         return json
     }
     
@@ -80,14 +83,23 @@ class Event: ModelObject {
         endDate = json["end"]["dateTime"].string
         hangoutLink = json["hangoutLink"].string
         iCalUID = json["iCalUID"].string
-        
-        start = startDate?.date()
-        end = endDate?.date()
+
+        if let dict = json["creator"].dictionaryObject {
+            organizer = Attendee()
+            organizer?.map(JSON(dict))
+        }
         
         let array = json["attendees"].arrayValue
         if let _array: [Attendee] = Attendee.map(array) {
-            attendees = _array
+            
+            let copiedArray = _array
+
+            attendees = _array.filter() { return !$0.isResource && !$0.isRoom }
+            rooms = copiedArray.filter() { return $0.isRoom }
         }
+
+        start = startDate?.date()
+        end = endDate?.date()
         
         shortDate = startDate?.googleDateToShortDate()
         startTime = startDate?.shortTime()
@@ -107,7 +119,6 @@ extension Event {
             return false
         })
     }
-    
 }
 
 extension String {
@@ -159,6 +170,4 @@ extension NSDate: StringConvertible {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.stringFromDate(self)
     }
-    
 }
-

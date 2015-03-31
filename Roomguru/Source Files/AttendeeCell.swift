@@ -67,7 +67,7 @@ class AttendeeCell: UITableViewCell {
         contentView.addSubview(headerLabel)
         
         footerLabel.textColor = UIColor.darkGrayColor()
-        footerLabel.font = UIFont.systemFontOfSize(14)
+        footerLabel.font = UIFont.systemFontOfSize(12)
         contentView.addSubview(footerLabel)
         
         statusLabel.font = UIFont.fontAwesomeOfSize(20)

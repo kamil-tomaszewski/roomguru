@@ -18,7 +18,8 @@ class Attendee: ModelObject {
     var status = Status(rawValue: "undefined")
     
     var isOrganizer = false
-    var isHuman     = true
+    var isResource  = false
+    var isRoom      = false
     
     class func map(jsonArray: [JSON]?) -> [Attendee]? {
         if let _jsonArray: [JSON] = jsonArray {
@@ -46,13 +47,16 @@ class Attendee: ModelObject {
         if let _string = json["responseStatus"].string {
             status = Status(rawValue: _string)
         }
-
-        if json["resource"] {
-            isHuman = !json["resource"].boolValue
-        }
         
-        if json["organizer"] {
-            isOrganizer = json["organizer"].boolValue
+        func assignIfExists(inout aBool: Bool, value: JSON, completion: () -> ()) {
+            if value {
+                aBool = value.boolValue
+                completion()
+            }
         }
+
+        assignIfExists(&isResource, json["resource"]) {}
+        assignIfExists(&isOrganizer, json["organizer"]) {}
+        assignIfExists(&isRoom, json["self"]) { self.status = nil }
     }
 }
