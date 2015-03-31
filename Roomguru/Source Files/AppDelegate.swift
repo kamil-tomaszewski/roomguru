@@ -57,26 +57,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     
     func setupVendors() {
         #if !ENV_DEVELOPMENT
-            BITHockeyManager.sharedHockeyManager().configureWithIdentifier("e0b60ed8278c9ee0aed4007fffd86458");
+            BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientId);
             BITHockeyManager.sharedHockeyManager().startManager();
             BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         #endif
 
-        NetworkManager.sharedInstance.setServerURL("https://www.googleapis.com/calendar/v3")
+        NetworkManager.sharedInstance.setServerURL(Constants.GooglePlus.ServerURL)
         
         let sharedSignIn = GPPSignIn.sharedInstance();
-        sharedSignIn.clientID = gPlusClientID()
-        sharedSignIn.scopes = [kGTLAuthScopePlusLogin, "https://www.googleapis.com/auth/calendar"]
+        sharedSignIn.clientID = Constants.GooglePlus.ClientID
+        sharedSignIn.scopes = Constants.GooglePlus.Scope
         sharedSignIn.shouldFetchGoogleUserID = true
         sharedSignIn.delegate = self
-    }
-    
-    func gPlusClientID() -> NSString {
-        #if ENV_STAGING
-            return "860224755984-etmsurv60hiq7dds925q79tdp3a62b1t.apps.googleusercontent.com"
-        #else
-            return "860224755984-fiktpv8httrrbgdefop68d554kvepshp.apps.googleusercontent.com"
-        #endif
     }
 }
 
