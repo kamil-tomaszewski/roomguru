@@ -78,7 +78,6 @@ extension EventsViewController {
                 dispatch_group_leave(group)
                 failure(error: error)
             })
-
         }
         
         dispatch_group_notify(group, queue) {
@@ -90,7 +89,6 @@ extension EventsViewController {
                 self.aView?.tableView.reloadData()
             }
         }
-        
     }
     
     private func runActivityIndicator() {
@@ -117,7 +115,6 @@ extension EventsViewController {
         } else {
             fetchEventsForCalendars([Room[index]])
         }
-        
     }
     
     func didTapFutureButton(sender: UIButton) {
@@ -198,20 +195,25 @@ extension EventsViewController: UITableViewDataSource {
             cell.textLabel?.text = event?.summary
             cell.timeMaxLabel.text = event?.endTime
             cell.timeMinLabel.text = event?.startTime
+            
             return cell
         }
     }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (viewModel?[section] as Section).title
-    }
-    
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let event = viewModel?[indexPath.section][indexPath.row]
-        if event is FreeEvent {
-            return 40.0
-        }
-        return 65.0
+        return event is FreeEvent ? 40 : 65
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let label = HeaderLabel()
+        label.text = (viewModel?[section] as Section).title
+        return label
     }
 }
 
@@ -265,7 +267,6 @@ extension EventsViewController {
     }
     
     private func buttonView(title: String, action: Selector) -> ButtonView {
-        let tableView = aView?.tableView
         let frame = CGRectMake(0, 0, CGRectGetWidth(aView!.frame), 50)
         
         var buttonView = ButtonView(frame: frame)

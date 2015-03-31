@@ -35,12 +35,7 @@ class EventDetailsViewController: UIViewController {
         
         self.hideBackBarButtonTitle()
         self.title = NSLocalizedString("Event Details", comment: "")
-        
-        aView?.tableView.delegate = self;
-        aView?.tableView.dataSource = self;
-        aView?.tableView.registerClass(AttendeeCell.self, forCellReuseIdentifier: AttendeeCell.reuseIdentifier)
-        aView?.tableView.registerClass(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.reuseIdentifier)
-        aView?.tableView.registerClass(TableButtonCell.self, forCellReuseIdentifier: TableButtonCell.reuseIdentifier)
+        setuptTableView()
     }
 }
 
@@ -164,5 +159,13 @@ private extension EventDetailsViewController {
         } else {
             return viewModel.attendee(indexPath.row)
         }
+    }
+    
+    private func setuptTableView() {
+        aView?.tableView.delegate = self;
+        aView?.tableView.dataSource = self;
+        aView?.tableView.registerClass(AttendeeCell.self, forCellReuseIdentifier: AttendeeCell.reuseIdentifier)
+        aView?.tableView.registerClass(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.reuseIdentifier)
+        aView?.tableView.registerClass(TableButtonCell.self, forCellReuseIdentifier: TableButtonCell.reuseIdentifier)
     }
 }
