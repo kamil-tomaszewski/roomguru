@@ -101,7 +101,7 @@ extension Event {
         return items.sorted({
             if let firstDate = $0.start {
                 if let secondDate = $1.start {
-                    return firstDate.compare(secondDate).descending
+                    return firstDate.compare(secondDate).ascending
                 }
             }
             return false
