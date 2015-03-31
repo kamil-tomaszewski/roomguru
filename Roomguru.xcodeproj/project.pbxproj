@@ -14,6 +14,8 @@
 		5E07202A1AB73846009C270E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* DashboardView.swift */; };
 		5E07202D1AB73E03009C270E /* TableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202C1AB73E03009C270E /* TableButtonCell.swift */; };
 		5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202E1AB73F83009C270E /* DashboardViewModel.swift */; };
+		5E1BA3041ACB5E8300827BB6 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */; };
+		5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */; };
 		5E1FF7671AA8A8BA00467837 /* MathSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7661AA8A8BA00467837 /* MathSpec.swift */; };
 		5E1FF7691AA8AB5A00467837 /* RootScreenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */; };
 		5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */; };
@@ -127,6 +129,8 @@
 		5E147CB51AA8B2D300EDD97C /* Roomguru-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Roomguru-Info.plist"; path = "Supporting Files/Roomguru-Info.plist"; sourceTree = "<group>"; };
 		5E147CB71AA8B2DC00EDD97C /* Unit-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Unit-Tests-Bridging-Header.h"; path = "Supporting Files/Unit-Tests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		5E147CB81AA8B2DC00EDD97C /* Unit-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit-Tests-Info.plist"; path = "Supporting Files/Unit-Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationExtensions.swift; path = "Roomguru/Source Files/UIApplicationExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAlertViewExtensions.swift; path = "Roomguru/Source Files/UIAlertViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E1FF7661AA8A8BA00467837 /* MathSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathSpec.swift; sourceTree = "<group>"; };
 		5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootScreenSpec.swift; sourceTree = "<group>"; };
 		5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "Roomguru/Source Files/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -595,6 +599,8 @@
 				5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */,
 				5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */,
 				5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */,
+				5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */,
+				5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -907,11 +913,13 @@
 				BF26B27B1AC58E3000F95DD3 /* BookingQuery.swift in Sources */,
 				BF26B27D1AC59FCE00F95DD3 /* BookingConfirmationView.swift in Sources */,
 				5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */,
+				5E1BA3041ACB5E8300827BB6 /* UIApplicationExtensions.swift in Sources */,
 				7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
 				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,
+				5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */,
 				BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */,
 				5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */,
 				BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */,

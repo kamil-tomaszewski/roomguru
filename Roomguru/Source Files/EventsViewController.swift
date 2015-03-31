@@ -56,7 +56,7 @@ extension EventsViewController {
         var events: [Event] = []
         
         let failure: (error: NSError) -> () = { (error) -> () in
-            UIAlertView(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
+            UIAlertView(error: error).show()
         }
         
         runActivityIndicator()

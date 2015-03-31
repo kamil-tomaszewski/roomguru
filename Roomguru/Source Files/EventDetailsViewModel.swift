@@ -34,6 +34,13 @@ class EventDetailsViewModel: NSObject {
     
     // MARK: text
     
+    func hangoutURL() -> NSURL? {
+        if let string = event?.hangoutLink {
+            return NSURL(string: string)
+        }
+        return nil
+    }
+    
     func attendee(index: Int) -> AttendeeInfo {
         return infoWithAttendee(event?.attendees?[index])
     }

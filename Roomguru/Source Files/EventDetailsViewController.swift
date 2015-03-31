@@ -147,7 +147,12 @@ extension EventDetailsViewController: UITableViewDataSource {
 extension EventDetailsViewController {
     
     func didTapHangoutButton(sender: UIButton) {
-        println("start hangout call")
+        
+        UIApplication.openURLIfPossible(viewModel.hangoutURL()) { (success, error) in
+            if let _error = error {
+                UIAlertView(error: _error).show()
+            }
+        };
     }
 }
 
