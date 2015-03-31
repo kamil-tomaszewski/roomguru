@@ -108,31 +108,14 @@ private extension EventDetailsViewModel {
     }
     
     private func attendees() -> [Attendee]? {
-        
-        if hasAttendees() {
-            return event?.attendees!.filter({ return $0.isHuman && !$0.isOrganizer })
-        }
-        return nil;
+        return event?.attendees?.filter({ return $0.isHuman && !$0.isOrganizer })
     }
     
     private func organizer() -> Attendee? {
-        
-        if hasAttendees() {
-            return event?.attendees!.filter({ return $0.isHuman && $0.isOrganizer }).first
-        }
-        return nil;
+        return event?.attendees?.filter({ return $0.isHuman && $0.isOrganizer }).first
     }
     
     private func others() -> [Attendee]? {
-        
-        if hasAttendees() {
-            return event?.attendees!.filter({ return !$0.isHuman })
-        }
-        return nil;
-    }
-    
-    private func hasAttendees() -> Bool {
-        let count = event?.attendees?.count ?? 0
-        return count > 0
+        return event?.attendees?.filter({ return !$0.isHuman })
     }
 }
