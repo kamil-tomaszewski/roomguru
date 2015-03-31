@@ -9,7 +9,7 @@
 import UIKit
 
 enum Status: String {
-    case NeedsAction = "needsAction", Declined = "declined" , Tentative = "tentative", Accepted = "accepted", Undefined = "undefined"
+    case Awaiting = "needsAction", NotGoing = "declined" , Maybe = "tentative", Going = "accepted"
 }
 
 class Attendee: ModelObject {

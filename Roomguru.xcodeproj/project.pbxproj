@@ -26,6 +26,8 @@
 		5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */; };
 		5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
 		5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */; };
+		5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */; };
+		5E6B40AE1AC947B1006C47EE /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */; };
 		5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* LoginView.swift */; };
 		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
 		5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */; };
@@ -43,6 +45,7 @@
 		5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF11AA9CB770018F432 /* Main.storyboard */; };
 		5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */; };
 		5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */; };
+		5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */; };
 		5EAFD7301AAF261E00B75582 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD72F1AAF261E00B75582 /* AddressBook.framework */; };
 		5EAFD7321AAF262400B75582 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */; };
 		5EAFD7341AAF262E00B75582 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7331AAF262E00B75582 /* Foundation.framework */; };
@@ -54,6 +57,7 @@
 		5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */; };
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
 		5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
+		5EBCB76B1ACAA67F001F6D18 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */; };
 		5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */; };
 		5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */; };
 		5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */; };
@@ -146,6 +150,8 @@
 		5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsItem.swift; path = "Roomguru/Source Files/SettingsItem.swift"; sourceTree = SOURCE_ROOT; };
 		5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = Frameworks/FontAwesome.swift; sourceTree = "<group>"; };
 		5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Roomguru/Resources/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
+		5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCell.swift; path = "Roomguru/Source Files/DescriptionCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSAttributedStringExtensions.swift; path = "Roomguru/Source Files/NSAttributedStringExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/LoginView.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 		5E8A7EF11AA9CB770018F432 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Roomguru/Interfaces/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = "Roomguru/Source Files/UIColorExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = "Roomguru/Source Files/NavigationController.swift"; sourceTree = SOURCE_ROOT; };
+		5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendeeCell.swift; path = "Roomguru/Source Files/AttendeeCell.swift"; sourceTree = SOURCE_ROOT; };
 		5EAFD72F1AAF261E00B75582 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5EAFD7331AAF262E00B75582 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -175,6 +182,7 @@
 		5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EAFD7431AAF270C00B75582 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Roomguru/Source Files/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderLabel.swift; path = "Roomguru/Source Files/HeaderLabel.swift"; sourceTree = SOURCE_ROOT; };
 		5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtensions.swift; path = "Roomguru/Source Files/UIButtonExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
 		5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Frameworks/SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -300,6 +308,8 @@
 				5E07202C1AB73E03009C270E /* TableButtonCell.swift */,
 				BFBCE1851AC1920200D96270 /* EventCell.swift */,
 				BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */,
+				5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */,
+				5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -322,6 +332,7 @@
 				BFBCE1831AC1900D00D96270 /* ButtonView.swift */,
 				BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */,
 				BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */,
+				5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -579,6 +590,7 @@
 				7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */,
 				5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */,
 				5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */,
+				5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -905,6 +917,8 @@
 				5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */,
 				5E8A31021AC5B13500E31DD3 /* EventDetailsViewModel.swift in Sources */,
 				BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */,
+				5E6B40AE1AC947B1006C47EE /* NSAttributedStringExtensions.swift in Sources */,
+				5EBCB76B1ACAA67F001F6D18 /* HeaderLabel.swift in Sources */,
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */,
@@ -924,11 +938,13 @@
 				7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */,
 				5E07202D1AB73E03009C270E /* TableButtonCell.swift in Sources */,
 				5E0720041AB6D8FF009C270E /* TableViewSwitchCell.swift in Sources */,
+				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,
 				7BC955B91AB846AE00138716 /* GPPSignInExtensions.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
 				5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */,
 				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,
+				5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
 				BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */,
