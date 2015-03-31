@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     
     func setupVendors() {
         #if !ENV_DEVELOPMENT
-            BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientId);
+            BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientID);
             BITHockeyManager.sharedHockeyManager().startManager();
             BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         #endif
