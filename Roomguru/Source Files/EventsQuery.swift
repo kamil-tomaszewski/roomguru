@@ -29,8 +29,8 @@ class EventsQuery: PageableQuery {
     func copy(#calendarID: String) -> EventsQuery {
         var query = EventsQuery(calendarID: calendarID)
         query.maxResults = self.maxResults
-        query.timeMax = self.timeMax
-        query.timeMin = self.timeMin
+        query.timeMax = self.timeMax?.copy() as? NSDate
+        query.timeMin = self.timeMin?.copy() as? NSDate
         query.orderBy = self.orderBy
         query.singleEvents = self.singleEvents
         return query
