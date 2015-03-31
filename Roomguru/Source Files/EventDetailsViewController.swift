@@ -48,12 +48,7 @@ class EventDetailsViewController: UIViewController {
 extension EventDetailsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let con = EventDetailsViewController(event: nil)
-        self.navigationController?.pushViewController(con, animated: true);
+        return false
     }
 }
 
