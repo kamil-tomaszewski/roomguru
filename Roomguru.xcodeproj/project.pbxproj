@@ -654,7 +654,7 @@
 				5E3A97E61AA72F0A00CE2F20 /* Resources */,
 				167F8D30F1ADCADD56793386 /* Embed Pods Frameworks */,
 				05CBF50C3479CFCF14DDF382 /* Copy Pods Resources */,
-				5E6ED5911ACC3350001CC9AB /* Run Script */,
+				5E6ED5911ACC3350001CC9AB /* Search for warning flags */,
 			);
 			buildRules = (
 			);
@@ -825,14 +825,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5E6ED5911ACC3350001CC9AB /* Run Script */ = {
+		5E6ED5911ACC3350001CC9AB /* Search for warning flags */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Search for warning flags";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
