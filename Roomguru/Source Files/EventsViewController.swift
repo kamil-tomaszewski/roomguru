@@ -70,9 +70,11 @@ extension EventsViewController {
             let query = self.query.copy(calendarID: calendarID)
             NetworkManager.sharedInstance.requestList(query, success: { (response: [Event]?) -> () in
                 if let _response = response {
-                    events += _response
+                    // add only not canceled events:
+                    events += _response.filter { !$0.isCanceled() }
                 }
                 dispatch_group_leave(group)
+                
             }, failure: { (error) -> () in
                 self.stopActivityIndicator()
                 dispatch_group_leave(group)
@@ -196,6 +198,13 @@ extension EventsViewController: UITableViewDataSource {
             cell.timeMaxLabel.text = event?.endTime
             cell.timeMinLabel.text = event?.startTime
             
+            if let _status = event?.room?.status {
+                if _status == .NotGoing {
+                    cell.backgroundColor = UIColor.redColor()
+                } else {
+                    cell.backgroundColor = UIColor.greenColor()
+                }
+            }
             return cell
         }
     }
@@ -216,7 +225,6 @@ extension EventsViewController: UITableViewDataSource {
         return label
     }
 }
-
 
 // MARK: FreeEventCellDelegate
 

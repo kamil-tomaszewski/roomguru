@@ -15,7 +15,7 @@ enum Status: String {
 class Attendee: ModelObject, NSSecureCoding {
     var name:    String?
     var email:   String?
-    var status = Status(rawValue: "undefined")
+    var status:  Status?
     
     var isOrganizer = false
     var isResource  = false
@@ -40,7 +40,6 @@ class Attendee: ModelObject, NSSecureCoding {
         
         self.isOrganizer = aDecoder.decodeBoolForKey("isOrganizer")
     }
-
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: "name")
@@ -52,7 +51,6 @@ class Attendee: ModelObject, NSSecureCoding {
     class func supportsSecureCoding() -> Bool {
         return true
     }
-    
     
     // MARK: JSON
     
@@ -83,15 +81,14 @@ class Attendee: ModelObject, NSSecureCoding {
             status = Status(rawValue: _string)
         }
         
-        func assignIfExists(inout aBool: Bool, value: JSON, completion: () -> ()) {
+        func assignIfExists(inout aBool: Bool, value: JSON) {
             if value {
                 aBool = value.boolValue
-                completion()
             }
         }
 
-        assignIfExists(&isResource, json["resource"]) {}
-        assignIfExists(&isOrganizer, json["organizer"]) {}
-        assignIfExists(&isRoom, json["self"]) { self.status = nil }
+        assignIfExists(&isResource, json["resource"])
+        assignIfExists(&isOrganizer, json["organizer"])
+        assignIfExists(&isRoom, json["self"])
     }
 }

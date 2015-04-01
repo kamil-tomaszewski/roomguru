@@ -39,5 +39,4 @@ class CalendarEntry: NSObject, NSSecureCoding {
     class func supportsSecureCoding() -> Bool {
         return true
     }
-    
 }

@@ -25,7 +25,7 @@ class Event: ModelObject, NSSecureCoding {
     var iCalUID:    String?
     var attendees:  [Attendee]?
     var organizer:  Attendee?
-    var rooms:      [Attendee]?
+    var room:       Attendee?
     
     var start:      NSDate?
     var end:        NSDate?
@@ -136,13 +136,17 @@ class Event: ModelObject, NSSecureCoding {
 
         organizer = Attendee(json: json["creator"])
         
+        if summary == "zappistore: daily standup" {
+            
+        }
+        
         let array = json["attendees"].arrayValue
         if let _array: [Attendee] = Attendee.map(array) {
             
             let copiedArray = _array
 
             attendees = _array.filter() { !$0.isResource && !$0.isRoom }
-            rooms = copiedArray.filter() { $0.isRoom }
+            room = copiedArray.filter() { $0.isRoom }.first
         }
 
         start = startDate?.date()
@@ -165,6 +169,13 @@ extension Event {
             }
             return false
         })
+    }
+    
+    func isCanceled() -> Bool {
+        if let _status = room?.status {
+            return _status == .NotGoing
+        }
+        return true
     }
 }
 
