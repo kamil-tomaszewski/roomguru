@@ -12,7 +12,7 @@ enum Status: String {
     case Awaiting = "needsAction", NotGoing = "declined" , Maybe = "tentative", Going = "accepted"
 }
 
-class Attendee: ModelObject {
+class Attendee: ModelObject, NSSecureCoding {
     var name:    String?
     var email:   String?
     var status = Status(rawValue: "undefined")
@@ -20,6 +20,41 @@ class Attendee: ModelObject {
     var isOrganizer = false
     var isResource  = false
     var isRoom      = false
+    
+    required init(json: JSON) {
+        super.init(json: json)
+    }
+    
+    // MARK: NSSecureCoding
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init()
+        self.name = aDecoder.decodeObjectForKey("name") as? String
+        self.email = aDecoder.decodeObjectForKey("email") as? String
+        
+        if let status = aDecoder.decodeObjectForKey("status") as? String {
+            self.status = Status(rawValue: status)
+        } else {
+            self.status = Status(rawValue: "undefined")
+        }
+        
+        self.isOrganizer = aDecoder.decodeBoolForKey("isOrganizer")
+    }
+
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeObject(self.email, forKey: "email")
+        aCoder.encodeObject(self.status?.rawValue, forKey: "status")
+        aCoder.encodeBool(self.isOrganizer, forKey: "isOrganizer")
+    }
+    
+    class func supportsSecureCoding() -> Bool {
+        return true
+    }
+    
+    
+    // MARK: JSON
     
     class func map(jsonArray: [JSON]?) -> [Attendee]? {
         if let _jsonArray: [JSON] = jsonArray {

@@ -9,7 +9,7 @@
 import UIKit
 import DateKit
 
-class Event: ModelObject {
+class Event: ModelObject, NSSecureCoding {
     var kind:       String?
     var etag:       String?
     var identifier: String?
@@ -42,6 +42,53 @@ class Event: ModelObject {
         super.init(json: json)
     }
     
+    
+    // MARK: NSSecureCoding
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init()
+        
+        self.kind = aDecoder.decodeObjectForKey("kind") as? String
+        self.etag = aDecoder.decodeObjectForKey("etag") as? String
+        self.identifier = aDecoder.decodeObjectForKey("identifier") as? String
+        self.status = aDecoder.decodeObjectForKey("status") as? String
+        self.htmlLink = aDecoder.decodeObjectForKey("htmlLink") as? String
+        self.createdAt = aDecoder.decodeObjectForKey("createdAt") as? String
+        self.updatedAt = aDecoder.decodeObjectForKey("updatedAt") as? String
+        self.summary = aDecoder.decodeObjectForKey("summary") as? String
+        self.location = aDecoder.decodeObjectForKey("location") as? String
+        self.startDate = aDecoder.decodeObjectForKey("startDate") as? String
+        self.endDate = aDecoder.decodeObjectForKey("endDate") as? String
+        self.hangoutLink = aDecoder.decodeObjectForKey("hangoutLink") as? String
+        self.iCalUID = aDecoder.decodeObjectForKey("iCalUID") as? String
+        self.attendees = aDecoder.decodeObjectForKey("attendees") as? [Attendee]
+        
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.kind, forKey: "kind")
+        aCoder.encodeObject(self.etag, forKey: "etag")
+        aCoder.encodeObject(self.identifier, forKey: "identifier")
+        aCoder.encodeObject(self.status, forKey: "status")
+        aCoder.encodeObject(self.htmlLink, forKey: "htmlLink")
+        aCoder.encodeObject(self.createdAt, forKey: "createdAt")
+        aCoder.encodeObject(self.updatedAt, forKey: "updatedAt")
+        aCoder.encodeObject(self.summary, forKey: "summary")
+        aCoder.encodeObject(self.location, forKey: "location")
+        aCoder.encodeObject(self.startDate, forKey: "startDate")
+        aCoder.encodeObject(self.endDate, forKey: "endDate")
+        aCoder.encodeObject(self.hangoutLink, forKey: "hangoutLink")
+        aCoder.encodeObject(self.iCalUID, forKey: "iCalUID")
+        aCoder.encodeObject(self.attendees, forKey: "attendees")
+    }
+    
+    class func supportsSecureCoding() -> Bool {
+        return true
+    }
+    
+    
+    // MARK: JSON
+    
     override class func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
         if let _jsonArray: [JSON] = jsonArray {
             if _jsonArray.isEmpty == true {
@@ -53,7 +100,6 @@ class Event: ModelObject {
         return nil
     }
 
-    
     override func toJSON() -> JSON {
         var json = JSON([])
         json["kind"].string = kind
@@ -84,10 +130,7 @@ class Event: ModelObject {
         hangoutLink = json["hangoutLink"].string
         iCalUID = json["iCalUID"].string
 
-        if let dict = json["creator"].dictionaryObject {
-            organizer = Attendee()
-            organizer?.map(JSON(dict))
-        }
+        organizer = Attendee(json: json["creator"])
         
         let array = json["attendees"].arrayValue
         if let _array: [Attendee] = Attendee.map(array) {

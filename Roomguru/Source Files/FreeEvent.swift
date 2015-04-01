@@ -36,6 +36,15 @@ class FreeEvent: Event {
     required init(json: JSON) {
         super.init(json: json)
     }
+
+    required init(coder aDecoder: NSCoder) {
+        self.duration = aDecoder.decodeDoubleForKey("duration")
+        super.init(coder: aDecoder)
+    }
+    
+    override func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeDouble(self.duration, forKey: "duration")
+    }
 }
 
 
