@@ -13,4 +13,8 @@ extension UIAlertView {
     convenience init(error: NSError) {
         self.init(title: NSLocalizedString("Oh no!", comment: ""), message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
     }
+    
+    convenience init(title: String, message: String) {
+        self.init(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
+    }
 }

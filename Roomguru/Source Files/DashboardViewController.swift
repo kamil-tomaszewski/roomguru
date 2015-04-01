@@ -14,7 +14,8 @@ class DashboardViewController: UIViewController {
     
     private let viewModel = DashboardViewModel(items: [
         CellItem(title: "Revoke event", action: .Revoke),
-        CellItem(title: "Book first available room", action: .Book)
+        CellItem(title: "Book first available room", action: .Book),
+        CellItem(title: "Temporary calendar list opener", action: .Debug)
     ])
     
     // MARK: View life cycle
@@ -43,8 +44,7 @@ extension DashboardViewController {
                     if let startTimeString = event.startTime {
                         if let endTimeString = event.endTime {
                             let message = NSLocalizedString("Booked room", comment: "") + " from " + startTimeString + " to " + endTimeString
-                            let cancel = NSLocalizedString("OK", comment: "")
-                            UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message, delegate: nil, cancelButtonTitle: cancel).show()
+                            UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
                             
                             let entry = CalendarEntry(calendarID: calendarTime.1, event: event)
                             BookingManager.save(entry)
@@ -81,7 +81,10 @@ extension DashboardViewController {
         } else {
             println("failed revoking")
         }
-        
+    }
+    
+    func didTapDebugButton(sender: UIButton) {
+        println("askjhdlahfjha")
     }
 }
 
@@ -101,9 +104,15 @@ extension DashboardViewController: UITableViewDataSource {
         if let _cell = cell as? TableButtonCell {
             
             let item = viewModel[indexPath.row]
-            let action = (item.action == .Book) ? Selector("didTapBookRoom:") : Selector("didTapRevokeBookedRoom:")
+            var action: Selector;
+            
+            switch item.action {
+            case .Book: action = Selector("didTapBookRoom:")
+            case .Revoke: action = Selector("didTapRevokeBookedRoom:")
+            case .Debug: action = Selector("didTapDebugButton:")
+            }
     
-            _cell.button.enabled = (item.action == .Book) ? true : BookingManager.hasRecentlyBookedEvent()
+            _cell.button.enabled = (item.action == .Revoke) ? BookingManager.hasRecentlyBookedEvent() : true
             _cell.button.setTitle(item.title)
             _cell.button.backgroundColor = item.color
             _cell.button.addTarget(self, action: action)

@@ -20,7 +20,6 @@ class DashboardViewModel: NSObject {
     subscript(index: Int) -> CellItem {
         return items[index]
     }
-    
 }
 
 
@@ -31,7 +30,6 @@ extension DashboardViewModel {
     func numberOfItems() -> Int {
         return items.count
     }
-
 }
 
 
@@ -39,7 +37,7 @@ extension DashboardViewModel {
 
 class CellItem {
     
-    enum CellItemAction { case Book, Revoke }
+    enum CellItemAction { case Book, Revoke, Debug }
     
     let title: String
     let action : CellItemAction
@@ -48,7 +46,11 @@ class CellItem {
     init(title: String, action: CellItemAction) {
         self.title = title
         self.action = action
-        _color = (action == .Book) ? UIColor.ngOrangeColor() : UIColor.ngRedColor()
+        
+        switch action {
+        case .Book: _color = UIColor.ngOrangeColor()
+        default: _color = UIColor.ngRedColor()
+        }
     }
     
     // MARK: Private

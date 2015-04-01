@@ -48,9 +48,7 @@ class BookingManager: NSObject {
                 failure(error: NSError(message: message))
             }
             
-        }, failure: { (error: NSError) -> () in
-            failure(error: error)
-        })
+        }, failure: failure)
     }
     
     class func bookTimeFrame(calendarTime: CalendarTimeFrame, summary: String, success: (event: Event) -> Void, failure: ErrorBlock) {
@@ -78,7 +76,6 @@ class BookingManager: NSObject {
             success()
         }, failure: failure)   
     }
-    
 }
 
 extension BookingManager {
@@ -101,7 +98,6 @@ extension BookingManager {
         }
         
         return frames[0]
-        
     }
 }
 
@@ -131,14 +127,10 @@ extension BookingManager {
     class func hasRecentlyBookedEvent() -> Bool {
         if Defaults.hasKey("recently_booked_entry") {
             if let endDate = restoreRecentlyBookedEntry()?.event.endDate?.date() {
-                if NSDate() <= endDate {
-                    return true
-                }
+                return  NSDate() <= endDate
             }
         }
         
         return false
     }
-    
 }
-

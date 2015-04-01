@@ -69,10 +69,8 @@ extension NetworkManager {
             Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
                 if let responseError = error {
                     failure(error: responseError)
-                } else {
-                    if let responseJSON: AnyObject = json {
-                        success(response: JSON(responseJSON))
-                    }
+                } else if let responseJSON: AnyObject = json {
+                    success(response: JSON(responseJSON))
                 }
             }
         }
