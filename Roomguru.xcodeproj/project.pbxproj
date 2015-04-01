@@ -654,6 +654,7 @@
 				5E3A97E61AA72F0A00CE2F20 /* Resources */,
 				167F8D30F1ADCADD56793386 /* Embed Pods Frameworks */,
 				05CBF50C3479CFCF14DDF382 /* Copy Pods Resources */,
+				5E6ED5911ACC3350001CC9AB /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -823,6 +824,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5E6ED5911ACC3350001CC9AB /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Development\" ]; then\nTAGS=\"NGRTodo:|NGRFixme:|NGRHack:|NGRTemp:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\nfi";
 		};
 		B2751B7E0D423C87A390F7D6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

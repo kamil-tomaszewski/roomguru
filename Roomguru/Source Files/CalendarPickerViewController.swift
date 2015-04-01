@@ -14,7 +14,6 @@ class CalendarPickerViewController: UIViewController {
     
     // MARK: View life cycle
 
-    
     override func loadView() {
         aView = loadViewWithClass(CalendarPickerView.self) as? CalendarPickerView
     }
@@ -23,5 +22,11 @@ class CalendarPickerViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("Pick your calendars", comment: "")
+        
+        NetworkManager.sharedInstance.calendarsList({ (response) -> () in
+            println(response)
+        }, failure: { (error) -> () in
+            println(error)
+        });
     }
 }

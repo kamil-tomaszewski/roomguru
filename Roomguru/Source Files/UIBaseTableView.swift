@@ -36,5 +36,4 @@ class UIBaseTableView: UIView {
             table.edges == table.superview!.edges; return
         }
     }
-
 }
