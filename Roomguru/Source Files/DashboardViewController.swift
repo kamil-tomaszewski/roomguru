@@ -39,8 +39,18 @@ extension DashboardViewController {
             var confirmationViewController = BookingConfirmationViewController(calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
 
                 BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
-                    // display success view
-                    println("booking successful")
+                    
+                    if let startTimeString = event.startTime {
+                        if let endTimeString = event.endTime {
+                            let message = NSLocalizedString("Booked room", comment: "") + " from " + startTimeString + " to " + endTimeString
+                            let cancel = NSLocalizedString("OK", comment: "")
+                            UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message, delegate: nil, cancelButtonTitle: cancel).show()
+                            
+                            BookingManager.save(event)
+                            self.aView?.tableView.reloadData()
+                        }
+                    }
+                    
                 }, failure: { (error: NSError) -> () in
                     let errorMessage: String = error.userInfo?["message"] as String
                     println(errorMessage)
@@ -79,7 +89,8 @@ extension DashboardViewController: UITableViewDataSource {
             
             let item = viewModel[indexPath.row]
             let action = (item.action == .Book) ? Selector("didTapBookRoom:") : Selector("didTapRevokeBookedRoom:")
-            
+    
+            _cell.button.enabled = (item.action == .Book) ? true : BookingManager.hasRecentlyBookedEvent()
             _cell.button.setTitle(item.title)
             _cell.button.backgroundColor = item.color
             _cell.button.addTarget(self, action: action)

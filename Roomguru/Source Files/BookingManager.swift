@@ -8,6 +8,7 @@
 
 import Foundation
 import DateKit
+import SwiftyUserDefaults
 
 class BookingManager: NSObject {
     
@@ -95,6 +96,42 @@ extension BookingManager {
         return frames[0]
         
     }
+}
 
+
+// MARK: Saving booked event
+
+extension BookingManager {
+    
+    class func save(event: Event) {
+        let eventData = NSKeyedArchiver.archivedDataWithRootObject(event)
+        Defaults["recently_booked_event"] = eventData
+        Defaults.synchronize()
+    }
+    
+    class func restoreRecentlyBookedEvent() -> Event? {
+        if let eventData = Defaults["recently_booked_event"].data {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(eventData) as? Event
+        }
+        
+        return nil
+    }
+    
+    class func clearRecentlyBookedEvent() {
+        Defaults["recently_booked_event"] = nil
+    }
+    
+    class func hasRecentlyBookedEvent() -> Bool {
+        if Defaults.hasKey("recently_booked_event") {
+            if let endDate = restoreRecentlyBookedEvent()?.endDate?.date() {
+                if NSDate() <= endDate {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
     
 }
+
