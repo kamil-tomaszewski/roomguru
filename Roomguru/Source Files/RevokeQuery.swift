@@ -11,8 +11,14 @@ import Alamofire
 
 class RevokeQuery: Query {
     
-    convenience init(calendarID: String, eventID: String) {
-        let URLExtension = "/calendars/" + calendarID + "/events/" + eventID
+    convenience init(entry: CalendarEntry) {
+        
+        var URLExtension = ""
+        
+        if let eventID = entry.event.identifier {
+            URLExtension = "/calendars/" + entry.calendarID + "/events/" + eventID
+        }
+        
         self.init(.DELETE, URLExtension: URLExtension)
     }
 
