@@ -25,11 +25,6 @@ class TimeFrame: ModelObject {
         self.availability = availability
         super.init()
     }
-    
-    init(json: JSON, availability av: TimeFrameAvailability = .NotAvailable) {
-        availability = av
-        super.init(json: json)
-    }
 
     required init(json: JSON) {
         super.init(json: json)
@@ -46,11 +41,11 @@ class TimeFrame: ModelObject {
     }
     
     override class func map<T where T : ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
-        if let _jsonArray: [JSON] = jsonArray {
-            if _jsonArray.isEmpty == true {
+        if let _jsonArray = jsonArray {
+            if _jsonArray.isEmpty {
                 return nil
             }
-            return _jsonArray.map { T(json: $0) }
+            return _jsonArray.map() { T(json: $0) }
         }
         
         return nil

@@ -90,11 +90,11 @@ class Event: ModelObject, NSSecureCoding {
     // MARK: JSON
     
     override class func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
-        if let _jsonArray: [JSON] = jsonArray {
-            if _jsonArray.isEmpty == true {
+        if let _jsonArray = jsonArray {
+            if _jsonArray.isEmpty {
                 return nil
             }
-            return _jsonArray.map({ T(json: $0) })
+            return _jsonArray.map() { T(json: $0) }
         }
         
         return nil
@@ -137,8 +137,8 @@ class Event: ModelObject, NSSecureCoding {
             
             let copiedArray = _array
 
-            attendees = _array.filter() { return !$0.isResource && !$0.isRoom }
-            rooms = copiedArray.filter() { return $0.isRoom }
+            attendees = _array.filter() { !$0.isResource && !$0.isRoom }
+            rooms = copiedArray.filter() { $0.isRoom }
         }
 
         start = startDate?.date()
