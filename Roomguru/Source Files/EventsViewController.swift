@@ -111,7 +111,7 @@ extension EventsViewController {
         let index = roomSegmentedControl.selectedSegmentIndex
         
         if index == 0 {
-            fetchEventsForCalendars([Room.Aqua, Room.Middle, Room.Cold])
+            fetchEventsForCalendars([Room.Aqua, Room.Middle, Room.Cold, Room.DD])
         } else {
             fetchEventsForCalendars([Room[index]])
         }
