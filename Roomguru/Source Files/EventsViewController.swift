@@ -26,9 +26,8 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tableView = aView?.tableView
-        tableView?.tableHeaderView = buttonView(NSLocalizedString("Future", comment: ""), action: Selector("didTapFutureButton:"))
-        tableView?.tableFooterView = buttonView(NSLocalizedString("Past", comment: ""), action: Selector("didTapPastButton:"))
+        (aView?.tableView.tableHeaderView as ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
+        (aView?.tableView.tableFooterView as ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
         
         self.setupQuery(Room[0])
         self.setupRoomSegmentedControl()
@@ -265,15 +264,5 @@ extension EventsViewController {
         tableView?.delegate = self
         tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
         tableView?.registerClass(FreeEventCell.self, forCellReuseIdentifier: FreeEventCell.reuseIdentifier)
-    }
-    
-    private func buttonView(title: String, action: Selector) -> ButtonView {
-        let frame = CGRectMake(0, 0, CGRectGetWidth(aView!.frame), 50)
-        
-        var buttonView = ButtonView(frame: frame)
-        buttonView.button.setTitle(title)
-        buttonView.button.addTarget(self, action: action)
-        
-        return buttonView
     }
 }

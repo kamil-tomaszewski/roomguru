@@ -13,6 +13,16 @@ class EventsListView: UIBaseTableView {
     override func initialize() {
         super.initialize()
         
-        // provide additional setup here
+        tableView.tableHeaderView = buttonView(NSLocalizedString("Future", comment: ""))
+        tableView.tableFooterView = buttonView(NSLocalizedString("Past", comment: ""))
+    }
+    
+    private func buttonView(title: String) -> ButtonView {
+        let frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 50)
+        
+        var buttonView = ButtonView(frame: frame)
+        buttonView.button.setTitle(title)
+        
+        return buttonView
     }
 }
