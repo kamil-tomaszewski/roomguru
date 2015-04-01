@@ -7,35 +7,12 @@
 //
 
 import UIKit
-import Cartography
 
-class EventDetailsView: UIView {
+class EventDetailsView: UIBaseTableView {
     
-    let tableView = UITableView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
+    override func initialize() {
+        super.initialize()
         
         tableView.hideSeparatorForEmptyCells()
-        addSubview(tableView)
-        
-        defineConstraints()
     }
-    
-    private func defineConstraints() {
-        
-        layout(tableView) { table in
-            table.edges == table.superview!.edges; return
-        }
-    }
-
 }

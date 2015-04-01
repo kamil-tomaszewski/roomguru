@@ -1,14 +1,15 @@
 //
-//  EventsListView.swift
+//  CalendarPickerView.swift
 //  Roomguru
 //
-//  Created by Radoslaw Szeja on 11/03/15.
+//  Created by Patryk Kaczmarek on 01/04/15.
 //  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
 import UIKit
+import Cartography
 
-class EventsListView: UIBaseTableView {
+class CalendarPickerView: UIBaseTableView {
     
     override func initialize() {
         super.initialize()

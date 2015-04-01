@@ -7,37 +7,15 @@
 //
 
 import UIKit
-import Cartography
 
-class DashboardView: UIView {
+class DashboardView: UIBaseTableView {
     
-    let tableView = UITableView(frame: CGRectZero, style: .Plain)
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
+    override func initialize() {
+        super.initialize()
+        
         tableView.showsVerticalScrollIndicator = false
         tableView.alwaysBounceVertical = false
         tableView.separatorStyle = .None
         tableView.rowHeight = 60
-        addSubview(tableView)
-        
-        defineConstraints()
     }
-    
-    private func defineConstraints() {
-        
-        layout(tableView) { table in
-            table.edges == table.superview!.edges; return
-        }
-    }
-
 }

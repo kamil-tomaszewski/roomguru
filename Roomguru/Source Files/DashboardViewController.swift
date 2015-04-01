@@ -84,10 +84,10 @@ extension DashboardViewController {
     }
     
     func didTapDebugButton(sender: UIButton) {
-        println("askjhdlahfjha")
+        let navigation = NavigationController(rootViewController: CalendarPickerViewController())
+        self.presentViewController(navigation, animated: true, completion: nil)
     }
 }
-
 
 // MARK: UITableViewDataSource Methods
 
@@ -116,7 +116,6 @@ extension DashboardViewController: UITableViewDataSource {
             _cell.button.setTitle(item.title)
             _cell.button.backgroundColor = item.color
             _cell.button.addTarget(self, action: action)
-
         }
         
         return cell;

@@ -7,32 +7,12 @@
 //
 
 import UIKit
-import Cartography
 
-class SettingsView: UIView {
+class SettingsView: UIBaseTableView {
     
-    let tableView = UITableView(frame: CGRectZero, style: .Grouped)
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
+    override func initialize() {
+        super.initialize()
         
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        addSubview(tableView)
-        defineConstraints()
-    }
-    
-    private func defineConstraints() {
-        
-        layout(tableView) { table in
-            table.edges == table.superview!.edges; return
-        }
+        // provide additional setup here
     }
 }
