@@ -46,7 +46,8 @@ extension DashboardViewController {
                             let cancel = NSLocalizedString("OK", comment: "")
                             UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message, delegate: nil, cancelButtonTitle: cancel).show()
                             
-                            BookingManager.save(event)
+                            let entry = CalendarEntry(calendarID: calendarTime.1, event: event)
+                            BookingManager.save(entry)
                             self.aView?.tableView.reloadData()
                         }
                     }
@@ -69,6 +70,7 @@ extension DashboardViewController {
     
     func didTapRevokeBookedRoom(sender: UIButton) {
         println(__FUNCTION__)
+        println(BookingManager.restoreRecentlyBookedEntry())
     }
 }
 
