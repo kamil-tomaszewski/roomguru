@@ -13,8 +13,8 @@ import Async
 class EventsViewController: UIViewController {
 
     weak var aView: EventsListView?
-    var viewModel: ListViewModel<Event>?
-    var query = EventsQuery(calendarID: Room[0])
+    var viewModel: ListViewModel<CalendarEntry>?
+    var query: EventsQuery = EventsQuery(calendarID: Room[0])
     
     let sortingKey = "shortDate"
     let roomSegmentedControl = UISegmentedControl(items: Room.names)
@@ -52,7 +52,7 @@ extension EventsViewController {
     
     func fetchEventsForCalendars(calendars: [String], completion: (() -> Void)?) {
         
-        var events: [Event] = []
+        var entries: [CalendarEntry] = []
         
         let failure: (error: NSError) -> () = { (error) -> () in
             UIAlertView(error: error).show()
@@ -69,8 +69,8 @@ extension EventsViewController {
             let query = self.query.copy(calendarID: calendarID)
             NetworkManager.sharedInstance.requestList(query, success: { (response: [Event]?) -> () in
                 if let _response = response {
-                    // add only not canceled events:
-                    events += _response.filter { !$0.isCanceled() }
+					let events = _response.filter { !$0.isCanceled() }
+                    entries += CalendarEntry.caledarEntries(calendarID, events: events) as [CalendarEntry]
                 }
                 dispatch_group_leave(group)
                 
@@ -82,14 +82,16 @@ extension EventsViewController {
         }
         
         dispatch_group_notify(group, queue) {
-            let sortedEvents = Event.sortedByDate(events)
-            let eventsWithGaps = FreeEvent.eventsWithFreeGaps(sortedEvents)
-            self.viewModel = ListViewModel(eventsWithGaps, sortingKey: "shortDate")
-            Async.main {
+            Async.background {
+                let sortedEntries = CalendarEntry.sortedByDate(entries)
+                let entriesWithGaps = CalendarEntry.entriesWithFreeGaps(sortedEntries)
+                self.viewModel = ListViewModel(entriesWithGaps, sortingKey: "event.shortDate")
+            }.main {
                 self.stopActivityIndicator()
                 self.aView?.tableView.reloadData()
                 if let _completion = completion { _completion() }
             }
+            return
         }
     }
     
@@ -174,7 +176,7 @@ extension EventsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let _section: List<Event> = viewModel?[section] {
+        if let _section: List<CalendarEntry> = viewModel?[section] {
             return _section.count
         }
         return 0
@@ -206,8 +208,12 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let event = viewModel?[indexPath.section][indexPath.row]
-        return event is FreeEvent ? 40 : 65
+        if let entry = viewModel?[indexPath.section][indexPath.row] {
+            if entry.event is FreeEvent {
+                return 40.0
+            }
+        }
+        return 65
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -228,9 +234,9 @@ extension EventsViewController: FreeEventCellDelegate {
  
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval) {
         if let indexPath = aView?.tableView.indexPathForCell(cell) {
-            let freeEvent = viewModel?[indexPath.section][indexPath.row]
+            let freeEvent = viewModel?[indexPath.section][indexPath.row].event
             
-            // book selected room for chosen time period
+            // NGRTodo: book selected room for chosen time period
             
         }
     }
@@ -243,9 +249,9 @@ extension EventsViewController {
     private func eventFromIndexPath(indexPath: NSIndexPath) -> Event? {
 
         if viewModel?.sectionsCount() > 1 {
-            return viewModel?[indexPath.section][indexPath.row]
+            return viewModel?[indexPath.section][indexPath.row].event
         }
-        return viewModel?[indexPath.row]
+        return viewModel?[indexPath.row].event
     }
     
     private func setupQuery(calendarID: String) {

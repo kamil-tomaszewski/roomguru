@@ -13,8 +13,8 @@ import SwiftyUserDefaults
 class BookingManager: NSObject {
     
     class func findClosestAvailableRoom(success: (calendarTime: CalendarTimeFrame) -> Void, failure: ErrorBlock) {
-
-        let allRooms = [Room.Aqua, Room.Cold, Room.Middle, Room.DD]
+        
+        let allRooms = [Room.Test]//[Room.Aqua, Room.Cold, Room.Middle, Room.DD]
         let query = FreeBusyQuery(calendarsIDs: allRooms)
 
         NetworkManager.sharedInstance.request(query, success: { (response: JSON?) -> () in

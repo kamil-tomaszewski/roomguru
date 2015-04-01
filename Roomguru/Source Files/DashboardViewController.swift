@@ -46,7 +46,7 @@ extension DashboardViewController {
                             let message = NSLocalizedString("Booked room", comment: "") + " from " + startTimeString + " to " + endTimeString
                             UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
                             
-                            let entry = CalendarEntry(calendarID: calendarTime.1, event: event)
+                            let entry = CalendarEntry(calendarTime.1, event: event)
                             BookingManager.save(entry)
                             self.aView?.tableView.reloadData()
                         }

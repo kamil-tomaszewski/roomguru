@@ -160,17 +160,6 @@ class Event: ModelObject, NSSecureCoding {
 
 extension Event {
     
-    class func sortedByDate(items: [Event]) -> [Event] {
-        return items.sorted({
-            if let firstDate = $0.start {
-                if let secondDate = $1.start {
-                    return firstDate.compare(secondDate).ascending
-                }
-            }
-            return false
-        })
-    }
-    
     func isCanceled() -> Bool {
         if let _status = room?.status {
             return _status == .NotGoing

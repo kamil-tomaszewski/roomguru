@@ -10,13 +10,17 @@ import Foundation
 
 class CalendarEntry: NSObject, NSSecureCoding {
     
-    let calendarID: String = ""
-    let event: Event = Event()
+    var calendarID: String = ""
+    var event: Event = Event()
     
-    init(calendarID: String, event: Event) {
+    init(_ calendarID: String, event: Event) {
         self.calendarID = calendarID
         self.event = event
         super.init()
+    }
+    
+    class func caledarEntries(calendarID: String, events: [Event]) -> [CalendarEntry] {
+        return events.map { CalendarEntry(calendarID, event: $0) }
     }
     
     // MARK: NSSecureCoding
@@ -29,6 +33,8 @@ class CalendarEntry: NSObject, NSSecureCoding {
         if let event = aDecoder.decodeObjectOfClass(Event.self, forKey: "event") as? Event {
             self.event = event
         }
+        
+        super.init()
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -40,3 +46,68 @@ class CalendarEntry: NSObject, NSSecureCoding {
         return true
     }
 }
+
+
+extension CalendarEntry {
+    
+    class func sortedByDate(items: [CalendarEntry]) -> [CalendarEntry] {
+        return items.sorted({
+            if let firstDate = $0.event.start {
+                if let secondDate = $1.event.start {
+                    return firstDate.compare(secondDate).ascending
+                }
+            }
+            return false
+        })
+    }
+    
+}
+
+
+extension CalendarEntry {
+    
+    /**
+    *   This method expects *sorted by date* array of Events
+    */
+    class func entriesWithFreeGaps(var entries: [CalendarEntry]) -> [CalendarEntry] {
+        
+        var freeEntries: [CalendarEntry] = []
+        let eventsCount = entries.count
+        let today = NSDate()
+        let minimumPeriod = 30*60.0
+        
+        for (index: Int, entry: CalendarEntry) in enumerate(entries) {
+            let nextIndex = index + 1
+            if nextIndex < eventsCount {
+                let nextEntry = entries[index+1]
+                
+                if let nextEventStart = nextEntry.event.startDate?.date() {
+                    if let eventEnd = entry.event.endDate?.date() {
+                        
+                        if !freeEntries.contains(entry) {
+                            freeEntries.append(entry)
+                        }
+                        
+                        if eventEnd.day == nextEventStart.day && eventEnd.day >= today.day && eventEnd >= today {
+                            let timePeriod = eventEnd.timeIntervalSinceDate(nextEventStart)
+                            
+                            if timePeriod >= minimumPeriod {
+                                let freeEvent = FreeEvent(startDate: eventEnd, endDate: nextEventStart)
+                                let freeEntry = CalendarEntry(entry.calendarID, event: freeEvent)
+                                freeEntries.append(freeEntry)
+                            }
+                        }
+                        
+                        if !freeEntries.contains(nextEntry) {
+                            freeEntries.append(nextEntry)
+                        }
+                    }
+                }
+            }
+        }
+        
+        return freeEntries
+    }
+    
+}
+

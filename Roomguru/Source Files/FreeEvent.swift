@@ -48,47 +48,20 @@ class FreeEvent: Event {
 }
 
 
-extension FreeEvent {
+extension TimeFrame {
     
-    /**
-    *   This method expects *sorted by date* array of Events
-    */
-    class func eventsWithFreeGaps(events: [Event]) -> [Event] {
-        
-        var freeEvents: [Event] = []
-        let eventsCount = events.count
+    convenience init(freeEvent: FreeEvent) {
         let today = NSDate()
-        let minimumPeriod = 30*60.0
         
-        for (index: Int, event: Event) in enumerate(events) {
-            let previousIndex = index + 1
-            if previousIndex < eventsCount {
-                let prevEvent = events[index+1]
-                
-                if let prevEventEnd = prevEvent.endDate?.date() {
-                    if let eventStart = event.startDate?.date() {
-                        
-                        if !freeEvents.contains(event) {
-                            freeEvents.append(event)
-                        }
-                        
-                        if eventStart.day == prevEventEnd.day && eventStart.day >= today.day && eventStart >= today {
-                            let timePeriod = eventStart.timeIntervalSinceDate(prevEventEnd)
-                            
-                            if timePeriod >= minimumPeriod {
-                                freeEvents.append(FreeEvent(startDate: eventStart, endDate: prevEventEnd))
-                            }
-                        }
-                        
-                        if !freeEvents.contains(prevEvent) {
-                            freeEvents.append(prevEvent)
-                        }
-                    }
-                }
+        if let start = freeEvent.start {
+            if let end = freeEvent.end {
+                self.init(startDate: start, endDate: end, availability: .Available)
+            } else {
+                self.init(startDate: today, endDate: today, availability: .Available)
             }
+        } else {
+            self.init(startDate: today, endDate: today, availability: .Available)
         }
-        
-        return freeEvents
     }
     
 }
