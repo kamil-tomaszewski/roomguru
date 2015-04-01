@@ -10,8 +10,8 @@ import Foundation
 
 class CalendarEntry: NSObject, NSSecureCoding {
     
-    let calendarID: String?
-    let event: Event?
+    let calendarID: String = ""
+    let event: Event = Event()
     
     init(calendarID: String, event: Event) {
         self.calendarID = calendarID
@@ -22,12 +22,18 @@ class CalendarEntry: NSObject, NSSecureCoding {
     // MARK: NSSecureCoding
     
     required init(coder aDecoder: NSCoder) {
-        self.calendarID = aDecoder.decodeObjectForKey("calendarID") as? String
-        self.event = aDecoder.decodeObjectOfClass(Event.self, forKey: "event") as? Event
+        if let calendarID = aDecoder.decodeObjectForKey("calendarID") as? String {
+            self.calendarID = calendarID
+        }
+        
+        if let event = aDecoder.decodeObjectOfClass(Event.self, forKey: "event") as? Event {
+            self.event = event
+        }
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.calendarID, forKey: "calendarID")
+        aCoder.encodeObject(self.event, forKey: "event")
     }
     
     class func supportsSecureCoding() -> Bool {
