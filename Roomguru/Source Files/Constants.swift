@@ -14,7 +14,7 @@ struct Constants {
     }
 
     struct GooglePlus {
-        static let Scope = [kGTLAuthScopePlusLogin, "https://www.googleapis.com/auth/calendar"]
+        static let Scope = ["https://www.googleapis.com/auth/calendar"]
         static let ServerURL = "https://www.googleapis.com/calendar/v3"
 
         #if ENV_STAGING
