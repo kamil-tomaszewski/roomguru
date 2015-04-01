@@ -14,7 +14,7 @@ class EventsViewController: UIViewController {
 
     weak var aView: EventsListView?
     var viewModel: ListViewModel<Event>?
-    var query: EventsQuery = EventsQuery(calendarID: Room[0])
+    var query = EventsQuery(calendarID: Room[0])
     
     let sortingKey = "shortDate"
     let roomSegmentedControl = UISegmentedControl(items: Room.names)
