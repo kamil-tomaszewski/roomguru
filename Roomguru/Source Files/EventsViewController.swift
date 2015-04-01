@@ -68,7 +68,7 @@ extension EventsViewController {
             dispatch_group_enter(group)
             
             let query = self.query.copy(calendarID: calendarID)
-            NetworkManager.sharedInstance.eventsList(query, success: { (response) -> () in
+            NetworkManager.sharedInstance.requestList(query, success: { (response: [Event]?) -> () in
                 if let _response = response {
                     events += _response
                 }

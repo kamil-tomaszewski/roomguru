@@ -17,7 +17,7 @@ class BookingManager: NSObject {
         let allRooms = [Room.Aqua, Room.Cold, Room.Middle]
         let query = FreeBusyQuery(calendarsIDs: allRooms)
 
-        NetworkManager.sharedInstance.freebusyList(query, success: { (response: JSON?) -> () in
+        NetworkManager.sharedInstance.request(query, success: { (response: JSON?) -> () in
                         
             var calendars: [AvailabilityCalendar] = []
             
@@ -58,7 +58,7 @@ class BookingManager: NSObject {
         let query = BookingQuery(calendarTime)
         query.summary = summary
         
-        NetworkManager.sharedInstance.createEventWithQuery(query, success: { (response) in
+        NetworkManager.sharedInstance.request(query, success: { (response) in
             
             if let _response = response {
                 let event = Event(json: _response)
@@ -74,7 +74,7 @@ class BookingManager: NSObject {
     
     class func revokeCalendarEntry(entry: CalendarEntry, success: VoidBlock, failure: ErrorBlock) {
         let query = RevokeQuery(entry)
-        NetworkManager.sharedInstance.revoke(query, success: { (response) -> () in
+        NetworkManager.sharedInstance.request(query, success: { (response) -> () in
             success()
         }, failure: failure)   
     }

@@ -78,26 +78,12 @@ extension NetworkManager {
         }
     }
     
-    func eventsList(query: EventsQuery, success: (response: [Event]?) -> (), failure: ErrorBlock) {
-
-        assert(self.clientID != "", "Client ID is not set!")
-        
+    func requestList<T where T: ModelJSONProtocol>(query: EventsQuery, success: (response: [T]?) -> (), failure: ErrorBlock) {
         query.setFullPath(serverURL, authKey: key())
-        PageableRequest<Event>(query).resume(success, failure)
-        
+        PageableRequest<T>(query).resume(success, failure)
     }
     
-    func freebusyList(query: Query, success: ResponseBlock, failure: ErrorBlock) {
-        query.setFullPath(serverURL, authKey: key())
-        QueryRequest(query).resume(success, failure: failure)
-    }
-    
-    func createEventWithQuery(query: BookingQuery, success: ResponseBlock, failure: ErrorBlock) {
-        query.setFullPath(serverURL, authKey: key())
-        QueryRequest(query).resume(success, failure: failure)
-    }
-    
-    func revoke(query: Query, success: ResponseBlock, failure: ErrorBlock) {
+    func request(query: Query, success: ResponseBlock, failure: ErrorBlock) {
         query.setFullPath(serverURL, authKey: key())
         QueryRequest(query).resume(success, failure: failure)
     }
