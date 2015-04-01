@@ -123,7 +123,7 @@ extension BookingManager {
     
     class func hasRecentlyBookedEvent() -> Bool {
         if Defaults.hasKey("recently_booked_entry") {
-            if let endDate = restoreRecentlyBookedEntry()?.event?.endDate?.date() {
+            if let endDate = restoreRecentlyBookedEntry()?.event.endDate?.date() {
                 if NSDate() <= endDate {
                     return true
                 }
