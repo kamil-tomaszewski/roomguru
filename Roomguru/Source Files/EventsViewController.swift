@@ -50,7 +50,7 @@ class EventsViewController: UIViewController {
 
 extension EventsViewController {
     
-    func fetchEventsForCalendars(calendars: [String]) {
+    func fetchEventsForCalendars(calendars: [String], completion: (() -> Void)?) {
         
         var events: [Event] = []
         
@@ -88,6 +88,7 @@ extension EventsViewController {
             Async.main {
                 self.stopActivityIndicator()
                 self.aView?.tableView.reloadData()
+                if let _completion = completion { _completion() }
             }
         }
     }
@@ -112,9 +113,13 @@ extension EventsViewController {
         let index = roomSegmentedControl.selectedSegmentIndex
         
         if index == 0 {
-            fetchEventsForCalendars([Room.Aqua, Room.Middle, Room.Cold, Room.DD])
+            fetchEventsForCalendars([Room.Aqua, Room.Middle, Room.Cold, Room.DD]) {
+                self.aView?.tableView.scrollToTopAnimated(false); return
+            }
         } else {
-            fetchEventsForCalendars([Room[index]])
+            fetchEventsForCalendars([Room[index]])  {
+                self.aView?.tableView.scrollToTopAnimated(false); return
+            }
         }
     }
     
@@ -124,7 +129,7 @@ extension EventsViewController {
         }
         
         let index = roomSegmentedControl.selectedSegmentIndex
-        fetchEventsForCalendars([Room[index]])
+        fetchEventsForCalendars([Room[index]], nil)
     }
     
     func didTapPastButton(sender: UIButton) {
@@ -133,7 +138,7 @@ extension EventsViewController {
         }
         
         let index = roomSegmentedControl.selectedSegmentIndex
-        fetchEventsForCalendars([Room[index]])
+        fetchEventsForCalendars([Room[index]], nil)
     }
 }
 
@@ -187,7 +192,6 @@ extension EventsViewController: UITableViewDataSource {
             cell.delegate = self
             cell.timePeriod = freeEvent.duration
             cell.freeTimeButton.setTitle(title)
-            cell.invalidate()
             
             return cell
         } else {

@@ -18,10 +18,6 @@ class ListViewModel<T: NSObject> {
     private var sections: Table?
     private var sortingKey: String?
     
-    init(_ items: [T]) {
-        self.items = List<T>(items)
-    }
-    
     init(_ items: [T], sortingKey: String) {
         self.items = List<T>(items)
         self.sortingKey = sortingKey
@@ -36,19 +32,15 @@ class ListViewModel<T: NSObject> {
         return items
     }
     
+    // NGRFixme: Is this second subscript needed?
     subscript(index: Int) -> T {
         return items[index]
     }
     
     func sectionsCount() -> Int {
-        if let sections = self.sections {
-            return sections.count
-        }
-        return 1
+        return self.sections?.count ?? 1
     }
-    
 }
-
 
 // MARK: Private
 
@@ -81,7 +73,6 @@ extension ListViewModel {
         
         return Table(sections)
     }
-    
 }
 
 extension Array {
@@ -96,5 +87,4 @@ extension Array {
             return false
         })
     }
-    
 }

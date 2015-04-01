@@ -19,5 +19,12 @@ extension UITableView {
     func hideSeparatorForEmptyCells() {
         self.tableFooterView = UIView(frame: CGRectZero)
     }
+    
+    func scrollToTopAnimated(animated: Bool) {
+        var y: CGFloat = 0
+        if let _y = self.tableHeaderView?.frame.height {
+            y = -(_y + CGRectGetHeight(UIApplication.sharedApplication().statusBarFrame))
+        }
+        self.setContentOffset(CGPointMake(0, y), animated: animated)
+    }
 }
-
