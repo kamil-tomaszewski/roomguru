@@ -70,7 +70,18 @@ extension DashboardViewController {
     
     func didTapRevokeBookedRoom(sender: UIButton) {
         println(__FUNCTION__)
-        println(BookingManager.restoreRecentlyBookedEntry())
+        if let entry = BookingManager.restoreRecentlyBookedEntry() {
+            
+            BookingManager.revokeCalendarEntry(entry, success: {
+                println("revoked")
+            }) { (error) -> () in
+                println(error)
+            }
+            
+        } else {
+            println("failed revoking")
+        }
+        
     }
 }
 

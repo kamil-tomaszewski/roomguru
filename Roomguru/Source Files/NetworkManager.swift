@@ -96,6 +96,11 @@ extension NetworkManager {
         query.setFullPath(serverURL, authKey: key())
         QueryRequest(query).resume(success, failure: failure)
     }
+    
+    func revoke(query: Query, success: ResponseBlock, failure: ErrorBlock) {
+        query.setFullPath(serverURL, authKey: key())
+        QueryRequest(query).resume(success, failure: failure)
+    }
 }
 
 // MARK: Private

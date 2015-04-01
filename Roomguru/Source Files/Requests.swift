@@ -26,7 +26,7 @@ class QueryRequest {
     func resume(success: ResponseBlock, failure: ErrorBlock) {
         request = createRequest()
         request.responseJSON { (request, response, json, error) -> Void in
-            
+                    
             if let responseError: NSError = error as NSError? {
                 failure(error: responseError)
                 return
@@ -40,6 +40,8 @@ class QueryRequest {
                 }.main {
                     success(response: swiftyJSON)
                 }
+            } else if response?.statusCode == 204 {
+                success(response: nil)
             } else {
                 let description = NSLocalizedString("Failed retrieving data", comment: "")
                 let otherError = NSError(domain: "com.ngr.roomguru", code: -1, userInfo: [NSLocalizedDescriptionKey: description])

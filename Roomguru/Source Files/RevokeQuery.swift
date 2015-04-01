@@ -11,11 +11,11 @@ import Alamofire
 
 class RevokeQuery: Query {
     
-    convenience init(entry: CalendarEntry) {
+    convenience init(_ entry: CalendarEntry) {
         
         var URLExtension = ""
-        
-        if let eventID = entry.event.identifier {
+
+        if let eventID = entry.event.identifier as String? {
             URLExtension = "/calendars/" + entry.calendarID + "/events/" + eventID
         }
         
