@@ -99,31 +99,31 @@ extension BookingManager {
 }
 
 
-// MARK: Saving booked event
+// MARK: Saving booked calendar entry
 
 extension BookingManager {
     
-    class func save(event: Event) {
-        let eventData = NSKeyedArchiver.archivedDataWithRootObject(event)
-        Defaults["recently_booked_event"] = eventData
+    class func save(entry: CalendarEntry) {
+        let entryData = NSKeyedArchiver.archivedDataWithRootObject(entry)
+        Defaults["recently_booked_entry"] = entryData
         Defaults.synchronize()
     }
     
-    class func restoreRecentlyBookedEvent() -> Event? {
-        if let eventData = Defaults["recently_booked_event"].data {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(eventData) as? Event
+    class func restoreRecentlyBookedEntry() -> CalendarEntry? {
+        if let entryData = Defaults["recently_booked_entry"].data {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(entryData) as? CalendarEntry
         }
         
         return nil
     }
     
-    class func clearRecentlyBookedEvent() {
-        Defaults["recently_booked_event"] = nil
+    class func clearRecentlyBookedEntry() {
+        Defaults["recently_booked_entry"] = nil
     }
     
     class func hasRecentlyBookedEvent() -> Bool {
-        if Defaults.hasKey("recently_booked_event") {
-            if let endDate = restoreRecentlyBookedEvent()?.endDate?.date() {
+        if Defaults.hasKey("recently_booked_entry") {
+            if let endDate = restoreRecentlyBookedEntry()?.event?.endDate?.date() {
                 if NSDate() <= endDate {
                     return true
                 }
