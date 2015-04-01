@@ -187,7 +187,7 @@ extension EventsViewController: UITableViewDataSource {
             
             cell.delegate = self
             cell.timePeriod = freeEvent.duration
-            cell.freeTimeButton.setTitle(title, forState: .Normal)
+            cell.freeTimeButton.setTitle(title)
             cell.invalidate()
             
             return cell
@@ -195,16 +195,9 @@ extension EventsViewController: UITableViewDataSource {
             let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as EventCell
             cell.indentationLevel = 7
             cell.textLabel?.text = event?.summary
-            cell.timeMaxLabel.text = event?.endTime
-            cell.timeMinLabel.text = event?.startTime
+            cell.timeMaxLabel.text = event?.startTime
+            cell.timeMinLabel.text = event?.endTime
             
-            if let _status = event?.room?.status {
-                if _status == .NotGoing {
-                    cell.backgroundColor = UIColor.redColor()
-                } else {
-                    cell.backgroundColor = UIColor.greenColor()
-                }
-            }
             return cell
         }
     }
@@ -278,7 +271,7 @@ extension EventsViewController {
         let frame = CGRectMake(0, 0, CGRectGetWidth(aView!.frame), 50)
         
         var buttonView = ButtonView(frame: frame)
-        buttonView.button.setTitle(title, forState: .Normal)
+        buttonView.button.setTitle(title)
         buttonView.button.addTarget(self, action: action)
         
         return buttonView

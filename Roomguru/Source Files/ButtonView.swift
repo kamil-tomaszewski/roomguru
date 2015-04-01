@@ -40,7 +40,6 @@ class ButtonView: UIView {
 
     private func configure() {
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
-        button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        button.setTitleColor(UIColor.ngOrangeColor(), forState: .Normal)
     }
-
 }
