@@ -47,7 +47,7 @@ extension String {
         case Room.Middle: return Room.names[2]
         case Room.Cold: return Room.names[3]
         case Room.Test: return "Test"
-        case Room.DD: return Room.names[5]
+        case Room.DD: return Room.names[4]
         default: return ""
         }
     }
