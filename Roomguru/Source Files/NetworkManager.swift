@@ -78,7 +78,7 @@ extension NetworkManager {
         }
     }
     
-    func requestList<T where T: ModelJSONProtocol>(query: EventsQuery, success: (response: [T]?) -> (), failure: ErrorBlock) {
+    func requestList<T where T: ModelJSONProtocol>(query: PageableQuery, success: (response: [T]?) -> (), failure: ErrorBlock) {
         query.setFullPath(serverURL, authKey: key())
         PageableRequest<T>(query).resume(success, failure)
     }
