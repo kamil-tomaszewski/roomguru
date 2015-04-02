@@ -76,13 +76,10 @@ extension AvailabilityCalendar {
         
         let today = NSDate()
         
-        if let firstFrame = timeFrames.first {
-
-            if firstFrame.startDate.day > today.day {
-                let endDate = today.tomorrow.midnight.seconds - 1
-                let timeFrame = TimeFrame(startDate: today, endDate: endDate, availability: .Available)
-                return (timeFrame, calendarID)
-            }
+        if timeFrames.first?.startDate.day > today.day {
+            let endDate = today.tomorrow.midnight.seconds - 1
+            let timeFrame = TimeFrame(startDate: today, endDate: endDate, availability: .Available)
+            return (timeFrame, calendarID)
             
         }
         

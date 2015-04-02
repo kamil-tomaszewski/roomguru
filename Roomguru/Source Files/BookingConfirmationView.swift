@@ -105,27 +105,25 @@ class BookingConfirmationView: UIView {
         
     }
     
-    private func configureButtonsAppearance() {
-        let black = UIColor.blackColor()
-        let highlighted = UIColor.lightGrayColor()
+    private func configureButtonsAppearance() {        
+        setupButton(&self.lessMinutesButton, withTitle: NSLocalizedString("<", comment: ""))
+        setupButton(&self.moreMinutesButton, withTitle: NSLocalizedString(">", comment: ""))
         
-        self.lessMinutesButton.setTitle(NSLocalizedString("<", comment: ""), forState: .Normal)
-        self.lessMinutesButton.setTitleColor(black, forState: .Normal)
-        self.lessMinutesButton.setTitleColor(highlighted, forState: .Highlighted)
-        self.lessMinutesButton.setTitleColor(highlighted, forState: .Disabled)
-        
-        self.moreMinutesButton.setTitle(NSLocalizedString(">", comment: ""), forState: .Normal)
-        self.moreMinutesButton.setTitleColor(black, forState: .Normal)
-        self.moreMinutesButton.setTitleColor(highlighted, forState: .Highlighted)
-        self.moreMinutesButton.setTitleColor(highlighted, forState: .Disabled)
-        
-        self.confirmButton.setTitle(NSLocalizedString("Book", comment: ""), forState: .Normal)
-        self.confirmButton.backgroundColor = UIColor.ngOrangeColor()
-        self.confirmButton.layer.cornerRadius = 5.0
-        
-        self.cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), forState: .Normal)
-        self.cancelButton.backgroundColor = UIColor.ngRedColor()
-        self.cancelButton.layer.cornerRadius = 5.0
+        setupRoundButton(&self.confirmButton, withTitle: NSLocalizedString("Book", comment: ""), color: UIColor.ngOrangeColor())
+        setupRoundButton(&self.cancelButton, withTitle: NSLocalizedString("Cancel", comment: ""), color: UIColor.ngOrangeColor())
+    }
+    
+    private func setupButton(inout button: UIButton, withTitle title: String) {
+        button.setTitle(title, forState: .Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
+        button.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+    }
+    
+    private func setupRoundButton(inout button: UIButton, withTitle title: String, color: UIColor) {
+        button.setTitle(title, forState: .Normal)
+        button.backgroundColor = color
+        button.layer.cornerRadius = 5.0
     }
     
     private func configureLabelsAppearance() {

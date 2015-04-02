@@ -43,8 +43,8 @@ class QueryRequest {
             } else if response?.statusCode == 204 {
                 success(response: nil)
             } else {
-                let description = NSLocalizedString("Failed retrieving data", comment: "")
-                let otherError = NSError(domain: "com.ngr.roomguru", code: -1, userInfo: [NSLocalizedDescriptionKey: description])
+                let message = NSLocalizedString("Failed retrieving data", comment: "")
+                let otherError = NSError(message: message)
                 
                 failure(error: otherError)
             }
