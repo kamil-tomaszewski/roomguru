@@ -37,7 +37,7 @@ class BookingConfirmationViewController: UIViewController {
     // MARK: Lifecycle
     
     override func loadView() {
-        aView = loadViewWithClass(BookingConfirmationView.self) as? BookingConfirmationView
+        aView = loadViewWithClass(BookingConfirmationView.self)
     }
     
     override func viewDidLoad() {

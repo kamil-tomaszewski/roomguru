@@ -15,7 +15,7 @@ class LoginViewController: UIViewController  {
     // MARK: Lifecycle
 
     override func loadView() {
-        aView = loadViewWithClass(LoginView.self) as? LoginView
+        aView = loadViewWithClass(LoginView.self)
     }
 
     override func viewDidLoad() {

@@ -21,7 +21,7 @@ class DashboardViewController: UIViewController {
     // MARK: View life cycle
 
     override func loadView() {
-        aView = loadViewWithClass(DashboardView.self) as? DashboardView
+        aView = loadViewWithClass(DashboardView.self)
     }
     
     override func viewDidLoad() {

@@ -20,7 +20,7 @@ class EventsViewController: UIViewController {
     let roomSegmentedControl = UISegmentedControl(items: Room.names)
 
     override func loadView() {
-        aView = loadViewWithClass(EventsListView.self) as? EventsListView
+        aView = loadViewWithClass(EventsListView.self)
     }
     
     override func viewDidLoad() {

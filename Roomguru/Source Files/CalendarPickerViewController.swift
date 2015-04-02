@@ -15,7 +15,7 @@ class CalendarPickerViewController: UIViewController {
     // MARK: View life cycle
 
     override func loadView() {
-        aView = loadViewWithClass(CalendarPickerView.self) as? CalendarPickerView
+        aView = loadViewWithClass(CalendarPickerView.self)
     }
     
     override func viewDidLoad() {

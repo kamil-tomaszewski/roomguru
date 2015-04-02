@@ -27,7 +27,7 @@ class EventDetailsViewController: UIViewController {
     }
     
     override func loadView() {
-        aView = loadViewWithClass(EventDetailsView.self) as? EventDetailsView
+        aView = loadViewWithClass(EventDetailsView.self)
     }
     
     override func viewDidLoad() {

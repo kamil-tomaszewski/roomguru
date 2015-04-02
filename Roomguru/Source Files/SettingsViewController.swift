@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: View life cycle
 
     override func loadView() {
-        aView = loadViewWithClass(SettingsView.self) as? SettingsView
+        aView = loadViewWithClass(SettingsView.self)
     }
     
     override func viewDidLoad() {
