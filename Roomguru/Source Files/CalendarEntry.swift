@@ -47,22 +47,19 @@ class CalendarEntry: NSObject, NSSecureCoding {
     }
 }
 
-
 extension CalendarEntry {
     
     class func sortedByDate(items: [CalendarEntry]) -> [CalendarEntry] {
-        return items.sorted({
+        return items.sorted {
             if let firstDate = $0.event.start {
                 if let secondDate = $1.event.start {
                     return firstDate.compare(secondDate).ascending
                 }
             }
             return false
-        })
+        }
     }
-    
 }
-
 
 extension CalendarEntry {
     
@@ -108,6 +105,5 @@ extension CalendarEntry {
         
         return freeEntries
     }
-    
 }
 

@@ -58,6 +58,7 @@ extension EventDetailsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        case 1: return viewModel.numberOfLocations()
         case 3: return viewModel.numberOfGuests()
         default:
             return 1
@@ -155,7 +156,7 @@ private extension EventDetailsViewController {
     
     private func attendeeInfoForIndexPath(indexPath: NSIndexPath) -> AttendeeInfo {
         if indexPath.section == 1 {
-            return viewModel.location()
+            return viewModel.location(indexPath.row)
         } else if indexPath.section == 2 {
             return viewModel.owner()
         } else {

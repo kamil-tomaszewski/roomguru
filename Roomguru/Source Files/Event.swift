@@ -25,7 +25,7 @@ class Event: ModelObject, NSSecureCoding {
     var iCalUID:    String?
     var attendees:  [Attendee]?
     var organizer:  Attendee?
-    var room:       Attendee?
+    var rooms:      [Attendee]?
     
     var start:      NSDate?
     var end:        NSDate?
@@ -146,7 +146,7 @@ class Event: ModelObject, NSSecureCoding {
             let copiedArray = _array
 
             attendees = _array.filter { !$0.isResource && !$0.isRoom }
-            room = copiedArray.filter { $0.isRoom }.first
+            rooms = copiedArray.filter { $0.isRoom }
         }
 
         start = startDate?.date()
@@ -161,8 +161,13 @@ class Event: ModelObject, NSSecureCoding {
 extension Event {
     
     func isCanceled() -> Bool {
-        if let _status = room?.status {
-            return _status == .NotGoing
+        if let _rooms = rooms {
+            return _rooms.filter {
+                if let _status = $0.status {
+                    return _status == .NotGoing
+                }
+                return false
+            }.count > 0
         }
         return true
     }

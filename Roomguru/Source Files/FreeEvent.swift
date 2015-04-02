@@ -63,5 +63,4 @@ extension TimeFrame {
             self.init(startDate: today, endDate: today, availability: .Available)
         }
     }
-    
 }

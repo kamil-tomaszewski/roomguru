@@ -34,8 +34,6 @@ class Attendee: ModelObject, NSSecureCoding {
         
         if let status = aDecoder.decodeObjectForKey("status") as? String {
             self.status = Status(rawValue: status)
-        } else {
-            self.status = Status(rawValue: "undefined")
         }
         
         self.isOrganizer = aDecoder.decodeBoolForKey("isOrganizer")

@@ -28,6 +28,10 @@ class EventDetailsViewModel: NSObject {
         return event?.attendees?.count ?? 0
     }
     
+    func numberOfLocations() -> Int {
+        return event?.rooms?.count ?? 0
+    }
+    
     // MARK: text
     
     func hangoutURL() -> NSURL? {
@@ -45,8 +49,8 @@ class EventDetailsViewModel: NSObject {
         return infoWithAttendee(event?.organizer)
     }
     
-    func location() -> AttendeeInfo {
-        return infoWithAttendee(event?.room)
+    func location(index: Int) -> AttendeeInfo {
+        return infoWithAttendee(event?.rooms?[index])
     }
     
     func summary() -> NSAttributedString {
