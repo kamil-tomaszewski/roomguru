@@ -16,11 +16,11 @@ class AttendeeCell: UITableViewCell {
     let footerLabel = UILabel()
     let avatarImageView = UIImageView()
     
-    private struct aStruct { static var staticVar: String = "TableViewAttendeeCellReuseIdentifier"}
+    private struct constants { static var cellIdentifier: String = "TableViewAttendeeCellReuseIdentifier"}
     
     class var reuseIdentifier: String {
-        get { return aStruct.staticVar }
-        set { aStruct.staticVar = newValue }
+        get { return constants.cellIdentifier }
+        set { constants.cellIdentifier = newValue }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -36,27 +36,23 @@ class AttendeeCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarImageView.image = nil
+        statusLabel.text = nil
     }
     
     // MARK: Public
     
     func setMarkWithStatus(status: Status?) {
         
-        var mark = ""
         if let _status = status {
-            
-            switch _status {
-            case .Awaiting:
-                mark =  String.fontAwesomeIconWithName(.ClockO)
-            case .NotGoing:
-                mark =  String.fontAwesomeIconWithName(.Ban)
-            case .Maybe:
-                mark =  String.fontAwesomeIconWithName(.Question)
-            case .Going:
-                mark =  String.fontAwesomeIconWithName(.Check)
-            }
+            statusLabel.text = String.fontAwesomeIconWithName({
+                switch _status {
+                case .Awaiting: return .ClockO
+                case .NotGoing: return .Ban
+                case .Maybe: return .Question
+                case .Going: return .Check
+                }
+            }())
         }
-        statusLabel.text = mark
     }
     
     // MARK: Private

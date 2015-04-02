@@ -41,14 +41,12 @@ class FreeEventCell: UITableViewCell {
     private var cellState: FreeEventCellState = .Normal
     private var stateBlock: Async?
     
-    private struct aStruct { static var staticVar: String = "TableViewFreeEventCellReuseIdentifier"}
-    
+    private struct constants { static var cellIdentifier: String = "TableViewFreeEventCellReuseIdentifier"}
     
     class var reuseIdentifier: String {
-        get { return aStruct.staticVar }
-        set { aStruct.staticVar = newValue }
+        get { return constants.cellIdentifier }
+        set { constants.cellIdentifier = newValue }
     }
-    
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

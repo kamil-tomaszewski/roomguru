@@ -35,7 +35,7 @@ class EventDetailsViewController: UIViewController {
         
         self.hideBackBarButtonTitle()
         self.title = NSLocalizedString("Event Details", comment: "")
-        setuptTableView()
+        setupTableView()
     }
 }
 
@@ -66,44 +66,38 @@ extension EventDetailsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell: UITableViewCell
-        
         switch indexPath.section {
         case 0:
-            let _cell = tableView.dequeueReusableCellWithIdentifier(DescriptionCell.reuseIdentifier) as DescriptionCell
-            _cell.textLabel?.attributedText = viewModel.summary()
+            let cell = tableView.dequeueReusableCellWithIdentifier(DescriptionCell.reuseIdentifier) as DescriptionCell
+            cell.textLabel?.attributedText = viewModel.summary()
             
-            cell = _cell
+            return cell
             
         case 1...3:
-            let _cell = tableView.dequeueReusableCellWithIdentifier(AttendeeCell.reuseIdentifier) as AttendeeCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(AttendeeCell.reuseIdentifier) as AttendeeCell
             let info = attendeeInfoForIndexPath(indexPath)
             
-            _cell.headerLabel.text = info.name
-            _cell.footerLabel.text = info.email
-            _cell.setMarkWithStatus(info.status)
+            cell.headerLabel.text = info.name
+            cell.footerLabel.text = info.email
+            cell.setMarkWithStatus(info.status)
 
             // hide for locations:
-            _cell.footerLabel.hidden = (indexPath.section == 1)
+            cell.footerLabel.hidden = (indexPath.section == 1)
             
             if let url = NSURL.gravatarURLWithEmail(info.email) {
-                _cell.avatarImageView.setImageWithURL(url)
+                cell.avatarImageView.setImageWithURL(url)
             }
-            cell = _cell
             
-        case 4:
-            let _cell = tableView.dequeueReusableCellWithIdentifier(TableButtonCell.reuseIdentifier) as TableButtonCell
-            _cell.button.setTitle(NSLocalizedString("Join meeting!", comment: ""))
-            _cell.button.addTarget(self, action: "didTapHangoutButton:", forControlEvents: .TouchUpInside)
-            _cell.button.backgroundColor = UIColor.ngOrangeColor()
-            cell = _cell
+            return cell
             
         default:
-            cell = UITableViewCell()
-            assert(false, "Provide enought data for cell")
+            let cell = tableView.dequeueReusableCellWithIdentifier(TableButtonCell.reuseIdentifier) as TableButtonCell
+            cell.button.setTitle(NSLocalizedString("Join meeting!", comment: ""))
+            cell.button.addTarget(self, action: "didTapHangoutButton:", forControlEvents: .TouchUpInside)
+            cell.button.backgroundColor = UIColor.ngOrangeColor()
+            
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -169,7 +163,7 @@ private extension EventDetailsViewController {
         }
     }
     
-    private func setuptTableView() {
+    private func setupTableView() {
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
         aView?.tableView.registerClass(AttendeeCell.self, forCellReuseIdentifier: AttendeeCell.reuseIdentifier)

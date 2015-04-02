@@ -98,7 +98,7 @@ class Event: ModelObject, NSSecureCoding {
                 Maping using T type failes with crash: "partial apply forwarder for Roomguru.Event"
                 That's why explicit init and casting in map() function is needed.
             */
-            return _jsonArray.map() { Event(json: $0) as T }
+            return _jsonArray.map { Event(json: $0) as T }
         }
         
         return nil
@@ -145,8 +145,8 @@ class Event: ModelObject, NSSecureCoding {
             
             let copiedArray = _array
 
-            attendees = _array.filter() { !$0.isResource && !$0.isRoom }
-            room = copiedArray.filter() { $0.isRoom }.first
+            attendees = _array.filter { !$0.isResource && !$0.isRoom }
+            room = copiedArray.filter { $0.isRoom }.first
         }
 
         start = startDate?.date()

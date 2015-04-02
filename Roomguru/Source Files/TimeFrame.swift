@@ -45,7 +45,7 @@ class TimeFrame: ModelObject {
             if _jsonArray.isEmpty {
                 return nil
             }
-            return _jsonArray.map() { T(json: $0) }
+            return _jsonArray.map { T(json: $0) }
         }
         
         return nil
