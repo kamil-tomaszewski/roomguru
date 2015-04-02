@@ -234,10 +234,17 @@ extension EventsViewController: FreeEventCellDelegate {
  
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval) {
         if let indexPath = aView?.tableView.indexPathForCell(cell) {
-            let freeEvent = viewModel?[indexPath.section][indexPath.row].event
-            
-            // NGRTodo: book selected room for chosen time period
-            
+            if let freeEntry = viewModel?[indexPath.section][indexPath.row] {
+                let timeFrame = TimeFrame(freeEvent: freeEntry.event as FreeEvent)
+                let calendarTime: CalendarTimeFrame = (timeFrame, freeEntry.calendarID)
+                
+                let confirmationViewController = BookingConfirmationViewController(calendarTime) { (actualCalendarTime) in
+                    // NGRTodo: Present success view
+                }
+                
+                let navVC = NavigationController(rootViewController: confirmationViewController)
+                presentViewController(navVC, animated: true, completion: nil)
+            }
         }
     }
 }

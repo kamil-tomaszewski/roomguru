@@ -17,8 +17,9 @@ class AvailabilityCalendar: NSObject {
     private var timeFrames: [TimeFrame]
     
     init(calendarID: String, timeFrames: [TimeFrame]) {
+        let today = NSDate()
         self.calendarID = calendarID
-        self.timeFrames = timeFrames
+        self.timeFrames = timeFrames.filter { $0.startDate >= today }
         self.timeFrames.sort{ $0.startDate <= $1.startDate }
         super.init()
     }
@@ -106,6 +107,19 @@ extension AvailabilityCalendar {
         
         return nil
 
+    }
+    
+}
+
+
+// MARK: Debug
+
+extension AvailabilityCalendar: Printable {
+    
+    override var description: String {
+        get {
+            return calendarID + "\n" + " | ".join(timeFrames.map { $0.description })
+        }
     }
     
 }

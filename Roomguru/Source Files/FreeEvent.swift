@@ -14,7 +14,7 @@ class FreeEvent: Event {
     var duration: NSTimeInterval = 0.0
     
     init(startDate: NSDate, endDate: NSDate) {
-        duration = startDate.timeIntervalSinceDate(endDate)
+        duration = endDate.timeIntervalSinceDate(startDate)
         
         super.init()
         

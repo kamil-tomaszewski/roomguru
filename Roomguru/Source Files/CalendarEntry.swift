@@ -89,7 +89,7 @@ extension CalendarEntry {
                             let timePeriod = nextEventStart.timeIntervalSinceDate(eventEnd)
                             
                             if timePeriod >= minimumPeriod {
-                                let freeEvent = FreeEvent(startDate: nextEventStart, endDate: (eventEnd))
+                                let freeEvent = FreeEvent(startDate: eventEnd, endDate: nextEventStart)
                                 let freeEntry = CalendarEntry(entry.calendarID, event: freeEvent)
                                 freeEntries.append(freeEntry)
                             }

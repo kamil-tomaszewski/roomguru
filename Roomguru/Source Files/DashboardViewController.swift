@@ -53,8 +53,7 @@ extension DashboardViewController {
                     }
                     
                 }, failure: { (error: NSError) -> () in
-                    let errorMessage: String = error.userInfo?["message"] as String
-                    println(errorMessage)
+                    UIAlertView(error: error).show()
                 })
                 
             })
@@ -63,7 +62,7 @@ extension DashboardViewController {
             self.presentViewController(navigationVC, animated: true, completion: nil)
             
         }, failure: { (error) -> () in
-            println(error)
+            UIAlertView(error: error).show()
         })
 
     }
@@ -72,7 +71,7 @@ extension DashboardViewController {
         if let entry = BookingManager.restoreRecentlyBookedEntry() {
             
             BookingManager.revokeCalendarEntry(entry, success: {
-                // NGRTemp: Revokedo
+                // NGRTemp: Revoked
             }) { (error) -> () in
                 UIAlertView(error: error).show()
             }
