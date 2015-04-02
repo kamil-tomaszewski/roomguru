@@ -16,11 +16,11 @@ class AttendeeCell: UITableViewCell {
     let footerLabel = UILabel()
     let avatarImageView = UIImageView()
     
-    private struct constants { static var cellIdentifier: String = "TableViewAttendeeCellReuseIdentifier"}
+    private struct Constants { static var CellIdentifier: String = "TableViewAttendeeCellReuseIdentifier"}
     
     class var reuseIdentifier: String {
-        get { return constants.cellIdentifier }
-        set { constants.cellIdentifier = newValue }
+        get { return Constants.CellIdentifier }
+        set { Constants.CellIdentifier = newValue }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -38,6 +38,7 @@ class AttendeeCell: UITableViewCell {
         avatarImageView.image = nil
         statusLabel.text = nil
     }
+    
     
     // MARK: Public
     

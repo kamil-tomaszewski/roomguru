@@ -11,11 +11,11 @@ import Cartography
 
 class TableViewSwitchCell: UITableViewCell {
     
-    private struct constants { static var cellIdentifier: String = "TableViewSwitchCellReuseIdentifier"}
+    private struct Constants { static var CellIdentifier: String = "TableViewSwitchCellReuseIdentifier"}
     
     class var reuseIdentifier: String {
-        get { return constants.cellIdentifier }
-        set { constants.cellIdentifier = newValue }
+        get { return Constants.CellIdentifier }
+        set { Constants.CellIdentifier = newValue }
     }
     
     let switchControl = UISwitch()
