@@ -95,9 +95,6 @@ class EventDetailsViewModel: NSObject {
 private extension EventDetailsViewModel {
     
     private func infoWithAttendee(attendee: Attendee?) -> AttendeeInfo  {
-        if let _attendee = attendee {
-            return (_attendee.name, _attendee.email, _attendee.status)
-        }
-        return (nil, nil, nil)
+        return (attendee?.name, attendee?.email, attendee?.status)
     }
 }

@@ -93,8 +93,8 @@ extension EventDetailsViewController: UITableViewDataSource {
             
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(TableButtonCell.reuseIdentifier) as TableButtonCell
-            cell.button.setTitle(NSLocalizedString("Join meeting!", comment: ""))
-            cell.button.addTarget(self, action: "didTapHangoutButton:", forControlEvents: .TouchUpInside)
+            cell.button.setTitle(NSLocalizedString("Join Hangout meeting!", comment: ""))
+            cell.button.addTarget(self, action: "didTapHangoutButton:")
             cell.button.backgroundColor = UIColor.ngOrangeColor()
             
             return cell
