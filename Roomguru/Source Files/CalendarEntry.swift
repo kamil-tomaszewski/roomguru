@@ -87,12 +87,12 @@ extension CalendarEntry {
                         if !freeEntries.contains(entry) {
                             freeEntries.append(entry)
                         }
-                        
-                        if eventEnd.day == nextEventStart.day && eventEnd.day >= today.day && eventEnd >= today {
-                            let timePeriod = eventEnd.timeIntervalSinceDate(nextEventStart)
+
+                        if eventEnd.day == nextEventStart.day && nextEventStart.day >= today.day && nextEventStart >= today {
+                            let timePeriod = nextEventStart.timeIntervalSinceDate(eventEnd)
                             
                             if timePeriod >= minimumPeriod {
-                                let freeEvent = FreeEvent(startDate: eventEnd, endDate: nextEventStart)
+                                let freeEvent = FreeEvent(startDate: nextEventStart, endDate: (eventEnd))
                                 let freeEntry = CalendarEntry(entry.calendarID, event: freeEvent)
                                 freeEntries.append(freeEntry)
                             }
