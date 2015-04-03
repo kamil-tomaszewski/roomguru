@@ -35,6 +35,7 @@
 		5E769EFA1ACE936B0061289D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EF91ACE936B0061289D /* ErrorView.swift */; };
 		5E769EFC1ACE937A0061289D /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EFB1ACE937A0061289D /* EmptyView.swift */; };
 		5E769EFE1ACEA2C00061289D /* StatefulViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EFD1ACEA2C00061289D /* StatefulViewControllerExtensions.swift */; };
+		5E769F061ACEDC180061289D /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
 		5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* LoginView.swift */; };
 		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
 		5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */; };
@@ -172,6 +173,7 @@
 		5E769EF91ACE936B0061289D /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorView.swift; path = "Roomguru/Source Files/ErrorView.swift"; sourceTree = SOURCE_ROOT; };
 		5E769EFB1ACE937A0061289D /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyView.swift; path = "Roomguru/Source Files/EmptyView.swift"; sourceTree = SOURCE_ROOT; };
 		5E769EFD1ACEA2C00061289D /* StatefulViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatefulViewControllerExtensions.swift; path = "Roomguru/Source Files/StatefulViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPersistenceStore.swift; path = "Roomguru/Source Files/CalendarPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/LoginView.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 				5E51B7991AA9C3310018EDA9 /* View Controllers */,
 				5E07202B1AB73CAD009C270E /* ViewModels */,
 				5E51B79B1AA9C3540018EDA9 /* Custom Views */,
+				5E769F071ACEDC200061289D /* Managers */,
 			);
 			path = "Source Files";
 			sourceTree = "<group>";
@@ -539,7 +542,6 @@
 				BF527C1E1AB1D53700A43D35 /* ModelObject.swift */,
 				BFBA2DDD1ABAC116001D70C5 /* Room.swift */,
 				BF26E73C1ABAF77400B12244 /* Listable.swift */,
-				7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */,
 				7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */,
 				7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */,
 				BF2755D61AC1B30F00A41786 /* FreeEvent.swift */,
@@ -591,6 +593,15 @@
 				5E769EF91ACE936B0061289D /* ErrorView.swift */,
 			);
 			name = "Placeholder Views";
+			sourceTree = "<group>";
+		};
+		5E769F071ACEDC200061289D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */,
+				5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		5E7A9E4B1AB060820042E16F /* HockeySDK.embeddedframework */ = {
@@ -972,6 +983,7 @@
 				5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
 				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
+				5E769F061ACEDC180061289D /* CalendarPersistenceStore.swift in Sources */,
 				5E769EFC1ACE937A0061289D /* EmptyView.swift in Sources */,
 				5E8AE3051ACC174000A3C146 /* CalendarPickerView.swift in Sources */,
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,

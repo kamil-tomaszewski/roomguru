@@ -8,14 +8,55 @@
 
 import UIKit
 
-class Calendar: ModelObject {
+class Calendar: ModelObject, NSSecureCoding, Equatable {
+    
+    private let kAccessRole = "accessRole"
+    private let kSummary = "summary"
+    private let kETag = "etag"
+    private let kIdentifier = "identifier"
+    private let kKind = "kind"
+    private let kTimezone = "timezone"
+    
     var accessRole: String?
-    var name:       String?
+    var summary:    String?
     var etag:       String?
     var identifier: String?
     var kind:       String?
-    var summary:    String?
     var timezone:   String?
+    
+    required init(json: JSON) {
+        super.init(json: json)
+    }
+    
+    // MARK: NSSecureCoding
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init()
+
+        func decode(inout variable: String?, forKey key: String) {
+            variable = aDecoder.decodeObjectForKey(key) as? String
+        }
+        
+        decode(&accessRole, forKey: kAccessRole)
+        decode(&summary, forKey: kSummary)
+        decode(&etag, forKey: kETag)
+        decode(&kind, forKey: kKind)
+        decode(&timezone, forKey: kTimezone)
+    }
+
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(accessRole, forKey: kAccessRole)
+        aCoder.encodeObject(summary, forKey: kSummary)
+        aCoder.encodeObject(etag, forKey: kETag)
+        aCoder.encodeObject(kind, forKey: kKind)
+        aCoder.encodeObject(timezone, forKey: kTimezone)
+    }
+    
+    class func supportsSecureCoding() -> Bool {
+        return true
+    }
+    
+    // MARK: JSON mapping
     
     class func map(jsonArray: [JSON]?) -> [Calendar]? {
         if let _jsonArray: [JSON] = jsonArray {
@@ -31,7 +72,6 @@ class Calendar: ModelObject {
     override func toJSON() -> JSON {
         var json = JSON([])
         json["accessRole"].string = accessRole
-        json["name"].string = name
         json["etag"].string = etag
         json["id"].string = identifier
         json["kind"].string = kind
@@ -42,11 +82,16 @@ class Calendar: ModelObject {
     
     override func map(json: JSON) {
         accessRole = json["accessRole"].string
-        name = json["name"].string
         etag = json["etag"].string
         identifier = json["id"].string
         kind = json["kind"].string
         summary = json["summary"].string
         timezone = json["timeZone"].string
     }
+}
+
+// MARK: Equatable
+
+func ==(lhs: Calendar, rhs: Calendar) -> Bool {
+    return lhs.identifier == rhs.identifier
 }

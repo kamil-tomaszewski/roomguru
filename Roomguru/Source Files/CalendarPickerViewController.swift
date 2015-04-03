@@ -13,7 +13,7 @@ class CalendarPickerViewController: StatefulViewController {
         
     weak var aView: CalendarPickerView?
     var viewModel: CalendarPickerViewModel?
-    var selectedIndexPaths: [NSIndexPath] = []
+    var selectedCalendars: [Calendar] = []
     
     // MARK: View life cycle
     
@@ -28,7 +28,7 @@ class CalendarPickerViewController: StatefulViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Next", comment: ""), style: .Plain, target: self, action: Selector("didTapNextBarButtonItem:"))
         
         setupTableView()
-        setupPlaceholderViews()
+        setupPlaceholderViewsWithRefreshTarget(self)
         loadData()
         setBarButtonItemState()
     }
@@ -69,11 +69,13 @@ extension CalendarPickerViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCellReuseIdentifier) as UITableViewCell
-        let calendar = viewModel?[indexPath.row]
         
-        cell.textLabel?.text = calendar?.summary
-        cell.accessoryType = selectedIndexPaths.contains(indexPath) ? .Checkmark : .None
-        cell.tintColor = UIColor.ngOrangeColor()
+        if let calendar = viewModel?[indexPath.row] {
+            
+            cell.textLabel?.text = calendar.summary
+            cell.accessoryType = selectedCalendars.contains(calendar) ? .Checkmark : .None
+            cell.tintColor = UIColor.ngOrangeColor()
+        }
         
         return cell
     }
@@ -85,10 +87,13 @@ extension CalendarPickerViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if selectedIndexPaths.contains(indexPath) {
-            selectedIndexPaths.removeObject(indexPath)
-        } else {
-            selectedIndexPaths += [indexPath]
+        if let calendar = viewModel?[indexPath.row] {
+            
+            if selectedCalendars.contains(calendar) {
+                selectedCalendars.removeObject(calendar)
+            } else {
+                selectedCalendars += [calendar]
+            }
         }
         
         setBarButtonItemState()
@@ -110,10 +115,12 @@ extension CalendarPickerViewController: StatefulViewControllerDelegate {
 extension CalendarPickerViewController {
     
     func setBarButtonItemState() {
-        self.navigationItem.rightBarButtonItem?.enabled = !selectedIndexPaths.isEmpty
+        self.navigationItem.rightBarButtonItem?.enabled = !selectedCalendars.isEmpty
     }
     
     func didTapNextBarButtonItem(sender: UIBarButtonItem) {
+        
+        CalendarPersistenceStore.saveCalendars(selectedCalendars)
         println("next")
     }
     

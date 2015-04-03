@@ -10,9 +10,9 @@ import StatefulViewController
 
 extension StatefulViewController {
     
-    func setupPlaceholderViews() {
+    func setupPlaceholderViewsWithRefreshTarget(target: AnyObject, action: Selector = Selector("loadData")) {
         emptyView = EmptyView(frame: view.frame)
-        errorView = ErrorView(frame: view.frame, target: self, action: Selector("loadData"))
+        errorView = ErrorView(frame: view.frame, target: target, action: action)
         loadingView = LoadingView(frame: view.frame)
     }    
 }

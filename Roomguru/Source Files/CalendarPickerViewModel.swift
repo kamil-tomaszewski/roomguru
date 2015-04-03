@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarPickerViewModel: NSObject {
 
-    private let calendars: [Calendar]
+    let calendars: [Calendar]
     
     init(calendars: [Calendar]) {
         self.calendars = calendars
