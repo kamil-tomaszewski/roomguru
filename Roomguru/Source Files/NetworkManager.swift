@@ -71,8 +71,6 @@ extension NetworkManager {
                 if let responseJSON: AnyObject = json {
                     var swiftyJSON: JSON? = JSON(responseJSON)
                     
-                    println(responseJSON)
-                    
                     let array = swiftyJSON?["items"].array
                     
                     if let _array: [Calendar] = Calendar.map(array) {

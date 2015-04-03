@@ -49,7 +49,6 @@ extension CalendarPickerViewController {
         startLoading()
         NetworkManager.sharedInstance.calendarsList({ (calendars) -> Void in
             self.viewModel = CalendarPickerViewModel(calendars: calendars)
-            println(calendars)
             self.aView?.tableView.reloadData()
             self.endLoading()
         }, failure: { (error) -> () in
@@ -120,8 +119,8 @@ extension CalendarPickerViewController {
     
     func didTapNextBarButtonItem(sender: UIBarButtonItem) {
         
-        CalendarPersistenceStore.saveCalendars(selectedCalendars)
-        println("next")
+        CalendarPersistenceStore.sharedStore.saveCalendars(selectedCalendars)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private func setupTableView() {

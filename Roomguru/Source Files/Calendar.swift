@@ -42,6 +42,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         decode(&etag, forKey: kETag)
         decode(&kind, forKey: kKind)
         decode(&timezone, forKey: kTimezone)
+        decode(&identifier, forKey: kIdentifier)
     }
 
     func encodeWithCoder(aCoder: NSCoder) {
@@ -50,6 +51,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         aCoder.encodeObject(etag, forKey: kETag)
         aCoder.encodeObject(kind, forKey: kKind)
         aCoder.encodeObject(timezone, forKey: kTimezone)
+        aCoder.encodeObject(identifier, forKey: kIdentifier)
     }
     
     class func supportsSecureCoding() -> Bool {
