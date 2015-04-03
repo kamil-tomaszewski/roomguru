@@ -16,6 +16,12 @@ extension UITableView {
         }
     }
     
+    func reloadAndDeselectRowAtIndexPath(indexPath: NSIndexPath, animated: Bool = true)  {
+        self.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        self.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+        self.deselectRowAtIndexPath(indexPath, animated: animated)
+    }
+    
     func hideSeparatorForEmptyCells() {
         self.tableFooterView = UIView(frame: CGRectZero)
     }

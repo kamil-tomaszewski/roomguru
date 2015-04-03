@@ -13,7 +13,7 @@ class CalendarPickerView: UIBaseTableView {
     
     override func initialize() {
         super.initialize()
-        
-        // provide additional setup here
+    
+        tableView.rowHeight = 60
     }
 }

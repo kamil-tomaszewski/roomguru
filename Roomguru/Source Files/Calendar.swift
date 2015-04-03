@@ -22,7 +22,7 @@ class Calendar: ModelObject {
             if _jsonArray.isEmpty == true {
                 return nil
             }
-            return _jsonArray.map({ Calendar(json: $0) })
+            return _jsonArray.map { Calendar(json: $0) }
         }
         
         return nil

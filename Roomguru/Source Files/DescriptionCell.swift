@@ -11,11 +11,11 @@ import Cartography
 
 class DescriptionCell: UITableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewDescriptionCellReuseIdentifier"}
+    private struct constants { static var cellIdentifier: String = "TableViewDescriptionCellReuseIdentifier"}
     
     class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
-        set { Constants.CellIdentifier = newValue }
+        get { return constants.cellIdentifier }
+        set { constants.cellIdentifier = newValue }
     }
     
     class func margins() -> (H: CGFloat, V: CGFloat) {

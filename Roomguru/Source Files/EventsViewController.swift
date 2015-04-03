@@ -50,7 +50,7 @@ class EventsViewController: UIViewController {
 
 extension EventsViewController {
     
-    func fetchEventsForCalendars(calendars: [String], completion: (() -> Void)?) {
+    func fetchEventsForCalendars(calendars: [String], completion: (() -> Void)? = nil) {
         
         var entries: [CalendarEntry] = []
         
@@ -131,7 +131,7 @@ extension EventsViewController {
         }
         
         let index = roomSegmentedControl.selectedSegmentIndex
-        fetchEventsForCalendars([Room[index]], nil)
+        fetchEventsForCalendars([Room[index]])
     }
     
     func didTapPastButton(sender: UIButton) {
@@ -140,7 +140,7 @@ extension EventsViewController {
         }
         
         let index = roomSegmentedControl.selectedSegmentIndex
-        fetchEventsForCalendars([Room[index]], nil)
+        fetchEventsForCalendars([Room[index]])
     }
 }
 

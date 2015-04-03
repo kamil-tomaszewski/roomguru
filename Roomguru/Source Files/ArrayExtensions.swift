@@ -14,4 +14,13 @@ extension Array {
         return self.filter({$0 as? T == obj}).count > 0
     }
     
+    mutating func removeObject<T where T : Equatable>(obj: T) {
+        
+        var idx: Int?
+
+        for (index, value) in enumerate(self) {
+            if value as? T == obj { idx = index; break }
+        }
+        if let _idx = idx { self.removeAtIndex(_idx) }
+    }
 }

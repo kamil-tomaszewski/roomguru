@@ -24,4 +24,8 @@ typealias QueryParameters = [String: AnyObject]
 
 // MARK: Notifications
 
-let RoomguruGooglePlusAuthenticationDidFinishNotification: String = "RoomguruGooglePlusAuthenticationDidFinishNotification"
+let RoomguruGooglePlusAuthenticationDidFinishNotification = "RoomguruGooglePlusAuthenticationDidFinishNotification"
+
+// MARK: Reuse identifiers
+
+let UITableViewCellReuseIdentifier = "RegularTableViewCellReuseIdentifier"

@@ -42,7 +42,6 @@ class Event: ModelObject, NSSecureCoding {
         super.init(json: json)
     }
     
-    
     // MARK: NSSecureCoding
     
     required init(coder aDecoder: NSCoder) {
@@ -85,7 +84,6 @@ class Event: ModelObject, NSSecureCoding {
     class func supportsSecureCoding() -> Bool {
         return true
     }
-    
     
     // MARK: JSON
     

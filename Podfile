@@ -20,6 +20,9 @@ pod 'AFNetworking', '~> 2.5.2'
 pod 'SwiftyUserDefaults', '~> 1.0.0'
 pod 'DateKit', '~> 0.1.1'
 pod 'CryptoSwift', '~> 0.0.8'
+pod 'StatefulViewController',
+    :git => "git@github.com:aschuch/StatefulViewController.git",
+    :commit => "c2c1e1a63f698e3e5bc4cb6b718db3d32a4a4599"
 
 # pod 'SwiftyJSON', '~> 2.1.3'
 # SwiftyJSON is temporarily added to the project manually due to the this bug:
