@@ -10,7 +10,7 @@ import Foundation
 
 extension UIViewController {
    
-    func loadViewWithClass<T where T: UIView>(view: T.Type) -> T? {
+    func loadViewWithClass<T where T: UIView>(view: T.Type) -> T {
         
         let _view: T = view(frame: UIScreen.mainScreen().applicationFrame)
         _view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
