@@ -80,7 +80,7 @@ extension EventDetailsViewController: UITableViewDataSource {
             
             cell.headerLabel.text = info.name
             cell.footerLabel.text = info.email
-            cell.setMarkWithStatus(info.status)
+            cell.statusLabel.text = viewModel.iconWithStatus(info.status);
 
             // hide for locations:
             cell.footerLabel.hidden = (indexPath.section == 1)

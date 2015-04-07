@@ -39,23 +39,6 @@ class AttendeeCell: UITableViewCell {
         statusLabel.text = nil
     }
     
-    
-    // MARK: Public
-    
-    func setMarkWithStatus(status: Status?) {
-        
-        if let _status = status {
-            statusLabel.text = String.fontAwesomeIconWithName({
-                switch _status {
-                case .Awaiting: return .ClockO
-                case .NotGoing: return .Ban
-                case .Maybe: return .Question
-                case .Going: return .Check
-                }
-            }())
-        }
-    }
-    
     // MARK: Private
     
     private func commonInit() {

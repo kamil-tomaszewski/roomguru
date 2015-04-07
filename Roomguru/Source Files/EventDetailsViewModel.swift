@@ -88,6 +88,21 @@ class EventDetailsViewModel: NSObject {
         
         return attributedString.copy() as NSAttributedString
     }
+    
+    func iconWithStatus(status: Status?) -> NSString? {
+        
+        if let _status = status {
+            return String.fontAwesomeIconWithName({
+                switch _status {
+                case .Awaiting: return .ClockO
+                case .NotGoing: return .Ban
+                case .Maybe: return .Question
+                case .Going: return .Check
+                }
+            }())
+        }
+        return nil;
+    }
 }
 
 // MARK: Private
