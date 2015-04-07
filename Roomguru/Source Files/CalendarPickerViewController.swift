@@ -13,7 +13,6 @@ class CalendarPickerViewController: StatefulViewController {
         
     weak var aView: CalendarPickerView?
     var viewModel: CalendarPickerViewModel?
-    var selectedCalendars: [Calendar] = []
     
     // MARK: View life cycle
     
@@ -30,7 +29,6 @@ class CalendarPickerViewController: StatefulViewController {
         setupTableView()
         setupPlaceholderViewsWithRefreshTarget(self)
         loadData()
-        setBarButtonItemState()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -50,6 +48,7 @@ extension CalendarPickerViewController {
         NetworkManager.sharedInstance.calendarsList({ (calendars) -> Void in
             self.viewModel = CalendarPickerViewModel(calendars: calendars)
             self.aView?.tableView.reloadData()
+            self.setBarButtonItemState()
             self.endLoading()
         }, failure: { (error) -> () in
             self.endLoading(error: NSError())
@@ -62,17 +61,16 @@ extension CalendarPickerViewController {
 extension CalendarPickerViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfCalendars() ?? 0
+        return  viewModel?.calendars.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCellReuseIdentifier) as UITableViewCell
         
-        if let calendar = viewModel?[indexPath.row] {
-            
+        if let calendar = viewModel?.calendars[indexPath.row] {
             cell.textLabel?.text = calendar.summary
-            cell.accessoryType = selectedCalendars.contains(calendar) ? .Checkmark : .None
+            cell.accessoryType = viewModel!.shouldSelectCalendar(calendar) ? .DetailDisclosureButton : .DisclosureIndicator
             cell.tintColor = UIColor.ngOrangeColor()
         }
         
@@ -86,15 +84,7 @@ extension CalendarPickerViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if let calendar = viewModel?[indexPath.row] {
-            
-            if selectedCalendars.contains(calendar) {
-                selectedCalendars.removeObject(calendar)
-            } else {
-                selectedCalendars += [calendar]
-            }
-        }
-        
+        viewModel?.saveOrRemoveItemAtIndex(indexPath.row)
         setBarButtonItemState()
         tableView.reloadAndDeselectRowAtIndexPath(indexPath)
     }
@@ -105,21 +95,21 @@ extension CalendarPickerViewController: UITableViewDelegate {
 extension CalendarPickerViewController: StatefulViewControllerDelegate {
     
     func hasContent() -> Bool {
-        let hasContent = viewModel?.numberOfCalendars() > 0
-        aView?.tableView.hidden = !hasContent
-        return hasContent
+        let isEmpty = viewModel?.calendars.isEmpty ?? true
+        aView?.tableView.hidden = isEmpty
+        return !isEmpty
     }
 }
 
 extension CalendarPickerViewController {
     
     func setBarButtonItemState() {
-        self.navigationItem.rightBarButtonItem?.enabled = !selectedCalendars.isEmpty
+        self.navigationItem.rightBarButtonItem?.enabled = viewModel?.shouldProcceed() ?? false
     }
     
     func didTapNextBarButtonItem(sender: UIBarButtonItem) {
-        
-        CalendarPersistenceStore.sharedStore.saveCalendars(selectedCalendars)
+    
+        viewModel?.save()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
