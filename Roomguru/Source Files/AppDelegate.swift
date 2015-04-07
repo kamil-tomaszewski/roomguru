@@ -31,8 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     // MARK: GPPSignInDelegate Methods
     
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-        NetworkManager.sharedInstance.setAuthentication(auth)
-        NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
+        if (error != nil) {
+            // NGRTodo: handle error here
+            UIAlertView(error: error).show()
+        } else {
+            NetworkManager.sharedInstance.setAuthentication(auth)
+            NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
+        }
     }
     
     func didDisconnectWithError(error: NSError!) {
@@ -48,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     func signOut() {
         GPPSignIn.sharedInstance().signOut()
         let tabBarViewController = window!.rootViewController as TabBarController
-        tabBarViewController.presentLoginViewController { () -> Void in
+        tabBarViewController.presentLoginViewController {
             tabBarViewController.popNavigationStack()
         }
     }
