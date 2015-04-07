@@ -40,6 +40,14 @@ class ListViewModel<T: NSObject> {
     func sectionsCount() -> Int {
         return self.sections?.count ?? 1
     }
+    
+    func removeAtIndexPath(indexPath: NSIndexPath) {
+        if sections?.count > 0 {
+            sections?[indexPath.section].remove(indexPath.row)
+        } else {
+            items.remove(indexPath.row)
+        }
+    }
 }
 
 // MARK: Private

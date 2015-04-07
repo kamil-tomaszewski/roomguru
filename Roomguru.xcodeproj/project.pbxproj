@@ -107,6 +107,7 @@
 		BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA2DDD1ABAC116001D70C5 /* Room.swift */; };
 		BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1831AC1900D00D96270 /* ButtonView.swift */; };
 		BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1851AC1920200D96270 /* EventCell.swift */; };
+		BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */; };
 		BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
 /* End PBXBuildFile section */
 
@@ -245,6 +246,7 @@
 		BFBA2DDD1ABAC116001D70C5 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Room.swift; path = "Roomguru/Source Files/Room.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1831AC1900D00D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = "Roomguru/Source Files/ButtonView.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1851AC1920200D96270 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = "Roomguru/Source Files/EventCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeEventsViewController.swift; path = "Roomguru/Source Files/RevokeEventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Requests.swift"; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -561,6 +563,7 @@
 				5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */,
 				BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */,
 				5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */,
+				BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				5E0720041AB6D8FF009C270E /* TableViewSwitchCell.swift in Sources */,
 				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,
 				7BC955B91AB846AE00138716 /* GPPSignInExtensions.swift in Sources */,
+				BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */,
 				5E8AE3031ACC172500A3C146 /* CalendarPickerViewController.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,

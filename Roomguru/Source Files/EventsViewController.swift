@@ -29,7 +29,6 @@ class EventsViewController: UIViewController {
         (aView?.tableView.tableHeaderView as ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
         (aView?.tableView.tableFooterView as ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
         
-        self.setupQuery(Room[0])
         self.setupRoomSegmentedControl()
         self.setupTableView()
     }
@@ -52,47 +51,37 @@ extension EventsViewController {
     
     func fetchEventsForCalendars(calendars: [String], completion: (() -> Void)? = nil) {
         
-        var entries: [CalendarEntry] = []
-        
-        let failure: (error: NSError) -> () = { (error) -> () in
-            UIAlertView(error: error).show()
-        }
-        
         runActivityIndicator()
         
-        let queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        let group: dispatch_group_t = dispatch_group_create();
-        
-        for calendarID in calendars {
-            dispatch_group_enter(group)
+        let queries: [PageableQuery] = EventsQuery.queries(calendars).map { self.setupQuery($0) }
+        NetworkManager.sharedInstance.chainedRequest(queries, construct: { (query, response: [Event]?) -> [CalendarEntry] in
             
-            let query = self.query.copy(calendarID: calendarID)
-            NetworkManager.sharedInstance.requestList(query, success: { (response: [Event]?) -> () in
-                if let _response = response {
-					let events = _response.filter { !$0.isCanceled() }
-                    entries += CalendarEntry.caledarEntries(calendarID, events: events) as [CalendarEntry]
+            if let query = query as? EventsQuery {
+                if let response = response {
+                    let events = response.filter { !$0.isCanceled() }
+                    return CalendarEntry.caledarEntries(query.calendarID, events: response)
                 }
-                dispatch_group_leave(group)
-                
-            }, failure: { (error) -> () in
-                self.stopActivityIndicator()
-                dispatch_group_leave(group)
-                failure(error: error)
-            })
-        }
-        
-        dispatch_group_notify(group, queue) {
+            }
+            return []
+
+        }, success: { (result: [CalendarEntry]?) -> () in
             Async.background {
-                let sortedEntries = CalendarEntry.sortedByDate(entries)
-                let entriesWithGaps = CalendarEntry.entriesWithFreeGaps(sortedEntries)
-                self.viewModel = ListViewModel(entriesWithGaps, sortingKey: "event.shortDate")
+                if let calendarEntries = result {
+                    let sortedEntries = CalendarEntry.sortedByDate(calendarEntries)
+                    let entriesWithGaps = CalendarEntry.entriesWithFreeGaps(sortedEntries)
+                    self.viewModel = ListViewModel(entriesWithGaps, sortingKey: "event.shortDate")
+                }
             }.main {
                 self.stopActivityIndicator()
                 self.aView?.tableView.reloadData()
                 if let _completion = completion { _completion() }
             }
             return
-        }
+
+        }, failure: { (error) -> () in
+            self.stopActivityIndicator()
+            UIAlertView(error: error).show()
+        })
     }
     
     private func runActivityIndicator() {
@@ -198,7 +187,6 @@ extension EventsViewController: UITableViewDataSource {
             return cell
         } else {
             let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as EventCell
-            cell.indentationLevel = 7
             cell.textLabel?.text = event?.summary
             cell.timeMaxLabel.text = event?.startTime
             cell.timeMinLabel.text = event?.endTime
@@ -261,13 +249,13 @@ extension EventsViewController {
         return viewModel?[indexPath.row].event
     }
     
-    private func setupQuery(calendarID: String) {
-        self.query = EventsQuery(calendarID: calendarID)
-        self.query.maxResults = 100
-        self.query.singleEvents = true
-        self.query.orderBy = "startTime"
-        self.query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
-        self.query.timeMin = NSDate().midnight
+    private func setupQuery(query: EventsQuery) -> EventsQuery {
+        query.maxResults = 100
+        query.singleEvents = true
+        query.orderBy = "startTime"
+        query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
+        query.timeMin = NSDate().midnight
+        return query
     }
     
     private func setupRoomSegmentedControl() {

@@ -18,6 +18,7 @@ protocol Listable {
     init(_ items: [Type])
     subscript(index: Int) -> Type { get }
     
+    func remove(index: Int)
 }
 
 
@@ -37,6 +38,9 @@ class List<T> : Listable {
         return items[index]
     }
     
+    func remove(index: Int) {
+        items.removeAtIndex(index)
+    }
 }
 
 

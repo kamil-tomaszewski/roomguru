@@ -58,5 +58,7 @@ class EventCell: UITableViewCell {
         
         timeMaxLabel.font = font
         timeMinLabel.font = font
+        
+        indentationLevel = 7
     }
 }

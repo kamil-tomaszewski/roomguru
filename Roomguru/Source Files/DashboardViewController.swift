@@ -45,9 +45,6 @@ extension DashboardViewController {
                         if let endTimeString = event.endTime {
                             let message = NSLocalizedString("Booked room", comment: "") + " from " + startTimeString + " to " + endTimeString
                             UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
-                            
-                            let entry = CalendarEntry(calendarTime.1, event: event)
-                            BookingManager.save(entry)
                             self.aView?.tableView.reloadData()
                         }
                     }
@@ -68,19 +65,9 @@ extension DashboardViewController {
     }
     
     func didTapRevokeBookedRoom(sender: UIButton) {
-        if let entry = BookingManager.restoreRecentlyBookedEntry() {
-            
-            BookingManager.revokeCalendarEntry(entry, success: {
-                // NGRTemp: Revoked
-            }) { (error) -> () in
-                UIAlertView(error: error).show()
-            }
-            
-        } else {
-            let title = NSLocalizedString("Ups", comment: "")
-            let message = NSLocalizedString("Failed revoking booked event", comment: "")
-            UIAlertView(title: title, message: message).show()
-        }
+        let revokeEventsController = RevokeEventsViewController()
+        let navVC = NavigationController(rootViewController: revokeEventsController)
+        presentViewController(navVC, animated: true, completion: nil)
     }
     
     func didTapDebugButton(sender: UIButton) {
@@ -112,7 +99,6 @@ extension DashboardViewController: UITableViewDataSource {
             case .Debug: action = Selector("didTapDebugButton:")
             }
     
-            _cell.button.enabled = (item.action == .Revoke) ? BookingManager.hasRecentlyBookedEvent() : true
             _cell.button.setTitle(item.title)
             _cell.button.backgroundColor = item.color
             _cell.button.addTarget(self, action: action)

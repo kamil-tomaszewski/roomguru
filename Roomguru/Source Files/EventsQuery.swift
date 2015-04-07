@@ -17,6 +17,7 @@ class EventsQuery: PageableQuery {
     convenience init(calendarID: String) {
         let URLExtension = "/calendars/" + calendarID + "/events"
         self.init(.GET, URLExtension: URLExtension)
+        _calendarID = calendarID
     }
     
 
@@ -38,6 +39,8 @@ class EventsQuery: PageableQuery {
 
     
     // MARK: Query parameters
+    
+    var calendarID: String { get { return _calendarID } }
     
     var maxResults: Int? {
         get { return self[MaxResultsKey] as Int? }
@@ -84,10 +87,26 @@ class EventsQuery: PageableQuery {
     
     // MARK: Private
     
+    private var _calendarID: String = ""
+    
     private let MaxResultsKey = "maxResults"
     private let TimeMaxKey = "timeMax"
     private let TimeMinKey = "timeMin"
     private let OrderByKey = "orderBy"
     private let SingleEventsKey = "singleEvents"
     
+}
+
+
+extension EventsQuery {
+    
+    class func queries(calendars: [String]) -> [EventsQuery] {
+        var queries: [EventsQuery] = []
+        
+        for calendarID in calendars {
+            queries.append(EventsQuery(calendarID: calendarID))
+        }
+        
+        return queries
+    }
 }
