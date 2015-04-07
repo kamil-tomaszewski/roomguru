@@ -13,14 +13,14 @@ class CalendarEntry: NSObject, NSSecureCoding {
     var calendarID: String = ""
     var event: Event = Event()
     
-    init(_ calendarID: String, event: Event) {
+    init(calendarID: String, event: Event) {
         self.calendarID = calendarID
         self.event = event
         super.init()
     }
     
     class func caledarEntries(calendarID: String, events: [Event]) -> [CalendarEntry] {
-        return events.map { CalendarEntry(calendarID, event: $0) }
+        return events.map { CalendarEntry(calendarID: calendarID, event: $0) }
     }
     
     // MARK: NSSecureCoding
@@ -90,7 +90,7 @@ extension CalendarEntry {
                             
                             if timePeriod >= minimumPeriod {
                                 let freeEvent = FreeEvent(startDate: eventEnd, endDate: nextEventStart)
-                                let freeEntry = CalendarEntry(entry.calendarID, event: freeEvent)
+                                let freeEntry = CalendarEntry(calendarID: entry.calendarID, event: freeEvent)
                                 freeEntries.append(freeEntry)
                             }
                         }
