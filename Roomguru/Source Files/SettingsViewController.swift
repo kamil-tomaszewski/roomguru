@@ -12,9 +12,9 @@ class SettingsViewController: UIViewController {
     
     weak var aView: SettingsView?
     private let viewModel = SettingsViewModel(items: [
-        SettingsItem(NSLocalizedString("Sign out", comment: ""), .noneType, "signOutHandler"),
-        SettingsItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:"),
-        SettingsItem(NSLocalizedString("Manage calendars", comment: ""), .noneType, "manageCalendars")
+        SettingItem(NSLocalizedString("Sign out", comment: ""), .noneType, "signOutHandler"),
+        SettingItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:"),
+        SettingItem(NSLocalizedString("Manage calendars", comment: ""), .noneType, "manageCalendars")
     ])
     
     // MARK: View life cycle
@@ -96,7 +96,7 @@ extension SettingsViewController {
         navigationController?.pushViewController(CalendarPickerViewController(), animated: true)
     }
     
-    func tableView(tableView: UITableView, switchCellForItem item: SettingsItem) -> UITableViewCell {
+    func tableView(tableView: UITableView, switchCellForItem item: SettingItem) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as SwitchCell
         cell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)

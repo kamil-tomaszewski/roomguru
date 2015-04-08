@@ -10,14 +10,14 @@ import Foundation
 
 class SettingsViewModel: NSObject {
     
-    private let items : [SettingsItem]
+    private let items : [SettingItem]
     
-    init(items: [SettingsItem]) {
+    init(items: [SettingItem]) {
         self.items = items
         super.init()
     }
     
-    subscript(index: Int) -> SettingsItem {
+    subscript(index: Int) -> SettingItem {
         return items[index]
     }
 

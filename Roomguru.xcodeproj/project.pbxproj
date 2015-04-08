@@ -26,7 +26,7 @@
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
 		5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */; };
 		5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* Settings.swift */; };
-		5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */; };
+		5E5F558F1AB6CAB6005F3CEE /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingItem.swift */; };
 		5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
 		5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */; };
 		5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */; };
@@ -170,7 +170,7 @@
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E5F558C1AB62839005F3CEE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Roomguru/Source Files/Settings.swift"; sourceTree = SOURCE_ROOT; };
-		5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsItem.swift; path = "Roomguru/Source Files/SettingsItem.swift"; sourceTree = SOURCE_ROOT; };
+		5E5F558E1AB6CAB6005F3CEE /* SettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingItem.swift; path = "Roomguru/Source Files/SettingItem.swift"; sourceTree = SOURCE_ROOT; };
 		5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = Frameworks/FontAwesome.swift; sourceTree = "<group>"; };
 		5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Roomguru/Resources/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
 		5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCell.swift; path = "Roomguru/Source Files/DescriptionCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -597,7 +597,7 @@
 		5E5F55901AB6CABA005F3CEE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				5E5F558E1AB6CAB6005F3CEE /* SettingsItem.swift */,
+				5E5F558E1AB6CAB6005F3CEE /* SettingItem.swift */,
 				5E5F558C1AB62839005F3CEE /* Settings.swift */,
 			);
 			name = Settings;
@@ -1000,7 +1000,7 @@
 				7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
-				5E5F558F1AB6CAB6005F3CEE /* SettingsItem.swift in Sources */,
+				5E5F558F1AB6CAB6005F3CEE /* SettingItem.swift in Sources */,
 				5E769F061ACEDC180061289D /* CalendarPersistenceStore.swift in Sources */,
 				5E769EFC1ACE937A0061289D /* EmptyView.swift in Sources */,
 				5E8AE3051ACC174000A3C146 /* CalendarPickerView.swift in Sources */,

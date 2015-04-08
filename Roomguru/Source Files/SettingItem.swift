@@ -1,5 +1,5 @@
 //
-//  SettingsItem.swift
+//  SettingItem.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 16/03/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SettingsItem {
+struct SettingItem {
     
     var title: String
     var type: aType
