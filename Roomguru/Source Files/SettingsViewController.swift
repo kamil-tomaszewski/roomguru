@@ -8,10 +8,14 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: UIViewController {
     
     weak var aView: SettingsView?
-    private let viewModel = SettingsViewModel()
+    private let viewModel = SettingsViewModel(items: [
+        SettingsItem(NSLocalizedString("Sign out", comment: ""), .noneType, "signOutHandler"),
+        SettingsItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:"),
+        SettingsItem(NSLocalizedString("Manage calendars", comment: ""), .noneType, "manageCalendars")
+    ])
     
     // MARK: View life cycle
 
@@ -22,6 +26,56 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
+    }
+}
+
+// MARK: UITableViewDataSource
+
+extension SettingsViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfItems()
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell: UITableViewCell;
+        let item = viewModel[indexPath.row]
+        
+        if item.type == .switchType {
+            cell = self.tableView(tableView, switchCellForItem: item)
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as UITableViewCell
+        }
+
+        cell.textLabel?.text = item.title
+        
+        return cell
+    }
+}
+
+//MARK: UITableViewDelegate
+
+extension SettingsViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        viewModel[indexPath.row].performActionWithTarget(self)
+    }
+    
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return viewModel[indexPath.row].selectable()
+    }
+}
+
+//MARK: Private
+
+extension SettingsViewController {
+    
+    private func setupTableView() {
+        
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
         
@@ -30,29 +84,24 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    // MARK: UITableViewDataSource Methods
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfItems()
+    func signOutHandler() {
+        (UIApplication.sharedApplication().delegate as AppDelegate).signOut()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(viewModel.identifierForIndex(indexPath.row)) as UITableViewCell
-        viewModel.configureCell(cell, atIndex: indexPath.row)
-        
-        return cell;
+    func notificationSwitchHandler(sender: UISwitch) {
+        Settings.reverseNotificationEnabled()
     }
     
-    // MARK: UITableViewDelegate Methods
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        viewModel.performActionForIndex(indexPath.row)
+    func manageCalendars() {
+        navigationController?.pushViewController(CalendarPickerViewController(), animated: true)
     }
     
-    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return viewModel.selectable(indexPath.row)
+    func tableView(tableView: UITableView, switchCellForItem item: SettingsItem) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as TableViewSwitchCell
+        cell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
+        cell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
+        
+        return cell
     }
 }

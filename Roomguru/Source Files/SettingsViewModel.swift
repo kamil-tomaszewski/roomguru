@@ -10,61 +10,28 @@ import Foundation
 
 class SettingsViewModel: NSObject {
     
-    private let items : [SettingsItem] = [
-        SettingsItem(NSLocalizedString("Sign out", comment: ""), .buttonType, "signOutHandler"),
-        SettingsItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:")
-    ]
+    private let items : [SettingsItem]
     
+    init(items: [SettingsItem]) {
+        self.items = items
+        super.init()
+    }
+    
+    subscript(index: Int) -> SettingsItem {
+        return items[index]
+    }
+
     // MARK: Public Methods
     
     func numberOfItems() -> Int {
         return items.count
     }
-
-    func configureCell(cell: UITableViewCell, atIndex row: Int) {
-        
-        let item = items[row]
-
-        if let theCell = cell as? TableViewSwitchCell {
-            theCell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
-            
-            switch(index) {
-            default: //temporary in default statement. Play with indexes later if more cell will appear
-                theCell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
-            }
-        }
-
-        cell.textLabel?.text = item.title
-    }
-    
-    func identifierForIndex(index: Int) -> String {
-        return items[index].signature().identifier
-    }
     
     func signatures() -> [String : AnyClass] {
-        var dictionary = Dictionary<String, AnyClass>()
+        var dictionary: [String : AnyClass] = [:]
         for type in items {
             dictionary[type.signature().identifier] = type.signature().registeredClass
         }
         return dictionary
     }
-    
-    func performActionForIndex(index: Int) {
-         items[index].performActionWithTarget(self)
-    }
-    
-    func selectable(index: Int) -> Bool {
-        return items[index].selectable()
-    }
-    
-    // MARK: Settings Item Action Handlers
-    
-    func signOutHandler() {
-        (UIApplication.sharedApplication().delegate as AppDelegate).signOut()
-    }
-    
-    func notificationSwitchHandler(sender: UISwitch) {
-        Settings.reverseNotificationEnabled()
-    }
-    
 }

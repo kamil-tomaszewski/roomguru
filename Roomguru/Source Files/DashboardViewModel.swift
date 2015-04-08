@@ -22,7 +22,6 @@ class DashboardViewModel: NSObject {
     }
 }
 
-
 // MARK: 
 
 extension DashboardViewModel {
@@ -32,12 +31,11 @@ extension DashboardViewModel {
     }
 }
 
-
 // MARK: CellItem
 
 class CellItem {
     
-    enum CellItemAction { case Book, Revoke, Debug }
+    enum CellItemAction { case Book, Revoke }
     
     let title: String
     let action : CellItemAction

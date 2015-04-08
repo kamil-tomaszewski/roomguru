@@ -21,7 +21,7 @@ struct SettingsItem {
     }
     
     enum aType {
-        case switchType, buttonType
+        case switchType, noneType
     }
     
     func performActionWithTarget(target: AnyObject?) {
@@ -35,13 +35,13 @@ struct SettingsItem {
         case .switchType:
             return (TableViewSwitchCell.reuseIdentifier, TableViewSwitchCell.self)
         default:
-            return ("SettingsCellReuseIdentifier", UITableViewCell.self)
+            return (UITableViewCellReuseIdentifier, UITableViewCell.self)
         }
     }
     
     func selectable() -> Bool {
         switch(self.type) {
-        case .buttonType:
+        case .noneType:
             return true;
         default:
             return false;

@@ -41,6 +41,18 @@ class CalendarPickerViewModel: NSObject {
     func save() {
         CalendarPersistenceStore.sharedStore.saveCalendars(selectedCalendars)
     }
+    
+    func textForCalendar(calendar: Calendar) -> (mainText: String?, detailText: String?) {
+        
+        let placeholder = NSLocalizedString("Not change yet", comment: "")
+        let mainText = calendar.name ?? calendar.summary
+        var detailText = (calendar.name != nil) ? calendar.summary : placeholder
+        
+        if (detailText != nil) && (detailText != placeholder) {
+            detailText = NSLocalizedString("was: ", comment: "") + detailText!
+        }
+        return (mainText, detailText)
+    }
 }
 
 extension Array {

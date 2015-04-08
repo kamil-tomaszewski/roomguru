@@ -15,7 +15,6 @@ class DashboardViewController: UIViewController {
     private let viewModel = DashboardViewModel(items: [
         CellItem(title: "Revoke event", action: .Revoke),
         CellItem(title: "Book first available room", action: .Book),
-        CellItem(title: "Temporary calendar list opener", action: .Debug)
     ])
     
     // MARK: View life cycle
@@ -69,11 +68,6 @@ extension DashboardViewController {
         let navVC = NavigationController(rootViewController: revokeEventsController)
         presentViewController(navVC, animated: true, completion: nil)
     }
-    
-    func didTapDebugButton(sender: UIButton) {
-        let navigation = NavigationController(rootViewController: CalendarPickerViewController())
-        self.presentViewController(navigation, animated: true, completion: nil)
-    }
 }
 
 // MARK: UITableViewDataSource Methods
@@ -96,7 +90,6 @@ extension DashboardViewController: UITableViewDataSource {
             switch item.action {
             case .Book: action = Selector("didTapBookRoom:")
             case .Revoke: action = Selector("didTapRevokeBookedRoom:")
-            case .Debug: action = Selector("didTapDebugButton:")
             }
     
             _cell.button.setTitle(item.title)

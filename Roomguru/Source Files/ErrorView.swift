@@ -39,7 +39,7 @@ class ErrorView: UIView {
         
         detailTextLabel.text = "Tap to reload"
         detailTextLabel.textAlignment = .Center
-        detailTextLabel.textColor = UIColor.grayColor()
+        detailTextLabel.textColor = UIColor.ngOrangeColor()
         addSubview(detailTextLabel)
         
         defineConstraints()
@@ -49,15 +49,15 @@ class ErrorView: UIView {
         
         layout(textLabel, detailTextLabel) { textLabel, detailTextLabel in
 
-            textLabel.top == textLabel.superview!.top
+            textLabel.height == 40
             textLabel.left == textLabel.superview!.left
             textLabel.right == textLabel.superview!.right
             textLabel.bottom == textLabel.superview!.centerY
             
-            detailTextLabel.top == textLabel.superview!.top
+            detailTextLabel.top == textLabel.bottom
             detailTextLabel.left == detailTextLabel.superview!.left
-            detailTextLabel.right == textLabel.bottom
-            detailTextLabel.bottom == textLabel.superview!.bottom
+            detailTextLabel.right == detailTextLabel.superview!.right
+            detailTextLabel.height == 40
         }
     }
 }

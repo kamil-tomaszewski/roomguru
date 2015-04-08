@@ -39,6 +39,10 @@ class CalendarPersistenceStore: NSObject {
         return array
     }
     
+    func matchingCalendar(calendar: Calendar) -> Calendar? {
+        return calendars.filter{ $0 == calendar }.first
+    }
+    
     // MARK: Saving and Reading
     
     func saveCalendars(calendars: [Calendar]) {

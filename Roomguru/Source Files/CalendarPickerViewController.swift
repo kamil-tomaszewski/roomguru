@@ -24,15 +24,19 @@ class CalendarPickerViewController: StatefulViewController {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("Pick your calendars", comment: "")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Next", comment: ""), style: .Plain, target: self, action: Selector("didTapNextBarButtonItem:"))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .Plain, target: self, action: Selector("didTapSaveBarButtonItem:"))
         
         setupTableView()
+        hideBackBarButtonTitle()
         setupPlaceholderViewsWithRefreshTarget(self)
-        loadData()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if self.isMovingToParentViewController() {
+            loadData()
+        }
     }
 }
 
@@ -45,13 +49,13 @@ extension CalendarPickerViewController {
         if (lastState == .Loading) { return }
         
         startLoading()
-        NetworkManager.sharedInstance.calendarsList({ (calendars) -> Void in
+        NetworkManager.sharedInstance.calendarsList({ (calendars) in
             self.viewModel = CalendarPickerViewModel(calendars: calendars)
             self.aView?.tableView.reloadData()
             self.setBarButtonItemState()
             self.endLoading()
-        }, failure: { (error) -> () in
-            self.endLoading(error: NSError())
+        }, failure: { (error) in
+            self.endLoading(error: error)
         })
     }
 }
@@ -66,12 +70,13 @@ extension CalendarPickerViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCellReuseIdentifier) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CalendarPickerCell.reuseIdentifier) as CalendarPickerCell
         
         if let calendar = viewModel?.calendars[indexPath.row] {
-            cell.textLabel?.text = calendar.summary
-            cell.accessoryType = viewModel!.shouldSelectCalendar(calendar) ? .DetailDisclosureButton : .DisclosureIndicator
-            cell.tintColor = UIColor.ngOrangeColor()
+            let strings = viewModel?.textForCalendar(calendar)
+            cell.headerLabel.text = strings?.mainText
+            cell.footerLabel.text = strings?.detailText
+            cell.checkmarkLabel.hidden = !viewModel!.shouldSelectCalendar(calendar)
         }
         
         return cell
@@ -88,6 +93,14 @@ extension CalendarPickerViewController: UITableViewDelegate {
         setBarButtonItemState()
         tableView.reloadAndDeselectRowAtIndexPath(indexPath)
     }
+    
+    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as CalendarPickerCell
+        let controller = CalendarNameCustomizerViewController(name: cell.headerLabel.text, indexPath: indexPath)
+        controller.delegate = self
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: StatefulViewControllerDelegate
@@ -101,21 +114,38 @@ extension CalendarPickerViewController: StatefulViewControllerDelegate {
     }
 }
 
+// MARK: CalendarNameCustomizerViewControllerDelegate
+
+extension CalendarPickerViewController: CalendarNameCustomizerViewControllerDelegate {
+    
+    func calendarNameCustomizerViewController(controller: CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?, forIndexPath indexPath: NSIndexPath?) {
+        
+        if let calendar = viewModel?.calendars[indexPath!.row] {
+            calendar.name = name;
+            aView?.tableView.reloadAndDeselectRowAtIndexPath(indexPath!)
+        }
+    }
+}
+
 extension CalendarPickerViewController {
     
     func setBarButtonItemState() {
         self.navigationItem.rightBarButtonItem?.enabled = viewModel?.shouldProcceed() ?? false
     }
     
-    func didTapNextBarButtonItem(sender: UIBarButtonItem) {
-    
+    func didTapSaveBarButtonItem(sender: UIBarButtonItem) {
         viewModel?.save()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if isModal() {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     private func setupTableView() {
         aView?.tableView.dataSource = self;
         aView?.tableView.delegate = self;
-        aView?.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: UITableViewCellReuseIdentifier)
+        aView?.tableView.registerClass(CalendarPickerCell.self, forCellReuseIdentifier: CalendarPickerCell.reuseIdentifier)
     }
 }

@@ -27,4 +27,10 @@ extension UIViewController {
             }
         }
     }
+    
+    func isModal() -> Bool {
+        return presentingViewController?.presentedViewController == self
+            || (navigationController != nil && navigationController?.presentingViewController?.presentedViewController == navigationController)
+            || tabBarController?.presentingViewController is UITabBarController
+    }
 }

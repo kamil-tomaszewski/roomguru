@@ -16,6 +16,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
     private let kIdentifier = "identifier"
     private let kKind = "kind"
     private let kTimezone = "timezone"
+    private let kName = "name"
     
     var accessRole: String?
     var summary:    String?
@@ -23,6 +24,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
     var identifier: String?
     var kind:       String?
     var timezone:   String?
+    var name:       String?
     
     required init(json: JSON) {
         super.init(json: json)
@@ -43,6 +45,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         decode(&kind, forKey: kKind)
         decode(&timezone, forKey: kTimezone)
         decode(&identifier, forKey: kIdentifier)
+        decode(&name, forKey: kName)
     }
 
     func encodeWithCoder(aCoder: NSCoder) {
@@ -52,6 +55,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         aCoder.encodeObject(kind, forKey: kKind)
         aCoder.encodeObject(timezone, forKey: kTimezone)
         aCoder.encodeObject(identifier, forKey: kIdentifier)
+        aCoder.encodeObject(name, forKey: kName)
     }
     
     class func supportsSecureCoding() -> Bool {
@@ -89,6 +93,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         kind = json["kind"].string
         summary = json["summary"].string
         timezone = json["timeZone"].string
+        name = CalendarPersistenceStore.sharedStore.matchingCalendar(self)?.name
     }
 }
 
@@ -97,3 +102,4 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
 func ==(lhs: Calendar, rhs: Calendar) -> Bool {
     return lhs.identifier == rhs.identifier
 }
+
