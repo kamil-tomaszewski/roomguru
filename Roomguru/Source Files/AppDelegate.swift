@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
             // NGRTodo: handle error here
             UIAlertView(error: error).show()
         } else {
+            User.current?.delete()
+            User(auth: auth).save()
             NetworkManager.sharedInstance.setAuthentication(auth)
             NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
         }
@@ -73,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         sharedSignIn.clientID = Constants.GooglePlus.ClientID
         sharedSignIn.scopes = Constants.GooglePlus.Scope
         sharedSignIn.shouldFetchGoogleUserID = true
+        sharedSignIn.shouldFetchGoogleUserEmail = true
         sharedSignIn.delegate = self
     }
 }
