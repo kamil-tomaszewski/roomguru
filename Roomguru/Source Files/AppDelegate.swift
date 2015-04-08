@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
             UIAlertView(error: error).show()
         } else {
             User.current?.delete()
-            User(auth: auth).save()
+            User(email: auth.userEmail).save()
             NetworkManager.sharedInstance.setAuthentication(auth)
             NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
         }

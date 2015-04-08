@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyUserDefaults
 
-protocol Persistance {
+protocol Persistence {
     
     class var key: String { get }
     
@@ -29,10 +29,8 @@ class User: NSObject, NSSecureCoding {
         }
     }
     
-    init(auth: GTMOAuth2Authentication) {
-        if let email = auth.userEmail {
-            self.email = email
-        }
+    init(email: String) {
+        self.email = email
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -64,7 +62,7 @@ extension User {
 
 // MARK: Persistance
 
-extension User: Persistance {
+extension User: Persistence {
     
     class var key: String { get { return "logged_user" } }
     
@@ -81,5 +79,4 @@ extension User: Persistance {
         }
         return false
     }
-    
 }

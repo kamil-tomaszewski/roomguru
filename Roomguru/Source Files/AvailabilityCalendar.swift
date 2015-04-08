@@ -23,7 +23,6 @@ class AvailabilityCalendar: NSObject {
         self.timeFrames.sort{ $0.startDate <= $1.startDate }
         super.init()
     }
-    
 }
 
 
@@ -121,5 +120,4 @@ extension AvailabilityCalendar: Printable {
             return calendarID + "\n" + " | ".join(timeFrames.map { $0.description })
         }
     }
-    
 }

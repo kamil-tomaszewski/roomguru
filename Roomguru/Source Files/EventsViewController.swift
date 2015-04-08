@@ -230,8 +230,8 @@ extension EventsViewController: FreeEventCellDelegate {
                     // NGRTodo: Present success view
                 }
                 
-                let navVC = NavigationController(rootViewController: confirmationViewController)
-                presentViewController(navVC, animated: true, completion: nil)
+                let navigationController = NavigationController(rootViewController: confirmationViewController)
+                presentViewController(navigationController, animated: true, completion: nil)
             }
         }
     }
