@@ -46,7 +46,7 @@ class EventDetailsViewModel: NSObject {
     }
     
     func owner() -> AttendeeInfo {
-        return infoWithAttendee(event?.organizer)
+        return infoWithAttendee(event?.creator)
     }
     
     func location(index: Int) -> AttendeeInfo {

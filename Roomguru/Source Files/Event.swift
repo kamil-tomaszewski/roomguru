@@ -24,7 +24,7 @@ class Event: ModelObject, NSSecureCoding {
     var hangoutLink: String?
     var iCalUID:    String?
     var attendees:  [Attendee]?
-    var organizer:  Attendee?
+    var creator:  Attendee?
     var rooms:      [Attendee]?
     
     var start:      NSDate?
@@ -132,11 +132,7 @@ class Event: ModelObject, NSSecureCoding {
         hangoutLink = json["hangoutLink"].string
         iCalUID = json["iCalUID"].string
 
-        organizer = Attendee(json: json["creator"])
-        
-        if summary == "zappistore: daily standup" {
-            
-        }
+        creator = Attendee(json: json["creator"])
         
         let array = json["attendees"].arrayValue
         if let _array: [Attendee] = Attendee.map(array) {
