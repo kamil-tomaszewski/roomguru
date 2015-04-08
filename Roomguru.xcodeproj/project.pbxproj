@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5E003E631ACB290700AE55C1 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */; };
-		5E0720041AB6D8FF009C270E /* TableViewSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */; };
+		5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* SwitchCell.swift */; };
 		5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
 		5E07202A1AB73846009C270E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* DashboardView.swift */; };
-		5E07202D1AB73E03009C270E /* TableButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202C1AB73E03009C270E /* TableButtonCell.swift */; };
+		5E07202D1AB73E03009C270E /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202C1AB73E03009C270E /* ButtonCell.swift */; };
 		5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202E1AB73F83009C270E /* DashboardViewModel.swift */; };
 		5E1BA3041ACB5E8300827BB6 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */; };
 		5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */; };
@@ -135,10 +135,10 @@
 
 /* Begin PBXFileReference section */
 		5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLExtensions.swift; path = "Roomguru/Source Files/NSURLExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewSwitchCell.swift; path = "Roomguru/Source Files/TableViewSwitchCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720031AB6D8FF009C270E /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchCell.swift; path = "Roomguru/Source Files/SwitchCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720291AB73846009C270E /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = "Roomguru/Source Files/DashboardView.swift"; sourceTree = SOURCE_ROOT; };
-		5E07202C1AB73E03009C270E /* TableButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableButtonCell.swift; path = "Roomguru/Source Files/TableButtonCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E07202C1AB73E03009C270E /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonCell.swift; path = "Roomguru/Source Files/ButtonCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E07202E1AB73F83009C270E /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewModel.swift; path = "Roomguru/Source Files/DashboardViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E0759062D32339F0F1B138E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E147CB21AA8B2CA00EDD97C /* Functional-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Functional-Tests-Info.plist"; path = "Supporting Files/Functional-Tests-Info.plist"; sourceTree = "<group>"; };
@@ -344,8 +344,8 @@
 		5E0720051AB6D908009C270E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5E0720031AB6D8FF009C270E /* TableViewSwitchCell.swift */,
-				5E07202C1AB73E03009C270E /* TableButtonCell.swift */,
+				5E0720031AB6D8FF009C270E /* SwitchCell.swift */,
+				5E07202C1AB73E03009C270E /* ButtonCell.swift */,
 				BFBCE1851AC1920200D96270 /* EventCell.swift */,
 				BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */,
 				5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */,
@@ -1038,8 +1038,8 @@
 				BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */,
 				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
 				7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */,
-				5E07202D1AB73E03009C270E /* TableButtonCell.swift in Sources */,
-				5E0720041AB6D8FF009C270E /* TableViewSwitchCell.swift in Sources */,
+				5E07202D1AB73E03009C270E /* ButtonCell.swift in Sources */,
+				5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */,
 				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,
 				BF0A9E4E1AD540290088ED79 /* User.swift in Sources */,
 				7BC955B91AB846AE00138716 /* GPPSignInExtensions.swift in Sources */,

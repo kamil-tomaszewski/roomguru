@@ -80,9 +80,9 @@ extension DashboardViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(TableButtonCell.reuseIdentifier) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCell.reuseIdentifier) as UITableViewCell
         
-        if let _cell = cell as? TableButtonCell {
+        if let _cell = cell as? ButtonCell {
             
             let item = viewModel[indexPath.row]
             var action: Selector;
@@ -120,7 +120,7 @@ extension DashboardViewController {
         
         tableView?.delegate = self
         tableView?.dataSource = self
-        tableView?.registerClass(TableButtonCell.self, forCellReuseIdentifier: TableButtonCell.reuseIdentifier)
+        tableView?.registerClass(ButtonCell.self, forCellReuseIdentifier: ButtonCell.reuseIdentifier)
     }
     
     private func centralizeTableView() {

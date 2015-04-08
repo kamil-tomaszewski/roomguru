@@ -98,7 +98,7 @@ extension SettingsViewController {
     
     func tableView(tableView: UITableView, switchCellForItem item: SettingsItem) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as TableViewSwitchCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as SwitchCell
         cell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
         cell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
         

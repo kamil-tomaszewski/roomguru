@@ -92,7 +92,7 @@ extension EventDetailsViewController: UITableViewDataSource {
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(TableButtonCell.reuseIdentifier) as TableButtonCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCell.reuseIdentifier) as ButtonCell
             cell.button.setTitle(NSLocalizedString("Join Hangout meeting!", comment: ""))
             cell.button.addTarget(self, action: "didTapHangoutButton:")
             cell.button.backgroundColor = UIColor.ngOrangeColor()
@@ -169,6 +169,6 @@ private extension EventDetailsViewController {
         aView?.tableView.dataSource = self;
         aView?.tableView.registerClass(AttendeeCell.self, forCellReuseIdentifier: AttendeeCell.reuseIdentifier)
         aView?.tableView.registerClass(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.reuseIdentifier)
-        aView?.tableView.registerClass(TableButtonCell.self, forCellReuseIdentifier: TableButtonCell.reuseIdentifier)
+        aView?.tableView.registerClass(ButtonCell.self, forCellReuseIdentifier: ButtonCell.reuseIdentifier)
     }
 }

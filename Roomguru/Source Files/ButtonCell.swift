@@ -1,5 +1,5 @@
 //
-//  TableViewSwitchCell.swift
+//  ButtonCell.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 16/03/15.
@@ -9,16 +9,16 @@
 import UIKit
 import Cartography
 
-class TableViewSwitchCell: UITableViewCell {
+class ButtonCell: UITableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewSwitchCellReuseIdentifier"}
+    private struct Constants { static var CellIdentifier: String = "TableButtonCellReuseIdentifier"}
     
     class var reuseIdentifier: String {
         get { return Constants.CellIdentifier }
         set { Constants.CellIdentifier = newValue }
     }
     
-    let switchControl = UISwitch()
+    let button = UIButton.buttonWithType(.System) as UIButton
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,18 +31,22 @@ class TableViewSwitchCell: UITableViewCell {
     }
     
     private func commonInit() {
-        addSubview(switchControl)
+        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
+        addSubview(button)
         defineConstraints()
     }
     
     private func defineConstraints() {
         
-        layout(switchControl) { (aSwitch) in
+        layout(button) { (button) in
             
-            let margin: CGFloat = 20
+            let margin: CGFloat = 10
             
-            aSwitch.centerY == aSwitch.superview!.centerY
-            aSwitch.right == aSwitch.superview!.right - margin
+            button.top == button.superview!.top + margin
+            button.bottom == button.superview!.bottom - margin
+            button.centerX == button.superview!.centerX
+            button.width == 300
         }
     }
 }
