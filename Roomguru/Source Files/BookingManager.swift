@@ -13,13 +13,13 @@ import SwiftyJSON
 
 class BookingManager: NSObject {
     
-    class func findClosestAvailableRoom(success: (calendarTime: CalendarTimeFrame) -> Void, failure: ErrorBlock) {
+    class func findClosestAvailableRoom(completion: (calendarTime: CalendarTimeFrame?, error: NSError?) -> Void) {
         
         let allRooms = [Room.Aqua, Room.Cold, Room.Middle, Room.DD]
         let query = FreeBusyQuery(calendarsIDs: allRooms)
-
-        NetworkManager.sharedInstance.request(query, success: { (response: JSON?) -> () in
-                        
+        
+        NetworkManager.sharedInstance.request(query, success: { (response) -> Void in
+            
             var calendars: [AvailabilityCalendar] = []
             
             if let _calendarsFreeBusyDictionary = response?["calendars"].dictionaryValue {
@@ -35,21 +35,24 @@ class BookingManager: NSObject {
                 if calendars.isEmpty {
                     calendars.append(AvailabilityCalendar(calendarID: _calendarsFreeBusyDictionary.keys.first as String!, timeFrames: []))
                 }
-
+                
             } else {
                 let message = NSLocalizedString("Failed retrieving data", comment: "")
-                failure(error: NSError(message: message))
+                completion(calendarTime: nil, error: NSError(message: message))
                 return
             }
             
             if let closestFreeTime = self.closestFreeTimeFrameInCalendars(calendars) {
-                success(calendarTime: closestFreeTime)
+                completion(calendarTime: closestFreeTime, error: nil)
             } else {
                 let message = NSLocalizedString("No free rooms from", comment: "") + " \(query.startDate) " + NSLocalizedString("to", comment: "") + " \(query.endDate)"
-                failure(error: NSError(message: message))
+                completion(calendarTime: nil, error: NSError(message: message))
             }
             
-        }, failure: failure)
+            }, failure: { (error) in
+                completion(calendarTime: nil, error: error)
+            }
+        )
     }
     
     class func bookTimeFrame(calendarTime: CalendarTimeFrame, summary: String, success: (event: Event) -> Void, failure: ErrorBlock) {

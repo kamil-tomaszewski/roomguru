@@ -36,30 +36,17 @@ extension DashboardViewController {
  
     func didTapBookRoom(sender: UIButton) {
         
-        // NGRTodo: Get rid of an error here
-//        BookingManager.findClosestAvailableRoom({ (calendarTime: CalendarTimeFrame) -> Void in
-//            
-//            var confirmationViewController = BookingConfirmationViewController(calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
-//                
-//                BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
-//                    
-//                    if let startTimeString = event.startTime, let endTimeString = event.endTime {
-//                        let message = NSLocalizedString("Booked room", comment: "") + " from " + startTimeString + " to " + endTimeString
-//                        UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
-//                        self.aView?.tableView.reloadData()
-//                    }
-//                    
-//                    }, failure: { (error: NSError) in
-//                        UIAlertView(error: error).show()
-//                })
-//            })
-//            
-//            let navigationVC = NavigationController(rootViewController: confirmationViewController)
-//            self.presentViewController(navigationVC, animated: true, completion: nil)
-//            
-//        }, failure: { (error) -> () in
-//            UIAlertView(error: error).show()
-//        })
+        BookingManager.findClosestAvailableRoom { (calendarTime, error) in
+            if let _error = error {
+                UIAlertView(error: _error).show()
+                
+            } else if let _calendarTime = calendarTime {
+                
+                let confirmationViewController = self.bookingConfirmationViewControllerWithCalendarTime(_calendarTime)
+                let navigationVC = NavigationController(rootViewController: confirmationViewController)
+                self.presentViewController(navigationVC, animated: true, completion: nil)
+            }
+        }
     }
     
     func didTapRevokeBookedRoom(sender: UIButton) {
@@ -141,6 +128,25 @@ extension DashboardViewController {
         let bottomInset = (self.tabBarController != nil) ? self.tabBarController!.tabBar.frame.size.height : 0
         
         return (aView != nil) ? aView!.bounds.height - topInset - bottomInset : 0
+    }
+    
+    private func bookingConfirmationViewControllerWithCalendarTime(calendarTime: CalendarTimeFrame) -> BookingConfirmationViewController {
+        
+        return BookingConfirmationViewController(calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
+            
+            BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
+                
+                if let startTimeString = event.startTime, let endTimeString = event.endTime {
+                    let message = NSLocalizedString("Booked room", comment: "") + " from " + startTimeString + " to " + endTimeString
+                    UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
+                    self.aView?.tableView.reloadData()
+                }
+                
+                }, failure: { (error: NSError) in
+                    UIAlertView(error: error).show()
+                }
+            )
+        })
     }
 }
 
