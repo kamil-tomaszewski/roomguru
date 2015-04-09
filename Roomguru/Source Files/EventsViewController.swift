@@ -15,6 +15,8 @@ class EventsViewController: UIViewController {
     weak var aView: EventsListView?
     var viewModel: ListViewModel<CalendarEntry>?
     var query = EventsQuery(calendarID: Room[0])
+    var timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
+    var timeMin = NSDate().midnight
     
     let sortingKey = "shortDate"
     let roomSegmentedControl = UISegmentedControl(items: Room.names)
@@ -25,10 +27,6 @@ class EventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        (aView?.tableView.tableHeaderView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
-        (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
-        
         self.setupRoomSegmentedControl()
         self.setupTableView()
     }
@@ -115,19 +113,13 @@ extension EventsViewController {
     }
     
     func didTapFutureButton(sender: UIButton) {
-        if let maxTime = query.timeMax {
-            query.timeMax = maxTime.days + 1
-        }
-        
+        timeMax = timeMax.days + 1
         let index = roomSegmentedControl.selectedSegmentIndex
         fetchEventsForCalendars([Room[index]])
     }
     
     func didTapPastButton(sender: UIButton) {
-        if let minTime = query.timeMin {
-            query.timeMin = minTime.days - 1
-        }
-        
+        timeMin = timeMin.days - 1
         let index = roomSegmentedControl.selectedSegmentIndex
         fetchEventsForCalendars([Room[index]])
     }
@@ -253,8 +245,8 @@ extension EventsViewController {
         query.maxResults = 100
         query.singleEvents = true
         query.orderBy = "startTime"
-        query.timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
-        query.timeMin = NSDate().midnight
+        query.timeMax = timeMax
+        query.timeMin = timeMin
         return query
     }
     
@@ -265,9 +257,15 @@ extension EventsViewController {
     
     private func setupTableView() {
         let tableView: UITableView? = aView?.tableView
+        
         tableView?.dataSource = self
         tableView?.delegate = self
+
         tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
         tableView?.registerClass(FreeEventCell.self, forCellReuseIdentifier: FreeEventCell.reuseIdentifier)
+        
+        (aView?.tableView.tableHeaderView as! ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
+        (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
+
     }
 }
