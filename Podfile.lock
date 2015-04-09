@@ -38,8 +38,8 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5.2)
   - Alamofire (from `git@github.com:Alamofire/Alamofire.git`, commit `2ff5749ffc0425f05a1411b5b6fd2c25241b5b14`,
     branch `xcode-6.3`)
-  - Async (from `git@github.com:duemunk/Async.git`, commit `a61663f4469df082ac0b3311d9c4b8cd32185336`,
-    branch `feature/Swift_1.2`)
+  - Async (from `git@github.com:duemunk/Async.git`, commit `83772e5790028fe3260b367f29a9231d7d715509`,
+    branch `develop`)
   - Cartography (from `git@github.com:robb/Cartography.git`, commit `7467721bb7253899f66e542f1845851032386b7f`,
     branch `xcode6-3`)
   - CryptoSwift (from `git@github.com:krzyzanowskim/CryptoSwift.git`, commit `4191a7ab5bd769acb4cbf8baaaba3176af19ce14`,
@@ -62,8 +62,8 @@ EXTERNAL SOURCES:
     :commit: 2ff5749ffc0425f05a1411b5b6fd2c25241b5b14
     :git: git@github.com:Alamofire/Alamofire.git
   Async:
-    :branch: feature/Swift_1.2
-    :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
+    :branch: develop
+    :commit: 83772e5790028fe3260b367f29a9231d7d715509
     :git: git@github.com:duemunk/Async.git
   Cartography:
     :branch: xcode6-3
@@ -95,8 +95,8 @@ CHECKOUT OPTIONS:
     :commit: 2ff5749ffc0425f05a1411b5b6fd2c25241b5b14
     :git: git@github.com:Alamofire/Alamofire.git
   Async:
-    :branch: feature/Swift_1.2
-    :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
+    :branch: develop
+    :commit: 83772e5790028fe3260b367f29a9231d7d715509
     :git: git@github.com:duemunk/Async.git
   Cartography:
     :branch: xcode6-3

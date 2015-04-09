@@ -26,8 +26,8 @@ pod 'StatefulViewController',
 
 pod 'Async',
     :git => "git@github.com:duemunk/Async.git",
-    :commit => "a61663f4469df082ac0b3311d9c4b8cd32185336",
-    :branch => "feature/Swift_1.2"
+    :commit => "83772e5790028fe3260b367f29a9231d7d715509",
+    :branch => "develop"
 
 pod 'SwiftyJSON',
     :git => "git@github.com:SwiftyJSON/SwiftyJSON.git",
