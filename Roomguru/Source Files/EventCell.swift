@@ -18,7 +18,6 @@ class EventCell: UITableViewCell {
     
     class var reuseIdentifier: String {
         get { return Constants.CellIdentifier }
-        set { Constants.CellIdentifier = newValue }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

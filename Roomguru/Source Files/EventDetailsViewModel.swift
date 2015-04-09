@@ -101,7 +101,7 @@ class EventDetailsViewModel: NSObject {
                 }
             }())
         }
-        return nil;
+        return nil
     }
 }
 

@@ -10,17 +10,15 @@ import Foundation
 
 extension Array {
     
-    func contains<T where T : Equatable>(obj: T) -> Bool {
-        return self.filter({$0 as? T == obj}).count > 0
-    }
-    
-    mutating func removeObject<T where T : Equatable>(obj: T) {
-        
-        var idx: Int?
+    //temp nothing in here
+}
 
-        for (index, value) in enumerate(self) {
-            if value as? T == obj { idx = index; break }
+func removeOccurencesOfElement<T: Equatable>(array: [T], element: T) -> [T] {
+    
+    for (index, value) in enumerate(array) {
+        if value == element {
+            return array.filter {$0 != value}
         }
-        if let _idx = idx { self.removeAtIndex(_idx) }
     }
+    return array
 }

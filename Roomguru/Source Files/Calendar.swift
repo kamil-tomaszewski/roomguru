@@ -11,13 +11,13 @@ import SwiftyJSON
 
 class Calendar: ModelObject, NSSecureCoding, Equatable {
     
-    private let kAccessRole = "accessRole"
-    private let kSummary = "summary"
-    private let kETag = "etag"
-    private let kIdentifier = "identifier"
-    private let kKind = "kind"
-    private let kTimezone = "timezone"
-    private let kName = "name"
+    private let AccessRole = "accessRole"
+    private let Summary = "summary"
+    private let ETag = "etag"
+    private let Identifier = "identifier"
+    private let Kind = "kind"
+    private let Timezone = "timezone"
+    private let Name = "name"
     
     var accessRole: String?
     var summary:    String?
@@ -40,23 +40,23 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
             variable = aDecoder.decodeObjectForKey(key) as? String
         }
         
-        decode(&accessRole, forKey: kAccessRole)
-        decode(&summary, forKey: kSummary)
-        decode(&etag, forKey: kETag)
-        decode(&kind, forKey: kKind)
-        decode(&timezone, forKey: kTimezone)
-        decode(&identifier, forKey: kIdentifier)
-        decode(&name, forKey: kName)
+        decode(&accessRole, forKey: AccessRole)
+        decode(&summary, forKey: Summary)
+        decode(&etag, forKey: ETag)
+        decode(&kind, forKey: Kind)
+        decode(&timezone, forKey: Timezone)
+        decode(&identifier, forKey: Identifier)
+        decode(&name, forKey: Name)
     }
 
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(accessRole, forKey: kAccessRole)
-        aCoder.encodeObject(summary, forKey: kSummary)
-        aCoder.encodeObject(etag, forKey: kETag)
-        aCoder.encodeObject(kind, forKey: kKind)
-        aCoder.encodeObject(timezone, forKey: kTimezone)
-        aCoder.encodeObject(identifier, forKey: kIdentifier)
-        aCoder.encodeObject(name, forKey: kName)
+        aCoder.encodeObject(accessRole, forKey: AccessRole)
+        aCoder.encodeObject(summary, forKey: Summary)
+        aCoder.encodeObject(etag, forKey: ETag)
+        aCoder.encodeObject(kind, forKey: Kind)
+        aCoder.encodeObject(timezone, forKey: Timezone)
+        aCoder.encodeObject(identifier, forKey: Identifier)
+        aCoder.encodeObject(name, forKey: Name)
     }
     
     class func supportsSecureCoding() -> Bool {

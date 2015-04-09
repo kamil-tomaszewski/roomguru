@@ -19,7 +19,6 @@ class CalendarPickerCell: UITableViewCell {
     
     class var reuseIdentifier: String {
         get { return constants.cellIdentifier }
-        set { constants.cellIdentifier = newValue }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

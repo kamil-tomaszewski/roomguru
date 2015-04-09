@@ -8,19 +8,19 @@
 
 import UIKit
 import Cartography
+import QuartzCore
 
 class AttendeeCell: UITableViewCell {
     
     let statusLabel = UILabel()
     let headerLabel = UILabel()
     let footerLabel = UILabel()
-    let avatarImageView = UIImageView()
+    let avatarImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
     
     private struct Constants { static var CellIdentifier: String = "TableViewAttendeeCellReuseIdentifier"}
     
     class var reuseIdentifier: String {
         get { return Constants.CellIdentifier }
-        set { Constants.CellIdentifier = newValue }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -56,6 +56,10 @@ class AttendeeCell: UITableViewCell {
         contentView.addSubview(statusLabel)
         
         avatarImageView.contentMode = .ScaleAspectFit
+        avatarImageView.layer.masksToBounds = true
+        avatarImageView.layer.cornerRadius = CGRectGetHeight(avatarImageView.frame) * 0.5
+        avatarImageView.layer.borderWidth = 1
+        avatarImageView.layer.borderColor = UIColor.ngGrayColor().CGColor
         contentView.addSubview(avatarImageView)
         
         defineConstraints()
@@ -67,10 +71,10 @@ class AttendeeCell: UITableViewCell {
             
             let margins: (H: CGFloat, V: CGFloat) = (15, 10)
             
-            imageView.top == imageView.superview!.top + margins.V
-            imageView.bottom == imageView.superview!.bottom - margins.V
+            imageView.centerY == imageView.superview!.centerY
             imageView.left == rightLabel.superview!.left + margins.H
-            imageView.width == imageView.superview!.height - 2 * margins.V
+            imageView.width == CGRectGetWidth(self.avatarImageView.frame)
+            imageView.height == CGRectGetHeight(self.avatarImageView.frame)
             
             rightLabel.top == rightLabel.superview!.top + margins.V
             rightLabel.bottom == rightLabel.superview!.bottom - margins.V

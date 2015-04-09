@@ -81,7 +81,7 @@ extension CalendarEntry {
                 if let nextEventStart = nextEntry.event.startDate?.date() {
                     if let eventEnd = entry.event.endDate?.date() {
                         
-                        if !freeEntries.contains(entry) {
+                        if !contains(freeEntries, entry) {
                             freeEntries.append(entry)
                         }
 
@@ -95,7 +95,7 @@ extension CalendarEntry {
                             }
                         }
                         
-                        if !freeEntries.contains(nextEntry) {
+                        if !contains(freeEntries, nextEntry) {
                             freeEntries.append(nextEntry)
                         }
                     }

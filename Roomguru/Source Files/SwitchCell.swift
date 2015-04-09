@@ -15,7 +15,6 @@ class SwitchCell: UITableViewCell {
     
     class var reuseIdentifier: String {
         get { return Constants.CellIdentifier }
-        set { Constants.CellIdentifier = newValue }
     }
     
     let switchControl = UISwitch()

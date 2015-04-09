@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyUserDefaults
 
-class CalendarPersistenceStore: NSObject {
+class CalendarPersistenceStore {
     
     class var sharedStore: CalendarPersistenceStore {
         struct Static {
@@ -20,13 +20,8 @@ class CalendarPersistenceStore: NSObject {
     
     var calendars: [Calendar] = []
     
-    override init() {
-        super.init()
+    init() {
         calendars = fetch() ?? []
-    }
-    
-    subscript(index: Int) -> (name: String?, id: String?) {
-        return (calendars[index].summary, calendars[index].identifier)
     }
     
     func names() -> [String] {

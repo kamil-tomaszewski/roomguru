@@ -64,7 +64,7 @@ extension ListViewModel {
         
         for item in values {
             if let _item = item {
-                if uniques.contains(_item) == false {
+                if !contains(uniques, _item) {
                     uniques.append(_item)
                 }
             }

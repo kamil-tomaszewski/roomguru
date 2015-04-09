@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarPickerViewModel: NSObject {
+class CalendarPickerViewModel {
 
     let calendars: [Calendar]
     private var selectedCalendars: [Calendar]
@@ -16,22 +16,22 @@ class CalendarPickerViewModel: NSObject {
     init(calendars: [Calendar]) {
         self.calendars = calendars
         self.selectedCalendars = calendars.matchingCalendars()
-        super.init()
     }
+    
     // MARK: Public
     
     func saveOrRemoveItemAtIndex(index: Int) {
         
         let calendar = calendars[index]
-        if selectedCalendars.contains(calendar) {
-            selectedCalendars.removeObject(calendar)
+        if contains(selectedCalendars, calendar) {
+            selectedCalendars = removeOccurencesOfElement(selectedCalendars, calendar)
         } else {
             selectedCalendars += [calendar]
         }
     }
     
     func shouldSelectCalendar(calendar: Calendar) -> Bool {
-        return selectedCalendars.contains(calendar)
+        return contains(selectedCalendars, calendar)
     }
     
     func shouldProcceed() -> Bool {
@@ -55,9 +55,10 @@ class CalendarPickerViewModel: NSObject {
     }
 }
 
-extension Array {
+// NGRTemp: temporary:
+private extension Array {
     
-    func matchingCalendars() -> [T] {
+    private func matchingCalendars() -> [T] {
         return self.filter {
             for calendar in CalendarPersistenceStore.sharedStore.calendars {
                 if $0 as! Calendar == calendar { return true }

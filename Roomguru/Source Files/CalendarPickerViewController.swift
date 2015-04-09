@@ -65,7 +65,7 @@ extension CalendarPickerViewController {
 extension CalendarPickerViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  viewModel?.calendars.count ?? 0
+        return viewModel?.calendars.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
