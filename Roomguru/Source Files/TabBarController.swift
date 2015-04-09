@@ -12,8 +12,8 @@ class TabBarController: UITabBarController {
     
     // MARK: Lifecycle
     
-    override init() {
-        super.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         setupEmbeddedViewControllers()
         
         self.tabBar.tintColor = UIColor.ngOrangeColor()
@@ -66,11 +66,11 @@ class TabBarController: UITabBarController {
         ]
         
         func setTitleForControllerAtIndex(index: Int, title: String) {
-            let tabBarItem = self.tabBar.items![index] as UITabBarItem
+            let tabBarItem = self.tabBar.items![index] as! UITabBarItem
             tabBarItem.title = title
             
-            let navigation = self.viewControllers![index] as UINavigationController
-            let viewController = navigation.viewControllers.first as UIViewController
+            let navigation = self.viewControllers![index] as! UINavigationController
+            let viewController = navigation.viewControllers.first as! UIViewController
             viewController.title = title
         }
         

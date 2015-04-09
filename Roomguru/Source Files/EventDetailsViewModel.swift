@@ -86,10 +86,10 @@ class EventDetailsViewModel: NSObject {
             }
         }
         
-        return attributedString.copy() as NSAttributedString
+        return attributedString.copy() as! NSAttributedString
     }
     
-    func iconWithStatus(status: Status?) -> NSString? {
+    func iconWithStatus(status: Status?) -> String? {
         
         if let _status = status {
             return String.fontAwesomeIconWithName({

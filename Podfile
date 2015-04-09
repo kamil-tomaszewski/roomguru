@@ -14,38 +14,56 @@ use_frameworks!
 
 xcodeproj 'Roomguru', 'Development' => :debug, 'Production' => :release, 'Staging' => :release, 'Test' => :debug
 
-pod 'Alamofire', '~> 1.1'
 pod 'AFNetworking', '~> 2.5.2'
+pod 'Alamofire',
+    :git => "git@github.com:Alamofire/Alamofire.git",
+    :commit => "2ff5749ffc0425f05a1411b5b6fd2c25241b5b14",
+    :branch => "xcode-6.3"
 
-pod 'SwiftyUserDefaults', '~> 1.0.0'
-pod 'DateKit', '~> 0.1.1'
-pod 'CryptoSwift', '~> 0.0.8'
 pod 'StatefulViewController',
     :git => "git@github.com:aschuch/StatefulViewController.git",
-    :commit => "c2c1e1a63f698e3e5bc4cb6b718db3d32a4a4599"
+    :commit => "3eaa376eb348d13db99d4b37b2cbcec312a6e73f"
 
-# pod 'SwiftyJSON', '~> 2.1.3'
-# SwiftyJSON is temporarily added to the project manually due to the this bug:
-# https://github.com/SwiftyJSON/SwiftyJSON/issues/129
-pod 'Cartography', '~> 0.2.1'
 pod 'Async',
-    :git => "https://github.com/duemunk/Async.git",
-    :commit => "ca009a904aa5d6cfaff5259e84b502cc47b62644"
+    :git => "git@github.com:duemunk/Async.git",
+    :commit => "a61663f4469df082ac0b3311d9c4b8cd32185336",
+    :branch => "feature/Swift_1.2"
+
+pod 'SwiftyJSON',
+    :git => "git@github.com:SwiftyJSON/SwiftyJSON.git",
+    :commit => "008a09d7ea8b13c03fb59b35c01aad339584a5e1",
+    :branch => "xcode6.3"
+
+pod 'Cartography',
+    :git => "git@github.com:robb/Cartography.git",
+    :commit => "7467721bb7253899f66e542f1845851032386b7f",
+    :branch => "xcode6-3"
+
+pod 'SwiftyUserDefaults',
+    :git => "git@github.com:radex/SwiftyUserDefaults.git",
+    :commit => "e467e0f712e3ac1d1ceb7f9020ffd02e487e8893",
+    :branch => "swift-1.2"
+
+pod 'DateKit',
+    :git => "git@github.com:bartoszkopinski/DateKit.git",
+    :commit => "63e1b2e07895801f5b27f4a3a5ca74bff919fcbf",
+    :branch => "Swift_1_2"
+
+pod 'CryptoSwift',
+    :git => "git@github.com:krzyzanowskim/CryptoSwift.git",
+    :commit => "4191a7ab5bd769acb4cbf8baaaba3176af19ce14",
+    :branch => "swift12"
 
 target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
 
     pod 'KIF', '~> 3.0',
         :configurations => ['Test']
 
-    pod 'Quick',
-        :configurations => ['Test'],
-      	git: 'git@github.com:Quick/Quick.git',
-      	branch: 'swift-1.1' #version 0.3.0+ is available only for Swift 1.2+
+    pod 'Quick', '~> 0.3.1',
+        :configurations => ['Test']
 
-    pod 'Nimble',
-        :configurations => ['Test'],
-        git: 'git@github.com:Quick/Nimble.git',
-        branch: 'swift-1.1' #version 0.4.0+ is available only for Swift 1.2+
+    pod 'Nimble', '~> 0.4.2',
+        :configurations => ['Test']
 end
 
 post_install do |installer|

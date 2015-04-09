@@ -128,7 +128,7 @@ extension BookingConfirmationViewController {
     private func addMinutesToActualBookingTime(minutes: Int) {
         let actualTimeFrame = self.actualBookingTime.0
         
-        if let _actualTimeFrame = actualTimeFrame? {
+        if let _actualTimeFrame = actualTimeFrame {
             let endDate = _actualTimeFrame.endDate.minutes.add(minutes).date
             let timeFrame = TimeFrame(startDate: _actualTimeFrame.startDate, endDate: endDate, availability: _actualTimeFrame.availability)
             self.actualBookingTime = (timeFrame, self.actualBookingTime.1)

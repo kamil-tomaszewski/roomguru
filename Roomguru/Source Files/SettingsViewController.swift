@@ -46,7 +46,7 @@ extension SettingsViewController: UITableViewDataSource {
         if item.type == .switchType {
             cell = self.tableView(tableView, switchCellForItem: item)
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as! UITableViewCell
         }
 
         cell.textLabel?.text = item.title
@@ -85,7 +85,7 @@ extension SettingsViewController {
     }
     
     func signOutHandler() {
-        (UIApplication.sharedApplication().delegate as AppDelegate).signOut()
+        (UIApplication.sharedApplication().delegate as! AppDelegate).signOut()
     }
     
     func notificationSwitchHandler(sender: UISwitch) {
@@ -98,7 +98,7 @@ extension SettingsViewController {
     
     func tableView(tableView: UITableView, switchCellForItem item: SettingItem) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as SwitchCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as! SwitchCell
         cell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
         cell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
         

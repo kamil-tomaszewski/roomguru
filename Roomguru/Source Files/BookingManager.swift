@@ -9,6 +9,7 @@
 import Foundation
 import DateKit
 import SwiftyUserDefaults
+import SwiftyJSON
 
 class BookingManager: NSObject {
     
@@ -31,7 +32,7 @@ class BookingManager: NSObject {
                     }
                 }
                 
-                if calendars.count == 0 {
+                if calendars.isEmpty {
                     calendars.append(AvailabilityCalendar(calendarID: _calendarsFreeBusyDictionary.keys.first as String!, timeFrames: []))
                 }
 

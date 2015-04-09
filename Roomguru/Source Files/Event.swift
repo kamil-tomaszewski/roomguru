@@ -8,6 +8,7 @@
 
 import UIKit
 import DateKit
+import SwiftyJSON
 
 class Event: ModelObject, NSSecureCoding {
     var kind:       String?
@@ -96,7 +97,7 @@ class Event: ModelObject, NSSecureCoding {
                 Maping using T type failes with crash: "partial apply forwarder for Roomguru.Event"
                 That's why explicit init and casting in map() function is needed.
             */
-            return _jsonArray.map { Event(json: $0) as T }
+            return _jsonArray.map { Event(json: $0) as! T }
         }
         
         return nil

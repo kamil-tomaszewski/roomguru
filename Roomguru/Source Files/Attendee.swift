@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 enum Status: String {
     case Awaiting = "needsAction", NotGoing = "declined" , Maybe = "tentative", Going = "accepted"

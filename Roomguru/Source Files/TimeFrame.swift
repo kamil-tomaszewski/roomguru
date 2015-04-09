@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 enum TimeFrameAvailability {
     
@@ -17,7 +18,7 @@ class TimeFrame: ModelObject {
     
     var startDate: NSDate = NSDate()
     var endDate: NSDate = NSDate()
-    let availability: TimeFrameAvailability = .NotAvailable
+    var availability: TimeFrameAvailability = .NotAvailable
         
     init(startDate: NSDate, endDate: NSDate, availability: TimeFrameAvailability) {
         self.startDate = startDate

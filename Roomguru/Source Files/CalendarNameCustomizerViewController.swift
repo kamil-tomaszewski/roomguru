@@ -28,6 +28,8 @@ class CalendarNameCustomizerViewController: UIViewController {
     }
     
     required init(coder aDecoder: NSCoder) {
+        self.name = nil
+        self.indexPath = nil
         super.init(coder: aDecoder)
     }
     
@@ -58,7 +60,7 @@ extension CalendarNameCustomizerViewController {
     
     func didTapSaveBarButtonItem(sender: UIBarButtonItem) {
         
-        if aView?.textField.text.utf16Count > 0 {
+        if aView?.textField.text.length > 0 {
             delegate?.calendarNameCustomizerViewController(self, didEndEditngWithNewName: aView?.textField.text, forIndexPath: self.indexPath)
             navigationController?.popViewControllerAnimated(true)
         } else {

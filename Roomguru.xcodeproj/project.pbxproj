@@ -23,6 +23,7 @@
 		5E38FB3C1AAF23F10057DD8B /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */; };
 		5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */; };
 		5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
+		5E48423E1AD6843B009E1FA8 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */; };
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
 		5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */; };
 		5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* Settings.swift */; };
@@ -76,7 +77,6 @@
 		5EF1C5F21AD425B200CC9173 /* CalendarNameCustomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */; };
 		5EF1C5F41AD425CD00CC9173 /* CalendarNameCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F31AD425CD00CC9173 /* CalendarNameCustomizerView.swift */; };
 		5EF1C5F61AD42C8C00CC9173 /* BorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */; };
-		5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */; };
 		5EFC1ED91AC591EB00CE9D27 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */; };
 		5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* Constants.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -166,6 +166,7 @@
 		5E3A98561AA741FA00CE2F20 /* Tests-Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Production.xcconfig"; path = "Configuration/Tests-Production.xcconfig"; sourceTree = "<group>"; };
 		5E3A98571AA741FA00CE2F20 /* Tests-Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Staging.xcconfig"; path = "Configuration/Tests-Staging.xcconfig"; sourceTree = "<group>"; };
 		5E3A98581AA741FA00CE2F20 /* Tests-Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Test.xcconfig"; path = "Configuration/Tests-Test.xcconfig"; sourceTree = "<group>"; };
+		5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Roomguru/Source Files/StringExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -222,7 +223,6 @@
 		5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerViewController.swift; path = "Roomguru/Source Files/CalendarNameCustomizerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EF1C5F31AD425CD00CC9173 /* CalendarNameCustomizerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerView.swift; path = "Roomguru/Source Files/CalendarNameCustomizerView.swift"; sourceTree = SOURCE_ROOT; };
 		5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderTextField.swift; path = "Roomguru/Source Files/BorderTextField.swift"; sourceTree = SOURCE_ROOT; };
-		5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Frameworks/SwiftyJSON.swift; sourceTree = "<group>"; };
 		5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attendee.swift; path = "Roomguru/Source Files/Attendee.swift"; sourceTree = SOURCE_ROOT; };
 		5EFC763C1ACB3C9F0005892E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Roomguru/Source Files/Constants.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
@@ -316,7 +316,6 @@
 			isa = PBXGroup;
 			children = (
 				5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */,
-				5EF5D6BB1AB2F26B003E75C7 /* SwiftyJSON.swift */,
 				5E7A9E591AB060C60042E16F /* QuartzCore.framework */,
 				5E7A9E571AB060BB0042E16F /* QuickLook.framework */,
 				5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */,
@@ -667,6 +666,7 @@
 				5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */,
 				5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */,
 				5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */,
+				5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1005,6 +1005,7 @@
 				5E769EFC1ACE937A0061289D /* EmptyView.swift in Sources */,
 				5E8AE3051ACC174000A3C146 /* CalendarPickerView.swift in Sources */,
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,
+				5E48423E1AD6843B009E1FA8 /* StringExtensions.swift in Sources */,
 				5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */,
 				BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */,
 				5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */,
@@ -1030,7 +1031,6 @@
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */,
 				5E769EFE1ACEA2C00061289D /* StatefulViewControllerExtensions.swift in Sources */,
-				5EF5D6BC1AB2F26B003E75C7 /* SwiftyJSON.swift in Sources */,
 				5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
 				5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */,

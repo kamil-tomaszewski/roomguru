@@ -26,8 +26,8 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (aView?.tableView.tableHeaderView as ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
-        (aView?.tableView.tableFooterView as ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
+        (aView?.tableView.tableHeaderView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
+        (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
         
         self.setupRoomSegmentedControl()
         self.setupTableView()
@@ -176,7 +176,7 @@ extension EventsViewController: UITableViewDataSource {
         let event = eventFromIndexPath(indexPath)
         
         if let freeEvent = event as? FreeEvent {
-            let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier) as FreeEventCell
+            let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier) as! FreeEventCell
             let minutes = freeEvent.duration/60
             let title = "Book \(Int(minutes)) min"
             
@@ -186,7 +186,7 @@ extension EventsViewController: UITableViewDataSource {
             
             return cell
         } else {
-            let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as EventCell
+            let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as! EventCell
             cell.textLabel?.text = event?.summary
             cell.timeMaxLabel.text = event?.startTime
             cell.timeMinLabel.text = event?.endTime
@@ -211,7 +211,7 @@ extension EventsViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let label = HeaderLabel()
-        label.text = (viewModel?[section] as Section).title
+        label.text = (viewModel?[section] as! Section).title
         return label
     }
 }
@@ -223,7 +223,7 @@ extension EventsViewController: FreeEventCellDelegate {
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval) {
         if let indexPath = aView?.tableView.indexPathForCell(cell) {
             if let freeEntry = viewModel?[indexPath.section][indexPath.row] {
-                let timeFrame = TimeFrame(freeEvent: freeEntry.event as FreeEvent)
+                let timeFrame = TimeFrame(freeEvent: freeEntry.event as! FreeEvent)
                 let calendarTime: CalendarTimeFrame = (timeFrame, freeEntry.calendarID)
                 
                 let confirmationViewController = BookingConfirmationViewController(calendarTime) { (actualCalendarTime) in

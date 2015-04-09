@@ -25,7 +25,7 @@ class PageableQuery: Query, Pageable {
     // MARK: Query parameters
     
     var pageToken: String? {
-        get { return self[PageTokenKey] as String? }
+        get { return self[PageTokenKey] as! String? }
         set { self[PageTokenKey] = newValue }
     }
     

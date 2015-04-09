@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 protocol ModelJSONProtocol {
     
@@ -15,7 +16,7 @@ protocol ModelJSONProtocol {
     func toJSON() -> JSON
     func map(json: JSON)
     
-    class func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]?
+    static func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]?
 }
 
 class ModelObject: NSObject, ModelJSONProtocol {

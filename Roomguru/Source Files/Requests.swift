@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Async
+import SwiftyJSON
 
 class QueryRequest {
     

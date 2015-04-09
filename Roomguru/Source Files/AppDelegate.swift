@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     
     func signOut() {
         GPPSignIn.sharedInstance().signOut()
-        let tabBarViewController = window!.rootViewController as TabBarController
+        let tabBarViewController = window!.rootViewController as! TabBarController
         tabBarViewController.presentLoginViewController {
             tabBarViewController.popNavigationStack()
         }

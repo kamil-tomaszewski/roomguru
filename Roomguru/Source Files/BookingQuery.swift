@@ -27,7 +27,7 @@ class BookingQuery: Query {
     }
     
     var summary: String {
-        get { return self[SummaryKey] as String }
+        get { return self[SummaryKey] as! String }
         set { self[SummaryKey] = newValue }
     }
     
@@ -61,7 +61,7 @@ class BookingQuery: Query {
     private let EndKey = "end"
     
     private func getDateForKey(key: String) -> NSDate? {
-        if let dateString: String = (self[key] as Dictionary)[DateTimeKey] {
+        if let dateString: String = (self[key] as! Dictionary)[DateTimeKey] {
             return formatter.dateFromString(dateString)
         }
         return nil

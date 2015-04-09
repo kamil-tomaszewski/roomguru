@@ -18,7 +18,7 @@ class ButtonCell: UITableViewCell {
         set { Constants.CellIdentifier = newValue }
     }
     
-    let button = UIButton.buttonWithType(.System) as UIButton
+    let button = UIButton.buttonWithType(.System) as! UIButton
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

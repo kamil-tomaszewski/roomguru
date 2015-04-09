@@ -11,7 +11,7 @@ import SwiftyUserDefaults
 
 protocol Persistence {
     
-    class var key: String { get }
+    static var key: String { get }
     
     func save()
     func delete() -> Bool
@@ -34,7 +34,7 @@ class User: NSObject, NSSecureCoding {
     }
     
     required init(coder aDecoder: NSCoder) {
-        email = aDecoder.decodeObjectForKey("email") as String
+        email = aDecoder.decodeObjectForKey("email") as! String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {

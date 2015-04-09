@@ -19,9 +19,9 @@ class BookingTimesView: UIView {
     
     weak var delegate: BookingTimesViewDelegate?
     
-    let firstPeriodButton = UIButton.buttonWithType(.System) as UIButton
-    let secondPeriodButton = UIButton.buttonWithType(.System) as UIButton
-    let thirdPeriodButton = UIButton.buttonWithType(.System) as UIButton
+    let firstPeriodButton = UIButton.buttonWithType(.System) as! UIButton
+    let secondPeriodButton = UIButton.buttonWithType(.System) as! UIButton
+    let thirdPeriodButton = UIButton.buttonWithType(.System) as! UIButton
     
     private var timePeriod: NSTimeInterval = 0.0
     private var timePeriodsArray: [NSTimeInterval] = [1800, 3600, 0]

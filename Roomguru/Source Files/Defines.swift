@@ -7,15 +7,15 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 
 // MARK: Types
 // MARK: - Closures
 
-typealias VoidBlock = () -> ()
-typealias ResponseBlock = (response: JSON?) -> ()
-typealias ListResponseBlock = (response: [AnyObject]?) -> ()
-typealias ErrorBlock = (error: NSError) -> ()
+typealias VoidBlock = Void -> Void
+typealias ResponseBlock = (response: JSON?) -> Void
+typealias ListResponseBlock = (response: [AnyObject]?) -> Void
+typealias ErrorBlock = (error: NSError) -> Void
 
 // MARK: - Data types
 

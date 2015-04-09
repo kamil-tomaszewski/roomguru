@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Async
+import SwiftyJSON
 
 class NetworkManager: NSObject {
     private var serverURL = ""
@@ -41,11 +42,11 @@ extension NetworkManager {
 private extension GTMOAuth2Authentication {
 
     private func accessToken() -> String {
-        return self.parameters["access_token"] as String
+        return self.parameters["access_token"] as! String
     }
     
     private func tokenType() -> String {
-        return self.parameters["token_type"] as String
+        return self.parameters["token_type"] as! String
     }
     
     private func tokenForAuthorizationHeader() -> String {
@@ -77,7 +78,7 @@ extension NetworkManager {
                         success(calendars: _array)
                     }
                 } else {
-                    let _error = error? ?? NSError(message: NSLocalizedString("Unknown error occured", comment: ""))
+                    let _error = error ?? NSError(message: NSLocalizedString("Unknown error occured", comment: ""))
                     failure(error: _error)
                 }
             }

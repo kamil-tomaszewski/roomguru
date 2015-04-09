@@ -60,7 +60,7 @@ extension Array {
     func matchingCalendars() -> [T] {
         return self.filter {
             for calendar in CalendarPersistenceStore.sharedStore.calendars {
-                if $0 as Calendar == calendar { return true }
+                if $0 as! Calendar == calendar { return true }
             }
             return false
         }

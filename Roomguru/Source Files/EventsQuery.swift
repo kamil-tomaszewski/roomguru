@@ -43,12 +43,12 @@ class EventsQuery: PageableQuery {
     var calendarID: String { get { return _calendarID } }
     
     var maxResults: Int? {
-        get { return self[MaxResultsKey] as Int? }
+        get { return self[MaxResultsKey] as! Int? }
         set { self[MaxResultsKey] = newValue }
     }
     
     var timeMax: NSDate? {
-        get { return formatter.dateFromString(self[TimeMaxKey] as String) }
+        get { return formatter.dateFromString(self[TimeMaxKey] as! String) }
         set {
             if let newTimeMax: NSDate = newValue {
                 self[TimeMaxKey] = formatter.stringFromDate(newTimeMax)
@@ -59,7 +59,7 @@ class EventsQuery: PageableQuery {
     }
     
     var timeMin: NSDate? {
-        get { return formatter.dateFromString(self[TimeMinKey] as String) }
+        get { return formatter.dateFromString(self[TimeMinKey] as! String) }
         set {
             if let newTimeMin: NSDate = newValue {
                 self[TimeMinKey] = formatter.stringFromDate(newTimeMin)
@@ -70,13 +70,13 @@ class EventsQuery: PageableQuery {
     }
     
     var orderBy: String? {
-        get { return self[OrderByKey] as String? }
+        get { return self[OrderByKey] as! String? }
         set { self[OrderByKey] = newValue }
     }
     
     var singleEvents: Bool? {
         get {
-            let singleEve = self[SingleEventsKey] as String
+            let singleEve = self[SingleEventsKey] as! String
             return (singleEve == "true") as Bool?
         }
         set {

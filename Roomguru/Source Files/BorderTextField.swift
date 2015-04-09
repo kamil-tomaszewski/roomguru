@@ -10,11 +10,6 @@ import UIKit
 
 class BorderTextField: UITextField {
     
-    override init() {
-        super.init()
-        commonInit()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

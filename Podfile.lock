@@ -22,70 +22,118 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (1.1.4)
   - Async (1.1.1)
-  - Cartography (0.2.1)
-  - CryptoSwift (0.0.8)
+  - Cartography (0.3.0)
+  - CryptoSwift (0.0.7)
   - DateKit (0.1.1)
   - KIF (3.2.1):
     - KIF/XCTest (= 3.2.1)
   - KIF/XCTest (3.2.1)
-  - Nimble (0.3.1)
-  - Quick (0.2.3)
+  - Nimble (0.4.2)
+  - Quick (0.3.1)
   - StatefulViewController (0.1)
+  - SwiftyJSON (2.1.3)
   - SwiftyUserDefaults (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.2)
-  - Alamofire (~> 1.1)
-  - Async (from `https://github.com/duemunk/Async.git`, commit `ca009a904aa5d6cfaff5259e84b502cc47b62644`)
-  - Cartography (~> 0.2.1)
-  - CryptoSwift (~> 0.0.8)
-  - DateKit (~> 0.1.1)
+  - Alamofire (from `git@github.com:Alamofire/Alamofire.git`, commit `2ff5749ffc0425f05a1411b5b6fd2c25241b5b14`,
+    branch `xcode-6.3`)
+  - Async (from `git@github.com:duemunk/Async.git`, commit `a61663f4469df082ac0b3311d9c4b8cd32185336`,
+    branch `feature/Swift_1.2`)
+  - Cartography (from `git@github.com:robb/Cartography.git`, commit `7467721bb7253899f66e542f1845851032386b7f`,
+    branch `xcode6-3`)
+  - CryptoSwift (from `git@github.com:krzyzanowskim/CryptoSwift.git`, commit `4191a7ab5bd769acb4cbf8baaaba3176af19ce14`,
+    branch `swift12`)
+  - DateKit (from `git@github.com:bartoszkopinski/DateKit.git`, commit `63e1b2e07895801f5b27f4a3a5ca74bff919fcbf`,
+    branch `Swift_1_2`)
   - KIF (~> 3.0)
-  - Nimble (from `git@github.com:Quick/Nimble.git`, branch `swift-1.1`)
-  - Quick (from `git@github.com:Quick/Quick.git`, branch `swift-1.1`)
+  - Nimble (~> 0.4.2)
+  - Quick (~> 0.3.1)
   - StatefulViewController (from `git@github.com:aschuch/StatefulViewController.git`,
-    commit `c2c1e1a63f698e3e5bc4cb6b718db3d32a4a4599`)
-  - SwiftyUserDefaults (~> 1.0.0)
+    commit `3eaa376eb348d13db99d4b37b2cbcec312a6e73f`)
+  - SwiftyJSON (from `git@github.com:SwiftyJSON/SwiftyJSON.git`, commit `008a09d7ea8b13c03fb59b35c01aad339584a5e1`,
+    branch `xcode6.3`)
+  - SwiftyUserDefaults (from `git@github.com:radex/SwiftyUserDefaults.git`, commit
+    `e467e0f712e3ac1d1ceb7f9020ffd02e487e8893`, branch `swift-1.2`)
 
 EXTERNAL SOURCES:
+  Alamofire:
+    :branch: xcode-6.3
+    :commit: 2ff5749ffc0425f05a1411b5b6fd2c25241b5b14
+    :git: git@github.com:Alamofire/Alamofire.git
   Async:
-    :commit: ca009a904aa5d6cfaff5259e84b502cc47b62644
-    :git: https://github.com/duemunk/Async.git
-  Nimble:
-    :branch: swift-1.1
-    :git: git@github.com:Quick/Nimble.git
-  Quick:
-    :branch: swift-1.1
-    :git: git@github.com:Quick/Quick.git
+    :branch: feature/Swift_1.2
+    :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
+    :git: git@github.com:duemunk/Async.git
+  Cartography:
+    :branch: xcode6-3
+    :commit: 7467721bb7253899f66e542f1845851032386b7f
+    :git: git@github.com:robb/Cartography.git
+  CryptoSwift:
+    :branch: swift12
+    :commit: 4191a7ab5bd769acb4cbf8baaaba3176af19ce14
+    :git: git@github.com:krzyzanowskim/CryptoSwift.git
+  DateKit:
+    :branch: Swift_1_2
+    :commit: 63e1b2e07895801f5b27f4a3a5ca74bff919fcbf
+    :git: git@github.com:bartoszkopinski/DateKit.git
   StatefulViewController:
-    :commit: c2c1e1a63f698e3e5bc4cb6b718db3d32a4a4599
+    :commit: 3eaa376eb348d13db99d4b37b2cbcec312a6e73f
     :git: git@github.com:aschuch/StatefulViewController.git
+  SwiftyJSON:
+    :branch: xcode6.3
+    :commit: 008a09d7ea8b13c03fb59b35c01aad339584a5e1
+    :git: git@github.com:SwiftyJSON/SwiftyJSON.git
+  SwiftyUserDefaults:
+    :branch: swift-1.2
+    :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
+    :git: git@github.com:radex/SwiftyUserDefaults.git
 
 CHECKOUT OPTIONS:
+  Alamofire:
+    :branch: xcode-6.3
+    :commit: 2ff5749ffc0425f05a1411b5b6fd2c25241b5b14
+    :git: git@github.com:Alamofire/Alamofire.git
   Async:
-    :commit: ca009a904aa5d6cfaff5259e84b502cc47b62644
-    :git: https://github.com/duemunk/Async.git
-  Nimble:
-    :commit: 1088d5f70497f34be946e3e2829a10529f7bea8e
-    :git: git@github.com:Quick/Nimble.git
-  Quick:
-    :commit: ce729620fa9db8d3c76b69bbfc429cece97dbe36
-    :git: git@github.com:Quick/Quick.git
+    :branch: feature/Swift_1.2
+    :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
+    :git: git@github.com:duemunk/Async.git
+  Cartography:
+    :branch: xcode6-3
+    :commit: 7467721bb7253899f66e542f1845851032386b7f
+    :git: git@github.com:robb/Cartography.git
+  CryptoSwift:
+    :branch: swift12
+    :commit: 4191a7ab5bd769acb4cbf8baaaba3176af19ce14
+    :git: git@github.com:krzyzanowskim/CryptoSwift.git
+  DateKit:
+    :branch: Swift_1_2
+    :commit: 63e1b2e07895801f5b27f4a3a5ca74bff919fcbf
+    :git: git@github.com:bartoszkopinski/DateKit.git
   StatefulViewController:
-    :commit: c2c1e1a63f698e3e5bc4cb6b718db3d32a4a4599
+    :commit: 3eaa376eb348d13db99d4b37b2cbcec312a6e73f
     :git: git@github.com:aschuch/StatefulViewController.git
+  SwiftyJSON:
+    :branch: xcode6.3
+    :commit: 008a09d7ea8b13c03fb59b35c01aad339584a5e1
+    :git: git@github.com:SwiftyJSON/SwiftyJSON.git
+  SwiftyUserDefaults:
+    :branch: swift-1.2
+    :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
+    :git: git@github.com:radex/SwiftyUserDefaults.git
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Alamofire: 6a2cbaebe78a6d469bc55ee37f0a24ba22af76ac
   Async: 4ba79915d3f43324db9e1e296db324cb896fa266
-  Cartography: bfd61a6b2f784ed20fff698c6119ee0dda2da9ea
-  CryptoSwift: 6d1b93af5b48e02e57366bfad28b00170af405ee
+  Cartography: cfaaaa04e68ecd5566368f99f01898a8eb0819d5
+  CryptoSwift: 9ac21389daa3de6395c527e51715e908b993f3ed
   DateKit: 1bd5fbff0131575fdc6fa56d820e7779bc025256
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
-  Nimble: 1b3c765852d63b9540a91e528e1e4f8afab79b6f
-  Quick: 2c59914d3b2548a0e8ed0288062d965d9bab03e2
+  Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
+  Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   StatefulViewController: 6e16376e54d08b2badbf79db57707500d0572787
+  SwiftyJSON: a561c2a840121085bec8a2dfeac97a360fc66901
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
 
 COCOAPODS: 0.36.3

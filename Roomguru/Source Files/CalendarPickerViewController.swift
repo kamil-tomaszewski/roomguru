@@ -70,7 +70,7 @@ extension CalendarPickerViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(CalendarPickerCell.reuseIdentifier) as CalendarPickerCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CalendarPickerCell.reuseIdentifier) as! CalendarPickerCell
         
         if let calendar = viewModel?.calendars[indexPath.row] {
             let strings = viewModel?.textForCalendar(calendar)
@@ -96,7 +96,7 @@ extension CalendarPickerViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as CalendarPickerCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CalendarPickerCell
         let controller = CalendarNameCustomizerViewController(name: cell.headerLabel.text, indexPath: indexPath)
         controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)

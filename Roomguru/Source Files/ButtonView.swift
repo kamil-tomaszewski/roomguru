@@ -11,7 +11,7 @@ import Cartography
 
 class ButtonView: UIView {
     
-    let button = UIButton.buttonWithType(.System) as UIButton
+    let button = UIButton.buttonWithType(.System) as! UIButton
     
     override init(frame: CGRect) {
         super.init(frame: frame)
