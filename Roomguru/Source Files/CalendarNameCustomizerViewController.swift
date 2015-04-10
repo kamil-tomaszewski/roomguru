@@ -9,27 +9,27 @@
 import UIKit
 
 protocol CalendarNameCustomizerViewControllerDelegate{
-    func calendarNameCustomizerViewController(controller:CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?, forIndexPath indexPath: NSIndexPath?)
+    
+    func calendarNameCustomizerViewController(controller:CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?)
+    func calendarNameCustomizerViewControllerDidResetName(controller:CalendarNameCustomizerViewController)
 }
 
 class CalendarNameCustomizerViewController: UIViewController {
     
     weak var aView: CalendarNameCustomizerView?
     var delegate: CalendarNameCustomizerViewControllerDelegate?
+    var shouldShowResetButton = false
     let name: String?
-    let indexPath: NSIndexPath?
     
     // MARK: View life cycle
     
     init(name: String?, indexPath: NSIndexPath) {
         self.name = name
-        self.indexPath = indexPath
         super.init(nibName: nil, bundle: nil);
     }
     
     required init(coder aDecoder: NSCoder) {
         self.name = nil
-        self.indexPath = nil
         super.init(coder: aDecoder)
     }
     
@@ -45,6 +45,8 @@ class CalendarNameCustomizerViewController: UIViewController {
         
         hideBackBarButtonTitle()
         aView?.textField.placeholder = name
+        aView?.button.addTarget(self, action: Selector("didClickResetButton:"))
+        aView?.button.hidden = !shouldShowResetButton
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,10 +63,15 @@ extension CalendarNameCustomizerViewController {
     func didTapSaveBarButtonItem(sender: UIBarButtonItem) {
         
         if aView?.textField.text.length > 0 {
-            delegate?.calendarNameCustomizerViewController(self, didEndEditngWithNewName: aView?.textField.text, forIndexPath: self.indexPath)
+            delegate?.calendarNameCustomizerViewController(self, didEndEditngWithNewName: aView?.textField.text)
             navigationController?.popViewControllerAnimated(true)
         } else {
             UIAlertView(title: NSLocalizedString("Oh no!", comment: ""), message: NSLocalizedString("Provided name should have at least 1 sign", comment: "")).show()
         }
+    }
+    
+    func didClickResetButton(sender: UIButton) {
+        delegate?.calendarNameCustomizerViewControllerDidResetName(self)
+        navigationController?.popViewControllerAnimated(true)
     }
 }

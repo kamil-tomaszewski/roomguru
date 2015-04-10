@@ -38,6 +38,10 @@ class CalendarPersistenceStore {
         return calendars.filter{ $0 == calendar }.first
     }
     
+    func isCalendarPersisted(calendar: Calendar) -> Bool {
+        return matchingCalendar(calendar) != nil
+    }
+    
     // MARK: Saving and Reading
     
     func saveCalendars(calendars: [Calendar]) {

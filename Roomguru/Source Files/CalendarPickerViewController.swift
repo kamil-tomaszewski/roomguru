@@ -13,6 +13,7 @@ class CalendarPickerViewController: StatefulViewController {
         
     weak var aView: CalendarPickerView?
     var viewModel: CalendarPickerViewModel?
+    private var currentEditingIndexPath: NSIndexPath?
     
     // MARK: View life cycle
     
@@ -65,19 +66,17 @@ extension CalendarPickerViewController {
 extension CalendarPickerViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.calendars.count ?? 0
+        return viewModel?.count() ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(CalendarPickerCell.reuseIdentifier) as! CalendarPickerCell
         
-        if let calendar = viewModel?.calendars[indexPath.row] {
-            let strings = viewModel?.textForCalendar(calendar)
-            cell.headerLabel.text = strings?.mainText
-            cell.footerLabel.text = strings?.detailText
-            cell.checkmarkLabel.hidden = !viewModel!.shouldSelectCalendar(calendar)
-        }
+        let strings = viewModel?.textForCalendarAtIndex(indexPath.row)
+        cell.headerLabel.text = strings?.mainText
+        cell.footerLabel.text = strings?.detailText
+        cell.checkmarkLabel.hidden = !viewModel!.shouldSelectCalendarAtIndex(indexPath.row)
         
         return cell
     }
@@ -89,7 +88,7 @@ extension CalendarPickerViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        viewModel?.saveOrRemoveItemAtIndex(indexPath.row)
+        viewModel?.selectOrDeselectCalendarAtIndex(indexPath.row)
         setBarButtonItemState()
         tableView.reloadAndDeselectRowAtIndexPath(indexPath)
     }
@@ -99,6 +98,8 @@ extension CalendarPickerViewController: UITableViewDelegate {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! CalendarPickerCell
         let controller = CalendarNameCustomizerViewController(name: cell.headerLabel.text, indexPath: indexPath)
         controller.delegate = self
+        controller.shouldShowResetButton = viewModel?.hasCalendarAtIndexCustomizedName(indexPath.row) ?? false
+        currentEditingIndexPath = indexPath
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -108,7 +109,7 @@ extension CalendarPickerViewController: UITableViewDelegate {
 extension CalendarPickerViewController: StatefulViewControllerDelegate {
     
     func hasContent() -> Bool {
-        let isEmpty = viewModel?.calendars.isEmpty ?? true
+        let isEmpty = (viewModel?.count() ?? 0) == 0
         aView?.tableView.hidden = isEmpty
         return !isEmpty
     }
@@ -118,12 +119,22 @@ extension CalendarPickerViewController: StatefulViewControllerDelegate {
 
 extension CalendarPickerViewController: CalendarNameCustomizerViewControllerDelegate {
     
-    func calendarNameCustomizerViewController(controller: CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?, forIndexPath indexPath: NSIndexPath?) {
+    func calendarNameCustomizerViewController(controller: CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?) {
         
-        if let calendar = viewModel?.calendars[indexPath!.row] {
-            calendar.name = name;
-            aView?.tableView.reloadAndDeselectRowAtIndexPath(indexPath!)
+        if let _indexPath = currentEditingIndexPath {
+            viewModel?.saveNameForCalendarAtIndex(_indexPath.row, name: name)
+            aView?.tableView.reloadAndDeselectRowAtIndexPath(_indexPath)
         }
+        currentEditingIndexPath = nil
+    }
+    
+    func calendarNameCustomizerViewControllerDidResetName(controller: CalendarNameCustomizerViewController) {
+        
+        if let _indexPath = currentEditingIndexPath {
+            viewModel?.resetCustomCalendarNameAtIndex(_indexPath.row)
+            aView?.tableView.reloadAndDeselectRowAtIndexPath(_indexPath)
+        }
+        currentEditingIndexPath = nil
     }
 }
 

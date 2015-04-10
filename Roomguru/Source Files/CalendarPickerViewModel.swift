@@ -8,62 +8,76 @@
 
 import UIKit
 
+private class PickerCalendar {
+    var isSelected: Bool = false
+    let calendar: Calendar
+    
+    init(calendar: Calendar) {
+        self.calendar = calendar
+    }
+}
+
 class CalendarPickerViewModel {
 
-    let calendars: [Calendar]
-    private var selectedCalendars: [Calendar]
+    private let calendars: [PickerCalendar]
     
     init(calendars: [Calendar]) {
-        self.calendars = calendars
-        self.selectedCalendars = calendars.matchingCalendars()
+        var array: [PickerCalendar] = []
+        for calendar in calendars {
+            let pickerCalendar = PickerCalendar(calendar: calendar)
+            pickerCalendar.isSelected = CalendarPersistenceStore.sharedStore.isCalendarPersisted(calendar)
+            array += [pickerCalendar]
+        }
+        self.calendars = array
     }
     
     // MARK: Public
     
-    func saveOrRemoveItemAtIndex(index: Int) {
-        
+    func selectOrDeselectCalendarAtIndex(index: Int) {
         let calendar = calendars[index]
-        if contains(selectedCalendars, calendar) {
-            selectedCalendars = removeOccurencesOfElement(selectedCalendars, calendar)
-        } else {
-            selectedCalendars += [calendar]
-        }
+        calendar.isSelected = !calendar.isSelected
     }
     
-    func shouldSelectCalendar(calendar: Calendar) -> Bool {
-        return contains(selectedCalendars, calendar)
+    func shouldSelectCalendarAtIndex(index: Int) -> Bool {
+        return calendars[index].isSelected
     }
     
     func shouldProcceed() -> Bool {
-        return !selectedCalendars.isEmpty
+        return !self.calendars.filter { $0.isSelected }.isEmpty
+    }
+    
+    func count() -> Int {
+        return calendars.count
+    }
+    
+    func saveNameForCalendarAtIndex(index: Int, name: String?) {
+        calendars[index].calendar.name = name
     }
     
     func save() {
-        CalendarPersistenceStore.sharedStore.saveCalendars(selectedCalendars)
+        let array = calendars.filter{ $0.isSelected }.map { $0.calendar }
+        CalendarPersistenceStore.sharedStore.saveCalendars(array)
     }
     
-    func textForCalendar(calendar: Calendar) -> (mainText: String?, detailText: String?) {
+    func resetCustomCalendarNameAtIndex(index: Int) {
+        calendars[index].calendar.name = nil
+    }
+    
+    func hasCalendarAtIndexCustomizedName(index: Int) -> Bool {
+        return calendars[index].calendar.name != nil
+    }
+    
+    func textForCalendarAtIndex(index: Int) -> (mainText: String?, detailText: String?) {
+        
+        let picker = calendars[index]
         
         let placeholder = NSLocalizedString("Not change yet", comment: "")
-        let mainText = calendar.name ?? calendar.summary
-        var detailText = (calendar.name != nil) ? calendar.summary : placeholder
+        let mainText = picker.calendar.name ?? picker.calendar.summary
+        var detailText = (picker.calendar.name != nil) ? picker.calendar.summary : placeholder
         
         if (detailText != nil) && (detailText != placeholder) {
             detailText = NSLocalizedString("was: ", comment: "") + detailText!
         }
         return (mainText, detailText)
-    }
-}
-
-// NGRTemp: temporary:
-private extension Array {
-    
-    private func matchingCalendars() -> [T] {
-        return self.filter {
-            for calendar in CalendarPersistenceStore.sharedStore.calendars {
-                if $0 as! Calendar == calendar { return true }
-            }
-            return false
-        }
     }
 }
