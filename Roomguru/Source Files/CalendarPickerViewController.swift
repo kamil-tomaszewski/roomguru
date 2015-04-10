@@ -122,7 +122,7 @@ extension CalendarPickerViewController: CalendarNameCustomizerViewControllerDele
     func calendarNameCustomizerViewController(controller: CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?) {
         
         if let _indexPath = currentEditingIndexPath {
-            viewModel?.saveNameForCalendarAtIndex(_indexPath.row, name: name)
+            viewModel?.saveNameForCalendarAtIndexWithSelection(_indexPath.row, name: name)
             aView?.tableView.reloadAndDeselectRowAtIndexPath(_indexPath)
         }
         currentEditingIndexPath = nil

@@ -9,11 +9,12 @@
 import UIKit
 
 private class PickerCalendar {
-    var isSelected: Bool = false
+    var isSelected: Bool
     let calendar: Calendar
     
-    init(calendar: Calendar) {
+    init(calendar: Calendar, selected: Bool) {
         self.calendar = calendar
+        self.isSelected = selected
     }
 }
 
@@ -22,13 +23,10 @@ class CalendarPickerViewModel {
     private let calendars: [PickerCalendar]
     
     init(calendars: [Calendar]) {
-        var array: [PickerCalendar] = []
-        for calendar in calendars {
-            let pickerCalendar = PickerCalendar(calendar: calendar)
-            pickerCalendar.isSelected = CalendarPersistenceStore.sharedStore.isCalendarPersisted(calendar)
-            array += [pickerCalendar]
+        self.calendars = calendars.map {
+            let selected = CalendarPersistenceStore.sharedStore.isCalendarPersisted($0)
+            return PickerCalendar(calendar: $0, selected: selected)
         }
-        self.calendars = array
     }
     
     // MARK: Public
@@ -50,7 +48,8 @@ class CalendarPickerViewModel {
         return calendars.count
     }
     
-    func saveNameForCalendarAtIndex(index: Int, name: String?) {
+    func saveNameForCalendarAtIndexWithSelection(index: Int, name: String?) {
+        calendars[index].isSelected = true
         calendars[index].calendar.name = name
     }
     

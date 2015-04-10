@@ -24,14 +24,8 @@ class CalendarPersistenceStore {
         calendars = fetch() ?? []
     }
     
-    func names() -> [String] {
-        var array: [String] = []
-        for calendar: Calendar in calendars {
-            if let _summary = calendar.summary {
-                array += [_summary]
-            }
-        }
-        return array
+    func rooms() -> [(name: String, id: String)] {
+        return calendars.filter{ $0.summary != nil && $0.identifier != nil }.map{ (name: $0.name ?? $0.summary!, id: $0.identifier!) }
     }
     
     func matchingCalendar(calendar: Calendar) -> Calendar? {
