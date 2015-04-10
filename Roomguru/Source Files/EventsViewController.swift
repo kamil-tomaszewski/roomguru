@@ -15,20 +15,42 @@ class EventsViewController: UIViewController {
     weak var aView: EventsListView?
     var viewModel: ListViewModel<CalendarEntry>?
     var query = EventsQuery(calendarID: Room[0])
-    var timeMax = NSDate().tomorrow.hour(23).minute(59).second(59).date
-    var timeMin = NSDate().midnight
+    var timeMax: NSDate = NSDate()
+    var timeMin: NSDate = NSDate()
     
     let sortingKey = "shortDate"
     let roomSegmentedControl = UISegmentedControl(items: Room.names)
 
+    convenience init(date: NSDate) {
+        self.init()
+        timeMax = date.hour(23).minute(59).second(59).date
+        timeMin = date.midnight
+    }
+    
+    init() {
+        super.init(nibName:nil,bundle:nil)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func loadView() {
         aView = loadViewWithClass(EventsListView.self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.edgesForExtendedLayout = UIRectEdge.None
+        
         self.setupRoomSegmentedControl()
         self.setupTableView()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        println("topLayoutGuide: \(self.topLayoutGuide.length)")
+        super.viewWillLayoutSubviews()
     }
     
     override func viewDidAppear(animated: Bool) {
