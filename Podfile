@@ -45,9 +45,9 @@ pod 'SwiftyUserDefaults',
     :branch => "swift-1.2"
 
 pod 'DateKit',
-    :git => "git@github.com:bartoszkopinski/DateKit.git",
-    :commit => "63e1b2e07895801f5b27f4a3a5ca74bff919fcbf",
-    :branch => "Swift_1_2"
+    :git => "https://github.com/SnowdogApps/DateKit.git",
+    :commit => "4c953cf5a70a14f88d154bdfd710019f20a10b49",
+    :branch => "master"
 
 pod 'CryptoSwift',
     :git => "git@github.com:krzyzanowskim/CryptoSwift.git",
