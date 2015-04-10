@@ -107,8 +107,10 @@ extension BookingConfirmationViewController {
 
 extension BookingConfirmationViewController: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.summary = textField.text
+        textField.resignFirstResponder()
+        return true
     }
     
 }
