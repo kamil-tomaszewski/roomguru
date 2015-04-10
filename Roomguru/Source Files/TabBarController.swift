@@ -12,6 +12,8 @@ class TabBarController: UITabBarController {
     
     // MARK: Lifecycle
     
+    var eventsPageControllerSource = EventsPageViewControllerSource()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         setupEmbeddedViewControllers()
@@ -59,12 +61,8 @@ class TabBarController: UITabBarController {
     
     private func setupEmbeddedViewControllers() {
         
-        let pageControllerSource = EventsPageViewControllerSource()
-        let pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-        
-        pageController.dataSource = pageControllerSource
-        pageController.delegate = pageControllerSource
-        
+        var pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        pageController.dataSource = eventsPageControllerSource
         pageController.setViewControllers([EventsViewController(date: NSDate())], direction: .Forward, animated: true, completion: nil)
         
         self.viewControllers = [

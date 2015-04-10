@@ -11,32 +11,24 @@ import UIKit
 import DateKit
 
 
-class EventsPageViewControllerSource: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-
-    private var currentDate: NSDate = NSDate()
-    
-    // MARK: Data Source
+class EventsPageViewControllerSource: NSObject, UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        return EventsViewController(date: currentDate.days - 1)
+        
+        if let viewController = viewController as? EventsViewController {
+            let date = viewController.timeMax.days - 1
+            return EventsViewController(date: date)
+        }
+
+        return nil
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        return EventsViewController(date: currentDate.days + 1)
-    }
-    
-    
-    // MARK: Delegate
-    
-    
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-        
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-        if let viewController = previousViewControllers.first as? EventsViewController {
-            currentDate = viewController.timeMin
+        if let viewController = viewController as? EventsViewController {
+            let date = viewController.timeMax.days + 1
+            return EventsViewController(date: date)
         }
+        
+        return nil
     }
 }
-
