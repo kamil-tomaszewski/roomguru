@@ -59,9 +59,17 @@ class TabBarController: UITabBarController {
     
     private func setupEmbeddedViewControllers() {
         
+        let pageControllerSource = EventsPageViewControllerSource()
+        let pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        
+        pageController.dataSource = pageControllerSource
+        pageController.delegate = pageControllerSource
+        
+        pageController.setViewControllers([EventsViewController(date: NSDate())], direction: .Forward, animated: true, completion: nil)
+        
         self.viewControllers = [
             NavigationController(rootViewController: DashboardViewController()),
-            NavigationController(rootViewController: EventsViewController()),
+            NavigationController(rootViewController: pageController),
             NavigationController(rootViewController: SettingsViewController())
         ]
         

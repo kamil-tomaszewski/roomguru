@@ -48,11 +48,6 @@ class EventsViewController: UIViewController {
         self.setupTableView()
     }
     
-    override func viewWillLayoutSubviews() {
-        println("topLayoutGuide: \(self.topLayoutGuide.length)")
-        super.viewWillLayoutSubviews()
-    }
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
