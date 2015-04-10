@@ -26,8 +26,8 @@ pod 'StatefulViewController',
 
 pod 'Async',
     :git => "git@github.com:duemunk/Async.git",
-    :commit => "83772e5790028fe3260b367f29a9231d7d715509",
-    :branch => "develop"
+    :commit => "a61663f4469df082ac0b3311d9c4b8cd32185336",
+    :branch => "master"
 
 pod 'SwiftyJSON',
     :git => "git@github.com:SwiftyJSON/SwiftyJSON.git",
@@ -51,8 +51,8 @@ pod 'DateKit',
 
 pod 'CryptoSwift',
     :git => "git@github.com:krzyzanowskim/CryptoSwift.git",
-    :commit => "4191a7ab5bd769acb4cbf8baaaba3176af19ce14",
-    :branch => "swift12"
+    :commit => "6ae8206f06ed0dddbf2721182e6d4232f80698da",
+    :branch => "master"
 
 target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
 
