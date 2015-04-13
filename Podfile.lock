@@ -20,7 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Alamofire (1.1.4)
+  - Alamofire (1.2.0)
   - Async (1.1.1)
   - Cartography (0.3.0)
   - CryptoSwift (0.0.9)
@@ -36,8 +36,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.2)
-  - Alamofire (from `git@github.com:Alamofire/Alamofire.git`, commit `2ff5749ffc0425f05a1411b5b6fd2c25241b5b14`,
-    branch `xcode-6.3`)
+  - Alamofire (~> 1.2.0)
   - Async (from `git@github.com:duemunk/Async.git`, commit `a61663f4469df082ac0b3311d9c4b8cd32185336`,
     branch `master`)
   - Cartography (from `git@github.com:robb/Cartography.git`, commit `7467721bb7253899f66e542f1845851032386b7f`,
@@ -57,10 +56,6 @@ DEPENDENCIES:
     `e467e0f712e3ac1d1ceb7f9020ffd02e487e8893`, branch `swift-1.2`)
 
 EXTERNAL SOURCES:
-  Alamofire:
-    :branch: xcode-6.3
-    :commit: 2ff5749ffc0425f05a1411b5b6fd2c25241b5b14
-    :git: git@github.com:Alamofire/Alamofire.git
   Async:
     :branch: master
     :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
@@ -90,10 +85,6 @@ EXTERNAL SOURCES:
     :git: git@github.com:radex/SwiftyUserDefaults.git
 
 CHECKOUT OPTIONS:
-  Alamofire:
-    :branch: xcode-6.3
-    :commit: 2ff5749ffc0425f05a1411b5b6fd2c25241b5b14
-    :git: git@github.com:Alamofire/Alamofire.git
   Async:
     :branch: master
     :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
@@ -124,7 +115,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
-  Alamofire: 6a2cbaebe78a6d469bc55ee37f0a24ba22af76ac
+  Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
   Async: 4ba79915d3f43324db9e1e296db324cb896fa266
   Cartography: cfaaaa04e68ecd5566368f99f01898a8eb0819d5
   CryptoSwift: 95ed33cc40339bd80c64a5a527da7dcf121b9649

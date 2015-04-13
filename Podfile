@@ -15,10 +15,7 @@ use_frameworks!
 xcodeproj 'Roomguru', 'Development' => :debug, 'Production' => :release, 'Staging' => :release, 'Test' => :debug
 
 pod 'AFNetworking', '~> 2.5.2'
-pod 'Alamofire',
-    :git => "git@github.com:Alamofire/Alamofire.git",
-    :commit => "2ff5749ffc0425f05a1411b5b6fd2c25241b5b14",
-    :branch => "xcode-6.3"
+pod 'Alamofire', '~> 1.2.0'
 
 pod 'StatefulViewController',
     :git => "git@github.com:aschuch/StatefulViewController.git",
