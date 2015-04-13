@@ -25,6 +25,9 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("didTapPlusButton:"))
+        
         setupTableView()
         centralizeTableView()
     }
@@ -52,6 +55,12 @@ extension DashboardViewController {
     func didTapRevokeBookedRoom(sender: UIButton) {
         let revokeEventsController = RevokeEventsViewController()
         let navigationController = NavigationController(rootViewController: revokeEventsController)
+        presentViewController(navigationController, animated: true, completion: nil)
+    }
+    
+    func didTapPlusButton(sender: UIBarButtonItem) {
+        let controller = EditEventViewController(event: Event())
+        let navigationController = NavigationController(rootViewController: controller)
         presentViewController(navigationController, animated: true, completion: nil)
     }
 }
