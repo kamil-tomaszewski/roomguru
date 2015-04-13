@@ -246,6 +246,7 @@
 		BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingTimesView.swift; path = "Roomguru/Source Files/BookingTimesView.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsPageViewControllerDataSource.swift; path = "Roomguru/Source Files/EventsPageViewControllerDataSource.swift"; sourceTree = SOURCE_ROOT; };
+		BF4F2DF51ADBFDA700834B60 /* GroupedBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedBaseTableView.swift; path = "Roomguru/Source Files/GroupedBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1C1AB1D53700A43D35 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = "Roomguru/Source Files/Calendar.swift"; sourceTree = SOURCE_ROOT; };
@@ -382,6 +383,7 @@
 				5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */,
 				5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */,
 				BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */,
+				BF4F2DF51ADBFDA700834B60 /* GroupedBaseTableView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -1058,6 +1060,7 @@
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
 				5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */,
 				BF8459991ACBDE38004965EC /* RevokeQuery.swift in Sources */,
+				BF4F2DF61ADBFDA700834B60 /* GroupedBaseTableView.swift in Sources */,
 				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,
 				5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
