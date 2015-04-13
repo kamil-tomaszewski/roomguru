@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
+import CryptoSwift
 
 class CalendarPersistenceStore {
     
@@ -39,17 +40,29 @@ class CalendarPersistenceStore {
     // MARK: Saving and Reading
     
     func saveCalendars(calendars: [Calendar]) {
-        let dataRepresentation = NSKeyedArchiver.archivedDataWithRootObject(calendars)
-        Defaults["CalendarsKey"] = dataRepresentation
-        Defaults.synchronize()
-        
+        if let _key = key() {
+            let dataRepresentation = NSKeyedArchiver.archivedDataWithRootObject(calendars)
+            Defaults[_key] = dataRepresentation
+            Defaults.synchronize()
+        }
         self.calendars = calendars
     }
     
     func fetch() -> [Calendar]? {
-        if let data = Defaults["CalendarsKey"].data {
+        if let let _key = key(), data = Defaults[_key].data {
             return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Calendar]
         }
         return nil
+    }
+    
+    func clear() {
+        if let _key = key() {
+            Defaults.remove(_key)
+            Defaults.synchronize()
+        }
+    }
+    
+    private func key() -> String? {
+        return User.current?.email.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5()
     }
 }

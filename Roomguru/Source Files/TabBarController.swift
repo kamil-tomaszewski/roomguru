@@ -30,19 +30,7 @@ class TabBarController: UITabBarController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
 
-        if (!GPPSignIn.isUserSignedIn()) {
-            if (GPPSignIn.hasSilentAuthenticationSucceeded()) {
-                println("user is signed in")
-            } else {
-                presentLoginViewController(nil)
-            }
-        }
-    }
-    
     // MARK: Public Methods
     
     func popNavigationStack() {
@@ -54,8 +42,9 @@ class TabBarController: UITabBarController {
         }
     }
     
-    func presentLoginViewController(completion: (() -> Void)?) {
-        self.presentViewController(LoginViewController(), animated: true, completion: completion);
+    func presentLoginViewController(animated: Bool, completion: (() -> Void)? = nil) {
+        let navigationController = NavigationController(rootViewController: LoginViewController())
+        self.presentViewController(navigationController, animated: animated, completion: completion);
     }
     
     // MARK: Private Methods

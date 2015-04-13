@@ -20,6 +20,8 @@ class LoginViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = NSLocalizedString("Login", comment: "")
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "googlePlusAuthorizationFinished", name: RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
     }
@@ -31,6 +33,16 @@ class LoginViewController: UIViewController  {
     // MARK: Google+ notification
     
     func googlePlusAuthorizationFinished() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        let hasSelectedCalendars = CalendarPersistenceStore.sharedStore.calendars.count > 0
+        
+        //push CalendarPickerViewController only if user doesn't have selected calendars
+        if hasSelectedCalendars {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            let calendarPickerViewController = CalendarPickerViewController()
+            calendarPickerViewController.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(calendarPickerViewController, animated: true)
+        }
     }
 }

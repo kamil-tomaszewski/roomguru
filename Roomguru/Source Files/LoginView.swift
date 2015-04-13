@@ -25,11 +25,12 @@ class LoginView: UIView {
     }
     
     private func commonInit() {
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.ngGrayColor()
         
         welcomeLabel.text = NSLocalizedString("Welcome to Roomguru! Sign in with Google+ to start using the app.", comment: "")
         welcomeLabel.accessibilityLabel = "Welcome to Roomguru!"
         welcomeLabel.textAlignment = .Center
+        welcomeLabel.textColor = UIColor.ngOrangeColor()
         welcomeLabel.numberOfLines = 0
         
         addSubview(welcomeLabel)

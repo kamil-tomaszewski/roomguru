@@ -8,6 +8,7 @@
 import UIKit
 import HockeySDK
 import Foundation
+import Async
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         window!.makeKeyAndVisible()
         
         application.statusBarStyle = .LightContent
+        
+        authenticate()
         
         return true
     }
@@ -53,16 +56,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     }
     
     func signOut() {
+        CalendarPersistenceStore.sharedStore.clear()
         GPPSignIn.sharedInstance().signOut()
+        
         let tabBarViewController = window!.rootViewController as! TabBarController
-        tabBarViewController.presentLoginViewController {
+        tabBarViewController.presentLoginViewController(true) {
+            tabBarViewController.selectedIndex = 0
             tabBarViewController.popNavigationStack()
         }
     }
     
     // MARK: Private Methods
     
-    func setupVendors() {
+    private func authenticate() {
+        
+        let tabBarController = window!.rootViewController as! TabBarController
+        let launchView = LaunchView(frame: window!.bounds);
+        window!.addSubview(launchView)
+        
+        AppAuthenticator().authenticateWithCompletion { (success) in
+            
+            if !success {
+                // make a time to setup UI in case of instant return
+                Async.main(after: 0.5) {
+                    tabBarController.presentLoginViewController(false) {
+                        self.hideLaunchView(launchView);
+                    }
+                }
+            } else {
+                self.hideLaunchView(launchView);
+            }
+        }
+    }
+    
+    private func setupVendors() {
         #if !ENV_DEVELOPMENT
             BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientID);
             BITHockeyManager.sharedHockeyManager().startManager();
@@ -77,6 +104,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         sharedSignIn.shouldFetchGoogleUserID = true
         sharedSignIn.shouldFetchGoogleUserEmail = true
         sharedSignIn.delegate = self
+    }
+    
+    private func hideLaunchView(view: UIView, animated: Bool = true) {
+        let duration: NSTimeInterval = animated ? 1 : 0
+        UIView.animateWithDuration(duration, animations: {
+            view.alpha = 0
+        }, completion: { (finished) -> Void in
+            view.removeFromSuperview()
+        })
     }
 }
 
