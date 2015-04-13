@@ -22,7 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (1.2.0)
   - Async (1.1.1)
-  - Cartography (0.3.0)
+  - Cartography (0.5.0)
   - CryptoSwift (0.0.9)
   - DateKit (0.1.1)
   - KIF (3.2.1):
@@ -39,8 +39,7 @@ DEPENDENCIES:
   - Alamofire (~> 1.2.0)
   - Async (from `git@github.com:duemunk/Async.git`, commit `a61663f4469df082ac0b3311d9c4b8cd32185336`,
     branch `master`)
-  - Cartography (from `git@github.com:robb/Cartography.git`, commit `7467721bb7253899f66e542f1845851032386b7f`,
-    branch `xcode6-3`)
+  - Cartography (~> 0.5.0)
   - CryptoSwift (from `git@github.com:krzyzanowskim/CryptoSwift.git`, commit `6ae8206f06ed0dddbf2721182e6d4232f80698da`,
     branch `master`)
   - DateKit (from `https://github.com/SnowdogApps/DateKit.git`, commit `4c953cf5a70a14f88d154bdfd710019f20a10b49`,
@@ -60,10 +59,6 @@ EXTERNAL SOURCES:
     :branch: master
     :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
     :git: git@github.com:duemunk/Async.git
-  Cartography:
-    :branch: xcode6-3
-    :commit: 7467721bb7253899f66e542f1845851032386b7f
-    :git: git@github.com:robb/Cartography.git
   CryptoSwift:
     :branch: master
     :commit: 6ae8206f06ed0dddbf2721182e6d4232f80698da
@@ -89,10 +84,6 @@ CHECKOUT OPTIONS:
     :branch: master
     :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
     :git: git@github.com:duemunk/Async.git
-  Cartography:
-    :branch: xcode6-3
-    :commit: 7467721bb7253899f66e542f1845851032386b7f
-    :git: git@github.com:robb/Cartography.git
   CryptoSwift:
     :branch: master
     :commit: 6ae8206f06ed0dddbf2721182e6d4232f80698da
@@ -117,7 +108,7 @@ SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
   Async: 4ba79915d3f43324db9e1e296db324cb896fa266
-  Cartography: cfaaaa04e68ecd5566368f99f01898a8eb0819d5
+  Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CryptoSwift: 95ed33cc40339bd80c64a5a527da7dcf121b9649
   DateKit: 1bd5fbff0131575fdc6fa56d820e7779bc025256
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216

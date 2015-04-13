@@ -31,10 +31,7 @@ pod 'SwiftyJSON',
     :commit => "008a09d7ea8b13c03fb59b35c01aad339584a5e1",
     :branch => "xcode6.3"
 
-pod 'Cartography',
-    :git => "git@github.com:robb/Cartography.git",
-    :commit => "7467721bb7253899f66e542f1845851032386b7f",
-    :branch => "xcode6-3"
+pod 'Cartography', '~> 0.5.0'
 
 pod 'SwiftyUserDefaults',
     :git => "git@github.com:radex/SwiftyUserDefaults.git",
