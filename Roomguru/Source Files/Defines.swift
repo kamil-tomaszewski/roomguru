@@ -16,6 +16,7 @@ typealias VoidBlock = Void -> Void
 typealias ResponseBlock = (response: JSON?) -> Void
 typealias ListResponseBlock = (response: [AnyObject]?) -> Void
 typealias ErrorBlock = (error: NSError) -> Void
+typealias DateBlock = (date: NSDate) -> Void
 
 // MARK: - Data types
 

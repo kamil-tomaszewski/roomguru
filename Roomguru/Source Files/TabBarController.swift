@@ -12,7 +12,8 @@ class TabBarController: UITabBarController {
     
     // MARK: Lifecycle
     
-    var eventsPageControllerSource = EventsPageViewControllerSource()
+    let eventsPageControllerDataSource = EventsPageViewControllerDataSource()
+    var eventsPageControllerDelegate = EventsPageViewControllerDelegate()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -61,15 +62,22 @@ class TabBarController: UITabBarController {
     
     private func setupEmbeddedViewControllers() {
         
-        var pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-        pageController.dataSource = eventsPageControllerSource
-        pageController.setViewControllers([EventsViewController(date: NSDate())], direction: .Forward, animated: true, completion: nil)
+        let today = NSDate()
+        let titleView = eventsTitleView(today)
+        
+        eventsPageControllerDelegate = EventsPageViewControllerDelegate() { (date) in
+            titleView.detailTextLabel.text = date.string()
+        }
+        
+        let pageController = eventsPageViewController(today, dataSource: eventsPageControllerDataSource, delegate: eventsPageControllerDelegate)
         
         self.viewControllers = [
             NavigationController(rootViewController: DashboardViewController()),
             NavigationController(rootViewController: pageController),
             NavigationController(rootViewController: SettingsViewController())
         ]
+        
+        pageController.navigationItem.titleView = titleView
         
         func setTitleForControllerAtIndex(index: Int, title: String) {
             let tabBarItem = self.tabBar.items![index] as! UITabBarItem
@@ -83,5 +91,26 @@ class TabBarController: UITabBarController {
         setTitleForControllerAtIndex(0, NSLocalizedString("Dashboard", comment: ""))
         setTitleForControllerAtIndex(1, NSLocalizedString("Events", comment: ""))
         setTitleForControllerAtIndex(2, NSLocalizedString("Settings", comment: ""))
+    }
+}
+
+
+// MARK: Events UIPageViewController Configuration
+
+private extension TabBarController {
+    
+    private func eventsTitleView(date: NSDate) -> BasicTitleView {
+        let titleView = BasicTitleView(frame: CGRectMake(0, 0, 200, 44))
+        titleView.textLabel.text = NSLocalizedString("Events", comment: "")
+        titleView.detailTextLabel.text = date.string()
+        return titleView
+    }
+    
+    private func eventsPageViewController(date: NSDate, dataSource: UIPageViewControllerDataSource, delegate: UIPageViewControllerDelegate) -> UIPageViewController {
+        let pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        pageController.dataSource = dataSource
+        pageController.delegate = delegate
+        pageController.setViewControllers([EventsViewController(date: date)], direction: .Forward, animated: true, completion: nil)
+        return pageController
     }
 }

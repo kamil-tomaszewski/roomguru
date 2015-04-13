@@ -1,5 +1,5 @@
 //
-//  EventsPageViewControllerSource.swift
+//  EventsPageViewControllerDataSource.swift
 //  Roomguru
 //
 //  Created by Radoslaw Szeja on 10/04/15.
@@ -11,7 +11,7 @@ import UIKit
 import DateKit
 
 
-class EventsPageViewControllerSource: NSObject, UIPageViewControllerDataSource {
+class EventsPageViewControllerDataSource: NSObject, UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
@@ -19,7 +19,7 @@ class EventsPageViewControllerSource: NSObject, UIPageViewControllerDataSource {
             let date = viewController.timeMax.days - 1
             return EventsViewController(date: date)
         }
-
+        
         return nil
     }
     
