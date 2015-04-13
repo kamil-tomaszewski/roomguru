@@ -51,7 +51,6 @@
 		5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */; };
 		5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */; };
 		5E8A7EF21AA9CB770018F432 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */; };
-		5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8A7EF11AA9CB770018F432 /* Main.storyboard */; };
 		5E8AE3031ACC172500A3C146 /* CalendarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */; };
 		5E8AE3051ACC174000A3C146 /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AE3041ACC174000A3C146 /* CalendarPickerView.swift */; };
 		5E8AE3091ACC1F2200A3C146 /* UIBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AE3081ACC1F2200A3C146 /* UIBaseTableView.swift */; };
@@ -199,7 +198,6 @@
 		5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Roomguru/Source Files/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Roomguru/Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Roomguru/Interfaces/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
-		5E8A7EF11AA9CB770018F432 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Roomguru/Interfaces/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerViewController.swift; path = "Roomguru/Source Files/CalendarPickerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E8AE3041ACC174000A3C146 /* CalendarPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerView.swift; path = "Roomguru/Source Files/CalendarPickerView.swift"; sourceTree = SOURCE_ROOT; };
 		5E8AE3081ACC1F2200A3C146 /* UIBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseTableView.swift; path = "Roomguru/Source Files/UIBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
@@ -523,7 +521,6 @@
 			isa = PBXGroup;
 			children = (
 				5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */,
-				5E8A7EF11AA9CB770018F432 /* Main.storyboard */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -819,7 +816,6 @@
 				5E8A7EEF1AA9CB6D0018F432 /* Images.xcassets in Resources */,
 				5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */,
 				5E38FB3D1AAF23F10057DD8B /* GooglePlus.bundle in Resources */,
-				5E8A7EF31AA9CB770018F432 /* Main.storyboard in Resources */,
 				5E7A9E521AB060820042E16F /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
