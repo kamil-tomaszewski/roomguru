@@ -51,8 +51,8 @@ extension DashboardViewController {
     
     func didTapRevokeBookedRoom(sender: UIButton) {
         let revokeEventsController = RevokeEventsViewController()
-        let navVC = NavigationController(rootViewController: revokeEventsController)
-        presentViewController(navVC, animated: true, completion: nil)
+        let navigationController = NavigationController(rootViewController: revokeEventsController)
+        presentViewController(navigationController, animated: true, completion: nil)
     }
 }
 
