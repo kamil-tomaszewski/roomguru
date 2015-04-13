@@ -102,6 +102,8 @@
 		BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */; };
 		BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */; };
 		BF4336571AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */; };
+		BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */; };
+		BF4F2DF61ADBFDA700834B60 /* GroupedBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF51ADBFDA700834B60 /* GroupedBaseTableView.swift */; };
 		BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
 		BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* Calendar.swift */; };
@@ -250,6 +252,7 @@
 		BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingTimesView.swift; path = "Roomguru/Source Files/BookingTimesView.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsPageViewControllerDataSource.swift; path = "Roomguru/Source Files/EventsPageViewControllerDataSource.swift"; sourceTree = SOURCE_ROOT; };
+		BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewController.swift; path = "Roomguru/Source Files/EditEventViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF4F2DF51ADBFDA700834B60 /* GroupedBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedBaseTableView.swift; path = "Roomguru/Source Files/GroupedBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
@@ -591,6 +594,7 @@
 				5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */,
 				BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */,
 				5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */,
+				BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1071,6 +1075,7 @@
 				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,
 				5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
+				BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
 				5E15F13F1ADBE28A00E1F8BC /* AppAuthenticator.swift in Sources */,
 				5E8AFF6C1AD3D4E900FB73CD /* CalendarPickerCell.swift in Sources */,
