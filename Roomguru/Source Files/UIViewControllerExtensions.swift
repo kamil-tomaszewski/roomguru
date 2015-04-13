@@ -33,4 +33,8 @@ extension UIViewController {
             || (navigationController != nil && navigationController?.presentingViewController?.presentedViewController == navigationController)
             || tabBarController?.presentingViewController is UITabBarController
     }
+    
+    func dismissSelf(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

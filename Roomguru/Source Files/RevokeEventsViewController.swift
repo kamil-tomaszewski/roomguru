@@ -167,10 +167,6 @@ extension RevokeEventsViewController: UITableViewDelegate {
 // MARK: Actions
 
 extension RevokeEventsViewController {
-    
-    func dismissSelf(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
     func didTapFutureButton(sender: UIButton) {
         timeMax = timeMax.days + 1
