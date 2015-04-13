@@ -107,7 +107,6 @@
 		BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */; };
 		BF4336571AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */; };
 		BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */; };
-		BF4F2DF61ADBFDA700834B60 /* GroupedBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF51ADBFDA700834B60 /* GroupedBaseTableView.swift */; };
 		BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
 		BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* Calendar.swift */; };
@@ -556,6 +555,7 @@
 		5E3A98491AA73FD500CE2F20 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
 				BF527C0F1AB1A70C00A43D35 /* Networking */,
 				5E51B7981AA9C3280018EDA9 /* Object & Models */,
 				7BD6CC721AB6EDB30031AED6 /* Extensions */,
@@ -570,7 +570,6 @@
 		5E51B7981AA9C3280018EDA9 /* Object & Models */ = {
 			isa = PBXGroup;
 			children = (
-				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
 				5EFC763C1ACB3C9F0005892E /* Constants.swift */,
 				5ED4C76F1ACC3DC80084E52F /* Defines.swift */,
 				7BC955BC1AB96CFD00138716 /* Google Calendar */,
