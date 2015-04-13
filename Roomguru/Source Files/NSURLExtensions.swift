@@ -15,6 +15,6 @@ extension NSURL {
         if let md5 = email?.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5() {
             return NSURL(string: "http://www.gravatar.com/avatar/" + md5.lowercaseString + "?d=mm")
         }
-        return nil;
+        return nil
     }
 }

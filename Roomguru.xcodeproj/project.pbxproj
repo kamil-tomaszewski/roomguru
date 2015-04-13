@@ -16,6 +16,8 @@
 		5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202E1AB73F83009C270E /* DashboardViewModel.swift */; };
 		5E15F13A1AD804CF00E1F8BC /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1391AD804CF00E1F8BC /* LaunchView.swift */; };
 		5E15F13F1ADBE28A00E1F8BC /* AppAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F13E1ADBE28A00E1F8BC /* AppAuthenticator.swift */; };
+		5E15F1431ADC2B8300E1F8BC /* UserImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */; };
+		5E15F1451ADC314500E1F8BC /* UserDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */; };
 		5E1BA3041ACB5E8300827BB6 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */; };
 		5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */; };
 		5E1FF7671AA8A8BA00467837 /* MathSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1FF7661AA8A8BA00467837 /* MathSpec.swift */; };
@@ -71,6 +73,8 @@
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
 		5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
 		5EBCB76B1ACAA67F001F6D18 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */; };
+		5EC49D931ADC606D00B798F5 /* UserPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */; };
+		5EC49D951ADC75F500B798F5 /* RoundBorderedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D941ADC75F500B798F5 /* RoundBorderedImageView.swift */; };
 		5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */; };
 		5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */; };
 		5ED4C7701ACC3DC80084E52F /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED4C76F1ACC3DC80084E52F /* Defines.swift */; };
@@ -154,6 +158,8 @@
 		5E147CB81AA8B2DC00EDD97C /* Unit-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit-Tests-Info.plist"; path = "Supporting Files/Unit-Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5E15F1391AD804CF00E1F8BC /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchView.swift; path = "Roomguru/Source Files/LaunchView.swift"; sourceTree = SOURCE_ROOT; };
 		5E15F13E1ADBE28A00E1F8BC /* AppAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppAuthenticator.swift; path = "Roomguru/Source Files/AppAuthenticator.swift"; sourceTree = SOURCE_ROOT; };
+		5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserImageDownloader.swift; path = "Roomguru/Source Files/UserImageDownloader.swift"; sourceTree = SOURCE_ROOT; };
+		5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDiskManager.swift; path = "Roomguru/Source Files/UserDiskManager.swift"; sourceTree = SOURCE_ROOT; };
 		5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationExtensions.swift; path = "Roomguru/Source Files/UIApplicationExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAlertViewExtensions.swift; path = "Roomguru/Source Files/UIAlertViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E1FF7661AA8A8BA00467837 /* MathSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathSpec.swift; sourceTree = "<group>"; };
@@ -223,6 +229,8 @@
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EAFD7431AAF270C00B75582 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Roomguru/Source Files/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderLabel.swift; path = "Roomguru/Source Files/HeaderLabel.swift"; sourceTree = SOURCE_ROOT; };
+		5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPersistenceStore.swift; path = "Roomguru/Source Files/UserPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
+		5EC49D941ADC75F500B798F5 /* RoundBorderedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBorderedImageView.swift; path = "Roomguru/Source Files/RoundBorderedImageView.swift"; sourceTree = SOURCE_ROOT; };
 		5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtensions.swift; path = "Roomguru/Source Files/UIButtonExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
 		5ED4C76F1ACC3DC80084E52F /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Roomguru/Source Files/Defines.swift"; sourceTree = SOURCE_ROOT; };
@@ -392,6 +400,7 @@
 				5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */,
 				BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */,
 				BF4F2DF51ADBFDA700834B60 /* GroupedBaseTableView.swift */,
+				5EC49D941ADC75F500B798F5 /* RoundBorderedImageView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -635,6 +644,9 @@
 				7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */,
 				5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */,
 				5E15F13E1ADBE28A00E1F8BC /* AppAuthenticator.swift */,
+				5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */,
+				5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */,
+				5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -1019,6 +1031,7 @@
 				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
 				5E5F558F1AB6CAB6005F3CEE /* SettingItem.swift in Sources */,
 				5E769F061ACEDC180061289D /* CalendarPersistenceStore.swift in Sources */,
+				5E15F1431ADC2B8300E1F8BC /* UserImageDownloader.swift in Sources */,
 				5E769EFC1ACE937A0061289D /* EmptyView.swift in Sources */,
 				5E8AE3051ACC174000A3C146 /* CalendarPickerView.swift in Sources */,
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,
@@ -1064,6 +1077,7 @@
 				7BC955B91AB846AE00138716 /* GPPSignInExtensions.swift in Sources */,
 				BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */,
 				5E8AE3031ACC172500A3C146 /* CalendarPickerViewController.swift in Sources */,
+				5EC49D951ADC75F500B798F5 /* RoundBorderedImageView.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,
 				5EF1C5F41AD425CD00CC9173 /* CalendarNameCustomizerView.swift in Sources */,
 				5EF1C5F21AD425B200CC9173 /* CalendarNameCustomizerViewController.swift in Sources */,
@@ -1071,7 +1085,6 @@
 				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
 				5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */,
 				BF8459991ACBDE38004965EC /* RevokeQuery.swift in Sources */,
-				BF4F2DF61ADBFDA700834B60 /* GroupedBaseTableView.swift in Sources */,
 				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,
 				5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
@@ -1085,11 +1098,13 @@
 				BF26E73D1ABAF77400B12244 /* Listable.swift in Sources */,
 				BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */,
 				BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */,
+				5E15F1451ADC314500E1F8BC /* UserDiskManager.swift in Sources */,
 				BF4336571AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
 				BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */,
 				BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */,
 				BF26E73B1ABAC95000B12244 /* EventsViewController.swift in Sources */,
+				5EC49D931ADC606D00B798F5 /* UserPersistenceStore.swift in Sources */,
 				5E769EF71ACE93550061289D /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

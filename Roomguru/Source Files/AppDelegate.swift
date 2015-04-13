@@ -38,13 +38,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
             // NGRTodo: handle error here
             UIAlertView(error: error).show()
         } else {
-            User.current?.delete()
-            User(email: auth.userEmail).save()
+            
+            let user = UserPersistenceStore.sharedStore.user
+            
+            UserPersistenceStore.sharedStore.registerUserWithEmail(auth.userEmail)
+            
             NetworkManager.sharedInstance.setAuthentication(auth)
             NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
         }
     }
-    
+
     func didDisconnectWithError(error: NSError!) {
         println(error)
     }
@@ -57,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
     
     func signOut() {
         CalendarPersistenceStore.sharedStore.clear()
+        UserPersistenceStore.sharedStore.clear()
         GPPSignIn.sharedInstance().signOut()
         
         let tabBarViewController = window!.rootViewController as! TabBarController
@@ -72,10 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         
         let tabBarController = window!.rootViewController as! TabBarController
         let launchView = LaunchView(frame: window!.bounds);
+        launchView.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
         window!.addSubview(launchView)
         
         AppAuthenticator().authenticateWithCompletion { (success) in
-            
             if !success {
                 // make a time to setup UI in case of instant return
                 Async.main(after: 0.5) {
@@ -84,7 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
                     }
                 }
             } else {
-                self.hideLaunchView(launchView);
+                Async.main(after: 0.5) {
+                    self.hideLaunchView(launchView);
+                }
+                
             }
         }
     }
@@ -103,6 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         sharedSignIn.scopes = Constants.GooglePlus.Scope
         sharedSignIn.shouldFetchGoogleUserID = true
         sharedSignIn.shouldFetchGoogleUserEmail = true
+        sharedSignIn.shouldFetchGooglePlusUser = true
         sharedSignIn.delegate = self
     }
     

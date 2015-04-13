@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 class LoginViewController: UIViewController  {
 
@@ -22,6 +23,7 @@ class LoginViewController: UIViewController  {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("Login", comment: "")
+        aView?.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "googlePlusAuthorizationFinished", name: RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
     }
@@ -33,7 +35,7 @@ class LoginViewController: UIViewController  {
     // MARK: Google+ notification
     
     func googlePlusAuthorizationFinished() {
-        
+    
         let hasSelectedCalendars = CalendarPersistenceStore.sharedStore.calendars.count > 0
         
         //push CalendarPickerViewController only if user doesn't have selected calendars

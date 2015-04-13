@@ -63,6 +63,7 @@ class CalendarPersistenceStore {
     }
     
     private func key() -> String? {
-        return User.current?.email.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5()
+        let user = UserPersistenceStore.sharedStore.user
+        return user?.email.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5()
     }
 }

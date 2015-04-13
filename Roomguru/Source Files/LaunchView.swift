@@ -11,8 +11,9 @@ import Cartography
 
 class LaunchView: UIView {
 
-    let label = UILabel()
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    private let label = UILabel()
+    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    let avatarImageView = RoundBorderedImageView(frame: CGRectMake(0, 0, 100, 100))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +31,8 @@ class LaunchView: UIView {
         
         backgroundColor = UIColor.ngGrayColor()
         
+        addSubview(avatarImageView)
+        
         label.text = "Authenticating..."
         label.textAlignment = .Center
         label.textColor = UIColor.ngOrangeColor()
@@ -44,14 +47,20 @@ class LaunchView: UIView {
     
     private func defineConstraints() {
         
-        layout(label, activityIndicator) { label, indicator in
+        layout(label, avatarImageView, activityIndicator) { label, imageView, indicator in
             
-            indicator.center == indicator.superview!.center
+            imageView.centerY == imageView.superview!.bottom - 400
+            imageView.centerX == imageView.superview!.centerX
+            imageView.width == CGRectGetWidth(self.avatarImageView.bounds)
+            imageView.height == CGRectGetHeight(self.avatarImageView.bounds)
             
             label.left == label.superview!.left
             label.right == label.superview!.right
-            label.bottom == indicator.top
+            label.top == imageView.bottom + 20
             label.height == 30
+            
+            indicator.centerX == indicator.superview!.centerX
+            indicator.centerY == label.bottom + 100
         }
     }
 }

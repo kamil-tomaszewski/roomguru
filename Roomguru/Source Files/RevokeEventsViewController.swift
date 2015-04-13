@@ -56,7 +56,7 @@ extension RevokeEventsViewController {
             
             if let query = query as? EventsQuery {
                 if let response = response {
-                    let userEmail = User.current?.email
+                    let userEmail = UserPersistenceStore.sharedStore.user?.email
                     let events = response.filter { !$0.isCanceled() && $0.creator?.email == userEmail }
                     return CalendarEntry.caledarEntries(query.calendarID, events: events)
                 }

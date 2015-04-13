@@ -11,8 +11,9 @@ import Cartography
 
 class LoginView: UIView {
     
-    var signInButton = GPPSignInButton()
-    var welcomeLabel = UILabel()
+    let signInButton = GPPSignInButton() as GPPSignInButton
+    private var welcomeLabel = UILabel()
+    let avatarImageView = RoundBorderedImageView(frame: CGRectMake(0, 0, 100, 100))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,15 +35,21 @@ class LoginView: UIView {
         welcomeLabel.numberOfLines = 0
         
         addSubview(welcomeLabel)
+        addSubview(avatarImageView)
         addSubview(signInButton)
         
         defineConstraints()
     }
 
     private func defineConstraints() {
-        layout(signInButton, welcomeLabel) { button, label in
+        layout(signInButton, avatarImageView, welcomeLabel) { button, imageView, label in
             
             let margin: CGFloat = 20
+            
+            imageView.centerY == imageView.superview!.bottom - 400
+            imageView.centerX == imageView.superview!.centerX
+            imageView.width == CGRectGetWidth(self.avatarImageView.bounds)
+            imageView.height == CGRectGetHeight(self.avatarImageView.bounds)
             
             label.left == label.superview!.left + margin
             label.right == label.superview!.right - margin
