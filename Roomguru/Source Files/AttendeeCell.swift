@@ -15,7 +15,7 @@ class AttendeeCell: UITableViewCell {
     let statusLabel = UILabel()
     let headerLabel = UILabel()
     let footerLabel = UILabel()
-    let avatarImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
+    let avatarImageView = RoundBorderedImageView(frame: CGRectMake(0, 0, 40, 40))
     
     private struct Constants { static var CellIdentifier: String = "TableViewAttendeeCellReuseIdentifier"}
     
@@ -55,11 +55,7 @@ class AttendeeCell: UITableViewCell {
         statusLabel.textAlignment = .Center
         contentView.addSubview(statusLabel)
         
-        avatarImageView.contentMode = .ScaleAspectFit
-        avatarImageView.layer.masksToBounds = true
-        avatarImageView.layer.cornerRadius = CGRectGetHeight(avatarImageView.frame) * 0.5
-        avatarImageView.layer.borderWidth = 1
-        avatarImageView.layer.borderColor = UIColor.ngGrayColor().CGColor
+        avatarImageView.layer.borderWidth = 2
         contentView.addSubview(avatarImageView)
         
         defineConstraints()
