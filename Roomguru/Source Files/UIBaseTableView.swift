@@ -11,7 +11,7 @@ import Cartography
 
 class UIBaseTableView: UIView {
     
-    private(set) var tableView: UITableView = UITableView()
+    private(set) var tableView = UITableView()
     
     convenience override init(frame: CGRect) {
         self.init(frame: frame, tableViewStyle: .Plain)
