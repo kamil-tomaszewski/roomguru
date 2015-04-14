@@ -14,6 +14,8 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
     private let Summary = "summary"
     private let Identifier = "identifier"
     private let Name = "name"
+
+    private let ResourceIdentifier = "resource.calendar.google.com"
     
     var accessRole: String?
     var summary:    String?
@@ -39,6 +41,10 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         decode(&summary, forKey: Summary)
         decode(&identifier, forKey: Identifier)
         decode(&name, forKey: Name)
+    }
+
+    func isResource() -> Bool {
+        return (identifier! as NSString).containsString(ResourceIdentifier)
     }
 
     func encodeWithCoder(aCoder: NSCoder) {

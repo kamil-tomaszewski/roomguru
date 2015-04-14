@@ -11,10 +11,12 @@ import UIKit
 private class PickerCalendar {
     var isSelected: Bool
     let calendar: Calendar
+    let isShown: Bool
     
     init(calendar: Calendar, selected: Bool) {
         self.calendar = calendar
         self.isSelected = selected
+        self.isShown = calendar.isResource()
     }
 }
 
@@ -26,7 +28,7 @@ class CalendarPickerViewModel {
         self.calendars = calendars.map {
             let selected = CalendarPersistenceStore.sharedStore.isCalendarPersisted($0)
             return PickerCalendar(calendar: $0, selected: selected)
-        }
+        }.filter({ $0.isShown })
     }
     
     // MARK: Public
