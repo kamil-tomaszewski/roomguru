@@ -8,34 +8,22 @@
 
 import UIKit
 
-private class PickerCalendar {
-    var isSelected: Bool
-    let calendar: Calendar
-    let isShown: Bool
-    
-    init(calendar: Calendar, selected: Bool) {
-        self.calendar = calendar
-        self.isSelected = selected
-        self.isShown = calendar.isResource()
-    }
-}
-
 class CalendarPickerViewModel {
 
-    private let calendars: [PickerCalendar]
+    private var calendars: [(isSelected: Bool, calendar: Calendar)]
     
     init(calendars: [Calendar]) {
-        self.calendars = calendars.map {
+        self.calendars = calendars.filter { $0.isResource() }.map {
             let selected = CalendarPersistenceStore.sharedStore.isCalendarPersisted($0)
-            return PickerCalendar(calendar: $0, selected: selected)
-        }.filter({ $0.isShown })
+            return (isSelected: selected, calendar: $0)
+        }
     }
     
     // MARK: Public
     
     func selectOrDeselectCalendarAtIndex(index: Int) {
-        let calendar = calendars[index]
-        calendar.isSelected = !calendar.isSelected
+        let selected = calendars[index].isSelected
+        calendars[index].isSelected = !selected
     }
     
     func shouldSelectCalendarAtIndex(index: Int) -> Bool {
@@ -72,7 +60,7 @@ class CalendarPickerViewModel {
         
         let picker = calendars[index]
         
-        let placeholder = NSLocalizedString("Not change yet", comment: "")
+        let placeholder = NSLocalizedString("not change yet", comment: "")
         let mainText = picker.calendar.name ?? picker.calendar.summary
         var detailText = (picker.calendar.name != nil) ? picker.calendar.summary : placeholder
         
