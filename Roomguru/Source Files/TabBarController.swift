@@ -47,6 +47,18 @@ class TabBarController: UITabBarController {
         self.presentViewController(navigationController, animated: animated, completion: completion);
     }
     
+    func presentCalendarPickerViewController(animated: Bool, completion: (() -> Void)? = nil) {
+        
+        if let navigation = self.presentedViewController as? UINavigationController {
+            if let login = navigation.viewControllers.first as? LoginViewController {
+                login.pushCalendarPickerViewController()
+            }
+        } else {
+            let navigationController = NavigationController(rootViewController: CalendarPickerViewController())
+            self.presentViewController(navigationController, animated: animated, completion: completion);
+        }
+    }
+    
     // MARK: Private Methods
     
     private func setupEmbeddedViewControllers() {

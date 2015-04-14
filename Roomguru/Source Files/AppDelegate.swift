@@ -11,9 +11,10 @@ import Foundation
 import Async
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let authenticator = AppAuthenticator()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -29,23 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         authenticate()
         
         return true
-    }
-    
-    // MARK: GPPSignInDelegate Methods
-    
-    func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-        if (error != nil) {
-            // NGRTodo: handle error here
-            UIAlertView(error: error).show()
-        } else {
-            UserPersistenceStore.sharedStore.registerUserWithEmail(auth.userEmail)
-            NetworkManager.sharedInstance.setAuthentication(auth)
-            NSNotificationCenter.defaultCenter().postNotificationName(RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
-        }
-    }
-
-    func didDisconnectWithError(error: NSError!) {
-        println(error)
     }
     
     // MARK: Google oAuth Methods
@@ -75,19 +59,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         launchView.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
         window!.addSubview(launchView)
         
-        AppAuthenticator().authenticateWithCompletion { (success) in
-            if !success {
-                // make a time to setup UI in case of instant return
-                Async.main(after: 0.5) {
-                    tabBarController.presentLoginViewController(false) {
-                        self.hideLaunchView(launchView);
-                    }
-                }
-            } else {
-                Async.main(after: 0.5) {
+        authenticator.authenticateWithCompletion { (action, auth, error) in
+            
+            if let _auth = auth {
+                UserPersistenceStore.sharedStore.registerUserWithEmail(_auth.userEmail)
+                NetworkManager.sharedInstance.setAuthentication(_auth)
+            }
+            
+            switch action {
+            case .Success:
+                    self.hideLaunchView(launchView);
+            case .Login:
+                tabBarController.presentLoginViewController(false) {
                     self.hideLaunchView(launchView);
                 }
-                
+            case .ChooseCalendars:
+                tabBarController.presentCalendarPickerViewController(false) {
+                    self.hideLaunchView(launchView);
+                }
             }
         }
     }
@@ -100,14 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GPPSignInDelegate {
         #endif
 
         NetworkManager.sharedInstance.setServerURL(Constants.GooglePlus.ServerURL)
-        
-        let sharedSignIn = GPPSignIn.sharedInstance();
-        sharedSignIn.clientID = Constants.GooglePlus.ClientID
-        sharedSignIn.scopes = Constants.GooglePlus.Scope
-        sharedSignIn.shouldFetchGoogleUserID = true
-        sharedSignIn.shouldFetchGoogleUserEmail = true
-        sharedSignIn.shouldFetchGooglePlusUser = true
-        sharedSignIn.delegate = self
     }
     
     private func hideLaunchView(view: UIView, animated: Bool = true) {

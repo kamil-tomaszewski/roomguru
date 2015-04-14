@@ -23,27 +23,15 @@ class LoginViewController: UIViewController  {
         
         self.title = NSLocalizedString("Login", comment: "")
         aView?.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "googlePlusAuthorizationFinished", name: RoomguruGooglePlusAuthenticationDidFinishNotification, object: nil)
     }
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
+    // MARK: Public
     
-    // MARK: Google+ notification
-    
-    func googlePlusAuthorizationFinished() {
-    
-        let hasSelectedCalendars = CalendarPersistenceStore.sharedStore.calendars.count > 0
+    func pushCalendarPickerViewController() {
+        aView?.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
         
-        //push CalendarPickerViewController only if user doesn't have selected calendars
-        if hasSelectedCalendars {
-            self.dismissViewControllerAnimated(true, completion: nil)
-        } else {
-            let calendarPickerViewController = CalendarPickerViewController()
-            calendarPickerViewController.navigationItem.hidesBackButton = true
-            self.navigationController?.pushViewController(calendarPickerViewController, animated: true)
-        }
+        let calendarPickerViewController = CalendarPickerViewController()
+        calendarPickerViewController.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(calendarPickerViewController, animated: true)
     }
 }

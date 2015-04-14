@@ -8,27 +8,64 @@
 
 import Foundation
 
-class AppAuthenticator {
+enum Action {
+    case Login, ChooseCalendars, Success
+}
+
+class AppAuthenticator: NSObject, GPPSignInDelegate {
     
-    func authenticateWithCompletion(completion: (success: Bool) -> Void) {
+    typealias authenticatorCompletionBlock = (action: Action, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
+    
+    private var completion: authenticatorCompletionBlock?
+    private var action: Action = .Login
+    
+    override init() {
+        super.init()
         
-        var success: Bool
+        let sharedSignIn = GPPSignIn.sharedInstance();
+        sharedSignIn.clientID = Constants.GooglePlus.ClientID
+        sharedSignIn.scopes = Constants.GooglePlus.Scope
+        sharedSignIn.shouldFetchGoogleUserID = true
+        sharedSignIn.shouldFetchGoogleUserEmail = true
+        sharedSignIn.shouldFetchGooglePlusUser = true
+        sharedSignIn.delegate = self
+    }
+
+    func authenticateWithCompletion(completion: authenticatorCompletionBlock) {
         
-        // NGRTemp: Flags here written temporary
+        self.completion = completion
+        var action: Action
+        
         if GPPSignIn.sharedInstance().hasAuthInKeychain() {
             
-            if GPPSignIn.sharedInstance().trySilentAuthentication() {
-                println("trySilentAuthentication")
-                success = true
-            } else {
-                println("!! trySilentAuthentication")
-                success = false
+            if !GPPSignIn.sharedInstance().trySilentAuthentication() {
+                self.completion!(action: .Login, auth: nil, error: nil)
             }
+            
         } else {
-            println("!!!  hasAuthInKeychain")
-            success = false
+            self.completion!(action: .Login, auth: nil, error: nil)
         }
-        
-        completion(success: success)
+    }
+    
+    // MARK: GPPSignInDelegate Methods
+    
+    func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
+        if (error != nil) {
+            self.completion!(action: .Login, auth: nil, error: error)
+        } else {
+            let action: Action
+            
+            if CalendarPersistenceStore.sharedStore.calendars.count > 0 {
+                action = .Success
+            } else {
+                action = .ChooseCalendars
+            }
+            
+            self.completion!(action: action, auth: auth, error: nil)
+        }
+    }
+    
+    func didDisconnectWithError(error: NSError!) {
+         self.completion!(action: .Login, auth: nil, error: error)
     }
 }

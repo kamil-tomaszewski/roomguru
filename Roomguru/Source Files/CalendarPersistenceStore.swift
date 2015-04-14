@@ -60,6 +60,7 @@ class CalendarPersistenceStore {
             Defaults.remove(_key)
             Defaults.synchronize()
         }
+        calendars = []
     }
     
     private func key() -> String? {

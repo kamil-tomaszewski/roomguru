@@ -22,11 +22,6 @@ typealias DateBlock = (date: NSDate) -> Void
 
 typealias QueryParameters = [String: AnyObject]
 
-
-// MARK: Notifications
-
-let RoomguruGooglePlusAuthenticationDidFinishNotification = "RoomguruGooglePlusAuthenticationDidFinishNotification"
-
 // MARK: Reuse identifiers
 
 let UITableViewCellReuseIdentifier = "RegularTableViewCellReuseIdentifier"
