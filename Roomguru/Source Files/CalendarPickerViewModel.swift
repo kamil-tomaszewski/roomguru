@@ -60,7 +60,7 @@ class CalendarPickerViewModel {
         
         let picker = calendars[index]
         
-        let placeholder = NSLocalizedString("not change yet", comment: "")
+        let placeholder = NSLocalizedString("Not changed", comment: "")
         let mainText = picker.calendar.name ?? picker.calendar.summary
         var detailText = (picker.calendar.name != nil) ? picker.calendar.summary : placeholder
         
