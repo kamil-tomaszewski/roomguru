@@ -38,7 +38,7 @@ class EditEventViewController: UIViewController {
     
     // MARK: Private
     
-    private var event: Event = Event()
+    private var event = Event()
 }
 
 // MARK: UITableViewDataSource
@@ -54,6 +54,7 @@ extension EditEventViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // NGRTemp: Should use appropriate cells
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "")
         cell.textLabel?.text = "Placeholder"
         return cell
@@ -76,10 +77,8 @@ private extension EditEventViewController {
     // MARK: Configuration
     
     private func setupTableView() {
-        let tableView = aView?.tableView
-        
-        tableView?.dataSource = self
-        tableView?.delegate = self
+        aView?.tableView.dataSource = self
+        aView?.tableView.delegate = self
     }
     
     private func setupBarButtons() {
