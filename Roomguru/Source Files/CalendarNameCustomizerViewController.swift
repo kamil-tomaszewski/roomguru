@@ -45,6 +45,7 @@ class CalendarNameCustomizerViewController: UIViewController {
         
         hideBackBarButtonTitle()
         aView?.textField.placeholder = name
+        aView?.textField.delegate = self
         aView?.button.addTarget(self, action: Selector("didClickResetButton:"))
         aView?.button.hidden = !shouldShowResetButton
     }
@@ -61,17 +62,33 @@ class CalendarNameCustomizerViewController: UIViewController {
 extension CalendarNameCustomizerViewController {
     
     func didTapSaveBarButtonItem(sender: UIBarButtonItem) {
-        
+        save()
+    }
+    
+    func didClickResetButton(sender: UIButton) {
+        delegate?.calendarNameCustomizerViewControllerDidResetName(self)
+        navigationController?.popViewControllerAnimated(true)
+    }
+}
+
+// MARK: UITextFieldDelegate
+
+extension CalendarNameCustomizerViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        save()
+        return true
+    }
+}
+
+private extension CalendarNameCustomizerViewController {
+
+    func save() {
         if aView?.textField.text.length > 0 {
             delegate?.calendarNameCustomizerViewController(self, didEndEditngWithNewName: aView?.textField.text)
             navigationController?.popViewControllerAnimated(true)
         } else {
             UIAlertView(title: NSLocalizedString("Oh no!", comment: ""), message: NSLocalizedString("Provided name should have at least 1 sign", comment: "")).show()
         }
-    }
-    
-    func didClickResetButton(sender: UIButton) {
-        delegate?.calendarNameCustomizerViewControllerDidResetName(self)
-        navigationController?.popViewControllerAnimated(true)
     }
 }

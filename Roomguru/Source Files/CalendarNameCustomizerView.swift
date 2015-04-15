@@ -33,6 +33,7 @@ class CalendarNameCustomizerView: UIView {
         button.layer.cornerRadius = 3
         addSubview(button)
         
+        textField.returnKeyType = .Done
         addSubview(textField)
         
         defineConstraints()
