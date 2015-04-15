@@ -22,13 +22,13 @@ class LoginViewController: UIViewController  {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("Login", comment: "")
-        aView?.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
+        aView?.avatarView.imageView.image = UserPersistenceStore.sharedStore.userImage()
     }
     
     // MARK: Public
     
     func pushCalendarPickerViewController() {
-        aView?.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
+        aView?.avatarView.imageView.image = UserPersistenceStore.sharedStore.userImage()
         
         let calendarPickerViewController = CalendarPickerViewController()
         calendarPickerViewController.navigationItem.hidesBackButton = true

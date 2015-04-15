@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Async
 
 enum Action {
     case Login, ChooseCalendars, Success
@@ -43,7 +44,9 @@ class AppAuthenticator: NSObject, GPPSignInDelegate {
             }
             
         } else {
-            self.completion!(action: .Login, auth: nil, error: nil)
+            Async.main(after: 0.2) {
+                self.completion!(action: .Login, auth: nil, error: nil)
+            }
         }
     }
     

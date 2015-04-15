@@ -12,8 +12,9 @@ import Cartography
 class LaunchView: UIView {
 
     private let label = UILabel()
+    private let logoLabel = RoomguruLabel()
     private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-    let avatarImageView = RoundBorderedImageView(frame: CGRectMake(0, 0, 100, 100))
+    let avatarView = AvatarView(frame: CGRectMake(0, 0, 100, 100))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,9 +30,10 @@ class LaunchView: UIView {
     
     private func commonInit() {
         
-        backgroundColor = UIColor.ngGrayColor()
+        backgroundColor = UIColor.whiteColor()
         
-        addSubview(avatarImageView)
+        addSubview(avatarView)
+        addSubview(logoLabel)
         
         label.text = "Authenticating..."
         label.textAlignment = .Center
@@ -47,20 +49,27 @@ class LaunchView: UIView {
     
     private func defineConstraints() {
         
-        layout(label, avatarImageView, activityIndicator) { label, imageView, indicator in
+        layout(label, avatarView, activityIndicator) { label, avatar, indicator in
             
-            imageView.centerY == imageView.superview!.bottom - 400
-            imageView.centerX == imageView.superview!.centerX
-            imageView.width == CGRectGetWidth(self.avatarImageView.bounds)
-            imageView.height == CGRectGetHeight(self.avatarImageView.bounds)
+            avatar.center == avatar.superview!.center
+            avatar.width == CGRectGetWidth(self.avatarView.bounds)
+            avatar.height == CGRectGetHeight(self.avatarView.bounds)
             
             label.left == label.superview!.left
             label.right == label.superview!.right
-            label.top == imageView.bottom + 20
+            label.top == avatar.bottom + 20
             label.height == 30
             
             indicator.centerX == indicator.superview!.centerX
-            indicator.centerY == label.bottom + 100
+            indicator.centerY == label.bottom + 50
+        }
+        
+        layout(logoLabel, avatarView) { label, avatar in
+            
+            label.left == label.superview!.left
+            label.right == label.superview!.right
+            label.bottom == avatar.top
+            label.top == label.superview!.top
         }
     }
 }

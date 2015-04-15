@@ -8,14 +8,13 @@
 
 import UIKit
 import Cartography
-import QuartzCore
 
 class AttendeeCell: UITableViewCell {
     
     let statusLabel = UILabel()
     let headerLabel = UILabel()
     let footerLabel = UILabel()
-    let avatarImageView = RoundBorderedImageView(frame: CGRectMake(0, 0, 40, 40))
+    let avatarView = AvatarView(frame: CGRectMake(0, 0, 40, 40))
     
     private struct Constants { static var CellIdentifier: String = "TableViewAttendeeCellReuseIdentifier"}
     
@@ -35,7 +34,7 @@ class AttendeeCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarImageView.image = nil
+        avatarView.imageView.image = nil
         statusLabel.text = nil
     }
     
@@ -55,22 +54,22 @@ class AttendeeCell: UITableViewCell {
         statusLabel.textAlignment = .Center
         contentView.addSubview(statusLabel)
         
-        avatarImageView.layer.borderWidth = 2
-        contentView.addSubview(avatarImageView)
+        avatarView.imageView.layer.borderWidth = 2
+        contentView.addSubview(avatarView)
         
         defineConstraints()
     }
     
     private func defineConstraints() {
         
-        layout(avatarImageView, statusLabel, headerLabel) { imageView, rightLabel, topLabel in
+        layout(avatarView, statusLabel, headerLabel) { avatar, rightLabel, topLabel in
             
             let margins: (H: CGFloat, V: CGFloat) = (15, 10)
             
-            imageView.centerY == imageView.superview!.centerY
-            imageView.left == rightLabel.superview!.left + margins.H
-            imageView.width == CGRectGetWidth(self.avatarImageView.frame)
-            imageView.height == CGRectGetHeight(self.avatarImageView.frame)
+            avatar.centerY == avatar.superview!.centerY
+            avatar.left == rightLabel.superview!.left + margins.H
+            avatar.width == CGRectGetWidth(self.avatarView.frame)
+            avatar.height == CGRectGetHeight(self.avatarView.frame)
             
             rightLabel.top == rightLabel.superview!.top + margins.V
             rightLabel.bottom == rightLabel.superview!.bottom - margins.V
@@ -78,7 +77,7 @@ class AttendeeCell: UITableViewCell {
             rightLabel.width == 30
             
             topLabel.top == rightLabel.top
-            topLabel.left == imageView.right + 10
+            topLabel.left == avatar.right + 10
             topLabel.right == rightLabel.left
         }
         

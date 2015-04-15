@@ -8,7 +8,6 @@
 import UIKit
 import HockeySDK
 import Foundation
-import Async
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,16 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         
         application.statusBarStyle = .LightContent
-        
+
         authenticate()
-        
+
         return true
-    }
-    
-    // MARK: Google oAuth Methods
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     func signOut() {
@@ -50,17 +43,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // MARK: Private Methods
+    // MARK: Google oAuth Methods
     
-    private func authenticate() {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+}
+
+// MARK: Private
+
+private extension AppDelegate {
+    
+    func authenticate() {
         
         let tabBarController = window!.rootViewController as! TabBarController
-        let launchView = LaunchView(frame: window!.bounds);
-        launchView.avatarImageView.image = UserPersistenceStore.sharedStore.userImage()
-        window!.addSubview(launchView)
+        var launchViewController: UIViewController? = NavigationController(rootViewController: LaunchViewController())
+        window!.addSubview(launchViewController!.view)
         
         authenticator.authenticateWithCompletion { (action, auth, error) in
-            
+
             if let _auth = auth {
                 UserPersistenceStore.sharedStore.registerUserWithEmail(_auth.userEmail)
                 NetworkManager.sharedInstance.setAuthentication(_auth)
@@ -68,36 +69,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             switch action {
             case .Success:
-                    self.hideLaunchView(launchView);
+                fadeOut(launchViewController!.view) { (finished) in
+                    launchViewController = nil
+                }
             case .Login:
                 tabBarController.presentLoginViewController(false) {
-                    self.hideLaunchView(launchView);
+                    fadeOut(launchViewController!.view) { (finished) in
+                        launchViewController = nil
+                    }
                 }
             case .ChooseCalendars:
                 tabBarController.presentCalendarPickerViewController(false) {
-                    self.hideLaunchView(launchView);
+                    fadeOut(launchViewController!.view) { (finished) in
+                        launchViewController = nil
+                    }
                 }
             }
         }
     }
     
-    private func setupVendors() {
+    func setupVendors() {
         #if !ENV_DEVELOPMENT
             BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientID);
             BITHockeyManager.sharedHockeyManager().startManager();
             BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         #endif
-
+        
         NetworkManager.sharedInstance.setServerURL(Constants.GooglePlus.ServerURL)
-    }
-    
-    private func hideLaunchView(view: UIView, animated: Bool = true) {
-        let duration: NSTimeInterval = animated ? 1 : 0
-        UIView.animateWithDuration(duration, animations: {
-            view.alpha = 0
-        }, completion: { (finished) -> Void in
-            view.removeFromSuperview()
-        })
     }
 }
 

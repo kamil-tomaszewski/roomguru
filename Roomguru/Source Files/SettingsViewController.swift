@@ -12,7 +12,6 @@ class SettingsViewController: UIViewController {
     
     weak var aView: SettingsView?
     private let viewModel = SettingsViewModel(items: [
-        SettingItem(NSLocalizedString("Sign out", comment: ""), .noneType, "signOutHandler"),
         SettingItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:"),
         SettingItem(NSLocalizedString("Manage calendars", comment: ""), .noneType, "manageCalendars")
     ])
@@ -27,6 +26,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sign out", comment: ""), style: .Plain, target: self, action: Selector("didTapSignOutButton:"))
     }
 }
 
@@ -72,9 +72,9 @@ extension SettingsViewController: UITableViewDelegate {
 
 //MARK: Private
 
-extension SettingsViewController {
+private extension SettingsViewController {
     
-    private func setupTableView() {
+    func setupTableView() {
         
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
@@ -82,10 +82,6 @@ extension SettingsViewController {
         for (identifier, theClass) in viewModel.signatures() {
             aView?.tableView.registerClass(theClass, forCellReuseIdentifier: identifier)
         }
-    }
-    
-    func signOutHandler() {
-        (UIApplication.sharedApplication().delegate as! AppDelegate).signOut()
     }
     
     func notificationSwitchHandler(sender: UISwitch) {
@@ -103,5 +99,14 @@ extension SettingsViewController {
         cell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
         
         return cell
+    }
+}
+
+//MARK: UIControl methods
+
+extension SettingsViewController {
+    
+    func didTapSignOutButton(sender: UIBarButtonItem) {
+        (UIApplication.sharedApplication().delegate as! AppDelegate).signOut()
     }
 }

@@ -12,7 +12,7 @@ class SettingsView: UIBaseTableView {
     
     override func initialize() {
         super.initialize()
-        
-        // provide additional setup here
+                
+        tableView.tableHeaderView = SettingsTableHeaderView(frame: CGRectMake(0, 0, 0, 120))
     }
 }

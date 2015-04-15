@@ -12,8 +12,8 @@ import Cartography
 class LoginView: UIView {
     
     let signInButton = GPPSignInButton() as GPPSignInButton
-    private var welcomeLabel = UILabel()
-    let avatarImageView = RoundBorderedImageView(frame: CGRectMake(0, 0, 100, 100))
+    private var logoLabel = RoomguruLabel()
+    let avatarView = AvatarView(frame: CGRectMake(0, 0, 100, 100))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,37 +26,33 @@ class LoginView: UIView {
     }
     
     private func commonInit() {
-        self.backgroundColor = UIColor.ngGrayColor()
+        self.backgroundColor = UIColor.whiteColor()
         
-        welcomeLabel.text = NSLocalizedString("Welcome to Roomguru! Sign in with Google+ to start using the app.", comment: "")
-        welcomeLabel.accessibilityLabel = "Welcome to Roomguru!"
-        welcomeLabel.textAlignment = .Center
-        welcomeLabel.textColor = UIColor.ngOrangeColor()
-        welcomeLabel.numberOfLines = 0
+        addSubview(logoLabel)
+        addSubview(avatarView)
         
-        addSubview(welcomeLabel)
-        addSubview(avatarImageView)
+        signInButton.style = kGPPSignInButtonStyleWide
+        signInButton.colorScheme = kGPPSignInButtonColorSchemeLight
         addSubview(signInButton)
         
         defineConstraints()
     }
 
     private func defineConstraints() {
-        layout(signInButton, avatarImageView, welcomeLabel) { button, imageView, label in
+        layout(signInButton, avatarView, logoLabel) { button, avatar, label in
             
             let margin: CGFloat = 20
             
-            imageView.centerY == imageView.superview!.bottom - 400
-            imageView.centerX == imageView.superview!.centerX
-            imageView.width == CGRectGetWidth(self.avatarImageView.bounds)
-            imageView.height == CGRectGetHeight(self.avatarImageView.bounds)
+            avatar.center == avatar.superview!.center
+            avatar.width == CGRectGetWidth(self.avatarView.bounds)
+            avatar.height == CGRectGetHeight(self.avatarView.bounds)
             
             label.left == label.superview!.left + margin
             label.right == label.superview!.right - margin
-            label.top == label.superview!.top + 120
-            label.centerX == label.superview!.centerX
+            label.bottom == avatar.top
+            label.top == label.superview!.top
             
-            button.width == button.superview!.width - 2 * margin
+            button.width == button.superview!.width - 4 * margin
             button.height  == 45
             button.centerX == button.superview!.centerX
             button.bottom == button.superview!.bottom - 100

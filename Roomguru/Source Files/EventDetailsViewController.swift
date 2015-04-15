@@ -86,7 +86,7 @@ extension EventDetailsViewController: UITableViewDataSource {
             cell.footerLabel.hidden = (indexPath.section == 1)
             
             if let url = NSURL.gravatarURLWithEmail(info.email) {
-                cell.avatarImageView.setImageWithURL(url)
+                cell.avatarView.imageView.setImageWithURL(url)
             }
             
             return cell
