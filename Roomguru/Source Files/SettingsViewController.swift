@@ -70,6 +70,24 @@ extension SettingsViewController: UITableViewDelegate {
     }
 }
 
+//MARK: UIControl
+
+extension SettingsViewController {
+    
+    func didTapSignOutButton(sender: UIBarButtonItem) {
+        (UIApplication.sharedApplication().delegate as! AppDelegate).signOut()
+    }
+    
+    func notificationSwitchHandler(sender: UISwitch) {
+        Settings.reverseNotificationEnabled()
+    }
+    
+    func manageCalendars() {
+        navigationController?.pushViewController(CalendarPickerViewController(), animated: true)
+    }
+}
+
+
 //MARK: Private
 
 private extension SettingsViewController {
@@ -84,14 +102,6 @@ private extension SettingsViewController {
         }
     }
     
-    func notificationSwitchHandler(sender: UISwitch) {
-        Settings.reverseNotificationEnabled()
-    }
-    
-    func manageCalendars() {
-        navigationController?.pushViewController(CalendarPickerViewController(), animated: true)
-    }
-    
     func tableView(tableView: UITableView, switchCellForItem item: SettingItem) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as! SwitchCell
@@ -99,14 +109,5 @@ private extension SettingsViewController {
         cell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
         
         return cell
-    }
-}
-
-//MARK: UIControl methods
-
-extension SettingsViewController {
-    
-    func didTapSignOutButton(sender: UIBarButtonItem) {
-        (UIApplication.sharedApplication().delegate as! AppDelegate).signOut()
     }
 }
