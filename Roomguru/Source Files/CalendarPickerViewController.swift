@@ -50,13 +50,13 @@ extension CalendarPickerViewController {
         if (lastState == .Loading) { return }
         
         startLoading()
-        NetworkManager.sharedInstance.calendarsList({ (calendars) in
-            self.viewModel = CalendarPickerViewModel(calendars: calendars)
-            self.aView?.tableView.reloadData()
-            self.setBarButtonItemState()
-            self.endLoading()
-        }, failure: { (error) in
-            self.endLoading(error: error)
+        NetworkManager.sharedInstance.calendarsList({ [weak self] (calendars) in
+            self?.viewModel = CalendarPickerViewModel(calendars: calendars)
+            self?.aView?.tableView.reloadData()
+            self?.setBarButtonItemState()
+            self?.endLoading()
+        }, failure: { [weak self] (error) in
+            self?.endLoading(error: error)
         })
     }
 }
