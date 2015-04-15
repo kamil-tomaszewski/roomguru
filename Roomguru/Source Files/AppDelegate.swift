@@ -60,27 +60,30 @@ private extension AppDelegate {
         var launchViewController: UIViewController? = NavigationController(rootViewController: LaunchViewController())
         window!.addSubview(launchViewController!.view)
         
-        authenticator.authenticateWithCompletion { (action, auth, error) in
+        authenticator.authenticateWithCompletion { (authenticated, auth, error) in
 
             if let _auth = auth {
                 UserPersistenceStore.sharedStore.registerUserWithEmail(_auth.userEmail)
                 NetworkManager.sharedInstance.setAuthentication(_auth)
             }
             
-            switch action {
-            case .Success:
-                fadeOut(launchViewController!.view) { (finished) in
-                    launchViewController = nil
-                }
-            case .Login:
-                tabBarController.presentLoginViewController(false) {
-                    fadeOut(launchViewController!.view) { (finished) in
+            if authenticated {
+                
+                let didUserSelectCalendars = CalendarPersistenceStore.sharedStore.calendars.count > 0
+                if didUserSelectCalendars {
+                    fadeOut(launchViewController!.view) {
                         launchViewController = nil
                     }
+                } else {
+                    tabBarController.presentCalendarPickerViewController(false) {
+                        fadeOut(launchViewController!.view) {
+                            launchViewController = nil
+                        }
+                    }
                 }
-            case .ChooseCalendars:
-                tabBarController.presentCalendarPickerViewController(false) {
-                    fadeOut(launchViewController!.view) { (finished) in
+            } else {
+                tabBarController.presentLoginViewController(false) {
+                    fadeOut(launchViewController!.view) {
                         launchViewController = nil
                     }
                 }

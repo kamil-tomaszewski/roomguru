@@ -13,9 +13,13 @@ extension UIView {
     //temp nothing in here
 }
 
-func fadeOut<T: UIView>(view: T, duration: NSTimeInterval = 1, animated: Bool = true, completion: ((Bool) -> Void)?) {
+func fadeOut<T: UIView>(view: T, duration: NSTimeInterval = 1, animated: Bool = true, completion: (Void -> Void)?) {
     let fadeDuration: NSTimeInterval = animated ? duration : 0
-    UIView.animateWithDuration(fadeDuration, animations: {
+    UIView.animateWithDuration(fadeDuration, animations: { () -> Void in
         view.alpha = 0
-    }, completion: completion)
+    }, completion: { finished in
+        if let completion = completion {
+            completion()
+        }
+    })
 }

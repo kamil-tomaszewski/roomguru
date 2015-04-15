@@ -38,7 +38,7 @@ class UserPersistenceStore {
     
     func registerUserWithEmail(email: String) {
 
-        //do nothing if already exist
+        //do nothing if already exists
         if user?.email == email {
             return
         }
@@ -51,7 +51,7 @@ class UserPersistenceStore {
             return
         }
         
-        storeImageWithCompletionBlock { (success: Bool, url: String) in
+        GPPProfileProvider.downloadImageURLWithCompletion { (success: Bool, url: String) in
             if success {
                 self.downloadImageFromURL(fromURL: url)
             }
@@ -59,10 +59,8 @@ class UserPersistenceStore {
     }
     
     func userImage() -> UIImage? {
-        if let id = hash() {
-            if let data = diskManager.loadProfileImageWithIdentifier(id), image = UIImage(data: data) {
-                return image
-            }
+        if let id = hash(), data = diskManager.loadProfileImageWithIdentifier(id), image = UIImage(data: data) {
+            return image
         }
         return UIImage(named: "placeholder")
     }
@@ -79,23 +77,6 @@ private extension UserPersistenceStore {
         return true
     }
     
-    func storeImageWithCompletionBlock(completion: (success: Bool, url: String) -> Void) {
-        
-        let query = GTLQueryPlus.queryForPeopleGetWithUserId("me") as! GTLQueryPlus
-        let plusService = GTLServicePlus()
-        plusService.retryEnabled = true
-        plusService.authorizer = GPPSignIn.sharedInstance().authentication
-        
-        plusService.executeQuery(query) { (_, person, _) in
-            
-            if let _person = person as? GTLPlusPerson {
-                completion(success: true, url: _person.image.url)
-            } else {
-                completion(success: false, url: "")
-            }
-        }
-    }
-    
     func downloadImageFromURL(var fromURL url: String) {
         
         if let range = url.rangeOfString("sz=") {
@@ -103,8 +84,8 @@ private extension UserPersistenceStore {
             url = url.substringWithRange(Range<String.Index>(start: url.startIndex , end: range.startIndex)) + "sz=" + String(size)
             self.downloader.downloadFileFromUrl(url) { (locationURL) -> Void in
                 
-                if let _locationURL = locationURL, id = self.hash() {
-                    self.diskManager.saveProfileImage(_locationURL, forIdentifier: id)
+                if let locationURL = locationURL, id = self.hash() {
+                    self.diskManager.saveProfileImage(locationURL, forIdentifier: id)
                 }
             }
         }
@@ -113,7 +94,6 @@ private extension UserPersistenceStore {
     func hash() -> String? {
         return user?.email.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5()
     }
-    
 }
 
 // MARK: Persistance
@@ -121,8 +101,8 @@ private extension UserPersistenceStore {
 extension UserPersistenceStore: Persistence {
     
     func save() {
-        if let _user = user {
-            Defaults[User.key] = NSKeyedArchiver.archivedDataWithRootObject(_user)
+        if let user = user {
+            Defaults[User.key] = NSKeyedArchiver.archivedDataWithRootObject(user)
             Defaults.synchronize()
         }        
     }

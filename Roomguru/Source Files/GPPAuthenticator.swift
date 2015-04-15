@@ -9,16 +9,11 @@
 import Foundation
 import Async
 
-enum Action {
-    case Login, ChooseCalendars, Success
-}
-
 class GPPAuthenticator: NSObject, GPPSignInDelegate {
     
-    typealias authenticatorCompletionBlock = (action: Action, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
+    typealias authenticatorCompletionBlock = (authenticated: Bool, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
     
     private var completion: authenticatorCompletionBlock?
-    private var action: Action = .Login
     
     override init() {
         super.init()
@@ -35,17 +30,16 @@ class GPPAuthenticator: NSObject, GPPSignInDelegate {
     func authenticateWithCompletion(completion: authenticatorCompletionBlock) {
         
         self.completion = completion
-        var action: Action
         
         if GPPSignIn.sharedInstance().hasAuthInKeychain() {
             
             if !GPPSignIn.sharedInstance().trySilentAuthentication() {
-                self.completion!(action: .Login, auth: nil, error: nil)
+                self.completion!(authenticated: false, auth: nil, error: nil)
             }
             
         } else {
             Async.main(after: 0.2) {
-                self.completion!(action: .Login, auth: nil, error: nil)
+                self.completion!(authenticated: false, auth: nil, error: nil)
             }
         }
     }
@@ -54,21 +48,13 @@ class GPPAuthenticator: NSObject, GPPSignInDelegate {
     
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
         if (error != nil) {
-            self.completion!(action: .Login, auth: nil, error: error)
+            self.completion!(authenticated: false, auth: nil, error: error)
         } else {
-            let action: Action
-            
-            if CalendarPersistenceStore.sharedStore.calendars.count > 0 {
-                action = .Success
-            } else {
-                action = .ChooseCalendars
-            }
-            
-            self.completion!(action: action, auth: auth, error: nil)
+            self.completion!(authenticated: true, auth: auth, error: nil)
         }
     }
     
     func didDisconnectWithError(error: NSError!) {
-         self.completion!(action: .Login, auth: nil, error: error)
+         self.completion!(authenticated: false, auth: nil, error: error)
     }
 }

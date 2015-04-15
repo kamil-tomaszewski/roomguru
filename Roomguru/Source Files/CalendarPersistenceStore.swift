@@ -19,7 +19,7 @@ class CalendarPersistenceStore {
         return Static.instance
     }
     
-    var calendars: [Calendar] = []
+    private(set) var calendars: [Calendar] = []
     
     init() {
         calendars = fetch() ?? []
@@ -49,7 +49,7 @@ class CalendarPersistenceStore {
     }
     
     func fetch() -> [Calendar]? {
-        if let let key = key(), data = Defaults[key].data {
+        if let key = key(), data = Defaults[key].data {
             return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Calendar]
         }
         return nil
