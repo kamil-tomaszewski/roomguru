@@ -1,5 +1,5 @@
 //
-//  AppAuthenticator.swift
+//  GPPAuthenticator.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 13/04/15.
@@ -13,7 +13,7 @@ enum Action {
     case Login, ChooseCalendars, Success
 }
 
-class AppAuthenticator: NSObject, GPPSignInDelegate {
+class GPPAuthenticator: NSObject, GPPSignInDelegate {
     
     typealias authenticatorCompletionBlock = (action: Action, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
     

@@ -15,7 +15,7 @@
 		5E07202D1AB73E03009C270E /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202C1AB73E03009C270E /* ButtonCell.swift */; };
 		5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07202E1AB73F83009C270E /* DashboardViewModel.swift */; };
 		5E15F13A1AD804CF00E1F8BC /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1391AD804CF00E1F8BC /* LaunchView.swift */; };
-		5E15F13F1ADBE28A00E1F8BC /* AppAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F13E1ADBE28A00E1F8BC /* AppAuthenticator.swift */; };
+		5E15F13F1ADBE28A00E1F8BC /* GPPAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */; };
 		5E15F1431ADC2B8300E1F8BC /* UserImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */; };
 		5E15F1451ADC314500E1F8BC /* UserDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */; };
 		5E1BA3041ACB5E8300827BB6 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */; };
@@ -160,7 +160,7 @@
 		5E147CB71AA8B2DC00EDD97C /* Unit-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Unit-Tests-Bridging-Header.h"; path = "Supporting Files/Unit-Tests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		5E147CB81AA8B2DC00EDD97C /* Unit-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit-Tests-Info.plist"; path = "Supporting Files/Unit-Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5E15F1391AD804CF00E1F8BC /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchView.swift; path = "Roomguru/Source Files/LaunchView.swift"; sourceTree = SOURCE_ROOT; };
-		5E15F13E1ADBE28A00E1F8BC /* AppAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppAuthenticator.swift; path = "Roomguru/Source Files/AppAuthenticator.swift"; sourceTree = SOURCE_ROOT; };
+		5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPAuthenticator.swift; path = "Roomguru/Source Files/GPPAuthenticator.swift"; sourceTree = SOURCE_ROOT; };
 		5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserImageDownloader.swift; path = "Roomguru/Source Files/UserImageDownloader.swift"; sourceTree = SOURCE_ROOT; };
 		5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDiskManager.swift; path = "Roomguru/Source Files/UserDiskManager.swift"; sourceTree = SOURCE_ROOT; };
 		5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationExtensions.swift; path = "Roomguru/Source Files/UIApplicationExtensions.swift"; sourceTree = SOURCE_ROOT; };
@@ -652,7 +652,7 @@
 			children = (
 				7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */,
 				5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */,
-				5E15F13E1ADBE28A00E1F8BC /* AppAuthenticator.swift */,
+				5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */,
 				5E88B8041ADCF589000B6CAF /* User Managment */,
 			);
 			name = Managers;
@@ -1110,7 +1110,7 @@
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
-				5E15F13F1ADBE28A00E1F8BC /* AppAuthenticator.swift in Sources */,
+				5E15F13F1ADBE28A00E1F8BC /* GPPAuthenticator.swift in Sources */,
 				5E8AFF6C1AD3D4E900FB73CD /* CalendarPickerCell.swift in Sources */,
 				5ED4C7701ACC3DC80084E52F /* Defines.swift in Sources */,
 				5EF095591ACD91AD001E5C69 /* CalendarPickerViewModel.swift in Sources */,

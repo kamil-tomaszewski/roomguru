@@ -40,24 +40,24 @@ class CalendarPersistenceStore {
     // MARK: Saving and Reading
     
     func saveCalendars(calendars: [Calendar]) {
-        if let _key = key() {
+        if let key = key() {
             let dataRepresentation = NSKeyedArchiver.archivedDataWithRootObject(calendars)
-            Defaults[_key] = dataRepresentation
+            Defaults[key] = dataRepresentation
             Defaults.synchronize()
         }
         self.calendars = calendars
     }
     
     func fetch() -> [Calendar]? {
-        if let let _key = key(), data = Defaults[_key].data {
+        if let let key = key(), data = Defaults[key].data {
             return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Calendar]
         }
         return nil
     }
     
     func clear() {
-        if let _key = key() {
-            Defaults.remove(_key)
+        if let key = key() {
+            Defaults.remove(key)
             Defaults.synchronize()
         }
         calendars = []

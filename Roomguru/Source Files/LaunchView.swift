@@ -35,7 +35,7 @@ class LaunchView: UIView {
         addSubview(avatarView)
         addSubview(logoLabel)
         
-        label.text = "Authenticating..."
+        label.text = NSLocalizedString("Authenticating...", comment: "")
         label.textAlignment = .Center
         label.textColor = UIColor.ngOrangeColor()
         addSubview(label)
