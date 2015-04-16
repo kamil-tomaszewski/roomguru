@@ -22,7 +22,7 @@ protocol FreeEventCellDelegate: class {
 }
 
 
-class FreeEventCell: UITableViewCell, Reusable {
+class FreeEventCell: BaseEventCell, Reusable {
     
     weak var delegate: FreeEventCellDelegate?
     
@@ -40,6 +40,8 @@ class FreeEventCell: UITableViewCell, Reusable {
     private var _timePeriod: NSTimeInterval = 0
     private var cellState: FreeEventCellState = .Normal
     private var stateBlock: Async?
+    
+    private struct Constants { static var CellIdentifier: String = "TableViewFreeEventCellReuseIdentifier"}
     
     class func reuseIdentifier() -> String {
         return "TableViewFreeEventCellReuseIdentifier"
@@ -61,16 +63,29 @@ class FreeEventCell: UITableViewCell, Reusable {
         configure()
         contentView.addSubview(bookingTimesView)
         contentView.addSubview(freeTimeButton)
+        contentView.addSubview(timeMaxLabel)
+        contentView.addSubview(timeMinLabel)
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    override func defineConstraints() {
         
         layout(freeTimeButton, bookingTimesView) { freeButton, bookingView in
             freeButton.edges == freeButton.superview!.edges
             bookingView.edges == bookingView.superview!.edges
             return
         }
+        
+        layout(timeMaxLabel, timeMinLabel) { upperLabel, lowerLabel in
+            upperLabel.top >= upperLabel.superview!.top + 5
+            upperLabel.left == upperLabel.superview!.left + 10
+            
+            lowerLabel.bottom >= lowerLabel.superview!.bottom - 5
+            lowerLabel.left == lowerLabel.superview!.left + 10
+            lowerLabel.width == upperLabel.width
+            lowerLabel.height == upperLabel.height
+        }
+        
     }
     
     private func configure() {
@@ -87,6 +102,13 @@ class FreeEventCell: UITableViewCell, Reusable {
         bookingTimesView.delegate = self
         
         contentView.backgroundColor = backgroundColor
+        
+        let font = UIFont.boldSystemFontOfSize(13.0)
+        
+        self.timeMaxLabel.font = font
+        self.timeMinLabel.font = font
+        
+        indentationLevel = 7
     }
     
 }

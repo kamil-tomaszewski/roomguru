@@ -193,6 +193,9 @@ extension EventsViewController: UITableViewDataSource {
             cell.timePeriod = freeEvent.duration
             cell.freeTimeButton.setTitle(title)
             
+            cell.timeMaxLabel.text = event?.startTime
+            cell.timeMinLabel.text = event?.endTime
+            
             return cell
         } else {
             let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier()) as! EventCell

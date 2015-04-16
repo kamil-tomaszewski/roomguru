@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class EventCell: UITableViewCell, Reusable {
+class EventCell: BaseEventCell, Reusable {
     
     let timeMaxLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
     let timeMinLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
@@ -35,19 +35,6 @@ class EventCell: UITableViewCell, Reusable {
         contentView.addSubview(timeMaxLabel)
         contentView.addSubview(timeMinLabel)
         defineConstraints()
-    }
-    
-    private func defineConstraints() {
-        
-        layout(timeMaxLabel, timeMinLabel) { upperLabel, lowerLabel in
-            upperLabel.top >= upperLabel.superview!.top + 15
-            upperLabel.left == upperLabel.superview!.left + 10
-            
-            lowerLabel.bottom >= lowerLabel.superview!.bottom - 15
-            lowerLabel.left == lowerLabel.superview!.left + 10
-            lowerLabel.width == upperLabel.width
-            lowerLabel.height == upperLabel.height
-        }
     }
     
     private func configure() {
