@@ -53,7 +53,7 @@ class UserPersistenceStore {
         
         GPPProfileProvider.downloadImageURLWithCompletion { (success: Bool, url: String) in
             if success {
-                self.downloadImageFromURL(fromURL: url)
+                self.downloadImageFromURL(url)
             }
         }
     }
@@ -77,7 +77,7 @@ private extension UserPersistenceStore {
         return true
     }
     
-    func downloadImageFromURL(var fromURL url: String) {
+    func downloadImageFromURL(var url: String) {
         
         if let range = url.rangeOfString("sz=") {
             
