@@ -12,12 +12,13 @@ class SettingsViewController: UIViewController {
     
     weak var aView: SettingsView?
     private let viewModel = SettingsViewModel(items: [
-        SettingItem(NSLocalizedString("Receive notifications", comment: ""), .switchType, "notificationSwitchHandler:"),
         SettingItem(NSLocalizedString("Manage calendars", comment: ""), .noneType, "manageCalendars")
-    ])
+        ])
+    
+    private var header: SettingsCollectionViewHeader?
     
     // MARK: View life cycle
-
+    
     override func loadView() {
         aView = loadViewWithClass(SettingsView.self)
     }
@@ -25,89 +26,95 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
+        setuptCollectionView()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sign out", comment: ""), style: .Plain, target: self, action: Selector("didTapSignOutButton:"))
     }
 }
 
-// MARK: UITableViewDataSource
+// MARK: UICollectionViewFlowLayout
 
-extension SettingsViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfItems()
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell: UITableViewCell;
-        let item = viewModel[indexPath.row]
-        
-        if item.type == .switchType {
-            cell = self.tableView(tableView, switchCellForItem: item)
-        } else {
-            cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as! UITableViewCell
-        }
+extension SettingsViewController: UICollectionViewDelegateFlowLayout {
 
-        cell.textLabel?.text = item.title
-        
-        return cell
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(CGRectGetWidth(collectionView.bounds), 54)
     }
 }
 
-//MARK: UITableViewDelegate
+// MARK: UICollectionViewDataSource
 
-extension SettingsViewController: UITableViewDelegate {
+extension SettingsViewController: UICollectionViewDataSource {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfItems()
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SettingsCell.reuseIdentifier, forIndexPath: indexPath) as! SettingsCell
+        
+        let item = viewModel[indexPath.row]
+        
+        cell.textLabel.text = item.title
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        if self.header == nil {
+            self.header = (collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: SettingsCollectionViewHeader.reuseIdentifier, forIndexPath: indexPath) as! SettingsCollectionViewHeader)
+        }
+        return header!
+    }
+}
+
+//MARK: UICollectionViewDelegate
+
+extension SettingsViewController: UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         viewModel[indexPath.row].performActionWithTarget(self)
     }
     
-    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return viewModel[indexPath.row].selectable()
+    }
+    
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.cellForItemAtIndexPath(indexPath)!.backgroundColor = UIColor(white: 0.73, alpha: 1)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.cellForItemAtIndexPath(indexPath)!.backgroundColor = UIColor.whiteColor()
     }
 }
 
 //MARK: UIControl
 
 extension SettingsViewController {
-    
+
     func didTapSignOutButton(sender: UIBarButtonItem) {
         (UIApplication.sharedApplication().delegate as! AppDelegate).signOut()
     }
-    
+
     func notificationSwitchHandler(sender: UISwitch) {
         Settings.reverseNotificationEnabled()
     }
-    
+
     func manageCalendars() {
         navigationController?.pushViewController(CalendarPickerViewController(), animated: true)
     }
 }
 
-
 //MARK: Private
 
 private extension SettingsViewController {
     
-    func setupTableView() {
+    func setuptCollectionView() {
         
-        aView?.tableView.delegate = self;
-        aView?.tableView.dataSource = self;
-        
-        for (identifier, theClass) in viewModel.signatures() {
-            aView?.tableView.registerClass(theClass, forCellReuseIdentifier: identifier)
-        }
-    }
-    
-    func tableView(tableView: UITableView, switchCellForItem item: SettingItem) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(item.signature().identifier) as! SwitchCell
-        cell.switchControl.addTarget(self, action: Selector(item.action), forControlEvents: .ValueChanged)
-        cell.switchControl.setOn(Settings.isNotifcationEnabled(), animated: false)
-        
-        return cell
+        aView?.collectionView?.delegate = self
+        aView?.collectionView?.dataSource = self
+        aView?.collectionView?.registerClass(SettingsCell.self, forCellWithReuseIdentifier: SettingsCell.reuseIdentifier)
+        aView?.collectionView?.registerClass(SettingsCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: SettingsCollectionViewHeader.reuseIdentifier)
     }
 }

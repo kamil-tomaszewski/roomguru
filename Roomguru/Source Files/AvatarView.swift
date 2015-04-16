@@ -23,7 +23,7 @@ class AvatarView: UIView {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         
         imageView.contentMode = .ScaleAspectFit
         imageView.layer.masksToBounds = true

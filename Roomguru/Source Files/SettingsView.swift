@@ -8,11 +8,40 @@
 
 import UIKit
 
-class SettingsView: UIBaseTableView {
+class SettingsView: UIView {
     
-    override func initialize() {
-        super.initialize()
-                
-        tableView.tableHeaderView = SettingsTableHeaderView(frame: CGRectMake(0, 0, 0, 120))
+    private(set) var collectionView: UICollectionView?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit() {                
+        let layout = StickyExpandableFlowLayout()
+        
+        collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+        collectionView?.alwaysBounceVertical = true
+        collectionView?.backgroundColor = UIColor.whiteColor()
+        addSubview(collectionView!)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        /* NOTE: Cartography not use because of internal error:
+        *** Assertion failure in 
+        -[UICollectionView _createPreparedSupplementaryViewForElementOfKind:atIndexPath:withLayoutAttributes:applyAttributes:], /
+        SourceCache/UIKit_Sim/UIKit-3347.44/UICollectionView.m:1400
+        
+        in ConstraintGroup performLayout()
+        */
+        
+        collectionView?.frame = self.bounds
     }
 }

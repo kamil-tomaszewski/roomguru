@@ -20,7 +20,7 @@ class BorderTextField: UITextField {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         
         clearButtonMode = .WhileEditing
         autocorrectionType = .No
