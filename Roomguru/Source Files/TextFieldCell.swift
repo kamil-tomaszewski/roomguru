@@ -1,23 +1,23 @@
 //
-//  SwitchCell.swift
+//  TextFieldCell.swift
 //  Roomguru
 //
-//  Created by Patryk Kaczmarek on 16/03/15.
+//  Created by Radoslaw Szeja on 16/04/15.
 //  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
 import UIKit
 import Cartography
 
-class SwitchCell: TableViewCell {
+class TextFieldCell: TableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewSwitchCellReuseIdentifier"}
+    private struct Constants { static var CellIdentifier: String = "TableViewTextFieldCellReuseIdentifier"}
     
     override class var reuseIdentifier: String {
         get { return Constants.CellIdentifier }
     }
     
-    let switchControl = UISwitch()
+    let textField = UITextField()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,20 +30,21 @@ class SwitchCell: TableViewCell {
     }
     
     private func commonInit() {
-        switchControl.onTintColor = UIColor.ngOrangeColor()
-        addSubview(switchControl)
-        
+        textField.tintColor = UIColor.ngOrangeColor()
+        addSubview(textField)
         defineConstraints()
     }
     
     private func defineConstraints() {
         
-        layout(switchControl) { (aSwitch) in
+        layout(textField) { (field) in
             
-            let margin: CGFloat = 20
+            let margin: CGFloat = 15
             
-            aSwitch.centerY == aSwitch.superview!.centerY
-            aSwitch.right == aSwitch.superview!.right - margin
+            field.centerX == field.superview!.centerX
+            field.centerY == field.superview!.centerY
+            field.width == field.superview!.width - (2 * margin)
+            field.height == 44.0
         }
     }
 }

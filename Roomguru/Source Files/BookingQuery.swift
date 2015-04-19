@@ -17,51 +17,53 @@ class BookingQuery: Query {
         let URLExtension = "/calendars/" + calendarTimeFrame.1 + "/events"
         self.init(.POST, URLExtension: URLExtension, parameters: nil, encoding: .JSON)
         
-        self.startDate = calendarTimeFrame.0?.startDate
-        self.endDate = calendarTimeFrame.0?.endDate
-        self.timeZone = NSTimeZone.localTimeZone().name
+        startDate = calendarTimeFrame.0?.startDate
+        endDate = calendarTimeFrame.0?.endDate
     }
     
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
         super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters, encoding: encoding)
+        timeZone = NSTimeZone.localTimeZone().name
     }
     
+    // MARK: Parameters
+    
     var summary: String {
-        get { return self[SummaryKey] as! String }
+        get { return self[SummaryKey] as? String ?? "" }
         set { self[SummaryKey] = newValue }
     }
     
     var startDate: NSDate? {
-        get { return getDateForKey(StartKey) }
+        get { return dateForKey(StartKey) }
         set { setDate(newValue, forKey: StartKey) }
     }
     
     var endDate: NSDate? {
-        get { return getDateForKey(EndKey) }
+        get { return dateForKey(EndKey) }
         set { setDate(newValue, forKey: EndKey) }
     }
-
+    
     var timeZone: String {
-        get { return _timeZone }
+        get { return timeZoneForDateKey(StartKey) }
         set {
-            _timeZone = newValue
-            setTimeZone(_timeZone, forDateKey: StartKey)
-            setTimeZone(_timeZone, forDateKey: EndKey)
+            setTimeZone(newValue, forDateKey: StartKey)
+            setTimeZone(newValue, forDateKey: EndKey)
         }
     }
     
-    // MARK: Private
-    
-    private var _timeZone: String = ""
+    // MARK: Private keys
     
     private let TimeZoneKey = "timeZone"
     private let SummaryKey = "summary"
+    private let DateKey = "date"
     private let DateTimeKey = "dateTime"
     private let StartKey = "start"
     private let EndKey = "end"
     
-    private func getDateForKey(key: String) -> NSDate? {
-        if let dateString: String = (self[key] as! Dictionary)[DateTimeKey] {
+    // MARK: Private functions
+    
+    private func dateForKey(key: String) -> NSDate? {
+        if let dateDict = self[key] as? [String: String], dateString = dateDict[DateTimeKey] {
             return formatter.dateFromString(dateString)
         }
         return nil
@@ -70,9 +72,10 @@ class BookingQuery: Query {
     private func setDate(date: NSDate?, forKey key: String) {
         if let _date = date {
             var dateDict = [DateTimeKey: formatter.stringFromDate(_date)]
+            let timeZone = self.timeZone
             
-            if !_timeZone.isEmpty {
-                dateDict[TimeZoneKey] = _timeZone
+            if !timeZone.isEmpty {
+                dateDict[TimeZoneKey] = NSTimeZone.localTimeZone().name
             }
             self[key] = dateDict
         } else {
@@ -81,8 +84,15 @@ class BookingQuery: Query {
     }
     
     private func setTimeZone(timeZone: String, forDateKey key: String) {
-        if var dateDict: [String: AnyObject] = self[key] as? [String: AnyObject] {
+        if var dateDict = self[key] as? [String: AnyObject] {
             dateDict[TimeZoneKey] = timeZone
         }
+    }
+    
+    private func timeZoneForDateKey(key: String) -> String {
+        if var dateDict = self[key] as? [String: AnyObject], timeZone = dateDict[TimeZoneKey] as? String {
+            return timeZone
+        }
+        return NSTimeZone.localTimeZone().name
     }
 }

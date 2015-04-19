@@ -26,6 +26,10 @@ extension UIColor {
         return UIColor.rgb(237, 110, 102)
     }
     
+    class func systemPlaceholder() -> UIColor {
+        return UIColor.rgb(199, 199, 205)
+    }
+    
     class func rgb(r: NSInteger, _ g: NSInteger, _ b: NSInteger) -> UIColor {
         return UIColor.rgba(r, g, b, 1)
     }

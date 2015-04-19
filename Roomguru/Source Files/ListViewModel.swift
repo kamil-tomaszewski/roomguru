@@ -25,15 +25,12 @@ class ListViewModel<T: NSObject> {
         self.sections = sectionsFromItems(items, bySortingKey: sortingKey)
     }
     
-    subscript(index: Int) -> List<T> {
-        if let _sections = sections {
-            return _sections[index]
-        }
-        return items
+    subscript(index: Int) -> List<T>? {
+        return sections?[index]
     }
     
     // NGRFixme: Is this second subscript needed?
-    subscript(index: Int) -> T {
+    subscript(index: Int) -> T? {
         return items[index]
     }
     
@@ -43,7 +40,7 @@ class ListViewModel<T: NSObject> {
     
     func removeAtIndexPath(indexPath: NSIndexPath) {
         if sections?.count > 0 {
-            sections?[indexPath.section].remove(indexPath.row)
+            sections?[indexPath.section]?.remove(indexPath.row)
         } else {
             items.remove(indexPath.row)
         }

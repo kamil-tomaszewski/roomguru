@@ -205,7 +205,7 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let entry = viewModel?[indexPath.section][indexPath.row] {
+        if let entry = viewModel?[indexPath.section]?[indexPath.row] {
             if entry.event is FreeEvent {
                 return 40.0
             }
@@ -231,7 +231,7 @@ extension EventsViewController: FreeEventCellDelegate {
  
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval) {
         if let indexPath = aView?.tableView.indexPathForCell(cell) {
-            if let freeEntry = viewModel?[indexPath.section][indexPath.row] {
+            if let freeEntry = viewModel?[indexPath.section]?[indexPath.row] {
                 let timeFrame = TimeFrame(freeEvent: freeEntry.event as! FreeEvent)
                 let calendarTime: CalendarTimeFrame = (timeFrame, freeEntry.calendarID)
                 
@@ -253,9 +253,9 @@ extension EventsViewController {
     private func eventFromIndexPath(indexPath: NSIndexPath) -> Event? {
 
         if viewModel?.sectionsCount() > 1 {
-            return viewModel?[indexPath.section][indexPath.row].event
+            return viewModel?[indexPath.section]?[indexPath.row]?.event
         }
-        return viewModel?[indexPath.row].event
+        return viewModel?[indexPath.row]?.event
     }
     
     private func setupQuery(query: EventsQuery) -> EventsQuery {

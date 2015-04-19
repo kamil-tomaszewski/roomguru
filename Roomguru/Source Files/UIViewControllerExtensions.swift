@@ -34,7 +34,7 @@ extension UIViewController {
             || tabBarController?.presentingViewController is UITabBarController
     }
     
-    func dismissSelf(sender: UIBarButtonItem) {
+    func dismissSelf(sender: AnyObject?) {
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

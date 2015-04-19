@@ -59,7 +59,11 @@ extension DashboardViewController {
     }
     
     func didTapPlusButton(sender: UIBarButtonItem) {
-        let controller = EditEventViewController(event: Event())
+        // NGRTemp:
+        let calendarEntry = CalendarEntry(calendarID: Room.Test, event: Event())
+        
+        let viewModel = EditEventViewModel(calendarEntry: calendarEntry)
+        let controller = EditEventViewController(viewModel: viewModel)
         let navigationController = NavigationController(rootViewController: controller)
         presentViewController(navigationController, animated: true, completion: nil)
     }
