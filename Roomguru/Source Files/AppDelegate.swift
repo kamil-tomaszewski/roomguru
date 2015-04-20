@@ -7,7 +7,6 @@
 
 import UIKit
 import HockeySDK
-import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -101,4 +100,3 @@ private extension AppDelegate {
         NetworkManager.sharedInstance.setServerURL(Constants.GooglePlus.ServerURL)
     }
 }
-

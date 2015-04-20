@@ -885,7 +885,7 @@
 		5E3A97E01AA72F0A00CE2F20 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Netguru Sp. z o.o.";
 				TargetAttributes = {
 					5E3A97E71AA72F0A00CE2F20 = {
