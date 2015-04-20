@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import StatefulViewController
 
-class CalendarPickerViewController: StatefulViewController {
+class CalendarPickerViewController: UIViewController {
         
     weak var aView: CalendarPickerView?
     var viewModel: CalendarPickerViewModel?
@@ -29,7 +28,6 @@ class CalendarPickerViewController: StatefulViewController {
         
         setupTableView()
         hideBackBarButtonTitle()
-        setupPlaceholderViewsWithRefreshTarget(self)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -47,17 +45,16 @@ extension CalendarPickerViewController {
     
     func loadData() {
         
-        if (lastState == .Loading) { return }
-        
-        startLoading()
-        NetworkManager.sharedInstance.calendarsList({ [weak self] (calendars) in
-            self?.viewModel = CalendarPickerViewModel(calendars: calendars)
-            self?.aView?.tableView.reloadData()
-            self?.setBarButtonItemState()
-            self?.endLoading()
-        }, failure: { [weak self] (error) in
-            self?.endLoading(error: error)
-        })
+        NetworkManager.sharedInstance.calendarsList { [weak self] (calendars, error) in
+            
+            if let error = error {
+                // NGRTodo: handle error
+            } else if let calendars = calendars {
+                self?.viewModel = CalendarPickerViewModel(calendars: calendars)
+                self?.aView?.tableView.reloadData()
+                self?.setBarButtonItemState()
+            }
+        }
     }
 }
 
@@ -101,17 +98,6 @@ extension CalendarPickerViewController: UITableViewDelegate {
         controller.shouldShowResetButton = viewModel?.hasCalendarAtIndexCustomizedName(indexPath.row) ?? false
         currentEditingIndexPath = indexPath
         navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-// MARK: StatefulViewControllerDelegate
-
-extension CalendarPickerViewController: StatefulViewControllerDelegate {
-    
-    func hasContent() -> Bool {
-        let isEmpty = (viewModel?.count() ?? 0) == 0
-        aView?.tableView.hidden = isEmpty
-        return !isEmpty
     }
 }
 

@@ -17,10 +17,6 @@ xcodeproj 'Roomguru', 'Development' => :debug, 'Production' => :release, 'Stagin
 pod 'AFNetworking', '~> 2.5.2'
 pod 'Alamofire', '~> 1.2.0'
 
-pod 'StatefulViewController',
-    :git => "git@github.com:aschuch/StatefulViewController.git",
-    :commit => "3eaa376eb348d13db99d4b37b2cbcec312a6e73f"
-
 pod 'Async',
     :git => "git@github.com:duemunk/Async.git",
     :commit => "a61663f4469df082ac0b3311d9c4b8cd32185336",
@@ -33,6 +29,8 @@ pod 'SwiftyJSON',
 
 pod 'Cartography', '~> 0.5.0'
 
+pod 'CryptoSwift', '~> 0.0.10'
+
 pod 'SwiftyUserDefaults',
     :git => "git@github.com:radex/SwiftyUserDefaults.git",
     :commit => "e467e0f712e3ac1d1ceb7f9020ffd02e487e8893",
@@ -43,10 +41,6 @@ pod 'DateKit',
     :commit => "4c953cf5a70a14f88d154bdfd710019f20a10b49",
     :branch => "master"
 
-pod 'CryptoSwift',
-    :git => "git@github.com:krzyzanowskim/CryptoSwift.git",
-    :commit => "6ae8206f06ed0dddbf2721182e6d4232f80698da",
-    :branch => "master"
 
 target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
 

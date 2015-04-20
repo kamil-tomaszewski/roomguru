@@ -59,28 +59,26 @@ private extension GTMOAuth2Authentication {
 
 extension NetworkManager {
     
-    func calendarsList(success: (calendars: [Calendar]) -> Void, failure: ErrorBlock) {
+    func calendarsList(completion: (calendars: [Calendar]?, error: NSError?) -> Void) {
         
         if (self.clientID == "") {
-            failure(error: NSError(message: "Client ID is not set!"))
-        } else {
+            completion(calendars: nil, error: NSError(message: "Client ID is not set!"))
+            return;
+        }
+        
+        let requestPath = serverURL + "/users/me/calendarList"
+        Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
             
-            let requestPath = serverURL + "/users/me/calendarList"
-            
-            Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
+            if let responseJSON: AnyObject = json {
+                var swiftyJSON: JSON? = JSON(responseJSON)
                 
-                if let responseJSON: AnyObject = json {
-                    var swiftyJSON: JSON? = JSON(responseJSON)
-                    
-                    let array = swiftyJSON?["items"].array
-                    
-                    if let _array: [Calendar] = Calendar.map(array) {
-                        success(calendars: _array)
-                    }
-                } else {
-                    let _error = error ?? NSError(message: NSLocalizedString("Unknown error occured", comment: ""))
-                    failure(error: _error)
-                }
+                let array = swiftyJSON?["items"].array
+                let calendars = Calendar.map(array)
+                completion(calendars: calendars, error: nil)
+                
+            } else {
+                let _error = error ?? NSError(message: NSLocalizedString("Unknown error occured", comment: ""))
+                completion(calendars: nil, error: _error)
             }
         }
     }
