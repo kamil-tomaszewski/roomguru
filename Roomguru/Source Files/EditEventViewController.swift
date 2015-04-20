@@ -118,6 +118,7 @@ extension EditEventViewController: UITableViewDelegate {
                         return error
                     } else {
                         item.date = date
+                        item.update()
                         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                     }
                     return nil

@@ -81,7 +81,7 @@ class EventQuery: BookingQuery {
         get { return isAllDay() }
         set {
             if newValue {
-                setAllDay(startDate)
+                setAllDay(startDate ?? NSDate())
             } else {
                 cancelAllDay()
             }
@@ -130,6 +130,7 @@ class EventQuery: BookingQuery {
     private let StatusKey = "status"
     private let EmailKey = "email"
     private let ResponseStatusKey = "responseStatus"
+    private let TimeZoneKey = "timeZone"
     
     // MARK: Private members
     
@@ -170,32 +171,43 @@ class EventQuery: BookingQuery {
         return result
     }
     
-    private func setAllDay(date: NSDate?) {
-        if let date = date {
-            let start = date.midnight
-            let end = date.tomorrow.midnight.seconds - 1
-            
-            if var startDict = self[StartKey] as? [String: AnyObject] {
-                startDict[DateKey] = dateFormatter.stringFromDate(start)
-                startDict[DateTimeKey] = nil
-            }
-            
-            if var endDict = self[EndKey] as? [String: AnyObject] {
-                endDict[DateKey] = dateFormatter.stringFromDate(end)
-                endDict[DateTimeKey] = nil
-            }
+    private func setAllDay(date: NSDate) {
+        let start = date.midnight
+        let end = date.tomorrow.midnight.seconds - 1
+        
+        let startString = dateFormatter.stringFromDate(start)
+        let endString = dateFormatter.stringFromDate(end)
+        
+        if var startDict = self[StartKey] as? [String: AnyObject] {
+            startDict[DateKey] = startString
+            startDict.removeValueForKey(DateTimeKey)
+        } else {
+            self[StartKey] = [
+                DateKey: startString,
+                TimeZoneKey: timeZone
+            ]
         }
+        
+        if var endDict = self[EndKey] as? [String: AnyObject] {
+            endDict[DateKey] = endString
+            endDict.removeValueForKey(DateTimeKey)
+        } else {
+            self[EndKey] = [
+                DateKey: endString,
+                TimeZoneKey: timeZone
+            ]
+        }        
     }
     
     private func cancelAllDay() {
         if var startDict = self[StartKey] as? [String: AnyObject], let startDate = startDate {
             startDict[DateTimeKey] = dateFormatter.stringFromDate(startDate)
-            startDict[DateKey] = nil
+            startDict.removeValueForKey(DateTimeKey)
         }
         
         if var endDict = self[EndKey] as? [String: AnyObject], let endDate = endDate {
             endDict[DateTimeKey] = dateFormatter.stringFromDate(endDate)
-            endDict[DateKey] = nil
+            endDict.removeValueForKey(DateTimeKey)
         }
     }
     

@@ -10,9 +10,7 @@ import UIKit
 
 class DateItem: GroupItem {
 
-    var date: NSDate {
-        didSet { onValueChanged?(date: date) }
-    }
+    var date: NSDate
     
     var dateString: String { get { return dateFormatter.stringFromDate(date) } }
 

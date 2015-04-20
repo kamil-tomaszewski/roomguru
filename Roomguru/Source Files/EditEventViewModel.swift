@@ -86,8 +86,16 @@ class EditEventViewModel: GroupedListViewModel {
             self.delegate?.dataChangedInItems([startDateItem, endDateItem] as [GroupItem])
         }
         
-        startDateItem.onValueChanged = { [weak self] in self?.eventQuery.startDate = $0 }
-        endDateItem.onValueChanged = { [weak self] in self?.eventQuery.endDate = $0 }
+        startDateItem.onValueChanged = { [weak self] date in
+            if let query = self?.eventQuery where !query.allDay {
+                query.startDate = date
+            }
+        }
+        endDateItem.onValueChanged = { [weak self] date in
+            if let query = self?.eventQuery where !query.allDay {
+                query.endDate = date
+            }
+        }
         
         // MARK: Validation
         

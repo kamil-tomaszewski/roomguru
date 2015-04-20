@@ -70,8 +70,8 @@ class BookingQuery: Query {
     }
     
     private func setDate(date: NSDate?, forKey key: String) {
-        if let _date = date {
-            var dateDict = [DateTimeKey: formatter.stringFromDate(_date)]
+        if let date = date {
+            var dateDict = [DateTimeKey: formatter.stringFromDate(date)]
             let timeZone = self.timeZone
             
             if !timeZone.isEmpty {
