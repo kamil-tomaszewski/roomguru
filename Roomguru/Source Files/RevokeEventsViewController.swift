@@ -12,12 +12,12 @@ import DateKit
 
 class RevokeEventsViewController: UIViewController {
 
-    let calendarsIDs: [String] = [Room.Aqua, Room.Middle, Room.Cold, Room.DD]
+    let calendarsIDs: [String] = [Room.Aqua, Room.Middle, Room.Cold, Room.DD, Room.Test]
     
     weak var aView: EventsListView?
     var viewModel = ListViewModel<CalendarEntry>([], sortingKey: "event.shortDate")
 
-    var timeMax = NSDate()
+    var timeMax = NSDate().hour(23).minute(59).second(59).date
     var timeMin = NSDate().midnight
     
     // MARK: Lifecycle
@@ -67,8 +67,7 @@ extension RevokeEventsViewController {
             Async.background {
                 if let calendarEntries = result {
                     let sortedEntries = CalendarEntry.sortedByDate(calendarEntries)
-                    let entriesWithGaps = CalendarEntry.entriesWithFreeGaps(sortedEntries)
-                    self.viewModel = ListViewModel(entriesWithGaps, sortingKey: "event.shortDate")
+                    self.viewModel = ListViewModel(sortedEntries, sortingKey: "event.shortDate")
                 }
             }.main {
                 self.stopActivityIndicator()
