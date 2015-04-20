@@ -44,7 +44,11 @@ class EditEventViewController: UIViewController {
 
 extension EditEventViewController: ModelUpdatable {
     func dataChangedInItems(items: [GroupItem]) {
-        aView?.tableView.reloadData()
+        self.view.endEditing(true)
+        
+        if let indexPaths = viewModel?.indexPathsForItems(items) {
+            aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
+        }
     }
 }
 

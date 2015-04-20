@@ -37,6 +37,24 @@ extension GroupedListViewModel {
 
 extension GroupedListViewModel {
     
+    func indexPathsForItems(items: [GroupItem]) -> [NSIndexPath]? {
+        var indexPaths: [NSIndexPath] = []
+        
+        table.itemize { (index, item) in
+            var section = index
+            item.itemize { (index, item) in
+                if contains(items, item) {
+                    indexPaths.append(NSIndexPath(forRow: index, inSection: section))
+                }
+            }
+        }
+
+        return indexPaths.isEmpty ? nil : indexPaths
+    }
+}
+
+extension GroupedListViewModel {
+    
     func addItem(item: GroupItem, atIndexPath indexPath: NSIndexPath) {
         table[indexPath.section]?.add(item, atIndex: indexPath.row)
     }
