@@ -74,7 +74,7 @@ extension EventsViewController {
             if let query = query as? EventsQuery {
                 if let response = response {
                     let events = response.filter { !$0.isCanceled() }
-                    return CalendarEntry.caledarEntries(query.calendarID, events: response)
+                    return CalendarEntry.caledarEntries(query.calendarID, events: events)
                 }
             }
             return []
