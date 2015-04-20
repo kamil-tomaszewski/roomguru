@@ -25,7 +25,7 @@ class DatePickerItem: GroupItem {
         datePicker.addTarget(self, action: "didChangeDate:forEvents:", forControlEvents: .ValueChanged)
     }
     
-    func unBindDatePicker(datePicker: UIDatePicker) {
+    func unbindDatePicker(datePicker: UIDatePicker) {
         datePicker.removeTarget(self, action: "didChangeDate:forEvents:", forControlEvents: .ValueChanged)
     }
     

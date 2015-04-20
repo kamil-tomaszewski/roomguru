@@ -129,12 +129,24 @@ extension EditEventViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if let item = viewModel?[indexPath.section]?[indexPath.row] {
+            if let item = item as? DatePickerItem, cell = cell as? DatePickerCell {
+                item.bindDatePicker(cell.datePicker)
+            } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
+                item.bindSwitchControl(cell.switchControl)
+            }
+        }
     }
     
     
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if let item = viewModel?[indexPath.section]?[indexPath.row] {
+            if let item = item as? DatePickerItem, cell = cell as? DatePickerCell {
+                item.unbindDatePicker(cell.datePicker)
+            } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
+                item.unbindSwitchControl(cell.switchControl)
+            }
+        }
     }
 }
 
@@ -188,7 +200,6 @@ private extension EditEventViewController {
     func configureDatePickerCell(cell: DatePickerCell, forItem item: DatePickerItem) -> UITableViewCell {
         cell.datePicker.setDate(item.date, animated: false)
         cell.selectionStyle = .None
-        item.bindDatePicker(cell.datePicker)
         return cell
     }
     

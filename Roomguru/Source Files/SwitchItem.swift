@@ -21,6 +21,10 @@ class SwitchItem: GroupItem {
         switchControl.addTarget(self, action: "didChangeSwitchState:forEvents:", forControlEvents: .ValueChanged)
     }
     
+    func unbindSwitchControl(switchControl: UISwitch) {
+        switchControl.removeTarget(self, action: "didChangeSwitchState:forEvents:", forControlEvents: .ValueChanged)
+    }
+    
     func didChangeSwitchState(sender: UISwitch, forEvents events: UIControlEvents) {
         onValueChanged?(bool: sender.on)
     }
