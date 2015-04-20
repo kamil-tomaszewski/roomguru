@@ -14,10 +14,8 @@ class EventCell: UITableViewCell {
     let timeMaxLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
     let timeMinLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
     
-    private struct Constants { static var CellIdentifier: String = "TableViewEventCellReuseIdentifier"}
-    
     class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableViewEventCellReuseIdentifier" }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

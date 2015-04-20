@@ -11,10 +11,8 @@ import Cartography
 
 class SwitchCell: TableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewSwitchCellReuseIdentifier"}
-    
     override class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableViewSwitchCellReuseIdentifier" }
     }
     
     let switchControl = UISwitch()

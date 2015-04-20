@@ -16,10 +16,8 @@ class AttendeeCell: UITableViewCell {
     let footerLabel = UILabel()
     let avatarView = AvatarView(frame: CGRectMake(0, 0, 40, 40))
     
-    private struct Constants { static var CellIdentifier: String = "TableViewAttendeeCellReuseIdentifier"}
-    
     class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableViewAttendeeCellReuseIdentifier" }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

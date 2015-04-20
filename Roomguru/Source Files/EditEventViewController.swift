@@ -42,7 +42,7 @@ class EditEventViewController: UIViewController {
     private var viewModel: EditEventViewModel?
 }
 
-extension EditEventViewController: ModelUpdateable {
+extension EditEventViewController: ModelUpdatable {
     func dataChangedInItems(items: [GroupItem]) {
         aView?.tableView.reloadData()
     }
@@ -65,42 +65,18 @@ extension EditEventViewController: UITableViewDataSource {
         if let item = viewModel?[indexPath.section]?[indexPath.row] {
             let cell = tableView.cellForItemCategory(item.category)
             
-            if let item = item as? TextItem, cell = cell as? TextFieldCell {
-                cell.textField.delegate = item
-                cell.textField.placeholder = item.placeholder
-                cell.textField.text = item.title
-                return cell
-            } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
-                item.bindSwitchControl(cell.switchControl)
-                cell.textLabel?.text = item.title
-                return cell
-            } else if let item = item as? DateItem, cell = cell as? DateCell {
-                cell.textLabel?.text = item.title
-                cell.dateLabel.text = item.dateString
-                cell.timeLabel.text = item.timeString
-                cell.setNeedsLayout()
-                cell.layoutIfNeeded()
-                
-                if item.selected {
-                    cell.setSelectedLabelsColor()
-                } else {
-                    cell.setDeselectedLabelsColor()
-                }
-                
-                return cell
-            } else if let item = item as? LongTextItem, cell = cell as? TextViewCell {
-                cell.textView.attributedText = item.attributedPlaceholder
-                cell.textView.delegate = item
-                return cell
-            } else if let item = item as? DatePickerItem, cell = cell as? DatePickerCell {
-                cell.datePicker.setDate(item.date, animated: false)
-                item.bindDatePicker(cell.datePicker)
-                return cell
-            } else if let item = item as? ActionItem, cell = cell as? RightDetailTextCell {
-                cell.textLabel?.text = item.title
-                cell.detailLabel.text = item.detailDescription
-                cell.accessoryType = .DisclosureIndicator
-                return cell
+            if let item = item as? TextItem {
+                return configureTextFieldCell(cell as! TextFieldCell, forItem: item)
+            } else if let item = item as? SwitchItem {
+                return configureSwitchCell(cell as! SwitchCell, forItem: item)
+            } else if let item = item as? DateItem {
+                return configureDateCell(cell as! DateCell, forItem: item)
+            } else if let item = item as? LongTextItem {
+                return configureTextViewCell(cell as! TextViewCell, forItem: item)
+            } else if let item = item as? DatePickerItem {
+                return configureDatePickerCell(cell as! DatePickerCell, forItem: item)
+            } else if let item = item as? ActionItem {
+                return configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
             }
         }
         
@@ -122,13 +98,14 @@ extension EditEventViewController: UITableViewDelegate {
         item?.selected = true
         
         if let item = item as? DateItem {
+            let rowAnimation = UITableViewRowAnimation.Fade
             let nextRow = row + 1
             let nextIndexPath = NSIndexPath(forRow: nextRow, inSection: section)
             
             if let nextItem = viewModel?[section]?[nextRow] as? DatePickerItem {
                 item.selected = false
                 viewModel?.removeItemAtIndexPath(nextIndexPath)
-                tableView.deleteRowsAtIndexPaths([nextIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                tableView.deleteRowsAtIndexPaths([nextIndexPath], withRowAnimation: rowAnimation)
             } else {
                 let pickerItem = DatePickerItem(date: item.date) { date in
                     if let error = item.validate(date) {
@@ -142,9 +119,18 @@ extension EditEventViewController: UITableViewDelegate {
                     return nil
                 }
                 viewModel?.addItem(pickerItem, atIndexPath: nextIndexPath)
-                tableView.insertRowsAtIndexPaths([nextIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                tableView.insertRowsAtIndexPaths([nextIndexPath], withRowAnimation: rowAnimation)
             }
         }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
 }
 
@@ -160,6 +146,53 @@ extension EditEventViewController {
             // NGRTemp:
             println(error)
         })
+    }
+}
+
+// MARK: Cell configuration
+
+private extension EditEventViewController {
+    
+    func configureTextFieldCell(cell: TextFieldCell, forItem item: TextItem) -> UITableViewCell {
+        cell.textField.delegate = item
+        cell.textField.placeholder = item.placeholder
+        cell.textField.text = item.title
+        return cell
+    }
+    
+    func configureSwitchCell(cell: SwitchCell, forItem item: SwitchItem) -> UITableViewCell {
+        item.bindSwitchControl(cell.switchControl)
+        cell.textLabel?.text = item.title
+        return cell
+    }
+    
+    func configureDateCell(cell: DateCell, forItem item: DateItem) -> UITableViewCell {
+        cell.textLabel?.text = item.title
+        cell.dateLabel.text = item.dateString
+        cell.timeLabel.text = item.timeString
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        cell.setSelectedLabelsColor(item.selected)
+        return cell
+    }
+    
+    func configureTextViewCell(cell: TextViewCell, forItem item: LongTextItem) -> UITableViewCell {
+        cell.textView.attributedText = item.attributedPlaceholder
+        cell.textView.delegate = item
+        return cell
+    }
+    
+    func configureDatePickerCell(cell: DatePickerCell, forItem item: DatePickerItem) -> UITableViewCell {
+        cell.datePicker.setDate(item.date, animated: false)
+        item.bindDatePicker(cell.datePicker)
+        return cell
+    }
+    
+    func configureRightDetailTextCell(cell: RightDetailTextCell, forItem item: ActionItem) -> UITableViewCell {
+        cell.textLabel?.text = item.title
+        cell.detailLabel.text = item.detailDescription
+        cell.accessoryType = .DisclosureIndicator
+        return cell
     }
 }
 
@@ -195,7 +228,7 @@ private extension EditEventViewController {
     }
 }
 
-extension UITableView {
+private extension UITableView {
 
     func cellForItemCategory(category: GroupItem.Category) -> UITableViewCell? {
         var reuseIdentifier = ""

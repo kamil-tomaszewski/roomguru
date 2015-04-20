@@ -11,10 +11,8 @@ import Cartography
 
 class TextViewCell: TableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewTextViewCellReuseIdentifier"}
-    
     override class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableViewTextViewCellReuseIdentifier" }
     }
     
     let textView = UITextView()
@@ -29,10 +27,13 @@ class TextViewCell: TableViewCell {
         commonInit()
     }
     
-    private func commonInit() {
+    override func layoutSubviews() {
+        super.layoutSubviews()
         let width = CGRectGetWidth(self.frame)
-        self.frame = CGRectMake(0, 0, width, 160.0)
-        
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, 160.0)
+    }
+    
+    private func commonInit() {
         configureTextView()
         addSubview(textView)
         defineConstraints()
@@ -45,6 +46,9 @@ class TextViewCell: TableViewCell {
     
     private func defineConstraints() {
         
+        let width = CGRectGetWidth(self.frame)
+        self.frame = CGRectMake(0, 0, width, 160.0)
+
         layout(textView) { text in
             text.edges == text.superview!.edges
             text.height == 160.0

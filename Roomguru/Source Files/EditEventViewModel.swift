@@ -9,13 +9,13 @@
 import Foundation
 import DateKit
 
-protocol ModelUpdateable {
+protocol ModelUpdatable {
     func dataChangedInItems(items: [GroupItem])
 }
 
 class EditEventViewModel: GroupedListViewModel {
     
-    var delegate: ModelUpdateable?
+    var delegate: ModelUpdatable?
     var title: String
     
     convenience init(calendarEntry: CalendarEntry) {
@@ -86,8 +86,8 @@ class EditEventViewModel: GroupedListViewModel {
             self.delegate?.dataChangedInItems([startDateItem, endDateItem] as [GroupItem])
         }
         
-        startDateItem.onValueChanged = { date in self.eventQuery.startDate = date }
-        endDateItem.onValueChanged = { date in self.eventQuery.endDate = date }
+        startDateItem.onValueChanged = { [weak self] in self?.eventQuery.startDate = $0 }
+        endDateItem.onValueChanged = { [weak self] in self?.eventQuery.endDate = $0 }
         
         // MARK: Validation
         
@@ -119,8 +119,8 @@ extension EditEventViewModel {
     }
     
     private func itemsUpdates() {
-        enumerate { (item) -> () in
-            if let item = item as? Updateable {
+        enumerate {
+            if let item = $0 as? Updatable {
                 item.update()
             }
         }

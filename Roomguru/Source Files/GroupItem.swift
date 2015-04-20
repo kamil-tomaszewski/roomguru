@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Updateable {
+protocol Updatable {
     func update()
 }
 
@@ -16,12 +16,11 @@ class GroupItem: NSObject {
     
     enum Category {
         case Action, PlainText, LongText, Date, Picker, Boolean
-        case None
     }
     
     let title: String
     let category: Category
-    var selected: Bool = false
+    var selected = false
     
     init(title: String, category: Category) {
         self.title = title

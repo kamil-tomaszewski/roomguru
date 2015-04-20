@@ -15,10 +15,8 @@ class CalendarPickerCell: UITableViewCell {
     let headerLabel = UILabel()
     let footerLabel = UILabel()
     
-    private struct constants { static var cellIdentifier: String = "TableViewCalendarPickerCellReuseIdentifier"}
-    
     class var reuseIdentifier: String {
-        get { return constants.cellIdentifier }
+        get { return "TableViewCalendarPickerCellReuseIdentifier" }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

@@ -36,9 +36,9 @@ extension TextItem: UITextFieldDelegate {
     }
 }
 
-// MARK: Updateable
+// MARK: Updatable
 
-extension TextItem: Updateable {
+extension TextItem: Updatable {
     
     func update() {
         onValueChanged(text: text)

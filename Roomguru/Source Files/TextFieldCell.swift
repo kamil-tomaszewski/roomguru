@@ -11,10 +11,8 @@ import Cartography
 
 class TextFieldCell: TableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewTextFieldCellReuseIdentifier"}
-    
     override class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableViewTextFieldCellReuseIdentifier" }
     }
     
     let textField = UITextField()

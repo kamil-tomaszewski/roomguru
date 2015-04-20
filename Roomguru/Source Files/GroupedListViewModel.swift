@@ -46,10 +46,6 @@ extension GroupedListViewModel {
     }
     
     func enumerate(closure: (item: GroupItem) -> ()) {
-        table.enumerate { (item) -> () in
-            item.enumerate { (item) -> () in
-                closure(item: item)
-            }
-        }
+        table.enumerate { $0.enumerate { closure(item: $0) } }
     }
 }

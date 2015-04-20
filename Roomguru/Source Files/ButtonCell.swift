@@ -10,11 +10,9 @@ import UIKit
 import Cartography
 
 class ButtonCell: UITableViewCell {
-    
-    private struct Constants { static var CellIdentifier: String = "TableButtonCellReuseIdentifier"}
-    
+        
     class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableButtonCellReuseIdentifier" }
     }
     
     let button = UIButton.buttonWithType(.System) as! UIButton

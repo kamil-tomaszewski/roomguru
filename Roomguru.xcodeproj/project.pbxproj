@@ -39,7 +39,6 @@
 		5E769EF71ACE93550061289D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EF61ACE93550061289D /* LoadingView.swift */; };
 		5E769EFA1ACE936B0061289D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EF91ACE936B0061289D /* ErrorView.swift */; };
 		5E769EFC1ACE937A0061289D /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EFB1ACE937A0061289D /* EmptyView.swift */; };
-		5E769EFE1ACEA2C00061289D /* StatefulViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EFD1ACEA2C00061289D /* StatefulViewControllerExtensions.swift */; };
 		5E769F061ACEDC180061289D /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
 		5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* LoginView.swift */; };
 		5E7A9E501AB060820042E16F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
@@ -216,7 +215,6 @@
 		5E769EF61ACE93550061289D /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = "Roomguru/Source Files/LoadingView.swift"; sourceTree = SOURCE_ROOT; };
 		5E769EF91ACE936B0061289D /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorView.swift; path = "Roomguru/Source Files/ErrorView.swift"; sourceTree = SOURCE_ROOT; };
 		5E769EFB1ACE937A0061289D /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyView.swift; path = "Roomguru/Source Files/EmptyView.swift"; sourceTree = SOURCE_ROOT; };
-		5E769EFD1ACEA2C00061289D /* StatefulViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatefulViewControllerExtensions.swift; path = "Roomguru/Source Files/StatefulViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPersistenceStore.swift; path = "Roomguru/Source Files/CalendarPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/LoginView.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -769,7 +767,6 @@
 			isa = PBXGroup;
 			children = (
 				5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */,
-				5E769EFD1ACEA2C00061289D /* StatefulViewControllerExtensions.swift */,
 				5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */,
 				BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */,
 				7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */,
@@ -1162,7 +1159,6 @@
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				BF7B01C41ADBBD1F002763DF /* EventsPageViewControllerDelegate.swift in Sources */,
 				5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */,
-				5E769EFE1ACEA2C00061289D /* StatefulViewControllerExtensions.swift in Sources */,
 				BF3B25A21ADD467400242859 /* EditEventViewModel.swift in Sources */,
 				5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,

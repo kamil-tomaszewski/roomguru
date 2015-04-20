@@ -11,10 +11,8 @@ import Cartography
 
 class DateCell: TableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewDateCellReuseIdentifier"}
-    
     override class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableViewDateCellReuseIdentifier" }
     }
     
     let dateLabel = UILabel()
@@ -50,14 +48,11 @@ class DateCell: TableViewCell {
         }
     }
     
-    func setSelectedLabelsColor() {
-        setLabelsColor(UIColor.ngOrangeColor())
+    func setSelectedLabelsColor(selected: Bool) {
+        let color = selected ? UIColor.ngOrangeColor() : UIColor.blackColor()
+        setLabelsColor(color)
     }
-    
-    func setDeselectedLabelsColor() {
-        setLabelsColor(UIColor.blackColor())
-    }
-    
+        
     // MARK: Private
     
     private func commonInit() {

@@ -43,9 +43,9 @@ class DateItem: GroupItem {
     private let dateFormatter = NSDateFormatter()
 }
 
-// MARK: Updateable
+// MARK: Updatable
 
-extension DateItem: Updateable {
+extension DateItem: Updatable {
     
     func update() {
         onValueChanged?(date: _date)

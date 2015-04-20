@@ -25,6 +25,10 @@ class DatePickerItem: GroupItem {
         datePicker.addTarget(self, action: "didChangeDate:forEvents:", forControlEvents: .ValueChanged)
     }
     
+    func unBindDatePicker(datePicker: UIDatePicker) {
+        datePicker.removeTarget(self, action: "didChangeDate:forEvents:", forControlEvents: .ValueChanged)
+    }
+    
     func didChangeDate(sender: UIDatePicker, forEvents events: UIControlEvents) {
         validationError = onValueChanged(date: sender.date)
         

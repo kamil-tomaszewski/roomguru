@@ -148,7 +148,7 @@ class EventQuery: BookingQuery {
     }
     
     private func addLoggedUserAsAttendee() {
-        if let user = UserPersistenceStore.sharedStore.load() {
+        if let user = UserPersistenceStore.sharedStore.user {
             addAttendeesByDictionary([
                 EmailKey: user.email,
                 ResponseStatusKey: "accepted"

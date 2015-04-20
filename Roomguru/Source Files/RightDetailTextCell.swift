@@ -11,10 +11,8 @@ import Cartography
 
 class RightDetailTextCell: TableViewCell {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewRightDetailTextCellReuseIdentifier"}
-    
     override class var reuseIdentifier: String {
-        get { return Constants.CellIdentifier }
+        get { return "TableViewRightDetailTextCellReuseIdentifier" }
     }
     
     let detailLabel = UILabel()
@@ -37,11 +35,10 @@ class RightDetailTextCell: TableViewCell {
     
     private func defineConstraints() {
         
-        layout(detailLabel) { (detail) in
+        layout(detailLabel) { detail in
             detail.right == detail.superview!.right - 35
             detail.width == CGRectGetWidth(self.frame) * 0.6
             detail.centerY == detail.superview!.centerY
         }
     }
-
 }
