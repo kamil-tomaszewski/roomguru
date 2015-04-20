@@ -9,10 +9,10 @@
 import UIKit
 import Cartography
 
-class SwitchCell: TableViewCell {
+class SwitchCell: UITableViewCell, Reusable {
     
-    override class var reuseIdentifier: String {
-        get { return "TableViewSwitchCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewSwitchCellReuseIdentifier"
     }
     
     let switchControl = UISwitch()

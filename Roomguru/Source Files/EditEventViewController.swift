@@ -211,12 +211,12 @@ private extension EditEventViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
         
-        tableView?.registerClass(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
-        tableView?.registerClass(SwitchCell.self, forCellReuseIdentifier: SwitchCell.reuseIdentifier)
-        tableView?.registerClass(DateCell.self, forCellReuseIdentifier: DateCell.reuseIdentifier)
-        tableView?.registerClass(TextViewCell.self, forCellReuseIdentifier: TextViewCell.reuseIdentifier)
-        tableView?.registerClass(DatePickerCell.self, forCellReuseIdentifier: DatePickerCell.reuseIdentifier)
-        tableView?.registerClass(RightDetailTextCell.self, forCellReuseIdentifier: RightDetailTextCell.reuseIdentifier)
+        tableView?.registerClass(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier())
+        tableView?.registerClass(SwitchCell.self, forCellReuseIdentifier: SwitchCell.reuseIdentifier())
+        tableView?.registerClass(DateCell.self, forCellReuseIdentifier: DateCell.reuseIdentifier())
+        tableView?.registerClass(TextViewCell.self, forCellReuseIdentifier: TextViewCell.reuseIdentifier())
+        tableView?.registerClass(DatePickerCell.self, forCellReuseIdentifier: DatePickerCell.reuseIdentifier())
+        tableView?.registerClass(RightDetailTextCell.self, forCellReuseIdentifier: RightDetailTextCell.reuseIdentifier())
     }
     
     func setupBarButtons() {
@@ -234,12 +234,12 @@ private extension UITableView {
         var reuseIdentifier = ""
         
         switch category {
-        case .PlainText: reuseIdentifier = TextFieldCell.reuseIdentifier
-        case .Boolean: reuseIdentifier = SwitchCell.reuseIdentifier
-        case .Date: reuseIdentifier = DateCell.reuseIdentifier
-        case .LongText: reuseIdentifier = TextViewCell.reuseIdentifier
-        case .Picker: reuseIdentifier = DatePickerCell.reuseIdentifier
-        case .Action: reuseIdentifier = RightDetailTextCell.reuseIdentifier
+        case .PlainText: reuseIdentifier = TextFieldCell.reuseIdentifier()
+        case .Boolean: reuseIdentifier = SwitchCell.reuseIdentifier()
+        case .Date: reuseIdentifier = DateCell.reuseIdentifier()
+        case .LongText: reuseIdentifier = TextViewCell.reuseIdentifier()
+        case .Picker: reuseIdentifier = DatePickerCell.reuseIdentifier()
+        case .Action: reuseIdentifier = RightDetailTextCell.reuseIdentifier()
         default: reuseIdentifier = ""
         }
         

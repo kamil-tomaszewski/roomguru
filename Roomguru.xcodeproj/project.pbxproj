@@ -144,8 +144,8 @@
 		BFE5660C1AE13C7200B935BF /* SwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660B1AE13C7200B935BF /* SwitchItem.swift */; };
 		BFE5660E1AE1526000B935BF /* DateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660D1AE1526000B935BF /* DateItem.swift */; };
 		BFE566101AE15B2400B935BF /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660F1AE15B2400B935BF /* DateCell.swift */; };
-		BFE566121AE15B3700B935BF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566111AE15B3700B935BF /* TableViewCell.swift */; };
 		BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
+		BFF755241AE52C6500F68DB9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF755231AE52C6500F68DB9 /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,8 +320,8 @@
 		BFE5660B1AE13C7200B935BF /* SwitchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchItem.swift; path = "Roomguru/Source Files/SwitchItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFE5660D1AE1526000B935BF /* DateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateItem.swift; path = "Roomguru/Source Files/DateItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFE5660F1AE15B2400B935BF /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = "Roomguru/Source Files/DateCell.swift"; sourceTree = SOURCE_ROOT; };
-		BFE566111AE15B3700B935BF /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = "Roomguru/Source Files/TableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Requests.swift"; sourceTree = SOURCE_ROOT; };
+		BFF755231AE52C6500F68DB9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = "Roomguru/Source Files/Reusable.swift"; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -416,7 +416,6 @@
 				5E8AFF6B1AD3D4E900FB73CD /* CalendarPickerCell.swift */,
 				BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */,
 				BFE5660F1AE15B2400B935BF /* DateCell.swift */,
-				BFE566111AE15B3700B935BF /* TableViewCell.swift */,
 				BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */,
 				BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */,
 				BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */,
@@ -619,6 +618,7 @@
 		5E3A98491AA73FD500CE2F20 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				BFF755201AE52C4B00F68DB9 /* Protocols */,
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
 				BF527C0F1AB1A70C00A43D35 /* Networking */,
 				5E51B7981AA9C3280018EDA9 /* Object & Models */,
@@ -803,6 +803,14 @@
 				BF3B25A31ADD610700242859 /* EventQuery.swift */,
 			);
 			name = Queries;
+			sourceTree = "<group>";
+		};
+		BFF755201AE52C4B00F68DB9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BFF755231AE52C6500F68DB9 /* Reusable.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1137,6 +1145,7 @@
 				5E15F13A1AD804CF00E1F8BC /* LaunchView.swift in Sources */,
 				5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */,
 				5E8A31021AC5B13500E31DD3 /* EventDetailsViewModel.swift in Sources */,
+				BFF755241AE52C6500F68DB9 /* Reusable.swift in Sources */,
 				5EFE00F51ADE79210083FB8E /* UIViewExtensions.swift in Sources */,
 				BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */,
 				5E769EFA1ACE936B0061289D /* ErrorView.swift in Sources */,
@@ -1176,7 +1185,6 @@
 				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,
 				BF0A9E4E1AD540290088ED79 /* User.swift in Sources */,
 				BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */,
-				BFE566121AE15B3700B935BF /* TableViewCell.swift in Sources */,
 				5E8AE3031ACC172500A3C146 /* CalendarPickerViewController.swift in Sources */,
 				BFE5660A1AE1342300B935BF /* TextItem.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,

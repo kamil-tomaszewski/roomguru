@@ -9,10 +9,10 @@
 import UIKit
 import Cartography
 
-class DatePickerCell: TableViewCell {
+class DatePickerCell: UITableViewCell, Reusable {
     
-    override class var reuseIdentifier: String {
-        get { return "TableViewDatePickerCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewDatePickerCellReuseIdentifier"
     }
     
     let datePicker = UIDatePicker()

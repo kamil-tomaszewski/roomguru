@@ -9,13 +9,13 @@
 import UIKit
 import Cartography
 
-class EventCell: UITableViewCell {
+class EventCell: UITableViewCell, Reusable {
     
     let timeMaxLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
     let timeMinLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
     
-    class var reuseIdentifier: String {
-        get { return "TableViewEventCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewEventCellReuseIdentifier"
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

@@ -185,7 +185,7 @@ extension EventsViewController: UITableViewDataSource {
         let event = eventFromIndexPath(indexPath)
         
         if let freeEvent = event as? FreeEvent {
-            let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier) as! FreeEventCell
+            let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier()) as! FreeEventCell
             let minutes = freeEvent.duration/60
             let title = "Book \(Int(minutes)) min"
             
@@ -195,7 +195,7 @@ extension EventsViewController: UITableViewDataSource {
             
             return cell
         } else {
-            let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as! EventCell
+            let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier()) as! EventCell
             cell.textLabel?.text = event?.summary
             cell.timeMaxLabel.text = event?.startTime
             cell.timeMinLabel.text = event?.endTime
@@ -278,8 +278,8 @@ extension EventsViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
 
-        tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
-        tableView?.registerClass(FreeEventCell.self, forCellReuseIdentifier: FreeEventCell.reuseIdentifier)
+        tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier())
+        tableView?.registerClass(FreeEventCell.self, forCellReuseIdentifier: FreeEventCell.reuseIdentifier())
         
         (aView?.tableView.tableHeaderView as! ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
         (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))

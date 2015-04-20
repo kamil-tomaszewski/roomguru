@@ -9,10 +9,10 @@
 import UIKit
 import Cartography
 
-class DescriptionCell: UITableViewCell {
+class DescriptionCell: UITableViewCell, Reusable {
     
-    class var reuseIdentifier: String {
-        get { return "TableViewDescriptionCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewDescriptionCellReuseIdentifier"
     }
     
     class func margins() -> (H: CGFloat, V: CGFloat) {

@@ -9,14 +9,14 @@
 import UIKit
 import Cartography
 
-class CalendarPickerCell: UITableViewCell {
+class CalendarPickerCell: UITableViewCell, Reusable {
     
     let checkmarkLabel = UILabel()
     let headerLabel = UILabel()
     let footerLabel = UILabel()
     
-    class var reuseIdentifier: String {
-        get { return "TableViewCalendarPickerCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewCalendarPickerCellReuseIdentifier"
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

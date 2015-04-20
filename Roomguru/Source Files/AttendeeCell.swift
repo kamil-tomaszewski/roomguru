@@ -9,15 +9,15 @@
 import UIKit
 import Cartography
 
-class AttendeeCell: UITableViewCell {
+class AttendeeCell: UITableViewCell, Reusable {
     
     let statusLabel = UILabel()
     let headerLabel = UILabel()
     let footerLabel = UILabel()
     let avatarView = AvatarView(frame: CGRectMake(0, 0, 40, 40))
     
-    class var reuseIdentifier: String {
-        get { return "TableViewAttendeeCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewAttendeeCellReuseIdentifier"
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

@@ -9,10 +9,10 @@
 import UIKit
 import Cartography
 
-class DateCell: TableViewCell {
+class DateCell: UITableViewCell, Reusable {
     
-    override class var reuseIdentifier: String {
-        get { return "TableViewDateCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewDateCellReuseIdentifier"
     }
     
     let dateLabel = UILabel()

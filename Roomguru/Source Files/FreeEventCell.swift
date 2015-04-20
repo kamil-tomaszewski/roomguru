@@ -22,7 +22,7 @@ protocol FreeEventCellDelegate: class {
 }
 
 
-class FreeEventCell: UITableViewCell {
+class FreeEventCell: UITableViewCell, Reusable {
     
     weak var delegate: FreeEventCellDelegate?
     
@@ -41,8 +41,8 @@ class FreeEventCell: UITableViewCell {
     private var cellState: FreeEventCellState = .Normal
     private var stateBlock: Async?
     
-    class var reuseIdentifier: String {
-        get { return "TableViewFreeEventCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewFreeEventCellReuseIdentifier"
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

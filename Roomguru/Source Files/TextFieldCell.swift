@@ -9,10 +9,10 @@
 import UIKit
 import Cartography
 
-class TextFieldCell: TableViewCell {
+class TextFieldCell: UITableViewCell, Reusable {
     
-    override class var reuseIdentifier: String {
-        get { return "TableViewTextFieldCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewTextFieldCellReuseIdentifier"
     }
     
     let textField = UITextField()

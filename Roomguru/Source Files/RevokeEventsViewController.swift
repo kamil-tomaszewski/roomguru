@@ -113,7 +113,7 @@ extension RevokeEventsViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let event = viewModel[indexPath.section]?[indexPath.row]?.event {
-            var cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier) as! EventCell
+            var cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier()) as! EventCell
             cell.timeMaxLabel.text = event.startTime
             cell.timeMinLabel.text = event.endTime
             cell.textLabel?.text = event.summary
@@ -192,7 +192,7 @@ private extension RevokeEventsViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
         
-        tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier)
+        tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier())
         
         (aView?.tableView.tableHeaderView as! ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
         (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))

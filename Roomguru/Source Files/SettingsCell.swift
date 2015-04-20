@@ -9,9 +9,11 @@
 import UIKit
 import Cartography
 
-class SettingsCell: UICollectionViewCell {
+class SettingsCell: UICollectionViewCell, Reusable {
     
-    class var reuseIdentifier: String { get { return "UICollectionViewSettingsCellReuseIdentifier" } }
+    class func reuseIdentifier() -> String {
+        return "UICollectionViewSettingsCellReuseIdentifier"
+    }
 
     let textLabel = UILabel()
     private let line = UIView()

@@ -9,10 +9,10 @@
 import UIKit
 import Cartography
 
-class RightDetailTextCell: TableViewCell {
+class RightDetailTextCell: UITableViewCell, Reusable {
     
-    override class var reuseIdentifier: String {
-        get { return "TableViewRightDetailTextCellReuseIdentifier" }
+    class func reuseIdentifier() -> String {
+        return "TableViewRightDetailTextCellReuseIdentifier"
     }
     
     let detailLabel = UILabel()

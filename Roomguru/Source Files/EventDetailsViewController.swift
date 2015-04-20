@@ -69,13 +69,13 @@ extension EventDetailsViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier(DescriptionCell.reuseIdentifier) as! DescriptionCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(DescriptionCell.reuseIdentifier()) as! DescriptionCell
             cell.textLabel?.attributedText = viewModel.summary()
             
             return cell
             
         case 1...3:
-            let cell = tableView.dequeueReusableCellWithIdentifier(AttendeeCell.reuseIdentifier) as! AttendeeCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(AttendeeCell.reuseIdentifier()) as! AttendeeCell
             let info = attendeeInfoForIndexPath(indexPath)
             
             cell.headerLabel.text = info.name
@@ -92,7 +92,7 @@ extension EventDetailsViewController: UITableViewDataSource {
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCell.reuseIdentifier) as! ButtonCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCell.reuseIdentifier()) as! ButtonCell
             cell.button.setTitle(NSLocalizedString("Join Hangout meeting!", comment: ""))
             cell.button.addTarget(self, action: "didTapHangoutButton:")
             cell.button.backgroundColor = UIColor.ngOrangeColor()
@@ -167,8 +167,8 @@ private extension EventDetailsViewController {
     private func setupTableView() {
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
-        aView?.tableView.registerClass(AttendeeCell.self, forCellReuseIdentifier: AttendeeCell.reuseIdentifier)
-        aView?.tableView.registerClass(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.reuseIdentifier)
-        aView?.tableView.registerClass(ButtonCell.self, forCellReuseIdentifier: ButtonCell.reuseIdentifier)
+        aView?.tableView.registerClass(AttendeeCell.self, forCellReuseIdentifier: AttendeeCell.reuseIdentifier())
+        aView?.tableView.registerClass(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.reuseIdentifier())
+        aView?.tableView.registerClass(ButtonCell.self, forCellReuseIdentifier: ButtonCell.reuseIdentifier())
     }
 }

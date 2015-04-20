@@ -50,7 +50,7 @@ extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SettingsCell.reuseIdentifier, forIndexPath: indexPath) as! SettingsCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SettingsCell.reuseIdentifier(), forIndexPath: indexPath) as! SettingsCell
         
         let item = viewModel[indexPath.row]
         
@@ -114,7 +114,7 @@ private extension SettingsViewController {
         
         aView?.collectionView?.delegate = self
         aView?.collectionView?.dataSource = self
-        aView?.collectionView?.registerClass(SettingsCell.self, forCellWithReuseIdentifier: SettingsCell.reuseIdentifier)
+        aView?.collectionView?.registerClass(SettingsCell.self, forCellWithReuseIdentifier: SettingsCell.reuseIdentifier())
         aView?.collectionView?.registerClass(SettingsCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: SettingsCollectionViewHeader.reuseIdentifier)
     }
 }
