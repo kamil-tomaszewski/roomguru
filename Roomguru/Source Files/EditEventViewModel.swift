@@ -119,7 +119,7 @@ extension EditEventViewModel {
     }
     
     private func itemsUpdates() {
-        enumerate {
+        itemize {
             if let item = $0 as? Updatable {
                 item.update()
             }

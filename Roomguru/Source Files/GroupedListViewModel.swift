@@ -45,7 +45,7 @@ extension GroupedListViewModel {
         table[indexPath.section]?.remove(indexPath.row)
     }
     
-    func enumerate(closure: (item: GroupItem) -> ()) {
-        table.enumerate { $0.enumerate { closure(item: $0) } }
+    func itemize(closure: (index: Int, item: GroupItem) -> ()) {
+        table.itemize { $1.itemize { closure(index: $0, item: $1) } }
     }
 }

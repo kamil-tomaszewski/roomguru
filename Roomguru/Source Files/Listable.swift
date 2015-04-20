@@ -21,7 +21,7 @@ protocol Listable {
     func add(item: Type, atIndex index: Int)
     func remove(index: Int)
     
-    func enumerate(closure: (item: Type) -> ())
+    func itemize(closure: (index: Int, item: Type) -> ())
 }
 
 
@@ -31,7 +31,7 @@ class List<T> : Listable {
     
     var count: Int { get { return items.count } }
     
-    private var items: [T]
+    var items: [T]
     
     required init(_ items: [T]) {
         self.items = items
@@ -52,9 +52,9 @@ class List<T> : Listable {
         items.removeAtIndex(index)
     }
     
-    func enumerate(closure: (item: T) -> ()) {
-        for item in items {
-            closure(item: item)
+    func itemize(closure: (index: Int, item: T) -> ()) {
+        for (index, item) in enumerate(items) {
+            closure(index: index, item: item)
         }
     }
 }
