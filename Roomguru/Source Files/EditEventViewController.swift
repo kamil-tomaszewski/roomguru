@@ -157,12 +157,14 @@ private extension EditEventViewController {
         cell.textField.delegate = item
         cell.textField.placeholder = item.placeholder
         cell.textField.text = item.title
+        cell.selectionStyle = .None
         return cell
     }
     
     func configureSwitchCell(cell: SwitchCell, forItem item: SwitchItem) -> UITableViewCell {
         item.bindSwitchControl(cell.switchControl)
         cell.textLabel?.text = item.title
+        cell.selectionStyle = .None
         return cell
     }
     
@@ -184,6 +186,7 @@ private extension EditEventViewController {
     
     func configureDatePickerCell(cell: DatePickerCell, forItem item: DatePickerItem) -> UITableViewCell {
         cell.datePicker.setDate(item.date, animated: false)
+        cell.selectionStyle = .None
         item.bindDatePicker(cell.datePicker)
         return cell
     }
