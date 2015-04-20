@@ -13,6 +13,7 @@ class LoginView: UIView {
     
     let signInButton = GPPSignInButton() as GPPSignInButton
     private var logoLabel = RoomguruLabel()
+    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     let avatarView = AvatarView(frame: CGRectMake(0, 0, 100, 100))
     
     override init(frame: CGRect) {
@@ -34,6 +35,9 @@ class LoginView: UIView {
         signInButton.style = kGPPSignInButtonStyleWide
         signInButton.colorScheme = kGPPSignInButtonColorSchemeLight
         addSubview(signInButton)
+        
+        activityIndicator.color = UIColor.ngOrangeColor()
+        addSubview(activityIndicator)
         
         defineConstraints()
     }
@@ -57,5 +61,14 @@ class LoginView: UIView {
             button.centerX == button.superview!.centerX
             button.bottom == button.superview!.bottom - 100
         }
+        
+        layout(signInButton, activityIndicator) { button, indicator in
+            indicator.center == button.center
+        }
+    }
+    
+    func showSignInButton(show: Bool) {
+        signInButton.hidden = !show
+        show ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
     }
 }

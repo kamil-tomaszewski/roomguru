@@ -23,6 +23,7 @@ class LoginViewController: UIViewController  {
         
         self.title = NSLocalizedString("Login", comment: "")
         aView?.avatarView.imageView.image = UserPersistenceStore.sharedStore.userImage()
+        aView?.signInButton.addTarget(self, action: Selector("didTapSignInButton:"))
     }
     
     // MARK: Public
@@ -33,5 +34,14 @@ class LoginViewController: UIViewController  {
         let calendarPickerViewController = CalendarPickerViewController()
         calendarPickerViewController.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(calendarPickerViewController, animated: true)
+    }
+    
+    func showError(error: NSError) {
+        aView?.showSignInButton(true)
+        UIAlertView(error: error).show()
+    }
+    
+    func didTapSignInButton(sender: GPPSignInButton) {
+        aView?.showSignInButton(false)
     }
 }

@@ -37,4 +37,16 @@ extension UIViewController {
     func dismissSelf(sender: AnyObject?) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    func hasControllerOfTypeInNavigationStack<T:UIViewController>(controller: T.Type) -> T? {
+        if let navigation = self.presentedViewController as? UINavigationController {
+            return navigation.viewControllers.filter { $0 is T }.first as? T
+        }
+        return nil
+    }
+    
+    func presentControllerOfType<T:UIViewController>(controller: T.Type, animated: Bool, completion: VoidBlock?) {
+        let navigationController = NavigationController(rootViewController: T())
+        self.presentViewController(navigationController, animated: animated, completion: completion);
+    }
 }

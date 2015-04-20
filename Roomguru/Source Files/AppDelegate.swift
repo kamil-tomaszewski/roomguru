@@ -81,7 +81,7 @@ private extension AppDelegate {
                     }
                 }
             } else {
-                tabBarController.presentLoginViewController(false) {
+                tabBarController.presentLoginViewController(false, error: error) {
                     fadeOut(launchViewController!.view) {
                         launchViewController = nil
                     }

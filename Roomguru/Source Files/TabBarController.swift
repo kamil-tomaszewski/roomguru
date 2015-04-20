@@ -42,20 +42,21 @@ class TabBarController: UITabBarController {
         }
     }
     
-    func presentLoginViewController(animated: Bool, completion: (() -> Void)? = nil) {
-        let navigationController = NavigationController(rootViewController: LoginViewController())
-        self.presentViewController(navigationController, animated: animated, completion: completion);
+    func presentLoginViewController(animated: Bool, error: NSError? = nil, completion: VoidBlock? = nil) {
+        
+        if let login = hasControllerOfTypeInNavigationStack(LoginViewController.self), error = error {
+            login.showError(error)
+        } else {
+            presentControllerOfType(LoginViewController.self, animated: animated, completion: completion)
+        }
     }
     
-    func presentCalendarPickerViewController(animated: Bool, completion: (() -> Void)? = nil) {
+    func presentCalendarPickerViewController(animated: Bool, completion: VoidBlock? = nil) {
         
-        if let navigation = self.presentedViewController as? UINavigationController {
-            if let login = navigation.viewControllers.first as? LoginViewController {
-                login.pushCalendarPickerViewController()
-            }
+        if let login = hasControllerOfTypeInNavigationStack(LoginViewController.self) {
+            login.pushCalendarPickerViewController()
         } else {
-            let navigationController = NavigationController(rootViewController: CalendarPickerViewController())
-            self.presentViewController(navigationController, animated: animated, completion: completion);
+            presentControllerOfType(CalendarPickerViewController.self, animated: animated, completion: completion)
         }
     }
     

@@ -27,6 +27,7 @@ class CalendarPickerViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .Plain, target: self, action: Selector("didTapSaveBarButtonItem:"))
         
         setupTableView()
+        setBarButtonItemState()
         hideBackBarButtonTitle()
     }
 
