@@ -107,18 +107,19 @@ extension CalendarPickerViewController: CalendarNameCustomizerViewControllerDele
     
     func calendarNameCustomizerViewController(controller: CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?) {
         
-        if let _indexPath = currentEditingIndexPath {
-            viewModel?.saveNameForCalendarAtIndexWithSelection(_indexPath.row, name: name)
-            aView?.tableView.reloadAndDeselectRowAtIndexPath(_indexPath)
+        if let indexPath = currentEditingIndexPath {
+            viewModel?.saveNameForCalendarAtIndexWithSelection(indexPath.row, name: name)
+            aView?.tableView.reloadAndDeselectRowAtIndexPath(indexPath)
+            setBarButtonItemState()
         }
         currentEditingIndexPath = nil
     }
     
     func calendarNameCustomizerViewControllerDidResetName(controller: CalendarNameCustomizerViewController) {
         
-        if let _indexPath = currentEditingIndexPath {
-            viewModel?.resetCustomCalendarNameAtIndex(_indexPath.row)
-            aView?.tableView.reloadAndDeselectRowAtIndexPath(_indexPath)
+        if let indexPath = currentEditingIndexPath {
+            viewModel?.resetCustomCalendarNameAtIndex(indexPath.row)
+            aView?.tableView.reloadAndDeselectRowAtIndexPath(indexPath)
         }
         currentEditingIndexPath = nil
     }

@@ -618,8 +618,8 @@
 		5E3A98491AA73FD500CE2F20 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				BFF755201AE52C4B00F68DB9 /* Protocols */,
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
+				BFF755201AE52C4B00F68DB9 /* Protocols */,
 				BF527C0F1AB1A70C00A43D35 /* Networking */,
 				5E51B7981AA9C3280018EDA9 /* Object & Models */,
 				7BD6CC721AB6EDB30031AED6 /* Extensions */,
