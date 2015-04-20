@@ -62,9 +62,9 @@ private extension AppDelegate {
         
         authenticator.authenticateWithCompletion { (authenticated, auth, error) in
 
-            if let _auth = auth {
-                UserPersistenceStore.sharedStore.registerUserWithEmail(_auth.userEmail)
-                NetworkManager.sharedInstance.setAuthentication(_auth)
+            if let auth = auth {
+                UserPersistenceStore.sharedStore.registerUserWithEmail(auth.userEmail)
+                NetworkManager.sharedInstance.setAuthentication(auth)
             }
             
             if authenticated {

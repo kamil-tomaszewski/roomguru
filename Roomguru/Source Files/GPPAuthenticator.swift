@@ -11,9 +11,9 @@ import Async
 
 class GPPAuthenticator: NSObject, GPPSignInDelegate {
     
-    typealias authenticatorCompletionBlock = (authenticated: Bool, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
+    typealias AuthenticatorCompletionBlock = (authenticated: Bool, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
     
-    private var completion: authenticatorCompletionBlock?
+    private var completion: AuthenticatorCompletionBlock?
     
     override init() {
         super.init()
@@ -27,7 +27,7 @@ class GPPAuthenticator: NSObject, GPPSignInDelegate {
         sharedSignIn.delegate = self
     }
 
-    func authenticateWithCompletion(completion: authenticatorCompletionBlock) {
+    func authenticateWithCompletion(completion: AuthenticatorCompletionBlock) {
         
         self.completion = completion
         
