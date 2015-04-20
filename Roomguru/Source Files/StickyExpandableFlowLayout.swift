@@ -32,15 +32,6 @@ class StickyExpandableFlowLayout: UICollectionViewFlowLayout {
         
         if let collectionView = self.collectionView {
             
-            let offsetY = Float(collectionView.contentOffset.y)
-            let minY = Float(-collectionView.contentInset.top)
-            
-            if offsetY >= minY {
-                return superAttributes
-            }
-            
-            let deltaY = fabsf(offsetY - minY)
-            
             let headerElements = superAttributes.filter {
                 if let elemedKind = $0.representedElementKind {
                     return elemedKind == UICollectionElementKindSectionHeader
@@ -48,13 +39,22 @@ class StickyExpandableFlowLayout: UICollectionViewFlowLayout {
                 return false
             }
             
-            for (_, element) in enumerate(headerElements) {
+            // only first header has to be sticky and expandable:
+            if let header = headerElements.first {
                 
-                var headerRect = element.frame
+                let offsetY = Float(collectionView.contentOffset.y)
+                let minY = Float(-collectionView.contentInset.top)
+                
+                if offsetY >= minY {
+                    return superAttributes
+                }
+                
+                let deltaY = fabsf(offsetY - minY)
+                
+                var headerRect = header.frame
                 headerRect.size.height = CGFloat(max(minY, Float(self.headerReferenceSize.height) + deltaY))
                 headerRect.origin.y = CGFloat(Float(headerRect.origin.y) - deltaY);
-                element.frame = headerRect
-                break
+                header.frame = headerRect
             }
         }
         return superAttributes

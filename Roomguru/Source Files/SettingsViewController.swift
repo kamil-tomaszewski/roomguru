@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     weak var aView: SettingsView?
     private let viewModel = SettingsViewModel(items: [
         SettingItem(NSLocalizedString("Manage calendars", comment: ""), .noneType, "manageCalendars")
-        ])
+    ])
     
     private var header: SettingsCollectionViewHeader?
     
