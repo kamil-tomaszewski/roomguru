@@ -16,9 +16,6 @@ class DateCell: UITableViewCell, Reusable {
     }
     
     let dateLabel = UILabel()
-    let timeLabel = UILabel()
-    
-    private var timeLabelConstraintGroup = ConstraintGroup()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,39 +27,24 @@ class DateCell: UITableViewCell, Reusable {
         commonInit()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        timeLabel.sizeToFit()
-        
-        constrain(timeLabel, replace: timeLabelConstraintGroup) { time in
-            time.width == CGRectGetWidth(self.timeLabel.frame) + 10
-        }
-    }
-    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         if selected {
-            toggleLabelsColor()
+            toggleLabelColor()
         }
     }
     
-    func setSelectedLabelsColor(selected: Bool) {
+    func setSelectedLabelColor(selected: Bool) {
         let color = selected ? UIColor.ngOrangeColor() : UIColor.blackColor()
-        setLabelsColor(color)
+        setLabelColor(color)
     }
         
     // MARK: Private
     
     private func commonInit() {
-        timeLabel.numberOfLines = 1
-        timeLabel.textAlignment = .Center
         dateLabel.textAlignment = .Right
-        
         addSubview(dateLabel)
-        addSubview(timeLabel)
-        
         defineConstraints()
     }
     
@@ -70,29 +52,21 @@ class DateCell: UITableViewCell, Reusable {
 
         let margin: CGFloat = 15
         
-        timeLabelConstraintGroup = layout(timeLabel) { time in
-            time.width == CGRectGetWidth(self.timeLabel.frame) + 10
-        }
-        
-        layout(dateLabel, timeLabel) { (date, time) in
-            
-            time.right == time.superview!.right - margin
-            time.height == 44.0
+        layout(dateLabel) { (date) in
 
-            date.right == time.left - margin
+            date.right == date.superview!.right - margin
             date.left == date.superview!.left
-            date.height == time.height
+            date.height == 44.0
         }
     }
     
-    private func toggleLabelsColor() {
+    private func toggleLabelColor() {
         let blackColor = UIColor.blackColor()
         let color = dateLabel.textColor == blackColor ? UIColor.ngOrangeColor() : blackColor
-        setLabelsColor(color)
+        setLabelColor(color)
     }
     
-    private func setLabelsColor(color: UIColor) {
+    private func setLabelColor(color: UIColor) {
         dateLabel.textColor = color
-        timeLabel.textColor = color
     }
 }

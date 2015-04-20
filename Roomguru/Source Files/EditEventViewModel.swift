@@ -103,7 +103,7 @@ class EditEventViewModel: GroupedListViewModel {
             if date >= startDateItem.date {
                 return nil
             }
-            let message = NSLocalizedString("Cannot pick date earlier than", comment: "") + " " + startDateItem.dateString + " " + startDateItem.timeString
+            let message = NSLocalizedString("Cannot pick date earlier than", comment: "") + " " + startDateItem.dateString
             return NSError(message: message)
         }
     }

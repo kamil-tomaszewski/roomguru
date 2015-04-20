@@ -12,23 +12,18 @@ import UIKit
 class DateItem: GroupItem {
 
     var date: NSDate {
-        get { return _date }
-        set {
-            _date = newValue
-            onValueChanged?(date: newValue)
-        }
+        didSet { onValueChanged?(date: date) }
     }
     
-    var timeString: String { get { return timeFormatter.stringFromDate(date) } }
     var dateString: String { get { return dateFormatter.stringFromDate(date) } }
 
     var validation: DateValidationBlock?
     var onValueChanged: DateBlock?
     
     init(title: String, date: NSDate = NSDate()) {
-        _date = date
+        self.date = date
         
-        timeFormatter.timeStyle = .ShortStyle
+        dateFormatter.timeStyle = .ShortStyle
         dateFormatter.dateStyle = .MediumStyle
 
         super.init(title: title, category: .Date)
@@ -38,8 +33,6 @@ class DateItem: GroupItem {
         return validation?(date: date)
     }
     
-    private var _date: NSDate
-    private let timeFormatter = NSDateFormatter()
     private let dateFormatter = NSDateFormatter()
 }
 
@@ -48,6 +41,6 @@ class DateItem: GroupItem {
 extension DateItem: Updatable {
     
     func update() {
-        onValueChanged?(date: _date)
+        onValueChanged?(date: date)
     }
 }

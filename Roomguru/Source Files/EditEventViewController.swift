@@ -171,10 +171,7 @@ private extension EditEventViewController {
     func configureDateCell(cell: DateCell, forItem item: DateItem) -> UITableViewCell {
         cell.textLabel?.text = item.title
         cell.dateLabel.text = item.dateString
-        cell.timeLabel.text = item.timeString
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
-        cell.setSelectedLabelsColor(item.selected)
+        cell.setSelectedLabelColor(item.selected)
         return cell
     }
     
