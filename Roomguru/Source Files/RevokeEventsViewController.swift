@@ -152,7 +152,7 @@ extension RevokeEventsViewController: UITableViewDelegate {
                 BookingManager.revokeCalendarEntry(calendarEntry, success: {
                     self.viewModel.removeAtIndexPath(indexPath)
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                }, failure: { (error) -> () in
+                }, failure: { error in
                     UIAlertView(error: error).show()
                 })                
             }

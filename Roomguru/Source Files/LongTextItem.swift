@@ -49,7 +49,7 @@ extension LongTextItem: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        onValueChanged?(text: textView.text)
+        onValueChanged?(string: textView.text)
         
         if textView.text.isEmpty {
             textView.attributedText = attributedPlaceholder

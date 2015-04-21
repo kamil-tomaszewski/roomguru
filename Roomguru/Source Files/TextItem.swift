@@ -31,7 +31,7 @@ extension TextItem: UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         text = textField.text
-        onValueChanged(text: text)
+        onValueChanged(string: text)
     }
 }
 
@@ -40,6 +40,6 @@ extension TextItem: UITextFieldDelegate {
 extension TextItem: Updatable {
     
     func update() {
-        onValueChanged(text: text)
+        onValueChanged(string: text)
     }
 }

@@ -17,11 +17,11 @@ typealias ResponseBlock = (response: JSON?) -> Void
 typealias ListResponseBlock = (response: [AnyObject]?) -> Void
 typealias ErrorBlock = (error: NSError) -> Void
 typealias DateBlock = (date: NSDate) -> Void
-typealias StringBlock = (text: String) -> Void
+typealias StringBlock = (string: String) -> Void
 typealias BoolBlock = (bool: Bool) -> Void
 
 typealias DateValidationBlock = (date: NSDate) -> NSError?
-typealias StringValidationBlock = (text: String) -> NSError?
+typealias StringValidationBlock = (string: String) -> NSError?
 
 // MARK: - Data types
 

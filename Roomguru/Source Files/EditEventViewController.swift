@@ -155,14 +155,18 @@ extension EditEventViewController: UITableViewDelegate {
 
 extension EditEventViewController {
     
-    func saveEvent() {
+    func didTapSaveBarButton(sender: UIBarButtonItem) {
         view.endEditing(true)
-        viewModel?.saveEvent({ (response) -> Void in
+        viewModel?.saveEvent({ response in
             self.dismissSelf(self.viewModel)
-        }, failure: { (error) -> Void in
+        }, failure: { error in
             // NGRTemp:
             println(error)
         })
+    }
+    
+    func didTapDismissBarButton(sender: UIBarButtonItem) {
+        dismissSelf(sender)
     }
 }
 
@@ -236,8 +240,8 @@ private extension EditEventViewController {
     }
     
     func setupBarButtons() {
-        let dismissSelector = Selector("dismissSelf:")
-        let saveSelector = Selector("saveEvent")
+        let dismissSelector = Selector("didTapDismissBarButton:")
+        let saveSelector = Selector("didTapSaveBarButton:")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: saveSelector)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: dismissSelector)
