@@ -41,5 +41,3 @@ class UserImageDownloader: NSObject, NSURLSessionDownloadDelegate {
         self.completion!(locationURL: nil)
     }
 }
-
-

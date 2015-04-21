@@ -52,6 +52,9 @@ target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
 
     pod 'Nimble', '~> 0.4.2',
         :configurations => ['Test']
+        
+    pod 'OHHTTPStubs', '~> 4.0.0',
+        :configurations => ['Test']
 end
 
 post_install do |installer|

@@ -18,8 +18,8 @@ class RootScreenSpec: XCTestCase {
         super.tearDown()
     }
     
-    func testShouldHelloTextBeVisible() {
-        self.tester().waitForViewWithAccessibilityLabel("Welcome to Roomguru!")
-    }
+//    func testShouldHelloTextBeVisible() {
+//        self.tester().waitForViewWithAccessibilityLabel("Welcome to Roomguru!")
+//    }
 
 }
