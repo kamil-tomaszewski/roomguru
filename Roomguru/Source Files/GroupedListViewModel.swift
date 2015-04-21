@@ -51,6 +51,26 @@ extension GroupedListViewModel {
 
         return indexPaths.isEmpty ? nil : indexPaths
     }
+    
+    func indexPathsForItemOfType<T: GroupItem>(itemType: T.Type) -> [NSIndexPath]? {
+        var indexPaths: [NSIndexPath] = []
+        
+        table.itemize { (index, item) in
+            var section = index
+            item.itemize { (index, item) in
+                if item is T {
+                    indexPaths.append(NSIndexPath(forRow: index, inSection: section))
+                }
+            }
+        }
+        return indexPaths.isEmpty ? nil : indexPaths
+    }
+    
+    func removeItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
+        for indexPath in indexPaths {
+            removeItemAtIndexPath(indexPath)
+        }
+    }
 }
 
 extension GroupedListViewModel {

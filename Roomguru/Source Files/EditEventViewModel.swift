@@ -10,7 +10,9 @@ import Foundation
 import DateKit
 
 protocol ModelUpdatable {
-    func dataChangedInItems(items: [GroupItem])
+    func didChangeItemsAtIndexPaths(indexPaths: [NSIndexPath])
+    func addedItemsAtIndexPaths(indexPaths: [NSIndexPath])
+    func removedItemsAtIndexPaths(indexPaths: [NSIndexPath])
 }
 
 class EditEventViewModel: GroupedListViewModel {
@@ -83,7 +85,9 @@ class EditEventViewModel: GroupedListViewModel {
             self.eventQuery.allDay = state
             startDateItem.date = date.midnight
             endDateItem.date = date.tomorrow.midnight.seconds - 1
-            self.delegate?.dataChangedInItems([startDateItem, endDateItem] as [GroupItem])
+            if let indexPaths = self.indexPathsForItems([startDateItem, endDateItem] as [GroupItem]) {
+                self.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+            }
         }
         
         startDateItem.onValueChanged = { [weak self] date in
@@ -118,6 +122,65 @@ class EditEventViewModel: GroupedListViewModel {
     
     private var eventQuery: EventQuery
 }
+
+// MARK: Date pickers handling
+
+extension EditEventViewModel {
+    
+    func handleDateItemSelectionAtIndexPath(indexPath: NSIndexPath) {
+        
+        if let item = self[indexPath.section]?[indexPath.row] as? DateItem {
+            
+            var dateItems: [DateItem] = []
+            let collapseIndexPaths = indexPathsForItemOfType(DatePickerItem.self)
+            
+            if let pickersIndexPaths = collapseIndexPaths {
+                
+                for pickerIndexPath in pickersIndexPaths {
+                    removeItemAtIndexPath(pickerIndexPath)
+                    if let dateItem = self[pickerIndexPath.section]?[pickerIndexPath.row-1] as? DateItem {
+                        dateItem.selected = false
+                        dateItems.append(dateItem)
+                    }
+                }
+                
+                delegate?.removedItemsAtIndexPaths(pickersIndexPaths)
+                
+                if let reloadIndexPaths = indexPathsForItems(dateItems) {
+                    delegate?.didChangeItemsAtIndexPaths(reloadIndexPaths)
+                }
+            }
+            
+            if !item.selected && !contains(dateItems, item) {
+                
+                let pickerItem = DatePickerItem(date: item.date) { date in
+                    if let error = item.validate(date) {
+                        return error
+                    }
+                    
+                    item.date = date
+                    item.update()
+                    
+                    if let indexPaths = self.indexPathsForItems([item]) {
+                        self.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                    }
+                    
+                    return nil
+                }
+                
+                item.selected = true
+                
+                if var currentIndexPath = indexPathsForItems([item])?.first {
+                    currentIndexPath = NSIndexPath(forRow: currentIndexPath.row+1, inSection: currentIndexPath.section)
+                    addItem(pickerItem, atIndexPath: currentIndexPath)
+                    delegate?.addedItemsAtIndexPaths([currentIndexPath])
+                }
+            }
+        }
+    }
+}
+
+// MARK: Event saving
 
 extension EditEventViewModel {
     

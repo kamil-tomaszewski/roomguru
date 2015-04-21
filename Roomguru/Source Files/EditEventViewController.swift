@@ -43,12 +43,18 @@ class EditEventViewController: UIViewController {
 }
 
 extension EditEventViewController: ModelUpdatable {
-    func dataChangedInItems(items: [GroupItem]) {
+    
+    func didChangeItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
         self.view.endEditing(true)
+        aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
+    }
         
-        if let indexPaths = viewModel?.indexPathsForItems(items) {
-            aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
-        }
+    func addedItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
+        aView?.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+    }
+    
+    func removedItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
+        aView?.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
     }
 }
 
@@ -94,39 +100,7 @@ extension EditEventViewController: UITableViewDelegate {
         
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowIfSelectedAnimated(true)
-
-        let row = indexPath.row
-        let section = indexPath.section
-        
-        let item = viewModel?[section]?[row]
-        item?.selected = true
-        
-        if let item = item as? DateItem {
-            let rowAnimation = UITableViewRowAnimation.Fade
-            let nextRow = row + 1
-            let nextIndexPath = NSIndexPath(forRow: nextRow, inSection: section)
-            
-            if let nextItem = viewModel?[section]?[nextRow] as? DatePickerItem {
-                item.selected = false
-                viewModel?.removeItemAtIndexPath(nextIndexPath)
-                tableView.deleteRowsAtIndexPaths([nextIndexPath], withRowAnimation: rowAnimation)
-            } else {
-                let pickerItem = DatePickerItem(date: item.date) { date in
-                    if let error = item.validate(date) {
-                        // NGRTemp:
-                        println(error)
-                        return error
-                    } else {
-                        item.date = date
-                        item.update()
-                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-                    }
-                    return nil
-                }
-                viewModel?.addItem(pickerItem, atIndexPath: nextIndexPath)
-                tableView.insertRowsAtIndexPaths([nextIndexPath], withRowAnimation: rowAnimation)
-            }
-        }
+        viewModel?.handleDateItemSelectionAtIndexPath(indexPath)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
