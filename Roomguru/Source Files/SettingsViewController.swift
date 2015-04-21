@@ -11,9 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     weak var aView: SettingsView?
-    private let viewModel = SettingsViewModel(items: [
-        SettingItem(NSLocalizedString("Manage calendars", comment: ""), .noneType, "manageCalendars")
-    ])
+    private let viewModel = SettingsViewModel()
     
     private var header: SettingsCollectionViewHeader?
     
@@ -55,6 +53,8 @@ extension SettingsViewController: UICollectionViewDataSource {
         let item = viewModel[indexPath.row]
         
         cell.textLabel.text = item.title
+        cell.switchControl.addTarget(self, action: item.action, forControlEvents: .ValueChanged)
+        cell.switchControl.hidden = (item.mode != .Switchable)
         
         return cell
     }
@@ -71,13 +71,15 @@ extension SettingsViewController: UICollectionViewDataSource {
 //MARK: UICollectionViewDelegate
 
 extension SettingsViewController: UICollectionViewDelegate {
+   
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        viewModel[indexPath.row].performActionWithTarget(self)
+        let item = viewModel[indexPath.row]
+        NSThread.detachNewThreadSelector(item.action, toTarget:self, withObject: nil)
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return viewModel[indexPath.row].selectable()
+        return viewModel[indexPath.row].mode == .Selectable
     }
     
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
@@ -101,7 +103,7 @@ extension SettingsViewController {
         Settings.reverseNotificationEnabled()
     }
 
-    func manageCalendars() {
+    func didTapManageCalendars() {
         navigationController?.pushViewController(CalendarPickerViewController(), animated: true)
     }
 }

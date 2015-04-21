@@ -8,13 +8,14 @@
 
 import Foundation
 
-class SettingsViewModel: NSObject {
+class SettingsViewModel {
     
     private let items : [SettingItem]
     
-    init(items: [SettingItem]) {
-        self.items = items
-        super.init()
+    init() {
+        self.items = [
+            SettingItem(title: NSLocalizedString("Manage calendars", comment: ""), mode: .Selectable, action: Selector("didTapManageCalendars"))
+        ]
     }
     
     subscript(index: Int) -> SettingItem {
@@ -25,13 +26,5 @@ class SettingsViewModel: NSObject {
     
     func numberOfItems() -> Int {
         return items.count
-    }
-    
-    func signatures() -> [String : AnyClass] {
-        var dictionary: [String : AnyClass] = [:]
-        for type in items {
-            dictionary[type.signature().identifier] = type.signature().registeredClass
-        }
-        return dictionary
     }
 }

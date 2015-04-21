@@ -10,41 +10,17 @@ import Foundation
 
 struct SettingItem {
     
-    var title: String
-    var type: aType
-    var action: String
+    let title: String
+    let action: Selector
+    let mode: Mode
     
-    init(_ title: String, _ type: aType, _ action: String) {
+    enum Mode {
+        case Switchable, Selectable
+    }
+    
+    init(title: String, mode: Mode, action: Selector) {
         self.title = title
-        self.type = type
+        self.mode = mode
         self.action = action
-    }
-    
-    enum aType {
-        case switchType, noneType
-    }
-    
-    func performActionWithTarget(target: AnyObject?) {
-        if target != nil {
-            NSThread.detachNewThreadSelector(Selector(self.action), toTarget:target!, withObject: nil)
-        }
-    }
-    
-    func signature() -> (identifier: String, registeredClass: AnyClass) {
-        switch(self.type) {
-        case .switchType:
-            return (SwitchCell.reuseIdentifier(), SwitchCell.self)
-        default:
-            return (UITableViewCellReuseIdentifier, UITableViewCell.self)
-        }
-    }
-    
-    func selectable() -> Bool {
-        switch(self.type) {
-        case .noneType:
-            return true;
-        default:
-            return false;
-        }
     }
 }

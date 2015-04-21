@@ -16,6 +16,7 @@ class SettingsCell: UICollectionViewCell, Reusable {
     }
 
     let textLabel = UILabel()
+    let switchControl = UISwitch()
     private let line = UIView()
     
     override init(frame: CGRect) {
@@ -27,29 +28,41 @@ class SettingsCell: UICollectionViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension SettingsCell {
     
-    private func commonInit() {
+    func commonInit() {
         
         backgroundColor = UIColor.whiteColor()
         
         line.backgroundColor = UIColor.rgb(200, 200, 200)
         addSubview(line)
         
+        switchControl.onTintColor = UIColor.ngOrangeColor()
+        addSubview(switchControl)
+        
         addSubview(textLabel)
         
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
-        layout(textLabel, line) { label, line in
-            
-            label.edges == inset(label.superview!.edges, 10, 10)
+        layout(textLabel, line, switchControl) { label, line, aSwitch in
             
             line.height == 1
             line.width == line.superview!.width
             line.left == line.superview!.left
             line.bottom == line.superview!.bottom
+            
+            aSwitch.centerY == aSwitch.superview!.centerY
+            aSwitch.right == aSwitch.superview!.right - 20
+            
+            label.left == label.superview!.left + 10
+            label.right == aSwitch.left - 10
+            label.top == label.superview!.top + 10
+            label.bottom == label.superview!.bottom - 10
         }
     }
 }
