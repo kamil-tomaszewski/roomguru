@@ -10,11 +10,14 @@ import UIKit
 
 class DateItem: GroupItem {
 
-    var date: NSDate
+    var date: NSDate {
+        didSet { validationError = nil }
+    }
     
     var dateString: String { get { return dateFormatter.stringFromDate(date) } }
 
     var validation: DateValidationBlock?
+    var validationError: NSError?
     var onValueChanged: DateBlock?
     
     init(title: String, date: NSDate = NSDate()) {

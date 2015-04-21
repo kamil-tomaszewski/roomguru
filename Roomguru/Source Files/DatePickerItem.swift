@@ -11,10 +11,9 @@ import UIKit
 class DatePickerItem: GroupItem {
     
     var date: NSDate
-    var validationError: NSError?
-    var onValueChanged: DateValidationBlock
+    var onValueChanged: DateBlock
     
-    init(date: NSDate, onValueChanged: DateValidationBlock) {
+    init(date: NSDate, onValueChanged: DateBlock) {
         self.date = date
         self.onValueChanged = onValueChanged
         super.init(title: "", category: .Picker)
@@ -29,12 +28,7 @@ class DatePickerItem: GroupItem {
     }
     
     func didChangeDate(sender: UIDatePicker, forEvents events: UIControlEvents) {
-        validationError = onValueChanged(date: sender.date)
-        
-        if let validationError = validationError {
-            sender.setDate(date, animated: true)
-        } else {
-            date = sender.date
-        }
+        date = sender.date
+        onValueChanged(date: date)
     }
 }

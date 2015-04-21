@@ -35,14 +35,27 @@ class DateCell: UITableViewCell, Reusable {
         }
     }
     
+    func setDateText(text: String, withValidationError error: NSError? = nil) {
+        let strikethroughStyle = (error != nil) ? NSUnderlineStyle.StyleSingle : NSUnderlineStyle.StyleNone
+        textAttributes[NSStrikethroughStyleAttributeName] = strikethroughStyle.rawValue
+        setDateLabelText(text, withAttributes: textAttributes)
+    }
+    
     func setSelectedLabelColor(selected: Bool) {
         let color = selected ? UIColor.ngOrangeColor() : UIColor.blackColor()
         setLabelColor(color)
     }
-        
+            
     // MARK: Private
     
+    private var textAttributes = [NSObject: AnyObject]()
+    
+    private func setDateLabelText(text: String, withAttributes attributes: [NSObject: AnyObject]) {
+        dateLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+    }
+    
     private func commonInit() {
+        dateLabel.text = ""
         dateLabel.textAlignment = .Right
         addSubview(dateLabel)
         defineConstraints()
@@ -67,6 +80,7 @@ class DateCell: UITableViewCell, Reusable {
     }
     
     private func setLabelColor(color: UIColor) {
-        dateLabel.textColor = color
+        textAttributes[NSForegroundColorAttributeName] = color
+        setDateLabelText(dateLabel.text!, withAttributes: textAttributes)
     }
 }

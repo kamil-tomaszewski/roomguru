@@ -153,22 +153,20 @@ extension EditEventViewModel {
             
             if !item.selected && !contains(dateItems, item) {
                 
+                item.selected = true
+                
                 let pickerItem = DatePickerItem(date: item.date) { date in
                     if let error = item.validate(date) {
-                        return error
+                        item.validationError = error
+                    } else {
+                        item.date = date
+                        item.update()
                     }
-                    
-                    item.date = date
-                    item.update()
                     
                     if let indexPaths = self.indexPathsForItems([item]) {
                         self.delegate?.didChangeItemsAtIndexPaths(indexPaths)
                     }
-                    
-                    return nil
                 }
-                
-                item.selected = true
                 
                 if var currentIndexPath = indexPathsForItems([item])?.first {
                     currentIndexPath = NSIndexPath(forRow: currentIndexPath.row+1, inSection: currentIndexPath.section)
