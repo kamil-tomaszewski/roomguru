@@ -94,6 +94,14 @@ class EditEventViewModel: GroupedListViewModel {
             if let query = self?.eventQuery where !query.allDay {
                 query.startDate = date
             }
+            
+            let probableEndDate = date.minutes + 30
+            if endDateItem.date < probableEndDate {
+                endDateItem.date = probableEndDate
+                if let indexPaths = self?.indexPathsForItems([endDateItem]) {
+                    self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                }
+            }
         }
         endDateItem.onValueChanged = { [weak self] date in
             if let query = self?.eventQuery where !query.allDay {
