@@ -15,7 +15,7 @@ class RevokeQuery: Query {
         
         var URLExtension = ""
 
-        if let eventID = entry.event.identifier as String?, let userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
+        if let eventID = entry.event.identifier as String?, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
             URLExtension = "/calendars/" + userEmail + "/events/" + eventID
         }
         
