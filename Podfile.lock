@@ -28,11 +28,21 @@ PODS:
   - KIF (3.2.1):
     - KIF/XCTest (= 3.2.1)
   - KIF/XCTest (3.2.1)
+  - Mockingjay (0.2.0):
+    - Mockingjay/Core (= 0.2.0)
+    - Mockingjay/Session (= 0.2.0)
+    - Mockingjay/XCTest (= 0.2.0)
+  - Mockingjay/Core (0.2.0):
+    - URITemplate (~> 1.2)
+  - Mockingjay/Session (0.2.0):
+    - Mockingjay/Core
+  - Mockingjay/XCTest (0.2.0):
+    - Mockingjay/Core
   - Nimble (0.4.2)
-  - OHHTTPStubs (4.0.0)
   - Quick (0.3.1)
   - SwiftyJSON (2.1.3)
   - SwiftyUserDefaults (1.0.0)
+  - URITemplate (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.2)
@@ -44,8 +54,8 @@ DEPENDENCIES:
   - DateKit (from `https://github.com/SnowdogApps/DateKit.git`, commit `4c953cf5a70a14f88d154bdfd710019f20a10b49`,
     branch `master`)
   - KIF (~> 3.0)
+  - Mockingjay
   - Nimble (~> 0.4.2)
-  - OHHTTPStubs (~> 4.0.0)
   - Quick (~> 0.3.1)
   - SwiftyJSON (from `git@github.com:SwiftyJSON/SwiftyJSON.git`, commit `008a09d7ea8b13c03fb59b35c01aad339584a5e1`,
     branch `xcode6.3`)
@@ -96,10 +106,11 @@ SPEC CHECKSUMS:
   CryptoSwift: 3b886d001f50deb65623a8967d68f6b8bf8d9ba1
   DateKit: 1bd5fbff0131575fdc6fa56d820e7779bc025256
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
+  Mockingjay: 8635bddf88b7c93833db67e1dc54b8ffe7efe921
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
-  OHHTTPStubs: 3d65d31dd8389a8adabcc086ff2cc99c02e49bcc
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   SwiftyJSON: a561c2a840121085bec8a2dfeac97a360fc66901
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
+  URITemplate: 0dbf40f0e378eb9c6d04cc08e6101fb82d126dc3
 
 COCOAPODS: 0.36.3
