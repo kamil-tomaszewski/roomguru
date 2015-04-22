@@ -40,6 +40,12 @@ class EditEventViewModel: GroupedListViewModel {
         title = NSLocalizedString("New Event", comment: "")
         rooms = CalendarPersistenceStore.sharedStore.rooms().map { RoomItem(room: $0) }
 
+        let reccurenceItems = [
+            RecurrenceItem(title: NSLocalizedString("Daily", comment: ""), recurrence: .Daily),
+            RecurrenceItem(title: NSLocalizedString("Weekly", comment: ""), recurrence: .Weekly),
+            RecurrenceItem(title: NSLocalizedString("Monthly", comment: ""), recurrence: .Monthly),
+            RecurrenceItem(title: NSLocalizedString("Yearly", comment: ""), recurrence: .Yearly),
+        ]
         // MARK: Parameters
         
         let summary = query.summary
@@ -124,6 +130,21 @@ class EditEventViewModel: GroupedListViewModel {
             return controller
         }
 
+        repeatItem.action = {
+            let viewModel = ListViewModel(reccurenceItems) as ListViewModel<PickerItem>
+            let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
+                if let item = item as? RecurrenceItem {
+                    repeatItem.detailDescription = item.title
+                    // NGRTodo: Implement recurrence parameter in eventQuery
+                    // self?.eventQuery.recurrence = item.value
+                    if let indexPaths = self?.indexPathsForItems([repeatItem]) {
+                        self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                    }
+                }
+            }
+            
+            return controller
+        }
         
         // MARK: Validation
         

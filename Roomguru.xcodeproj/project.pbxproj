@@ -87,11 +87,11 @@
 		5EFC1ED91AC591EB00CE9D27 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */; };
 		5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* Constants.swift */; };
 		5EFE00F31ADE71CF0083FB8E /* SettingsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */; };
-		6C936E4A1AD8011000C80C46 /* BaseEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C936E491AD8011000C80C46 /* BaseEventCell.swift */; };
 		5EFE00F51ADE79210083FB8E /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */; };
 		5EFE00F71ADE87990083FB8E /* RoomguruLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */; };
 		5EFE00FB1ADE97DA0083FB8E /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */; };
 		5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
+		6C936E4A1AD8011000C80C46 /* BaseEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C936E491AD8011000C80C46 /* BaseEventCell.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */; };
 		7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */; };
@@ -145,6 +145,7 @@
 		BFE5660C1AE13C7200B935BF /* SwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660B1AE13C7200B935BF /* SwitchItem.swift */; };
 		BFE5660E1AE1526000B935BF /* DateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660D1AE1526000B935BF /* DateItem.swift */; };
 		BFE566101AE15B2400B935BF /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660F1AE15B2400B935BF /* DateCell.swift */; };
+		BFE814551AE8413C00369522 /* RecurrenceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE814541AE8413C00369522 /* RecurrenceItem.swift */; };
 		BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
 		BFF1B5791AE79E7300F9767E /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B5781AE79E7300F9767E /* PickerViewController.swift */; };
 		BFF1B57B1AE7BE4A00F9767E /* PickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */; };
@@ -270,11 +271,11 @@
 		5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attendee.swift; path = "Roomguru/Source Files/Attendee.swift"; sourceTree = SOURCE_ROOT; };
 		5EFC763C1ACB3C9F0005892E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Roomguru/Source Files/Constants.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableHeaderView.swift; path = "Roomguru/Source Files/SettingsTableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
-		6C936E491AD8011000C80C46 /* BaseEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEventCell.swift; path = "Roomguru/Source Files/BaseEventCell.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = "Roomguru/Source Files/UIViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomguruLabel.swift; path = "Roomguru/Source Files/RoomguruLabel.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchViewController.swift; path = "Roomguru/Source Files/LaunchViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
+		6C936E491AD8011000C80C46 /* BaseEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEventCell.swift; path = "Roomguru/Source Files/BaseEventCell.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFrame.swift; path = "Roomguru/Source Files/TimeFrame.swift"; sourceTree = SOURCE_ROOT; };
@@ -325,6 +326,7 @@
 		BFE5660B1AE13C7200B935BF /* SwitchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchItem.swift; path = "Roomguru/Source Files/SwitchItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFE5660D1AE1526000B935BF /* DateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateItem.swift; path = "Roomguru/Source Files/DateItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFE5660F1AE15B2400B935BF /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = "Roomguru/Source Files/DateCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFE814541AE8413C00369522 /* RecurrenceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecurrenceItem.swift; path = "Roomguru/Source Files/RecurrenceItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Requests.swift"; sourceTree = SOURCE_ROOT; };
 		BFF1B5781AE79E7300F9767E /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerViewController.swift; path = "Roomguru/Source Files/PickerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItem.swift; path = "Roomguru/Source Files/PickerItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -486,6 +488,7 @@
 				BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */,
 				BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */,
 				BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */,
+				BFE814541AE8413C00369522 /* RecurrenceItem.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1187,6 +1190,7 @@
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
 				5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */,
 				5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */,
+				BFE814551AE8413C00369522 /* RecurrenceItem.swift in Sources */,
 				5EFE00F31ADE71CF0083FB8E /* SettingsTableHeaderView.swift in Sources */,
 				BFB0E5101ADFD6EA00B0C0A4 /* TextFieldCell.swift in Sources */,
 				5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */,
