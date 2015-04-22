@@ -11,8 +11,7 @@ import Cartography
 
 class EventCell: BaseEventCell, Reusable {
     
-    let timeMaxLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
-    let timeMinLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
+    private struct Constants { static var CellIdentifier: String = "TableViewFreeEventCellReuseIdentifier"}
     
     class func reuseIdentifier() -> String {
         return "TableViewEventCellReuseIdentifier"

@@ -88,11 +88,25 @@ extension CalendarEntry {
                         if eventEnd.day == nextEventStart.day && nextEventStart.day >= today.day && nextEventStart >= today {
                             let timePeriod = nextEventStart.timeIntervalSinceDate(eventEnd)
                             
-                            if timePeriod >= minimumPeriod {
-                                let freeEvent = FreeEvent(startDate: eventEnd, endDate: nextEventStart)
+                            
+                            var slotsCount = Int(floor(timePeriod / minimumPeriod))
+                            println("Free slots: \(slotsCount)")
+                            var nextStartDay = eventEnd
+                            
+                            
+                            while (slotsCount > 0) {
+                                --slotsCount
+                                let freeEvent = FreeEvent(startDate: nextStartDay, endDate: nextStartDay.dateByAddingTimeInterval(minimumPeriod))
                                 let freeEntry = CalendarEntry(calendarID: entry.calendarID, event: freeEvent)
                                 freeEntries.append(freeEntry)
+                                nextStartDay = nextStartDay.dateByAddingTimeInterval(minimumPeriod)
                             }
+                            
+//                            if timePeriod >= minimumPeriod {
+//                                let freeEvent = FreeEvent(startDate: eventEnd, endDate: nextEventStart)
+//                                let freeEntry = CalendarEntry(calendarID: entry.calendarID, event: freeEvent)
+//                                freeEntries.append(freeEntry)
+//                            }
                         }
                         
                         if !contains(freeEntries, nextEntry) {
