@@ -17,6 +17,7 @@ class EditEventViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel?.delegate = self
+        self.viewModel?.presenter = self
         self.title = self.viewModel?.title
     }
 
@@ -55,6 +56,45 @@ extension EditEventViewController: ModelUpdatable {
     
     func removedItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
         aView?.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Fade)
+    }
+}
+
+// MARK: Presenter
+
+extension EditEventViewController: Presenter {
+    
+    func shouldPresentViewController(viewController: UIViewController) {
+        if let controller = viewController as? PickerViewController {
+            controller.delegate = self
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
+
+// MARK: TableViewConfigurable
+
+extension EditEventViewController: TableViewConfigurable {
+    
+    func registerCellsInTableView(tableView: UITableView) {
+        tableView.registerClass(CalendarPickerCell.self, forCellReuseIdentifier: CalendarPickerCell.reuseIdentifier())
+    }
+    
+    func configureCell(cell: UITableViewCell, forItem item: PickerItem) {
+        if let cell = cell as? CalendarPickerCell, item = item as? RoomItem {
+
+            // NGRTemp: Other cell has to be implemented
+            cell.footerLabel.removeFromSuperview()
+            cell.headerLabel.text = item.name
+            cell.checkmarkLabel.hidden = !item.selected
+            cell.accessoryType = .None
+        }
+    }
+    
+    func reuseIdenfitierForItem(item: PickerItem) -> String {
+        if let item = item as? RoomItem {
+            return CalendarPickerCell.reuseIdentifier()
+        }
+        return ""
     }
 }
 
@@ -100,7 +140,7 @@ extension EditEventViewController: UITableViewDelegate {
         
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowIfSelectedAnimated(true)
-        viewModel?.handleDateItemSelectionAtIndexPath(indexPath)
+        viewModel?.handleSelectionAtIndexPath(indexPath)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

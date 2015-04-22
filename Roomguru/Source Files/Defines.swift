@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftyJSON
 
 // MARK: Types
@@ -19,6 +19,7 @@ typealias ErrorBlock = (error: NSError) -> Void
 typealias DateBlock = (date: NSDate) -> Void
 typealias StringBlock = (string: String) -> Void
 typealias BoolBlock = (bool: Bool) -> Void
+typealias VoidControllerBlock = Void -> UIViewController
 
 typealias DateValidationBlock = (date: NSDate) -> NSError?
 typealias StringValidationBlock = (string: String) -> NSError?

@@ -15,9 +15,14 @@ protocol ModelUpdatable {
     func removedItemsAtIndexPaths(indexPaths: [NSIndexPath])
 }
 
+protocol Presenter {
+    func shouldPresentViewController(viewController: UIViewController)
+}
+
 class EditEventViewModel: GroupedListViewModel {
     
     var delegate: ModelUpdatable?
+    var presenter: Presenter?
     var title: String
     
     convenience init(calendarEntry: CalendarEntry) {
@@ -33,6 +38,7 @@ class EditEventViewModel: GroupedListViewModel {
     init(query: EventQuery) {
         
         title = NSLocalizedString("New Event", comment: "")
+        rooms = CalendarPersistenceStore.sharedStore.rooms().map { RoomItem(room: $0) }
 
         // MARK: Parameters
         
@@ -55,15 +61,8 @@ class EditEventViewModel: GroupedListViewModel {
         let allDayItem = SwitchItem(title: allDayTitle)
         let startDateItem = DateItem(title: startDateTitle)
         let endDateItem = DateItem(title: endDateTitle, date: startDateItem.date.minutes + 30)
-        
-        let repeatItem = ActionItem(title: repeatTitle, detailDescription: noneDetail) {
-            // NGRTodo: present controller
-        }
-        
-        let calendarItem = ActionItem(title: calendarTitle, detailDescription: noneDetail) {
-            // NGRTodo: present controller
-        }
-        
+        let repeatItem = ActionItem(title: repeatTitle, detailDescription: noneDetail)
+        let calendarItem = ActionItem(title: calendarTitle, detailDescription: noneDetail)
         let descriptionItem = LongTextItem(placeholder: longTextPlaceholder)
         
         eventQuery = query
@@ -109,6 +108,23 @@ class EditEventViewModel: GroupedListViewModel {
             }
         }
         
+        calendarItem.action = {
+            let viewModel = ListViewModel(self.rooms) as ListViewModel<PickerItem>
+            let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
+                if let item = item as? RoomItem {
+                    calendarItem.detailDescription = item.name
+                    self?.eventQuery.calendarID = item.id
+                    
+                    if let indexPaths = self?.indexPathsForItems([calendarItem]) {
+                        self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                    }
+                }
+            }
+            
+            return controller
+        }
+
+        
         // MARK: Validation
         
         startDateItem.validation = { date in
@@ -129,59 +145,73 @@ class EditEventViewModel: GroupedListViewModel {
     }
     
     private var eventQuery: EventQuery
+    private var rooms: [RoomItem]
 }
 
 // MARK: Date pickers handling
 
 extension EditEventViewModel {
     
-    func handleDateItemSelectionAtIndexPath(indexPath: NSIndexPath) {
+    func handleSelectionAtIndexPath(indexPath: NSIndexPath) {
+        let item = self[indexPath.section]?[indexPath.row]
+
+        if let item = item as? DateItem {
+            handleSelectionOfDateItem(item, atIndexPath: indexPath)
+        } else if let item = item as? ActionItem {
+            handleSelectionOfActionItem(item, atIndexPath: indexPath)
+        }
+    }
+    
+    private func handleSelectionOfDateItem(item: DateItem, atIndexPath indexPath: NSIndexPath) {
+            
+        var dateItems: [DateItem] = []
+        let collapseIndexPaths = indexPathsForItemOfType(DatePickerItem.self)
         
-        if let item = self[indexPath.section]?[indexPath.row] as? DateItem {
+        if let pickersIndexPaths = collapseIndexPaths {
             
-            var dateItems: [DateItem] = []
-            let collapseIndexPaths = indexPathsForItemOfType(DatePickerItem.self)
-            
-            if let pickersIndexPaths = collapseIndexPaths {
-                
-                for pickerIndexPath in pickersIndexPaths {
-                    removeItemAtIndexPath(pickerIndexPath)
-                    if let dateItem = self[pickerIndexPath.section]?[pickerIndexPath.row-1] as? DateItem {
-                        dateItem.selected = false
-                        dateItems.append(dateItem)
-                    }
-                }
-                
-                delegate?.removedItemsAtIndexPaths(pickersIndexPaths)
-                
-                if let reloadIndexPaths = indexPathsForItems(dateItems) {
-                    delegate?.didChangeItemsAtIndexPaths(reloadIndexPaths)
+            for pickerIndexPath in pickersIndexPaths {
+                removeItemAtIndexPath(pickerIndexPath)
+                if let dateItem = self[pickerIndexPath.section]?[pickerIndexPath.row-1] as? DateItem {
+                    dateItem.selected = false
+                    dateItems.append(dateItem)
                 }
             }
             
-            if !item.selected && !contains(dateItems, item) {
-                
-                item.selected = true
-                
-                let pickerItem = DatePickerItem(date: item.date) { date in
-                    if let error = item.validate(date) {
-                        item.validationError = error
-                    } else {
-                        item.date = date
-                        item.update()
-                    }
-                    
-                    if let indexPaths = self.indexPathsForItems([item]) {
-                        self.delegate?.didChangeItemsAtIndexPaths(indexPaths)
-                    }
+            delegate?.removedItemsAtIndexPaths(pickersIndexPaths)
+            
+            if let reloadIndexPaths = indexPathsForItems(dateItems) {
+                delegate?.didChangeItemsAtIndexPaths(reloadIndexPaths)
+            }
+        }
+        
+        if !item.selected && !contains(dateItems, item) {
+            
+            item.selected = true
+            
+            let pickerItem = DatePickerItem(date: item.date) { date in
+                if let error = item.validate(date) {
+                    item.validationError = error
+                } else {
+                    item.date = date
+                    item.update()
                 }
                 
-                if var currentIndexPath = indexPathsForItems([item])?.first {
-                    currentIndexPath = NSIndexPath(forRow: currentIndexPath.row+1, inSection: currentIndexPath.section)
-                    addItem(pickerItem, atIndexPath: currentIndexPath)
-                    delegate?.addedItemsAtIndexPaths([currentIndexPath])
+                if let indexPaths = self.indexPathsForItems([item]) {
+                    self.delegate?.didChangeItemsAtIndexPaths(indexPaths)
                 }
             }
+            
+            if var currentIndexPath = indexPathsForItems([item])?.first {
+                currentIndexPath = NSIndexPath(forRow: currentIndexPath.row+1, inSection: currentIndexPath.section)
+                addItem(pickerItem, atIndexPath: currentIndexPath)
+                delegate?.addedItemsAtIndexPaths([currentIndexPath])
+            }
+        }
+    }
+    
+    private func handleSelectionOfActionItem(item: ActionItem, atIndexPath indexPath: NSIndexPath) {
+        if let controller = item.action?() {
+            presenter?.shouldPresentViewController(controller)
         }
     }
 }
@@ -197,7 +227,7 @@ extension EditEventViewModel {
     
     private func itemsUpdates() {
         itemize {
-            if let item = $0 as? Updatable {
+            if let item = $1 as? Updatable {
                 item.update()
             }
         }

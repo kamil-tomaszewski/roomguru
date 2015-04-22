@@ -10,11 +10,10 @@ import UIKit
 
 class ActionItem: GroupItem {
     
-    var action: VoidBlock
+    var action: VoidControllerBlock?
     var detailDescription: String
     
-    init(title: String, detailDescription: String = "", action: VoidBlock) {
-        self.action = action
+    init(title: String, detailDescription: String = "") {
         self.detailDescription = detailDescription
         super.init(title: title, category: .Action)
     }

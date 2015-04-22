@@ -146,6 +146,9 @@
 		BFE5660E1AE1526000B935BF /* DateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660D1AE1526000B935BF /* DateItem.swift */; };
 		BFE566101AE15B2400B935BF /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660F1AE15B2400B935BF /* DateCell.swift */; };
 		BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
+		BFF1B5791AE79E7300F9767E /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B5781AE79E7300F9767E /* PickerViewController.swift */; };
+		BFF1B57B1AE7BE4A00F9767E /* PickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */; };
+		BFF1B57D1AE7BE6700F9767E /* RoomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */; };
 		BFF755241AE52C6500F68DB9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF755231AE52C6500F68DB9 /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
@@ -323,6 +326,9 @@
 		BFE5660D1AE1526000B935BF /* DateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateItem.swift; path = "Roomguru/Source Files/DateItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFE5660F1AE15B2400B935BF /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = "Roomguru/Source Files/DateCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Requests.swift"; sourceTree = SOURCE_ROOT; };
+		BFF1B5781AE79E7300F9767E /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerViewController.swift; path = "Roomguru/Source Files/PickerViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItem.swift; path = "Roomguru/Source Files/PickerItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomItem.swift; path = "Roomguru/Source Files/RoomItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFF755231AE52C6500F68DB9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = "Roomguru/Source Files/Reusable.swift"; sourceTree = SOURCE_ROOT; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -478,6 +484,8 @@
 				BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */,
 				BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */,
 				BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */,
+				BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */,
+				BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -680,6 +688,7 @@
 				5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */,
 				BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */,
 				5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */,
+				BFF1B5781AE79E7300F9767E /* PickerViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1136,6 +1145,7 @@
 				BF3B25A41ADD610700242859 /* EventQuery.swift in Sources */,
 				5E8AE3051ACC174000A3C146 /* CalendarPickerView.swift in Sources */,
 				BF26E7391ABAC94100B12244 /* EventsListView.swift in Sources */,
+				BFF1B5791AE79E7300F9767E /* PickerViewController.swift in Sources */,
 				5E48423E1AD6843B009E1FA8 /* StringExtensions.swift in Sources */,
 				5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */,
 				BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */,
@@ -1204,6 +1214,7 @@
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */,
 				5E3871941AB065B800C7FEE8 /* SettingsViewController.swift in Sources */,
+				BFF1B57B1AE7BE4A00F9767E /* PickerItem.swift in Sources */,
 				5EDEACF11ADFD22100C4351B /* StickyExpandableFlowLayout.swift in Sources */,
 				5E15F13F1ADBE28A00E1F8BC /* GPPAuthenticator.swift in Sources */,
 				5E8AFF6C1AD3D4E900FB73CD /* CalendarPickerCell.swift in Sources */,
@@ -1215,6 +1226,7 @@
 				BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */,
 				5EDEACF31ADFDD7600C4351B /* SettingsCollectionViewHeader.swift in Sources */,
 				BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */,
+				BFF1B57D1AE7BE6700F9767E /* RoomItem.swift in Sources */,
 				5E15F1451ADC314500E1F8BC /* UserDiskManager.swift in Sources */,
 				BF4336571AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,

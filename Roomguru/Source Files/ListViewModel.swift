@@ -25,6 +25,10 @@ class ListViewModel<T: NSObject> {
         self.sections = sectionsFromItems(items, bySortingKey: sortingKey)
     }
     
+    init(_ items: [T]) {
+        self.items = List<T>(items)
+    }
+    
     subscript(index: Int) -> List<T>? {
         return sections?[index]
     }
@@ -32,6 +36,10 @@ class ListViewModel<T: NSObject> {
     // NGRFixme: Is this second subscript needed?
     subscript(index: Int) -> T? {
         return items[index]
+    }
+    
+    func itemsCount() -> Int {
+        return self.items.count
     }
     
     func sectionsCount() -> Int {
@@ -44,6 +52,10 @@ class ListViewModel<T: NSObject> {
         } else {
             items.remove(indexPath.row)
         }
+    }
+    
+    func itemize(closure: (index: Int, item: T) -> ()) {
+        items.itemize { closure(index: $0, item: $1) }
     }
 }
 
