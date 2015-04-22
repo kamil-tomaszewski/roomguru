@@ -12,6 +12,9 @@ class DashboardViewController: UIViewController {
 
     weak var aView: DashboardView?
     
+    let revokeEventsPageControllerDataSource = RevokeEventsPageViewControllerDataSource()
+    var revokeEventsPageControllerDelegate = EventsPageViewControllerDelegate()
+    
     private let viewModel = DashboardViewModel(items: [
         CellItem(title: "Revoke event", action: .Revoke),
         CellItem(title: "Book first available room", action: .Book),
@@ -53,8 +56,21 @@ extension DashboardViewController {
     }
     
     func didTapRevokeBookedRoom(sender: UIButton) {
-        let revokeEventsController = RevokeEventsViewController()
-        let navigationController = NavigationController(rootViewController: revokeEventsController)
+       
+        let today = NSDate()
+        let titleView = eventsTitleView(today)
+        
+        revokeEventsPageControllerDelegate = EventsPageViewControllerDelegate() { (date) in
+            titleView.detailTextLabel.text = date.string()
+        }
+        
+        let anRevokeEventsPageController = revokeEventsPageViewController(today, dataSource: revokeEventsPageControllerDataSource, delegate: revokeEventsPageControllerDelegate)
+        
+        anRevokeEventsPageController.navigationItem.titleView = titleView
+        anRevokeEventsPageController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel , target: anRevokeEventsPageController, action: Selector("dismissSelf:"))
+        
+        let navigationController = NavigationController(rootViewController: anRevokeEventsPageController)
+         
         presentViewController(navigationController, animated: true, completion: nil)
     }
     
@@ -157,6 +173,21 @@ extension DashboardViewController {
                 }
             )
         })
+    }
+    
+    private func eventsTitleView(date: NSDate) -> BasicTitleView {
+        let titleView = BasicTitleView(frame: CGRectMake(0, 0, 200, 44))
+        titleView.textLabel.text = NSLocalizedString("Revoke event", comment: "")
+        titleView.detailTextLabel.text = date.string()
+        return titleView
+    }
+    
+    private func revokeEventsPageViewController(date: NSDate, dataSource: UIPageViewControllerDataSource, delegate: UIPageViewControllerDelegate) -> UIPageViewController {
+        let pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        pageController.dataSource = dataSource
+        pageController.delegate = delegate
+        pageController.setViewControllers([RevokeEventsViewController(date: date)], direction: .Forward, animated: true, completion: nil)
+        return pageController
     }
 }
 

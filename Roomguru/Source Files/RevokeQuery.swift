@@ -11,11 +11,11 @@ import Alamofire
 
 class RevokeQuery: Query {
     
-    convenience init(_ entry: CalendarEntry) {
+    convenience init(_ event: Event) {
         
         var URLExtension = ""
 
-        if let eventID = entry.event.identifier as String?, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
+        if let eventID = event.identifier as String?, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
             URLExtension = "/calendars/" + userEmail + "/events/" + eventID
         }
         

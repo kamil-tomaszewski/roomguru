@@ -128,6 +128,8 @@
 		5EFE00FB1ADE97DA0083FB8E /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */; };
 		5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
 		6C936E4A1AD8011000C80C46 /* BaseEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C936E491AD8011000C80C46 /* BaseEventCell.swift */; };
+		74547E091AEA4E82005277A6 /* RevocableEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74547E081AEA4E82005277A6 /* RevocableEventCell.swift */; };
+		74F72F7B1AEE287F009ADC2C /* RevokeEventsPageViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F72F7A1AEE287F009ADC2C /* RevokeEventsPageViewControllerDataSource.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */; };
 		7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */; };
@@ -179,7 +181,6 @@
 		BFC79C5F1AE443EF00EEB8DE /* ActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */; };
 		BFC79C611AE4455A00EEB8DE /* RightDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */; };
 		BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */; };
-		BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */; };
 		BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */; };
 		BFE566081AE133F800B935BF /* GroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566071AE133F800B935BF /* GroupItem.swift */; };
 		BFE5660A1AE1342300B935BF /* TextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566091AE1342300B935BF /* TextItem.swift */; };
@@ -323,6 +324,8 @@
 		5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchViewController.swift; path = "Roomguru/Source Files/LaunchViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
 		6C936E491AD8011000C80C46 /* BaseEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseEventCell.swift; path = "Roomguru/Source Files/BaseEventCell.swift"; sourceTree = SOURCE_ROOT; };
+		74547E081AEA4E82005277A6 /* RevocableEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevocableEventCell.swift; sourceTree = SOURCE_ROOT; };
+		74F72F7A1AEE287F009ADC2C /* RevokeEventsPageViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeEventsPageViewControllerDataSource.swift; sourceTree = SOURCE_ROOT; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFrame.swift; path = "Roomguru/Source Files/TimeFrame.swift"; sourceTree = SOURCE_ROOT; };
@@ -370,7 +373,6 @@
 		BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "Roomguru/Source Files/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightDetailTextCell.swift; path = "Roomguru/Source Files/RightDetailTextCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSpec.swift; sourceTree = "<group>"; };
-		BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeEventsViewController.swift; path = "Roomguru/Source Files/RevokeEventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicTitleView.swift; path = "Roomguru/Source Files/BasicTitleView.swift"; sourceTree = SOURCE_ROOT; };
 		BFE566071AE133F800B935BF /* GroupItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupItem.swift; path = "Roomguru/Source Files/GroupItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFE566091AE1342300B935BF /* TextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextItem.swift; path = "Roomguru/Source Files/TextItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -499,6 +501,7 @@
 				5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */,
 				6C936E491AD8011000C80C46 /* BaseEventCell.swift */,
 				BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */,
+				74547E081AEA4E82005277A6 /* RevocableEventCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				BF0A9E4D1AD540290088ED79 /* User.swift */,
 				BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */,
 				BF7B01C31ADBBD1F002763DF /* EventsPageViewControllerDelegate.swift */,
+				74F72F7A1AEE287F009ADC2C /* RevokeEventsPageViewControllerDataSource.swift */,
 			);
 			name = "Object & Models";
 			sourceTree = "<group>";
@@ -763,7 +767,6 @@
 				5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */,
 				BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */,
 				5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */,
-				BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */,
 				5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */,
 				BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */,
 				5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */,
@@ -1240,6 +1243,7 @@
 				5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */,
 				BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */,
 				5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */,
+				74547E091AEA4E82005277A6 /* RevocableEventCell.swift in Sources */,
 				5EDEACF51ADFFFA200C4351B /* SettingsCell.swift in Sources */,
 				BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */,
 				5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */,
@@ -1249,6 +1253,7 @@
 				5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */,
 				5E8A31021AC5B13500E31DD3 /* EventDetailsViewModel.swift in Sources */,
 				BFF755241AE52C6500F68DB9 /* Reusable.swift in Sources */,
+				74F72F7B1AEE287F009ADC2C /* RevokeEventsPageViewControllerDataSource.swift in Sources */,
 				5EFE00F51ADE79210083FB8E /* UIViewExtensions.swift in Sources */,
 				6C936E4A1AD8011000C80C46 /* BaseEventCell.swift in Sources */,
 				BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */,
@@ -1290,7 +1295,6 @@
 				5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */,
 				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,
 				BF0A9E4E1AD540290088ED79 /* User.swift in Sources */,
-				BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */,
 				5E8AE3031ACC172500A3C146 /* CalendarPickerViewController.swift in Sources */,
 				BFE5660A1AE1342300B935BF /* TextItem.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,

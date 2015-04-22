@@ -21,7 +21,7 @@ class EventsViewController: UIViewController {
     let sortingKey = "shortDate"
     let roomSegmentedControl = UISegmentedControl(items: Room.names)
 
-    convenience init(date: NSDate) {
+    convenience init(date: NSDate){
         self.init()
         timeMax = date.hour(23).minute(59).second(59).date
         timeMin = date.midnight
@@ -73,7 +73,7 @@ extension EventsViewController {
             
             if let query = query as? EventsQuery {
                 if let response = response {
-                    let events = response.filter { !$0.isCanceled() }
+                    let events = self.filterEvents(response)
                     return CalendarEntry.caledarEntries(query.calendarID, events: events)
                 }
             }
@@ -82,9 +82,8 @@ extension EventsViewController {
         }, success: { (result: [CalendarEntry]?) -> () in
             Async.background {
                 if let calendarEntries = result {
-                    let sortedEntries = CalendarEntry.sortedByDate(calendarEntries)
-                    let entriesWithGaps = CalendarEntry.entriesWithFreeGaps(sortedEntries)
-                    self.viewModel = ListViewModel(entriesWithGaps, sortingKey: "event.shortDate")
+                    let properEntries = self.createProperCalendarEntries(calendarEntries)
+                    self.viewModel = ListViewModel(properEntries, sortingKey: "event.shortDate")
                 }
             }.main {
                 self.stopActivityIndicator()
@@ -109,6 +108,21 @@ extension EventsViewController {
     private func stopActivityIndicator() {
         self.navigationItem.titleView = self.roomSegmentedControl
     }
+}
+
+// MARK: Filtering
+
+extension EventsViewController {
+    
+    func filterEvents (events: [Event]) -> [Event]{
+        return events.filter{ !$0.isCanceled() }
+    }
+    
+    func createProperCalendarEntries (entries: [CalendarEntry]) -> [CalendarEntry]{
+        let sortedEntries = CalendarEntry.sortedByDate(entries)
+        return CalendarEntry.entriesWithFreeGaps(sortedEntries)
+    }
+    
 }
 
 // MARK: Actions
@@ -275,7 +289,7 @@ extension EventsViewController {
         self.navigationItem.titleView = roomSegmentedControl
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         let tableView: UITableView? = aView?.tableView
         
         tableView?.dataSource = self
@@ -288,4 +302,43 @@ extension EventsViewController {
         (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
 
     }
+}
+
+class RevokeEventsViewController: EventsViewController {
+    
+    override func filterEvents(events: [Event]) -> [Event] {
+        let userEmail = UserPersistenceStore.sharedStore.user?.email
+        return events.filter { !$0.isCanceled() && $0.creator?.email == userEmail }
+    }
+    
+    override func createProperCalendarEntries(entries: [CalendarEntry]) -> [CalendarEntry] {
+        return CalendarEntry.sortedByDate(entries)
+    }
+    
+    override func setupTableView() {
+        super.setupTableView()
+        aView?.tableView.registerClass(RevocableEventCell.self, forCellReuseIdentifier: RevocableEventCell.reuseIdentifier())
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let event = eventFromIndexPath(indexPath)
+        let cell: RevocableEventCell = tableView.dequeueReusableCellWithIdentifier(RevocableEventCell.reuseIdentifier()) as! RevocableEventCell
+        cell.textLabel?.text = event?.summary
+        cell.timeMaxLabel.text = event?.startTime
+        cell.timeMinLabel.text = event?.endTime
+        cell.revokeButtonHandler = {self.revokeEventAtIndexPath(indexPath)}
+        return cell
+    }
+    
+    func revokeEventAtIndexPath(indexPath: NSIndexPath){
+        if let event = eventFromIndexPath(indexPath){
+        BookingManager.revokeEvent(event, success: {
+            self.viewModel?.removeAtIndexPath(indexPath)
+            self.aView?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            }, failure: { error in
+                UIAlertView(error: error).show()
+            })
+        }
+    }
+
 }

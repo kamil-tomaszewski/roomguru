@@ -74,7 +74,7 @@ class BookingManager: NSObject {
         }, failure: failure)
     }
     
-    class func revokeCalendarEntry(entry: CalendarEntry, success: VoidBlock, failure: ErrorBlock) {
+    class func revokeEvent(entry: Event, success: VoidBlock, failure: ErrorBlock) {
         let query = RevokeQuery(entry)
         NetworkManager.sharedInstance.request(query, success: { (response) -> () in
             success()
