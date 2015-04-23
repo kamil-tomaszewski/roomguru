@@ -136,8 +136,7 @@ class EditEventViewModel: GroupedListViewModel {
             let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
                 if let item = item as? RecurrenceItem {
                     repeatItem.detailDescription = item.title
-                    // NGRTodo: Implement recurrence parameter in eventQuery
-                    // self?.eventQuery.recurrence = item.value
+                     self?.eventQuery.recurrence = item.value
                     if let indexPaths = self?.indexPathsForItems([repeatItem]) {
                         self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
                     }

@@ -88,6 +88,11 @@ class EventQuery: BookingQuery {
         }
     }
     
+    var recurrence: String {
+        get { return (self[RecurrenceKey] as! [String]).first ?? "" }
+        set { self[RecurrenceKey] = [newValue] }
+    }
+    
     func setAttendees(emails: [String]) {
         _attendees = []
         for email in emails {
@@ -131,6 +136,7 @@ class EventQuery: BookingQuery {
     private let EmailKey = "email"
     private let ResponseStatusKey = "responseStatus"
     private let TimeZoneKey = "timeZone"
+    private let RecurrenceKey = "recurrence"
     
     // MARK: Private members
     
