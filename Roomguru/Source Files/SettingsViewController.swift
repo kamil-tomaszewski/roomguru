@@ -62,7 +62,7 @@ extension SettingsViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         if self.header == nil {
-            self.header = (collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: SettingsCollectionViewHeader.reuseIdentifier, forIndexPath: indexPath) as! SettingsCollectionViewHeader)
+            self.header = (collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: SettingsCollectionViewHeader.reuseIdentifier(), forIndexPath: indexPath) as! SettingsCollectionViewHeader)
         }
         return header!
     }
@@ -116,7 +116,7 @@ private extension SettingsViewController {
         
         aView?.collectionView?.delegate = self
         aView?.collectionView?.dataSource = self
-        aView?.collectionView?.registerClass(SettingsCell.self, forCellWithReuseIdentifier: SettingsCell.reuseIdentifier())
-        aView?.collectionView?.registerClass(SettingsCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: SettingsCollectionViewHeader.reuseIdentifier)
+        aView?.collectionView?.registerClass(SettingsCell.self, type: .Cell)
+        aView?.collectionView?.registerClass(SettingsCollectionViewHeader.self, type: .Header)
     }
 }

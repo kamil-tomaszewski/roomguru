@@ -9,13 +9,15 @@
 import UIKit
 import Cartography
 
-class SettingsCollectionViewHeader: UICollectionReusableView {
-    
-    class var reuseIdentifier: String { get { return "SettingsCollectionViewHeaderReuseIdentifier" } }
+class SettingsCollectionViewHeader: UICollectionReusableView, Reusable {
 
     private let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
     private let avatarView = AvatarView(frame: CGRectMake(0, 0, 110, 110))
     private let backgroundImageView = UIImageView()
+    
+    class func reuseIdentifier() -> String {
+        return "SettingsCollectionViewHeaderReuseIdentifier"
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

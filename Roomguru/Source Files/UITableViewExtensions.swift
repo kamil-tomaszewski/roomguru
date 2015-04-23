@@ -33,7 +33,7 @@ extension UITableView {
     }
     
     func registerClass<T where T: UITableViewCell, T: Reusable>(aClass: T.Type) {
-        self.registerClass(aClass, forCellReuseIdentifier: T.reuseIdentifier())
+        registerClass(aClass, forCellReuseIdentifier: T.reuseIdentifier())
     }
 }
 

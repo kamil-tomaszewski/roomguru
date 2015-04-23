@@ -60,6 +60,7 @@
 		5E67FE6F1AE904D9003AB827 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E571AB060BB0042E16F /* QuickLook.framework */; };
 		5E67FE701AE904DB003AB827 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
 		5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
+		5E67FE731AE91220003AB827 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */; };
 		5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */; };
 		5E6B40AE1AC947B1006C47EE /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */; };
 		5E769EF71ACE93550061289D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EF61ACE93550061289D /* LoadingView.swift */; };
@@ -243,6 +244,7 @@
 		5E5F558E1AB6CAB6005F3CEE /* SettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingItem.swift; path = "Roomguru/Source Files/SettingItem.swift"; sourceTree = SOURCE_ROOT; };
 		5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = Frameworks/FontAwesome.swift; sourceTree = "<group>"; };
 		5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Roomguru/Resources/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
+		5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewExtensions.swift; path = "Roomguru/Source Files/UICollectionViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCell.swift; path = "Roomguru/Source Files/DescriptionCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSAttributedStringExtensions.swift; path = "Roomguru/Source Files/NSAttributedStringExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E769EF61ACE93550061289D /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = "Roomguru/Source Files/LoadingView.swift"; sourceTree = SOURCE_ROOT; };
@@ -835,6 +837,7 @@
 				7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */,
 				5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */,
 				5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */,
+				5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */,
 				5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */,
 				5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */,
 				5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */,
@@ -1287,6 +1290,7 @@
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
 				BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */,
 				BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */,
+				5E67FE731AE91220003AB827 /* UICollectionViewExtensions.swift in Sources */,
 				BF26E73B1ABAC95000B12244 /* EventsViewController.swift in Sources */,
 				5EC49D931ADC606D00B798F5 /* UserPersistenceStore.swift in Sources */,
 				5E769EF71ACE93550061289D /* LoadingView.swift in Sources */,
