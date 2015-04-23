@@ -113,4 +113,4 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
   URITemplate: 0dbf40f0e378eb9c6d04cc08e6101fb82d126dc3
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.0.beta.1
