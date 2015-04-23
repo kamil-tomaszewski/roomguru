@@ -167,8 +167,8 @@ private extension EventDetailsViewController {
     private func setupTableView() {
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
-        aView?.tableView.registerClass(AttendeeCell.self, forCellReuseIdentifier: AttendeeCell.reuseIdentifier())
-        aView?.tableView.registerClass(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.reuseIdentifier())
-        aView?.tableView.registerClass(ButtonCell.self, forCellReuseIdentifier: ButtonCell.reuseIdentifier())
+        aView?.tableView.registerClass(AttendeeCell.self)
+        aView?.tableView.registerClass(DescriptionCell.self)
+        aView?.tableView.registerClass(ButtonCell.self)
     }
 }

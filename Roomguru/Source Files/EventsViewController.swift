@@ -281,8 +281,8 @@ extension EventsViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
 
-        tableView?.registerClass(EventCell.self, forCellReuseIdentifier: EventCell.reuseIdentifier())
-        tableView?.registerClass(FreeEventCell.self, forCellReuseIdentifier: FreeEventCell.reuseIdentifier())
+        tableView?.registerClass(EventCell.self)
+        tableView?.registerClass(FreeEventCell.self)
         
         (aView?.tableView.tableHeaderView as! ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
         (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))

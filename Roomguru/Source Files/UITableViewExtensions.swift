@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
-import Foundation
-
 extension UITableView {
     
     func deselectRowIfSelectedAnimated(animated: Bool) {
@@ -33,4 +31,10 @@ extension UITableView {
         }
         self.setContentOffset(CGPointMake(0, y), animated: animated)
     }
+    
+    func registerClass<T where T: UITableViewCell, T: Reusable>(aClass: T.Type) {
+        self.registerClass(aClass, forCellReuseIdentifier: T.reuseIdentifier())
+    }
 }
+
+

@@ -119,7 +119,7 @@ extension DashboardViewController {
         
         tableView?.delegate = self
         tableView?.dataSource = self
-        tableView?.registerClass(ButtonCell.self, forCellReuseIdentifier: ButtonCell.reuseIdentifier())
+        tableView?.registerClass(ButtonCell.self)
     }
     
     private func centralizeTableView() {

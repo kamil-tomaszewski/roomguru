@@ -145,6 +145,6 @@ extension CalendarPickerViewController {
     private func setupTableView() {
         aView?.tableView.dataSource = self;
         aView?.tableView.delegate = self;
-        aView?.tableView.registerClass(CalendarPickerCell.self, forCellReuseIdentifier: CalendarPickerCell.reuseIdentifier())
+        aView?.tableView.registerClass(CalendarPickerCell.self)
     }
 }

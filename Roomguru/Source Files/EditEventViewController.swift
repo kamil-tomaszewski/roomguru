@@ -76,7 +76,7 @@ extension EditEventViewController: Presenter {
 extension EditEventViewController: TableViewConfigurable {
     
     func registerCellsInTableView(tableView: UITableView) {
-        tableView.registerClass(PickerItemCell.self, forCellReuseIdentifier: PickerItemCell.reuseIdentifier())
+        tableView.registerClass(PickerItemCell.self)
     }
     
     func configureCell(cell: UITableViewCell, forItem item: PickerItem) {
@@ -238,12 +238,12 @@ private extension EditEventViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
         
-        tableView?.registerClass(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier())
-        tableView?.registerClass(SwitchCell.self, forCellReuseIdentifier: SwitchCell.reuseIdentifier())
-        tableView?.registerClass(DateCell.self, forCellReuseIdentifier: DateCell.reuseIdentifier())
-        tableView?.registerClass(TextViewCell.self, forCellReuseIdentifier: TextViewCell.reuseIdentifier())
-        tableView?.registerClass(DatePickerCell.self, forCellReuseIdentifier: DatePickerCell.reuseIdentifier())
-        tableView?.registerClass(RightDetailTextCell.self, forCellReuseIdentifier: RightDetailTextCell.reuseIdentifier())
+        tableView?.registerClass(TextFieldCell.self)
+        tableView?.registerClass(SwitchCell.self)
+        tableView?.registerClass(DateCell.self)
+        tableView?.registerClass(TextViewCell.self)
+        tableView?.registerClass(DatePickerCell.self)
+        tableView?.registerClass(RightDetailTextCell.self)
     }
     
     func setupBarButtons() {
