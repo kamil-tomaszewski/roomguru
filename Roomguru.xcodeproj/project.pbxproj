@@ -34,6 +34,32 @@
 		5E5F558F1AB6CAB6005F3CEE /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingItem.swift */; };
 		5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
 		5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */; };
+		5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
+		5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* Calendar.swift */; };
+		5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
+		5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */; };
+		5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */; };
+		5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */; };
+		5E67FE5E1AE90483003AB827 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9E4D1AD540290088ED79 /* User.swift */; };
+		5E67FE5F1AE90494003AB827 /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
+		5E67FE601AE904AC003AB827 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */; };
+		5E67FE611AE904AF003AB827 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */; };
+		5E67FE621AE904B1003AB827 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
+		5E67FE631AE904B5003AB827 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD72F1AAF261E00B75582 /* AddressBook.framework */; };
+		5E67FE641AE904B8003AB827 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */; };
+		5E67FE651AE904BB003AB827 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7331AAF262E00B75582 /* Foundation.framework */; };
+		5E67FE661AE904BD003AB827 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7371AAF263C00B75582 /* CoreMotion.framework */; };
+		5E67FE671AE904BF003AB827 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7351AAF263400B75582 /* CoreLocation.framework */; };
+		5E67FE681AE904C1003AB827 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7391AAF264300B75582 /* CoreGraphics.framework */; };
+		5E67FE691AE904C5003AB827 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73B1AAF264B00B75582 /* MediaPlayer.framework */; };
+		5E67FE6A1AE904C7003AB827 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */; };
+		5E67FE6B1AE904CD003AB827 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73D1AAF265300B75582 /* Security.framework */; };
+		5E67FE6C1AE904CE003AB827 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73D1AAF265300B75582 /* Security.framework */; };
+		5E67FE6D1AE904D5003AB827 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E531AB0609C0042E16F /* CoreText.framework */; };
+		5E67FE6E1AE904D7003AB827 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */; };
+		5E67FE6F1AE904D9003AB827 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E571AB060BB0042E16F /* QuickLook.framework */; };
+		5E67FE701AE904DB003AB827 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
+		5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
 		5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */; };
 		5E6B40AE1AC947B1006C47EE /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */; };
 		5E769EF71ACE93550061289D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769EF61ACE93550061289D /* LoadingView.swift */; };
@@ -80,6 +106,7 @@
 		5EDEACF11ADFD22100C4351B /* StickyExpandableFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */; };
 		5EDEACF31ADFDD7600C4351B /* SettingsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */; };
 		5EDEACF51ADFFFA200C4351B /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */; };
+		5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE73F291AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift */; };
 		5EF095591ACD91AD001E5C69 /* CalendarPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */; };
 		5EF1C5F21AD425B200CC9173 /* CalendarNameCustomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */; };
 		5EF1C5F41AD425CD00CC9173 /* CalendarNameCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F31AD425CD00CC9173 /* CalendarNameCustomizerView.swift */; };
@@ -265,6 +292,7 @@
 		5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StickyExpandableFlowLayout.swift; path = "Roomguru/Source Files/StickyExpandableFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
 		5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCollectionViewHeader.swift; path = "Roomguru/Source Files/SettingsCollectionViewHeader.swift"; sourceTree = SOURCE_ROOT; };
 		5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = "Roomguru/Source Files/SettingsCell.swift"; sourceTree = SOURCE_ROOT; };
+		5EE73F291AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPersistenceStoreSpec.swift; sourceTree = "<group>"; };
 		5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerViewModel.swift; path = "Roomguru/Source Files/CalendarPickerViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerViewController.swift; path = "Roomguru/Source Files/CalendarNameCustomizerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EF1C5F31AD425CD00CC9173 /* CalendarNameCustomizerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerView.swift; path = "Roomguru/Source Files/CalendarNameCustomizerView.swift"; sourceTree = SOURCE_ROOT; };
@@ -358,6 +386,7 @@
 				5EAFD7301AAF261E00B75582 /* AddressBook.framework in Frameworks */,
 				5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */,
 				5E38FB3C1AAF23F10057DD8B /* GoogleOpenSource.framework in Frameworks */,
+				5E67FE6B1AE904CD003AB827 /* Security.framework in Frameworks */,
 				96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,7 +403,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E67FE701AE904DB003AB827 /* QuartzCore.framework in Frameworks */,
+				5E67FE611AE904AF003AB827 /* GoogleOpenSource.framework in Frameworks */,
+				5E67FE6E1AE904D7003AB827 /* MobileCoreServices.framework in Frameworks */,
+				5E67FE651AE904BB003AB827 /* Foundation.framework in Frameworks */,
+				5E67FE621AE904B1003AB827 /* GooglePlus.framework in Frameworks */,
+				5E67FE681AE904C1003AB827 /* CoreGraphics.framework in Frameworks */,
+				5E67FE631AE904B5003AB827 /* AddressBook.framework in Frameworks */,
+				5E67FE671AE904BF003AB827 /* CoreLocation.framework in Frameworks */,
+				5E67FE6A1AE904C7003AB827 /* SystemConfiguration.framework in Frameworks */,
+				5E67FE6F1AE904D9003AB827 /* QuickLook.framework in Frameworks */,
+				5E67FE691AE904C5003AB827 /* MediaPlayer.framework in Frameworks */,
 				76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */,
+				5E67FE641AE904B8003AB827 /* AssetsLibrary.framework in Frameworks */,
+				5E67FE6C1AE904CE003AB827 /* Security.framework in Frameworks */,
+				5E67FE661AE904BD003AB827 /* CoreMotion.framework in Frameworks */,
+				5E67FE6D1AE904D5003AB827 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +655,7 @@
 			children = (
 				5E147CBC1AA8B54100EDD97C /* Helper */,
 				5E1FF7661AA8A8BA00467837 /* MathSpec.swift */,
+				5EE73F291AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -916,6 +961,7 @@
 					};
 					5E3A98351AA73A6500CE2F20 = {
 						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 5E3A97E71AA72F0A00CE2F20;
 					};
 				};
 			};
@@ -963,6 +1009,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E67FE601AE904AC003AB827 /* GooglePlus.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,7 +1306,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
+				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,
+				5E67FE5F1AE90494003AB827 /* GPPProfileProvider.swift in Sources */,
+				5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */,
 				5E1FF7671AA8A8BA00467837 /* MathSpec.swift in Sources */,
+				5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */,
+				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,
+				5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */,
+				5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */,
+				5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */,
+				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1462,12 +1519,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98581AA741FA00CE2F20 /* Tests-Test.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1478,6 +1537,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Unit-Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roomguru.app/Roomguru";
 			};
 			name = Test;
 		};
@@ -1485,17 +1545,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98571AA741FA00CE2F20 /* Tests-Staging.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "Supporting Files/Unit-Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Unit-Tests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roomguru.app/Roomguru";
 			};
 			name = Staging;
 		};
@@ -1574,12 +1637,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98551AA741FA00CE2F20 /* Tests-Development.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1590,6 +1655,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Unit-Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roomguru.app/Roomguru";
 			};
 			name = Development;
 		};
@@ -1685,17 +1751,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E3A98561AA741FA00CE2F20 /* Tests-Production.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "Supporting Files/Unit-Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Unit-Tests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roomguru.app/Roomguru";
 			};
 			name = Production;
 		};

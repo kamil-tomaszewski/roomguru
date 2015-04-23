@@ -42,7 +42,7 @@ pod 'DateKit',
     :branch => "master"
 
 
-target 'Tests', :exclusive => true do link_with 'Unit Tests', 'Functional Tests'
+target 'Tests' do link_with 'Unit Tests', 'Functional Tests'
 
     pod 'KIF', '~> 3.0',
         :configurations => ['Test']

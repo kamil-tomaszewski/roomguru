@@ -37,8 +37,6 @@ class CalendarPersistenceStore {
         return matchingCalendar(calendar) != nil
     }
     
-    // MARK: Saving and Reading
-    
     func saveCalendars(calendars: [Calendar]) {
         if let key = key() {
             let dataRepresentation = NSKeyedArchiver.archivedDataWithRootObject(calendars)
@@ -48,13 +46,6 @@ class CalendarPersistenceStore {
         self.calendars = calendars
     }
     
-    func fetch() -> [Calendar]? {
-        if let key = key(), data = Defaults[key].data {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Calendar]
-        }
-        return nil
-    }
-    
     func clear() {
         if let key = key() {
             Defaults.remove(key)
@@ -62,9 +53,19 @@ class CalendarPersistenceStore {
         }
         calendars = []
     }
+}
+
+private extension CalendarPersistenceStore {
     
-    private func key() -> String? {
+    func key() -> String? {
         let user = UserPersistenceStore.sharedStore.user
         return user?.email.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5()
+    }
+    
+    func fetch() -> [Calendar]? {
+        if let key = key(), data = Defaults[key].data {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Calendar]
+        }
+        return nil
     }
 }
