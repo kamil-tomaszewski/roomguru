@@ -38,9 +38,9 @@ extension UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func hasControllerOfTypeInNavigationStack<T:UIViewController>(controller: T.Type) -> T? {
+    func controllersOfTypeInNavigationStack<T: UIViewController>(controller: T.Type) -> [T]? {
         if let navigation = self.presentedViewController as? UINavigationController {
-            return navigation.viewControllers.filter { $0 is T }.first as? T
+            return navigation.viewControllers.filter { $0 is T } as? [T]
         }
         return nil
     }
