@@ -76,25 +76,21 @@ extension EditEventViewController: Presenter {
 extension EditEventViewController: TableViewConfigurable {
     
     func registerCellsInTableView(tableView: UITableView) {
-        tableView.registerClass(CalendarPickerCell.self, forCellReuseIdentifier: CalendarPickerCell.reuseIdentifier())
+        tableView.registerClass(PickerItemCell.self, forCellReuseIdentifier: PickerItemCell.reuseIdentifier())
     }
     
     func configureCell(cell: UITableViewCell, forItem item: PickerItem) {
-        if let cell = cell as? CalendarPickerCell, item = item as? RoomItem {
-
-            // NGRTemp: Other cell has to be implemented
-            cell.footerLabel.removeFromSuperview()
-            cell.headerLabel.text = item.name
+        if let cell = cell as? PickerItemCell {
+            
+        }
+        if let cell = cell as? PickerItemCell, item = item as? RoomItem {
+            cell.textLabel?.text = item.title
             cell.checkmarkLabel.hidden = !item.selected
-            cell.accessoryType = .None
         }
     }
     
     func reuseIdenfitierForItem(item: PickerItem) -> String {
-        if let item = item as? RoomItem {
-            return CalendarPickerCell.reuseIdentifier()
-        }
-        return ""
+        return PickerItemCell.reuseIdentifier()
     }
 }
 

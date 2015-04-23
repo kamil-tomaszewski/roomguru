@@ -9,5 +9,11 @@
 import Foundation
 
 class PickerItem: NSObject {
-    var selected = false
+    var title: String
+    var selected: Bool
+    
+    init(title: String = "", selected: Bool = false) {
+        self.title = title
+        self.selected = selected
+    }
 }

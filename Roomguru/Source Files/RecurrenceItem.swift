@@ -17,12 +17,11 @@ class RecurrenceItem: PickerItem {
         case Yearly = "YEARLY"
     }
     
-    var title: String
     var recurrence: Recurrence
     var value: String { get { return "RRULE:FREQ=" + recurrence.rawValue + ";BYDAY=MO,TU,WE,TH,FR" } }
     
     init(title: String, recurrence: Recurrence) {
-        self.title = title
         self.recurrence = recurrence
+        super.init(title: title)
     }
 }

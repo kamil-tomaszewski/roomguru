@@ -10,12 +10,13 @@ import Foundation
 
 class RoomItem: PickerItem {
     
-    var name: String { get { return room.name } }
+    override var title: String { get { return room.name } set {} }
     var id: String { get { return room.id } }
     
     private let room: (name: String, id: String)
     
     init(room: (name: String, id: String)) {
         self.room = room
+        super.init()
     }
 }

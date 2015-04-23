@@ -118,7 +118,7 @@ class EditEventViewModel: GroupedListViewModel {
             let viewModel = ListViewModel(self.rooms) as ListViewModel<PickerItem>
             let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
                 if let item = item as? RoomItem {
-                    calendarItem.detailDescription = item.name
+                    calendarItem.detailDescription = item.title
                     self?.eventQuery.calendarID = item.id
                     
                     if let indexPaths = self?.indexPathsForItems([calendarItem]) {
