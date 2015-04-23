@@ -81,9 +81,6 @@ extension EditEventViewController: TableViewConfigurable {
     
     func configureCell(cell: UITableViewCell, forItem item: PickerItem) {
         if let cell = cell as? PickerItemCell {
-            
-        }
-        if let cell = cell as? PickerItemCell, item = item as? RoomItem {
             cell.textLabel?.text = item.title
             cell.checkmarkLabel.hidden = !item.selected
         }

@@ -41,6 +41,7 @@ class EditEventViewModel: GroupedListViewModel {
         rooms = CalendarPersistenceStore.sharedStore.rooms().map { RoomItem(room: $0) }
 
         let reccurenceItems = [
+            RecurrenceItem(title: NSLocalizedString("None", comment: ""), recurrence: .None, selected: true),
             RecurrenceItem(title: NSLocalizedString("Daily", comment: ""), recurrence: .Daily),
             RecurrenceItem(title: NSLocalizedString("Weekly", comment: ""), recurrence: .Weekly),
             RecurrenceItem(title: NSLocalizedString("Monthly", comment: ""), recurrence: .Monthly),
@@ -126,7 +127,7 @@ class EditEventViewModel: GroupedListViewModel {
                     }
                 }
             }
-            
+            controller.title = NSLocalizedString("Select room", comment: "")
             return controller
         }
 
@@ -142,7 +143,7 @@ class EditEventViewModel: GroupedListViewModel {
                     }
                 }
             }
-            
+            controller.title = NSLocalizedString("Repeat event", comment: "")
             return controller
         }
         

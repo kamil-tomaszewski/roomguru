@@ -11,6 +11,7 @@ import Foundation
 class RecurrenceItem: PickerItem {
     
     enum Recurrence: String {
+        case None = ""
         case Daily = "DAILY"
         case Weekly = "WEEKLY"
         case Monthly = "MONTHLY"
@@ -18,10 +19,17 @@ class RecurrenceItem: PickerItem {
     }
     
     var recurrence: Recurrence
-    var value: String { get { return "RRULE:FREQ=" + recurrence.rawValue + ";BYDAY=MO,TU,WE,TH,FR" } }
+    var value: String {
+        get {
+            if recurrence == .None {
+                return recurrence.rawValue
+            }
+            return "RRULE:FREQ=" + recurrence.rawValue + ";BYDAY=MO,TU,WE,TH,FR"
+        }
+    }
     
-    init(title: String, recurrence: Recurrence) {
+    init(title: String, recurrence: Recurrence, selected: Bool = false) {
         self.recurrence = recurrence
-        super.init(title: title)
+        super.init(title: title, selected: selected)
     }
 }
