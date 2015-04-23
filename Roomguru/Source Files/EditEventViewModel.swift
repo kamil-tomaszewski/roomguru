@@ -49,7 +49,6 @@ class EditEventViewModel: GroupedListViewModel {
         ]
         // MARK: Parameters
         
-        let summary = query.summary
         let summaryPlaceholder = NSLocalizedString("Summary", comment: "")
         let allDayTitle = NSLocalizedString("All-day", comment: "")
         let startDateTitle = NSLocalizedString("Starts", comment: "")
@@ -61,10 +60,7 @@ class EditEventViewModel: GroupedListViewModel {
         
         // MARK: Create items
         
-        let summaryItem = TextItem(title: summary, placeholder: summaryPlaceholder, text: summaryPlaceholder) { text in
-            query.summary = text
-        }
-        
+        let summaryItem = TextItem(placeholder: summaryPlaceholder)
         let allDayItem = SwitchItem(title: allDayTitle)
         let startDateItem = DateItem(title: startDateTitle)
         let endDateItem = DateItem(title: endDateTitle, date: startDateItem.date.minutes + 30)
@@ -86,6 +82,19 @@ class EditEventViewModel: GroupedListViewModel {
         
         // MARK: onValueChanged blocks
         
+        summaryItem.onValueChanged = { [weak self] text in
+            if let error = summaryItem.validate(text) {
+                summaryItem.validationError = error
+            } else {
+                summaryItem.validationError = nil
+                query.summary = text
+            }
+            
+            if let indexPaths = self?.indexPathsForItems([summaryItem] as [GroupItem]) {
+                self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+            }
+        }
+
         allDayItem.onValueChanged = { state in
             let date = startDateItem.date
             self.eventQuery.allDay = state
@@ -148,20 +157,28 @@ class EditEventViewModel: GroupedListViewModel {
         
         // MARK: Validation
         
-        startDateItem.validation = { date in
-            if date >= NSDate().midnight {
-                return nil
+        summaryItem.validation = { string in
+            if string.length < 5 {
+                let message = NSLocalizedString("Summary should have at least 5 characters", comment: "")
+                return NSError(message: message)
             }
-            let message = NSLocalizedString("Cannot pick date earlier than today's midnight", comment: "")
-            return NSError(message: message)
+            return nil
+        }
+        
+        startDateItem.validation = { date in
+            if date < NSDate().midnight {
+                let message = NSLocalizedString("Cannot pick date earlier than today's midnight", comment: "")
+                return NSError(message: message)
+            }
+            return nil
         }
         
         endDateItem.validation = { date in
-            if date >= startDateItem.date {
-                return nil
+            if date < startDateItem.date {
+                let message = NSLocalizedString("Cannot pick date earlier than", comment: "") + " " + startDateItem.dateString
+                return NSError(message: message)
             }
-            let message = NSLocalizedString("Cannot pick date earlier than", comment: "") + " " + startDateItem.dateString
-            return NSError(message: message)
+            return nil
         }
     }
     
@@ -234,6 +251,30 @@ extension EditEventViewModel {
         if let controller = item.action?() {
             presenter?.shouldPresentViewController(controller)
         }
+    }
+}
+
+// MARK: Validation
+
+extension EditEventViewModel {
+    
+    func isModelValid() -> Bool {
+        var reloadIndexPaths: [NSIndexPath] = []
+        var errors: [NSError] = []
+        
+        itemize { (path, item) in
+            if var item = item as? Testable {
+                if let error = item.validate(item.valueToValidate) {
+                    item.validationError = error
+                    println(error)
+                    errors.append(error)
+                }
+                reloadIndexPaths.append(NSIndexPath(forRow: path.row, inSection: path.section))
+            }
+        }
+        
+        delegate?.didChangeItemsAtIndexPaths(reloadIndexPaths)
+        return errors.isEmpty
     }
 }
 

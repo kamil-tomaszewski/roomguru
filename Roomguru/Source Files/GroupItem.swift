@@ -12,6 +12,12 @@ protocol Updatable {
     func update()
 }
 
+protocol Testable {
+    var valueToValidate: AnyObject { get }
+    var validationError: NSError? { get set }
+    func validate(object: AnyObject) -> NSError?
+}
+
 class GroupItem: NSObject {
     
     enum Category {

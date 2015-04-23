@@ -9,17 +9,19 @@
 import UIKit
 
 class TextItem: GroupItem {
-    var placeholder: String
-    var onValueChanged: StringBlock
     
-    init(title: String, placeholder: String, text: String, onValueChanged: StringBlock) {
+    var placeholder: String
+    var onValueChanged: StringBlock?
+    var validation: StringValidationBlock?
+    var text: String
+    
+    init(title: String = "", placeholder: String, text: String = "") {
         self.placeholder = placeholder
-        self.onValueChanged = onValueChanged
         self.text = text
         super.init(title: title, category: .PlainText)
     }
     
-    private var text: String
+    private var _validationError: NSError?
 }
 
 extension TextItem: UITextFieldDelegate {
@@ -31,7 +33,7 @@ extension TextItem: UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         text = textField.text
-        onValueChanged(string: text)
+        onValueChanged?(string: text)
     }
 }
 
@@ -40,6 +42,24 @@ extension TextItem: UITextFieldDelegate {
 extension TextItem: Updatable {
     
     func update() {
-        onValueChanged(string: text)
+        onValueChanged?(string: text)
+    }
+}
+
+// MARK: Testable 
+
+extension TextItem: Testable {
+    
+    var valueToValidate: AnyObject { get { return text } }
+    var validationError: NSError? {
+        get { return _validationError }
+        set { _validationError = newValue }
+    }
+    
+    func validate(object: AnyObject) -> NSError? {
+        if let text = object as? String {
+            return validation?(string: text)
+        }
+        return nil
     }
 }

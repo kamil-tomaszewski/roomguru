@@ -17,7 +17,6 @@ class DateItem: GroupItem {
     var dateString: String { get { return dateFormatter.stringFromDate(date) } }
 
     var validation: DateValidationBlock?
-    var validationError: NSError?
     var onValueChanged: DateBlock?
     
     init(title: String, date: NSDate = NSDate()) {
@@ -29,10 +28,7 @@ class DateItem: GroupItem {
         super.init(title: title, category: .Date)
     }
     
-    func validate(date: NSDate) -> NSError? {
-        return validation?(date: date)
-    }
-    
+    private var _validationError: NSError?
     private let dateFormatter = NSDateFormatter()
 }
 
@@ -42,5 +38,24 @@ extension DateItem: Updatable {
     
     func update() {
         onValueChanged?(date: date)
+    }
+}
+
+// MARK: Testable
+
+extension DateItem: Testable {
+    
+    var valueToValidate: AnyObject { get { return date } }
+    
+    var validationError: NSError? {
+        get { return _validationError }
+        set { _validationError = newValue }
+    }
+    
+    func validate(object: AnyObject) -> NSError? {
+        if let date = object as? NSDate {
+            return validation?(date: date)
+        }
+        return nil
     }
 }

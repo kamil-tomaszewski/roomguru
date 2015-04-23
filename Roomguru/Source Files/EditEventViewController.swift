@@ -164,12 +164,15 @@ extension EditEventViewController {
     
     func didTapSaveBarButton(sender: UIBarButtonItem) {
         view.endEditing(true)
-        viewModel?.saveEvent({ response in
-            self.dismissSelf(self.viewModel)
-        }, failure: { error in
-            // NGRTemp:
-            println(error)
-        })
+        
+        if let viewModel = viewModel where viewModel.isModelValid() {
+            viewModel.saveEvent({ response in
+                self.dismissSelf(self.viewModel)
+            }, failure: { error in
+                // NGRTemp:
+                println(error)
+            })
+        }
     }
     
     func didTapDismissBarButton(sender: UIBarButtonItem) {
@@ -184,7 +187,8 @@ private extension EditEventViewController {
     func configureTextFieldCell(cell: TextFieldCell, forItem item: TextItem) -> UITableViewCell {
         cell.textField.delegate = item
         cell.textField.placeholder = item.placeholder
-        cell.textField.text = item.title
+        cell.validationError = item.validationError
+        cell.textField.text = item.text
         cell.selectionStyle = .None
         return cell
     }

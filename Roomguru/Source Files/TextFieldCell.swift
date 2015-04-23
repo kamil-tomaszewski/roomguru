@@ -16,6 +16,17 @@ class TextFieldCell: UITableViewCell, Reusable {
     }
     
     let textField = UITextField()
+    var validationError: NSError? {
+        didSet {
+            if validationError != nil {
+                textField.rightViewMode = .Always
+                textField.clearButtonMode = .WhileEditing
+            } else {
+                textField.rightViewMode = .Never
+                textField.clearButtonMode = .Never
+            }
+        }
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,14 +39,31 @@ class TextFieldCell: UITableViewCell, Reusable {
     }
     
     private func commonInit() {
-        textField.tintColor = UIColor.ngOrangeColor()
+        configureTextField(textField)
         addSubview(textField)
         defineConstraints()
     }
     
+    private func configureTextField(textField: UITextField) {
+        textField.rightView = rightViewForTextField()
+        textField.rightViewMode = .Always
+        textField.clearButtonMode = .Never
+        textField.tintColor = UIColor.ngOrangeColor()
+    }
+    
+    private func rightViewForTextField() -> UIView {
+        let rightViewFrame = CGRectMake(0, 0, 30, 30)
+        let rightViewLabel = UILabel(frame: rightViewFrame)
+        rightViewLabel.font = UIFont.fontAwesomeOfSize(18)
+        rightViewLabel.text = String.fontAwesomeIconWithName(.ExclamationCircle)
+        rightViewLabel.textColor = UIColor.ngRedColor()
+        rightViewLabel.textAlignment = .Center
+        return rightViewLabel
+    }
+    
     private func defineConstraints() {
         
-        layout(textField) { (field) in
+        layout(textField) { field in
             
             let margin: CGFloat = 15
             
