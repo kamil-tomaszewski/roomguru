@@ -40,22 +40,14 @@ class UserPersistenceStore {
 
         //do nothing if already exists
         if user?.email == email {
+            downloadProfileImageIfNeccessary()
             return
         }
         
         clear()
-        self.user = User(email: email)
-        self.save()
-        
-        if !shouldDownloadImage() {
-            return
-        }
-        
-        GPPProfileProvider.downloadImageURLWithCompletion { (success: Bool, url: String) in
-            if success {
-                self.downloadImageFromURL(url)
-            }
-        }
+        user = User(email: email)
+        save()
+        downloadProfileImageIfNeccessary()
     }
     
     func userImage() -> UIImage? {
@@ -69,6 +61,19 @@ class UserPersistenceStore {
 // MARK: Private
 
 private extension UserPersistenceStore {
+    
+    func downloadProfileImageIfNeccessary() {
+        
+        if !shouldDownloadImage() {
+            return
+        }
+        
+        GPPProfileProvider.downloadImageURLWithCompletion { (success, url) in
+            if success {
+                self.downloadImageFromURL(url)
+            }
+        }
+    }
     
     func shouldDownloadImage() -> Bool {
         if let id = hash() {
