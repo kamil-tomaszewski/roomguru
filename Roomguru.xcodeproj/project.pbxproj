@@ -40,7 +40,6 @@
 		5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */; };
 		5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */; };
 		5E67FE5E1AE90483003AB827 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9E4D1AD540290088ED79 /* User.swift */; };
-		5E67FE5F1AE90494003AB827 /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
 		5E67FE601AE904AC003AB827 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */; };
 		5E67FE611AE904AF003AB827 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */; };
 		5E67FE621AE904B1003AB827 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
@@ -101,6 +100,7 @@
 		5EAFD7401AAF265E00B75582 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */; };
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
 		5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
+		5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
 		5EBCB76B1ACAA67F001F6D18 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */; };
 		5EC49D931ADC606D00B798F5 /* UserPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */; };
 		5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */; };
@@ -1334,8 +1334,8 @@
 				BF8867671AE932CB009DA028 /* ListSharedExample.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
+				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
 				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,
-				5E67FE5F1AE90494003AB827 /* GPPProfileProvider.swift in Sources */,
 				5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */,
 				5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */,
 				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,

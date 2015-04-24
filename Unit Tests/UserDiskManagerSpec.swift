@@ -9,8 +9,6 @@
 import Nimble
 import Quick
 
-import Roomguru
-
 class UserDiskManagerSpec: QuickSpec {
     override func spec() {
         
@@ -81,6 +79,5 @@ private extension UserDiskManagerSpec {
         if let filePath = NSURL(fileURLWithPath: NSTemporaryDirectory() + identifier)!.path {
             NSFileManager.defaultManager().removeItemAtPath(filePath, error: nil)
         }
-        
     }
 }

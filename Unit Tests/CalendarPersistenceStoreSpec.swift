@@ -9,7 +9,6 @@
 import Nimble
 import Quick
 
-import Roomguru
 import SwiftyJSON
 
 class CalendarPersistenceStoreSpec: QuickSpec {
@@ -87,7 +86,6 @@ class CalendarPersistenceStoreSpec: QuickSpec {
                         expect(sut!.calendars.count).to(equal(0))
                     }
                 }
-                
             }
             
             context("without summary") {
