@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5E003E631ACB290700AE55C1 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */; };
+		5E0618F51AEA357B00006F61 /* UserPersistenceStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */; };
 		5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* SwitchCell.swift */; };
 		5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
 		5E07202A1AB73846009C270E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* DashboardView.swift */; };
@@ -202,6 +203,7 @@
 
 /* Begin PBXFileReference section */
 		5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLExtensions.swift; path = "Roomguru/Source Files/NSURLExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPersistenceStoreSpec.swift; sourceTree = "<group>"; };
 		5E0720031AB6D8FF009C270E /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchCell.swift; path = "Roomguru/Source Files/SwitchCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E0720291AB73846009C270E /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = "Roomguru/Source Files/DashboardView.swift"; sourceTree = SOURCE_ROOT; };
@@ -661,6 +663,7 @@
 				5E147CBC1AA8B54100EDD97C /* Helper */,
 				5EE73F291AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift */,
 				5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */,
+				5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -1319,6 +1322,7 @@
 				5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */,
 				5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */,
 				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,
+				5E0618F51AEA357B00006F61 /* UserPersistenceStoreSpec.swift in Sources */,
 				5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */,
 				5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */,
 				5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */,

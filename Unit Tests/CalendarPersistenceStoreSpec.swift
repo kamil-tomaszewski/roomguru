@@ -22,8 +22,11 @@ class CalendarPersistenceStoreSpec: QuickSpec {
         }
         
         afterEach {
-            sut!.clear()
             sut = nil
+        }
+        
+        afterSuite {
+            CalendarPersistenceStore.sharedStore.clear()
         }
         
         describe("when newly initialized") {
