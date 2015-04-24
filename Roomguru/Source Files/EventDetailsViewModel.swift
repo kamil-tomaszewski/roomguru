@@ -10,7 +10,7 @@ import Foundation
 
 typealias AttendeeInfo = (name: String?, email: String?, status: Status?)
 
-class EventDetailsViewModel: NSObject {
+class EventDetailsViewModel {
     
     private let event: Event?
     private let formatter: NSDateFormatter
@@ -19,7 +19,6 @@ class EventDetailsViewModel: NSObject {
         self.event = event
         self.formatter = NSDateFormatter()
         self.formatter.dateFormat = "MMMM, dd eee YYYY"
-        super.init()
     }
     
     // MARK: numbers
