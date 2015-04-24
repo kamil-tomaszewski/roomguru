@@ -22,10 +22,10 @@ class Event: ModelObject, NSSecureCoding {
     var location:   String?
     var startDate:  String?
     var endDate:    String?
-    var hangoutLink: String?
+    var hangoutLink:String?
     var iCalUID:    String?
     var attendees:  [Attendee]?
-    var creator:  Attendee?
+    var creator:    Attendee?
     var rooms:      [Attendee]?
     
     var start:      NSDate?

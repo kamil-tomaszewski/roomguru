@@ -89,18 +89,7 @@ class EventDetailsViewModel {
     }
     
     func iconWithStatus(status: Status?) -> String? {
-        
-        if let _status = status {
-            return String.fontAwesomeIconWithName({
-                switch _status {
-                case .Awaiting: return .ClockO
-                case .NotGoing: return .Ban
-                case .Maybe: return .Question
-                case .Going: return .Check
-                }
-            }())
-        }
-        return nil
+        return (status != nil) ? String.fontAwesomeIconWithName(fontAwesomeFromStatus(status!)) : nil
     }
 }
 
@@ -108,7 +97,16 @@ class EventDetailsViewModel {
 
 private extension EventDetailsViewModel {
     
-    private func infoWithAttendee(attendee: Attendee?) -> AttendeeInfo  {
+    func infoWithAttendee(attendee: Attendee?) -> AttendeeInfo  {
         return (attendee?.name, attendee?.email, attendee?.status)
+    }
+    
+    func fontAwesomeFromStatus(status: Status) -> FontAwesome {
+        switch status {
+        case .Awaiting: return .ClockO
+        case .NotGoing: return .Ban
+        case .Maybe: return .Question
+        case .Going: return .Check
+        }
     }
 }

@@ -101,6 +101,10 @@
 		5EAFD7421AAF266300B75582 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7411AAF266300B75582 /* UIKit.framework */; };
 		5EAFD7441AAF270C00B75582 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
 		5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
+		5EB3A09D1AEA707600DB0585 /* EventDetailsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */; };
+		5EB3A09E1AEA714800DB0585 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1D1AB1D53700A43D35 /* Event.swift */; };
+		5EB3A09F1AEA71D700DB0585 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */; };
+		5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A31011AC5B13500E31DD3 /* EventDetailsViewModel.swift */; };
 		5EBCB76B1ACAA67F001F6D18 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */; };
 		5EC49D931ADC606D00B798F5 /* UserPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */; };
 		5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */; };
@@ -292,6 +296,7 @@
 		5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EAFD7431AAF270C00B75582 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Roomguru/Source Files/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewModelSpec.swift; sourceTree = "<group>"; };
 		5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderLabel.swift; path = "Roomguru/Source Files/HeaderLabel.swift"; sourceTree = SOURCE_ROOT; };
 		5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPersistenceStore.swift; path = "Roomguru/Source Files/UserPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
 		5EC49D941ADC75F500B798F5 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvatarView.swift; path = "Roomguru/Source Files/AvatarView.swift"; sourceTree = SOURCE_ROOT; };
@@ -671,6 +676,7 @@
 				5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */,
 				5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */,
 				BF7521151AE92E8500B8BDE8 /* ListSpec.swift */,
+				5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -1335,7 +1341,9 @@
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
+				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
 				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,
+				5EB3A09E1AEA714800DB0585 /* Event.swift in Sources */,
 				5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */,
 				5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */,
 				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,
@@ -1343,6 +1351,8 @@
 				5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */,
 				5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */,
 				5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */,
+				5EB3A09D1AEA707600DB0585 /* EventDetailsViewModelSpec.swift in Sources */,
+				5EB3A09F1AEA71D700DB0585 /* Attendee.swift in Sources */,
 				5E67FE7C1AE9275B003AB827 /* NSDataTestExtensions.swift in Sources */,
 				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
 				5E67FE7A1AE9274A003AB827 /* UIImageTestExtensions.swift in Sources */,
