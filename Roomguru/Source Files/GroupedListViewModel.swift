@@ -73,11 +73,11 @@ extension GroupedListViewModel {
 extension GroupedListViewModel {
     
     func addItem(item: GroupItem, atIndexPath indexPath: NSIndexPath) {
-        table[indexPath.section]?.add(item, atIndex: indexPath.row)
+        table[indexPath.section].add(item, atIndex: indexPath.row)
     }
     
     func removeItemAtIndexPath(indexPath: NSIndexPath) {
-        table[indexPath.section]?.remove(indexPath.row)
+        table[indexPath.section].remove(indexPath.row)
     }
     
     func itemize(closure: (path: (section: Int, row: Int), item: GroupItem) -> ()) {

@@ -256,7 +256,7 @@ extension EventsViewController {
     private func eventFromIndexPath(indexPath: NSIndexPath) -> Event? {
 
         if viewModel?.sectionsCount() > 1 {
-            return viewModel?[indexPath.section]?[indexPath.row]?.event
+            return viewModel?[indexPath.section]?[indexPath.row].event
         }
         return viewModel?[indexPath.row]?.event
     }

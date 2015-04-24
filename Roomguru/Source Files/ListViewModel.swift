@@ -47,7 +47,7 @@ class ListViewModel<T: NSObject> {
     
     func removeAtIndexPath(indexPath: NSIndexPath) {
         if sections?.count > 0 {
-            sections?[indexPath.section]?.remove(indexPath.row)
+            sections?[indexPath.section].remove(indexPath.row)
         } else {
             items.remove(indexPath.row)
         }

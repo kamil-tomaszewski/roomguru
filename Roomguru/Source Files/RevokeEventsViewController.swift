@@ -111,7 +111,7 @@ extension RevokeEventsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if let event = viewModel[indexPath.section]?[indexPath.row]?.event {
+        if let event = viewModel[indexPath.section]?[indexPath.row].event {
             var cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier()) as! EventCell
             cell.timeMaxLabel.text = event.startTime
             cell.timeMinLabel.text = event.endTime
