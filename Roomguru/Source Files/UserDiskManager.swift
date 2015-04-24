@@ -11,6 +11,7 @@ import Foundation
 class UserDiskManager {
     
     private let directoryName = "Profile"
+    var profileDirectoryPath: String {get { return directoryPath() }}
     
     init() {
         createDirectoryIfNeeded()
@@ -43,10 +44,11 @@ class UserDiskManager {
     func existFileWithIdentifier(identifier: String) -> Bool {
         return NSFileManager.defaultManager().fileExistsAtPath(pathForIdentifier(identifier))
     }
+}
+
+private extension UserDiskManager {
     
-    // MARK: Private
-    
-    private func createDirectoryIfNeeded() {
+    func createDirectoryIfNeeded() {
         var error: NSError?
         let path = directoryPath()
         
@@ -55,12 +57,12 @@ class UserDiskManager {
         }
     }
     
-    private func directoryPath() -> String {
+    func directoryPath() -> String {
         let documentsDirectory: AnyObject = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         return documentsDirectory.stringByAppendingPathComponent(directoryName)
     }
     
-    private func pathForIdentifier(identifier: String) -> String {
+    func pathForIdentifier(identifier: String) -> String {
         return directoryPath().stringByAppendingPathComponent(identifier)
     }
 }
