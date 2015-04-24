@@ -28,7 +28,6 @@
 		5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
 		5E48423E1AD6843B009E1FA8 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */; };
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
-		5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */; };
 		5E5F558D1AB62839005F3CEE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558C1AB62839005F3CEE /* Settings.swift */; };
 		5E5F558F1AB6CAB6005F3CEE /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F558E1AB6CAB6005F3CEE /* SettingItem.swift */; };
 		5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
@@ -240,7 +239,6 @@
 		5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Roomguru/Source Files/StringExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E5F558C1AB62839005F3CEE /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Roomguru/Source Files/Settings.swift"; sourceTree = SOURCE_ROOT; };
 		5E5F558E1AB6CAB6005F3CEE /* SettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingItem.swift; path = "Roomguru/Source Files/SettingItem.swift"; sourceTree = SOURCE_ROOT; };
 		5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = Frameworks/FontAwesome.swift; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */,
-				5E5F558A1AB62679005F3CEE /* SettingsViewModel.swift */,
 				5E07202E1AB73F83009C270E /* DashboardViewModel.swift */,
 				5E8A31011AC5B13500E31DD3 /* EventDetailsViewModel.swift */,
 				5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */,
@@ -1270,7 +1267,6 @@
 				5EF1C5F21AD425B200CC9173 /* CalendarNameCustomizerViewController.swift in Sources */,
 				5EF1C5F61AD42C8C00CC9173 /* BorderTextField.swift in Sources */,
 				BFE566081AE133F800B935BF /* GroupItem.swift in Sources */,
-				5E5F558B1AB62679005F3CEE /* SettingsViewModel.swift in Sources */,
 				5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */,
 				BF8459991ACBDE38004965EC /* RevokeQuery.swift in Sources */,
 				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,

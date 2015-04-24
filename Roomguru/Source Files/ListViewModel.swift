@@ -33,7 +33,6 @@ class ListViewModel<T: NSObject> {
         return sections?[index]
     }
     
-    // NGRFixme: Is this second subscript needed?
     subscript(index: Int) -> T? {
         return items[index]
     }

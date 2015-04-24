@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SettingItem {
+class SettingItem: NSObject {
     
     let title: String
     let action: Selector

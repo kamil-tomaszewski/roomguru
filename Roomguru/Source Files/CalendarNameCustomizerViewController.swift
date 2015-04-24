@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CalendarNameCustomizerViewControllerDelegate{
+protocol CalendarNameCustomizerViewControllerDelegate {
     
     func calendarNameCustomizerViewController(controller:CalendarNameCustomizerViewController, didEndEditngWithNewName name: String?)
     func calendarNameCustomizerViewControllerDidResetName(controller:CalendarNameCustomizerViewController)

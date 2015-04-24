@@ -11,7 +11,9 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     weak var aView: SettingsView?
-    private let viewModel = SettingsViewModel()
+    private let viewModel = ListViewModel<SettingItem>([
+        SettingItem(title: NSLocalizedString("Manage calendars", comment: ""), mode: .Selectable, action: Selector("didTapManageCalendars"))
+    ])
     
     private var header: SettingsCollectionViewHeader?
     
@@ -43,18 +45,18 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
 extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItems()
+        return viewModel.itemsCount()
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SettingsCell.reuseIdentifier(), forIndexPath: indexPath) as! SettingsCell
         
-        let item = viewModel[indexPath.row]
-        
-        cell.textLabel.text = item.title
-        cell.switchControl.addTarget(self, action: item.action, forControlEvents: .ValueChanged)
-        cell.switchControl.hidden = (item.mode != .Switchable)
+        if let item: SettingItem = viewModel[indexPath.row] {
+            cell.textLabel.text = item.title
+            cell.switchControl.addTarget(self, action: item.action, forControlEvents: .ValueChanged)
+            cell.switchControl.hidden = (item.mode != .Switchable)
+        }
         
         return cell
     }
@@ -74,12 +76,16 @@ extension SettingsViewController: UICollectionViewDelegate {
    
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let item = viewModel[indexPath.row]
-        NSThread.detachNewThreadSelector(item.action, toTarget:self, withObject: nil)
+        if let item: SettingItem = viewModel[indexPath.row] {
+            NSThread.detachNewThreadSelector(item.action, toTarget:self, withObject: nil)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return viewModel[indexPath.row].mode == .Selectable
+        if let item: SettingItem = viewModel[indexPath.row]  {
+            return item.mode == .Selectable
+        }
+        return false
     }
     
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
