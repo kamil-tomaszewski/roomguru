@@ -45,7 +45,7 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
 extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.itemsCount()
+        return viewModel[section].count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

@@ -177,6 +177,7 @@
 		BFC79C5F1AE443EF00EEB8DE /* ActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */; };
 		BFC79C611AE4455A00EEB8DE /* RightDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */; };
 		BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */; };
+		BFD2A1EB1AED21F400428AAB /* ListViewModelSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2A1EA1AED21F400428AAB /* ListViewModelSharedExample.swift */; };
 		BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */; };
 		BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */; };
 		BFE566081AE133F800B935BF /* GroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566071AE133F800B935BF /* GroupItem.swift */; };
@@ -367,6 +368,7 @@
 		BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "Roomguru/Source Files/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightDetailTextCell.swift; path = "Roomguru/Source Files/RightDetailTextCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSpec.swift; sourceTree = "<group>"; };
+		BFD2A1EA1AED21F400428AAB /* ListViewModelSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelSharedExample.swift; sourceTree = "<group>"; };
 		BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeEventsViewController.swift; path = "Roomguru/Source Files/RevokeEventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicTitleView.swift; path = "Roomguru/Source Files/BasicTitleView.swift"; sourceTree = SOURCE_ROOT; };
 		BFE566071AE133F800B935BF /* GroupItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupItem.swift; path = "Roomguru/Source Files/GroupItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -883,6 +885,7 @@
 			isa = PBXGroup;
 			children = (
 				BF8867661AE932CB009DA028 /* ListableSharedExample.swift */,
+				BFD2A1EA1AED21F400428AAB /* ListViewModelSharedExample.swift */,
 			);
 			name = "Shared Behaviors";
 			sourceTree = "<group>";
@@ -1343,6 +1346,7 @@
 				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
+				BFD2A1EB1AED21F400428AAB /* ListViewModelSharedExample.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
 				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,

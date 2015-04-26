@@ -106,19 +106,18 @@ extension RevokeEventsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel[section]?.count ?? 0
+        return viewModel[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if let event = viewModel[indexPath.section]?[indexPath.row].event {
-            var cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier()) as! EventCell
-            cell.timeMaxLabel.text = event.startTime
-            cell.timeMinLabel.text = event.endTime
-            cell.textLabel?.text = event.summary
-            return cell
-        }
-        return UITableViewCell()
+        let event = viewModel[indexPath.section][indexPath.row].event
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier()) as! EventCell
+        cell.timeMaxLabel.text = event.startTime
+        cell.timeMinLabel.text = event.endTime
+        cell.textLabel?.text = event.summary
+        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -148,14 +147,15 @@ extension RevokeEventsViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         let title = NSLocalizedString("Revoke", comment: "")
         let action = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: title, handler: { (action, indexPath) -> Void in
-            if let calendarEntry = self.viewModel[indexPath.section]?[indexPath.row] {
-                BookingManager.revokeCalendarEntry(calendarEntry, success: {
-                    self.viewModel.removeAtIndexPath(indexPath)
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                }, failure: { error in
-                    UIAlertView(error: error).show()
-                })                
-            }
+            
+            let calendarEntry = self.viewModel[indexPath.section][indexPath.row]
+            
+            BookingManager.revokeCalendarEntry(calendarEntry, success: {
+                self.viewModel.removeAtIndexPath(indexPath)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            }, failure: { error in
+                UIAlertView(error: error).show()
+            })
         })
         
         action.backgroundColor = UIColor.redColor()

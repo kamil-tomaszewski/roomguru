@@ -55,7 +55,7 @@ extension PickerViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = viewModel[section]?.count ?? viewModel.itemsCount()
+        let count = viewModel[section].count
         return count
     }
     

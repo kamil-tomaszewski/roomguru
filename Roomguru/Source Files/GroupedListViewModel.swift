@@ -8,34 +8,21 @@
 
 import Foundation
 
-typealias GroupedTable = List<Section<GroupItem>>
+protocol ExtendedIndexPathOperatable: IndexPathOperatable {
+    typealias T
+    func indexPathsForItems(items: [GroupItem]) -> [NSIndexPath]?
+    func indexPathsForItemOfType<T: GroupItem>(itemType: T.Type) -> [NSIndexPath]?
+}
 
-class GroupedListViewModel {
+class GroupedListViewModel<T: GroupItem>: ListViewModel<T> {
     
-    init(items: [[GroupItem]]) {
+    init(items: [[T]]) {
         let sections = items.map { Section($0) }
-        self.table = List(sections)
-    }
-    
-    subscript(index: Int) -> Section<GroupItem>? {
-        return table[index]
-    }
-    
-    // MARK: Private
-    
-    private var table: GroupedTable
-}
-
-// MARK: UITableView related
-
-extension GroupedListViewModel {
-    
-    func sectionsCount() -> Int {
-        return table.count ?? 0
+        super.init(sections)
     }
 }
 
-extension GroupedListViewModel {
+extension GroupedListViewModel: ExtendedIndexPathOperatable {
     
     func indexPathsForItems(items: [GroupItem]) -> [NSIndexPath]? {
         var indexPaths: [NSIndexPath] = []
@@ -52,37 +39,11 @@ extension GroupedListViewModel {
     func indexPathsForItemOfType<T: GroupItem>(itemType: T.Type) -> [NSIndexPath]? {
         var indexPaths: [NSIndexPath] = []
         
-        table.itemize { (index, item) in
-            var section = index
-            item.itemize { (index, item) in
-                if item is T {
-                    indexPaths.append(NSIndexPath(forRow: index, inSection: section))
-                }
+        itemize { path, item in
+            if item is T {
+                indexPaths.append(NSIndexPath(forRow: path.row, inSection: path.section))
             }
         }
         return indexPaths.isEmpty ? nil : indexPaths
-    }
-    
-    func removeItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
-        for indexPath in indexPaths {
-            removeItemAtIndexPath(indexPath)
-        }
-    }
-}
-
-extension GroupedListViewModel {
-    
-    func addItem(item: GroupItem, atIndexPath indexPath: NSIndexPath) {
-        table[indexPath.section].add(item, atIndex: indexPath.row)
-    }
-    
-    func removeItemAtIndexPath(indexPath: NSIndexPath) {
-        table[indexPath.section].remove(indexPath.row)
-    }
-    
-    func itemize(closure: (path: (section: Int, row: Int), item: GroupItem) -> ()) {
-        table.itemize { (index, item) in
-            item.itemize { closure(path: (index, $0), item: $1) }
-        }
     }
 }

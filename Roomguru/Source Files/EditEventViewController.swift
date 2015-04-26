@@ -13,12 +13,12 @@ class EditEventViewController: UIViewController {
     
     weak var aView: GroupedBaseTableView?
     
-    init(viewModel: EditEventViewModel) {
+    init(viewModel: EditEventViewModel<GroupItem>) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel?.delegate = self
-        self.viewModel?.presenter = self
-        self.title = self.viewModel?.title
+        self.viewModel.delegate = self
+        self.viewModel.presenter = self
+        self.title = self.viewModel.title
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -40,7 +40,7 @@ class EditEventViewController: UIViewController {
     
     // MARK: Private
     
-    private var viewModel: EditEventViewModel?
+    private var viewModel = EditEventViewModel()
 }
 
 extension EditEventViewController: ModelUpdatable {
@@ -96,31 +96,30 @@ extension EditEventViewController: TableViewConfigurable {
 extension EditEventViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return viewModel?.sectionsCount() ?? 0
+        return viewModel.sectionsCount() ?? 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?[section]?.count ?? 0
+        return viewModel[section].count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if let item = viewModel?[indexPath.section]?[indexPath.row] {
-            let cell = tableView.cellForItemCategory(item.category)
-            
-            if let item = item as? TextItem {
-                return configureTextFieldCell(cell as! TextFieldCell, forItem: item)
-            } else if let item = item as? SwitchItem {
-                return configureSwitchCell(cell as! SwitchCell, forItem: item)
-            } else if let item = item as? DateItem {
-                return configureDateCell(cell as! DateCell, forItem: item)
-            } else if let item = item as? LongTextItem {
-                return configureTextViewCell(cell as! TextViewCell, forItem: item)
-            } else if let item = item as? DatePickerItem {
-                return configureDatePickerCell(cell as! DatePickerCell, forItem: item)
-            } else if let item = item as? ActionItem {
-                return configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
-            }
+        let item = viewModel[indexPath.section][indexPath.row]
+        let cell = tableView.cellForItemCategory(item.category)
+        
+        if let item = item as? TextItem {
+            return configureTextFieldCell(cell as! TextFieldCell, forItem: item)
+        } else if let item = item as? SwitchItem {
+            return configureSwitchCell(cell as! SwitchCell, forItem: item)
+        } else if let item = item as? DateItem {
+            return configureDateCell(cell as! DateCell, forItem: item)
+        } else if let item = item as? LongTextItem {
+            return configureTextViewCell(cell as! TextViewCell, forItem: item)
+        } else if let item = item as? DatePickerItem {
+            return configureDatePickerCell(cell as! DatePickerCell, forItem: item)
+        } else if let item = item as? ActionItem {
+            return configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
         }
         
         return UITableViewCell()
@@ -133,22 +132,27 @@ extension EditEventViewController: UITableViewDelegate {
         
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowIfSelectedAnimated(true)
-        viewModel?.handleSelectionAtIndexPath(indexPath)
+        viewModel.handleSelectionAtIndexPath(indexPath)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if let item = viewModel?[indexPath.section]?[indexPath.row] {
-            if let item = item as? DatePickerItem, cell = cell as? DatePickerCell {
-                item.bindDatePicker(cell.datePicker)
-            } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
-                item.bindSwitchControl(cell.switchControl)
-            }
+        let item = viewModel[indexPath.section][indexPath.row]
+        
+        if let item = item as? DatePickerItem, cell = cell as? DatePickerCell {
+            item.bindDatePicker(cell.datePicker)
+        } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
+            item.bindSwitchControl(cell.switchControl)
         }
     }
     
     
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if let item = viewModel?[indexPath.section]?[indexPath.row] {
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if row < viewModel[section].count {
+            let item = viewModel[section][row]
+            
             if let item = item as? DatePickerItem, cell = cell as? DatePickerCell {
                 item.unbindDatePicker(cell.datePicker)
             } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
@@ -165,7 +169,7 @@ extension EditEventViewController {
     func didTapSaveBarButton(sender: UIBarButtonItem) {
         view.endEditing(true)
         
-        if let viewModel = viewModel where viewModel.isModelValid() {
+        if viewModel.isModelValid() {
             viewModel.saveEvent({ response in
                 self.dismissSelf(self.viewModel)
             }, failure: { error in

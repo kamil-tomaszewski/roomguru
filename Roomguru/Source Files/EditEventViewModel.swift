@@ -19,7 +19,7 @@ protocol Presenter {
     func shouldPresentViewController(viewController: UIViewController)
 }
 
-class EditEventViewModel: GroupedListViewModel {
+class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
     
     var delegate: ModelUpdatable?
     var presenter: Presenter?
@@ -191,7 +191,7 @@ class EditEventViewModel: GroupedListViewModel {
 extension EditEventViewModel {
     
     func handleSelectionAtIndexPath(indexPath: NSIndexPath) {
-        let item = self[indexPath.section]?[indexPath.row]
+        let item = self[indexPath.section][indexPath.row]
 
         if let item = item as? DateItem {
             handleSelectionOfDateItem(item, atIndexPath: indexPath)
@@ -208,8 +208,9 @@ extension EditEventViewModel {
         if let pickersIndexPaths = collapseIndexPaths {
             
             for pickerIndexPath in pickersIndexPaths {
-                removeItemAtIndexPath(pickerIndexPath)
-                if let dateItem = self[pickerIndexPath.section]?[pickerIndexPath.row-1] as? DateItem {
+                removeAtIndexPath(pickerIndexPath)
+                
+                if let dateItem = self[pickerIndexPath.section][pickerIndexPath.row-1] as? DateItem {
                     dateItem.selected = false
                     dateItems.append(dateItem)
                 }
