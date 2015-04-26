@@ -17,16 +17,20 @@ class ListSpec: QuickSpec {
     
     override func spec() {
      
-        itBehavesLike("list") {
+        let fixtureItems = [
+            FixtureItem(),
+            FixtureItem(),
+            FixtureItem(),
+            FixtureItem()
+        ]
+        
+        let listableFactory = ListableFactory(listableClass: List<FixtureItem>.self)
+        
+        itBehavesLike("listable") {
             [
-                "items": [
-                    FixtureItem(),
-                    FixtureItem(),
-                    FixtureItem(),
-                    FixtureItem()
-                ]
+                "items": fixtureItems,
+                "listableFactory": listableFactory
             ]
         }
-        
     }
 }

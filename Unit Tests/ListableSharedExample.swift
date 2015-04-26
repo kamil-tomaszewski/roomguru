@@ -1,5 +1,5 @@
 //
-//  ListSharedExample.swift
+//  ListableSharedExample.swift
 //  Roomguru
 //
 //  Created by Radoslaw Szeja on 23/04/15.
@@ -11,22 +11,37 @@ import Quick
 
 import Roomguru
 
+class ListableFactory {
+    
+    private let listableClass: List<FixtureItem>.Type
+    
+    init(listableClass: List<FixtureItem>.Type) {
+        self.listableClass = listableClass
+    }
+    
+    private func listableWithItems(items: [FixtureItem]) -> List<FixtureItem> {
+        return listableClass(items)
+    }
+}
+
 extension FixtureItem: Equatable {}
 
 func ==(lhs: FixtureItem, rhs: FixtureItem) -> Bool {
     return lhs === rhs
 }
 
-class ListSharedExampleConfiguration : QuickConfiguration {
+class ListableSharedExampleConfiguration : QuickConfiguration {
     override class func configure(configuration: Configuration) {
-        sharedExamples("list") { (sharedExampleContext: SharedExampleContext) in
+        sharedExamples("listable") { (sharedExampleContext: SharedExampleContext) in
             var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
             
             let fixtureItems = configDict["items"] as! [FixtureItem]
-            var sut = List(fixtureItems)
+            let factory = configDict["listableFactory"] as! ListableFactory
+            
+            var sut = factory.listableWithItems(fixtureItems)
             
             beforeEach {
-                sut = List(fixtureItems)
+                sut = factory.listableWithItems(fixtureItems)
             }
             
             describe("when newly initialized") {

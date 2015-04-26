@@ -165,7 +165,7 @@
 		BF8077361AC93F7500B75096 /* BookingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */; };
 		BF8459991ACBDE38004965EC /* RevokeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8459981ACBDE38004965EC /* RevokeQuery.swift */; };
 		BF84599B1ACBE328004965EC /* CalendarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF84599A1ACBE328004965EC /* CalendarEntry.swift */; };
-		BF8867671AE932CB009DA028 /* ListSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8867661AE932CB009DA028 /* ListSharedExample.swift */; };
+		BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8867661AE932CB009DA028 /* ListableSharedExample.swift */; };
 		BF8867681AE93364009DA028 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73C1ABAF77400B12244 /* Listable.swift */; };
 		BFAA8E341AE1AA5800E6525A /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */; };
 		BFAA8E361AE1ABDF00E6525A /* LongTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */; };
@@ -176,6 +176,7 @@
 		BFBDFAB81AE45C31007A451F /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D941ADC75F500B798F5 /* AvatarView.swift */; };
 		BFC79C5F1AE443EF00EEB8DE /* ActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */; };
 		BFC79C611AE4455A00EEB8DE /* RightDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */; };
+		BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */; };
 		BFD4E5F01ACD9C1B009EDFAB /* RevokeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */; };
 		BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */; };
 		BFE566081AE133F800B935BF /* GroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566071AE133F800B935BF /* GroupItem.swift */; };
@@ -356,7 +357,7 @@
 		BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewController.swift; path = "Roomguru/Source Files/BookingConfirmationViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF8459981ACBDE38004965EC /* RevokeQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeQuery.swift; path = "Roomguru/Source Files/RevokeQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF84599A1ACBE328004965EC /* CalendarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEntry.swift; path = "Roomguru/Source Files/CalendarEntry.swift"; sourceTree = SOURCE_ROOT; };
-		BF8867661AE932CB009DA028 /* ListSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSharedExample.swift; sourceTree = "<group>"; };
+		BF8867661AE932CB009DA028 /* ListableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListableSharedExample.swift; sourceTree = "<group>"; };
 		BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewCell.swift; path = "Roomguru/Source Files/TextViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LongTextItem.swift; path = "Roomguru/Source Files/LongTextItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = "Roomguru/Source Files/TextFieldCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -365,6 +366,7 @@
 		BFBCE1851AC1920200D96270 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = "Roomguru/Source Files/EventCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "Roomguru/Source Files/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightDetailTextCell.swift; path = "Roomguru/Source Files/RightDetailTextCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSpec.swift; sourceTree = "<group>"; };
 		BFD4E5EF1ACD9C1B009EDFAB /* RevokeEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeEventsViewController.swift; path = "Roomguru/Source Files/RevokeEventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicTitleView.swift; path = "Roomguru/Source Files/BasicTitleView.swift"; sourceTree = SOURCE_ROOT; };
 		BFE566071AE133F800B935BF /* GroupItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupItem.swift; path = "Roomguru/Source Files/GroupItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -677,6 +679,7 @@
 				5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */,
 				BF7521151AE92E8500B8BDE8 /* ListSpec.swift */,
 				5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */,
+				BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -879,7 +882,7 @@
 		BF8867651AE93262009DA028 /* Shared Behaviors */ = {
 			isa = PBXGroup;
 			children = (
-				BF8867661AE932CB009DA028 /* ListSharedExample.swift */,
+				BF8867661AE932CB009DA028 /* ListableSharedExample.swift */,
 			);
 			name = "Shared Behaviors";
 			sourceTree = "<group>";
@@ -1337,7 +1340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */,
-				BF8867671AE932CB009DA028 /* ListSharedExample.swift in Sources */,
+				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
@@ -1356,6 +1359,7 @@
 				5E67FE7C1AE9275B003AB827 /* NSDataTestExtensions.swift in Sources */,
 				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
 				5E67FE7A1AE9274A003AB827 /* UIImageTestExtensions.swift in Sources */,
+				BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */,
 				BF8867681AE93364009DA028 /* Listable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
