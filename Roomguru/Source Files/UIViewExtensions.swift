@@ -12,10 +12,15 @@ extension UIView {
     
 }
 
-func fadeOut<T: UIView>(view: T, duration: NSTimeInterval = 1, animated: Bool = true, completion: VoidBlock?) {
+func fadeOut<T: UIView>(view: T?, duration: NSTimeInterval = 1, animated: Bool = true, completion: VoidBlock?) {
     let fadeDuration: NSTimeInterval = animated ? duration : 0
+    
+    if view == nil {
+        return
+    }
+    
     UIView.animateWithDuration(fadeDuration, animations: {
-        view.alpha = 0
+        view!.alpha = 0
     }, completion: { _ in
         if let completion = completion {
             completion()
