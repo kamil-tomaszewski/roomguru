@@ -199,7 +199,7 @@ extension EventsViewController: UITableViewDataSource {
         let event = eventFromIndexPath(indexPath)
         
         if let freeEvent = event as? FreeEvent {
-            let cell: FreeEventCell = tableView.dequeueReusableCellWithIdentifier(FreeEventCell.reuseIdentifier()) as! FreeEventCell
+            let cell: FreeEventCell = tableView.dequeueReusableCell(FreeEventCell.self)
             let minutes = freeEvent.duration/60
             let title = "Book \(Int(minutes)) min"
             
@@ -212,7 +212,7 @@ extension EventsViewController: UITableViewDataSource {
             
             return cell
         } else {
-            let cell: EventCell = tableView.dequeueReusableCellWithIdentifier(EventCell.reuseIdentifier()) as! EventCell
+            let cell: EventCell = tableView.dequeueReusableCell(EventCell.self)
             cell.textLabel?.text = event?.summary
             cell.timeMaxLabel.text = event?.startTime
             cell.timeMinLabel.text = event?.endTime
@@ -322,7 +322,7 @@ class RevokeEventsViewController: EventsViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let event = eventFromIndexPath(indexPath)
-        let cell: RevocableEventCell = tableView.dequeueReusableCellWithIdentifier(RevocableEventCell.reuseIdentifier()) as! RevocableEventCell
+        let cell = tableView.dequeueReusableCell(RevocableEventCell.self)
         cell.textLabel?.text = event?.summary
         cell.timeMaxLabel.text = event?.startTime
         cell.timeMinLabel.text = event?.endTime

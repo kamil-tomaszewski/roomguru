@@ -92,22 +92,19 @@ extension DashboardViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCell.reuseIdentifier()) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(ButtonCell.self)
+            
+        let item = viewModel[indexPath.row]
+        var action: Selector;
         
-        if let _cell = cell as? ButtonCell {
-            
-            let item = viewModel[indexPath.row]
-            var action: Selector;
-            
-            switch item.action {
-            case .Book: action = Selector("didTapBookRoom:")
-            case .Revoke: action = Selector("didTapRevokeBookedRoom:")
-            }
-    
-            _cell.button.setTitle(item.title)
-            _cell.button.backgroundColor = item.color
-            _cell.button.addTarget(self, action: action)
+        switch item.action {
+        case .Book: action = Selector("didTapBookRoom:")
+        case .Revoke: action = Selector("didTapRevokeBookedRoom:")
         }
+
+        cell.button.setTitle(item.title)
+        cell.button.backgroundColor = item.color
+        cell.button.addTarget(self, action: action)
         
         return cell;
     }

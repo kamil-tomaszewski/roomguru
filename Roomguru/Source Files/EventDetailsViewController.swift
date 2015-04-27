@@ -69,13 +69,13 @@ extension EventDetailsViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier(DescriptionCell.reuseIdentifier()) as! DescriptionCell
+            let cell = tableView.dequeueReusableCell(DescriptionCell.self)
             cell.textLabel?.attributedText = viewModel.summary()
             
             return cell
             
         case 1...3:
-            let cell = tableView.dequeueReusableCellWithIdentifier(AttendeeCell.reuseIdentifier()) as! AttendeeCell
+            let cell = tableView.dequeueReusableCell(AttendeeCell.self)
             let info = attendeeInfoForIndexPath(indexPath)
             
             cell.headerLabel.text = info.name
@@ -92,7 +92,7 @@ extension EventDetailsViewController: UITableViewDataSource {
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCell.reuseIdentifier()) as! ButtonCell
+            let cell = tableView.dequeueReusableCell(ButtonCell.self)
             cell.button.setTitle(NSLocalizedString("Join Hangout meeting!", comment: ""))
             cell.button.addTarget(self, action: "didTapHangoutButton:")
             cell.button.backgroundColor = UIColor.ngOrangeColor()

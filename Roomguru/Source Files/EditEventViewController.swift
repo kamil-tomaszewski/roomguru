@@ -265,19 +265,15 @@ private extension EditEventViewController {
 
 private extension UITableView {
 
-    func cellForItemCategory(category: GroupItem.Category) -> UITableViewCell? {
-        var reuseIdentifier = ""
+    func cellForItemCategory(category: GroupItem.Category) -> UITableViewCell {
         
         switch category {
-        case .PlainText: reuseIdentifier = TextFieldCell.reuseIdentifier()
-        case .Boolean: reuseIdentifier = SwitchCell.reuseIdentifier()
-        case .Date: reuseIdentifier = DateCell.reuseIdentifier()
-        case .LongText: reuseIdentifier = TextViewCell.reuseIdentifier()
-        case .Picker: reuseIdentifier = DatePickerCell.reuseIdentifier()
-        case .Action: reuseIdentifier = RightDetailTextCell.reuseIdentifier()
-        default: reuseIdentifier = ""
+        case .PlainText: return dequeueReusableCell(TextFieldCell.self)
+        case .Boolean: return dequeueReusableCell(SwitchCell.self)
+        case .Date: return dequeueReusableCell(DateCell.self)
+        case .LongText: return dequeueReusableCell(TextViewCell.self)
+        case .Picker: return dequeueReusableCell(DatePickerCell.self)
+        case .Action: return dequeueReusableCell(RightDetailTextCell.self)
         }
-        
-        return dequeueReusableCellWithIdentifier(reuseIdentifier) as? UITableViewCell
     }
 }

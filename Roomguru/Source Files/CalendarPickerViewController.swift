@@ -72,7 +72,7 @@ extension CalendarPickerViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(CalendarPickerCell.reuseIdentifier()) as! CalendarPickerCell
+        let cell = tableView.dequeueReusableCell(CalendarPickerCell.self)
         
         let strings = viewModel?.textForCalendarAtIndex(indexPath.row)
         cell.headerLabel.text = strings?.mainText
