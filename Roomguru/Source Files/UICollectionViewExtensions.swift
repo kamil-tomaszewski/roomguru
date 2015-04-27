@@ -25,4 +25,16 @@ extension UICollectionView {
             registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier())
         }
     }
+    
+    func dequeueReusableClass<T where T: UICollectionReusableView, T: Reusable>(aClass: T.Type, forIndexPath indexPath: NSIndexPath, type: Type) -> T {
+        
+        switch(type) {
+        case .Cell:
+            return dequeueReusableCellWithReuseIdentifier(T.reuseIdentifier(), forIndexPath: indexPath) as! T
+        case .Header:
+            return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier(), forIndexPath: indexPath) as! T
+        case .Footer:
+            return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier(), forIndexPath: indexPath) as! T
+        }
+    }
 }

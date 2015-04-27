@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     weak var aView: SettingsView?
-    private let viewModel = ListViewModel<SettingItem>([
+    private let viewModel = SettingsViewModel<SettingItem>([
         SettingItem(title: NSLocalizedString("Manage calendars", comment: ""), mode: .Selectable, action: Selector("didTapManageCalendars"))
     ])
     
@@ -50,7 +50,7 @@ extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SettingsCell.reuseIdentifier(), forIndexPath: indexPath) as! SettingsCell
+        let cell = collectionView.dequeueReusableClass(SettingsCell.self, forIndexPath: indexPath, type: .Cell)
         
         if let item: SettingItem = viewModel[indexPath.row] {
             cell.textLabel.text = item.title
@@ -63,8 +63,8 @@ extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        if self.header == nil {
-            self.header = (collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: SettingsCollectionViewHeader.reuseIdentifier(), forIndexPath: indexPath) as! SettingsCollectionViewHeader)
+        if self.header == nil && kind == UICollectionElementKindSectionHeader {
+            self.header = collectionView.dequeueReusableClass(SettingsCollectionViewHeader.self, forIndexPath: indexPath, type: .Header)
         }
         return header!
     }
@@ -82,10 +82,7 @@ extension SettingsViewController: UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if let item: SettingItem = viewModel[indexPath.row]  {
-            return item.mode == .Selectable
-        }
-        return false
+        return viewModel.isSelectableItemAtIndex(indexPath.row)
     }
     
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
@@ -106,7 +103,7 @@ extension SettingsViewController {
     }
 
     func notificationSwitchHandler(sender: UISwitch) {
-        Settings.reverseNotificationEnabled()
+        viewModel.settingsStore.enableNotification(sender.on)
     }
 
     func didTapManageCalendars() {
