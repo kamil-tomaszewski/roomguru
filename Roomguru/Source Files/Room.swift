@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
+// NGRTodo: This class has been deprecated and replaced by CalendarPersistenceStore. To remove.
+
 import Foundation
 
 struct NetguruRoom {
