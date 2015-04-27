@@ -189,6 +189,7 @@
 		BF84599B1ACBE328004965EC /* CalendarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF84599A1ACBE328004965EC /* CalendarEntry.swift */; };
 		BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8867661AE932CB009DA028 /* ListableSharedExample.swift */; };
 		BF8867681AE93364009DA028 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73C1ABAF77400B12244 /* Listable.swift */; };
+		BF9F9FE11AF233BC0081B817 /* ListViewModelSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9FE01AF233BC0081B817 /* ListViewModelSharedExample.swift */; };
 		BFAA8E341AE1AA5800E6525A /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */; };
 		BFAA8E361AE1ABDF00E6525A /* LongTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */; };
 		BFB0E5101ADFD6EA00B0C0A4 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */; };
@@ -212,6 +213,7 @@
 		BFF1B57B1AE7BE4A00F9767E /* PickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */; };
 		BFF1B57D1AE7BE6700F9767E /* RoomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */; };
 		BFF755241AE52C6500F68DB9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF755231AE52C6500F68DB9 /* Reusable.swift */; };
+		BFFB513A1AED87B30065F051 /* ListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -398,6 +400,7 @@
 		BF8459981ACBDE38004965EC /* RevokeQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeQuery.swift; path = "Roomguru/Source Files/RevokeQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF84599A1ACBE328004965EC /* CalendarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEntry.swift; path = "Roomguru/Source Files/CalendarEntry.swift"; sourceTree = SOURCE_ROOT; };
 		BF8867661AE932CB009DA028 /* ListableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListableSharedExample.swift; sourceTree = "<group>"; };
+		BF9F9FE01AF233BC0081B817 /* ListViewModelSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelSharedExample.swift; sourceTree = "<group>"; };
 		BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewCell.swift; path = "Roomguru/Source Files/TextViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LongTextItem.swift; path = "Roomguru/Source Files/LongTextItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = "Roomguru/Source Files/TextFieldCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -420,6 +423,7 @@
 		BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItem.swift; path = "Roomguru/Source Files/PickerItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomItem.swift; path = "Roomguru/Source Files/RoomItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFF755231AE52C6500F68DB9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = "Roomguru/Source Files/Reusable.swift"; sourceTree = SOURCE_ROOT; };
+		BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelSpec.swift; sourceTree = "<group>"; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -731,6 +735,7 @@
 				5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */,
 				5EF4C7C41AEE3B5E0050201A /* SettingsStoreSpec.swift */,
 				5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */,
+				BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -923,6 +928,7 @@
 		BF8867651AE93262009DA028 /* Shared Behaviors */ = {
 			isa = PBXGroup;
 			children = (
+				BF9F9FE01AF233BC0081B817 /* ListViewModelSharedExample.swift */,
 				BF8867661AE932CB009DA028 /* ListableSharedExample.swift */,
 			);
 			name = "Shared Behaviors";
@@ -1396,6 +1402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF9F9FE11AF233BC0081B817 /* ListViewModelSharedExample.swift in Sources */,
 				BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */,
 				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
@@ -1421,6 +1428,7 @@
 				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
 				5EF4C7C81AEE40100050201A /* SettingsStore.swift in Sources */,
 				5E67FE7A1AE9274A003AB827 /* UIImageTestExtensions.swift in Sources */,
+				BFFB513A1AED87B30065F051 /* ListViewModelSpec.swift in Sources */,
 				BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */,
 				BF8867681AE93364009DA028 /* Listable.swift in Sources */,
 				5EA900F71AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift in Sources */,
