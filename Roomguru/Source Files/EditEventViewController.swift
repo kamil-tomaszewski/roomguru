@@ -12,6 +12,7 @@ import Foundation
 class EditEventViewController: UIViewController {
     
     weak var aView: GroupedBaseTableView?
+    var keyboardHandler: KeyboardPresenceHandler!
     
     init(viewModel: EditEventViewModel<GroupItem>) {
         self.viewModel = viewModel
@@ -29,6 +30,8 @@ class EditEventViewController: UIViewController {
     
     override func loadView() {
         aView = loadViewWithClass(GroupedBaseTableView.self)
+        keyboardHandler = KeyboardPresenceHandler(scrollView: aView!.tableView)
+        keyboardHandler.delegate = self
     }
     
     override func viewDidLoad() {
@@ -71,6 +74,15 @@ extension EditEventViewController: Presenter {
     }
 }
 
+// MARK: KeyboardPresenceHandlerDelegate
+
+extension EditEventViewController: KeyboardPresenceHandlerDelegate {
+    
+    func firstReponderForHandler(handler: KeyboardPresenceHandler) -> UIView? {
+        return aView?.findFirstResponder()
+    }
+}
+
 // MARK: TableViewConfigurable
 
 extension EditEventViewController: TableViewConfigurable {
@@ -96,11 +108,11 @@ extension EditEventViewController: TableViewConfigurable {
 extension EditEventViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return viewModel.sectionsCount() ?? 0
+        return viewModel.sectionsCount()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel[section].count ?? 0
+        return viewModel[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -174,8 +186,9 @@ extension EditEventViewController {
             viewModel.saveEvent({ response in
                 self.dismissSelf(self.viewModel)
             }, failure: { error in
-                // NGRTemp:
-                println(error)
+                let title = NSLocalizedString("Oh no!", comment: "")
+                let message = NSLocalizedString("There was a problem with creating your event. Please try again later.", comment: "")
+                UIAlertView(title: title, message: message).show()
             })
         }
     }

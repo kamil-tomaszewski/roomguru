@@ -141,6 +141,8 @@
 		7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */; };
 		7B91D6EF1AC034410080DD91 /* AvailabilityCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BF01C8E31AEEB133003422AD /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */; };
+		BF01C8E51AEEB162003422AD /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E41AEEB162003422AD /* CGSizeExtensions.swift */; };
 		BF0A9E4E1AD540290088ED79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9E4D1AD540290088ED79 /* User.swift */; };
 		BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
 		BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
@@ -163,6 +165,7 @@
 		BF4C0D231AE29B730040BDBF /* DatePickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */; };
 		BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */; };
 		BF4F2DF81ADC0A0500834B60 /* GroupedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF71ADC0A0500834B60 /* GroupedListViewModel.swift */; };
+		BF5134301AEE548F00456839 /* KeyboardPresenceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */; };
 		BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
 		BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* Calendar.swift */; };
@@ -338,6 +341,8 @@
 		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFrame.swift; path = "Roomguru/Source Files/TimeFrame.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCalendar.swift; path = "Roomguru/Source Files/AvailabilityCalendar.swift"; sourceTree = SOURCE_ROOT; };
+		BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointExtensions.swift; path = "Roomguru/Source Files/CGPointExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		BF01C8E41AEEB162003422AD /* CGSizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGSizeExtensions.swift; path = "Roomguru/Source Files/CGSizeExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF0A9E4D1AD540290088ED79 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Roomguru/Source Files/User.swift"; sourceTree = SOURCE_ROOT; };
 		BF251ACC1AC083F30020DFC4 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queryable.swift; path = "Roomguru/Source Files/Queryable.swift"; sourceTree = SOURCE_ROOT; };
 		BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsQuery.swift; path = "Roomguru/Source Files/EventsQuery.swift"; sourceTree = SOURCE_ROOT; };
@@ -360,6 +365,7 @@
 		BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerItem.swift; path = "Roomguru/Source Files/DatePickerItem.swift"; sourceTree = SOURCE_ROOT; };
 		BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewController.swift; path = "Roomguru/Source Files/EditEventViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF4F2DF71ADC0A0500834B60 /* GroupedListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedListViewModel.swift; path = "Roomguru/Source Files/GroupedListViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardPresenceHandler.swift; path = "Roomguru/Source Files/KeyboardPresenceHandler.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1C1AB1D53700A43D35 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = "Roomguru/Source Files/Calendar.swift"; sourceTree = SOURCE_ROOT; };
@@ -763,6 +769,7 @@
 				BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */,
 				BF7B01C31ADBBD1F002763DF /* EventsPageViewControllerDelegate.swift */,
 				74F72F7A1AEE287F009ADC2C /* RevokeEventsPageViewControllerDataSource.swift */,
+				BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */,
 			);
 			name = "Object & Models";
 			sourceTree = "<group>";
@@ -877,6 +884,8 @@
 				5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */,
 				5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */,
 				5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */,
+				BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */,
+				BF01C8E41AEEB162003422AD /* CGSizeExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1293,6 +1302,7 @@
 				BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */,
 				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
 				7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */,
+				BF5134301AEE548F00456839 /* KeyboardPresenceHandler.swift in Sources */,
 				5EF4C7C31AEE34690050201A /* SettingsViewModel.swift in Sources */,
 				5E07202D1AB73E03009C270E /* ButtonCell.swift in Sources */,
 				BF4C0D231AE29B730040BDBF /* DatePickerItem.swift in Sources */,
@@ -1306,6 +1316,7 @@
 				5EF1C5F21AD425B200CC9173 /* CalendarNameCustomizerViewController.swift in Sources */,
 				5EF1C5F61AD42C8C00CC9173 /* BorderTextField.swift in Sources */,
 				BFE566081AE133F800B935BF /* GroupItem.swift in Sources */,
+				BF01C8E51AEEB162003422AD /* CGSizeExtensions.swift in Sources */,
 				5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */,
 				BF8459991ACBDE38004965EC /* RevokeQuery.swift in Sources */,
 				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,
@@ -1327,6 +1338,7 @@
 				5EDEACF31ADFDD7600C4351B /* SettingsCollectionViewHeader.swift in Sources */,
 				BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */,
 				BFF1B57D1AE7BE6700F9767E /* RoomItem.swift in Sources */,
+				BF01C8E31AEEB133003422AD /* CGPointExtensions.swift in Sources */,
 				5E15F1451ADC314500E1F8BC /* UserDiskManager.swift in Sources */,
 				BF4336571AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,

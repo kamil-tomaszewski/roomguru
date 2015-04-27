@@ -10,6 +10,24 @@ import UIKit
 
 extension UIView {
     
+    func convertFrameToView(view: UIView?) -> CGRect {
+        return self.convertRect(self.frame, toView: view)
+    }
+    
+    func findFirstResponder() -> UIView? {
+        if isFirstResponder() {
+            return self
+        }
+        
+        for subView in self.subviews {
+            if let subView = subView as? UIView {
+                if let responder = subView.findFirstResponder() {
+                    return responder
+                }
+            }
+        }
+        return nil
+    }
 }
 
 func fadeOut<T: UIView>(view: T?, duration: NSTimeInterval = 1, animated: Bool = true, completion: VoidBlock?) {
