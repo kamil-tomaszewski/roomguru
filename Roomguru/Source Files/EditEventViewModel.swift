@@ -16,7 +16,7 @@ protocol ModelUpdatable {
 }
 
 protocol Presenter {
-    func shouldPresentViewController(viewController: UIViewController)
+    func presentViewController(viewController: UIViewController)
 }
 
 class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
@@ -250,7 +250,7 @@ extension EditEventViewModel {
     
     private func handleSelectionOfActionItem(item: ActionItem, atIndexPath indexPath: NSIndexPath) {
         if let controller = item.action?() {
-            presenter?.shouldPresentViewController(controller)
+            presenter?.presentViewController(controller)
         }
     }
 }

@@ -44,6 +44,12 @@ class PickerViewController: UIViewController {
         super.viewDidLoad()
         bindTableView(aView.tableView)
     }
+    
+    private func bindTableView(tableView: UITableView) {
+        tableView.delegate = self
+        tableView.dataSource = self
+        delegate?.registerCellsInTableView(tableView)
+    }
 }
 
 // MARK: UITableViewDataSource
@@ -85,17 +91,5 @@ extension PickerViewController: UITableViewDelegate {
             onSelectionBlock(item: item)
             tableView.reloadData()
         }
-    }
-}
-
-
-// MARK: Private
-
-private extension PickerViewController {
-    
-    func bindTableView(tableView: UITableView) {
-        tableView.delegate = self
-        tableView.dataSource = self
-        delegate?.registerCellsInTableView(tableView)
     }
 }

@@ -63,7 +63,7 @@ extension EditEventViewController: ModelUpdatable {
 
 extension EditEventViewController: Presenter {
     
-    func shouldPresentViewController(viewController: UIViewController) {
+    func presentViewController(viewController: UIViewController) {
         if let controller = viewController as? PickerViewController {
             controller.delegate = self
             navigationController?.pushViewController(controller, animated: true)
@@ -144,7 +144,6 @@ extension EditEventViewController: UITableViewDelegate {
             item.bindSwitchControl(cell.switchControl)
         }
     }
-    
     
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let section = indexPath.section
@@ -281,4 +280,3 @@ private extension UITableView {
         return dequeueReusableCellWithIdentifier(reuseIdentifier) as? UITableViewCell
     }
 }
-

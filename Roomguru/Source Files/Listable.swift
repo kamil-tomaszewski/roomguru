@@ -18,8 +18,8 @@ protocol Listable {
     init(_ items: [Type])
     subscript(index: Int) -> Type { get }
     
-    func add(item: Type, atIndex index: Int)
-    func remove(index: Int) -> Type
+    mutating func add(item: Type, atIndex index: Int)
+    mutating func remove(index: Int) -> Type
     
     func itemize(closure: (index: Int, item: Type) -> ())
 }
