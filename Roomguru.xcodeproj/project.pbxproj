@@ -90,6 +90,8 @@
 		5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */; };
 		5E8CB6F81AC574E2000A4E14 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */; };
 		5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */; };
+		5EA900F71AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */; };
+		5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */; };
 		5EAFD7301AAF261E00B75582 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD72F1AAF261E00B75582 /* AddressBook.framework */; };
 		5EAFD7321AAF262400B75582 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */; };
 		5EAFD7341AAF262E00B75582 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7331AAF262E00B75582 /* Foundation.framework */; };
@@ -286,6 +288,7 @@
 		5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = "Roomguru/Source Files/UIColorExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = "Roomguru/Source Files/NavigationController.swift"; sourceTree = SOURCE_ROOT; };
 		5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendeeCell.swift; path = "Roomguru/Source Files/AttendeeCell.swift"; sourceTree = SOURCE_ROOT; };
+		5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewModelSpec.swift; sourceTree = "<group>"; };
 		5EAFD72F1AAF261E00B75582 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5EAFD7331AAF262E00B75582 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -680,6 +683,7 @@
 				BF7521151AE92E8500B8BDE8 /* ListSpec.swift */,
 				5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */,
 				BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */,
+				5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -1343,6 +1347,7 @@
 				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
+				5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
 				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,
@@ -1361,6 +1366,7 @@
 				5E67FE7A1AE9274A003AB827 /* UIImageTestExtensions.swift in Sources */,
 				BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */,
 				BF8867681AE93364009DA028 /* Listable.swift in Sources */,
+				5EA900F71AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

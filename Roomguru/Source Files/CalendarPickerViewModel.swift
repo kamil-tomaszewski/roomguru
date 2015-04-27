@@ -56,6 +56,12 @@ class CalendarPickerViewModel {
         return calendars[index].calendar.name != nil
     }
     
+    func selectAll() {
+        for index in 0..<calendars.count {
+            calendars[index].isSelected = true
+        }
+    }
+    
     func textForCalendarAtIndex(index: Int) -> (mainText: String?, detailText: String?) {
         
         let picker = calendars[index]

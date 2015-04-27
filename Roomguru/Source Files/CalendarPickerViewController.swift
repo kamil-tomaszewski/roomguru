@@ -26,6 +26,9 @@ class CalendarPickerViewController: UIViewController {
         self.title = NSLocalizedString("Pick your calendars", comment: "")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .Plain, target: self, action: Selector("didTapSaveBarButtonItem:"))
         
+        if isModal() {
+         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select All", comment: ""), style: .Plain, target: self, action: Selector("didTapSelectAllBarButtonItem:"))
+        }
         setupTableView()
         setBarButtonItemState()
         hideBackBarButtonTitle()
@@ -140,6 +143,12 @@ extension CalendarPickerViewController {
         } else {
             navigationController?.popViewControllerAnimated(true)
         }
+    }
+    
+    func didTapSelectAllBarButtonItem(sender: UIBarButtonItem) {
+        viewModel?.selectAll()
+        setBarButtonItemState()
+        aView?.tableView.reloadData()
     }
     
     private func setupTableView() {
