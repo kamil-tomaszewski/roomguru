@@ -65,7 +65,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         let startDateItem = DateItem(title: startDateTitle)
         let endDateItem = DateItem(title: endDateTitle, date: startDateItem.date.minutes + 30)
         let repeatItem = ActionItem(title: repeatTitle, detailDescription: noneDetail)
-        let calendarItem = ActionItem(title: calendarTitle, detailDescription: noneDetail)
+        let calendarItem = ResultActionItem(title: calendarTitle, detailDescription: noneDetail)
         let descriptionItem = LongTextItem(placeholder: longTextPlaceholder)
         
         eventQuery = query
@@ -129,6 +129,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
                 if let item = item as? RoomItem {
                     calendarItem.detailDescription = item.title
+                    calendarItem.result = item.id
                     self?.eventQuery.calendarID = item.id
                     
                     if let indexPaths = self?.indexPathsForItems([calendarItem]) {
@@ -145,7 +146,8 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
                 if let item = item as? RecurrenceItem {
                     repeatItem.detailDescription = item.title
-                     self?.eventQuery.recurrence = item.value
+                    self?.eventQuery.recurrence = item.value
+
                     if let indexPaths = self?.indexPathsForItems([repeatItem]) {
                         self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
                     }
@@ -176,6 +178,14 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         endDateItem.validation = { date in
             if date < startDateItem.date {
                 let message = NSLocalizedString("Cannot pick date earlier than", comment: "") + " " + startDateItem.dateString
+                return NSError(message: message)
+            }
+            return nil
+        }
+        
+        calendarItem.validation = { object in
+            if let string = object as? String where string.isEmpty {
+                let message = NSLocalizedString("Please choose room", comment: "")
                 return NSError(message: message)
             }
             return nil
@@ -267,7 +277,6 @@ extension EditEventViewModel {
             if var item = item as? Testable {
                 if let error = item.validate(item.valueToValidate) {
                     item.validationError = error
-                    println(error)
                     errors.append(error)
                 }
                 reloadIndexPaths.append(NSIndexPath(forRow: path.row, inSection: path.section))

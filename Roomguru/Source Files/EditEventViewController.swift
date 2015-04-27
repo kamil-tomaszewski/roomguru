@@ -109,20 +109,22 @@ extension EditEventViewController: UITableViewDataSource {
         let cell = tableView.cellForItemCategory(item.category)
         
         if let item = item as? TextItem {
-            return configureTextFieldCell(cell as! TextFieldCell, forItem: item)
+            configureTextFieldCell(cell as! TextFieldCell, forItem: item)
         } else if let item = item as? SwitchItem {
-            return configureSwitchCell(cell as! SwitchCell, forItem: item)
+            configureSwitchCell(cell as! SwitchCell, forItem: item)
         } else if let item = item as? DateItem {
-            return configureDateCell(cell as! DateCell, forItem: item)
+            configureDateCell(cell as! DateCell, forItem: item)
         } else if let item = item as? LongTextItem {
-            return configureTextViewCell(cell as! TextViewCell, forItem: item)
+            configureTextViewCell(cell as! TextViewCell, forItem: item)
         } else if let item = item as? DatePickerItem {
-            return configureDatePickerCell(cell as! DatePickerCell, forItem: item)
+            configureDatePickerCell(cell as! DatePickerCell, forItem: item)
+        } else if let item = item as? ResultActionItem {
+            configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
         } else if let item = item as? ActionItem {
-            return configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
+            configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
         }
         
-        return UITableViewCell()
+        return cell ?? UITableViewCell()
     }
 }
 
@@ -187,46 +189,45 @@ extension EditEventViewController {
 
 private extension EditEventViewController {
     
-    func configureTextFieldCell(cell: TextFieldCell, forItem item: TextItem) -> UITableViewCell {
+    func configureTextFieldCell(cell: TextFieldCell, forItem item: TextItem) {
         cell.textField.delegate = item
         cell.textField.placeholder = item.placeholder
         cell.validationError = item.validationError
         cell.textField.text = item.text
         cell.selectionStyle = .None
-        return cell
     }
     
-    func configureSwitchCell(cell: SwitchCell, forItem item: SwitchItem) -> UITableViewCell {
+    func configureSwitchCell(cell: SwitchCell, forItem item: SwitchItem) {
         item.bindSwitchControl(cell.switchControl)
         cell.textLabel?.text = item.title
         cell.selectionStyle = .None
-        return cell
     }
     
-    func configureDateCell(cell: DateCell, forItem item: DateItem) -> UITableViewCell {
+    func configureDateCell(cell: DateCell, forItem item: DateItem) {
         cell.textLabel?.text = item.title
         cell.setSelectedLabelColor(item.selected)
         cell.setDateText(item.dateString, withValidationError: item.validationError)
-        return cell
     }
     
-    func configureTextViewCell(cell: TextViewCell, forItem item: LongTextItem) -> UITableViewCell {
+    func configureTextViewCell(cell: TextViewCell, forItem item: LongTextItem) {
         cell.textView.attributedText = item.attributedPlaceholder
         cell.textView.delegate = item
-        return cell
     }
     
-    func configureDatePickerCell(cell: DatePickerCell, forItem item: DatePickerItem) -> UITableViewCell {
+    func configureDatePickerCell(cell: DatePickerCell, forItem item: DatePickerItem) {
         cell.datePicker.setDate(item.date, animated: false)
         cell.selectionStyle = .None
-        return cell
     }
     
-    func configureRightDetailTextCell(cell: RightDetailTextCell, forItem item: ActionItem) -> UITableViewCell {
+    func configureRightDetailTextCell(cell: RightDetailTextCell, forItem item: ActionItem) {
         cell.textLabel?.text = item.title
         cell.detailLabel.text = item.detailDescription
         cell.accessoryType = .DisclosureIndicator
-        return cell
+    }
+    
+    func configureRightDetailTextCell(cell: RightDetailTextCell, forItem item: ResultActionItem) {
+        configureRightDetailTextCell(cell, forItem: item as ActionItem)
+        cell.validationError = item.validationError
     }
 }
 

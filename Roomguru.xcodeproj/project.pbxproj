@@ -157,6 +157,7 @@
 		BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */; };
 		BF3B25A21ADD467400242859 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A11ADD467400242859 /* EditEventViewModel.swift */; };
 		BF3B25A41ADD610700242859 /* EventQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A31ADD610700242859 /* EventQuery.swift */; };
+		BF3CAD611AEE3D2200B1F684 /* ResultActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */; };
 		BF4336571AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */; };
 		BF4C0D211AE299B50040BDBF /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */; };
 		BF4C0D231AE29B730040BDBF /* DatePickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */; };
@@ -353,6 +354,7 @@
 		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF3B25A11ADD467400242859 /* EditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewModel.swift; path = "Roomguru/Source Files/EditEventViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		BF3B25A31ADD610700242859 /* EventQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventQuery.swift; path = "Roomguru/Source Files/EventQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultActionItem.swift; path = "Roomguru/Source Files/ResultActionItem.swift"; sourceTree = SOURCE_ROOT; };
 		BF4336561AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsPageViewControllerDataSource.swift; path = "Roomguru/Source Files/EventsPageViewControllerDataSource.swift"; sourceTree = SOURCE_ROOT; };
 		BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerCell.swift; path = "Roomguru/Source Files/DatePickerCell.swift"; sourceTree = SOURCE_ROOT; };
 		BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerItem.swift; path = "Roomguru/Source Files/DatePickerItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -567,6 +569,7 @@
 				BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */,
 				BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */,
 				BFE814541AE8413C00369522 /* RecurrenceItem.swift */,
+				BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1313,6 +1316,7 @@
 				BFF1B57B1AE7BE4A00F9767E /* PickerItem.swift in Sources */,
 				5EDEACF11ADFD22100C4351B /* StickyExpandableFlowLayout.swift in Sources */,
 				5E15F13F1ADBE28A00E1F8BC /* GPPAuthenticator.swift in Sources */,
+				BF3CAD611AEE3D2200B1F684 /* ResultActionItem.swift in Sources */,
 				5E8AFF6C1AD3D4E900FB73CD /* CalendarPickerCell.swift in Sources */,
 				5ED4C7701ACC3DC80084E52F /* Defines.swift in Sources */,
 				5EF095591ACD91AD001E5C69 /* CalendarPickerViewModel.swift in Sources */,

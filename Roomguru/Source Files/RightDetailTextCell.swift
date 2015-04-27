@@ -17,6 +17,20 @@ class RightDetailTextCell: UITableViewCell, Reusable {
     
     let detailLabel = UILabel()
     
+    private var leftAccessoryLabel = UILabel()
+    
+    var validationError: NSError? {
+        didSet {
+            if validationError != nil {
+                leftAccessoryLabel.hidden = false
+                indentationLevel = 3
+            } else {
+                leftAccessoryLabel.hidden = true
+                indentationLevel = 0
+            }
+        }
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -28,8 +42,10 @@ class RightDetailTextCell: UITableViewCell, Reusable {
     }
     
     private func commonInit() {
+        leftAccessoryLabel = accessoryLabel()
         detailLabel.textAlignment = .Right
         addSubview(detailLabel)
+        addSubview(leftAccessoryLabel)
         defineConstraints()
     }
     
@@ -40,5 +56,23 @@ class RightDetailTextCell: UITableViewCell, Reusable {
             detail.width == CGRectGetWidth(self.frame) * 0.6
             detail.centerY == detail.superview!.centerY
         }
+        
+        layout(leftAccessoryLabel) { accessory in
+            accessory.left == accessory.superview!.left + 10
+            accessory.centerY == accessory.superview!.centerY
+            accessory.width == 30
+            accessory.height == 30
+        }
+    }
+    
+    private func accessoryLabel() -> UILabel {
+        let accessoryViewFrame = CGRectMake(0, 0, 30, 30)
+        let accessoryViewLabel = UILabel(frame: accessoryViewFrame)
+        accessoryViewLabel.font = UIFont.fontAwesomeOfSize(18)
+        accessoryViewLabel.text = String.fontAwesomeIconWithName(.ExclamationCircle)
+        accessoryViewLabel.textColor = UIColor.ngRedColor()
+        accessoryViewLabel.textAlignment = .Center
+        accessoryViewLabel.hidden = true
+        return accessoryViewLabel
     }
 }

@@ -20,8 +20,6 @@ class TextItem: GroupItem {
         self.text = text
         super.init(title: title, category: .PlainText)
     }
-    
-    private var _validationError: NSError?
 }
 
 extension TextItem: UITextFieldDelegate {
@@ -52,8 +50,8 @@ extension TextItem: Testable {
     
     var valueToValidate: AnyObject { get { return text } }
     var validationError: NSError? {
-        get { return _validationError }
-        set { _validationError = newValue }
+        get { return validate(valueToValidate) }
+        set {}
     }
     
     func validate(object: AnyObject) -> NSError? {

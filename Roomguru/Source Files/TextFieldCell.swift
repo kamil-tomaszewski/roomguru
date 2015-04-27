@@ -19,10 +19,10 @@ class TextFieldCell: UITableViewCell, Reusable {
     var validationError: NSError? {
         didSet {
             if validationError != nil {
-                textField.rightViewMode = .Always
+                textField.leftViewMode = .Always
                 textField.clearButtonMode = .WhileEditing
             } else {
-                textField.rightViewMode = .Never
+                textField.leftViewMode = .Never
                 textField.clearButtonMode = .Never
             }
         }
@@ -45,20 +45,20 @@ class TextFieldCell: UITableViewCell, Reusable {
     }
     
     private func configureTextField(textField: UITextField) {
-        textField.rightView = rightViewForTextField()
-        textField.rightViewMode = .Always
+        textField.leftView = leftViewForTextField()
+        textField.leftViewMode = .Always
         textField.clearButtonMode = .Never
         textField.tintColor = UIColor.ngOrangeColor()
     }
     
-    private func rightViewForTextField() -> UIView {
-        let rightViewFrame = CGRectMake(0, 0, 30, 30)
-        let rightViewLabel = UILabel(frame: rightViewFrame)
-        rightViewLabel.font = UIFont.fontAwesomeOfSize(18)
-        rightViewLabel.text = String.fontAwesomeIconWithName(.ExclamationCircle)
-        rightViewLabel.textColor = UIColor.ngRedColor()
-        rightViewLabel.textAlignment = .Center
-        return rightViewLabel
+    private func leftViewForTextField() -> UIView {
+        let leftViewFrame = CGRectMake(0, 0, 30, 30)
+        let leftViewLabel = UILabel(frame: leftViewFrame)
+        leftViewLabel.font = UIFont.fontAwesomeOfSize(18)
+        leftViewLabel.text = String.fontAwesomeIconWithName(.ExclamationCircle)
+        leftViewLabel.textColor = UIColor.ngRedColor()
+        leftViewLabel.textAlignment = .Center
+        return leftViewLabel
     }
     
     private func defineConstraints() {
