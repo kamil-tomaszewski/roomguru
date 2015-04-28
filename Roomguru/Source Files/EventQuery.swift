@@ -41,8 +41,8 @@ class EventQuery: BookingQuery {
         }
     }
 
-    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String = "", parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
-        super.init(HTTPMethod, URLExtension: URLExtension, parameters: nil, encoding: .JSON)
+    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String = "/calendars/primary/events", parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .JSON) {
+        super.init(HTTPMethod, URLExtension: URLExtension, parameters: nil, encoding: encoding)
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
         status = .Confirmed
@@ -53,11 +53,15 @@ class EventQuery: BookingQuery {
     // MARK: Parameters
     
     var calendarID: String? {
-        get { return _calendarID }
-        set {
+        willSet {
+            if let calendarID = calendarID {
+                removeAttendee(calendarID)
+            }
             if let calendarID = newValue {
-                _calendarID = calendarID
-                _URLExtension = urlExtensionForCalendarID(calendarID)
+                addAttendeesByDictionary([
+                    EmailKey: calendarID,
+                    ResponseStatusKey: "accepted"
+                ])
             }
         }
     }
@@ -119,10 +123,6 @@ class EventQuery: BookingQuery {
     override var HTTPMethod: Alamofire.Method {
         get { return _HTTPMethod }
     }
-    
-    override var URLExtension: String {
-        get { return _URLExtension }
-    }
 
     // MARK: Keys
     
@@ -142,9 +142,7 @@ class EventQuery: BookingQuery {
     
     private var dateFormatter = NSDateFormatter()
     
-    private var _calendarID: String?
     private var _HTTPMethod = Alamofire.Method.POST
-    private var _URLExtension = ""
     private var _attendees: [[String: String]] = []
     
     // MARK: Private functions
@@ -215,9 +213,5 @@ class EventQuery: BookingQuery {
             endDict[DateTimeKey] = dateFormatter.stringFromDate(endDate)
             endDict.removeValueForKey(DateTimeKey)
         }
-    }
-    
-    private func urlExtensionForCalendarID(calendarID: String) -> String {
-        return "/calendars/" + calendarID + "/events"
     }
 }
