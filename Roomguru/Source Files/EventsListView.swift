@@ -12,9 +12,6 @@ class EventsListView: UIBaseTableView {
     
     override func initialize() {
         super.initialize()
-        
-        tableView.tableHeaderView = buttonView(NSLocalizedString("Past", comment: ""))
-        tableView.tableFooterView = buttonView(NSLocalizedString("Future", comment: ""))
     }
     
     private func buttonView(title: String) -> ButtonView {

@@ -14,9 +14,11 @@ class EventsViewController: UIViewController {
 
     weak var aView: EventsListView?
     var viewModel: ListViewModel<CalendarEntry>?
-    var query = EventsQuery(calendarID: Room[0])
+    var query = EventsQuery(calendarID: Room.DD)
     var timeMax: NSDate = NSDate()
     var timeMin: NSDate = NSDate()
+    var selectedIndexPaths = [NSIndexPath]()
+
     
     let sortingKey = "shortDate"
     let roomSegmentedControl = UISegmentedControl(items: Room.names)
@@ -137,22 +139,10 @@ extension EventsViewController {
                 self.aView?.tableView.scrollToTopAnimated(false); return
             }
         } else {
-            fetchEventsForCalendars([Room[index]])  {
+            fetchEventsForCalendars([Room.DD])  {
                 self.aView?.tableView.scrollToTopAnimated(false); return
             }
         }
-    }
-    
-    func didTapFutureButton(sender: UIButton) {
-        timeMax = timeMax.days + 1
-        let index = roomSegmentedControl.selectedSegmentIndex
-        fetchEventsForCalendars([Room[index]])
-    }
-    
-    func didTapPastButton(sender: UIButton) {
-        timeMin = timeMin.days - 1
-        let index = roomSegmentedControl.selectedSegmentIndex
-        fetchEventsForCalendars([Room[index]])
     }
 }
 
@@ -161,6 +151,32 @@ extension EventsViewController {
 extension EventsViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let event = eventFromIndexPath(indexPath)
+        
+        if let freeEvent = event as? FreeEvent {
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! FreeEventCell
+            tableView.deselectRowIfSelectedAnimated(true)
+            println("already selected indexPaths: \(self.selectedIndexPaths)")
+            if contains(self.selectedIndexPaths, indexPath) { //This cell is already selected
+                println("deselecting cell @ \(indexPath)")
+                if let index = find(self.selectedIndexPaths, indexPath) {
+                    self.selectedIndexPaths.removeAtIndex(index)
+                }
+            } else {
+                if self.selectedIndexPaths.isEmpty {
+                    cell.toggleState(animated: true)
+                } else {
+                    if (shouldAllowSelection(indexPath)) {
+                        cell.toggleState(animated: true)
+                    }
+                }
+                self.selectedIndexPaths.append(indexPath)
+            }
+            return
+        }
+        
+
         
         let controller = EventDetailsViewController(event: eventFromIndexPath(indexPath))
         self.navigationController?.pushViewController(controller, animated: true)
@@ -205,7 +221,7 @@ extension EventsViewController: UITableViewDataSource {
             
             cell.delegate = self
             cell.timePeriod = freeEvent.duration
-            cell.freeTimeButton.setTitle(title)
+//            cell.freeTimeButton.setTitle(title)
             
             cell.timeMaxLabel.text = event?.startTime
             cell.timeMinLabel.text = event?.endTime
@@ -248,17 +264,20 @@ extension EventsViewController: FreeEventCellDelegate {
  
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval) {
         if let indexPath = aView?.tableView.indexPathForCell(cell) {
-            if let freeEntry = viewModel?[indexPath.section][indexPath.row] {
-                let timeFrame = TimeFrame(freeEvent: freeEntry.event as! FreeEvent)
-                let calendarTime: CalendarTimeFrame = (timeFrame, freeEntry.calendarID)
-                
-                let confirmationViewController = BookingConfirmationViewController(calendarTime) { (actualCalendarTime) in
-                    // NGRTodo: Present success view
-                }
-                
-                let navigationController = NavigationController(rootViewController: confirmationViewController)
-                presentViewController(navigationController, animated: true, completion: nil)
-            }
+
+
+            
+//            if let freeEntry = viewModel?[indexPath.section][indexPath.row] {
+//                let timeFrame = TimeFrame(freeEvent: freeEntry.event as! FreeEvent)
+//                let calendarTime: CalendarTimeFrame = (timeFrame, freeEntry.calendarID)
+//                
+//                let confirmationViewController = BookingConfirmationViewController(calendarTime) { (actualCalendarTime) in
+//                    // NGRTodo: Present success view
+//                }
+//                
+//                let navigationController = NavigationController(rootViewController: confirmationViewController)
+//                presentViewController(navigationController, animated: true, completion: nil)
+//            }
         }
     }
 }
@@ -274,6 +293,19 @@ extension EventsViewController {
         }
         return viewModel?[indexPath.row]?.event
     }
+    
+    private func shouldAllowSelection(indexPath: NSIndexPath) -> Bool {
+        let nextIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+        let previousIndexPathSection = NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
+        
+        if  contains(self.selectedIndexPaths, nextIndexPath) ||
+            contains(self.selectedIndexPaths, previousIndexPathSection) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     
     private func setupQuery(query: EventsQuery) -> EventsQuery {
         query.maxResults = 100
@@ -297,9 +329,6 @@ extension EventsViewController {
 
         tableView?.registerClass(EventCell.self)
         tableView?.registerClass(FreeEventCell.self)
-        
-        (aView?.tableView.tableHeaderView as! ButtonView).button.addTarget(self, action: Selector("didTapPastButton:"))
-        (aView?.tableView.tableFooterView as! ButtonView).button.addTarget(self, action: Selector("didTapFutureButton:"))
 
     }
 }

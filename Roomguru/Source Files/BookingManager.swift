@@ -15,7 +15,7 @@ class BookingManager: NSObject {
     
     class func findClosestAvailableRoom(completion: (calendarTime: CalendarTimeFrame?, error: NSError?) -> Void) {
         
-        let allRooms = [Room.Aqua, Room.Cold, Room.Middle, Room.DD]
+        let allRooms = [Room.Aqua, Room.Cold, Room.Middle, Room.DD, Room.Test]
         let query = FreeBusyQuery(calendarsIDs: allRooms)
         
         NetworkManager.sharedInstance.request(query, success: { (response) -> Void in

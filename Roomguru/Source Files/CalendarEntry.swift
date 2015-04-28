@@ -101,12 +101,6 @@ extension CalendarEntry {
                                 freeEntries.append(freeEntry)
                                 nextStartDay = nextStartDay.dateByAddingTimeInterval(minimumPeriod)
                             }
-                            
-//                            if timePeriod >= minimumPeriod {
-//                                let freeEvent = FreeEvent(startDate: eventEnd, endDate: nextEventStart)
-//                                let freeEntry = CalendarEntry(calendarID: entry.calendarID, event: freeEvent)
-//                                freeEntries.append(freeEntry)
-//                            }
                         }
                         
                         if !contains(freeEntries, nextEntry) {
