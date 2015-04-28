@@ -24,7 +24,7 @@ class RevocableEventCell: EventCell {
         setupRevokeButton()
     }
     
-     func onRevokeButtonClicked(sender:UIButton) {
+    func onRevokeButtonClicked(sender:UIButton) {
         if let handler:(()->()) = revokeButtonHandler{
             handler()
         }
