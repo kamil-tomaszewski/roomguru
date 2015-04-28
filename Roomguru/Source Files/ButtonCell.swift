@@ -26,17 +26,20 @@ class ButtonCell: UITableViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension ButtonCell {
     
-    private func commonInit() {
+    func commonInit() {
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
         addSubview(button)
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
-        layout(button) { (button) in
+        layout(button) { button in
             
             let margin: CGFloat = 10
             

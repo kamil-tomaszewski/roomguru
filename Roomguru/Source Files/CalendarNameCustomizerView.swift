@@ -23,11 +23,14 @@ class CalendarNameCustomizerView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension CalendarNameCustomizerView {
     
-    private func commonInit() {
-        self.backgroundColor = UIColor.whiteColor()
+    func commonInit() {
+        backgroundColor = .whiteColor()
         
-        button.backgroundColor = UIColor.ngOrangeColor()
+        button.backgroundColor = .ngOrangeColor()
         button.setTitle(NSLocalizedString("Bring back original name", comment: ""))
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.layer.cornerRadius = 3
@@ -39,7 +42,7 @@ class CalendarNameCustomizerView: UIView {
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         layout(textField, button) { textField, button in
             
             let margin: CGFloat = 20
@@ -55,5 +58,4 @@ class CalendarNameCustomizerView: UIView {
             button.height == 44
         }
     }
-
 }

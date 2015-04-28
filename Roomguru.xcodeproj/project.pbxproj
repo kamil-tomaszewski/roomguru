@@ -502,7 +502,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5E0720051AB6D908009C270E /* Cells */ = {
+		5E0720051AB6D908009C270E /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
 				5E0720031AB6D8FF009C270E /* SwitchCell.swift */,
@@ -517,13 +517,11 @@
 				BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */,
 				BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */,
 				BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */,
-				5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */,
 				6C936E491AD8011000C80C46 /* BaseEventCell.swift */,
 				BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */,
 				74547E081AEA4E82005277A6 /* RevocableEventCell.swift */,
-				5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */,
 			);
-			name = Cells;
+			name = "Table Cells";
 			sourceTree = "<group>";
 		};
 		5E0720061AB6D90D009C270E /* Controllers' Views */ = {
@@ -807,10 +805,20 @@
 			isa = PBXGroup;
 			children = (
 				5E0720071AB6D927009C270E /* Custom */,
-				5E0720051AB6D908009C270E /* Cells */,
+				5E569DD01AF000AD009F8EC0 /* Collection Cells */,
+				5E0720051AB6D908009C270E /* Table Cells */,
 				5E0720061AB6D90D009C270E /* Controllers' Views */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		5E569DD01AF000AD009F8EC0 /* Collection Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */,
+				5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */,
+			);
+			name = "Collection Cells";
 			sourceTree = "<group>";
 		};
 		5E769F071ACEDC200061289D /* Managers */ = {
@@ -821,7 +829,9 @@
 				5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */,
 				5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */,
 				5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */,
-				5E88B8041ADCF589000B6CAF /* User Managment */,
+				5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */,
+				5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */,
+				5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -843,16 +853,6 @@
 				5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		5E88B8041ADCF589000B6CAF /* User Managment */ = {
-			isa = PBXGroup;
-			children = (
-				5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */,
-				5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */,
-				5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */,
-			);
-			name = "User Managment";
 			sourceTree = "<group>";
 		};
 		7BC955BC1AB96CFD00138716 /* Google Calendar */ = {

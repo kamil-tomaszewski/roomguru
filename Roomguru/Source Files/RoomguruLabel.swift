@@ -24,10 +24,15 @@ class RoomguruLabel: UILabel {
         commonInit()
     }
     
-    private func commonInit() {
+    
+}
+
+private extension RoomguruLabel {
+    
+    func commonInit() {
         text = NSLocalizedString("Roomguru", comment: "")
         font = UIFont(name: "BradleyHandITCTT-Bold", size: 36)
         textAlignment = .Center
-        textColor = UIColor.ngOrangeColor()
+        textColor = .ngOrangeColor()
     }
 }

@@ -26,23 +26,26 @@ class PickerItemCell: UITableViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension PickerItemCell {
     
-    private func commonInit() {
+    func commonInit() {
         configure()
         contentView.addSubview(checkmarkLabel)
         defineConstraints()
     }
     
-    private func configure() {
+    func configure() {
         indentationLevel = 3
-        tintColor = UIColor.ngOrangeColor()
-        checkmarkLabel.font = UIFont.fontAwesomeOfSize(18)
+        tintColor = .ngOrangeColor()
+        checkmarkLabel.font = .fontAwesomeOfSize(18)
         checkmarkLabel.text = String.fontAwesomeIconWithName(.Check)
-        checkmarkLabel.textColor = UIColor.ngOrangeColor()
+        checkmarkLabel.textColor = .ngOrangeColor()
         checkmarkLabel.textAlignment = .Center
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(checkmarkLabel) { checkmark in
             

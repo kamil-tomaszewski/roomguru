@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class BookingConfirmationViewController: UIViewController {
     
     weak var aView: BookingConfirmationView?
@@ -47,7 +46,7 @@ class BookingConfirmationViewController: UIViewController {
             if let endDate = calendarTime.0?.endDate {
                 let startDateString = timeFormatter.stringFromDate(startDate)
                 let endDateString = timeFormatter.stringFromDate(endDate)
-                self.navigationItem.title = "Room " + calendarTime.1.roomName() + " | " + startDateString + " - " + endDateString
+                navigationItem.title = "Room " + calendarTime.1.roomName() + " | " + startDateString + " - " + endDateString
             }
         }
         
@@ -65,9 +64,7 @@ class BookingConfirmationViewController: UIViewController {
     private var confirmation: (CalendarTimeFrame, String) -> Void = { (calendarTime, summary) in }
     private var dateFormatter: NSDateFormatter = NSDateFormatter()
     private var timeFormatter: NSDateFormatter = NSDateFormatter()
-    
 }
-
 
 // MARK: Actions
 
@@ -87,7 +84,7 @@ extension BookingConfirmationViewController {
         addMinutesToActualBookingTime(-15)
         updateActualBookingTimeLabel()
         
-        sender.enabled = self.actualBookingTime.0?.duration() > 900
+        sender.enabled = actualBookingTime.0?.duration() > 900
         aView?.moreMinutesButton.enabled = true
     }
     
@@ -95,11 +92,10 @@ extension BookingConfirmationViewController {
         addMinutesToActualBookingTime(15)
         updateActualBookingTimeLabel()
         
-        sender.enabled = self.actualBookingTime.0?.duration() < self.calendarTime.0?.duration()
+        sender.enabled = actualBookingTime.0?.duration() < calendarTime.0?.duration()
         
         aView?.lessMinutesButton.enabled = true
     }
-    
 }
 
 
@@ -108,13 +104,11 @@ extension BookingConfirmationViewController {
 extension BookingConfirmationViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.summary = textField.text
+        summary = textField.text
         textField.resignFirstResponder()
         return true
     }
-    
 }
-
 
 // MARK: Private
 

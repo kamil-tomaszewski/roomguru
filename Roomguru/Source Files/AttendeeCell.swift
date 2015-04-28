@@ -35,20 +35,21 @@ class AttendeeCell: UITableViewCell, Reusable {
         avatarView.imageView.image = nil
         statusLabel.text = nil
     }
+}
+
+private extension AttendeeCell {
     
-    // MARK: Private
-    
-    private func commonInit() {
+    func commonInit() {
         
-        headerLabel.font = UIFont.systemFontOfSize(16)
+        headerLabel.font = .systemFontOfSize(16)
         contentView.addSubview(headerLabel)
         
-        footerLabel.textColor = UIColor.darkGrayColor()
-        footerLabel.font = UIFont.systemFontOfSize(12)
+        footerLabel.textColor = .darkGrayColor()
+        footerLabel.font = .systemFontOfSize(12)
         contentView.addSubview(footerLabel)
         
-        statusLabel.font = UIFont.fontAwesomeOfSize(20)
-        statusLabel.textColor = UIColor.ngOrangeColor()
+        statusLabel.font = .fontAwesomeOfSize(20)
+        statusLabel.textColor = .ngOrangeColor()
         statusLabel.textAlignment = .Center
         contentView.addSubview(statusLabel)
         
@@ -58,7 +59,7 @@ class AttendeeCell: UITableViewCell, Reusable {
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(avatarView, statusLabel, headerLabel) { avatar, rightLabel, topLabel in
             

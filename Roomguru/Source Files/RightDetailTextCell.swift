@@ -40,8 +40,11 @@ class RightDetailTextCell: UITableViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension RightDetailTextCell {
     
-    private func commonInit() {
+    func commonInit() {
         leftAccessoryLabel = accessoryLabel()
         detailLabel.textAlignment = .Right
         addSubview(detailLabel)
@@ -49,7 +52,7 @@ class RightDetailTextCell: UITableViewCell, Reusable {
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(detailLabel) { detail in
             detail.right == detail.superview!.right - 35
@@ -65,7 +68,7 @@ class RightDetailTextCell: UITableViewCell, Reusable {
         }
     }
     
-    private func accessoryLabel() -> UILabel {
+    func accessoryLabel() -> UILabel {
         let accessoryViewFrame = CGRectMake(0, 0, 30, 30)
         let accessoryViewLabel = UILabel(frame: accessoryViewFrame)
         accessoryViewLabel.font = UIFont.fontAwesomeOfSize(18)

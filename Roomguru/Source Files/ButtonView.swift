@@ -22,24 +22,23 @@ class ButtonView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension ButtonView {
     
-    // MARK: Private
-    
-    private func commonInit() {
-        configure()
+    func commonInit() {
+        
+        button.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
+        button.setTitleColor(UIColor.ngOrangeColor(), forState: .Normal)
         addSubview(button)
+        
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(button) { _button in
             _button.edges == _button.superview!.edges; return
         }
-    }
-
-    private func configure() {
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
-        button.setTitleColor(UIColor.ngOrangeColor(), forState: .Normal)
     }
 }

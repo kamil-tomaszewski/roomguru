@@ -20,23 +20,26 @@ class BorderTextField: UITextField {
         commonInit()
     }
     
-    private func commonInit() {
-        
-        clearButtonMode = .WhileEditing
-        autocorrectionType = .No
-        autocapitalizationType = .None
-        tintColor = UIColor.ngGrayColor()
-        
-        layer.borderColor = UIColor.ngOrangeColor().CGColor
-        layer.borderWidth = 1
-        layer.cornerRadius = 3
-    }
-    
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 10, 0);
     }
 
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 10, 0);
+    }
+}
+
+private extension BorderTextField {
+
+    func commonInit() {
+        
+        clearButtonMode = .WhileEditing
+        autocorrectionType = .No
+        autocapitalizationType = .None
+        tintColor = .ngGrayColor()
+        
+        layer.borderColor = UIColor.ngOrangeColor().CGColor
+        layer.borderWidth = 1
+        layer.cornerRadius = 3
     }
 }

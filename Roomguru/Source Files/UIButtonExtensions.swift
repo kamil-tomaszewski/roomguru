@@ -11,14 +11,14 @@ import Foundation
 extension UIButton {
     
     func setTitle(title: String?) {
-        self.setTitle(title, forState: .Normal)
+        setTitle(title, forState: .Normal)
     }
     
     func addTarget(target: AnyObject?, action: Selector) {
-        self.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+        addTarget(target, action: action, forControlEvents: .TouchUpInside)
     }
     
     func removeTarget(target: AnyObject?, action: Selector) {
-        self.removeTarget(target, action: action, forControlEvents: .TouchUpInside)
+        removeTarget(target, action: action, forControlEvents: .TouchUpInside)
     }
 }

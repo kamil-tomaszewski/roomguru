@@ -28,8 +28,8 @@ class FreeEvent: Event {
         
         formatter.dateFormat = "yyyy-MM-dd"
         let shortDateString = formatter.stringFromDate(startDate)
-        if let _shortDate = formatter.dateFromString(shortDateString) {
-            shortDate = _shortDate
+        if let shortDate = formatter.dateFromString(shortDateString) {
+            self.shortDate = shortDate
         }
     }
 
@@ -46,7 +46,6 @@ class FreeEvent: Event {
         aCoder.encodeDouble(self.duration, forKey: "duration")
     }
 }
-
 
 extension TimeFrame {
     

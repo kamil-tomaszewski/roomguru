@@ -32,14 +32,18 @@ class DescriptionCell: UITableViewCell, Reusable {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // DISCLAIMER: When using cartography and autolayout
+        // EXPLANATION: When using cartography and autolayout
         // boundingRectWithSize:options:context: method doesn't calculate height properly.
         
         let margins = DescriptionCell.margins()
         textLabel?.frame = CGRectInset(self.bounds, margins.H, margins.V)
     }
+}
+
+private extension DescriptionCell {
     
-    private func commonInit() {
+    func commonInit() {
         textLabel?.numberOfLines = 0
     }
 }
+

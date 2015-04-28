@@ -47,6 +47,6 @@ extension UIViewController {
     
     func presentControllerOfType<T:UIViewController>(controller: T.Type, animated: Bool, completion: VoidBlock?) {
         let navigationController = NavigationController(rootViewController: T())
-        self.presentViewController(navigationController, animated: animated, completion: completion);
+        presentViewController(navigationController, animated: animated, completion: completion);
     }
 }

@@ -11,15 +11,17 @@ import Cartography
 
 class BookingConfirmationView: UIView {
 
-    var minutesToBookLabel: UILabel = UILabel()
+    let minutesToBookLabel: UILabel = UILabel()
     
-    var confirmButton: UIButton = UIButton()
-    var cancelButton: UIButton = UIButton()
+    private(set) var confirmButton: UIButton = UIButton()
+    private(set) var cancelButton: UIButton = UIButton()
     
-    var lessMinutesButton: UIButton = UIButton()
-    var moreMinutesButton: UIButton = UIButton()
+    private(set) var lessMinutesButton: UIButton = UIButton()
+    private(set) var moreMinutesButton: UIButton = UIButton()
     
-    var summaryTextField: UITextField = UITextField()
+    let summaryTextField: UITextField = UITextField()
+    
+    private let minutesShortLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 200, 40))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,13 +32,12 @@ class BookingConfirmationView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension BookingConfirmationView {
     
-    // MARK: Private
-    
-    private var minutesShortLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 200, 40))
-    
-    private func commonInit() {
-        self.backgroundColor = UIColor.whiteColor()
+    func commonInit() {
+        backgroundColor = .whiteColor()
         
         configureButtonsAppearance()
         configureLabelsAppearance()
@@ -46,7 +47,7 @@ class BookingConfirmationView: UIView {
         addSubview(cancelButton)
         addSubview(lessMinutesButton)
         addSubview(moreMinutesButton)
-    
+        
         addSubview(minutesToBookLabel)
         addSubview(minutesShortLabel)
         
@@ -55,9 +56,9 @@ class BookingConfirmationView: UIView {
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
-        layout(confirmButton, cancelButton) { (confirm, cancel) in
+        layout(confirmButton, cancelButton) { confirm, cancel in
             confirm.left == confirm.superview!.left + 20
             confirm.bottom == confirm.superview!.bottom - 20
             
@@ -71,7 +72,7 @@ class BookingConfirmationView: UIView {
             cancel.height == confirm.height
         }
         
-        layout(minutesToBookLabel, minutesShortLabel) { (book, short) in
+        layout(minutesToBookLabel, minutesShortLabel) { book, short in
             book.center == book.superview!.center
             book.width == 70
             book.height == 50
@@ -81,14 +82,14 @@ class BookingConfirmationView: UIView {
             short.top == book.bottom
         }
         
-        layout(lessMinutesButton, minutesToBookLabel) { (button, book) in
+        layout(lessMinutesButton, minutesToBookLabel) { button, book in
             button.width == 44
             button.height == 44
             button.centerY == button.superview!.centerY
             button.right == book.left
         }
         
-        layout(moreMinutesButton, minutesToBookLabel) { (button, book) in
+        layout(moreMinutesButton, minutesToBookLabel) { button, book in
             button.width == 44
             button.height == 44
             button.centerY == button.superview!.centerY
@@ -102,18 +103,17 @@ class BookingConfirmationView: UIView {
             textField.height == 30
             return
         }
-        
     }
     
-    private func configureButtonsAppearance() {        
-        setupButton(&self.lessMinutesButton, withTitle: NSLocalizedString("<", comment: ""))
-        setupButton(&self.moreMinutesButton, withTitle: NSLocalizedString(">", comment: ""))
+    func configureButtonsAppearance() {
+        setupButton(&lessMinutesButton, withTitle: NSLocalizedString("<", comment: ""))
+        setupButton(&moreMinutesButton, withTitle: NSLocalizedString(">", comment: ""))
         
-        setupRoundButton(&self.confirmButton, withTitle: NSLocalizedString("Book", comment: ""), color: UIColor.ngOrangeColor())
-        setupRoundButton(&self.cancelButton, withTitle: NSLocalizedString("Cancel", comment: ""), color: UIColor.ngOrangeColor())
+        setupRoundButton(&confirmButton, withTitle: NSLocalizedString("Book", comment: ""), color: .ngOrangeColor())
+        setupRoundButton(&cancelButton, withTitle: NSLocalizedString("Cancel", comment: ""), color: .ngOrangeColor())
     }
     
-    private func setupButton(inout button: UIButton, withTitle title: String) {
+    func setupButton(inout button: UIButton, withTitle title: String) {
         button.setTitle(title, forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
@@ -126,7 +126,7 @@ class BookingConfirmationView: UIView {
         button.layer.cornerRadius = 5.0
     }
     
-    private func configureLabelsAppearance() {
+    func configureLabelsAppearance() {
         self.minutesShortLabel.text = NSLocalizedString("minutes", comment: "")
         self.minutesShortLabel.numberOfLines = 1
         self.minutesShortLabel.adjustsFontSizeToFitWidth = true
@@ -136,7 +136,7 @@ class BookingConfirmationView: UIView {
         self.minutesToBookLabel.textAlignment = .Center
     }
     
-    private func configureTextFieldAppearance() {
+    func configureTextFieldAppearance() {
         self.summaryTextField.placeholder = NSLocalizedString("Summary", comment: "")
         self.summaryTextField.borderStyle = .RoundedRect
     }

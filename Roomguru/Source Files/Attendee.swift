@@ -55,10 +55,10 @@ class Attendee: ModelObject, NSSecureCoding {
     
     class func map(jsonArray: [JSON]?) -> [Attendee]? {
         if let _jsonArray: [JSON] = jsonArray {
-            if _jsonArray.isEmpty == true {
+            if _jsonArray.isEmpty {
                 return nil
             }
-            return _jsonArray.map({ Attendee(json: $0) })
+            return _jsonArray.map { Attendee(json: $0) }
         }
         
         return nil

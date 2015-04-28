@@ -30,7 +30,7 @@ class UserPersistenceStore {
     private let downloader = UserImageDownloader()
     private let diskManager = UserDiskManager()
     
-    private(set) var user: User? = nil
+    private(set) var user: User?
 
     init() {
         self.user = load()
@@ -68,7 +68,7 @@ private extension UserPersistenceStore {
             return
         }
         
-        GPPProfileProvider.downloadImageURLWithCompletion { (success, url) in
+        GPPProfileProvider.downloadImageURLWithCompletion { success, url in
             if success {
                 self.downloadImageFromURL(url)
             }

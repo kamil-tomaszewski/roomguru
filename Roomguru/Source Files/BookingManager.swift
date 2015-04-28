@@ -18,7 +18,7 @@ class BookingManager: NSObject {
         let allRooms = [Room.Aqua, Room.Cold, Room.Middle, Room.DD, Room.Test]
         let query = FreeBusyQuery(calendarsIDs: allRooms)
         
-        NetworkManager.sharedInstance.request(query, success: { (response) -> Void in
+        NetworkManager.sharedInstance.request(query, success: { response in
             
             var calendars: [AvailabilityCalendar] = []
             
@@ -49,7 +49,7 @@ class BookingManager: NSObject {
                 completion(calendarTime: nil, error: NSError(message: message))
             }
             
-            }, failure: { (error) in
+            }, failure: { error in
                 completion(calendarTime: nil, error: error)
             }
         )
@@ -60,7 +60,7 @@ class BookingManager: NSObject {
         let query = BookingQuery(calendarTime)
         query.summary = summary
         
-        NetworkManager.sharedInstance.request(query, success: { (response) in
+        NetworkManager.sharedInstance.request(query, success: { response in
             
             if let _response = response {
                 let event = Event(json: _response)
@@ -76,7 +76,7 @@ class BookingManager: NSObject {
     
     class func revokeEvent(entry: Event, success: VoidBlock, failure: ErrorBlock) {
         let query = RevokeQuery(entry)
-        NetworkManager.sharedInstance.request(query, success: { (response) -> () in
+        NetworkManager.sharedInstance.request(query, success: { response in
             success()
         }, failure: failure)   
     }
@@ -105,7 +105,6 @@ extension BookingManager {
     }
 }
 
-
 // MARK: Saving booked calendar entry
 
 extension BookingManager {
@@ -131,7 +130,7 @@ extension BookingManager {
     class func hasRecentlyBookedEvent() -> Bool {
         if Defaults.hasKey("recently_booked_entry") {
             if let endDate = restoreRecentlyBookedEntry()?.event.endDate?.date() {
-                return  NSDate() <= endDate
+                return NSDate() <= endDate
             }
         }
         

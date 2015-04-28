@@ -30,7 +30,7 @@ class StickyExpandableFlowLayout: UICollectionViewFlowLayout {
         
         let superAttributes = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
         
-        if let collectionView = self.collectionView {
+        if let collectionView = collectionView {
             
             let headerElements = superAttributes.filter {
                 if let elemedKind = $0.representedElementKind {
@@ -52,7 +52,7 @@ class StickyExpandableFlowLayout: UICollectionViewFlowLayout {
                 let deltaY = fabsf(offsetY - minY)
                 
                 var headerRect = header.frame
-                headerRect.size.height = CGFloat(max(minY, Float(self.headerReferenceSize.height) + deltaY))
+                headerRect.size.height = CGFloat(max(minY, Float(headerReferenceSize.height) + deltaY))
                 headerRect.origin.y = CGFloat(Float(headerRect.origin.y) - deltaY);
                 header.frame = headerRect
             }

@@ -26,17 +26,18 @@ class EventCell: BaseEventCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension EventCell {
     
-    // MARK: Private
-    
-    private func commonInit() {
+    func commonInit() {
         configure()
         contentView.addSubview(timeMaxLabel)
         contentView.addSubview(timeMinLabel)
         defineConstraints()
     }
     
-    private func configure() {
+    func configure() {
         let font = UIFont.boldSystemFontOfSize(13.0)
         
         timeMaxLabel.font = font

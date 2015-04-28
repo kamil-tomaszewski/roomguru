@@ -11,6 +11,6 @@ import Foundation
 extension CGSize {
     
     mutating func increaseHeightBy(newHeight: CGFloat) {
-        self.height = newHeight
+        height = newHeight
     }
 }

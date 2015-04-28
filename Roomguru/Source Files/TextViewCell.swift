@@ -37,24 +37,27 @@ class TextViewCell: UITableViewCell, Reusable {
         
         frame = CGRectMake(originX, originY, width, height)
     }
+}
+
+private extension TextViewCell {
     
-    private func commonInit() {
+    func commonInit() {
         configureTextView(textView)
         addSubview(textView)
         defineConstraints()
     }
     
-    private func configureTextView(textView: UITextView) {
+    func configureTextView(textView: UITextView) {
         textView.scrollEnabled = false
-        textView.tintColor = UIColor.ngOrangeColor()
+        textView.tintColor = .ngOrangeColor()
         textView.contentInset = UIEdgeInsetsMake(3, 7, 3, 7)
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         let width = CGRectGetWidth(self.frame)
         self.frame = CGRectMake(0, 0, width, 160.0)
-
+        
         layout(textView) { text in
             text.edges == text.superview!.edges
             text.height == 160.0

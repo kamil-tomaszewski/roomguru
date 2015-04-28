@@ -24,12 +24,13 @@ class HeaderLabel: UILabel {
         let insets = UIEdgeInsetsMake(0, 15, 0, 0)
         super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
     }
-    
-    // MARK: Private
-    
-    private func commonInit() {
-        backgroundColor = UIColor.ngGrayColor()
-        textColor = UIColor.ngOrangeColor()
-        font = UIFont.boldSystemFontOfSize(16)
+}
+
+private extension HeaderLabel {
+ 
+    func commonInit() {
+        backgroundColor = .ngGrayColor()
+        textColor = .ngOrangeColor()
+        font = .boldSystemFontOfSize(16)
     }
 }

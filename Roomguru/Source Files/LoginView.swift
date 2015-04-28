@@ -26,8 +26,16 @@ class LoginView: UIView {
         commonInit()
     }
     
-    private func commonInit() {
-        self.backgroundColor = UIColor.whiteColor()
+    func showSignInButton(show: Bool) {
+        signInButton.hidden = !show
+        show ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
+    }
+}
+
+private extension LoginView {
+    
+    func commonInit() {
+        backgroundColor = .whiteColor()
         
         addSubview(logoLabel)
         addSubview(avatarView)
@@ -36,13 +44,13 @@ class LoginView: UIView {
         signInButton.colorScheme = kGPPSignInButtonColorSchemeLight
         addSubview(signInButton)
         
-        activityIndicator.color = UIColor.ngOrangeColor()
+        activityIndicator.color = .ngOrangeColor()
         addSubview(activityIndicator)
         
         defineConstraints()
     }
-
-    private func defineConstraints() {
+    
+    func defineConstraints() {
         layout(signInButton, avatarView, logoLabel) { button, avatar, label in
             
             let margin: CGFloat = 20
@@ -65,10 +73,5 @@ class LoginView: UIView {
         layout(signInButton, activityIndicator) { button, indicator in
             indicator.center == button.center
         }
-    }
-    
-    func showSignInButton(show: Bool) {
-        signInButton.hidden = !show
-        show ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
     }
 }

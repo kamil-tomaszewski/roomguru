@@ -27,23 +27,26 @@ class SettingsTableHeaderView: UIImageView {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension SettingsTableHeaderView {
     
-    private func commonInit() {
+    func commonInit() {
         
         backgroundColor = UIColor.whiteColor()
         contentMode = .ScaleAspectFit
         image =  UserPersistenceStore.sharedStore.userImage()
         
         addSubview(visualEffectView)
-                
+        
         avatarView.imageView.image = image
         avatarView.setBorderVisible(false)
         addSubview(avatarView)
-
+        
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(visualEffectView, avatarView) { blurView, avatar in
             
@@ -54,4 +57,5 @@ class SettingsTableHeaderView: UIImageView {
             avatar.height == CGRectGetHeight(self.avatarView.bounds)
         }
     }
+    
 }

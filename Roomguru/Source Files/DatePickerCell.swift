@@ -26,14 +26,17 @@ class DatePickerCell: UITableViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension DatePickerCell {
     
-    private func commonInit() {
+    func commonInit() {
         datePicker.datePickerMode = .DateAndTime
         addSubview(datePicker)
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         let width = CGRectGetWidth(self.frame)
         self.frame = CGRectMake(0, 0, width, 160.0)

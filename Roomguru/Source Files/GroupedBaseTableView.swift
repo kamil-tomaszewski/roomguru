@@ -13,5 +13,4 @@ class GroupedBaseTableView: UIBaseTableView {
     convenience init(frame: CGRect) {
         self.init(frame: frame, tableViewStyle: .Grouped)
     }
-    
 }

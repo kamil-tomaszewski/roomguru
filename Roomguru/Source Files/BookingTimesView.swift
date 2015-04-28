@@ -77,10 +77,11 @@ class BookingTimesView: UIView {
     func didTapThirdPeriodButton(sender: UIButton) {
         delegate?.didChooseTimePeriod(timePeriodsArray[2])
     }
+}
+
+private extension BookingTimesView {
     
-    // MARK: Private
-    
-    private func commonInit() {
+    func commonInit() {
         configure()
         addSubview(firstPeriodButton)
         addSubview(secondPeriodButton)
@@ -88,7 +89,7 @@ class BookingTimesView: UIView {
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(firstPeriodButton, secondPeriodButton, thirdPeriodButton) { _first, _second, _third in
             
@@ -103,15 +104,13 @@ class BookingTimesView: UIView {
             _first.centerY == _first.superview!.centerY
             _second.center == _second.superview!.center
             _third.centerY == _third.superview!.centerY
-            
-            return
         }
     }
     
-    private func configure() {
+    func configure() {
         let font = UIFont.boldSystemFontOfSize(17.0)
         let white = UIColor.whiteColor()
-       
+        
         firstPeriodButton.titleLabel?.font = font
         secondPeriodButton.titleLabel?.font = font
         thirdPeriodButton.titleLabel?.font = font
@@ -124,5 +123,4 @@ class BookingTimesView: UIView {
         secondPeriodButton.addTarget(self, action: Selector("didTapSecondPeriodButton:"))
         thirdPeriodButton.addTarget(self, action: Selector("didTapThirdPeriodButton:"))
     }
-    
 }

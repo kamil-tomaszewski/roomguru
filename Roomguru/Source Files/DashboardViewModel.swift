@@ -38,7 +38,7 @@ class CellItem {
     enum CellItemAction { case Book, Revoke }
     
     let title: String
-    let action : CellItemAction
+    let action: CellItemAction
     var color: UIColor { get { return _color } }
     
     init(title: String, action: CellItemAction) {

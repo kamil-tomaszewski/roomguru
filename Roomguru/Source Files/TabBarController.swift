@@ -67,7 +67,7 @@ class TabBarController: UITabBarController {
         let today = NSDate()
         let titleView = eventsTitleView(today)
         
-        eventsPageControllerDelegate = EventsPageViewControllerDelegate() { (date) in
+        eventsPageControllerDelegate = EventsPageViewControllerDelegate() { date in
             titleView.detailTextLabel.text = date.string()
         }
         

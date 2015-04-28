@@ -39,21 +39,24 @@ class TextFieldCell: UITableViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension TextFieldCell {
     
-    private func commonInit() {
+    func commonInit() {
         configureTextField(textField)
         addSubview(textField)
         defineConstraints()
     }
     
-    private func configureTextField(textField: TextField) {
+    func configureTextField(textField: TextField) {
         textField.leftView = leftViewForTextField()
         textField.leftViewMode = .Always
         textField.clearButtonMode = .Never
-        textField.tintColor = UIColor.ngOrangeColor()
+        textField.tintColor = .ngOrangeColor()
     }
     
-    private func leftViewForTextField() -> UIView {
+    func leftViewForTextField() -> UIView {
         let leftViewFrame = CGRectMake(0, 0, 30, 30)
         let leftViewLabel = UILabel(frame: leftViewFrame)
         leftViewLabel.font = UIFont.fontAwesomeOfSize(18)
@@ -63,7 +66,7 @@ class TextFieldCell: UITableViewCell, Reusable {
         return leftViewLabel
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(textField) { field in
             

@@ -33,8 +33,8 @@ class EventDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideBackBarButtonTitle()
-        self.title = NSLocalizedString("Event Details", comment: "")
+        hideBackBarButtonTitle()
+        title = NSLocalizedString("Event Details", comment: "")
         setupTableView()
     }
 }
@@ -143,8 +143,8 @@ extension EventDetailsViewController {
     func didTapHangoutButton(sender: UIButton) {
         
         UIApplication.openURLIfPossible(viewModel.hangoutURL()) { (success, error) in
-            if let _error = error {
-                UIAlertView(error: _error).show()
+            if let error = error {
+                UIAlertView(error: error).show()
             }
         };
     }

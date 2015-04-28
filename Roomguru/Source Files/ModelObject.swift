@@ -49,5 +49,4 @@ class ModelObject: NSObject, ModelJSONProtocol {
     // MARK: Internal
     
     let formatter: NSDateFormatter = NSDateFormatter()
-    
 }

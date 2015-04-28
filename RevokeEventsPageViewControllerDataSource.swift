@@ -27,5 +27,4 @@ class RevokeEventsPageViewControllerDataSource: NSObject, UIPageViewControllerDa
         }
         return nil
     }
-   
 }

@@ -40,8 +40,7 @@ private extension WeekCarouselView {
     
     func defineConstraints() {
         
-        layout(collectionView!) { collection in
-            
+        layout(collectionView!) { collection in            
             collection.edges == collection.superview!.edges; return
         }
     }

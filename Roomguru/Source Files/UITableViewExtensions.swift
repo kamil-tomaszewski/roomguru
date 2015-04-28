@@ -10,26 +10,26 @@ extension UITableView {
     
     func deselectRowIfSelectedAnimated(animated: Bool) {
         if let indexPath = self.indexPathForSelectedRow() {
-            self.deselectRowAtIndexPath(indexPath, animated: animated)
+            deselectRowAtIndexPath(indexPath, animated: animated)
         }
     }
     
     func reloadAndDeselectRowAtIndexPath(indexPath: NSIndexPath, animated: Bool = true)  {
-        self.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-        self.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-        self.deselectRowAtIndexPath(indexPath, animated: animated)
+        reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+        deselectRowAtIndexPath(indexPath, animated: animated)
     }
     
     func hideSeparatorForEmptyCells() {
-        self.tableFooterView = UIView(frame: CGRectZero)
+        tableFooterView = UIView(frame: CGRectZero)
     }
     
     func scrollToTopAnimated(animated: Bool) {
         var y: CGFloat = 0
-        if let _y = self.tableHeaderView?.frame.height {
+        if let _y = tableHeaderView?.frame.height {
             y = -(_y + CGRectGetHeight(UIApplication.sharedApplication().statusBarFrame))
         }
-        self.setContentOffset(CGPointMake(0, y), animated: animated)
+        setContentOffset(CGPointMake(0, y), animated: animated)
     }
     
     func registerClass<T where T: UITableViewCell, T: Reusable>(aClass: T.Type) {

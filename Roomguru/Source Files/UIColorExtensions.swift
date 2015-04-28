@@ -11,27 +11,27 @@ import Foundation
 extension UIColor {
     
     class func ngBarTranslucentGrayColor() -> UIColor {
-        return UIColor.rgb(39, 47, 61)
+        return .rgb(39, 47, 61)
     }
     
     class func ngGrayColor() -> UIColor {
-        return UIColor.rgb(69, 76, 87)
+        return .rgb(69, 76, 87)
     }
     
     class func ngOrangeColor() -> UIColor {
-        return UIColor.rgb(243, 166, 62)
+        return .rgb(243, 166, 62)
     }
     
     class func ngRedColor() -> UIColor {
-        return UIColor.rgb(237, 110, 102)
+        return .rgb(237, 110, 102)
     }
     
     class func systemPlaceholder() -> UIColor {
-        return UIColor.rgb(199, 199, 205)
+        return .rgb(199, 199, 205)
     }
     
     class func rgb(r: NSInteger, _ g: NSInteger, _ b: NSInteger) -> UIColor {
-        return UIColor.rgba(r, g, b, 1)
+        return .rgba(r, g, b, 1)
     }
     
     class func rgba(r: NSInteger, _ g: NSInteger, _ b: NSInteger, _ a: CGFloat) -> UIColor {

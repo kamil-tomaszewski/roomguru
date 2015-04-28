@@ -13,7 +13,6 @@ protocol Pageable: Queryable {
     var pageToken: String? { get set }
 }
 
-
 class PageableQuery: Query, Pageable {
     
     // MARK: Initializers
@@ -32,5 +31,4 @@ class PageableQuery: Query, Pageable {
     // MARK: Private
     
     private let PageTokenKey = "pageToken"
-    
 }

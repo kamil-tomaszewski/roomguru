@@ -25,5 +25,4 @@ class RevokeQuery: Query {
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
         super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters, encoding: encoding)
     }
-    
 }

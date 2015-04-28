@@ -26,22 +26,23 @@ class SwitchCell: UITableViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension SwitchCell {
     
-    private func commonInit() {
+    func commonInit() {
         switchControl.onTintColor = UIColor.ngOrangeColor()
         addSubview(switchControl)
         
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
-        layout(switchControl) { (aSwitch) in
-            
-            let margin: CGFloat = 20
+        layout(switchControl) { aSwitch in
             
             aSwitch.centerY == aSwitch.superview!.centerY
-            aSwitch.right == aSwitch.superview!.right - margin
+            aSwitch.right == aSwitch.superview!.right - 20
         }
     }
 }

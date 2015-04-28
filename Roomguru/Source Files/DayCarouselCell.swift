@@ -43,7 +43,6 @@ private extension DayCarouselCell {
     func defineConstraints() {
         
         layout(textLabel) { label in
-            
             label.edges == inset(label.superview!.edges, 10)
         }
     }

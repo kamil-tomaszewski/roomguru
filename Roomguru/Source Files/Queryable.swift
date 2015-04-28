@@ -75,7 +75,6 @@ extension Query {
             _parameters?[key] = newValue
         }
     }
-    
 }
 
 
@@ -86,5 +85,4 @@ extension Query: GoogleRequiredAuthProtocol {
     func setFullPath(baseUrl: String, authKey: String) {
         _fullPath = baseUrl + self.URLExtension + authKey
     }
-    
 }

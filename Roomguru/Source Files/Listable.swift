@@ -65,6 +65,5 @@ class Section<T> : List<T> {
     
     required init(_ items: [T]) {
         super.init(items)
-    }
-    
+    } 
 }

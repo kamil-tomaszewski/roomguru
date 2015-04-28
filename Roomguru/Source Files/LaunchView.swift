@@ -25,29 +25,30 @@ class LaunchView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension LaunchView {
     
-    // MARK: Private
-    
-    private func commonInit() {
+    func commonInit() {
         
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = .whiteColor()
         
         addSubview(avatarView)
         addSubview(logoLabel)
         
         label.text = NSLocalizedString("Authenticating...", comment: "")
         label.textAlignment = .Center
-        label.textColor = UIColor.ngOrangeColor()
+        label.textColor = .ngOrangeColor()
         addSubview(label)
         
         activityIndicator.startAnimating()
-        activityIndicator.color = UIColor.ngOrangeColor()
+        activityIndicator.color = .ngOrangeColor()
         addSubview(activityIndicator)
         
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(label, avatarView, activityIndicator) { label, avatar, indicator in
             

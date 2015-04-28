@@ -23,10 +23,6 @@ class AvailabilityCalendar: NSObject {
         self.timeFrames.sort{ $0.startDate <= $1.startDate }
         super.init()
     }
-}
-
-
-extension AvailabilityCalendar {
     
     func closestFreeTimeFrame() -> CalendarTimeFrame? {
         
@@ -43,9 +39,9 @@ extension AvailabilityCalendar {
             let nextIndex = index + 1
             let timeFramesCount = timeFrames.count
             let startDate = frame.endDate
-
+            
             if nextIndex < timeFramesCount {
-
+                
                 let nextFrame = timeFrames[nextIndex]
                 
                 if startDate.day == nextFrame.endDate.day {
@@ -57,7 +53,6 @@ extension AvailabilityCalendar {
                         let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .Available)
                         return (timeFrame, calendarID)
                     }
-                    
                 }
                 
             } else {
@@ -65,14 +60,15 @@ extension AvailabilityCalendar {
                 let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .Available)
                 return (timeFrame, calendarID)
             }
-            
         }
         
         return nil
-        
     }
+}
+
+private extension AvailabilityCalendar {
     
-    private func checkEndOfADay() -> CalendarTimeFrame? {
+    func checkEndOfADay() -> CalendarTimeFrame? {
         
         let today = NSDate()
         
@@ -83,11 +79,10 @@ extension AvailabilityCalendar {
             
         }
         
-        return nil;
-        
+        return nil
     }
     
-    private func checkFreeBeforeAnyBusy() -> CalendarTimeFrame? {
+    func checkFreeBeforeAnyBusy() -> CalendarTimeFrame? {
         
         let today = NSDate()
         if let firstFrame = timeFrames.first {
@@ -105,11 +100,8 @@ extension AvailabilityCalendar {
         }
         
         return nil
-
     }
-    
 }
-
 
 // MARK: Debug
 

@@ -11,7 +11,7 @@ import UIKit
 extension UIView {
     
     func convertFrameToView(view: UIView?) -> CGRect {
-        return self.convertRect(self.frame, toView: view)
+        return convertRect(self.frame, toView: view)
     }
     
     func findFirstResponder() -> UIView? {

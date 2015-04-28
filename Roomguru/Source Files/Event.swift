@@ -93,7 +93,7 @@ class Event: ModelObject, NSSecureCoding {
             if _jsonArray.isEmpty {
                 return nil
             }
-            /* DISCLAIMER:
+            /* EXPLANATION:
                 Maping using T type failes with crash: "partial apply forwarder for Roomguru.Event"
                 That's why explicit init and casting in map() function is needed.
             */

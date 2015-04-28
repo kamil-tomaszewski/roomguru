@@ -28,11 +28,14 @@ class SettingsCollectionViewHeader: UICollectionReusableView, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
+
+private extension SettingsCollectionViewHeader {
     
-    private func commonInit() {
+    func commonInit() {
         
         clipsToBounds = true
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = .whiteColor()
         
         backgroundImageView.contentMode = .ScaleAspectFit
         backgroundImageView.image =  UserPersistenceStore.sharedStore.userImage()
@@ -48,7 +51,7 @@ class SettingsCollectionViewHeader: UICollectionReusableView, Reusable {
         defineConstraints()
     }
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(visualEffectView, avatarView, backgroundImageView) { blurView, avatar, imageView in
             
@@ -64,4 +67,5 @@ class SettingsCollectionViewHeader: UICollectionReusableView, Reusable {
             avatar.height == CGRectGetHeight(self.avatarView.bounds)
         }
     }
+    
 }

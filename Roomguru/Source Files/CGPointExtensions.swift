@@ -11,6 +11,6 @@ import Foundation
 extension CGPoint {
     
     mutating func increaseYBy(newY: CGFloat) {
-        self.y += newY
+        y += newY
     }
 }

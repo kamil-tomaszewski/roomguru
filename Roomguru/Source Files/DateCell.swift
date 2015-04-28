@@ -17,6 +17,8 @@ class DateCell: UITableViewCell, Reusable {
     
     let dateLabel = UILabel()
     
+    private var textAttributes = [NSObject: AnyObject]()
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -36,51 +38,49 @@ class DateCell: UITableViewCell, Reusable {
     }
     
     func setDateText(text: String, withValidationError error: NSError? = nil) {
-        let strikethroughStyle = (error != nil) ? NSUnderlineStyle.StyleSingle : NSUnderlineStyle.StyleNone
+        let strikethroughStyle: NSUnderlineStyle = (error != nil) ? .StyleSingle : .StyleNone
         textAttributes[NSStrikethroughStyleAttributeName] = strikethroughStyle.rawValue
         setDateLabelText(text, withAttributes: textAttributes)
     }
     
     func setSelectedLabelColor(selected: Bool) {
-        let color = selected ? UIColor.ngOrangeColor() : UIColor.blackColor()
+        let color: UIColor = selected  ? .ngOrangeColor() : .blackColor()
         setLabelColor(color)
     }
-            
-    // MARK: Private
+}
+
+private extension DateCell {
     
-    private var textAttributes = [NSObject: AnyObject]()
-    
-    private func setDateLabelText(text: String, withAttributes attributes: [NSObject: AnyObject]) {
-        dateLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
-    }
-    
-    private func commonInit() {
+    func commonInit() {
         dateLabel.text = ""
         dateLabel.textAlignment = .Right
         addSubview(dateLabel)
         defineConstraints()
     }
     
-    private func defineConstraints() {
-
-        let margin: CGFloat = 15
+    func defineConstraints() {
         
-        layout(dateLabel) { (date) in
-
-            date.right == date.superview!.right - margin
+        layout(dateLabel) { date in
+            
+            date.right == date.superview!.right - 15
             date.left == date.superview!.left
             date.height == 44.0
         }
     }
     
-    private func toggleLabelColor() {
+    func setDateLabelText(text: String, withAttributes attributes: [NSObject: AnyObject]) {
+        dateLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func toggleLabelColor() {
         let blackColor = UIColor.blackColor()
-        let color = dateLabel.textColor == blackColor ? UIColor.ngOrangeColor() : blackColor
+        let color = dateLabel.textColor == blackColor ? .ngOrangeColor() : blackColor
         setLabelColor(color)
     }
     
-    private func setLabelColor(color: UIColor) {
+    func setLabelColor(color: UIColor) {
         textAttributes[NSForegroundColorAttributeName] = color
         setDateLabelText(dateLabel.text!, withAttributes: textAttributes)
     }
+    
 }
