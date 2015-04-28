@@ -31,7 +31,7 @@ class QueryRequest {
             if let responseError: NSError = error as NSError? {
                 failure(error: responseError)
                 return
-            } else if response?.statusCode == 400 {
+            } else if response?.statusCode >= 400 {
                 let message = NSLocalizedString("Failed retrieving data", comment: "")
                 let otherError = NSError(message: message)
                 failure(error: otherError)
