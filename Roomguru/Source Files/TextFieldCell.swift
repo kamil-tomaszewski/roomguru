@@ -15,15 +15,17 @@ class TextFieldCell: UITableViewCell, Reusable {
         return "TableViewTextFieldCellReuseIdentifier"
     }
     
-    let textField = UITextField()
+    let textField = TextField()
     var validationError: NSError? {
         didSet {
             if validationError != nil {
                 textField.leftViewMode = .Always
                 textField.clearButtonMode = .WhileEditing
+                textField.leftInset = 30
             } else {
                 textField.leftViewMode = .Never
                 textField.clearButtonMode = .Never
+                textField.leftInset = 5
             }
         }
     }
@@ -44,7 +46,7 @@ class TextFieldCell: UITableViewCell, Reusable {
         defineConstraints()
     }
     
-    private func configureTextField(textField: UITextField) {
+    private func configureTextField(textField: TextField) {
         textField.leftView = leftViewForTextField()
         textField.leftViewMode = .Always
         textField.clearButtonMode = .Never
@@ -65,7 +67,7 @@ class TextFieldCell: UITableViewCell, Reusable {
         
         layout(textField) { field in
             
-            let margin: CGFloat = 15
+            let margin: CGFloat = 10
             
             field.centerX == field.superview!.centerX
             field.centerY == field.superview!.centerY

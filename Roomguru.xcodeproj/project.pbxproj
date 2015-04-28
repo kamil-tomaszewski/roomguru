@@ -143,6 +143,7 @@
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BF01C8E31AEEB133003422AD /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */; };
 		BF01C8E51AEEB162003422AD /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E41AEEB162003422AD /* CGSizeExtensions.swift */; };
+		BF01C8E71AEF8048003422AD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* TextField.swift */; };
 		BF0A9E4E1AD540290088ED79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9E4D1AD540290088ED79 /* User.swift */; };
 		BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
 		BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
@@ -343,6 +344,7 @@
 		7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCalendar.swift; path = "Roomguru/Source Files/AvailabilityCalendar.swift"; sourceTree = SOURCE_ROOT; };
 		BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointExtensions.swift; path = "Roomguru/Source Files/CGPointExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF01C8E41AEEB162003422AD /* CGSizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGSizeExtensions.swift; path = "Roomguru/Source Files/CGSizeExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		BF01C8E61AEF8048003422AD /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = "Roomguru/Source Files/TextField.swift"; sourceTree = SOURCE_ROOT; };
 		BF0A9E4D1AD540290088ED79 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Roomguru/Source Files/User.swift"; sourceTree = SOURCE_ROOT; };
 		BF251ACC1AC083F30020DFC4 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queryable.swift; path = "Roomguru/Source Files/Queryable.swift"; sourceTree = SOURCE_ROOT; };
 		BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsQuery.swift; path = "Roomguru/Source Files/EventsQuery.swift"; sourceTree = SOURCE_ROOT; };
@@ -551,6 +553,7 @@
 				5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */,
 				5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */,
 				5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */,
+				BF01C8E61AEF8048003422AD /* TextField.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -1308,6 +1311,7 @@
 				BF4C0D231AE29B730040BDBF /* DatePickerItem.swift in Sources */,
 				5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */,
 				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,
+				BF01C8E71AEF8048003422AD /* TextField.swift in Sources */,
 				BF0A9E4E1AD540290088ED79 /* User.swift in Sources */,
 				5E8AE3031ACC172500A3C146 /* CalendarPickerViewController.swift in Sources */,
 				BFE5660A1AE1342300B935BF /* TextItem.swift in Sources */,
