@@ -23,7 +23,7 @@ class KeyboardPresenceHandler {
     private var currentKeyboardProperties: KeyboardProperties?
     
     private var originalOffset: CGPoint?
-    private var originalContentSize: CGSize?
+    private var originalInsets: UIEdgeInsets?
     
     init(scrollView: UIScrollView) {
         self.scrollView = scrollView
@@ -46,7 +46,7 @@ class KeyboardPresenceHandler {
     @objc func keyboardWillShow(notification: NSNotification) {
         
         originalOffset = scrollView.contentOffset
-        originalContentSize = scrollView.contentSize
+        originalInsets = scrollView.contentInset
         
         if let userInfo = notification.userInfo {
             currentKeyboardProperties = KeyboardProperties(info: userInfo)
@@ -58,18 +58,16 @@ class KeyboardPresenceHandler {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let userInfo = notification.userInfo, offset = originalOffset, contentSize = originalContentSize {
+        if let userInfo = notification.userInfo, offset = originalOffset, insets = originalInsets {
             let keyboardProperties = KeyboardProperties(info: userInfo)
-            
-            scrollView.contentSize = contentSize
             
             animate(keyboardProperties, animations: {
                 self.scrollView.contentOffset = offset
+                self.scrollView.contentInset = insets
             })
         }
         
         originalOffset = nil
-        originalContentSize = nil
         currentKeyboardProperties = nil
         currentResponder = nil
     }
@@ -107,15 +105,20 @@ private extension KeyboardPresenceHandler {
         
         if respondersMaxY - contentOffsetDiff >= keyboardMinY { // Responder is behind the keyboard
             let diff = (respondersMaxY - keyboardMinY) + keyboardOffset
-            scrollView.contentSize.increaseHeightBy(diff)
-            animate(properties, animations: { self.scrollView.contentOffset.increaseYBy(diff) })
+            animate(properties, animations: {
+                self.scrollView.contentOffset.increaseYBy(diff)
+                self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, diff, 0)
+            })
             
         } else if respondersMaxY >= keyboardMinY { // Responder has changed and would be behind the keyboard
             let diff = keyboardMinY - respondersMaxY + keyboardOffset
             
             if var originalOffset = originalOffset {
                 originalOffset.increaseYBy(diff)
-                animate(properties, animations: { self.scrollView.contentOffset = originalOffset })
+                animate(properties, animations: {
+                    self.scrollView.contentOffset = originalOffset
+                    self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, diff, 0)
+                })
             }
         }
     }
