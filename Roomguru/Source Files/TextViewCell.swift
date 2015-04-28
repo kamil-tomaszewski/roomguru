@@ -29,17 +29,23 @@ class TextViewCell: UITableViewCell, Reusable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let width = CGRectGetWidth(self.frame)
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, 160.0)
+        
+        let originX = CGRectGetMinX(frame)
+        let originY = CGRectGetMinY(frame)
+        let width = CGRectGetWidth(frame)
+        let height = CGFloat(160.0)
+        
+        frame = CGRectMake(originX, originY, width, height)
     }
     
     private func commonInit() {
-        configureTextView()
+        configureTextView(textView)
         addSubview(textView)
         defineConstraints()
     }
     
-    private func configureTextView() {
+    private func configureTextView(textView: UITextView) {
+        textView.scrollEnabled = false
         textView.tintColor = UIColor.ngOrangeColor()
         textView.contentInset = UIEdgeInsetsMake(3, 7, 3, 7)
     }
