@@ -1,18 +1,18 @@
 //
-//  DayCarouselCell.swift
+//  RoomPickerCell.swift
 //  Roomguru
 //
-//  Created by Patryk Kaczmarek on 28/04/15.
+//  Created by Patryk Kaczmarek on 29/04/15.
 //  Copyright (c) 2015 Netguru Sp. z o.o. All rights reserved.
 //
 
 import UIKit
 import Cartography
 
-class DayCarouselCell: UICollectionViewCell, Reusable {
+class RoomPickerCell: UICollectionViewCell, Reusable {
     
     class func reuseIdentifier() -> String {
-        return "UICollectionViewDayCarouselCellReuseIdentifier"
+        return "UICollectionViewRoomPickerCellReuseIdentifier"
     }
     
     let textLabel = UILabel()
@@ -28,13 +28,13 @@ class DayCarouselCell: UICollectionViewCell, Reusable {
     }
 }
 
-private extension DayCarouselCell {
+private extension RoomPickerCell {
     
     func commonInit() {
         
-        backgroundColor = .clearColor()
+        backgroundColor = UIColor.whiteColor()
         
-        textLabel.backgroundColor = .redColor()
+        textLabel.backgroundColor = .grayColor()
         addSubview(textLabel)
         
         defineConstraints()

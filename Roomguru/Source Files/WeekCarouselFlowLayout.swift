@@ -15,6 +15,7 @@ class WeekCarouselFlowLayout: UICollectionViewFlowLayout {
         sectionInset = UIEdgeInsetsZero
         minimumLineSpacing = 0
         minimumInteritemSpacing = 0
+        scrollDirection = .Horizontal
     }
     
     required init(coder aDecoder: NSCoder) {

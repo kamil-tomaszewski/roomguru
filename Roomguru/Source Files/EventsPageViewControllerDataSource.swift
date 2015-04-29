@@ -14,18 +14,18 @@ class EventsPageViewControllerDataSource: NSObject, UIPageViewControllerDataSour
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
-        if let viewController = viewController as? EventsViewController {
+        if let viewController = viewController as? EventsListViewController {
             let date = viewController.timeMax.days - 1
-            return EventsViewController(date: date)
+            return EventsListViewController(date: date)
         }
         
         return nil
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        if let viewController = viewController as? EventsViewController {
+        if let viewController = viewController as? EventsListViewController {
             let date = viewController.timeMax.days + 1
-            return EventsViewController(date: date)
+            return EventsListViewController(date: date)
         }
         
         return nil

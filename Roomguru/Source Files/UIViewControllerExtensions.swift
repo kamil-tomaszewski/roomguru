@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIViewController {
-   
+    
     func loadViewWithClass<T where T: UIView>(view: T.Type) -> T {
         
         let _view: T = view(frame: UIScreen.mainScreen().applicationFrame)
@@ -48,5 +48,23 @@ extension UIViewController {
     func presentControllerOfType<T:UIViewController>(controller: T.Type, animated: Bool, completion: VoidBlock?) {
         let navigationController = NavigationController(rootViewController: T())
         presentViewController(navigationController, animated: animated, completion: completion);
+    }
+    
+    func addContainerViewController<T: UIViewController>(controller: T.Type) -> T {
+        let controller = controller()
+        addChildViewController(controller)
+        view.addSubview(controller.view)
+        controller.didMoveToParentViewController(self)
+        return controller
+    }
+    
+    func removeContainerController<T: UIViewController>(controller: T.Type) {
+        
+        let array = self.childViewControllers.filter { $0 is T } as! [T]
+        for containerController in array {
+            containerController.willMoveToParentViewController(nil)
+            containerController.view.removeFromSuperview()
+            containerController.removeFromParentViewController()
+        }
     }
 }

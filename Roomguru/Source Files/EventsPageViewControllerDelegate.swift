@@ -27,7 +27,7 @@ class EventsPageViewControllerDelegate: NSObject {
 extension EventsPageViewControllerDelegate: UIPageViewControllerDelegate {
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-        if let eventsViewController = pageViewController.viewControllers.first as? EventsViewController {
+        if let eventsViewController = pageViewController.viewControllers.first as? EventsListViewController {
             onFinishedAnimating?(date: eventsViewController.timeMax)
         }
     }

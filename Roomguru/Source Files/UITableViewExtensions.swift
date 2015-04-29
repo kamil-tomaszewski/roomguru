@@ -24,14 +24,6 @@ extension UITableView {
         tableFooterView = UIView(frame: CGRectZero)
     }
     
-    func scrollToTopAnimated(animated: Bool) {
-        var y: CGFloat = 0
-        if let _y = tableHeaderView?.frame.height {
-            y = -(_y + CGRectGetHeight(UIApplication.sharedApplication().statusBarFrame))
-        }
-        setContentOffset(CGPointMake(0, y), animated: animated)
-    }
-    
     func registerClass<T where T: UITableViewCell, T: Reusable>(aClass: T.Type) {
         registerClass(aClass, forCellReuseIdentifier: T.reuseIdentifier())
     }

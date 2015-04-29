@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NavigationController: UINavigationController {
+class NavigationController: UINavigationController, UINavigationControllerDelegate {
     
     // MARK: Lifecycle
     
