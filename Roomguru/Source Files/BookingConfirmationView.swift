@@ -133,13 +133,15 @@ private extension BookingConfirmationView {
     
     func setupButton(inout button: UIButton, withTitle title: String) {
         button.setTitle(title, forState: .Normal)
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
+        button.setTitleColor(.blackColor(), forState: .Normal)
+        button.setTitleColor(.lightGrayColor(), forState: .Highlighted)
+        button.setTitleColor(.lightGrayColor(), forState: .Disabled)
+
     }
     
     private func setupRoundButton(inout button: UIButton, withTitle title: String, color: UIColor) {
         button.setTitle(title, forState: .Normal)
+        button.setTitleColor(.whiteColor(), forState: .Disabled)
         button.backgroundColor = color
         button.layer.cornerRadius = 5.0
     }
