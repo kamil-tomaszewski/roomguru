@@ -27,9 +27,9 @@ class WeekCarouselViewModel {
         
         let monday = calendar.mondayDateInWeekDate(NSDate())
         var startDate = monday.days - 14
-        let endDate = monday.days + 14
+        let endDate = monday.days + 13
         
-        while startDate.compare(endDate) != .OrderedDescending {
+        while startDate.isEarlierThan(endDate) {
             
             days += [startDate]
             startDate = startDate.days + 1
@@ -45,5 +45,14 @@ class WeekCarouselViewModel {
         let string = dateFormatter.stringFromDate(days[index])
         dateFormatter.dateFormat = "d"
         return string
+    }
+    
+    func indexFromDate(date: NSDate) -> Int? {
+        for (index, element) in enumerate(days) {
+            if element.isSameDayAs(date) {
+                return index
+            }
+        }
+        return nil
     }
 }

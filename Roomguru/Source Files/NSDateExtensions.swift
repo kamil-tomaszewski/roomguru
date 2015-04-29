@@ -13,11 +13,19 @@ extension NSDate {
     
     func isToday() -> Bool {
         let today = NSDate()
-        return days == today.days && months == today.months && years == today.years
+        return isSameDayAs(today)
+    }
+    
+    func isSameDayAs(date: NSDate) -> Bool {
+        return days == date.days && months == date.months && years == date.years
     }
     
     func isEarlierThanToday() -> Bool {
         let today = NSDate()
-        return compare(today) == .OrderedAscending
+        return isEarlierThan(today)
+    }
+    
+    func isEarlierThan(date: NSDate) -> Bool {
+        return compare(date) == .OrderedAscending
     }
 }

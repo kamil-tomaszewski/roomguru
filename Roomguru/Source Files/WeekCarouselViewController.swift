@@ -18,6 +18,7 @@ class WeekCarouselViewController: UIViewController {
     weak var aView: WeekCarouselView?
     private let viewModel = WeekCarouselViewModel()
     private var selectedDate = NSDate()
+    private var didShowViewController = false
     
     var delegate: WeekCarouselViewControllerDelegate?
     
@@ -33,6 +34,19 @@ class WeekCarouselViewController: UIViewController {
         aView?.collectionView?.delegate = self
         aView?.collectionView?.dataSource = self
         aView?.collectionView?.registerClass(DayCarouselCell.self, type: .Cell)
+        
+        if let index = viewModel.indexFromDate(selectedDate) {
+            aView?.textLabel.text = viewModel.dateStringWithIndex(index)
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !didShowViewController {
+            scrollToDate(selectedDate, animated: false)
+            didShowViewController = true
+        }
     }
 }
 
@@ -62,7 +76,8 @@ extension WeekCarouselViewController: UICollectionViewDataSource {
         
         var style = DayCellStyle.Normal
         let date = viewModel[indexPath.row].date
-        if date.isEqualToDate(selectedDate) {
+        
+        if date.isSameDayAs(selectedDate) {
             style = .Selected
         } else if date.isToday() {
             style = .Today
@@ -93,5 +108,18 @@ extension WeekCarouselViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
+    }
+}
+
+private extension WeekCarouselViewController {
+    
+    func scrollToDate(date: NSDate, animated: Bool) {
+        
+        if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
+            
+            let place = CGFloat(index % 7)
+            let rect = CGRectMake(place * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
+            collectionView.scrollRectToVisible(rect, animated: animated)
+        }
     }
 }
