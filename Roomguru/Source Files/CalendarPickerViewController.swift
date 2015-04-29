@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class CalendarPickerViewController: UIViewController {
         
@@ -27,7 +28,7 @@ class CalendarPickerViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .Plain, target: self, action: Selector("didTapSaveBarButtonItem:"))
         
         if isModal() {
-         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select All", comment: ""), style: .Plain, target: self, action: Selector("didTapSelectAllBarButtonItem:"))
+            setSelectAllBarButton()
         }
         setupTableView()
         setBarButtonItemState()
@@ -45,20 +46,41 @@ class CalendarPickerViewController: UIViewController {
 
 // MARK: Private
 
-extension CalendarPickerViewController {
+private extension CalendarPickerViewController {
     
     func loadData() {
         
-        NetworkManager.sharedInstance.calendarsList { [weak self] (calendars, error) in
+        NetworkManager.sharedInstance.request(CalendarsQuery(), success: { [weak self] response in
             
-            if let error = error {
-                // NGRTodo: handle error
-            } else if let calendars = calendars {
+            let calendars = Calendar.map(response?["items"].array)?.filter { $0.isResource() }
+            
+            if let calendars = calendars where calendars.count > 0 {
                 self?.viewModel = CalendarPickerViewModel(calendars: calendars)
                 self?.aView?.tableView.reloadData()
                 self?.setBarButtonItemState()
+            } else {
+                
+                if let this = self where this.isModal() {
+                    this.setSignOutBarButton()
+                }
+                
+                let title = NSLocalizedString("Oh no!", comment: "")
+                let message = NSLocalizedString("No resource calendars were find. Please add resource calendars to your Google account.", comment: "")
+                UIAlertView(title: title, message: message).show()
             }
-        }
+            
+        }, failure: { error in
+            let title = NSLocalizedString("Oh no!", comment: "")
+            UIAlertView(title: title, message: error.localizedDescription).show()
+        })
+    }
+    
+    func setSignOutBarButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sign out", comment: ""), style: .Plain, target: self, action: Selector("didTapSignOutBarButtonItem:"))
+    }
+    
+    func setSelectAllBarButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select All", comment: ""), style: .Plain, target: self, action: Selector("didTapSelectAllBarButtonItem:"))
     }
 }
 
@@ -149,6 +171,14 @@ extension CalendarPickerViewController {
         viewModel?.selectAll()
         setBarButtonItemState()
         aView?.tableView.reloadData()
+    }
+    
+    func didTapSignOutBarButtonItem(sender: UIBarButtonItem) {
+        CalendarPersistenceStore.sharedStore.clear()
+        UserPersistenceStore.sharedStore.clear()
+        GPPSignIn.sharedInstance().signOut()
+        
+        navigationController?.popViewControllerAnimated(true)
     }
     
     private func setupTableView() {

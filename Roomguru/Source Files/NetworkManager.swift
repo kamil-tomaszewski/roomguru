@@ -59,38 +59,14 @@ private extension GTMOAuth2Authentication {
 
 extension NetworkManager {
     
-    func calendarsList(completion: (calendars: [Calendar]?, error: NSError?) -> Void) {
-        
-        if (self.clientID == "") {
-            completion(calendars: nil, error: NSError(message: "Client ID is not set!"))
-            return;
-        }
-        
-        let requestPath = serverURL + "/users/me/calendarList"
-        Alamofire.request(.GET, requestPath + key()).responseJSON { (request, response, json, error) -> Void in
-            
-            if let responseJSON: AnyObject = json {
-                var swiftyJSON: JSON? = JSON(responseJSON)
-                
-                let array = swiftyJSON?["items"].array
-                let calendars = Calendar.map(array)
-                completion(calendars: calendars, error: nil)
-                
-            } else {
-                let _error = error ?? NSError(message: NSLocalizedString("Unknown error occured", comment: ""))
-                completion(calendars: nil, error: _error)
-            }
-        }
+    func request(query: Query, success: ResponseBlock, failure: ErrorBlock) {
+        query.setFullPath(serverURL, authKey: key())
+        QueryRequest(query).resume(success, failure: failure)
     }
     
     func requestList<T: ModelJSONProtocol>(query: PageableQuery, success: (response: [T]?) -> (), failure: ErrorBlock) {
         query.setFullPath(serverURL, authKey: key())
         PageableRequest<T>(query).resume(success, failure)
-    }
-    
-    func request(query: Query, success: ResponseBlock, failure: ErrorBlock) {
-        query.setFullPath(serverURL, authKey: key())
-        QueryRequest(query).resume(success, failure: failure)
     }
     
     /**
