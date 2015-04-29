@@ -29,10 +29,9 @@ private extension RoomHorizontalPicker {
         font = UIFont(name: "HelveticaNeue-Light", size: 20)!
         highlightedFont = UIFont(name: "HelveticaNeue", size: 20)!
         interitemSpacing = 20.0
-        viewDepth = 2000.0
         textColor = .ngOrangeColor()
+        pickerViewStyle = .Flat
         highlightedTextColor = .ngOrangeColor()
         maskDisabled = false
-        reloadData()
     }
 }
