@@ -42,12 +42,14 @@ class BookingConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let startDate = calendarTime.0?.startDate {
-            if let endDate = calendarTime.0?.endDate {
-                let startDateString = timeFormatter.stringFromDate(startDate)
-                let endDateString = timeFormatter.stringFromDate(endDate)
-                navigationItem.title = "Room " + calendarTime.1.roomName() + " | " + startDateString + " - " + endDateString
-            }
+        if let startDate = calendarTime.0?.startDate, endDate = calendarTime.0?.endDate {
+            let startDateString = timeFormatter.stringFromDate(startDate)
+            let endDateString = timeFormatter.stringFromDate(endDate)
+            navigationItem.title = "Room " + calendarTime.1.roomName() + " | " + startDateString + " - " + endDateString
+        }
+        
+        if actualBookingTime.0?.duration() >= calendarTime.0?.duration() {
+            aView?.moreMinutesButton.enabled = false
         }
         
         aView?.summaryTextField.delegate = self
