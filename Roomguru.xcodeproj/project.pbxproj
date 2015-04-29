@@ -82,6 +82,8 @@
 		5E7A9E5A1AB060C60042E16F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
 		5E8858401AF0E7AD00EF08F1 /* CalendarListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */; };
 		5E8858421AF0F12A00EF08F1 /* WeekCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */; };
+		5E8858461AF10FD500EF08F1 /* NSCalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */; };
+		5E8858481AF11B1300EF08F1 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858471AF11B1300EF08F1 /* NSDateExtensions.swift */; };
 		5E88B8031ADCEFA0000B6CAF /* GroupedBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */; };
 		5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */; };
 		5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */; };
@@ -302,6 +304,8 @@
 		5E7A9E591AB060C60042E16F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarListViewModel.swift; path = "Roomguru/Source Files/CalendarListViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselViewModel.swift; path = "Roomguru/Source Files/WeekCarouselViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSCalendarExtensions.swift; path = "Roomguru/Source Files/NSCalendarExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E8858471AF11B1300EF08F1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = "Roomguru/Source Files/NSDateExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedBaseTableView.swift; path = "Roomguru/Source Files/GroupedBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = "Roomguru/Source Files/EventDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsView.swift; path = "Roomguru/Source Files/EventDetailsView.swift"; sourceTree = SOURCE_ROOT; };
@@ -913,6 +917,8 @@
 				BF01C8E41AEEB162003422AD /* CGSizeExtensions.swift */,
 				5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */,
 				BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */,
+				5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */,
+				5E8858471AF11B1300EF08F1 /* NSDateExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1283,6 +1289,7 @@
 				5E1BA3061ACB608000827BB6 /* UIAlertViewExtensions.swift in Sources */,
 				BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */,
 				5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */,
+				5E8858481AF11B1300EF08F1 /* NSDateExtensions.swift in Sources */,
 				5EDEACF51ADFFFA200C4351B /* SettingsCell.swift in Sources */,
 				5E746FED1AF064130049131F /* UINavigationControllerExtensions.swift in Sources */,
 				BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */,
@@ -1307,6 +1314,7 @@
 				BF2B69401AF0F48B00AC2CC4 /* UILabelExtensions.swift in Sources */,
 				5E8A7EEB1AA9CB610018F432 /* AppDelegate.swift in Sources */,
 				BFBA23751AF0BEA200446712 /* CalendarsQuery.swift in Sources */,
+				5E8858461AF10FD500EF08F1 /* NSCalendarExtensions.swift in Sources */,
 				5E003E631ACB290700AE55C1 /* NSURLExtensions.swift in Sources */,
 				5E746FE11AF049170049131F /* WeekCarouselViewController.swift in Sources */,
 				BFE5660C1AE13C7200B935BF /* SwitchItem.swift in Sources */,

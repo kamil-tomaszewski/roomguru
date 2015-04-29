@@ -10,7 +10,7 @@ import UIKit
 import Cartography
 
 enum DayCellStyle {
-    case Today, Selected, Normal
+    case Today, Selected, Normal, Past
 }
 
 class DayCarouselCell: UICollectionViewCell, Reusable {
@@ -35,11 +35,13 @@ class DayCarouselCell: UICollectionViewCell, Reusable {
         
         switch style {
         case .Today:
-            customizeTextLabelWithColors(backgroundColor: .clearColor(), textColor: .ngOrangeColor(), bold: true)
+            customizeTextLabelWithColors(backgroundColor: .whiteColor(), textColor: .ngOrangeColor(), bold: true)
         case .Selected:
             customizeTextLabelWithColors(backgroundColor: .ngOrangeColor(), textColor: .whiteColor())
         case .Normal:
             customizeTextLabelWithColors(backgroundColor: .whiteColor(), textColor: .ngGrayColor())
+        case .Past:
+            customizeTextLabelWithColors(backgroundColor: .whiteColor(), textColor: .rgb(210, 210, 210))
         }
     }
 }
@@ -52,6 +54,7 @@ private extension DayCarouselCell {
         
         textLabel.layer.masksToBounds = true
         textLabel.layer.borderWidth = 1
+        textLabel.layer.borderColor = UIColor.clearColor().CGColor
         textLabel.layer.cornerRadius = CGRectGetMidY(textLabel.frame)
         textLabel.textAlignment = .Center
         addSubview(textLabel)

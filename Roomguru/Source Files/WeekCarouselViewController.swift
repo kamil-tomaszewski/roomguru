@@ -7,13 +7,19 @@
 //
 
 import UIKit
-import DateKit
+
+protocol WeekCarouselViewControllerDelegate {
+    
+    func weekCarouselViewController(controller: WeekCarouselViewController, didSelectDate date: NSDate)
+}
 
 class WeekCarouselViewController: UIViewController {
     
     weak var aView: WeekCarouselView?
     private let viewModel = WeekCarouselViewModel()
     private var selectedDate = NSDate()
+    
+    var delegate: WeekCarouselViewControllerDelegate?
     
     // MARK: Lifecycle
     
@@ -55,10 +61,13 @@ extension WeekCarouselViewController: UICollectionViewDataSource {
         cell.textLabel.text = viewModel[indexPath.row].day
         
         var style = DayCellStyle.Normal
-        if selectedDate.days == viewModel[indexPath.row].date.days {
+        let date = viewModel[indexPath.row].date
+        if date.isEqualToDate(selectedDate) {
             style = .Selected
-        } else if viewModel[indexPath.row].isToday {
+        } else if date.isToday() {
             style = .Today
+        } else if date.isEarlierThanToday() {
+            style = .Past
         }
         
         cell.setAppearanceWithStyle(style)
@@ -72,9 +81,14 @@ extension WeekCarouselViewController: UICollectionViewDataSource {
 extension WeekCarouselViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        selectedDate = viewModel[indexPath.row].date
-        collectionView.reloadData()
-        aView?.textLabel.text = viewModel.dateStringWithIndex(indexPath.row)
+ 
+        if !viewModel[indexPath.row].date.isEqualToDate(selectedDate) {
+            
+            selectedDate = viewModel[indexPath.row].date
+            collectionView.reloadData()
+            aView?.textLabel.text = viewModel.dateStringWithIndex(indexPath.row)
+            delegate?.weekCarouselViewController(self, didSelectDate: selectedDate)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {

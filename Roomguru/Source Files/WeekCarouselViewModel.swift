@@ -14,7 +14,7 @@ class WeekCarouselViewModel {
     let calendar = NSCalendar.currentCalendar()
     let dateFormatter = NSDateFormatter()
     
-    private(set) var days: [(date: NSDate, isToday: Bool)] = []
+    private(set) var days: [NSDate] = []
     
     init() {
         calendar.firstWeekday = 2 //Monday
@@ -25,27 +25,25 @@ class WeekCarouselViewModel {
         dateFormatter.timeZone = NSTimeZone.localTimeZone()
         dateFormatter.dateFormat = "d"
         
-        let today = NSDate()
-        var startDate = today.days - 14
-        var endDate = today.days + 14
+        let monday = calendar.mondayDateInWeekDate(NSDate())
+        var startDate = monday.days - 14
+        let endDate = monday.days + 14
         
-        while startDate.compare(endDate) != NSComparisonResult.OrderedDescending {
+        while startDate.compare(endDate) != .OrderedDescending {
             
-            let isToday = startDate.days == today.days
-            days += [(date: startDate, isToday: isToday)]
+            days += [startDate]
             startDate = startDate.days + 1
         }        
     }
     
     subscript(index: Int) -> (date: NSDate, day: String, isToday: Bool) {
-        return (days[index].date, dateFormatter.stringFromDate(days[index].date), days[index].isToday)
+        return (days[index], dateFormatter.stringFromDate(days[index]), days[index].isToday())
     }
     
     func dateStringWithIndex(index: Int) -> String {
-        dateFormatter.dateFormat = "dd.MM EEE"//"LLLL yyyy"
-        let string = dateFormatter.stringFromDate(days[index].date)
+        dateFormatter.dateFormat = "EEEE dd LLLL yyyy"
+        let string = dateFormatter.stringFromDate(days[index])
         dateFormatter.dateFormat = "d"
         return string
     }
-    
 }

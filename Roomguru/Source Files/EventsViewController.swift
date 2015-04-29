@@ -26,8 +26,9 @@ class EventsViewController: UIViewController {
         pickerView.dataSource = self
         navigationItem.titleView = pickerView
         
-        let weekCarouselView = addContainerViewController(WeekCarouselViewController.self)
-        aView?.weekCarouselView = weekCarouselView.view
+        let weekCarouselViewController = addContainerViewController(WeekCarouselViewController.self)
+        weekCarouselViewController.delegate = self
+        aView?.weekCarouselView = weekCarouselViewController.view
         
         let pageViewController = addContainerViewController(EventsPageViewController.self)
         aView?.eventsPageView = pageViewController.view
@@ -36,6 +37,13 @@ class EventsViewController: UIViewController {
     deinit {
         removeContainerController(WeekCarouselViewController.self)
         removeContainerController(EventsPageViewController.self)
+    }
+}
+
+extension EventsViewController: WeekCarouselViewControllerDelegate {
+    
+    func weekCarouselViewController(controller: WeekCarouselViewController, didSelectDate date: NSDate) {
+        println(date)
     }
 }
 
