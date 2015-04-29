@@ -9,6 +9,10 @@
 import UIKit
 import Cartography
 
+enum DayCellStyle {
+    case Today, Selected, Normal
+}
+
 class DayCarouselCell: UICollectionViewCell, Reusable {
     
     class func reuseIdentifier() -> String {
@@ -26,6 +30,18 @@ class DayCarouselCell: UICollectionViewCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
+    
+    func setAppearanceWithStyle(style: DayCellStyle) {
+        
+        switch style {
+        case .Today:
+            customizeTextLabelWithColors(backgroundColor: .clearColor(), textColor: .ngOrangeColor(), borderColor: .clearColor(), bold: true)
+        case .Selected:
+            customizeTextLabelWithColors(backgroundColor: .ngOrangeColor(), textColor: .whiteColor(), borderColor: .ngOrangeColor())
+        case .Normal:
+            customizeTextLabelWithColors(backgroundColor: .whiteColor(), textColor: .ngGrayColor(), borderColor: .clearColor())
+        }
+    }
 }
 
 private extension DayCarouselCell {
@@ -34,10 +50,9 @@ private extension DayCarouselCell {
         
         backgroundColor = .clearColor()
         
+        textLabel.layer.masksToBounds = true
         textLabel.layer.borderWidth = 1
-        textLabel.layer.borderColor = UIColor.ngGrayColor().CGColor
         textLabel.layer.cornerRadius = CGRectGetMidY(textLabel.frame)
-        textLabel.textColor = .ngGrayColor()
         textLabel.textAlignment = .Center
         addSubview(textLabel)
         
@@ -51,5 +66,13 @@ private extension DayCarouselCell {
             label.width == CGRectGetWidth(self.textLabel.frame)
             label.height == CGRectGetHeight(self.textLabel.frame)
         }
+    }
+    
+    func customizeTextLabelWithColors(#backgroundColor: UIColor, textColor: UIColor, borderColor: UIColor, bold: Bool = false) {
+        
+        textLabel.font = bold ? .boldSystemFontOfSize(17) : .systemFontOfSize(17)
+        textLabel.textColor = textColor
+        textLabel.backgroundColor = backgroundColor
+        textLabel.layer.borderColor = borderColor.CGColor
     }
 }

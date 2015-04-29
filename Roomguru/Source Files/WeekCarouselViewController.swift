@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import DateKit
 
 class WeekCarouselViewController: UIViewController {
     
     weak var aView: WeekCarouselView?
+    private let viewModel = WeekCarouselViewModel()
+    private var selectedDate = NSDate()
     
     // MARK: Lifecycle
     
@@ -32,7 +35,7 @@ class WeekCarouselViewController: UIViewController {
 extension WeekCarouselViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let numberOfDaysInWeek: CGFloat = 7
+        let numberOfDaysInWeek: CGFloat = 7//viewModel.calendar.num
         return CGSizeMake(CGRectGetWidth(collectionView.bounds) / numberOfDaysInWeek, CGRectGetHeight(collectionView.bounds))
     }
 }
@@ -42,14 +45,23 @@ extension WeekCarouselViewController: UICollectionViewDelegateFlowLayout {
 extension WeekCarouselViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return viewModel.days.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableClass(DayCarouselCell.self, forIndexPath: indexPath, type: .Cell)
         
-        cell.textLabel.text = String(indexPath.row)
+        cell.textLabel.text = viewModel[indexPath.row].day
+        
+        var style = DayCellStyle.Normal
+        if selectedDate.days == viewModel[indexPath.row].date.days {
+            style = .Selected
+        } else if viewModel[indexPath.row].isToday {
+            style = .Today
+        }
+        
+        cell.setAppearanceWithStyle(style)
         
         return cell
     }
@@ -60,7 +72,8 @@ extension WeekCarouselViewController: UICollectionViewDataSource {
 extension WeekCarouselViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
+        selectedDate = viewModel[indexPath.row].date
+        collectionView.reloadData()
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {

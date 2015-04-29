@@ -81,6 +81,7 @@
 		5E7A9E581AB060BB0042E16F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E571AB060BB0042E16F /* QuickLook.framework */; };
 		5E7A9E5A1AB060C60042E16F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
 		5E8858401AF0E7AD00EF08F1 /* CalendarListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */; };
+		5E8858421AF0F12A00EF08F1 /* WeekCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */; };
 		5E88B8031ADCEFA0000B6CAF /* GroupedBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */; };
 		5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */; };
 		5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */; };
@@ -300,6 +301,7 @@
 		5E7A9E571AB060BB0042E16F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		5E7A9E591AB060C60042E16F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarListViewModel.swift; path = "Roomguru/Source Files/CalendarListViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselViewModel.swift; path = "Roomguru/Source Files/WeekCarouselViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedBaseTableView.swift; path = "Roomguru/Source Files/GroupedBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = "Roomguru/Source Files/EventDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsView.swift; path = "Roomguru/Source Files/EventDetailsView.swift"; sourceTree = SOURCE_ROOT; };
@@ -592,6 +594,7 @@
 				BF4F2DF71ADC0A0500834B60 /* GroupedListViewModel.swift */,
 				BF3B25A11ADD467400242859 /* EditEventViewModel.swift */,
 				5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */,
+				5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */,
 				BFE566071AE133F800B935BF /* GroupItem.swift */,
 				BFE566091AE1342300B935BF /* TextItem.swift */,
 				BFE5660B1AE13C7200B935BF /* SwitchItem.swift */,
@@ -1379,6 +1382,7 @@
 				5E746FDF1AF03C150049131F /* EventsView.swift in Sources */,
 				BF4336571AD7CCC700A45013 /* EventsPageViewControllerDataSource.swift in Sources */,
 				5E07202F1AB73F83009C270E /* DashboardViewModel.swift in Sources */,
+				5E8858421AF0F12A00EF08F1 /* WeekCarouselViewModel.swift in Sources */,
 				BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */,
 				BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */,
 				5E67FE731AE91220003AB827 /* UICollectionViewExtensions.swift in Sources */,
