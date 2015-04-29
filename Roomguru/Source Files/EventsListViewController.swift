@@ -13,7 +13,7 @@ import Async
 class EventsListViewController: UIViewController {
 
     weak var aView: EventsListView?
-    var viewModel: ListViewModel<CalendarEntry>?
+    var viewModel: CalendarListViewModel<CalendarEntry>?
     var query = EventsQuery(calendarID: Room.DD)
     var timeMax: NSDate = NSDate()
     var timeMin: NSDate = NSDate()
@@ -62,8 +62,6 @@ extension EventsListViewController {
     
     func fetchEventsForCalendars(calendars: [String], completion: (() -> Void)? = nil) {
         
-        runActivityIndicator()
-        
         let queries: [PageableQuery] = EventsQuery.queries(calendars).map { self.setupQuery($0) }
         NetworkManager.sharedInstance.chainedRequest(queries, construct: { (query, response: [Event]?) -> [CalendarEntry] in
             
@@ -79,7 +77,7 @@ extension EventsListViewController {
             Async.background {
                 if let calendarEntries = result {
                     let properEntries = self.createProperCalendarEntries(calendarEntries)
-                    self.viewModel = ListViewModel(properEntries, sortingKey: "event.shortDate")
+                    self.viewModel = CalendarListViewModel(properEntries, sortingKey: "event.shortDate")
                 }
             }.main {
                 self.aView?.tableView.reloadData()
@@ -87,16 +85,9 @@ extension EventsListViewController {
             }
             return
 
-        }, failure: { (error) -> () in
+        }, failure: { error in
             UIAlertView(error: error).show()
         })
-    }
-    
-    private func runActivityIndicator() {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        indicator.color = UIColor.ngOrangeColor()
-        indicator.startAnimating()
-        self.navigationItem.titleView = indicator
     }
 }
 
@@ -144,9 +135,7 @@ extension EventsListViewController: UITableViewDelegate {
             }
             return
         }
-        
 
-        
         let controller = EventDetailsViewController(event: eventFromIndexPath(indexPath))
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -168,15 +157,8 @@ extension EventsListViewController: UITableViewDelegate {
 
 extension EventsListViewController: UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return viewModel?.sectionsCount() ?? 0
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let _section: List<CalendarEntry> = viewModel?[section] {
-            return _section.count
-        }
-        return 0
+        return viewModel?[section].count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -184,7 +166,7 @@ extension EventsListViewController: UITableViewDataSource {
         let event = eventFromIndexPath(indexPath)
         
         if let freeEvent = event as? FreeEvent {
-            let cell: FreeEventCell = tableView.dequeueReusableCell(FreeEventCell.self)
+            let cell = tableView.dequeueReusableCell(FreeEventCell.self)
             let minutes = freeEvent.duration/60
             let title = "Book \(Int(minutes)) min"
             
@@ -207,23 +189,7 @@ extension EventsListViewController: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let entry = viewModel?[indexPath.section][indexPath.row] {
-            if entry.event is FreeEvent {
-                return 40.0
-            }
-        }
-        return 65
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let label = HeaderLabel()
-        label.text = (viewModel?[section] as! Section).title
-        return label
+        return viewModel?[indexPath.row]?.event is FreeEvent ? 40 : 65
     }
 }
 

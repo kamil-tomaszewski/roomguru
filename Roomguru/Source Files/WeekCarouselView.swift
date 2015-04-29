@@ -13,6 +13,8 @@ class WeekCarouselView: UIView {
     
     private(set) var collectionView: UICollectionView?
     private let weekdaysBar = WeekdaysBar()
+    let textLabel = UILabel()
+    private let bottomLine = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,28 +34,50 @@ private extension WeekCarouselView {
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: WeekCarouselFlowLayout())
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.pagingEnabled = true
-        collectionView!.backgroundColor = .ngGrayColor()
+        collectionView!.backgroundColor = .whiteColor()
         collectionView!.showsHorizontalScrollIndicator = false
         addSubview(collectionView!)
         
         addSubview(weekdaysBar)
+        
+        textLabel.textAlignment = .Center
+        textLabel.text = "Temporary label"
+        textLabel.textColor = .ngGrayColor()
+        textLabel.font = .systemFontOfSize(14)
+        addSubview(textLabel)
+        
+        bottomLine.backgroundColor = .rgb(200, 200, 200)
+        addSubview(bottomLine)
 
         defineConstraints()
     }
     
     func defineConstraints() {
         
-        layout(collectionView!, weekdaysBar) { collection, bar in
+        layout(bottomLine, weekdaysBar, textLabel) { line, bar, label in
             
             bar.left == bar.superview!.left
             bar.top == bar.superview!.top
             bar.width == bar.superview!.width
             bar.height == 20
             
+            line.left == line.superview!.left
+            line.bottom == line.superview!.bottom
+            line.width == line.superview!.width
+            line.height == 1
+            
+            label.left == label.superview!.left
+            label.bottom == line.top
+            label.width == label.superview!.width
+            label.height == 26
+        }
+        
+        layout(collectionView!, weekdaysBar, textLabel) { collection, bar, label in
+            
             collection.left == collection.superview!.left
             collection.top == bar.bottom
             collection.width == collection.superview!.width
-            collection.bottom == collection.superview!.bottom
+            collection.bottom == label.top
         }
     }
 }

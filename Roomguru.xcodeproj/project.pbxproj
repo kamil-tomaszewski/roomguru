@@ -80,6 +80,7 @@
 		5E7A9E561AB060AC0042E16F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */; };
 		5E7A9E581AB060BB0042E16F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E571AB060BB0042E16F /* QuickLook.framework */; };
 		5E7A9E5A1AB060C60042E16F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
+		5E8858401AF0E7AD00EF08F1 /* CalendarListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */; };
 		5E88B8031ADCEFA0000B6CAF /* GroupedBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */; };
 		5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */; };
 		5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */; };
@@ -297,6 +298,7 @@
 		5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5E7A9E571AB060BB0042E16F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		5E7A9E591AB060C60042E16F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarListViewModel.swift; path = "Roomguru/Source Files/CalendarListViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedBaseTableView.swift; path = "Roomguru/Source Files/GroupedBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = "Roomguru/Source Files/EventDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsView.swift; path = "Roomguru/Source Files/EventDetailsView.swift"; sourceTree = SOURCE_ROOT; };
@@ -587,6 +589,7 @@
 				5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */,
 				BF4F2DF71ADC0A0500834B60 /* GroupedListViewModel.swift */,
 				BF3B25A11ADD467400242859 /* EditEventViewModel.swift */,
+				5E88583F1AF0E7AD00EF08F1 /* CalendarListViewModel.swift */,
 				BFE566071AE133F800B935BF /* GroupItem.swift */,
 				BFE566091AE1342300B935BF /* TextItem.swift */,
 				BFE5660B1AE13C7200B935BF /* SwitchItem.swift */,
@@ -1253,6 +1256,7 @@
 				BF26B27D1AC59FCE00F95DD3 /* BookingConfirmationView.swift in Sources */,
 				5E8AE3091ACC1F2200A3C146 /* UIBaseTableView.swift in Sources */,
 				5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */,
+				5E8858401AF0E7AD00EF08F1 /* CalendarListViewModel.swift in Sources */,
 				5E1BA3041ACB5E8300827BB6 /* UIApplicationExtensions.swift in Sources */,
 				7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */,
 				BFAA8E361AE1ABDF00E6525A /* LongTextItem.swift in Sources */,

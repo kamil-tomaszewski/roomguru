@@ -35,9 +35,9 @@ private extension DayCarouselCell {
         backgroundColor = .clearColor()
         
         textLabel.layer.borderWidth = 1
-        textLabel.layer.borderColor = UIColor.ngOrangeColor().CGColor
+        textLabel.layer.borderColor = UIColor.ngGrayColor().CGColor
         textLabel.layer.cornerRadius = CGRectGetMidY(textLabel.frame)
-        textLabel.textColor = .ngOrangeColor()
+        textLabel.textColor = .ngGrayColor()
         textLabel.textAlignment = .Center
         addSubview(textLabel)
         

@@ -21,11 +21,9 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let pickerView = RoomHorizontalPicker(frame: self.navigationController!.titleViewFrame())
-        
+        let pickerView = RoomHorizontalPicker(frame: navigationController!.titleViewFrame())
         pickerView.delegate = self
         pickerView.dataSource = self
-
         navigationItem.titleView = pickerView
         
         let weekCarouselView = addContainerViewController(WeekCarouselViewController.self)
