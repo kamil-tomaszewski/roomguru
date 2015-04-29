@@ -21,7 +21,7 @@ class EventsListViewController: UIViewController {
 
     let sortingKey = "shortDate"
 
-    convenience init(date: NSDate){
+    convenience init(date: NSDate) {
         self.init()
         self.timeMax = date.hour(23).minute(59).second(59).date
         self.timeMin = date.midnight
@@ -73,7 +73,7 @@ extension EventsListViewController {
             }
             return []
 
-        }, success: { (result: [CalendarEntry]?) -> () in
+        }, success: { (result: [CalendarEntry]?) -> Void in
             Async.background {
                 if let calendarEntries = result {
                     let properEntries = self.createProperCalendarEntries(calendarEntries)
@@ -95,11 +95,11 @@ extension EventsListViewController {
 
 extension EventsListViewController {
     
-    func filterEvents (events: [Event]) -> [Event]{
+    func filterEvents (events: [Event]) -> [Event] {
         return events.filter{ !$0.isCanceled() }
     }
     
-    func createProperCalendarEntries (entries: [CalendarEntry]) -> [CalendarEntry]{
+    func createProperCalendarEntries (entries: [CalendarEntry]) -> [CalendarEntry] {
         let sortedEntries = CalendarEntry.sortedByDate(entries)
         return CalendarEntry.entriesWithFreeGaps(sortedEntries)
     }
@@ -275,7 +275,7 @@ class RevokeEventsViewController: EventsListViewController {
     
     override func setupTableView() {
         super.setupTableView()
-        aView?.tableView.registerClass(RevocableEventCell.self, forCellReuseIdentifier: RevocableEventCell.reuseIdentifier())
+        aView?.tableView.registerClass(RevocableEventCell.self)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -284,7 +284,8 @@ class RevokeEventsViewController: EventsListViewController {
         cell.textLabel?.text = event?.summary
         cell.timeMaxLabel.text = event?.startTime
         cell.timeMinLabel.text = event?.endTime
-        cell.revokeButtonHandler = {self.revokeEventAtIndexPath(indexPath)}
+        cell.revokeButtonHandler = { [weak self] in
+            self?.revokeEventAtIndexPath(indexPath)}
         return cell
     }
     

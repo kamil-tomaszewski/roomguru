@@ -74,8 +74,8 @@ class BookingManager: NSObject {
         }, failure: failure)
     }
     
-    class func revokeEvent(entry: Event, success: VoidBlock, failure: ErrorBlock) {
-        let query = RevokeQuery(entry)
+    class func revokeEvent(event: Event, success: VoidBlock, failure: ErrorBlock) {
+        let query = RevokeQuery(event)
         NetworkManager.sharedInstance.request(query, success: { response in
             success()
         }, failure: failure)   

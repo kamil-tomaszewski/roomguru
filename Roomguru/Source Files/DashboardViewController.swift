@@ -60,16 +60,16 @@ extension DashboardViewController {
         let today = NSDate()
         let titleView = eventsTitleView(today)
         
-        revokeEventsPageControllerDelegate = EventsPageViewControllerDelegate() { (date) in
+        revokeEventsPageControllerDelegate = EventsPageViewControllerDelegate() { date in
             titleView.detailTextLabel.text = date.string()
         }
         
-        let anRevokeEventsPageController = revokeEventsPageViewController(today, dataSource: revokeEventsPageControllerDataSource, delegate: revokeEventsPageControllerDelegate)
+        let revokeEventsPageController = revokeEventsPageViewController(today, dataSource: revokeEventsPageControllerDataSource, delegate: revokeEventsPageControllerDelegate)
         
-        anRevokeEventsPageController.navigationItem.titleView = titleView
-        anRevokeEventsPageController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel , target: anRevokeEventsPageController, action: Selector("dismissSelf:"))
+        revokeEventsPageController.navigationItem.titleView = titleView
+        revokeEventsPageController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel , target: revokeEventsPageController, action: Selector("dismissSelf:"))
         
-        let navigationController = NavigationController(rootViewController: anRevokeEventsPageController)
+        let navigationController = NavigationController(rootViewController: revokeEventsPageController)
          
         presentViewController(navigationController, animated: true, completion: nil)
     }
@@ -122,9 +122,9 @@ extension DashboardViewController: UITableViewDelegate {
 
 // MARK: Private Methods
 
-extension DashboardViewController {
+private extension DashboardViewController {
     
-    private func setupTableView() {
+    func setupTableView() {
         let tableView = aView?.tableView
         
         tableView?.delegate = self
@@ -132,12 +132,12 @@ extension DashboardViewController {
         tableView?.registerClass(ButtonCell.self)
     }
     
-    private func centralizeTableView() {
+    func centralizeTableView() {
         let topInset = max(0, (contentViewHeight() - requiredHeight()) / 2)
         aView?.tableView.contentInset = UIEdgeInsetsMake(topInset, 0, 0, 0);
     }
     
-    private func requiredHeight() -> CGFloat {
+    func requiredHeight() -> CGFloat {
         
         if let rowHeight = aView?.tableView.rowHeight {
             return CGFloat(viewModel.numberOfItems()) * rowHeight
@@ -145,7 +145,7 @@ extension DashboardViewController {
         return 0
     }
     
-    private func contentViewHeight() -> CGFloat {
+    func contentViewHeight() -> CGFloat {
         
         let topInset = (self.navigationController != nil) ? self.navigationController!.navigationBar.frame.size.height : 0
         let bottomInset = (self.tabBarController != nil) ? self.tabBarController!.tabBar.frame.size.height : 0
@@ -153,7 +153,7 @@ extension DashboardViewController {
         return (aView != nil) ? aView!.bounds.height - topInset - bottomInset : 0
     }
     
-    private func bookingConfirmationViewControllerWithCalendarTime(calendarTime: CalendarTimeFrame) -> BookingConfirmationViewController {
+    func bookingConfirmationViewControllerWithCalendarTime(calendarTime: CalendarTimeFrame) -> BookingConfirmationViewController {
         
         return BookingConfirmationViewController(calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
             
@@ -172,14 +172,14 @@ extension DashboardViewController {
         })
     }
     
-    private func eventsTitleView(date: NSDate) -> BasicTitleView {
+    func eventsTitleView(date: NSDate) -> BasicTitleView {
         let titleView = BasicTitleView(frame: CGRectMake(0, 0, 200, 44))
         titleView.textLabel.text = NSLocalizedString("Revoke event", comment: "")
         titleView.detailTextLabel.text = date.string()
         return titleView
     }
     
-    private func revokeEventsPageViewController(date: NSDate, dataSource: UIPageViewControllerDataSource, delegate: UIPageViewControllerDelegate) -> UIPageViewController {
+    func revokeEventsPageViewController(date: NSDate, dataSource: UIPageViewControllerDataSource, delegate: UIPageViewControllerDelegate) -> UIPageViewController {
         let pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         pageController.dataSource = dataSource
         pageController.delegate = delegate
