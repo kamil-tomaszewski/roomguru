@@ -69,12 +69,7 @@ private extension RightDetailTextCell {
     }
     
     func accessoryLabel() -> UILabel {
-        let accessoryViewFrame = CGRectMake(0, 0, 30, 30)
-        let accessoryViewLabel = UILabel(frame: accessoryViewFrame)
-        accessoryViewLabel.font = UIFont.fontAwesomeOfSize(18)
-        accessoryViewLabel.text = String.fontAwesomeIconWithName(.ExclamationCircle)
-        accessoryViewLabel.textColor = UIColor.ngRedColor()
-        accessoryViewLabel.textAlignment = .Center
+        let accessoryViewLabel = UILabel.roundedExclamationMarkLabel(CGRectMake(0, 0, 30, 30))
         accessoryViewLabel.hidden = true
         return accessoryViewLabel
     }

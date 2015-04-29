@@ -53,6 +53,7 @@ class BookingConfirmationViewController: UIViewController {
         }
         
         aView?.summaryTextField.delegate = self
+        isValid = false
         
         updateActualBookingTimeLabel()
         connectActions()
@@ -62,10 +63,15 @@ class BookingConfirmationViewController: UIViewController {
     
     private var actualBookingTime: CalendarTimeFrame = (nil, "")
     private var calendarTime: CalendarTimeFrame = (nil, "")
-    private var summary: String = NSLocalizedString("Summary", comment: "")
+    private var summary: String = NSLocalizedString("Summary", comment: "") {
+        didSet { isValid = summary.length >= 5 }
+    }
     private var confirmation: (CalendarTimeFrame, String) -> Void = { (calendarTime, summary) in }
     private var dateFormatter: NSDateFormatter = NSDateFormatter()
     private var timeFormatter: NSDateFormatter = NSDateFormatter()
+    private var isValid = false {
+        didSet { updateViewForValidationResult(isValid) }
+    }
 }
 
 // MARK: Actions
@@ -114,16 +120,29 @@ extension BookingConfirmationViewController: UITextFieldDelegate {
 
 // MARK: Private
 
-extension BookingConfirmationViewController {
+private extension BookingConfirmationViewController {
     
-    private func connectActions() {
+    func updateViewForValidationResult(result: Bool) {
+        if result {
+            aView?.removeErrorFromSummaryTextField()
+            aView?.confirmButton.backgroundColor = .ngOrangeColor()
+        } else {
+            aView?.markErrorOnSummaryTextField()
+            aView?.confirmButton.backgroundColor = .lightGrayColor()
+        }
+        
+        aView?.confirmButton.enabled = result
+    }
+    
+    func connectActions() {
+        aView?.confirmButton.enabled = false
         aView?.confirmButton.addTarget(self, action: Selector("didTapConfirmButton:"))
         aView?.cancelButton.addTarget(self, action: Selector("didTapCancelButton:"))
         aView?.lessMinutesButton.addTarget(self, action: Selector("didTapLessMinutesButton:"))
         aView?.moreMinutesButton.addTarget(self, action: Selector("didTapMoreMinutesButton:"))
     }
 
-    private func addMinutesToActualBookingTime(minutes: Int) {
+    func addMinutesToActualBookingTime(minutes: Int) {
         let actualTimeFrame = self.actualBookingTime.0
         
         if let _actualTimeFrame = actualTimeFrame {
@@ -133,7 +152,7 @@ extension BookingConfirmationViewController {
         }
     }
 
-    private func updateActualBookingTimeLabel() {
+    func updateActualBookingTimeLabel() {
         if let duration = self.actualBookingTime.0?.duration() {
             aView?.minutesToBookLabel.text = "\(Int(duration/60))"
         }

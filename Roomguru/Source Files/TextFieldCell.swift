@@ -50,7 +50,7 @@ private extension TextFieldCell {
     }
     
     func configureTextField(textField: TextField) {
-        textField.leftView = leftViewForTextField()
+        textField.leftView = UILabel.roundedExclamationMarkLabel(CGRectMake(0, 0, 30, 30))
         textField.leftViewMode = .Always
         textField.clearButtonMode = .Never
         textField.tintColor = .ngOrangeColor()

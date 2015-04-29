@@ -11,17 +11,17 @@ import Cartography
 
 class BookingConfirmationView: UIView {
 
-    let minutesToBookLabel: UILabel = UILabel()
+    let minutesToBookLabel = UILabel()
     
-    private(set) var confirmButton: UIButton = UIButton()
-    private(set) var cancelButton: UIButton = UIButton()
+    private(set) var confirmButton = UIButton()
+    private(set) var cancelButton = UIButton()
     
-    private(set) var lessMinutesButton: UIButton = UIButton()
-    private(set) var moreMinutesButton: UIButton = UIButton()
+    private(set) var lessMinutesButton = UIButton()
+    private(set) var moreMinutesButton = UIButton()
     
-    let summaryTextField: UITextField = UITextField()
+    let summaryTextField = TextField()
     
-    private let minutesShortLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 200, 40))
+    private let minutesShortLabel = UILabel(frame: CGRectMake(0, 0, 200, 40))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,10 +34,28 @@ class BookingConfirmationView: UIView {
     }
 }
 
+extension BookingConfirmationView {
+    
+    func markErrorOnSummaryTextField() {
+        summaryTextField.leftViewMode = .Always
+        summaryTextField.clearButtonMode = .WhileEditing
+        summaryTextField.leftInset = 30
+    }
+    
+    func removeErrorFromSummaryTextField() {
+        summaryTextField.leftViewMode = .Never
+        summaryTextField.clearButtonMode = .Never
+        summaryTextField.leftInset = 5
+    }
+}
+
 private extension BookingConfirmationView {
     
     func commonInit() {
         backgroundColor = .whiteColor()
+        
+        summaryTextField.leftView = UILabel.roundedExclamationMarkLabel(CGRectMake(0, 0, 30, 30))
+        markErrorOnSummaryTextField()
         
         configureButtonsAppearance()
         configureLabelsAppearance()
@@ -117,7 +135,7 @@ private extension BookingConfirmationView {
         button.setTitle(title, forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+        button.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
     }
     
     private func setupRoundButton(inout button: UIButton, withTitle title: String, color: UIColor) {
