@@ -35,11 +35,11 @@ class DayCarouselCell: UICollectionViewCell, Reusable {
         
         switch style {
         case .Today:
-            customizeTextLabelWithColors(backgroundColor: .clearColor(), textColor: .ngOrangeColor(), borderColor: .clearColor(), bold: true)
+            customizeTextLabelWithColors(backgroundColor: .clearColor(), textColor: .ngOrangeColor(), bold: true)
         case .Selected:
-            customizeTextLabelWithColors(backgroundColor: .ngOrangeColor(), textColor: .whiteColor(), borderColor: .ngOrangeColor())
+            customizeTextLabelWithColors(backgroundColor: .ngOrangeColor(), textColor: .whiteColor())
         case .Normal:
-            customizeTextLabelWithColors(backgroundColor: .whiteColor(), textColor: .ngGrayColor(), borderColor: .clearColor())
+            customizeTextLabelWithColors(backgroundColor: .whiteColor(), textColor: .ngGrayColor())
         }
     }
 }
@@ -48,7 +48,7 @@ private extension DayCarouselCell {
     
     func commonInit() {
         
-        backgroundColor = .clearColor()
+        backgroundColor = UIColor.clearColor()
         
         textLabel.layer.masksToBounds = true
         textLabel.layer.borderWidth = 1
@@ -68,11 +68,10 @@ private extension DayCarouselCell {
         }
     }
     
-    func customizeTextLabelWithColors(#backgroundColor: UIColor, textColor: UIColor, borderColor: UIColor, bold: Bool = false) {
+    func customizeTextLabelWithColors(#backgroundColor: UIColor, textColor: UIColor, bold: Bool = false) {
         
         textLabel.font = bold ? .boldSystemFontOfSize(17) : .systemFontOfSize(17)
         textLabel.textColor = textColor
         textLabel.backgroundColor = backgroundColor
-        textLabel.layer.borderColor = borderColor.CGColor
     }
 }

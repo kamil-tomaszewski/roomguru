@@ -36,7 +36,7 @@ class WeekdaysBar: UIView {
 private extension WeekdaysBar {
     
     func commonInit() {
-        backgroundColor = .whiteColor()
+        backgroundColor = UIColor.whiteColor()
         
         let dateFormatter = NSDateFormatter()
         

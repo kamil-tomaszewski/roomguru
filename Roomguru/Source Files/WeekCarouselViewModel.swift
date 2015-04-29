@@ -17,7 +17,7 @@ class WeekCarouselViewModel {
     private(set) var days: [(date: NSDate, isToday: Bool)] = []
     
     init() {
-        calendar.firstWeekday = 1
+        calendar.firstWeekday = 2 //Monday
         calendar.timeZone = NSTimeZone.localTimeZone()
         calendar.locale = NSLocale.currentLocale()
         
@@ -29,7 +29,7 @@ class WeekCarouselViewModel {
         var startDate = today.days - 14
         var endDate = today.days + 14
         
-        while startDate.compare(endDate) != .OrderedDescending {
+        while startDate.compare(endDate) != NSComparisonResult.OrderedDescending {
             
             let isToday = startDate.days == today.days
             days += [(date: startDate, isToday: isToday)]
@@ -39,6 +39,13 @@ class WeekCarouselViewModel {
     
     subscript(index: Int) -> (date: NSDate, day: String, isToday: Bool) {
         return (days[index].date, dateFormatter.stringFromDate(days[index].date), days[index].isToday)
+    }
+    
+    func dateStringWithIndex(index: Int) -> String {
+        dateFormatter.dateFormat = "dd.MM EEE"//"LLLL yyyy"
+        let string = dateFormatter.stringFromDate(days[index].date)
+        dateFormatter.dateFormat = "d"
+        return string
     }
     
 }

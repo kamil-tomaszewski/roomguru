@@ -34,12 +34,12 @@ private extension SettingsCell {
     
     func commonInit() {
         
-        backgroundColor = .whiteColor()
+        backgroundColor = UIColor.whiteColor()
         
-        line.backgroundColor = .rgb(200, 200, 200)
+        line.backgroundColor = UIColor.rgb(200, 200, 200)
         addSubview(line)
         
-        switchControl.onTintColor = .ngOrangeColor()
+        switchControl.onTintColor = UIColor.ngOrangeColor()
         addSubview(switchControl)
         
         addSubview(textLabel)

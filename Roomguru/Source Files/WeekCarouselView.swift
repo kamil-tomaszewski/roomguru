@@ -34,7 +34,7 @@ private extension WeekCarouselView {
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: WeekCarouselFlowLayout())
         collectionView!.alwaysBounceHorizontal = true
         collectionView!.pagingEnabled = true
-        collectionView!.backgroundColor = .whiteColor()
+        collectionView!.backgroundColor = UIColor.whiteColor()
         collectionView!.showsHorizontalScrollIndicator = false
         addSubview(collectionView!)
         
@@ -42,11 +42,11 @@ private extension WeekCarouselView {
         
         textLabel.textAlignment = .Center
         textLabel.text = "Temporary label"
-        textLabel.textColor = .ngGrayColor()
+        textLabel.textColor = UIColor.ngGrayColor()
         textLabel.font = .systemFontOfSize(14)
         addSubview(textLabel)
         
-        bottomLine.backgroundColor = .rgb(200, 200, 200)
+        bottomLine.backgroundColor = UIColor.rgb(200, 200, 200)
         addSubview(bottomLine)
 
         defineConstraints()

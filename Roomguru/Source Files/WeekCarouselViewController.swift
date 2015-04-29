@@ -35,7 +35,7 @@ class WeekCarouselViewController: UIViewController {
 extension WeekCarouselViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let numberOfDaysInWeek: CGFloat = 7//viewModel.calendar.num
+        let numberOfDaysInWeek: CGFloat = 7
         return CGSizeMake(CGRectGetWidth(collectionView.bounds) / numberOfDaysInWeek, CGRectGetHeight(collectionView.bounds))
     }
 }
@@ -74,6 +74,7 @@ extension WeekCarouselViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedDate = viewModel[indexPath.row].date
         collectionView.reloadData()
+        aView?.textLabel.text = viewModel.dateStringWithIndex(indexPath.row)
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
