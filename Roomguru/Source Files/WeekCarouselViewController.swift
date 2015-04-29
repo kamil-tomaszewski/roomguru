@@ -55,8 +55,7 @@ class WeekCarouselViewController: UIViewController {
 extension WeekCarouselViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let numberOfDaysInWeek: CGFloat = 7
-        return CGSizeMake(CGRectGetWidth(collectionView.bounds) / numberOfDaysInWeek, CGRectGetHeight(collectionView.bounds))
+        return CGSizeMake(CGRectGetWidth(collectionView.bounds) / CGFloat(viewModel.numberOfDaysInWeek), CGRectGetHeight(collectionView.bounds))
     }
 }
 
@@ -117,8 +116,8 @@ private extension WeekCarouselViewController {
         
         if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
             
-            let place = CGFloat(index % 7)
-            let rect = CGRectMake(place * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
+            let offset = CGFloat(index % viewModel.numberOfDaysInWeek)
+            let rect = CGRectMake(offset * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
             collectionView.scrollRectToVisible(rect, animated: animated)
         }
     }

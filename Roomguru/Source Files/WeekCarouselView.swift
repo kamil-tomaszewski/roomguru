@@ -43,7 +43,7 @@ private extension WeekCarouselView {
         textLabel.textAlignment = .Center
         textLabel.text = "Temporary label"
         textLabel.textColor = UIColor.ngGrayColor()
-        textLabel.font = .systemFontOfSize(14)
+        textLabel.font = .systemFontOfSize(15)
         addSubview(textLabel)
         
         bottomLine.backgroundColor = UIColor.rgb(200, 200, 200)

@@ -11,6 +11,7 @@ import DateKit
 
 class WeekCarouselViewModel {
     
+    let numberOfDaysInWeek = 7
     let calendar = NSCalendar.currentCalendar()
     let dateFormatter = NSDateFormatter()
     
@@ -41,7 +42,7 @@ class WeekCarouselViewModel {
     }
     
     func dateStringWithIndex(index: Int) -> String {
-        dateFormatter.dateFormat = "EEEE dd LLLL yyyy"
+        dateFormatter.dateFormat = "EEEE d LLLL yyyy"
         let string = dateFormatter.stringFromDate(days[index])
         dateFormatter.dateFormat = "d"
         return string
