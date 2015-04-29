@@ -15,7 +15,7 @@ class DayCarouselCell: UICollectionViewCell, Reusable {
         return "UICollectionViewDayCarouselCellReuseIdentifier"
     }
     
-    let textLabel = UILabel()
+    let textLabel = UILabel(frame: CGRectMake(0, 0, 36, 36))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +34,11 @@ private extension DayCarouselCell {
         
         backgroundColor = .clearColor()
         
-        textLabel.backgroundColor = .redColor()
+        textLabel.layer.borderWidth = 1
+        textLabel.layer.borderColor = UIColor.ngOrangeColor().CGColor
+        textLabel.layer.cornerRadius = CGRectGetMidY(textLabel.frame)
+        textLabel.textColor = .ngOrangeColor()
+        textLabel.textAlignment = .Center
         addSubview(textLabel)
         
         defineConstraints()
@@ -43,7 +47,9 @@ private extension DayCarouselCell {
     func defineConstraints() {
         
         layout(textLabel) { label in
-            label.edges == inset(label.superview!.edges, 10)
+            label.center == label.superview!.center
+            label.width == CGRectGetWidth(self.textLabel.frame)
+            label.height == CGRectGetHeight(self.textLabel.frame)
         }
     }
 }

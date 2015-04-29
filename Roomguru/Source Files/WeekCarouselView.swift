@@ -12,6 +12,7 @@ import Cartography
 class WeekCarouselView: UIView {
     
     private(set) var collectionView: UICollectionView?
+    private let weekdaysBar = WeekdaysBar()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,70 +25,35 @@ class WeekCarouselView: UIView {
     }
 }
 
-// MARK: UICollectionViewFlowLayout
-
-extension WeekCarouselView: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let numberOfDaysInWeek: CGFloat = 7
-        return CGSizeMake(CGRectGetWidth(collectionView.bounds) / numberOfDaysInWeek, CGRectGetHeight(collectionView.bounds))
-    }
-}
-
-// MARK: UICollectionViewDataSource
-
-extension WeekCarouselView: UICollectionViewDataSource {
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        println(collectionView.bounds)
-        return 14
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableClass(DayCarouselCell.self, forIndexPath: indexPath, type: .Cell)
-        
-        cell.textLabel.text = String(indexPath.row)
-        
-        return cell
-    }
-}
-
-//MARK: UICollectionViewDelegate
-
-extension WeekCarouselView: UICollectionViewDelegate {
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
-    }
-    
-    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-}
-
 private extension WeekCarouselView {
     
     func commonInit() {
         
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: WeekCarouselFlowLayout())
         collectionView!.alwaysBounceHorizontal = true
-        collectionView?.pagingEnabled = true
+        collectionView!.pagingEnabled = true
         collectionView!.backgroundColor = .ngGrayColor()
+        collectionView!.showsHorizontalScrollIndicator = false
         addSubview(collectionView!)
         
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        collectionView?.registerClass(DayCarouselCell.self, type: .Cell)
-        
+        addSubview(weekdaysBar)
+
         defineConstraints()
     }
     
     func defineConstraints() {
         
-        layout(collectionView!) { collection in
-            collection.edges == collection.superview!.edges; return
+        layout(collectionView!, weekdaysBar) { collection, bar in
+            
+            bar.left == bar.superview!.left
+            bar.top == bar.superview!.top
+            bar.width == bar.superview!.width
+            bar.height == 20
+            
+            collection.left == collection.superview!.left
+            collection.top == bar.bottom
+            collection.width == collection.superview!.width
+            collection.bottom == collection.superview!.bottom
         }
     }
 }

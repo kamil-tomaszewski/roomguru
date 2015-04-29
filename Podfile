@@ -31,6 +31,8 @@ pod 'Cartography', '~> 0.5.0'
 
 pod 'CryptoSwift', '~> 0.0.10'
 
+pod 'AKPickerView-Swift'
+
 pod 'SwiftyUserDefaults',
     :git => "git@github.com:radex/SwiftyUserDefaults.git",
     :commit => "e467e0f712e3ac1d1ceb7f9020ffd02e487e8893",

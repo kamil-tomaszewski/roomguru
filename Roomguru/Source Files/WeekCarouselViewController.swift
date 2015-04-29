@@ -1,5 +1,5 @@
 //
-//  RoomPickerViewController.swift
+//  WeekCarouselViewController.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 29/04/15.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class RoomPickerViewController: UIViewController {
+class WeekCarouselViewController: UIViewController {
     
-    weak var aView: RoomPickerView?
+    weak var aView: WeekCarouselView?
     
     // MARK: Lifecycle
     
     override func loadView() {
-        aView = loadViewWithClass(RoomPickerView.self)
+        aView = loadViewWithClass(WeekCarouselView.self)
     }
     
     override func viewDidLoad() {
@@ -23,13 +23,13 @@ class RoomPickerViewController: UIViewController {
         
         aView?.collectionView?.delegate = self
         aView?.collectionView?.dataSource = self
-        aView?.collectionView?.registerClass(RoomPickerCell.self, type: .Cell)
+        aView?.collectionView?.registerClass(DayCarouselCell.self, type: .Cell)
     }
 }
 
 // MARK: UICollectionViewFlowLayout
 
-extension RoomPickerViewController: UICollectionViewDelegateFlowLayout {
+extension WeekCarouselViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let numberOfDaysInWeek: CGFloat = 7
@@ -39,7 +39,7 @@ extension RoomPickerViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: UICollectionViewDataSource
 
-extension RoomPickerViewController: UICollectionViewDataSource {
+extension WeekCarouselViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 14
@@ -47,7 +47,7 @@ extension RoomPickerViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableClass(RoomPickerCell.self, forIndexPath: indexPath, type: .Cell)
+        let cell = collectionView.dequeueReusableClass(DayCarouselCell.self, forIndexPath: indexPath, type: .Cell)
         
         cell.textLabel.text = String(indexPath.row)
         
@@ -57,7 +57,7 @@ extension RoomPickerViewController: UICollectionViewDataSource {
 
 //MARK: UICollectionViewDelegate
 
-extension RoomPickerViewController: UICollectionViewDelegate {
+extension WeekCarouselViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println(indexPath.row)

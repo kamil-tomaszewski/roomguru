@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AKPickerView_Swift
 
 class EventsViewController: UIViewController {
     
@@ -20,34 +21,40 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let weekCarouselView = WeekCarouselView(frame: self.navigationController!.titleViewFrame())
-        navigationItem.titleView = weekCarouselView
+        let pickerView = RoomHorizontalPicker(frame: self.navigationController!.titleViewFrame())
         
-        let roomPickerViewController = addContainerViewController(RoomPickerViewController.self)
-        aView?.roomPickerView = roomPickerViewController.view
+        pickerView.delegate = self
+        pickerView.dataSource = self
+
+        navigationItem.titleView = pickerView
+        
+        let weekCarouselView = addContainerViewController(WeekCarouselViewController.self)
+        aView?.weekCarouselView = weekCarouselView.view
         
         let pageViewController = addContainerViewController(EventsPageViewController.self)
         aView?.eventsPageView = pageViewController.view
     }
     
     deinit {
-        removeContainerController(RoomPickerViewController.self)
+        removeContainerController(WeekCarouselViewController.self)
         removeContainerController(EventsPageViewController.self)
     }
+}
+
+extension EventsViewController: AKPickerViewDataSource {
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        
-        // NGRTemp: buggy
-        coordinator.animateAlongsideTransition({ context in
-            
-            if let weekCarouselView = self.navigationItem.titleView as? WeekCarouselView {
-                weekCarouselView.frame = self.navigationController!.titleViewFrame()
-                weekCarouselView.collectionView?.collectionViewLayout.invalidateLayout()
-            }
-            
-            self.navigationController?.navigationBar.frame = self.navigationController!.titleViewFrame()
-            
-            }, completion: { context in })
+    func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
+        return CalendarPersistenceStore.sharedStore.calendars.count
+    }
+
+    func pickerView(pickerView: AKPickerView, titleForItem item: Int) -> String {
+        return CalendarPersistenceStore.sharedStore.rooms()[item].name
+    }
+}
+
+extension EventsViewController: AKPickerViewDelegate {
+    
+    func pickerView(pickerView: AKPickerView, didSelectItem item: Int) {
+        println("PickerView did select \(CalendarPersistenceStore.sharedStore.rooms()[item].name)")
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class EventsView: UIView {
     
-    weak var roomPickerView: UIView?
+    weak var weekCarouselView: UIView?
     weak var eventsPageView: UIView?
     
     override init(frame: CGRect) {
@@ -26,12 +26,10 @@ class EventsView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if let roomPickerView = roomPickerView, eventsPageView = eventsPageView {
+        if let weekCarouselView = weekCarouselView, eventsPageView = eventsPageView {
             
-            let statusBarSize = UIApplication.sharedApplication().statusBarFrame.size
-            
-            roomPickerView.frame = CGRectMake(0, 0, CGRectGetWidth(bounds), 60)
-            eventsPageView.frame = CGRectMake(0, CGRectGetMaxY(roomPickerView.frame), CGRectGetWidth(bounds), CGRectGetHeight(bounds) - CGRectGetMaxY(roomPickerView.frame))
+            weekCarouselView.frame = CGRectMake(0, 0, CGRectGetWidth(bounds), 60)
+            eventsPageView.frame = CGRectMake(0, CGRectGetMaxY(weekCarouselView.frame), CGRectGetWidth(bounds), CGRectGetHeight(bounds) - CGRectGetMaxY(weekCarouselView.frame))
         }
     }
 }
