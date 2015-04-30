@@ -11,8 +11,6 @@ import Cartography
 
 class EventCell: BaseEventCell, Reusable {
     
-    private struct Constants { static var CellIdentifier: String = "TableViewFreeEventCellReuseIdentifier"}
-    
     class func reuseIdentifier() -> String {
         return "TableViewEventCellReuseIdentifier"
     }
@@ -31,18 +29,14 @@ class EventCell: BaseEventCell, Reusable {
 private extension EventCell {
     
     func commonInit() {
-        configure()
-        contentView.addSubview(timeMaxLabel)
-        contentView.addSubview(timeMinLabel)
-        defineConstraints()
-    }
-    
-    func configure() {
-        let font = UIFont.boldSystemFontOfSize(13.0)
-        
-        timeMaxLabel.font = font
-        timeMinLabel.font = font
         
         indentationLevel = 7
+        timeMaxLabel.font = .boldSystemFontOfSize(13.0)
+        contentView.addSubview(timeMaxLabel)
+        
+        timeMinLabel.font = .boldSystemFontOfSize(13.0)
+        contentView.addSubview(timeMinLabel)
+        
+        defineConstraints()
     }
 }
