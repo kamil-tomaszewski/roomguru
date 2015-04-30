@@ -10,7 +10,7 @@ import UIKit
 
 class WeekdaysBar: UIView {
     
-    private var daysLabels: [UILabel] = []
+    private(set) var daysLabels: [UILabel] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,16 +38,11 @@ private extension WeekdaysBar {
     func commonInit() {
         backgroundColor = UIColor.whiteColor()
         
-        let dateFormatter = NSDateFormatter()
-        
-        for i in 0..<dateFormatter.shortWeekdaySymbols.count {
-            
-            let index = (i + dateFormatter.calendar.firstWeekday) % dateFormatter.shortWeekdaySymbols.count
-            
+        for i in 0..<7 {
+
             let label = UILabel()
             label.textAlignment = .Center
             label.textColor = .ngGrayColor()
-            label.text = dateFormatter.shortWeekdaySymbols[index] as? String
             label.font = .systemFontOfSize(14)
             addSubview(label)
             daysLabels.append(label)

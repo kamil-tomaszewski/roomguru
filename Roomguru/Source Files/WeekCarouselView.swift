@@ -25,6 +25,15 @@ class WeekCarouselView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+    
+    func setDayNamesWithDateFormatter(formatter: NSDateFormatter) {
+        
+        for (index, element) in enumerate(weekdaysBar.daysLabels) {
+            
+            let i = (index + formatter.calendar.firstWeekday - 1) % formatter.shortWeekdaySymbols.count
+            element.text = formatter.shortWeekdaySymbols[i] as? String
+        }
+    }
 }
 
 private extension WeekCarouselView {
@@ -41,7 +50,6 @@ private extension WeekCarouselView {
         addSubview(weekdaysBar)
         
         textLabel.textAlignment = .Center
-        textLabel.text = "Temporary label"
         textLabel.textColor = UIColor.ngGrayColor()
         textLabel.font = .systemFontOfSize(15)
         addSubview(textLabel)

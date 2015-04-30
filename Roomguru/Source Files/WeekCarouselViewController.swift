@@ -34,6 +34,7 @@ class WeekCarouselViewController: UIViewController {
         aView?.collectionView?.delegate = self
         aView?.collectionView?.dataSource = self
         aView?.collectionView?.registerClass(DayCarouselCell.self, type: .Cell)
+        aView?.setDayNamesWithDateFormatter(viewModel.dateFormatter)
         
         if let index = viewModel.indexFromDate(selectedDate) {
             aView?.textLabel.text = viewModel.dateStringWithIndex(index)

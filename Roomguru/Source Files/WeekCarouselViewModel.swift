@@ -11,7 +11,7 @@ import DateKit
 
 class WeekCarouselViewModel {
     
-    let numberOfDaysInWeek = 7
+    var numberOfDaysInWeek: Int { get { return dateFormatter.shortWeekdaySymbols.count } set {}}
     let calendar = NSCalendar.currentCalendar()
     let dateFormatter = NSDateFormatter()
     
