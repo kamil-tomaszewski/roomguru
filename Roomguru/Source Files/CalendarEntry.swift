@@ -11,7 +11,7 @@ import Foundation
 class CalendarEntry: NSObject, NSSecureCoding {
     
     var calendarID: String = ""
-    var event: Event = Event()
+    var event = Event()
     
     init(calendarID: String, event: Event) {
         self.calendarID = calendarID
@@ -51,10 +51,8 @@ extension CalendarEntry {
     
     class func sortedByDate(items: [CalendarEntry]) -> [CalendarEntry] {
         return items.sorted {
-            if let firstDate = $0.event.start {
-                if let secondDate = $1.event.start {
-                    return firstDate.compare(secondDate).ascending
-                }
+            if let firstDate = $0.event.start, secondDate = $1.event.start {
+                return firstDate.compare(secondDate).ascending
             }
             return false
         }

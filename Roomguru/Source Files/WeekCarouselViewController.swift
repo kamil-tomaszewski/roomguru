@@ -115,8 +115,8 @@ private extension WeekCarouselViewController {
     func scrollToDate(date: NSDate, animated: Bool) {
         
         if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
-            
-            let offset = CGFloat(index % viewModel.numberOfDaysInWeek)
+
+            let offset = floor(CGFloat(index/viewModel.numberOfDaysInWeek))
             let rect = CGRectMake(offset * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
             collectionView.scrollRectToVisible(rect, animated: animated)
         }
