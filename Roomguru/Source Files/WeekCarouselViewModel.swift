@@ -26,15 +26,7 @@ class WeekCarouselViewModel {
         dateFormatter.timeZone = NSTimeZone.localTimeZone()
         dateFormatter.dateFormat = "d"
         
-        let monday = calendar.mondayDateInWeekDate(NSDate())
-        var startDate = monday.days - 14
-        let endDate = monday.days + 13
-        
-        while startDate.isEarlierThan(endDate) {
-            
-            days += [startDate]
-            startDate = startDate.days + 1
-        }        
+        populateDaysArrayWithCentralWeekRepresentedByDate(NSDate())
     }
     
     subscript(index: Int) -> (date: NSDate, day: String, isToday: Bool) {
@@ -55,5 +47,20 @@ class WeekCarouselViewModel {
             }
         }
         return nil
+    }
+    
+    func populateDaysArrayWithCentralWeekRepresentedByDate(date: NSDate) {
+        
+        days.removeAll(keepCapacity: false)
+        
+        let monday = calendar.mondayDateInWeekDate(date)
+        var startDate = monday.days - 21
+        let endDate = monday.days + 21
+        
+        while startDate.isEarlierThan(endDate) {
+            
+            days.append(startDate)
+            startDate = startDate.days + 1
+        }
     }
 }
