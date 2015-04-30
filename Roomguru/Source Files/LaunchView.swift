@@ -11,9 +11,9 @@ import Cartography
 
 class LaunchView: UIView {
 
-    private let label = UILabel()
-    private let logoLabel = RoomguruLabel()
-    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    let statusLabel = UILabel()
+    let logoLabel = RoomguruLabel()
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     let avatarView = AvatarView(frame: CGRectMake(0, 0, 100, 100))
     
     override init(frame: CGRect) {
@@ -25,9 +25,6 @@ class LaunchView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
-}
-
-private extension LaunchView {
     
     func commonInit() {
         
@@ -36,10 +33,10 @@ private extension LaunchView {
         addSubview(avatarView)
         addSubview(logoLabel)
         
-        label.text = NSLocalizedString("Authenticating...", comment: "")
-        label.textAlignment = .Center
-        label.textColor = .ngOrangeColor()
-        addSubview(label)
+        statusLabel.text = NSLocalizedString("Authenticating...", comment: "")
+        statusLabel.textAlignment = .Center
+        statusLabel.textColor = .ngOrangeColor()
+        addSubview(statusLabel)
         
         activityIndicator.startAnimating()
         activityIndicator.color = .ngOrangeColor()
@@ -50,7 +47,7 @@ private extension LaunchView {
     
     func defineConstraints() {
         
-        layout(label, avatarView, activityIndicator) { label, avatar, indicator in
+        layout(statusLabel, avatarView, activityIndicator) { label, avatar, indicator in
             
             avatar.center == avatar.superview!.center
             avatar.width == CGRectGetWidth(self.avatarView.bounds)
@@ -62,7 +59,7 @@ private extension LaunchView {
             label.height == 30
             
             indicator.centerX == indicator.superview!.centerX
-            indicator.centerY == label.bottom + 50
+            indicator.centerY == label.bottom + 80
         }
         
         layout(logoLabel, avatarView) { label, avatar in
