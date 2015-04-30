@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func signOut() {
+        authenticator.signOut()
         CalendarPersistenceStore.sharedStore.clear()
         UserPersistenceStore.sharedStore.clear()
-        GPPSignIn.sharedInstance().signOut()
         
         let tabBarViewController = window!.rootViewController as! TabBarController
         tabBarViewController.presentLoginViewController(true) {
@@ -41,17 +41,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarViewController.popNavigationStack()
         }
     }
-    
-    // MARK: Google oAuth Methods
+
+    func applicationDidBecomeActive(application: UIApplication) {
+        if !authenticator.isAuthenticating {
+            showGoogleSignInButtonInLoginViewController(true)
+        }
+    }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        showGoogleSignInButtonInLoginViewController(false)
+        return authenticator.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
 }
 
 // MARK: Private
 
 private extension AppDelegate {
+    
+    func showGoogleSignInButtonInLoginViewController(show: Bool) {
+        
+        let tabBarViewController = window!.rootViewController as! TabBarController
+        if let loginView = tabBarViewController.controllersOfTypeInNavigationStack(LoginViewController.self)?.first?.view as? LoginView {
+            loginView.showSignInButton(show)
+        }
+    }
     
     func authenticate() {
         

@@ -9,11 +9,12 @@
 import Foundation
 import Async
 
-class GPPAuthenticator: NSObject, GPPSignInDelegate {
+class GPPAuthenticator: NSObject {
     
     typealias AuthenticatorCompletionBlock = (authenticated: Bool, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
     
-    private var completion: AuthenticatorCompletionBlock?
+    private var completion: AuthenticatorCompletionBlock!
+    private(set) var isAuthenticating = false
     
     override init() {
         super.init()
@@ -34,27 +35,41 @@ class GPPAuthenticator: NSObject, GPPSignInDelegate {
         if GPPSignIn.sharedInstance().hasAuthInKeychain() {
             
             if !GPPSignIn.sharedInstance().trySilentAuthentication() {
-                self.completion!(authenticated: false, auth: nil, error: nil)
+                self.completion(authenticated: false, auth: nil, error: nil)
             }
             
         } else {
             Async.main(after: 0.2) {
-                self.completion!(authenticated: false, auth: nil, error: nil)
+                self.completion(authenticated: false, auth: nil, error: nil)
             }
         }
     }
     
-    // MARK: GPPSignInDelegate Methods
+    func handleURL(url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        isAuthenticating = true
+        return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func signOut() {
+        GPPSignIn.sharedInstance().signOut()
+    }
+}
+
+ // MARK: GPPSignInDelegate Methods
+
+extension GPPAuthenticator: GPPSignInDelegate {
     
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
+        isAuthenticating = false
         if (error != nil) {
-            self.completion!(authenticated: false, auth: nil, error: error)
+            completion(authenticated: false, auth: nil, error: error)
         } else {
-            self.completion!(authenticated: true, auth: auth, error: nil)
+            completion(authenticated: true, auth: auth, error: nil)
         }
     }
     
     func didDisconnectWithError(error: NSError!) {
-         self.completion!(authenticated: false, auth: nil, error: error)
+        isAuthenticating = false
+        completion(authenticated: false, auth: nil, error: error)
     }
 }
