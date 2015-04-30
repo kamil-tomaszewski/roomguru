@@ -10,7 +10,7 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     
-    weak var aView: LaunchView?
+    private weak var aView: LaunchView?
     
     // MARK: Lifecycle
     

@@ -10,7 +10,7 @@ import UIKit
 
 class BookingConfirmationViewController: UIViewController {
     
-    weak var aView: BookingConfirmationView?
+    private weak var aView: BookingConfirmationView?
     
     init(_ calendarTime: CalendarTimeFrame, onConfirmation confirmation: (CalendarTimeFrame, String) -> Void) {
         self.calendarTime = calendarTime

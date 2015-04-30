@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    weak var aView: SettingsView?
+    private weak var aView: SettingsView?
     private let viewModel = SettingsViewModel<SettingItem>([
         SettingItem(title: NSLocalizedString("Manage calendars", comment: ""), mode: .Selectable, action: Selector("didTapManageCalendars"))
     ])

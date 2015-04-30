@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class CalendarPickerViewController: UIViewController {
         
-    weak var aView: CalendarPickerView?
+    private weak var aView: CalendarPickerView?
     var viewModel: CalendarPickerViewModel?
     private var currentEditingIndexPath: NSIndexPath?
     

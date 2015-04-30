@@ -10,7 +10,7 @@ import UIKit
 
 class DashboardViewController: UIViewController {
 
-    weak var aView: DashboardView?
+    private weak var aView: DashboardView?
     
     let revokeEventsPageControllerDataSource = RevokeEventsPageViewControllerDataSource()
     var revokeEventsPageControllerDelegate = EventsPageViewControllerDelegate()

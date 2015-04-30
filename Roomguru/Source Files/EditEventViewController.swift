@@ -11,7 +11,7 @@ import Foundation
 
 class EditEventViewController: UIViewController {
     
-    weak var aView: GroupedBaseTableView?
+    private weak var aView: GroupedBaseTableView?
     var keyboardHandler: KeyboardPresenceHandler!
     
     init(viewModel: EditEventViewModel<GroupItem>) {

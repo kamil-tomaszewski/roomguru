@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController  {
 
-    weak var aView: LoginView?
+    private weak var aView: LoginView?
 
     // MARK: Lifecycle
 

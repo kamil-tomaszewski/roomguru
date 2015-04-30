@@ -11,7 +11,7 @@ import AKPickerView_Swift
 
 class EventsViewController: UIViewController {
     
-    weak var aView: EventsView?
+    private weak var aView: EventsView?
     
     override func loadView() {
         edgesForExtendedLayout = .None

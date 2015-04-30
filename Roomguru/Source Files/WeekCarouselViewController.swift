@@ -15,7 +15,7 @@ protocol WeekCarouselViewControllerDelegate {
 
 class WeekCarouselViewController: UIViewController {
     
-    weak var aView: WeekCarouselView?
+    private weak var aView: WeekCarouselView?
     private let viewModel = WeekCarouselViewModel()
     private var selectedDate = NSDate()
     private var didShowViewController = false

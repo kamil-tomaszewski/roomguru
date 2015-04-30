@@ -16,7 +16,7 @@ protocol CalendarNameCustomizerViewControllerDelegate {
 
 class CalendarNameCustomizerViewController: UIViewController {
     
-    weak var aView: CalendarNameCustomizerView?
+    private weak var aView: CalendarNameCustomizerView?
     var delegate: CalendarNameCustomizerViewControllerDelegate?
     var shouldShowResetButton = false
     let name: String?

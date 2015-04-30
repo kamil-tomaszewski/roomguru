@@ -11,7 +11,7 @@ import AFNetworking
 
 class EventDetailsViewController: UIViewController {
     
-    weak var aView: EventDetailsView?
+    private weak var aView: EventDetailsView?
     private let viewModel: EventDetailsViewModel
     
     // MARK: View life cycle

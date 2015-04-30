@@ -42,7 +42,7 @@ class WeekCarouselViewModel {
     }
     
     func dateStringWithIndex(index: Int) -> String {
-        dateFormatter.dateFormat = "EEEE d LLLL yyyy"
+        dateFormatter.dateFormat = "EEEE, d LLLL yyyy"
         let string = dateFormatter.stringFromDate(days[index])
         dateFormatter.dateFormat = "d"
         return string

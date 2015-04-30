@@ -12,7 +12,7 @@ import Async
 
 class EventsListViewController: UIViewController {
 
-    weak var aView: EventsListView?
+    private weak var aView: EventsListView?
     var viewModel: CalendarListViewModel<CalendarEntry>?
     var query = EventsQuery(calendarID: Room.DD)
     var timeMax: NSDate = NSDate()
