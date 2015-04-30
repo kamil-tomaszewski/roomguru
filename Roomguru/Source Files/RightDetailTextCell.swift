@@ -47,8 +47,9 @@ private extension RightDetailTextCell {
     func commonInit() {
         leftAccessoryLabel = accessoryLabel()
         detailLabel.textAlignment = .Right
-        addSubview(detailLabel)
-        addSubview(leftAccessoryLabel)
+        contentView.addSubview(detailLabel)
+        contentView.addSubview(leftAccessoryLabel)
+        
         defineConstraints()
     }
     

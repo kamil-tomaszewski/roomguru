@@ -33,6 +33,7 @@ private extension PickerItemCell {
     func commonInit() {
         configure()
         contentView.addSubview(checkmarkLabel)
+        
         defineConstraints()
     }
     

@@ -33,7 +33,8 @@ private extension ButtonCell {
     func commonInit() {
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
-        addSubview(button)
+        contentView.addSubview(button)
+        
         defineConstraints()
     }
     

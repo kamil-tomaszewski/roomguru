@@ -32,14 +32,15 @@ private extension DatePickerCell {
     
     func commonInit() {
         datePicker.datePickerMode = .DateAndTime
-        addSubview(datePicker)
+        contentView.addSubview(datePicker)
+        
         defineConstraints()
     }
     
     func defineConstraints() {
         
         let width = CGRectGetWidth(self.frame)
-        self.frame = CGRectMake(0, 0, width, 160.0)
+        frame = CGRectMake(0, 0, width, 160.0)
         
         layout(datePicker) { picker in
             picker.edges == picker.superview!.edges

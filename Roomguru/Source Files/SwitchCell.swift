@@ -32,15 +32,14 @@ private extension SwitchCell {
     
     func commonInit() {
         switchControl.onTintColor = UIColor.ngOrangeColor()
-        addSubview(switchControl)
+        contentView.addSubview(switchControl)
         
         defineConstraints()
     }
     
     func defineConstraints() {
         
-        layout(switchControl) { aSwitch in
-            
+        layout(switchControl) { aSwitch in 
             aSwitch.centerY == aSwitch.superview!.centerY
             aSwitch.right == aSwitch.superview!.right - 20
         }

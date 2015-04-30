@@ -54,7 +54,8 @@ private extension DateCell {
     func commonInit() {
         dateLabel.text = ""
         dateLabel.textAlignment = .Right
-        addSubview(dateLabel)
+        contentView.addSubview(dateLabel)
+        
         defineConstraints()
     }
     

@@ -45,7 +45,8 @@ private extension TextFieldCell {
     
     func commonInit() {
         configureTextField(textField)
-        addSubview(textField)
+        contentView.addSubview(textField)
+        
         defineConstraints()
     }
     

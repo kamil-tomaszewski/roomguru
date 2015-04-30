@@ -57,7 +57,7 @@ private extension DayCarouselCell {
         textLabel.layer.borderColor = UIColor.clearColor().CGColor
         textLabel.layer.cornerRadius = CGRectGetMidY(textLabel.frame)
         textLabel.textAlignment = .Center
-        addSubview(textLabel)
+        contentView.addSubview(textLabel)
         
         defineConstraints()
     }

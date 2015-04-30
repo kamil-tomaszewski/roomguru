@@ -37,12 +37,12 @@ private extension SettingsCell {
         backgroundColor = UIColor.whiteColor()
         
         line.backgroundColor = UIColor.rgb(200, 200, 200)
-        addSubview(line)
+        contentView.addSubview(line)
         
         switchControl.onTintColor = UIColor.ngOrangeColor()
-        addSubview(switchControl)
+        contentView.addSubview(switchControl)
         
-        addSubview(textLabel)
+        contentView.addSubview(textLabel)
         
         defineConstraints()
     }
