@@ -42,6 +42,8 @@ class CalendarPersistenceStore {
             let dataRepresentation = NSKeyedArchiver.archivedDataWithRootObject(calendars)
             Defaults[key] = dataRepresentation
             Defaults.synchronize()
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
         }
         self.calendars = calendars
     }
@@ -50,6 +52,8 @@ class CalendarPersistenceStore {
         if let key = key() {
             Defaults.remove(key)
             Defaults.synchronize()
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
         }
         calendars = []
     }

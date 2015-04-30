@@ -21,10 +21,7 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let pickerView = RoomHorizontalPicker(frame: navigationController!.titleViewFrame())
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        navigationItem.titleView = pickerView
+        recreatePickerView()
         
         let weekCarouselViewController = addContainerViewController(WeekCarouselViewController.self)
         weekCarouselViewController.delegate = self
@@ -32,11 +29,25 @@ class EventsViewController: UIViewController {
         
         let pageViewController = addContainerViewController(EventsPageViewController.self)
         aView?.eventsPageView = pageViewController.view
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("recreatePickerView"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
     }
     
     deinit {
         removeContainerController(WeekCarouselViewController.self)
         removeContainerController(EventsPageViewController.self)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(navigationItem.titleView!)
+    }
+    
+    func recreatePickerView() {
+        /* NOTE: Calling explicitly pickerView.reloadData() doesn't reload it's content. So when amount of calendars decreases.
+                 numberOfItemsInPickerView() delegate doesn't fire and pickerView has wrong number of items
+        */
+        let pickerView = RoomHorizontalPicker(frame: navigationController!.titleViewFrame())
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        navigationItem.titleView = pickerView
     }
 }
 

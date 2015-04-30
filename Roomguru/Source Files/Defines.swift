@@ -28,6 +28,6 @@ typealias StringValidationBlock = (string: String) -> NSError?
 
 typealias QueryParameters = [String: AnyObject]
 
-// MARK: Reuse identifiers
+// MARK: Notifications
 
-let UITableViewCellReuseIdentifier = "RegularTableViewCellReuseIdentifier"
+let CalendarPersistentStoreDidChangePersistentCalendars = "CalendarPersistentStoreDidChangePersistentCalendars"
