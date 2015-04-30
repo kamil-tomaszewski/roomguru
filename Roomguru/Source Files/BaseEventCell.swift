@@ -14,11 +14,6 @@ class BaseEventCell: UITableViewCell {
     let timeMaxLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
     let timeMinLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 65, 25))
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     func defineConstraints() {
         
         layout(timeMaxLabel, timeMinLabel) { upperLabel, lowerLabel in

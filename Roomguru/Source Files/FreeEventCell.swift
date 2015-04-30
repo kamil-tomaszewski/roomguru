@@ -10,12 +10,9 @@ import UIKit
 import Cartography
 import Async
 
-
 enum FreeEventCellState {
-    case Normal
-    case Tapped
+    case Normal, Tapped
 }
-
 
 protocol FreeEventCellDelegate: class {
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval)
@@ -59,14 +56,7 @@ class FreeEventCell: BaseEventCell, Reusable {
     
     // MARK: Private
     
-    private func commonInit() {
-        configure()
-        contentView.addSubview(bookingTimesView)
-//        contentView.addSubview(freeTimeButton)
-        contentView.addSubview(timeMaxLabel)
-        contentView.addSubview(timeMinLabel)
-        defineConstraints()
-    }
+
     
     override func defineConstraints() {
         
@@ -85,33 +75,36 @@ class FreeEventCell: BaseEventCell, Reusable {
             lowerLabel.width == upperLabel.width
             lowerLabel.height == upperLabel.height
         }
-        
     }
+}
+
+private extension FreeEventCell {
     
-    private func configure() {
-        let white = UIColor.whiteColor()
-        let lightGray = UIColor.lightGrayColor()
-        let backgroundColor = UIColor(red: 1.0, green: 167/255.0, blue: 34/255.0, alpha: 1.0)
-        
-//        freeTimeButton.setTitleColor(white, forState: .Normal)
-//        freeTimeButton.setTitleColor(lightGray, forState: .Highlighted)
-//        freeTimeButton.backgroundColor = UIColor.clearColor()
-//        freeTimeButton.addTarget(self, action: Selector("didTapFreeTimeButton:"))
-//        freeTimeButton.backgroundColor = backgroundColor
-        
-        bookingTimesView.delegate = self
-        
-        contentView.backgroundColor = backgroundColor
-        
-        let font = UIFont.boldSystemFontOfSize(13.0)
-        
-        self.timeMaxLabel.font = font
-        self.timeMinLabel.font = font
+    func commonInit() {
         
         indentationLevel = 7
+        contentView.backgroundColor = UIColor.rgb(255, 167, 34)
+        
+        bookingTimesView.delegate = self
+        contentView.addSubview(bookingTimesView)
+        
+        timeMaxLabel.font = .boldSystemFontOfSize(13.0)
+        contentView.addSubview(timeMaxLabel)
+        
+        timeMinLabel.font = .boldSystemFontOfSize(13.0)
+        contentView.addSubview(timeMinLabel)
+        
+        //        contentView.addSubview(freeTimeButton)
+        //        freeTimeButton.setTitleColor(white, forState: .Normal)
+        //        freeTimeButton.setTitleColor(lightGray, forState: .Highlighted)
+        //        freeTimeButton.backgroundColor = UIColor.clearColor()
+        //        freeTimeButton.addTarget(self, action: Selector("didTapFreeTimeButton:"))
+        //        freeTimeButton.backgroundColor = backgroundColor
+
+        defineConstraints()
     }
-    
 }
+
 
 // MARK: BookingTimesViewDelegate
 
@@ -120,13 +113,8 @@ extension FreeEventCell: BookingTimesViewDelegate {
     func didChooseTimePeriod(timePeriod: NSTimeInterval) {
         
         invalidate()
-        
-        if let _delegate = delegate {
-            _delegate.eventCell(self, didChoseTimePeriod: timePeriod)
-        }
-        
+        delegate?.eventCell(self, didChoseTimePeriod: timePeriod)
     }
-    
 }
 
 // MARK: Actions
@@ -140,7 +128,6 @@ extension FreeEventCell {
 //            self.toggleState()
 //        }
     }
-    
 }
 
 // MARK: Cell State Handling
@@ -191,5 +178,4 @@ extension FreeEventCell {
             actions()
         }
     }
-    
 }
