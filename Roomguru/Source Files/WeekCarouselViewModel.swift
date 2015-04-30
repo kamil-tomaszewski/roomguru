@@ -33,9 +33,9 @@ class WeekCarouselViewModel {
         return (days[index], dateFormatter.stringFromDate(days[index]), days[index].isToday())
     }
     
-    func dateStringWithIndex(index: Int) -> String {
+    func dateStringFromDate(date: NSDate) -> String {
         dateFormatter.dateFormat = "EEEE, d LLLL yyyy"
-        let string = dateFormatter.stringFromDate(days[index])
+        let string = dateFormatter.stringFromDate(date)
         dateFormatter.dateFormat = "d"
         return string
     }
@@ -62,5 +62,9 @@ class WeekCarouselViewModel {
             days.append(startDate)
             startDate = startDate.days + 1
         }
+    }
+    
+    func containsDate(date: NSDate) -> Bool {
+        return !days.filter { $0.isSameDayAs(date) }.isEmpty
     }
 }

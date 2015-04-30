@@ -17,7 +17,7 @@ class WeekCarouselViewController: UIViewController {
     
     private weak var aView: WeekCarouselView?
     private let viewModel = WeekCarouselViewModel()
-    private var selectedDate = NSDate()
+    private var selectedDate = NSDate() // to inform delegate about changes use setSelectedDate:informDelegate method
     private var didShowViewController = false
     
     var delegate: WeekCarouselViewControllerDelegate?
@@ -34,11 +34,10 @@ class WeekCarouselViewController: UIViewController {
         aView?.collectionView?.delegate = self
         aView?.collectionView?.dataSource = self
         aView?.collectionView?.registerClass(DayCarouselCell.self, type: .Cell)
-        aView?.setDayNamesWithDateFormatter(viewModel.dateFormatter)
+        aView?.todayButton.addTarget(self, action: Selector("didTapTodayButton:"))
         
-        if let index = viewModel.indexFromDate(selectedDate) {
-            aView?.textLabel.text = viewModel.dateStringWithIndex(index)
-        }
+        aView?.setDayNamesWithDateFormatter(viewModel.dateFormatter)
+        aView?.textLabel.text = viewModel.dateStringFromDate(selectedDate)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -47,6 +46,24 @@ class WeekCarouselViewController: UIViewController {
         if !didShowViewController {
             scrollToDate(selectedDate, animated: false)
             didShowViewController = true
+        }
+    }
+    
+    func didTapTodayButton(sender: UIButton) {
+        setSelectedDate(NSDate(), informDelegate: true)
+        scrollToDate(selectedDate, animated: false)
+    }
+    
+    func setSelectedDate(date: NSDate, informDelegate: Bool) {
+        if date.isSameDayAs(selectedDate) {
+            return
+        }
+        
+        selectedDate = date
+        aView?.collectionView?.reloadData()
+        aView?.textLabel.text = viewModel.dateStringFromDate(date)
+        if informDelegate {
+            delegate?.weekCarouselViewController(self, didSelectDate: selectedDate)
         }
     }
 }
@@ -96,14 +113,7 @@ extension WeekCarouselViewController: UICollectionViewDataSource {
 extension WeekCarouselViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
- 
-        if !viewModel[indexPath.row].date.isEqualToDate(selectedDate) {
-            
-            selectedDate = viewModel[indexPath.row].date
-            collectionView.reloadData()
-            aView?.textLabel.text = viewModel.dateStringWithIndex(indexPath.row)
-            delegate?.weekCarouselViewController(self, didSelectDate: selectedDate)
-        }
+        setSelectedDate(viewModel[indexPath.row].date, informDelegate: true)
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -133,6 +143,10 @@ extension WeekCarouselViewController {
 private extension WeekCarouselViewController {
     
     func scrollToDate(date: NSDate, animated: Bool) {
+        
+        if !viewModel.containsDate(date) {
+            viewModel.populateDaysArrayWithCentralWeekRepresentedByDate(date)
+        }
         
         if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
 

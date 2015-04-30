@@ -11,11 +11,14 @@ import Cartography
 
 class WeekCarouselView: UIView {
     
-    private(set) var collectionView: UICollectionView?
-    private let weekdaysBar = WeekdaysBar()
+    let todayButton = UIButton.buttonWithType(.System) as! UIButton
     let textLabel = UILabel()
-    private let bottomLine = UIView()
     
+    private(set) var collectionView: UICollectionView?
+    
+    private let weekdaysBar = WeekdaysBar()
+    private let bottomLine = UIView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -56,6 +59,10 @@ private extension WeekCarouselView {
         
         bottomLine.backgroundColor = UIColor.rgb(200, 200, 200)
         addSubview(bottomLine)
+        
+        todayButton.setTitleColor(UIColor.ngOrangeColor(), forState: .Normal)
+        todayButton.setTitle(NSLocalizedString("Today", comment: ""))
+        addSubview(todayButton)
 
         defineConstraints()
     }
@@ -86,6 +93,14 @@ private extension WeekCarouselView {
             collection.top == bar.bottom
             collection.width == collection.superview!.width
             collection.bottom == label.top
+        }
+        
+        layout(todayButton, textLabel) { button, label in
+         
+            button.left == button.superview!.left
+            button.bottom == button.superview!.bottom
+            button.height == label.height
+            button.width == 100
         }
     }
 }
