@@ -13,11 +13,11 @@ class BookingConfirmationView: UIView {
 
     let minutesToBookLabel = UILabel()
     
-    private(set) var confirmButton = UIButton()
-    private(set) var cancelButton = UIButton()
+    private(set) var confirmButton = UIButton.buttonWithType(.System) as! UIButton
+    private(set) var cancelButton = UIButton.buttonWithType(.System) as! UIButton
     
-    private(set) var lessMinutesButton = UIButton()
-    private(set) var moreMinutesButton = UIButton()
+    private(set) var lessMinutesButton = UIButton.buttonWithType(.System) as! UIButton
+    private(set) var moreMinutesButton = UIButton.buttonWithType(.System) as! UIButton
     
     let summaryTextField = TextField()
     
@@ -132,32 +132,31 @@ private extension BookingConfirmationView {
     }
     
     func setupButton(inout button: UIButton, withTitle title: String) {
-        button.setTitle(title, forState: .Normal)
+        button.setTitle(title)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
 
     }
     
-    private func setupRoundButton(inout button: UIButton, withTitle title: String, color: UIColor) {
-        button.setTitle(title, forState: .Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Disabled)
+    func setupRoundButton(inout button: UIButton, withTitle title: String, color: UIColor) {
+        button.setTitle(title)
+        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.backgroundColor = color
         button.layer.cornerRadius = 5.0
     }
     
     func configureLabelsAppearance() {
-        self.minutesShortLabel.text = NSLocalizedString("minutes", comment: "")
-        self.minutesShortLabel.numberOfLines = 1
-        self.minutesShortLabel.adjustsFontSizeToFitWidth = true
-        self.minutesShortLabel.textAlignment = .Center
+        minutesShortLabel.text = NSLocalizedString("minutes", comment: "")
+        minutesShortLabel.numberOfLines = 1
+        minutesShortLabel.adjustsFontSizeToFitWidth = true
+        minutesShortLabel.textAlignment = .Center
         
-        self.minutesToBookLabel.font = UIFont.boldSystemFontOfSize(28.0)
-        self.minutesToBookLabel.textAlignment = .Center
+        minutesToBookLabel.font = UIFont.boldSystemFontOfSize(28.0)
+        minutesToBookLabel.textAlignment = .Center
     }
     
     func configureTextFieldAppearance() {
-        self.summaryTextField.placeholder = NSLocalizedString("Summary", comment: "")
-        self.summaryTextField.borderStyle = .RoundedRect
+        summaryTextField.placeholder = NSLocalizedString("Summary", comment: "")
+        summaryTextField.borderStyle = .RoundedRect
     }
 }
