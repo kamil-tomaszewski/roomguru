@@ -29,13 +29,17 @@ class UIBaseTableView: UIView {
     }
     
     func initialize() {
+        
+        tableView.hideSeparatorForEmptyCells()
         addSubview(tableView)
         defineConstraints()
     }
     
-    // MARK: Private
+}
+
+private extension UIBaseTableView {
     
-    private func defineConstraints() {
+    func defineConstraints() {
         
         layout(tableView) { table in
             table.edges == table.superview!.edges; return

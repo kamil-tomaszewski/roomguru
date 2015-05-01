@@ -12,14 +12,7 @@ class EventsListView: UIBaseTableView {
     
     override func initialize() {
         super.initialize()
-    }
-    
-    private func buttonView(title: String) -> ButtonView {
-        let frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 50)
         
-        var buttonView = ButtonView(frame: frame)
-        buttonView.button.setTitle(title)
-        
-        return buttonView
+        tableView.hidden = true
     }
 }

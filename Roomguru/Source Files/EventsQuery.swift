@@ -14,29 +14,21 @@ class EventsQuery: PageableQuery {
     
     // MARK: Initializers
     
-    convenience init(calendarID: String) {
+    convenience init(calendarID: String, timeRange: TimeRange) {
         let URLExtension = "/calendars/" + calendarID + "/events"
         self.init(.GET, URLExtension: URLExtension)
         _calendarID = calendarID
+        
+        maxResults = 100
+        singleEvents = true
+        orderBy = "startTime"
+        timeMin = timeRange.min
+        timeMax = timeRange.max
     }
-    
 
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
         super.init(HTTPMethod, URLExtension: URLExtension)
     }
-    
-    // MARK: Copy
-    
-    func copy(#calendarID: String) -> EventsQuery {
-        var query = EventsQuery(calendarID: calendarID)
-        query.maxResults = self.maxResults
-        query.timeMax = self.timeMax?.copy() as? NSDate
-        query.timeMin = self.timeMin?.copy() as? NSDate
-        query.orderBy = self.orderBy
-        query.singleEvents = self.singleEvents
-        return query
-    }
-
     
     // MARK: Query parameters
     
@@ -100,11 +92,11 @@ class EventsQuery: PageableQuery {
 
 extension EventsQuery {
     
-    class func queries(calendars: [String]) -> [EventsQuery] {
+    class func queriesForCalendarIdentifiers(calendars: [String], withTimeRange timeRange: TimeRange) -> [EventsQuery] {
         var queries: [EventsQuery] = []
         
         for calendarID in calendars {
-            queries.append(EventsQuery(calendarID: calendarID))
+            queries.append(EventsQuery(calendarID: calendarID, timeRange: timeRange))
         }
         
         return queries

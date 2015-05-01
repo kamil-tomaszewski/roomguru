@@ -10,6 +10,9 @@ import UIKit
 import SwiftyJSON
 
 // MARK: Types
+
+typealias TimeRange = (min: NSDate?, max: NSDate?)
+
 // MARK: - Closures
 
 typealias VoidBlock = Void -> Void

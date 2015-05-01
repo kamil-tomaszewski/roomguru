@@ -59,9 +59,9 @@ class TabBarController: UITabBarController {
     
     private func setupEmbeddedViewControllers() {
         
-        self.viewControllers = [
+        viewControllers = [
             NavigationController(rootViewController: DashboardViewController()),
-            NavigationController(rootViewController: EventsViewController()),
+            NavigationController(rootViewController: EventsViewController(designation: .Browsable)),
             NavigationController(rootViewController: SettingsViewController())
         ]
         

@@ -9,7 +9,10 @@
 import UIKit
 import Cartography
 
-class EventCell: BaseEventCell, Reusable {
+class EventCell: UITableViewCell, Reusable {
+    
+    let timeMaxLabel = UILabel()
+    let timeMinLabel = UILabel()
     
     class func reuseIdentifier() -> String {
         return "TableViewEventCellReuseIdentifier"
@@ -24,13 +27,15 @@ class EventCell: BaseEventCell, Reusable {
         super.init(coder: aDecoder)
         commonInit()
     }
-}
-
-private extension EventCell {
     
     func commonInit() {
         
-        indentationLevel = 7
+        layoutMargins = UIEdgeInsetsZero
+        preservesSuperviewLayoutMargins = false
+        separatorInset = UIEdgeInsetsZero
+        
+        indentationLevel = 8
+        
         timeMaxLabel.font = .boldSystemFontOfSize(13.0)
         contentView.addSubview(timeMaxLabel)
         
@@ -38,5 +43,19 @@ private extension EventCell {
         contentView.addSubview(timeMinLabel)
         
         defineConstraints()
+    }
+    
+    func defineConstraints() {
+        
+        layout(timeMinLabel, timeMaxLabel) { upperLabel, lowerLabel in
+            
+            upperLabel.left == upperLabel.superview!.left + 10
+            upperLabel.bottom == upperLabel.superview!.centerY
+            upperLabel.height == 20
+            
+            lowerLabel.left == upperLabel.left
+            lowerLabel.top == lowerLabel.superview!.centerY
+            lowerLabel.height == upperLabel.height
+        }
     }
 }

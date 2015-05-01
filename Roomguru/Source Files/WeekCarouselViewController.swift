@@ -66,6 +66,20 @@ class WeekCarouselViewController: UIViewController {
             delegate?.weekCarouselViewController(self, didSelectDate: selectedDate)
         }
     }
+    
+    func scrollToDate(date: NSDate, animated: Bool) {
+        
+        if !viewModel.containsDate(date) {
+            viewModel.populateDaysArrayWithCentralWeekRepresentedByDate(date)
+        }
+        
+        if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
+            
+            let offset = floor(CGFloat(index/viewModel.numberOfDaysInWeek))
+            let rect = CGRectMake(offset * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
+            collectionView.scrollRectToVisible(rect, animated: animated)
+        }
+    }
 }
 
 // MARK: UICollectionViewFlowLayout
@@ -141,20 +155,6 @@ extension WeekCarouselViewController {
 //MARK: Private
 
 private extension WeekCarouselViewController {
-    
-    func scrollToDate(date: NSDate, animated: Bool) {
-        
-        if !viewModel.containsDate(date) {
-            viewModel.populateDaysArrayWithCentralWeekRepresentedByDate(date)
-        }
-        
-        if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
-
-            let offset = floor(CGFloat(index/viewModel.numberOfDaysInWeek))
-            let rect = CGRectMake(offset * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
-            collectionView.scrollRectToVisible(rect, animated: animated)
-        }
-    }
     
     func shiftWeekToDay(date: NSDate?, animated: Bool) {
 

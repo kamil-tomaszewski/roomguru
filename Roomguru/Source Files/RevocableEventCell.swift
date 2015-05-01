@@ -9,27 +9,28 @@
 import UIKit
 import Cartography
 
-class RevocableEventCell: BaseEventCell, Reusable {
+class RevocableEventCell: EventCell {
     
     let revokeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
     var revokeButtonHandler : VoidBlock?
     
-    class func reuseIdentifier() -> String {
+    override class func reuseIdentifier() -> String {
         return "TableViewEventCellReuseIdentifier"
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        commonInit()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
+    override func commonInit() {
+        
+        revokeButton.setTitle("Revoke")
+        revokeButton.setTitleColor(UIColor.ngOrangeColor(), forState: UIControlState.Normal)
+        revokeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
+        contentView.addSubview(revokeButton)
+        
+        super.commonInit()
     }
     
     override func defineConstraints() {
         super.defineConstraints()
+        
         layout(revokeButton) { aButton in
             aButton.centerY == aButton.superview!.centerY
             aButton.right == aButton.superview!.right - 10
@@ -42,27 +43,5 @@ class RevocableEventCell: BaseEventCell, Reusable {
         if let handler:VoidBlock = revokeButtonHandler{
             handler()
         }
-    }
-}
-
-private extension RevocableEventCell {
-
-    func commonInit() {
-        configure()
-        self.addSubview(revokeButton)
-        contentView.addSubview(timeMaxLabel)
-        contentView.addSubview(timeMinLabel)
-        defineConstraints()
-    }
-    
-    func configure() {
-        revokeButton.setTitle("Revoke")
-        revokeButton.setTitleColor(UIColor.ngOrangeColor(), forState: UIControlState.Normal)
-        revokeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
-        revokeButton.addTarget(self, action: Selector("didTapRevokeButton:"))
-        let font = UIFont.boldSystemFontOfSize(13.0)
-        timeMaxLabel.font = font
-        timeMinLabel.font = font
-        indentationLevel = 7
     }
 }

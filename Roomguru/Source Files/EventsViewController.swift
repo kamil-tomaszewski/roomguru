@@ -9,9 +9,24 @@
 import UIKit
 import AKPickerView_Swift
 
+enum Designation {
+    case Revocable, Browsable
+}
+
 class EventsViewController: UIViewController {
     
     private weak var aView: EventsView?
+    private var designation = Designation.Browsable
+    
+    
+    init(designation: Designation) {
+        super.init(nibName: nil, bundle: nil)
+        self.designation = designation
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func loadView() {
         edgesForExtendedLayout = .None
@@ -28,6 +43,7 @@ class EventsViewController: UIViewController {
         aView?.weekCarouselView = weekCarouselViewController.view
         
         let pageViewController = addContainerViewController(EventsPageViewController.self)
+        pageViewController.eventsDelegate = self
         aView?.eventsPageView = pageViewController.view
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("recreatePickerView"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
@@ -42,7 +58,7 @@ class EventsViewController: UIViewController {
     
     func recreatePickerView() {
         /* NOTE: Calling explicitly pickerView.reloadData() doesn't reload it's content. So when amount of calendars decreases.
-                 numberOfItemsInPickerView() delegate doesn't fire and pickerView has wrong number of items
+                 numberOfItemsInPickerView() delegate doesn't fire and pickerView has wrong number of items what leads crash.
         */
         let pickerView = RoomHorizontalPicker(frame: navigationController!.titleViewFrame())
         pickerView.delegate = self
@@ -55,6 +71,16 @@ extension EventsViewController: WeekCarouselViewControllerDelegate {
     
     func weekCarouselViewController(controller: WeekCarouselViewController, didSelectDate date: NSDate) {
         println(date)
+    }
+}
+
+extension EventsViewController: EventsPageViewControllerDelegate {
+    
+    func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate) {
+        if let weekCarouselController = containerControllersOfType(WeekCarouselViewController.self).first {
+            weekCarouselController.setSelectedDate(date, informDelegate: false)
+            weekCarouselController.scrollToDate(date, animated: true)
+        }
     }
 }
 

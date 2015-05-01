@@ -14,18 +14,15 @@ enum FreeEventCellState {
     case Normal, Tapped
 }
 
-protocol FreeEventCellDelegate: class {
+protocol FreeEventCellDelegate {
     func eventCell(cell: FreeEventCell, didChoseTimePeriod timePeriod: NSTimeInterval)
 }
 
-
-class FreeEventCell: BaseEventCell, Reusable {
+class FreeEventCell: EventCell {
     
-    weak var delegate: FreeEventCellDelegate?
+    private let bookingTimesView: BookingTimesView = BookingTimesView(frame: CGRectZero)
     
-//    let freeTimeButton: UIButton = UIButton()
-    let bookingTimesView: BookingTimesView = BookingTimesView(frame: CGRectZero)
-
+    var delegate: FreeEventCellDelegate?
     var timePeriod: NSTimeInterval {
         get { return _timePeriod }
         set {
@@ -38,73 +35,28 @@ class FreeEventCell: BaseEventCell, Reusable {
     private var cellState: FreeEventCellState = .Normal
     private var stateBlock: Async?
     
-    private struct Constants { static var CellIdentifier: String = "TableViewFreeEventCellReuseIdentifier"}
-    
-    class func reuseIdentifier() -> String {
+    override class func reuseIdentifier() -> String {
         return "TableViewFreeEventCellReuseIdentifier"
     }
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        commonInit()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    // MARK: Private
-    
 
+    override func commonInit() {
     
-    override func defineConstraints() {
-        
-        layout(bookingTimesView) { bookingView in
-//            freeButton.edges == freeButton.superview!.edges
-            bookingView.edges == bookingView.superview!.edges
-            return
-        }
-        
-        layout(timeMaxLabel, timeMinLabel) { upperLabel, lowerLabel in
-            upperLabel.top >= upperLabel.superview!.top + 5
-            upperLabel.left == upperLabel.superview!.left + 10
-            
-            lowerLabel.bottom >= lowerLabel.superview!.bottom - 5
-            lowerLabel.left == lowerLabel.superview!.left + 10
-            lowerLabel.width == upperLabel.width
-            lowerLabel.height == upperLabel.height
-        }
-    }
-}
-
-private extension FreeEventCell {
-    
-    func commonInit() {
-        
-        indentationLevel = 7
-        contentView.backgroundColor = UIColor.rgb(255, 167, 34)
+        contentView.backgroundColor = UIColor.ngOrangeColor()
         
         bookingTimesView.delegate = self
         contentView.addSubview(bookingTimesView)
-        
-        timeMaxLabel.font = .boldSystemFontOfSize(13.0)
-        contentView.addSubview(timeMaxLabel)
-        
-        timeMinLabel.font = .boldSystemFontOfSize(13.0)
-        contentView.addSubview(timeMinLabel)
-        
-        //        contentView.addSubview(freeTimeButton)
-        //        freeTimeButton.setTitleColor(white, forState: .Normal)
-        //        freeTimeButton.setTitleColor(lightGray, forState: .Highlighted)
-        //        freeTimeButton.backgroundColor = UIColor.clearColor()
-        //        freeTimeButton.addTarget(self, action: Selector("didTapFreeTimeButton:"))
-        //        freeTimeButton.backgroundColor = backgroundColor
 
-        defineConstraints()
+        super.commonInit()
+    }
+    
+    override func defineConstraints() {
+        super.defineConstraints()
+        
+        layout(bookingTimesView) { bookingView in
+            bookingView.edges == bookingView.superview!.edges; return
+        }
     }
 }
-
 
 // MARK: BookingTimesViewDelegate
 
@@ -123,10 +75,6 @@ extension FreeEventCell {
  
     func didTapFreeTimeButton(sender: UIButton) {
         toggleState()
-        
-//        stateBlock = Async.main(after: 5.0) {
-//            self.toggleState()
-//        }
     }
 }
 
@@ -149,10 +97,8 @@ extension FreeEventCell {
     
     private func setNormalState(animated: Bool = false) {
         cellState = .Normal
-//        freeTimeButton.addTarget(self, action: Selector("didTapFreeTimeButton:"))
         
-        let actions: () -> Void = {
-//            self.freeTimeButton.alpha = 1.0
+        let actions: VoidBlock = {
             self.backgroundColor = UIColor.clearColor()
         }
         
@@ -165,11 +111,9 @@ extension FreeEventCell {
     
     private func setTappedState(animated: Bool = false) {
         cellState = .Tapped
-//        freeTimeButton.removeTarget(self, action: Selector("didTapFreeTimeButton:"))
         
-        let actions: () -> Void = {
+        let actions: VoidBlock = {
             self.backgroundColor = UIColor.greenColor()
-//            self.freeTimeButton.alpha = 0.0
         }
         
         if animated {
