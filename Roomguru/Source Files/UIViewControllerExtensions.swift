@@ -68,6 +68,6 @@ extension UIViewController {
     }
     
     func containerControllersOfType<T: UIViewController>(type: T.Type) -> [T] {
-        return childViewControllers.filter { $0 is T } as! [T]
+        return childViewControllers.filter { $0.isKindOfClass(type) } as! [T]
     }
 }

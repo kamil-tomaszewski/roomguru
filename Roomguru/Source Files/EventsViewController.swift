@@ -13,6 +13,9 @@ enum Designation {
     case Revocable, Browsable
 }
 
+
+// NGRTodo: Implementation of Revocable EventsViewController behaviour is needed
+
 class EventsViewController: UIViewController {
     
     private weak var aView: EventsView?
@@ -37,7 +40,7 @@ class EventsViewController: UIViewController {
         super.viewDidLoad()
         
         recreatePickerView()
-        
+
         let weekCarouselViewController = addContainerViewController(WeekCarouselViewController.self)
         weekCarouselViewController.delegate = self
         aView?.weekCarouselView = weekCarouselViewController.view
@@ -57,6 +60,11 @@ class EventsViewController: UIViewController {
     }
     
     func recreatePickerView() {
+        
+        if designation == .Revocable {
+            return
+        }
+        
         /* NOTE: Calling explicitly pickerView.reloadData() doesn't reload it's content. So when amount of calendars decreases.
                  numberOfItemsInPickerView() delegate doesn't fire and pickerView has wrong number of items what leads crash.
         */
@@ -70,7 +78,9 @@ class EventsViewController: UIViewController {
 extension EventsViewController: WeekCarouselViewControllerDelegate {
     
     func weekCarouselViewController(controller: WeekCarouselViewController, didSelectDate date: NSDate) {
-        println(date)
+        if let eventsPageViewController = containerControllersOfType(EventsPageViewController.self).first {
+            eventsPageViewController.showEventListWithDate(date, animated: true)
+        }
     }
 }
 
@@ -78,8 +88,7 @@ extension EventsViewController: EventsPageViewControllerDelegate {
     
     func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate) {
         if let weekCarouselController = containerControllersOfType(WeekCarouselViewController.self).first {
-            weekCarouselController.setSelectedDate(date, informDelegate: false)
-            weekCarouselController.scrollToDate(date, animated: true)
+            weekCarouselController.scrollToSelectedDate(date, animated: true)
         }
     }
 }

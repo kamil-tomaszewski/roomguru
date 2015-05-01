@@ -13,9 +13,6 @@ class DashboardView: UIBaseTableView {
     override func initialize() {
         super.initialize()
         
-        tableView.showsVerticalScrollIndicator = false
-        tableView.alwaysBounceVertical = false
-        tableView.separatorStyle = .None
-        tableView.rowHeight = 60
+        tableView.hidden = true
     }
 }

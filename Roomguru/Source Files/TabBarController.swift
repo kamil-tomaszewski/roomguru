@@ -62,6 +62,7 @@ class TabBarController: UITabBarController {
         viewControllers = [
             NavigationController(rootViewController: DashboardViewController()),
             NavigationController(rootViewController: EventsViewController(designation: .Browsable)),
+            NavigationController(rootViewController: EventsViewController(designation: .Revocable)),
             NavigationController(rootViewController: SettingsViewController())
         ]
         
@@ -76,6 +77,7 @@ class TabBarController: UITabBarController {
         
         setTitleForControllerAtIndex(0, NSLocalizedString("Dashboard", comment: ""))
         setTitleForControllerAtIndex(1, NSLocalizedString("Events", comment: ""))
-        setTitleForControllerAtIndex(2, NSLocalizedString("Settings", comment: ""))
+        setTitleForControllerAtIndex(2, NSLocalizedString("Revoke", comment: ""))
+        setTitleForControllerAtIndex(3, NSLocalizedString("Settings", comment: ""))
     }
 }

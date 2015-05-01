@@ -84,19 +84,19 @@ private extension AppDelegate {
                 
                 let didUserSelectCalendars = CalendarPersistenceStore.sharedStore.calendars.count > 0
                 if didUserSelectCalendars {
-                    fadeOut(launchViewController?.view) {
+                    fade(.Out, launchViewController?.view) {
                         launchViewController = nil
                     }
                 } else {
                     tabBarController.presentCalendarPickerViewController(false) {
-                        fadeOut(launchViewController?.view) {
+                        fade(.Out, launchViewController?.view) {
                             launchViewController = nil
                         }
                     }
                 }
             } else {
                 tabBarController.presentLoginViewController(false, error: error) {
-                    fadeOut(launchViewController?.view) {
+                    fade(.Out, launchViewController?.view) {
                         launchViewController = nil
                     }
                 }

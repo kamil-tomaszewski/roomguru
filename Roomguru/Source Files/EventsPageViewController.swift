@@ -15,8 +15,6 @@ protocol EventsPageViewControllerDelegate {
 
 class EventsPageViewController: UIPageViewController {
     
-    private var date = NSDate()
-    
     var eventsDelegate: EventsPageViewControllerDelegate?
 
     init() {
@@ -32,7 +30,12 @@ class EventsPageViewController: UIPageViewController {
         
         delegate = self
         dataSource = self
-        setViewControllers([EventsListViewController(date: NSDate(), calendarID: calendarID())], direction: .Forward, animated: true, completion: nil)
+        setViewControllers([EventsListViewController(date: NSDate(), calendarID: calendarID())], direction: .Forward, animated: false, completion: nil)
+    }
+    
+    func showEventListWithDate(date: NSDate, animated: Bool) {
+        let direction = scollDirectionBasedOnDate(date)
+        setViewControllers([EventsListViewController(date: date, calendarID: calendarID())], direction: direction, animated: animated, completion: nil)
     }
 }
 
@@ -76,5 +79,13 @@ private extension EventsPageViewController {
     func calendarID() -> String {
         // NGRTemp: mocked temporary, will use delegate for that:
         return CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first!
+    }
+    
+    func scollDirectionBasedOnDate(date: NSDate) -> UIPageViewControllerNavigationDirection {
+        
+        if let eventsViewController = viewControllers.first as? EventsListViewController {
+            return eventsViewController.date.isEarlierThan(date) ? .Forward : .Reverse
+        }
+        return .Forward
     }
 }

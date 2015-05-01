@@ -8,14 +8,11 @@
 
 import UIKit
 
+// NGRTodo: should be replaced by MyEventsViewController
+
 class DashboardViewController: UIViewController {
 
     private weak var aView: DashboardView?
-    
-    private let viewModel = DashboardViewModel(items: [
-        CellItem(title: "Revoke event", action: .Revoke),
-        CellItem(title: "Book first available room", action: .Book),
-    ])
     
     // MARK: View life cycle
 
@@ -27,9 +24,7 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("didTapPlusButton:"))
-        
-        setupTableView()
-        centralizeTableView()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Book First", comment: ""), style: .Plain, target: self, action: Selector("didTapBookRoomButton:"))
     }
 }
 
@@ -37,7 +32,9 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController {
  
-    func didTapBookRoom(sender: UIButton) {
+    func didTapBookRoomButton(sender: UIButton) {
+        
+        // NGRTodo: this shouldn't be done here. User shouldn't wait for server response.
         
         BookingManager.findClosestAvailableRoom { (calendarTime, error) in
             if let _error = error {
@@ -51,12 +48,7 @@ extension DashboardViewController {
             }
         }
     }
-    
-    func didTapRevokeBookedRoom(sender: UIButton) {
-        
-        // NGRTemp: temp body deleted
-    }
-    
+
     func didTapPlusButton(sender: UIBarButtonItem) {
         let viewModel = EditEventViewModel()
         let controller = EditEventViewController(viewModel: viewModel)
@@ -65,76 +57,9 @@ extension DashboardViewController {
     }
 }
 
-// MARK: UITableViewDataSource Methods
-
-extension DashboardViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfItems()
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(ButtonCell.self)
-            
-        let item = viewModel[indexPath.row]
-        var action: Selector;
-        
-        switch item.action {
-        case .Book: action = Selector("didTapBookRoom:")
-        case .Revoke: action = Selector("didTapRevokeBookedRoom:")
-        }
-
-        cell.button.setTitle(item.title)
-        cell.button.backgroundColor = item.color
-        cell.button.addTarget(self, action: action)
-        
-        return cell;
-    }
-}
-
-
-// MARK: UITableViewDelegate Methods
-
-extension DashboardViewController: UITableViewDelegate {
-
-    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-}
-
 // MARK: Private Methods
 
 private extension DashboardViewController {
-    
-    func setupTableView() {
-        let tableView = aView?.tableView
-        
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        tableView?.registerClass(ButtonCell.self)
-    }
-    
-    func centralizeTableView() {
-        let topInset = max(0, (contentViewHeight() - requiredHeight()) / 2)
-        aView?.tableView.contentInset = UIEdgeInsetsMake(topInset, 0, 0, 0);
-    }
-    
-    func requiredHeight() -> CGFloat {
-        
-        if let rowHeight = aView?.tableView.rowHeight {
-            return CGFloat(viewModel.numberOfItems()) * rowHeight
-        }
-        return 0
-    }
-    
-    func contentViewHeight() -> CGFloat {
-        
-        let topInset = (self.navigationController != nil) ? self.navigationController!.navigationBar.frame.size.height : 0
-        let bottomInset = (self.tabBarController != nil) ? self.tabBarController!.tabBar.frame.size.height : 0
-        
-        return (aView != nil) ? aView!.bounds.height - topInset - bottomInset : 0
-    }
     
     func bookingConfirmationViewControllerWithCalendarTime(calendarTime: CalendarTimeFrame) -> BookingConfirmationViewController {
         

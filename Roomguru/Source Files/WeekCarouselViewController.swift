@@ -54,31 +54,9 @@ class WeekCarouselViewController: UIViewController {
         scrollToDate(selectedDate, animated: false)
     }
     
-    func setSelectedDate(date: NSDate, informDelegate: Bool) {
-        if date.isSameDayAs(selectedDate) {
-            return
-        }
-        
-        selectedDate = date
-        aView?.collectionView?.reloadData()
-        aView?.textLabel.text = viewModel.dateStringFromDate(date)
-        if informDelegate {
-            delegate?.weekCarouselViewController(self, didSelectDate: selectedDate)
-        }
-    }
-    
-    func scrollToDate(date: NSDate, animated: Bool) {
-        
-        if !viewModel.containsDate(date) {
-            viewModel.populateDaysArrayWithCentralWeekRepresentedByDate(date)
-        }
-        
-        if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
-            
-            let offset = floor(CGFloat(index/viewModel.numberOfDaysInWeek))
-            let rect = CGRectMake(offset * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
-            collectionView.scrollRectToVisible(rect, animated: animated)
-        }
+    func scrollToSelectedDate(date: NSDate, animated: Bool) {
+        setSelectedDate(date, informDelegate: false)
+        scrollToDate(date, animated: animated)
     }
 }
 
@@ -163,6 +141,33 @@ private extension WeekCarouselViewController {
             viewModel.populateDaysArrayWithCentralWeekRepresentedByDate(date)
             aView?.collectionView?.reloadData()
             scrollToDate(date, animated: false)
+        }
+    }
+    
+    func setSelectedDate(date: NSDate, informDelegate: Bool) {
+        if date.isSameDayAs(selectedDate) {
+            return
+        }
+        
+        selectedDate = date
+        aView?.collectionView?.reloadData()
+        aView?.textLabel.text = viewModel.dateStringFromDate(date)
+        if informDelegate {
+            delegate?.weekCarouselViewController(self, didSelectDate: selectedDate)
+        }
+    }
+    
+    func scrollToDate(date: NSDate, animated: Bool) {
+        
+        if !viewModel.containsDate(date) {
+            viewModel.populateDaysArrayWithCentralWeekRepresentedByDate(date)
+        }
+        
+        if let index = viewModel.indexFromDate(date), collectionView = aView?.collectionView {
+            
+            let offset = floor(CGFloat(index/viewModel.numberOfDaysInWeek))
+            let rect = CGRectMake(offset * CGRectGetWidth(collectionView.bounds), 0, CGRectGetWidth(collectionView.bounds), CGRectGetHeight(collectionView.bounds))
+            collectionView.scrollRectToVisible(rect, animated: animated)
         }
     }
 }

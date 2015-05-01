@@ -13,6 +13,6 @@ class EventsListView: UIBaseTableView {
     override func initialize() {
         super.initialize()
         
-        tableView.hidden = true
+        tableView.alpha = 0
     }
 }

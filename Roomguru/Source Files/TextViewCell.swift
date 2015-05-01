@@ -43,7 +43,7 @@ private extension TextViewCell {
     
     func commonInit() {
         configureTextView(textView)
-        contentView.addSubview(textView)
+        addSubview(textView)
         
         defineConstraints()
     }
@@ -57,7 +57,7 @@ private extension TextViewCell {
     func defineConstraints() {
         
         let width = CGRectGetWidth(self.frame)
-        frame = CGRectMake(0, 0, width, 160.0)
+        self.frame = CGRectMake(0, 0, width, 160.0)
         
         layout(textView) { text in
             text.edges == text.superview!.edges

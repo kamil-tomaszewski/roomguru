@@ -142,8 +142,8 @@ private extension EventsListViewController {
                 UIAlertView(error: error).show()
             } else {
                 self?.viewModel = EventsListViewModel(calendarEntries, sortingKey: "event.shortDate")
-                self?.aView?.tableView.hidden = false
                 self?.aView?.tableView.reloadData()
+                fade(.In, self?.aView?.tableView, duration: 0.5) { }
             }
         }
     }
