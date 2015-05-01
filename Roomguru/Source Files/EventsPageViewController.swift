@@ -60,7 +60,7 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
         
         if let eventsViewController = viewController as? EventsListViewController {
             var date = eventsViewController.date--
-            return EventsListViewController(date: date, calendarIDs: self.calendarIDs())
+            return EventsListViewController(date: date, calendarIDs: calendarIDs())
         }
         return nil
     }
@@ -69,7 +69,7 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
         
         if let eventsViewController = viewController as? EventsListViewController {
             var date = eventsViewController.date++
-            return EventsListViewController(date: date, calendarIDs: self.calendarIDs())
+            return EventsListViewController(date: date, calendarIDs: calendarIDs())
         }
         return nil
     }
