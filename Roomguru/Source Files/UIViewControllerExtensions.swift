@@ -60,8 +60,7 @@ extension UIViewController {
     
     func removeContainerController<T: UIViewController>(controller: T.Type) {
         
-        let array = childViewControllers.filter { $0 is T } as! [T]
-        for containerController in array {
+        for containerController in containerControllersOfType(controller) {
             containerController.willMoveToParentViewController(nil)
             containerController.view.removeFromSuperview()
             containerController.removeFromParentViewController()

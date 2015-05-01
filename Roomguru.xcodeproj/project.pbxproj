@@ -72,7 +72,6 @@
 		5E746FE71AF04C0F0049131F /* EventsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */; };
 		5E746FED1AF064130049131F /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */; };
 		5E746FEF1AF06C1D0049131F /* RoomHorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */; };
-		5E75F37F1AF36A9600D1F23B /* RevokeEventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E75F37E1AF36A9600D1F23B /* RevokeEventsListViewController.swift */; };
 		5E75F3811AF3775000D1F23B /* EventsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E75F3801AF3775000D1F23B /* EventsProvider.swift */; };
 		5E769F061ACEDC180061289D /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
 		5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* LoginView.swift */; };
@@ -290,7 +289,6 @@
 		5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsPageViewController.swift; path = "Roomguru/Source Files/EventsPageViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UINavigationControllerExtensions.swift; path = "Roomguru/Source Files/UINavigationControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomHorizontalPicker.swift; path = "Roomguru/Source Files/RoomHorizontalPicker.swift"; sourceTree = SOURCE_ROOT; };
-		5E75F37E1AF36A9600D1F23B /* RevokeEventsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeEventsListViewController.swift; path = "Roomguru/Source Files/RevokeEventsListViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E75F3801AF3775000D1F23B /* EventsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsProvider.swift; path = "Roomguru/Source Files/EventsProvider.swift"; sourceTree = SOURCE_ROOT; };
 		5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPersistenceStore.swift; path = "Roomguru/Source Files/CalendarPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/LoginView.swift"; sourceTree = SOURCE_ROOT; };
@@ -818,7 +816,6 @@
 				5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */,
 				BF26E73A1ABAC95000B12244 /* EventsListViewController.swift */,
 				5E746FE01AF049170049131F /* WeekCarouselViewController.swift */,
-				5E75F37E1AF36A9600D1F23B /* RevokeEventsListViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1308,7 +1305,6 @@
 				5E746FE11AF049170049131F /* WeekCarouselViewController.swift in Sources */,
 				BFE5660C1AE13C7200B935BF /* SwitchItem.swift in Sources */,
 				BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */,
-				5E75F37F1AF36A9600D1F23B /* RevokeEventsListViewController.swift in Sources */,
 				5E569DD21AF01C42009F8EC0 /* EventsViewController.swift in Sources */,
 				BF7A9A2F1AE8D4ED00ACF014 /* PickerItemCell.swift in Sources */,
 				BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */,
