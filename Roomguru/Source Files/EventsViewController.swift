@@ -20,7 +20,7 @@ class EventsViewController: UIViewController {
     
     private weak var aView: EventsView?
     private var designation = Designation.Browsable
-    
+    private var selectedCalendarID: String!
     
     init(designation: Designation) {
         super.init(nibName: nil, bundle: nil)
@@ -39,6 +39,17 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let calendarID = CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first
+        if calendarID == nil {
+            // NGRTodo:
+            fatalError("Display placeholder here")
+            return
+        }
+        
+        selectedCalendarID = calendarID!
+        
+        
+        
         recreatePickerView()
 
         let weekCarouselViewController = addContainerViewController(WeekCarouselViewController.self)
@@ -47,6 +58,7 @@ class EventsViewController: UIViewController {
         
         let pageViewController = addContainerViewController(EventsPageViewController.self)
         pageViewController.eventsDelegate = self
+        pageViewController.showEventListWithDate(NSDate(), animated: false)
         aView?.eventsPageView = pageViewController.view
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("recreatePickerView"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
@@ -91,6 +103,15 @@ extension EventsViewController: EventsPageViewControllerDelegate {
             weekCarouselController.scrollToSelectedDate(date, animated: true)
         }
     }
+    
+    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String] {
+        switch designation {
+        case .Browsable:
+            return [selectedCalendarID]
+        case .Revocable:
+            return CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }
+        }
+    }
 }
 
 extension EventsViewController: AKPickerViewDataSource {
@@ -107,6 +128,12 @@ extension EventsViewController: AKPickerViewDataSource {
 extension EventsViewController: AKPickerViewDelegate {
     
     func pickerView(pickerView: AKPickerView, didSelectItem item: Int) {
-        println("PickerView did select \(CalendarPersistenceStore.sharedStore.rooms()[item].name)")
+        
+        selectedCalendarID = CalendarPersistenceStore.sharedStore.rooms()[item].id
+        
+        if let eventsPageViewController = containerControllersOfType(EventsPageViewController.self).first {
+            let date = eventsPageViewController.currentlyDisplayingDay
+            eventsPageViewController.showEventListWithDate(date, animated: false)
+        }
     }
 }

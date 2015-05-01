@@ -14,14 +14,14 @@ class EventsListViewController: UIViewController {
 
     private let eventsProvider = EventsProvider()
     private weak var aView: EventsListView?
-    private var calendarID = ""
+    private var calendarIDs: [String] = []
     private var viewModel: EventsListViewModel<CalendarEntry>?
     private var selectedIndexPaths = [NSIndexPath]()
 
-    convenience init(date: NSDate, calendarID: String) {
+    convenience init(date: NSDate, calendarIDs: [String]) {
         self.init()
         self.date = date
-        self.calendarID = calendarID
+        self.calendarIDs = calendarIDs
     }
     
     init() {
@@ -136,7 +136,7 @@ private extension EventsListViewController {
     
     func loadData() {
         
-        eventsProvider.provideDataForCalendarIDs([calendarID], timeRange: date.dayTimeRange()) { [weak self] (calendarEntries, error) in
+        eventsProvider.provideDataForCalendarIDs(calendarIDs, timeRange: date.dayTimeRange()) { [weak self] (calendarEntries, error) in
             
             if let error = error {
                 UIAlertView(error: error).show()

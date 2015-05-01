@@ -11,11 +11,13 @@ import UIKit
 protocol EventsPageViewControllerDelegate {
     
     func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate)
+    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String]
 }
 
 class EventsPageViewController: UIPageViewController {
     
     var eventsDelegate: EventsPageViewControllerDelegate?
+    var currentlyDisplayingDay: NSDate { get { return (viewControllers.first as? EventsListViewController)?.date ?? NSDate() }}
 
     init() {
         super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
@@ -30,12 +32,11 @@ class EventsPageViewController: UIPageViewController {
         
         delegate = self
         dataSource = self
-        setViewControllers([EventsListViewController(date: NSDate(), calendarID: calendarID())], direction: .Forward, animated: false, completion: nil)
     }
     
     func showEventListWithDate(date: NSDate, animated: Bool) {
         let direction = scollDirectionBasedOnDate(date)
-        setViewControllers([EventsListViewController(date: date, calendarID: calendarID())], direction: direction, animated: animated, completion: nil)
+        setViewControllers([EventsListViewController(date: date, calendarIDs: calendarIDs())], direction: direction, animated: animated, completion: nil)
     }
 }
 
@@ -59,7 +60,7 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
         
         if let eventsViewController = viewController as? EventsListViewController {
             var date = eventsViewController.date--
-            return EventsListViewController(date: date, calendarID: self.calendarID())
+            return EventsListViewController(date: date, calendarIDs: self.calendarIDs())
         }
         return nil
     }
@@ -68,7 +69,7 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
         
         if let eventsViewController = viewController as? EventsListViewController {
             var date = eventsViewController.date++
-            return EventsListViewController(date: date, calendarID: self.calendarID())
+            return EventsListViewController(date: date, calendarIDs: self.calendarIDs())
         }
         return nil
     }
@@ -76,9 +77,8 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
 
 private extension EventsPageViewController {
     
-    func calendarID() -> String {
-        // NGRTemp: mocked temporary, will use delegate for that:
-        return CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first!
+    func calendarIDs() -> [String] {
+        return eventsDelegate?.calendarIdentifiersToShowByEventsPageViewController(self) ?? []
     }
     
     func scollDirectionBasedOnDate(date: NSDate) -> UIPageViewControllerNavigationDirection {
