@@ -76,11 +76,11 @@ private extension CalendarPickerViewController {
     }
     
     func setSignOutBarButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sign out", comment: ""), style: .Plain, target: self, action: Selector("didTapSignOutBarButtonItem:"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Sign out", comment: ""), style: .Plain, target: self, action: Selector("didTapSignOutBarButtonItem:"))
     }
     
     func setSelectAllBarButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select All", comment: ""), style: .Plain, target: self, action: Selector("didTapSelectAllBarButtonItem:"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select All", comment: ""), style: .Plain, target: self, action: Selector("didTapSelectAllBarButtonItem:"))
     }
 }
 
@@ -174,10 +174,7 @@ extension CalendarPickerViewController {
     }
     
     func didTapSignOutBarButtonItem(sender: UIBarButtonItem) {
-        CalendarPersistenceStore.sharedStore.clear()
-        UserPersistenceStore.sharedStore.clear()
-        GPPSignIn.sharedInstance().signOut()
-        
+        (UIApplication.sharedApplication().delegate as! AppDelegate).signOut()        
         navigationController?.popViewControllerAnimated(true)
     }
     

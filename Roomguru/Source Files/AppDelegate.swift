@@ -34,12 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         authenticator.signOut()
         CalendarPersistenceStore.sharedStore.clear()
         UserPersistenceStore.sharedStore.clear()
-        
+    }
+    
+    func presentLoginViewController(animated: Bool, completion: VoidBlock? = nil) {
         let tabBarViewController = window!.rootViewController as! TabBarController
-        tabBarViewController.presentLoginViewController(true) {
-            tabBarViewController.selectedIndex = 0
-            tabBarViewController.popNavigationStack()
-        }
+        tabBarViewController.presentLoginViewController(animated, completion: completion)
+    }
+    
+    func popNavigationStack() {
+        let tabBarViewController = window!.rootViewController as! TabBarController
+        tabBarViewController.selectedIndex = 0
+        tabBarViewController.popNavigationStack()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
