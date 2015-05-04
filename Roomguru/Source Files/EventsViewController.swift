@@ -13,14 +13,13 @@ enum Designation {
     case Revocable, Browsable
 }
 
-
 // NGRTodo: Implementation of Revocable EventsViewController behaviour is needed
 
 class EventsViewController: UIViewController {
     
     private weak var aView: EventsView?
     private var designation = Designation.Browsable
-    private var selectedCalendarID: String!
+    private var selectedCalendarID: String?
     
     init(designation: Designation) {
         super.init(nibName: nil, bundle: nil)
@@ -39,19 +38,10 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let calendarID = CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first
-        if calendarID == nil {
-            // NGRTodo:
-            fatalError("Display placeholder here")
-            return
+        if let calendarID = (CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first) {
+            selectedCalendarID = calendarID
         }
         
-        selectedCalendarID = calendarID!
-        
-        
-        
-        recreatePickerView()
-
         let weekCarouselViewController = addContainerViewController(WeekCarouselViewController.self)
         weekCarouselViewController.delegate = self
         aView?.weekCarouselView = weekCarouselViewController.view
@@ -61,29 +51,37 @@ class EventsViewController: UIViewController {
         pageViewController.showEventListWithDate(NSDate(), animated: false)
         aView?.eventsPageView = pageViewController.view
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("recreatePickerView"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("userDidChangePersistentCalendars"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
+    
+        if CalendarPersistenceStore.sharedStore.rooms().isEmpty {
+            aView?.showPlaceholderView(true)
+        } else {
+            recreatePickerView()
+        }
     }
     
     deinit {
         removeContainerController(WeekCarouselViewController.self)
         removeContainerController(EventsPageViewController.self)
         
-        NSNotificationCenter.defaultCenter().removeObserver(navigationItem.titleView!)
+        if let pickerView = navigationItem.titleView {
+            NSNotificationCenter.defaultCenter().removeObserver(pickerView)
+        }
     }
     
-    func recreatePickerView() {
+    func userDidChangePersistentCalendars() {
         
-        if designation == .Revocable {
-            return
+        if let calendarID = (CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first) {
+            aView?.showPlaceholderView(false)
+            selectedCalendarID = calendarID
+            recreatePickerView()
+        } else {
+            aView?.showPlaceholderView(true)
+            navigationItem.titleView = nil
+            selectedCalendarID = nil
         }
         
-        /* NOTE: Calling explicitly pickerView.reloadData() doesn't reload it's content. So when amount of calendars decreases.
-                 numberOfItemsInPickerView() delegate doesn't fire and pickerView has wrong number of items what leads crash.
-        */
-        let pickerView = RoomHorizontalPicker(frame: navigationController!.titleViewFrame())
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        navigationItem.titleView = pickerView
+        reloadEventList()
     }
 }
 
@@ -104,10 +102,13 @@ extension EventsViewController: EventsPageViewControllerDelegate {
         }
     }
     
-    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String] {
+    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String]? {
         switch designation {
         case .Browsable:
-            return [selectedCalendarID]
+            if let selectedCalendarID = selectedCalendarID {
+                return [selectedCalendarID]
+            }
+            return nil
         case .Revocable:
             return CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }
         }
@@ -128,9 +129,29 @@ extension EventsViewController: AKPickerViewDataSource {
 extension EventsViewController: AKPickerViewDelegate {
     
     func pickerView(pickerView: AKPickerView, didSelectItem item: Int) {
-        
         selectedCalendarID = CalendarPersistenceStore.sharedStore.rooms()[item].id
+        reloadEventList()
+    }
+}
+
+private extension EventsViewController {
+    
+    func recreatePickerView() {
         
+        if designation == .Revocable {
+            return
+        }
+        
+        /* NOTE: Calling explicitly pickerView.reloadData() doesn't reload it's content. So when amount of calendars decreases.
+        numberOfItemsInPickerView() delegate doesn't fire and pickerView has wrong number of items what leads crash.
+        */
+        let pickerView = RoomHorizontalPicker(frame: navigationController!.titleViewFrame())
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        navigationItem.titleView = pickerView
+    }
+    
+    func reloadEventList() {
         if let eventsPageViewController = containerControllersOfType(EventsPageViewController.self).first {
             let date = eventsPageViewController.currentlyDisplayingDay
             eventsPageViewController.showEventListWithDate(date, animated: false)

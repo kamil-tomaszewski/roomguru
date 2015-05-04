@@ -63,7 +63,7 @@ class BookingConfirmationViewController: UIViewController {
     
     private var actualBookingTime: CalendarTimeFrame = (nil, "")
     private var calendarTime: CalendarTimeFrame = (nil, "")
-    private var summary: String = NSLocalizedString("Summary", comment: "") {
+    private var summary = NSLocalizedString("Summary", comment: "") {
         didSet { isValid = summary.length >= 5 }
     }
     private var confirmation: (CalendarTimeFrame, String) -> Void = { (calendarTime, summary) in }

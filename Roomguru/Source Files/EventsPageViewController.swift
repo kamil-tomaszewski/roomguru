@@ -11,7 +11,7 @@ import UIKit
 protocol EventsPageViewControllerDelegate {
     
     func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate)
-    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String]
+    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String]?
 }
 
 class EventsPageViewController: UIPageViewController {

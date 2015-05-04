@@ -38,36 +38,32 @@ class CalendarPersistenceStore {
     }
     
     func saveCalendars(calendars: [Calendar]) {
-        if let key = key() {
-            let dataRepresentation = NSKeyedArchiver.archivedDataWithRootObject(calendars)
-            Defaults[key] = dataRepresentation
-            Defaults.synchronize()
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
-        }
+        let dataRepresentation = NSKeyedArchiver.archivedDataWithRootObject(calendars)
+        Defaults[key()] = dataRepresentation
+        Defaults.synchronize()
+        
         self.calendars = calendars
+        NSNotificationCenter.defaultCenter().postNotificationName(CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
     }
     
     func clear() {
-        if let key = key() {
-            Defaults.remove(key)
-            Defaults.synchronize()
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
-        }
+        Defaults.remove(key())
+        Defaults.synchronize()
+        
         calendars = []
+        NSNotificationCenter.defaultCenter().postNotificationName(CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
     }
 }
 
 private extension CalendarPersistenceStore {
     
-    func key() -> String? {
+    func key() -> String {
         let user = UserPersistenceStore.sharedStore.user
-        return user?.email.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5()
+        return user?.email.lowercaseString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).md5() ?? "DefaultUserCalendarPersistenceKey"
     }
     
     func fetch() -> [Calendar]? {
-        if let key = key(), data = Defaults[key].data {
+        if let data = Defaults[key()].data {
             return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Calendar]
         }
         return nil

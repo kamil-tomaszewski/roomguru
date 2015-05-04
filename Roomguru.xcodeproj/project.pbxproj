@@ -121,6 +121,7 @@
 		5ECAD56C1AB8317000DD0727 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */; };
 		5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */; };
 		5ED4C7701ACC3DC80084E52F /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED4C76F1ACC3DC80084E52F /* Defines.swift */; };
+		5ED78E111AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */; };
 		5EDEACF11ADFD22100C4351B /* StickyExpandableFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */; };
 		5EDEACF31ADFDD7600C4351B /* SettingsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */; };
 		5EDEACF51ADFFFA200C4351B /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */; };
@@ -335,6 +336,7 @@
 		5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtensions.swift; path = "Roomguru/Source Files/UIButtonExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
 		5ED4C76F1ACC3DC80084E52F /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Roomguru/Source Files/Defines.swift"; sourceTree = SOURCE_ROOT; };
+		5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyCalendarPlaceholderView.swift; path = "Roomguru/Source Files/EmptyCalendarPlaceholderView.swift"; sourceTree = SOURCE_ROOT; };
 		5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StickyExpandableFlowLayout.swift; path = "Roomguru/Source Files/StickyExpandableFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
 		5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCollectionViewHeader.swift; path = "Roomguru/Source Files/SettingsCollectionViewHeader.swift"; sourceTree = SOURCE_ROOT; };
 		5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = "Roomguru/Source Files/SettingsCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -572,6 +574,7 @@
 				BF01C8E61AEF8048003422AD /* TextField.swift */,
 				5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */,
 				5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */,
+				5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -1316,6 +1319,7 @@
 				5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
 				5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */,
+				5ED78E111AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift in Sources */,
 				5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */,
 				BFE814551AE8413C00369522 /* RecurrenceItem.swift in Sources */,
 				5E569DCB1AEFA015009F8EC0 /* WeekCarouselView.swift in Sources */,

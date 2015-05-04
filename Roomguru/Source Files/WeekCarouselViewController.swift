@@ -17,7 +17,7 @@ class WeekCarouselViewController: UIViewController {
     
     private weak var aView: WeekCarouselView?
     private let viewModel = WeekCarouselViewModel()
-    private var selectedDate = NSDate() // to inform delegate about changes use setSelectedDate:informDelegate method
+    private var selectedDate = NSDate() // to inform delegate about changes use setSelectedDate:informDelegate: method
     private var didShowViewController = false
     
     var delegate: WeekCarouselViewControllerDelegate?
@@ -51,7 +51,7 @@ class WeekCarouselViewController: UIViewController {
     
     func didTapTodayButton(sender: UIButton) {
         setSelectedDate(NSDate(), informDelegate: true)
-        scrollToDate(selectedDate, animated: false)
+        scrollToDate(selectedDate, animated: true)
     }
     
     func scrollToSelectedDate(date: NSDate, animated: Bool) {
