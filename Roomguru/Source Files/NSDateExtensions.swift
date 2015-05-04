@@ -9,9 +9,6 @@
 import Foundation
 import DateKit
 
-
-
-
 extension NSDate {
     
     func isToday() -> Bool {
