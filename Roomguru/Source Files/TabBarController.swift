@@ -61,8 +61,8 @@ class TabBarController: UITabBarController {
         
         viewControllers = [
             NavigationController(rootViewController: DashboardViewController()),
-            NavigationController(rootViewController: EventsViewController(designation: .Browsable)),
-            NavigationController(rootViewController: EventsViewController(designation: .Revocable)),
+            NavigationController(rootViewController: EventsViewController(mode: .Browsable)),
+            NavigationController(rootViewController: EventsViewController(mode: .Revocable)),
             NavigationController(rootViewController: SettingsViewController())
         ]
         

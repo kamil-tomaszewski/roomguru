@@ -17,9 +17,11 @@ class EventsListViewController: UIViewController {
     private var calendarIDs: [String] = []
     private var viewModel: EventsListViewModel<CalendarEntry>?
     private var selectedIndexPaths = [NSIndexPath]()
+    private var revocable = false
 
-    convenience init(date: NSDate, calendarIDs: [String]) {
+    convenience init(date: NSDate, calendarIDs: [String], revocable: Bool) {
         self.init()
+        self.revocable = revocable
         self.date = date
         self.calendarIDs = calendarIDs
     }

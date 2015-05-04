@@ -50,12 +50,10 @@ extension UIViewController {
         presentViewController(navigationController, animated: animated, completion: completion);
     }
     
-    func addContainerViewController<T: UIViewController>(controller: T.Type) -> T {
-        let controller = controller()
+    func addContainerViewController<T: UIViewController>(controller: T) {
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.didMoveToParentViewController(self)
-        return controller
     }
     
     func removeContainerController<T: UIViewController>(controller: T.Type) {

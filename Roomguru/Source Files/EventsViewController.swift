@@ -9,7 +9,7 @@
 import UIKit
 import AKPickerView_Swift
 
-enum Designation {
+enum DisplayMode {
     case Revocable, Browsable
 }
 
@@ -18,14 +18,14 @@ enum Designation {
 class EventsViewController: UIViewController {
     
     private weak var aView: EventsView?
-    private var designation = Designation.Browsable
+    private var mode = DisplayMode.Browsable
     private var selectedCalendarID: String?
     
-    init(designation: Designation) {
+    init(mode: DisplayMode) {
         super.init(nibName: nil, bundle: nil)
-        self.designation = designation
+        self.mode = mode
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -42,12 +42,13 @@ class EventsViewController: UIViewController {
             selectedCalendarID = calendarID
         }
         
-        let weekCarouselViewController = addContainerViewController(WeekCarouselViewController.self)
+        let weekCarouselViewController = WeekCarouselViewController()
+        addContainerViewController(weekCarouselViewController)
         weekCarouselViewController.delegate = self
         aView?.weekCarouselView = weekCarouselViewController.view
         
-        let pageViewController = addContainerViewController(EventsPageViewController.self)
-        pageViewController.eventsDelegate = self
+        let pageViewController = EventsPageViewController(delegate: self)
+        addContainerViewController(pageViewController)
         pageViewController.showEventListWithDate(NSDate(), animated: false)
         aView?.eventsPageView = pageViewController.view
         
@@ -74,13 +75,12 @@ class EventsViewController: UIViewController {
         if let calendarID = (CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first) {
             aView?.showPlaceholderView(false)
             selectedCalendarID = calendarID
-            recreatePickerView()
         } else {
             aView?.showPlaceholderView(true)
-            navigationItem.titleView = nil
             selectedCalendarID = nil
         }
         
+        recreatePickerView()
         reloadEventList()
     }
 }
@@ -103,7 +103,7 @@ extension EventsViewController: EventsPageViewControllerDelegate {
     }
     
     func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String]? {
-        switch designation {
+        switch mode {
         case .Browsable:
             if let selectedCalendarID = selectedCalendarID {
                 return [selectedCalendarID]
@@ -112,6 +112,10 @@ extension EventsViewController: EventsPageViewControllerDelegate {
         case .Revocable:
             return CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }
         }
+    }
+    
+    func shouldEventsPageViewControllerAllowToRevokeEvents(controller: EventsPageViewController) -> Bool {
+        return mode == .Revocable
     }
 }
 
@@ -138,7 +142,8 @@ private extension EventsViewController {
     
     func recreatePickerView() {
         
-        if designation == .Revocable {
+        if mode == .Revocable {
+            navigationItem.titleView = nil
             return
         }
         
