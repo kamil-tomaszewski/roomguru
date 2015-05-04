@@ -155,6 +155,7 @@
 		BF01C8E31AEEB133003422AD /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */; };
 		BF01C8E71AEF8048003422AD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* TextField.swift */; };
 		BF0A9E4E1AD540290088ED79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9E4D1AD540290088ED79 /* User.swift */; };
+		BF1EA1A01AF783DC008FECB8 /* BookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */; };
 		BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
 		BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
 		BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD21AC093A00020DFC4 /* Pageable.swift */; };
@@ -367,6 +368,7 @@
 		BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointExtensions.swift; path = "Roomguru/Source Files/CGPointExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF01C8E61AEF8048003422AD /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = "Roomguru/Source Files/TextField.swift"; sourceTree = SOURCE_ROOT; };
 		BF0A9E4D1AD540290088ED79 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Roomguru/Source Files/User.swift"; sourceTree = SOURCE_ROOT; };
+		BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewModel.swift; path = "Roomguru/Source Files/BookingConfirmationViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		BF251ACC1AC083F30020DFC4 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queryable.swift; path = "Roomguru/Source Files/Queryable.swift"; sourceTree = SOURCE_ROOT; };
 		BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsQuery.swift; path = "Roomguru/Source Files/EventsQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF251AD21AC093A00020DFC4 /* Pageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pageable.swift; path = "Roomguru/Source Files/Pageable.swift"; sourceTree = SOURCE_ROOT; };
@@ -606,6 +608,7 @@
 				BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */,
 				BFE814541AE8413C00369522 /* RecurrenceItem.swift */,
 				BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */,
+				BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1327,6 +1330,7 @@
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
 				5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */,
 				5ED78E111AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift in Sources */,
+				BF1EA1A01AF783DC008FECB8 /* BookingConfirmationViewModel.swift in Sources */,
 				5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */,
 				BFE814551AE8413C00369522 /* RecurrenceItem.swift in Sources */,
 				5E569DCB1AEFA015009F8EC0 /* WeekCarouselView.swift in Sources */,

@@ -63,7 +63,7 @@ private extension DashboardViewController {
     
     func bookingConfirmationViewControllerWithCalendarTime(calendarTime: CalendarTimeFrame) -> BookingConfirmationViewController {
         
-        return BookingConfirmationViewController(calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
+        let viewModel = BookingConfirmationViewModel(calendarTimeFrame: calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
             
             BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
                 
@@ -78,6 +78,8 @@ private extension DashboardViewController {
                 }
             )
         })
+        
+        return BookingConfirmationViewController(viewModel: viewModel)
     }
 }
 
