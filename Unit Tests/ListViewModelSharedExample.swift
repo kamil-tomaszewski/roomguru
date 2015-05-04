@@ -174,14 +174,11 @@ class ListViewModelSharedExampleConfiguration : QuickConfiguration {
                     beforeEach {
                         itemsCount = sut[0].count
                         removedItem = sut[0][1]
-                        println(removedItem)
                         let indexPath = NSIndexPath(forRow: 1, inSection: 0)
-                        println(indexPath)
                         sut.removeAtIndexPath(indexPath)
                     }
                     
                     it("should remove item") {
-                        println("\(__FUNCTION__) | sut[0][1]: \(sut[0][1])")
                         expect(sut[0][1]).notTo(beIdenticalTo(removedItem))
                     }
                     
@@ -203,12 +200,42 @@ class ListViewModelSharedExampleConfiguration : QuickConfiguration {
                 
                 context("remove few items at indexpaths") {
                     
-                    pending("should remove items") {
+                    var indexPaths: [NSIndexPath]!
+                    var itemsToRemove: [FixtureListItem]!
+                    var sectionsCount: [Int]!
+                    
+                    beforeEach {
+                        sut = factory.viewModelWithItems(fixtureItems, sortingKey: "fixtureText")
                         
+                        itemsToRemove = []
+                        sectionsCount = []
+                        
+                        sectionsCount.append(sut[0].count)
+                        sectionsCount.append(sut[1].count)
+                        
+                        indexPaths = [
+                            NSIndexPath(forRow: 0, inSection: 0),
+                            NSIndexPath(forRow: 0, inSection: 1)
+                        ]
+                        
+                        itemsToRemove.append(sut[0][0])
+                        itemsToRemove.append(sut[1][0])
                     }
                     
-                    pending("should have correct nubmer of items in sections") {
-                        
+                    it("should remove items") {
+                        sut.removeItemsAtIndexPaths(indexPaths)
+                        expect(sut[0][0]).notTo(beIdenticalTo(itemsToRemove[0]))
+                    }
+                    
+                    it("should have correct number of sections") {
+                        sut.removeItemsAtIndexPaths(indexPaths)
+                        expect(sut.sectionsCount()).to(equal(2))
+                    }
+                    
+                    it("should have correct nubmer of items in sections") {
+                        sut.removeItemsAtIndexPaths(indexPaths)
+                        expect(sut[0].count).to(equal(sectionsCount[0] - 1))
+                        expect(sut[1].count).to(equal(sectionsCount[1] - 1))
                     }
                 }
             }
