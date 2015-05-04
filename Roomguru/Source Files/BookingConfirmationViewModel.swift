@@ -37,6 +37,7 @@ class BookingConfirmationViewModel {
     init(calendarTimeFrame: CalendarTimeFrame, onConfirmation: (CalendarTimeFrame, String) -> Void) {
         calendarTime = calendarTimeFrame
         confirmation = onConfirmation
+        actualBookingTime = calendarTimeFrame
         
         configureFormatters()
         setupActualBookingTime()
