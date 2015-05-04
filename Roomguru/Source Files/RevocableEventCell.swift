@@ -15,7 +15,7 @@ class RevocableEventCell: EventCell {
     var revokeButtonHandler : VoidBlock?
     
     override class func reuseIdentifier() -> String {
-        return "TableViewEventCellReuseIdentifier"
+        return "TableViewRevocableEventCellReuseIdentifier"
     }
     
     override func commonInit() {
@@ -23,6 +23,7 @@ class RevocableEventCell: EventCell {
         revokeButton.setTitle("Revoke")
         revokeButton.setTitleColor(UIColor.ngOrangeColor(), forState: UIControlState.Normal)
         revokeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
+        revokeButton.addTarget(self, action: Selector("didTapRevokeButton:"))
         contentView.addSubview(revokeButton)
         
         super.commonInit()
@@ -40,7 +41,7 @@ class RevocableEventCell: EventCell {
     }
     
     func didTapRevokeButton(sender:UIButton) {
-        if let handler:VoidBlock = revokeButtonHandler{
+        if let handler = revokeButtonHandler{
             handler()
         }
     }

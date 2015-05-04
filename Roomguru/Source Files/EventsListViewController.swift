@@ -52,6 +52,17 @@ class EventsListViewController: UIViewController {
             self.aView?.tableView.deselectRowIfSelectedAnimated(true)
         }
     }
+    
+    func revokeEventAtIndexPath(indexPath: NSIndexPath){
+        if let event = viewModel?.eventAtIndex(indexPath){
+            BookingManager.revokeEvent(event, success: {
+                self.viewModel?.removeAtIndexPath(indexPath)
+                self.aView?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                }, failure: { error in
+                    UIAlertView(error: error).show()
+            })
+        }
+    }
 }
 
 // MARK: UITableViewDelegate
@@ -83,14 +94,18 @@ extension EventsListViewController: UITableViewDataSource {
         let event = viewModel?.eventAtIndex(indexPath)
         let cell: UITableViewCell!
         
-        if let freeEvent = event as? FreeEvent {
-            cell = tableView.dequeueReusableCell(FreeEventCell.self)
-            configureFreeEventCell(cell as! FreeEventCell, forEvent: freeEvent)
+        if revocable{
+            cell = tableView.dequeueReusableCell(RevocableEventCell.self)
+            configureRevocableEventCell(cell as! RevocableEventCell, forEvent: event!, andIndexPath: indexPath)
         } else {
-            cell = tableView.dequeueReusableCell(EventCell.self)
-            configurEventCell(cell as! EventCell, forEvent: event!)
+            if let freeEvent = event as? FreeEvent {
+                cell = tableView.dequeueReusableCell(FreeEventCell.self)
+                configureFreeEventCell(cell as! FreeEventCell, forEvent: freeEvent)
+            } else {
+                cell = tableView.dequeueReusableCell(EventCell.self)
+                configureEventCell(cell as! EventCell, forEvent: event!)
+            }
         }
-        
         return cell
     }
 
@@ -116,10 +131,18 @@ extension EventsListViewController {
         cell.timeMaxLabel.text = event.endTime
     }
     
-    func configurEventCell(cell: EventCell, forEvent event: Event) {
+    func configureEventCell(cell: EventCell, forEvent event: Event) {
         cell.textLabel?.text = event.summary
         cell.timeMinLabel.text = event.startTime
         cell.timeMaxLabel.text = event.endTime
+    }
+    
+    func configureRevocableEventCell(cell: RevocableEventCell, forEvent event: Event, andIndexPath indexPath: NSIndexPath) {
+        cell.textLabel?.text = event.summary
+        cell.timeMinLabel.text = event.startTime
+        cell.timeMaxLabel.text = event.endTime
+        cell.revokeButtonHandler = { [weak self] in
+            self?.revokeEventAtIndexPath(indexPath)}
     }
 }
 
@@ -134,11 +157,12 @@ private extension EventsListViewController {
 
         aView?.tableView.registerClass(EventCell.self)
         aView?.tableView.registerClass(FreeEventCell.self)
+        aView?.tableView.registerClass(RevocableEventCell.self)
     }
     
     func loadData() {
-        
-        eventsProvider.provideDataForCalendarIDs(calendarIDs, timeRange: date.dayTimeRange()) { [weak self] (calendarEntries, error) in
+   
+        eventsProvider.provideCalendarEntriesForCalendarIDs(calendarIDs, timeRange: date.dayTimeRange(), onlyRevocable:revocable) { [weak self] (calendarEntries, error) in
             
             if let error = error {
                 UIAlertView(error: error).show()

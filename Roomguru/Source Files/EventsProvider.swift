@@ -12,14 +12,19 @@ import Async
 
 class EventsProvider {
 
-    func provideDataForCalendarIDs(calendarIDs: [String], timeRange: TimeRange, completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
+    func provideCalendarEntriesForCalendarIDs(calendarIDs: [String], timeRange: TimeRange, onlyRevocable: Bool, completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
         
         let queries: [PageableQuery] = EventsQuery.queriesForCalendarIdentifiers(calendarIDs, withTimeRange: timeRange)
         
         NetworkManager.sharedInstance.chainedRequest(queries, construct: { (query, response: [Event]?) -> [CalendarEntry] in
             
             if let query = query as? EventsQuery, response = response {
-                let events = self.onlyActiveEvents(response)
+                var events:[Event] = []
+                if onlyRevocable{
+                    events = self.onlyCreatedByUserActiveEvents(response)
+                } else {
+                    events = self.onlyActiveEvents(response)
+                }
                 return CalendarEntry.caledarEntries(query.calendarID, events: events)
             }
             return []
@@ -29,8 +34,14 @@ class EventsProvider {
                 var calendarEntriesToReturn: [CalendarEntry] = []
                 
                 Async.background {
-                    if let result = result, calendarEntries = self?.fillActiveEventsWithFreeEvents(result) {
-                        calendarEntriesToReturn = calendarEntries
+                    if onlyRevocable{
+                        if let result = result {
+                                calendarEntriesToReturn = CalendarEntry.sortedByDate(result)
+                            }
+                    } else {
+                        if let result = result, calendarEntries = self?.fillActiveEventsWithFreeEvents(result) {
+                                calendarEntriesToReturn = calendarEntries
+                        }
                     }
                 }.main {
                     completion(calendarEntries: calendarEntriesToReturn, error: nil)
@@ -40,6 +51,7 @@ class EventsProvider {
                 completion(calendarEntries: [], error: error)
         })
     }
+
 }
 
 private extension EventsProvider {
@@ -48,6 +60,11 @@ private extension EventsProvider {
         return events.filter{ !$0.isCanceled() }
     }
     
+    func onlyCreatedByUserActiveEvents (events: [Event]) -> [Event] {
+        let userEmail = UserPersistenceStore.sharedStore.user?.email
+        return events.filter{ !$0.isCanceled() && $0.creator?.email == userEmail}
+    }
+
     func fillActiveEventsWithFreeEvents (entries: [CalendarEntry]) -> [CalendarEntry] {
         let sortedEntries = CalendarEntry.sortedByDate(entries)
         return CalendarEntry.entriesWithFreeGaps(sortedEntries)
