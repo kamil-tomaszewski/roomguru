@@ -99,11 +99,10 @@ extension SettingsViewController: UICollectionViewDelegate {
 extension SettingsViewController {
 
     func didTapSignOutButton(sender: UIBarButtonItem) {
-        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
-            appDelegate.signOut()
-            appDelegate.presentLoginViewController(true) {
-                appDelegate.popNavigationStack()
-            }
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.signOut()
+        appDelegate.presentLoginViewController(true) {
+            appDelegate.popNavigationStack()
         }
     }
 
