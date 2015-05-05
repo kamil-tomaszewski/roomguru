@@ -63,11 +63,16 @@ private extension EventsProvider {
         return events.filter{ !$0.isCanceled() }
     }
     
+<<<<<<< HEAD
     func onlyCreatedByUserActiveEvents (events: [Event]) -> [Event] {
         let userEmail = UserPersistenceStore.sharedStore.user?.email
         return events.filter{ !$0.isCanceled() && $0.creator?.email == userEmail}
     }
 
+    func fillActiveEventsWithFreeEvents (entries: [CalendarEntry]) -> [CalendarEntry] {
+        let sortedEntries = CalendarEntry.sortedByDate(entries)
+        return CalendarEntry.entriesWithFreeGaps(sortedEntries)
+=======
     func fillActiveEventsWithFreeEvents(activeEntries: [CalendarEntry]) -> [CalendarEntry] {
         
         let sortedEntries = CalendarEntry.sortedByDate(activeEntries)
@@ -148,5 +153,6 @@ private extension EventsProvider {
     
     func increase(inout date: NSDate, by timeInterval: NSTimeInterval = Constants.Timeline.TimeStep) {
         date = date.dateByAddingTimeInterval(timeInterval)
+>>>>>>> Proper free events filtering
     }
 }

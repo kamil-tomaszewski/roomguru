@@ -23,4 +23,13 @@ struct Constants {
             static let ClientID = "860224755984-fiktpv8httrrbgdefop68d554kvepshp.apps.googleusercontent.com"
         #endif
     }
+    
+    struct Timeline {
+        static let MinimumEventDuration: NSTimeInterval = 60*15 //15 minutes
+        static let TimeStep: NSTimeInterval = 60*30 // 30 minutes
+        
+        // Range within you can book events.
+        // Below means: first available event will be bookable at 7 AM, and the last one at 5 PM
+        static let BookingRange: (min: NSTimeInterval, max: NSTimeInterval) = (min: 60*60*7, max: 60*60*17)
+    }
 }
