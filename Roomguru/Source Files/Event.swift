@@ -155,18 +155,15 @@ class Event: ModelObject, NSSecureCoding {
 
 extension Event {
     
-    func isCanceled() -> Bool {
-        return rooms?.filter { $0.status == .NotGoing }.count > 0
+    func isCanceled() -> Bool {   
+        if let rooms = rooms {
+            return rooms.filter { $0.status == .NotGoing }.count > 0
+        }
+        return true
     }
 }
 
-extension String {
-
-    func googleDateToShortDateString(date: NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.stringFromDate(date)        
-    }
+private extension String {
     
     func date() -> NSDate? {
         let formatter = NSDateFormatter()
@@ -175,7 +172,7 @@ extension String {
     }
     
     func shortTime() -> String? {
-        if let date = self.date() {
+        if let date = date() {
             let formatter = NSDateFormatter()
             formatter.timeStyle = .ShortStyle
             return formatter.stringFromDate(date)
@@ -188,9 +185,9 @@ extension String {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZZZ"
         
-        if let _correctedDate = formatter.dateFromString(self) {
+        if let correctedDate = formatter.dateFromString(self) {
             formatter.dateFormat = "yyyy-MM-dd"
-            let string = formatter.stringFromDate(_correctedDate)
+            let string = formatter.stringFromDate(correctedDate)
             return formatter.dateFromString(string)
         }
         
