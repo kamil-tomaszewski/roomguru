@@ -10,8 +10,6 @@ import Nimble
 import Quick
 import SwiftyJSON
 
-import Roomguru
-
 class TestJSON {
     
     let json: JSON
@@ -52,12 +50,12 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
                 }
                 
                 it("should implement ModelJSONProtocol") {
-                    let result = sut is ModelJSONProtocol
+                    let result = (sut as Any) is ModelJSONProtocol
                     expect(result).to(beTrue())
                 }
                 
                 it("should be a subclass of NSObject") {
-                    let result = sut is NSObject
+                    let result = (sut as Any) is NSObject
                     expect(result).to(beTrue())
                 }
             }
