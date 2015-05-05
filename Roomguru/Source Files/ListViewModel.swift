@@ -75,8 +75,6 @@ extension ListViewModel: IndexPathOperatable {
     }
     
     func removeAtIndexPath(indexPath: NSIndexPath) {
-        println("section: \(indexPath.section) row: \(indexPath.row)")
-        println(sections[indexPath.section].count)
         sections[indexPath.section].remove(indexPath.row)
     }
     
