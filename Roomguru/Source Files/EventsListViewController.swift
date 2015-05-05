@@ -94,9 +94,9 @@ extension EventsListViewController: UITableViewDataSource {
         let event = viewModel?.eventAtIndex(indexPath)
         let cell: UITableViewCell!
         
-        if revocable{
+        if revocable {
             cell = tableView.dequeueReusableCell(RevocableEventCell.self)
-            configureRevocableEventCell(cell as! RevocableEventCell, forEvent: event!, andIndexPath: indexPath)
+            configureRevocableEventCell(cell as! RevocableEventCell, forEvent: event!, indexPath: indexPath)
         } else {
             if let freeEvent = event as? FreeEvent {
                 cell = tableView.dequeueReusableCell(FreeEventCell.self)
@@ -137,7 +137,7 @@ extension EventsListViewController {
         cell.timeMaxLabel.text = event.endTime
     }
     
-    func configureRevocableEventCell(cell: RevocableEventCell, forEvent event: Event, andIndexPath indexPath: NSIndexPath) {
+    func configureRevocableEventCell(cell: RevocableEventCell, forEvent event: Event, indexPath: NSIndexPath) {
         cell.textLabel?.text = event.summary
         cell.timeMinLabel.text = event.startTime
         cell.timeMaxLabel.text = event.endTime
