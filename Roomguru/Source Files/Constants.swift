@@ -28,9 +28,11 @@ struct Constants {
         static let MinimumEventDuration: NSTimeInterval = 60*15 //15 minutes
         static let TimeStep: NSTimeInterval = 60*30 // 30 minutes
         
-        // Range within you can book events.
+        // Time range within you can book events.
         // Below means: first available event will be bookable at 7 AM, and the last one at 5 PM
         static let BookingRange: (min: NSTimeInterval, max: NSTimeInterval) = (60*60*7, 60*60*17)
-        static let BookingDays = [2, 3, 4, 5, 6] //1st - sunday, 7th - saturday
+            
+        // Set the days within booking will be possible. 1st - sunday, 7th - saturday
+        static let BookingDays = [2, 3, 4, 5, 6]
     }
 }
