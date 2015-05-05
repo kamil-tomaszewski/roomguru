@@ -26,6 +26,14 @@ class LoginViewController: UIViewController  {
         aView?.signInButton.addTarget(self, action: Selector("didTapSignInButton:"))
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let shouldShowSignInButton = UserPersistenceStore.sharedStore.user == nil
+        aView?.showSignInButton(shouldShowSignInButton)
+        aView?.avatarView.imageView.image = UserPersistenceStore.sharedStore.userImage()
+    }
+    
     // MARK: Public
     
     func pushCalendarPickerViewController() {
