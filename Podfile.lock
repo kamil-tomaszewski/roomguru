@@ -41,7 +41,7 @@ PODS:
     - Mockingjay/Core
   - Nimble (0.4.2)
   - Quick (0.3.1)
-  - SwiftyJSON (2.1.3)
+  - SwiftyJSON (2.2.0)
   - SwiftyUserDefaults (1.0.0)
   - URITemplate (1.2.0)
 
@@ -59,8 +59,7 @@ DEPENDENCIES:
   - Mockingjay
   - Nimble (~> 0.4.2)
   - Quick (~> 0.3.1)
-  - SwiftyJSON (from `git@github.com:SwiftyJSON/SwiftyJSON.git`, commit `008a09d7ea8b13c03fb59b35c01aad339584a5e1`,
-    branch `xcode6.3`)
+  - SwiftyJSON (~> 2.2.0)
   - SwiftyUserDefaults (from `git@github.com:radex/SwiftyUserDefaults.git`, commit
     `e467e0f712e3ac1d1ceb7f9020ffd02e487e8893`, branch `swift-1.2`)
 
@@ -73,10 +72,6 @@ EXTERNAL SOURCES:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
     :git: https://github.com/SnowdogApps/DateKit.git
-  SwiftyJSON:
-    :branch: xcode6.3
-    :commit: 008a09d7ea8b13c03fb59b35c01aad339584a5e1
-    :git: git@github.com:SwiftyJSON/SwiftyJSON.git
   SwiftyUserDefaults:
     :branch: swift-1.2
     :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
@@ -91,10 +86,6 @@ CHECKOUT OPTIONS:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
     :git: https://github.com/SnowdogApps/DateKit.git
-  SwiftyJSON:
-    :branch: xcode6.3
-    :commit: 008a09d7ea8b13c03fb59b35c01aad339584a5e1
-    :git: git@github.com:SwiftyJSON/SwiftyJSON.git
   SwiftyUserDefaults:
     :branch: swift-1.2
     :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
@@ -112,8 +103,8 @@ SPEC CHECKSUMS:
   Mockingjay: 8635bddf88b7c93833db67e1dc54b8ffe7efe921
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
-  SwiftyJSON: a561c2a840121085bec8a2dfeac97a360fc66901
+  SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
   URITemplate: 0dbf40f0e378eb9c6d04cc08e6101fb82d126dc3
 
-COCOAPODS: 0.37.0.beta.1
+COCOAPODS: 0.37.0

@@ -22,10 +22,7 @@ pod 'Async',
     :commit => "a61663f4469df082ac0b3311d9c4b8cd32185336",
     :branch => "master"
 
-pod 'SwiftyJSON',
-    :git => "git@github.com:SwiftyJSON/SwiftyJSON.git",
-    :commit => "008a09d7ea8b13c03fb59b35c01aad339584a5e1",
-    :branch => "xcode6.3"
+pod 'SwiftyJSON', '~> 2.2.0'
 
 pod 'Cartography', '~> 0.5.0'
 
