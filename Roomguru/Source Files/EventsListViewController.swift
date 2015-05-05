@@ -174,8 +174,23 @@ private extension EventsListViewController {
             } else {
                 self?.viewModel = EventsListViewModel(calendarEntries, sortingKey: "event.shortDate")
                 self?.aView?.tableView.reloadData()
+                self?.scrollToNowAnimated(false)
                 fade(.In, self?.aView?.tableView, duration: 0.5) { }
             }
+        }
+    }
+    
+    func scrollToNowAnimated(animated: Bool) {
+        
+        let now = NSDate()
+        
+        if !date.isSameDayAs(now) {
+            return
+        }
+        
+        if let path = viewModel?.indexOfItemWithDate(now) {
+            let indexPath = NSIndexPath(forRow: path.row, inSection: path.section)
+            aView?.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: animated)
         }
     }
 }

@@ -21,4 +21,16 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
         }
         return self[indexPath.row]?.event
     }
+    
+    func indexOfItemWithDate(date: NSDate) -> Path? {
+        
+        var pathToReturn: Path?
+        
+        itemize { (path: Path, item: CalendarEntry) in
+            if date.between(earlier: item.event.start!, later: item.event.end!) {
+                pathToReturn = path
+            }
+        }
+        return pathToReturn
+    }
 }
