@@ -61,6 +61,16 @@ class CalendarPersistenceStoreSpec: QuickSpec {
                     expect(actualCalendar).to(beIdenticalTo(calendar))
                 }
                 
+                it("should return name for proper id") {
+                    let name = sut!.nameMatchingID("Fixture Identifier")
+                    expect(name).to(equal("Fixture Name"))
+                }
+                
+                it("should return empty string for improper id") {
+                    let name = sut!.nameMatchingID("Wrong Fixture Identifier")
+                    expect(name).to(equal(""))
+                }
+                
                 it("should not match other calendar") {
                     let otherCalendar = self.calendarWithIdentifier("Other Fixture Identifier", summary: "Other Fixture Summary")
                     expect(sut!.matchingCalendar(otherCalendar)).to(beNil())

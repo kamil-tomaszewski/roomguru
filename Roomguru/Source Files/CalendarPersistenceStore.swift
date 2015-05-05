@@ -29,6 +29,10 @@ class CalendarPersistenceStore {
         return calendars.filter{ $0.summary != nil && $0.identifier != nil }.map{ (name: $0.name ?? $0.summary!, id: $0.identifier!) }
     }
     
+    func nameMatchingID(id: String) -> String {
+        return calendars.filter { $0.summary != nil && $0.identifier == id }.map { $0.name ?? $0.summary! }.first ?? ""
+    }
+    
     func matchingCalendar(calendar: Calendar) -> Calendar? {
         return calendars.filter{ $0 == calendar }.first
     }

@@ -18,7 +18,8 @@ class BookingConfirmationViewModel {
             if let startDate = calendarTime.0?.startDate, endDate = calendarTime.0?.endDate {
                 let startDateString = timeFormatter.stringFromDate(startDate)
                 let endDateString = timeFormatter.stringFromDate(endDate)
-                return "Room " + calendarTime.1.roomName() + " | " + startDateString + " - " + endDateString
+                let name = CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
+                return "Room " + name + " | " + startDateString + " - " + endDateString
             }
             return ""
         }

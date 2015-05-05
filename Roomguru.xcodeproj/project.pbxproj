@@ -199,7 +199,6 @@
 		BFAA8E361AE1ABDF00E6525A /* LongTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */; };
 		BFB0E5101ADFD6EA00B0C0A4 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */; };
 		BFBA23751AF0BEA200446712 /* CalendarsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA23741AF0BEA200446712 /* CalendarsQuery.swift */; };
-		BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA2DDD1ABAC116001D70C5 /* Room.swift */; };
 		BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1831AC1900D00D96270 /* ButtonView.swift */; };
 		BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1851AC1920200D96270 /* EventCell.swift */; };
 		BFBDFAB81AE45C31007A451F /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D941ADC75F500B798F5 /* AvatarView.swift */; };
@@ -412,7 +411,6 @@
 		BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LongTextItem.swift; path = "Roomguru/Source Files/LongTextItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = "Roomguru/Source Files/TextFieldCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFBA23741AF0BEA200446712 /* CalendarsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsQuery.swift; path = "Roomguru/Source Files/CalendarsQuery.swift"; sourceTree = SOURCE_ROOT; };
-		BFBA2DDD1ABAC116001D70C5 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Room.swift; path = "Roomguru/Source Files/Room.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1831AC1900D00D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = "Roomguru/Source Files/ButtonView.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1851AC1920200D96270 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = "Roomguru/Source Files/EventCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "Roomguru/Source Files/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -800,7 +798,6 @@
 				7BC955BC1AB96CFD00138716 /* Google Calendar */,
 				BFECD1131AC0B26200F60086 /* Queries */,
 				BF527C1E1AB1D53700A43D35 /* ModelObject.swift */,
-				BFBA2DDD1ABAC116001D70C5 /* Room.swift */,
 				BF26E73C1ABAF77400B12244 /* Listable.swift */,
 				7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */,
 				7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */,
@@ -1382,7 +1379,6 @@
 				5E88B8031ADCEFA0000B6CAF /* GroupedBaseTableView.swift in Sources */,
 				BFECD1111AC0AF5100F60086 /* Requests.swift in Sources */,
 				BF26E73D1ABAF77400B12244 /* Listable.swift in Sources */,
-				BFBA2DDE1ABAC116001D70C5 /* Room.swift in Sources */,
 				5EDEACF31ADFDD7600C4351B /* SettingsCollectionViewHeader.swift in Sources */,
 				BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */,
 				BFF1B57D1AE7BE6700F9767E /* RoomItem.swift in Sources */,
