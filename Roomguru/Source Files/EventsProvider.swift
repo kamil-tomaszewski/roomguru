@@ -118,6 +118,12 @@ private extension EventsProvider {
     
     func addFreeEventCalendarEntryToEntries(inout entries: [CalendarEntry], var withStartDate startDate: NSDate, endDate: NSDate)  {
         
+        // cannot book in not declared days
+        let weekday = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitWeekday, fromDate: startDate)
+        if !contains(Constants.Timeline.BookingDays, weekday) {
+            return
+        }
+        
         // cannot book earlier than defined
         if startDate.timeIntervalSinceDate(startDate.midnight) < Constants.Timeline.BookingRange.min {
             return
