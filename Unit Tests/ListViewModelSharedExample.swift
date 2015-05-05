@@ -11,13 +11,10 @@ import Quick
 
 import Roomguru
 
-class FixtureListItem: NSObject {
+class FixtureListItem: GroupItem {
     
-    var fixtureText: String
-    
-    init(fixtureText: String = "") {
-        self.fixtureText = fixtureText
-        super.init()
+    init(title: String) {
+        super.init(title: title, category: .Boolean)
     }
 }
 
@@ -77,7 +74,7 @@ class ListViewModelSharedExampleConfiguration : QuickConfiguration {
                 context("with items and sorting key") {
                     
                     beforeEach {
-                        sut = factory.viewModelWithItems(fixtureItems, sortingKey: "fixtureText")
+                        sut = factory.viewModelWithItems(fixtureItems, sortingKey: "title")
                     }
                     
                     it("should not be nil") {
@@ -150,7 +147,7 @@ class ListViewModelSharedExampleConfiguration : QuickConfiguration {
                 
                 context("add item at indexpath") {
                     
-                    var newFixtureItem = FixtureListItem()
+                    var newFixtureItem = FixtureListItem(title: "Fixture Text")
                     
                     beforeEach {
                         itemsCount = sut[0].count
@@ -205,7 +202,7 @@ class ListViewModelSharedExampleConfiguration : QuickConfiguration {
                     var sectionsCount: [Int]!
                     
                     beforeEach {
-                        sut = factory.viewModelWithItems(fixtureItems, sortingKey: "fixtureText")
+                        sut = factory.viewModelWithItems(fixtureItems, sortingKey: "title")
                         
                         itemsToRemove = []
                         sectionsCount = []

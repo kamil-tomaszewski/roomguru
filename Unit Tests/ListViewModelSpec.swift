@@ -18,10 +18,10 @@ class ListViewModelSpec: QuickSpec {
     override func spec() {
         
         var fixtureItems = [
-            FixtureListItem(fixtureText: "FixtureText"),
-            FixtureListItem(fixtureText: "FixtureText2"),
-            FixtureListItem(fixtureText: "FixtureText"),
-            FixtureListItem(fixtureText: "FixtureText")
+            FixtureListItem(title: "FixtureText"),
+            FixtureListItem(title: "FixtureText2"),
+            FixtureListItem(title: "FixtureText"),
+            FixtureListItem(title: "FixtureText")
         ]
         
         let factory = ListViewModelFactory(viewModelClass: ListViewModel<FixtureListItem>.self)

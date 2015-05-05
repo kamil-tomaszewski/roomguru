@@ -20,6 +20,10 @@ class GroupedListViewModel<T: GroupItem>: ListViewModel<T> {
         let sections = items.map { Section($0) }
         super.init(sections)
     }
+    
+    required init(_ items: [T], sortingKey: String) {
+        super.init(items, sortingKey: sortingKey)
+    }
 }
 
 extension GroupedListViewModel: ExtendedIndexPathOperatable {

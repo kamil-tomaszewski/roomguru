@@ -186,6 +186,9 @@
 		BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */; };
 		BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7521151AE92E8500B8BDE8 /* ListSpec.swift */; };
 		BF7A9A2F1AE8D4ED00ACF014 /* PickerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */; };
+		BF7E2FA71AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */; };
+		BF7E2FA81AF7C40A00A51A0F /* GroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566071AE133F800B935BF /* GroupItem.swift */; };
+		BF7E2FA91AF7C4A800A51A0F /* GroupedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF71ADC0A0500834B60 /* GroupedListViewModel.swift */; };
 		BF8077361AC93F7500B75096 /* BookingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */; };
 		BF8459991ACBDE38004965EC /* RevokeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8459981ACBDE38004965EC /* RevokeQuery.swift */; };
 		BF84599B1ACBE328004965EC /* CalendarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF84599A1ACBE328004965EC /* CalendarEntry.swift */; };
@@ -399,6 +402,7 @@
 		BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = "Roomguru/Source Files/ArrayExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF7521151AE92E8500B8BDE8 /* ListSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSpec.swift; sourceTree = "<group>"; };
 		BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItemCell.swift; path = "Roomguru/Source Files/PickerItemCell.swift"; sourceTree = SOURCE_ROOT; };
+		BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedListViewModelSpec.swift; sourceTree = "<group>"; };
 		BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewController.swift; path = "Roomguru/Source Files/BookingConfirmationViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF8459981ACBDE38004965EC /* RevokeQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeQuery.swift; path = "Roomguru/Source Files/RevokeQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF84599A1ACBE328004965EC /* CalendarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEntry.swift; path = "Roomguru/Source Files/CalendarEntry.swift"; sourceTree = SOURCE_ROOT; };
@@ -740,6 +744,7 @@
 				5EF4C7C41AEE3B5E0050201A /* SettingsStoreSpec.swift */,
 				5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */,
 				BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */,
+				BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -1420,9 +1425,12 @@
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
 				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,
 				5EB3A09E1AEA714800DB0585 /* Event.swift in Sources */,
+				BF7E2FA71AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift in Sources */,
+				BF7E2FA81AF7C40A00A51A0F /* GroupItem.swift in Sources */,
 				5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */,
 				5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */,
 				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,
+				BF7E2FA91AF7C4A800A51A0F /* GroupedListViewModel.swift in Sources */,
 				5E0618F51AEA357B00006F61 /* UserPersistenceStoreSpec.swift in Sources */,
 				5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */,
 				5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */,
