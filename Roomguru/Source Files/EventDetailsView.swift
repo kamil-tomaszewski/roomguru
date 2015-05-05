@@ -10,8 +10,8 @@ import UIKit
 
 class EventDetailsView: UIBaseTableView {
     
-    override func initialize() {
-        super.initialize()
+    override func commonInit() {
+        super.commonInit()
         
         tableView.hideSeparatorForEmptyCells()
     }

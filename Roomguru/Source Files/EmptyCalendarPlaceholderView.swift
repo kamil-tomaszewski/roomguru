@@ -11,8 +11,18 @@ import Cartography
 
 class EmptyCalendarPlaceholderView: UIView {
     
-    private let placeholderIconLabel = UILabel()
+    private let placeholderIconLabel = UILabel.calendarIconLabel()
     private let infoLabel = UILabel()
+    
+    var text: String? {
+        get { return infoLabel.text }
+        set { infoLabel.text = newValue }
+    }
+    
+    convenience init(frame: CGRect = CGRectZero, text: String) {
+        self.init(frame: frame)
+        infoLabel.text = text
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,16 +40,11 @@ private extension EmptyCalendarPlaceholderView {
     func commonInit() {
         
         backgroundColor = .whiteColor()
-        
-        placeholderIconLabel.font = UIFont.fontAwesomeOfSize(100)
-        placeholderIconLabel.textAlignment = .Center
-        placeholderIconLabel.textColor = .ngOrangeColor()
-        placeholderIconLabel.text = String.fontAwesomeIconWithName(.CalendarO)
+
         addSubview(placeholderIconLabel)
 
         infoLabel.textColor = .ngGrayColor()
         infoLabel.font = .systemFontOfSize(16)
-        infoLabel.text = NSLocalizedString("No calendars selected.\nTo select calendars go to \"Settings\" -> \"Manage Calendars\".", comment: "")
         infoLabel.textAlignment = .Center
         infoLabel.numberOfLines = 0
         addSubview(infoLabel)
@@ -62,5 +67,4 @@ private extension EmptyCalendarPlaceholderView {
             info.bottom == info.superview!.bottom
         }
     }
-    
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class CalendarPickerView: UIBaseTableView {
     
-    override func initialize() {
-        super.initialize()
+    override func commonInit() {
+        super.commonInit()
     
         tableView.rowHeight = 60
     }

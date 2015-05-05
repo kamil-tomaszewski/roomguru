@@ -165,7 +165,12 @@ private extension EventsListViewController {
         eventsProvider.provideCalendarEntriesForCalendarIDs(calendarIDs, timeRange: date.dayTimeRange(), onlyRevocable:revocable) { [weak self] (calendarEntries, error) in
             
             if let error = error {
-                UIAlertView(error: error).show()
+                self?.aView?.placeholderView.text = NSLocalizedString("Sorry, something went wrong.\n\nA team of highly trained monkeys has been dispatched to deal with this situation.\n\nTo reload, tap on the room name located on the navigation bar.", comment: "")
+                self?.aView?.placeholderView.hidden = false
+                
+            } else if calendarEntries.isEmpty {
+                self?.aView?.placeholderView.hidden = false
+                
             } else {
                 self?.viewModel = EventsListViewModel(calendarEntries, sortingKey: "event.shortDate")
                 self?.aView?.tableView.reloadData()

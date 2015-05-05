@@ -27,7 +27,7 @@ class EventsView: UIView {
     func showPlaceholderView(show: Bool) {
         
         if show {
-            placeholderView = EmptyCalendarPlaceholderView(frame: frame)
+            placeholderView = EmptyCalendarPlaceholderView(frame: frame, text: NSLocalizedString("No calendars selected.\nTo select calendars go to \"Settings\" -> \"Manage Calendars\".", comment: ""))
             addSubview(placeholderView!)
         
             setNeedsLayout()

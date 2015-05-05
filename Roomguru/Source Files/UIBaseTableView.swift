@@ -20,24 +20,19 @@ class UIBaseTableView: UIView {
     init(frame: CGRect, tableViewStyle: UITableViewStyle) {
         tableView = UITableView(frame: frame, style: tableViewStyle)
         super.init(frame: frame)
-        initialize()
+        commonInit()
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initialize()
+        commonInit()
     }
     
-    func initialize() {
-        
+    func commonInit() {
         tableView.hideSeparatorForEmptyCells()
         addSubview(tableView)
         defineConstraints()
     }
-    
-}
-
-private extension UIBaseTableView {
     
     func defineConstraints() {
         

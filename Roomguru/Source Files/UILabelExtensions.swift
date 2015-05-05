@@ -15,10 +15,19 @@ extension UILabel {
     
     class func roundedExclamationMarkLabel(frame: CGRect) -> UILabel {
         let leftViewLabel = UILabel(frame: frame)
-        leftViewLabel.font = UIFont.fontAwesomeOfSize(18)
-        leftViewLabel.text = String.fontAwesomeIconWithName(.ExclamationCircle)
-        leftViewLabel.textColor = UIColor.ngRedColor()
+        leftViewLabel.font = .fontAwesomeOfSize(18)
+        leftViewLabel.text = .fontAwesomeIconWithName(.ExclamationCircle)
+        leftViewLabel.textColor = .ngRedColor()
         leftViewLabel.textAlignment = .Center
         return leftViewLabel
+    }
+    
+    class func calendarIconLabel() -> UILabel {
+        let label = UILabel()
+        label.font = .fontAwesomeOfSize(100)
+        label.textAlignment = .Center
+        label.textColor = .ngOrangeColor()
+        label.text = .fontAwesomeIconWithName(.CalendarO)
+        return label
     }
 }
