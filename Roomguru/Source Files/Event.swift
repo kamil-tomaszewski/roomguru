@@ -156,15 +156,7 @@ class Event: ModelObject, NSSecureCoding {
 extension Event {
     
     func isCanceled() -> Bool {
-        if let _rooms = rooms {
-            return _rooms.filter {
-                if let _status = $0.status {
-                    return _status == .NotGoing
-                }
-                return false
-            }.count > 0
-        }
-        return true
+        return rooms?.filter { $0.status == .NotGoing }.count > 0
     }
 }
 
