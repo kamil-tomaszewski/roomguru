@@ -9,8 +9,6 @@
 import Nimble
 import Quick
 
-import Roomguru
-
 class ListableFactory {
     
     private let listableClass: List<FixtureItem>.Type

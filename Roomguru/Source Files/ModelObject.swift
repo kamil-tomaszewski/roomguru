@@ -16,7 +16,7 @@ protocol ModelJSONProtocol {
     func toJSON() -> JSON
     func map(json: JSON)
     
-    static func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]?
+    static func map<T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]?
 }
 
 class ModelObject: NSObject, ModelJSONProtocol {
@@ -33,17 +33,15 @@ class ModelObject: NSObject, ModelJSONProtocol {
     }
     
     func toJSON() -> JSON {
-        assert(false, "|\(__FUNCTION__)| function not implemented")
-        return JSON(NSData())
+        fatalError("|\(__FUNCTION__)| function not implemented")
     }
     
     func map(json: JSON) {
-        assert(false, "|\(__FUNCTION__)| function not implemented")
+        fatalError("|\(__FUNCTION__)| function not implemented")
     }
     
     class func map<T>(jsonArray: [JSON]?) -> [T]? {
-        assert(false, "|\(__FUNCTION__)| function not implemented")
-        return nil
+        fatalError( "|\(__FUNCTION__)| function not implemented")
     }
     
     // MARK: Internal

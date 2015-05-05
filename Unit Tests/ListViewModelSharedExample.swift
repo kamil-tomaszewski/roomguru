@@ -9,8 +9,6 @@
 import Nimble
 import Quick
 
-import Roomguru
-
 class FixtureListItem: GroupItem {
     
     init(title: String) {

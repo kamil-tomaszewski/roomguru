@@ -37,7 +37,6 @@
 		5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */; };
 		5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
 		5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* Calendar.swift */; };
-		5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
 		5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */; };
 		5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */; };
 		5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */; };
@@ -62,8 +61,6 @@
 		5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
 		5E67FE731AE91220003AB827 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */; };
 		5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */; };
-		5E67FE7A1AE9274A003AB827 /* UIImageTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67FE791AE9274A003AB827 /* UIImageTestExtensions.swift */; };
-		5E67FE7C1AE9275B003AB827 /* NSDataTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67FE7B1AE9275B003AB827 /* NSDataTestExtensions.swift */; };
 		5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */; };
 		5E6B40AE1AC947B1006C47EE /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */; };
 		5E746FDF1AF03C150049131F /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FDE1AF03C150049131F /* EventsView.swift */; };
@@ -170,6 +167,8 @@
 		BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */; };
 		BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */; };
 		BF2B69401AF0F48B00AC2CC4 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */; };
+		BF2D529E1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */; };
+		BF2D52A01AF8DD2700EEEF81 /* ModelObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */; };
 		BF3B25A21ADD467400242859 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A11ADD467400242859 /* EditEventViewModel.swift */; };
 		BF3B25A41ADD610700242859 /* EventQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A31ADD610700242859 /* EventQuery.swift */; };
 		BF3CAD611AEE3D2200B1F684 /* ResultActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */; };
@@ -216,6 +215,9 @@
 		BFF1B5791AE79E7300F9767E /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B5781AE79E7300F9767E /* PickerViewController.swift */; };
 		BFF1B57B1AE7BE4A00F9767E /* PickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */; };
 		BFF1B57D1AE7BE6700F9767E /* RoomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */; };
+		BFF5D16A1AF8E84600C40B76 /* NSDataTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5D1671AF8E84600C40B76 /* NSDataTestExtensions.swift */; };
+		BFF5D16C1AF8E84600C40B76 /* UIImageTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF5D1691AF8E84600C40B76 /* UIImageTestExtensions.swift */; };
+		BFF5D16D1AF8F74700C40B76 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
 		BFF755241AE52C6500F68DB9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF755231AE52C6500F68DB9 /* Reusable.swift */; };
 		BFFB513A1AED87B30065F051 /* ListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */; };
 /* End PBXBuildFile section */
@@ -284,8 +286,6 @@
 		5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Roomguru/Resources/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
 		5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewExtensions.swift; path = "Roomguru/Source Files/UICollectionViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDiskManagerSpec.swift; sourceTree = "<group>"; };
-		5E67FE791AE9274A003AB827 /* UIImageTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageTestExtensions.swift; path = Helpers/UIImageTestExtensions.swift; sourceTree = "<group>"; };
-		5E67FE7B1AE9275B003AB827 /* NSDataTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDataTestExtensions.swift; path = Helpers/NSDataTestExtensions.swift; sourceTree = "<group>"; };
 		5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCell.swift; path = "Roomguru/Source Files/DescriptionCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSAttributedStringExtensions.swift; path = "Roomguru/Source Files/NSAttributedStringExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E746FDE1AF03C150049131F /* EventsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsView.swift; path = "Roomguru/Source Files/EventsView.swift"; sourceTree = SOURCE_ROOT; };
@@ -385,6 +385,8 @@
 		BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingTimesView.swift; path = "Roomguru/Source Files/BookingTimesView.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtensions.swift; path = "Roomguru/Source Files/UILabelExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjectSharedExample.swift; sourceTree = "<group>"; };
+		BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjectSpec.swift; sourceTree = "<group>"; };
 		BF3B25A11ADD467400242859 /* EditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewModel.swift; path = "Roomguru/Source Files/EditEventViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		BF3B25A31ADD610700242859 /* EventQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventQuery.swift; path = "Roomguru/Source Files/EventQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultActionItem.swift; path = "Roomguru/Source Files/ResultActionItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -427,6 +429,8 @@
 		BFF1B5781AE79E7300F9767E /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerViewController.swift; path = "Roomguru/Source Files/PickerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItem.swift; path = "Roomguru/Source Files/PickerItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomItem.swift; path = "Roomguru/Source Files/RoomItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFF5D1671AF8E84600C40B76 /* NSDataTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataTestExtensions.swift; sourceTree = "<group>"; };
+		BFF5D1691AF8E84600C40B76 /* UIImageTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTestExtensions.swift; sourceTree = "<group>"; };
 		BFF755231AE52C6500F68DB9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = "Roomguru/Source Files/Reusable.swift"; sourceTree = SOURCE_ROOT; };
 		BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelSpec.swift; sourceTree = "<group>"; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -626,10 +630,11 @@
 		5E147CBC1AA8B54100EDD97C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5E67FE791AE9274A003AB827 /* UIImageTestExtensions.swift */,
-				5E67FE7B1AE9275B003AB827 /* NSDataTestExtensions.swift */,
+				BFF5D1671AF8E84600C40B76 /* NSDataTestExtensions.swift */,
+				BFF5D1691AF8E84600C40B76 /* UIImageTestExtensions.swift */,
 			);
 			name = Helper;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		5E3A97DF1AA72F0A00CE2F20 = {
@@ -743,6 +748,7 @@
 				5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */,
 				BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */,
 				BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */,
+				BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -936,6 +942,7 @@
 			children = (
 				BF9F9FE01AF233BC0081B817 /* ListViewModelSharedExample.swift */,
 				BF8867661AE932CB009DA028 /* ListableSharedExample.swift */,
+				BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */,
 			);
 			name = "Shared Behaviors";
 			sourceTree = "<group>";
@@ -1410,8 +1417,11 @@
 			files = (
 				BF9F9FE11AF233BC0081B817 /* ListViewModelSharedExample.swift in Sources */,
 				BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */,
+				BF2D52A01AF8DD2700EEEF81 /* ModelObjectSpec.swift in Sources */,
+				BFF5D16D1AF8F74700C40B76 /* ModelObject.swift in Sources */,
 				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
+				BF2D529E1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift in Sources */,
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
 				5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */,
 				5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */,
@@ -1424,8 +1434,9 @@
 				BF7E2FA71AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift in Sources */,
 				BF7E2FA81AF7C40A00A51A0F /* GroupItem.swift in Sources */,
 				5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */,
-				5E67FE5A1AE90455003AB827 /* ModelObject.swift in Sources */,
+				BFF5D16C1AF8E84600C40B76 /* UIImageTestExtensions.swift in Sources */,
 				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,
+				BFF5D16A1AF8E84600C40B76 /* NSDataTestExtensions.swift in Sources */,
 				BF7E2FA91AF7C4A800A51A0F /* GroupedListViewModel.swift in Sources */,
 				5E0618F51AEA357B00006F61 /* UserPersistenceStoreSpec.swift in Sources */,
 				5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */,
@@ -1433,11 +1444,9 @@
 				5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */,
 				5EB3A09D1AEA707600DB0585 /* EventDetailsViewModelSpec.swift in Sources */,
 				5EB3A09F1AEA71D700DB0585 /* Attendee.swift in Sources */,
-				5E67FE7C1AE9275B003AB827 /* NSDataTestExtensions.swift in Sources */,
 				5EF4C7C51AEE3B5E0050201A /* SettingsStoreSpec.swift in Sources */,
 				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
 				5EF4C7C81AEE40100050201A /* SettingsStore.swift in Sources */,
-				5E67FE7A1AE9274A003AB827 /* UIImageTestExtensions.swift in Sources */,
 				BFFB513A1AED87B30065F051 /* ListViewModelSpec.swift in Sources */,
 				BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */,
 				BF8867681AE93364009DA028 /* Listable.swift in Sources */,
