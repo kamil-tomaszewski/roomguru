@@ -10,7 +10,9 @@ import Foundation
 
 extension NSError {
     
+    class private var NGRRoomguruErrorDomain: String { get { return "com.ngr.roomguru"} }
+    
     convenience init(message: String) {
-        self.init(domain: NSCocoaErrorDomain, code: 0, userInfo: [NSLocalizedDescriptionKey : message])
+        self.init(domain: NSError.NGRRoomguruErrorDomain, code: 0, userInfo: [NSLocalizedDescriptionKey : message])
     }
 }

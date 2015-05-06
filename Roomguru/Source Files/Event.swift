@@ -11,29 +11,46 @@ import DateKit
 import SwiftyJSON
 
 class Event: ModelObject, NSSecureCoding {
-    var kind:       String?
-    var etag:       String?
-    var identifier: String?
-    var status:     String?
-    var htmlLink:   String?
-    var createdAt:  String?
-    var updatedAt:  String?
-    var summary:    String?
-    var location:   String?
-    var startDate:  String?
-    var endDate:    String?
-    var hangoutLink:String?
-    var iCalUID:    String?
-    var attendees:  [Attendee]?
-    var creator:    Attendee?
-    var rooms:      [Attendee]?
     
-    var start:      NSDate?
-    var end:        NSDate?
-    var shortDate:  NSDate?
+    // API stored properties:
+    private(set) var kind:       String?
+    private(set) var etag:       String?
+    private(set) var identifier: String?
+    private(set) var status:     String?
+    private(set) var htmlLink:   String?
+    private(set) var createdAt:  String?
+    private(set) var updatedAt:  String?
+    private(set) var summary:    String?
+    private(set) var location:   String?
+    private(set) var hangoutLink:String?
+    private(set) var iCalUID:    String?
+    private(set) var startDate:  String!
+    private(set) var endDate:    String!
+    private(set) var creator:    Attendee?
+    private(set) var attendees:  [Attendee]?
+    private(set) var rooms:      [Attendee]?
     
-    var startTime:  String?
-    var endTime:    String?
+    // Properties based on API:
+    private(set) var startTime:  String!
+    private(set) var endTime:    String!
+    
+    var start: NSDate! {
+        didSet {
+            let formatter = NSDateFormatter()
+            formatter.timeStyle = .ShortStyle
+            startTime = formatter.stringFromDate(start)
+        }
+    }
+    var end: NSDate! {
+        didSet {
+            let formatter = NSDateFormatter()
+            formatter.timeStyle = .ShortStyle
+            endTime = formatter.stringFromDate(end)
+        }
+    }
+
+    // Computed properties:
+    var duration: NSTimeInterval { get { return end.timeIntervalSinceDate(start) } }
     
     override init() {
         super.init()
@@ -97,7 +114,7 @@ class Event: ModelObject, NSSecureCoding {
                 Maping using T type failes with crash: "partial apply forwarder for Roomguru.Event"
                 That's why explicit init and casting in map() function is needed.
             */
-            return _jsonArray.map { Event(json: $0) as! T }
+            return _jsonArray.filter { $0.isValid() }.map { Event(json: $0) as! T }
         }
         
         return nil
@@ -144,18 +161,14 @@ class Event: ModelObject, NSSecureCoding {
             rooms = copiedArray.filter { $0.isRoom }
         }
 
-        start = startDate?.date()
-        end = endDate?.date()
-        
-        shortDate = startDate?.googleDateToShortDate()
-        startTime = startDate?.shortTime()
-        endTime = endDate?.shortTime()
+        start = startDate.date()
+        end = endDate.date()
     }
 }
 
 extension Event {
     
-    func isCanceled() -> Bool {   
+    func isCanceled() -> Bool {
         if let rooms = rooms {
             return rooms.filter { $0.status == .NotGoing }.count > 0
         }
@@ -163,35 +176,19 @@ extension Event {
     }
 }
 
+private extension JSON {
+    
+    func isValid() -> Bool {
+        return self["start"]["dateTime"] != nil && self["end"]["dateTime"] != nil
+    }
+}
+
 private extension String {
     
-    func date() -> NSDate? {
+    func date() -> NSDate {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZ"
-        return formatter.dateFromString(self)
-    }
-    
-    func shortTime() -> String? {
-        if let date = date() {
-            let formatter = NSDateFormatter()
-            formatter.timeStyle = .ShortStyle
-            return formatter.stringFromDate(date)
-        }
-        
-        return nil
-    }
-    
-    func googleDateToShortDate() -> NSDate? {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZZZ"
-        
-        if let correctedDate = formatter.dateFromString(self) {
-            formatter.dateFormat = "yyyy-MM-dd"
-            let string = formatter.stringFromDate(correctedDate)
-            return formatter.dateFromString(string)
-        }
-        
-        return nil
+        return formatter.dateFromString(self)!
     }
 }
 

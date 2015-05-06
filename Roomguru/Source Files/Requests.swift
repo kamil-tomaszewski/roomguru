@@ -107,13 +107,9 @@ extension PageableRequest {
                     }
                 }
             } else {
-                let description = NSLocalizedString("Failed retrieving data", comment: "")
-                let otherError = NSError(domain: "com.ngr.roomguru", code: -1, userInfo: [NSLocalizedDescriptionKey: description])
-                
+                let otherError = NSError(message: NSLocalizedString("Failed retrieving data", comment: ""))
                 failure(error: otherError)
             }
         }
-        
     }
-    
 }

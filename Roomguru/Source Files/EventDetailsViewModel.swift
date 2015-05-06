@@ -74,15 +74,11 @@ class EventDetailsViewModel {
             append(summary + "\n", UIFont.boldSystemFontOfSize(16.0))
         }
         
-        if let date = event?.start {
-            append(formatter.stringFromDate(date) + "\n", UIFont.systemFontOfSize(14.0))
-        }
-        
-        if let startTime = event?.startTime {
-            if let endTime = event?.endTime {
-                let string = NSLocalizedString("from", comment: "") + " " + startTime + " " + NSLocalizedString("to", comment: "") + " " + endTime
-                append(string, UIFont.systemFontOfSize(14.0))
-            }
+        if let event = event {
+            append(formatter.stringFromDate(event.start) + "\n", UIFont.systemFontOfSize(14.0))
+            
+            let string = NSLocalizedString("from", comment: "") + " " + event.startTime + " " + NSLocalizedString("to", comment: "") + " " + event.endTime
+            append(string, UIFont.systemFontOfSize(14.0))
         }
         
         return attributedString.copy() as! NSAttributedString

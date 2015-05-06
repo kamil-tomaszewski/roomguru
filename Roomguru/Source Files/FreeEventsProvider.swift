@@ -26,9 +26,10 @@ class FreeEventsProvider {
                 addFreeEventCalendarEntryToEntries(&entries, withStartDate: referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeStep))
                 increase(&referenceDate)
                 
-            } else if let currentEntryStartTime = sortedEntries[index].event.start, currentEntryEndTime = sortedEntries[index].event.end {
+            } else {
                 
-                let timeBetweenReferenceDateAndTheClosestEntry = ceil(currentEntryStartTime.timeIntervalSinceDate(referenceDate))
+                let entry = sortedEntries[index]
+                let timeBetweenReferenceDateAndTheClosestEntry = ceil(entry.event.start.timeIntervalSinceDate(referenceDate))
                 
                 if timeBetweenReferenceDateAndTheClosestEntry >= timeStep {
                     
@@ -42,17 +43,11 @@ class FreeEventsProvider {
                     
                 } else {
                     
-                    let entry = sortedEntries[index]
                     entries.append(entry)
-                    
-                    let eventDuration = entry.event.end!.timeIntervalSinceDate(entry.event.start!)
-                    increase(&referenceDate, by: eventDuration)
+                    increase(&referenceDate, by: entry.event.duration)
                     
                     index++
                 }
-                
-            } else {
-                increase(&referenceDate)
             }
         }
         return entries

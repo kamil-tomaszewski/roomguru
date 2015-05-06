@@ -107,7 +107,7 @@ extension EventsListViewController: UITableViewDataSource {
         
         // NGRTodo: to improve (calling NSDate() twice in this method)
         let now = NSDate()
-        cell.ongoingBadge.hidden = !now.between(earlier: event!.start!, later: event!.end!)
+        cell.ongoingBadge.hidden = !now.between(earlier: event!.start, later: event!.end)
         
         return cell
     }
@@ -141,9 +141,9 @@ extension EventsListViewController {
         
         let now = NSDate()
         
-        if now.isLaterThan(event.end!) {
+        if now.isLaterThan(event.end) {
             cell.setStyle(.Past)
-        } else if now.between(earlier: event.start!, later: event.end!) {
+        } else if now.between(earlier: event.start, later: event.end) {
             cell.setStyle(.Current)
         } else {
             cell.setStyle(.Future)
@@ -193,7 +193,7 @@ private extension EventsListViewController {
                     self?.aView?.placeholderView.hidden = false
                     
                 } else {
-                    self?.viewModel = EventsListViewModel(calendarEntries, sortingKey: "event.shortDate")
+                    self?.viewModel = EventsListViewModel(calendarEntries, sortingKey: "event.start")
                     self?.aView?.tableView.reloadData()
                     self?.scrollToNowAnimated(false)
                     fade(.In, self?.aView?.tableView, duration: 0.5) { }

@@ -67,11 +67,9 @@ private extension DashboardViewController {
             
             BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
                 
-                if let startTimeString = event.startTime, let endTimeString = event.endTime {
-                    let message = NSLocalizedString("Booked room", comment: "") + " from " + startTimeString + " to " + endTimeString
-                    UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
-                    self.aView?.tableView.reloadData()
-                }
+                let message = NSLocalizedString("Booked room", comment: "") + " from " + event.startTime + " to " + event.endTime
+                UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
+                self.aView?.tableView.reloadData()
                 
                 }, failure: { (error: NSError) in
                     UIAlertView(error: error).show()
