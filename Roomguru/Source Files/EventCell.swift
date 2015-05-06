@@ -26,6 +26,7 @@ class EventCell: UITableViewCell, Reusable {
     
     let timeMaxLabel = UILabel()
     let timeMinLabel = UILabel()
+    let ongoingBadge = UILabel()
     
     class func reuseIdentifier() -> String {
         return "TableViewEventCellReuseIdentifier"
@@ -55,12 +56,18 @@ class EventCell: UITableViewCell, Reusable {
         timeMinLabel.font = .boldSystemFontOfSize(13.0)
         contentView.addSubview(timeMinLabel)
         
+        ongoingBadge.textColor = UIColor.ngRedColor()
+        ongoingBadge.text = NSLocalizedString("Ongoing", comment: "")
+        ongoingBadge.font = .systemFontOfSize(13)
+        ongoingBadge.textAlignment = .Right
+        contentView.addSubview(ongoingBadge)
+        
         defineConstraints()
     }
     
     func defineConstraints() {
         
-        layout(timeMinLabel, timeMaxLabel) { upperLabel, lowerLabel in
+        layout(timeMinLabel, timeMaxLabel, ongoingBadge) { upperLabel, lowerLabel, badge in
             
             upperLabel.left == upperLabel.superview!.left + 10
             upperLabel.bottom == upperLabel.superview!.centerY
@@ -69,6 +76,10 @@ class EventCell: UITableViewCell, Reusable {
             lowerLabel.left == upperLabel.left
             lowerLabel.top == lowerLabel.superview!.centerY
             lowerLabel.height == upperLabel.height
+            
+            badge.height == 30
+            badge.right == badge.superview!.right - 4
+            badge.top == badge.superview!.top - 4
         }
     }
     

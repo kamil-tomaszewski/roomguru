@@ -105,6 +105,10 @@ extension EventsListViewController: UITableViewDataSource {
             }
         }
         
+        // NGRTodo: to improve (calling NSDate() twice in this method)
+        let now = NSDate()
+        cell.ongoingBadge.hidden = !now.between(earlier: event!.start!, later: event!.end!)
+        
         return cell
     }
 
