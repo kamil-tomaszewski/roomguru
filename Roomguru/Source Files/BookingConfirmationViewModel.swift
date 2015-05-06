@@ -13,7 +13,7 @@ class BookingConfirmationViewModel {
     
     var summary: String = NSLocalizedString("Summary", comment: "")
     
-    var title: String {
+    var title: String? {
         get {
             if let startDate = calendarTime.0?.startDate, endDate = calendarTime.0?.endDate {
                 let startDateString = timeFormatter.stringFromDate(startDate)
@@ -21,7 +21,7 @@ class BookingConfirmationViewModel {
                 let name = CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
                 return "Room " + name + " | " + startDateString + " - " + endDateString
             }
-            return ""
+            return nil
         }
     }
     
