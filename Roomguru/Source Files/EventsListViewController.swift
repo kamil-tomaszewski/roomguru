@@ -14,7 +14,6 @@ class EventsListViewController: UIViewController {
 
     private let eventsProvider = EventsProvider()
     private weak var aView: EventsListView?
-    private var calendarIDs: [String] = []
     private var viewModel: EventsListViewModel<CalendarEntry>?
     private var revocable = false
 
@@ -22,7 +21,7 @@ class EventsListViewController: UIViewController {
         self.init()
         self.revocable = revocable
         self.date = date
-        self.calendarIDs = calendarIDs
+        eventsProvider.calendarIDs = calendarIDs
     }
     
     init() {
@@ -171,21 +170,30 @@ private extension EventsListViewController {
     }
     
     func loadData() {
-   
-        eventsProvider.provideCalendarEntriesForCalendarIDs(calendarIDs, timeRange: date.dayTimeRange(), onlyRevocable:revocable) { [weak self] (calendarEntries, error) in
+        
+        if revocable {
             
-            if let error = error {
-                self?.aView?.placeholderView.text = NSLocalizedString("Sorry, something went wrong.\n\nA team of highly trained monkeys has been dispatched to deal with this situation.\n\nTo reload, tap on the room name located on the navigation bar.", comment: "")
-                self?.aView?.placeholderView.hidden = false
+            eventsProvider.revocableCalendarEntriesForTimeRange(date.dayTimeRange()) { [weak self] (calendarEntries, error) in
                 
-            } else if calendarEntries.isEmpty {
-                self?.aView?.placeholderView.hidden = false
+            }
+            
+        } else {
+            
+            eventsProvider.calendarEntriesForTimeRange(date.dayTimeRange()) { [weak self] (calendarEntries, error) in
                 
-            } else {
-                self?.viewModel = EventsListViewModel(calendarEntries, sortingKey: "event.shortDate")
-                self?.aView?.tableView.reloadData()
-                self?.scrollToNowAnimated(false)
-                fade(.In, self?.aView?.tableView, duration: 0.5) { }
+                if let error = error {
+                    self?.aView?.placeholderView.text = NSLocalizedString("Sorry, something went wrong.\n\nA team of highly trained monkeys has been dispatched to deal with this situation.\n\nTo reload, tap on the room name located on the navigation bar.", comment: "")
+                    self?.aView?.placeholderView.hidden = false
+                    
+                } else if calendarEntries.isEmpty {
+                    self?.aView?.placeholderView.hidden = false
+                    
+                } else {
+                    self?.viewModel = EventsListViewModel(calendarEntries, sortingKey: "event.shortDate")
+                    self?.aView?.tableView.reloadData()
+                    self?.scrollToNowAnimated(false)
+                    fade(.In, self?.aView?.tableView, duration: 0.5) { }
+                }
             }
         }
     }
