@@ -202,6 +202,9 @@
 		BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1831AC1900D00D96270 /* ButtonView.swift */; };
 		BFBCE1861AC1920200D96270 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1851AC1920200D96270 /* EventCell.swift */; };
 		BFBDFAB81AE45C31007A451F /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D941ADC75F500B798F5 /* AvatarView.swift */; };
+		BFC4CC961AF9EA190070007B /* ObjectKeyValueSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4CC951AF9EA190070007B /* ObjectKeyValueSharedExample.swift */; };
+		BFC4CC981AF9F2A30070007B /* AttendeeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */; };
+		BFC4CC9A1AFA01450070007B /* JSONKeyValueSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4CC991AFA01450070007B /* JSONKeyValueSharedExample.swift */; };
 		BFC79C5F1AE443EF00EEB8DE /* ActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */; };
 		BFC79C611AE4455A00EEB8DE /* RightDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */; };
 		BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */; };
@@ -417,6 +420,9 @@
 		BFBA23741AF0BEA200446712 /* CalendarsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsQuery.swift; path = "Roomguru/Source Files/CalendarsQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1831AC1900D00D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = "Roomguru/Source Files/ButtonView.swift"; sourceTree = SOURCE_ROOT; };
 		BFBCE1851AC1920200D96270 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = "Roomguru/Source Files/EventCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFC4CC951AF9EA190070007B /* ObjectKeyValueSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectKeyValueSharedExample.swift; sourceTree = "<group>"; };
+		BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendeeSpec.swift; sourceTree = "<group>"; };
+		BFC4CC991AFA01450070007B /* JSONKeyValueSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKeyValueSharedExample.swift; sourceTree = "<group>"; };
 		BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "Roomguru/Source Files/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightDetailTextCell.swift; path = "Roomguru/Source Files/RightDetailTextCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSpec.swift; sourceTree = "<group>"; };
@@ -751,6 +757,7 @@
 				BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */,
 				BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */,
 				BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */,
+				BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -946,6 +953,8 @@
 				BF9F9FE01AF233BC0081B817 /* ListViewModelSharedExample.swift */,
 				BF8867661AE932CB009DA028 /* ListableSharedExample.swift */,
 				BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */,
+				BFC4CC951AF9EA190070007B /* ObjectKeyValueSharedExample.swift */,
+				BFC4CC991AFA01450070007B /* JSONKeyValueSharedExample.swift */,
 			);
 			name = "Shared Behaviors";
 			sourceTree = "<group>";
@@ -1419,6 +1428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC4CC961AF9EA190070007B /* ObjectKeyValueSharedExample.swift in Sources */,
 				BF9F9FE11AF233BC0081B817 /* ListViewModelSharedExample.swift in Sources */,
 				BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */,
 				BF2D52A01AF8DD2700EEEF81 /* ModelObjectSpec.swift in Sources */,
@@ -1429,7 +1439,9 @@
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
 				5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */,
 				5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */,
+				BFC4CC981AF9F2A30070007B /* AttendeeSpec.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
+				BFC4CC9A1AFA01450070007B /* JSONKeyValueSharedExample.swift in Sources */,
 				5EF4C7CA1AEE42970050201A /* ListViewModel.swift in Sources */,
 				5EF4C7C71AEE3EC30050201A /* SettingsViewModelSpec.swift in Sources */,
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,

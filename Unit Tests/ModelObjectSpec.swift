@@ -15,6 +15,7 @@ class ModelObjectSpec: QuickSpec {
     override func spec() {
         
         class MockModelObject: ModelObject {
+            required init(json: JSON) { super.init(json: json) }
             override func map(json: JSON) {}
         }
         

@@ -37,17 +37,19 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("model object") { (sharedExampleContext: SharedExampleContext) in
             var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
-            
+                        
             let factory = configDict["factory"] as! ModelObjectFactory
-            let json = (configDict["json"] as! TestJSON).json
+            let testJSON = configDict["json"] as! TestJSON
+            let json = testJSON.json
+            let map = configDict["map"] as! [String: String]
             
             var sut: ModelObject!
             
+            beforeEach {
+                sut = factory.modelObjectWithJSON(json)
+            }
+            
             describe("protocol conformance") {
-                
-                beforeEach {
-                    sut = factory.modelObjectWithJSON(json)
-                }
                 
                 it("should implement ModelJSONProtocol") {
                     let result = (sut as Any) is ModelJSONProtocol
@@ -61,10 +63,6 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
             }
             
             describe("when newly initialized") {
-                
-                beforeEach {
-                    sut = factory.modelObjectWithJSON(json)
-                }
                 
                 context("date formatter") {
                     
@@ -83,6 +81,88 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
                     it("should be localized to local time zone") {
                         expect(sut.formatter.timeZone).to(equal(localTimeZone))
                     }
+                }
+            }
+            
+            describe("mapping JSON to sut") {
+                
+                beforeEach {
+                    sut.map(json)
+                }
+                
+                itBehavesLike("mapping JSON to model object") {
+                    [
+                        "sut": sut,
+                        "json": testJSON,
+                        "map": map
+                    ]
+                }
+            }
+            
+            describe("mapping sut to JSON") {
+                
+                var resultJSON: JSON!
+                
+                beforeEach {
+                    resultJSON = sut.toJSON()
+                }
+                
+                itBehavesLike("mapping model object to JSON") {
+                    [
+                        "modelObject": sut,
+                        "sut": TestJSON(json: resultJSON),
+                        "map": map
+                    ]
+                }
+            }
+            
+            describe("mapping array of test objects to array of JSONs") {
+                // NGRTodo: Check if objects are being mapped correctly using "mapping JSON to model object" shared example for each json in array
+            }
+        }
+    }
+}
+
+private class ModelObjectMappingSharedExampleConfiguration: QuickConfiguration {
+    override class func configure(configuration: Configuration) {
+        sharedExamples("mapping JSON to model object") { (sharedExampleContext: SharedExampleContext) in
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
+            
+            let sut = configDict["sut"] as! ModelObject
+            let json = (configDict["json"] as! TestJSON).json
+            let map = configDict["map"] as! [String: String]
+            
+            for (jsonKey, objectKey) in map {
+                itBehavesLike("object key value") {
+                    [
+                        "key": objectKey,
+                        "value": json[jsonKey] as! AnyObject,
+                        "sut": sut
+                    ]
+                }
+            }
+        }
+    }
+}
+
+private class ModelObjectToJSONSharedExampleConfiguration: QuickConfiguration {
+    override class func configure(configuration: Configuration) {
+        sharedExamples("mapping model object to JSON") { (sharedExampleContext: SharedExampleContext) in
+            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
+            
+            let modelObject = configDict["modelObject"] as! ModelObject
+            let sut = configDict["sut"] as! TestJSON
+            let map = configDict["map"] as! [String: String]
+            
+            for (jsonKey, objectKey) in map {
+                let value: AnyObject = modelObject.valueForKey(objectKey)!
+                
+                itBehavesLike("json key value") {
+                    [
+                        "key": jsonKey,
+                        "value": value,
+                        "sut": sut
+                    ]
                 }
             }
         }
