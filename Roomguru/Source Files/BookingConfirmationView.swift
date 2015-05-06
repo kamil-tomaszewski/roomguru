@@ -156,7 +156,7 @@ private extension BookingConfirmationView {
     }
     
     func configureTextFieldAppearance() {
-        summaryTextField.placeholder = NSLocalizedString("Summary", comment: "")
+        summaryTextField.placeholder = NSLocalizedString("Summary (min. 5 characters)", comment: "")
         summaryTextField.borderStyle = .RoundedRect
     }
 }

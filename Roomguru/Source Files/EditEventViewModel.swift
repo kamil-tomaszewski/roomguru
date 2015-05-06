@@ -49,7 +49,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         ]
         // MARK: Parameters
         
-        let summaryPlaceholder = NSLocalizedString("Summary", comment: "")
+        let summaryPlaceholder = NSLocalizedString("Summary (min. 5 characters)", comment: "")
         let allDayTitle = NSLocalizedString("All-day", comment: "")
         let startDateTitle = NSLocalizedString("Starts", comment: "")
         let endDateTitle = NSLocalizedString("Ends", comment: "")
