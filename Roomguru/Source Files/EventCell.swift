@@ -9,6 +9,19 @@
 import UIKit
 import Cartography
 
+enum EventCellDisplayStyle {
+    case Past, Current, Future
+    
+    func color() -> (backgroundColor: UIColor, textColor: UIColor) {
+        switch self {
+        case .Past:
+            return (.rgb(235, 235, 235), .lightGrayColor())
+        case .Current, .Future:
+            return (.whiteColor(), .blackColor())
+        }
+    }
+}
+
 class EventCell: UITableViewCell, Reusable {
     
     let timeMaxLabel = UILabel()
@@ -57,5 +70,15 @@ class EventCell: UITableViewCell, Reusable {
             lowerLabel.top == lowerLabel.superview!.centerY
             lowerLabel.height == upperLabel.height
         }
+    }
+    
+    func setStyle(style: EventCellDisplayStyle) {
+        
+        let styleColors = style.color()
+        
+        contentView.backgroundColor = styleColors.backgroundColor
+        timeMaxLabel.textColor = styleColors.textColor
+        timeMinLabel.textColor = styleColors.textColor
+        textLabel?.textColor = styleColors.textColor
     }
 }

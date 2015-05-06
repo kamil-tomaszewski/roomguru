@@ -9,15 +9,15 @@
 import Foundation
 import SwiftyUserDefaults
 
-private let notificationKey = "NotificationKey"
+private let NotificationKey = "NotificationKey"
 
 class SettingsStore {
     
     func enableNotification(enable: Bool) {
-        Defaults[notificationKey] = enable
+        Defaults[NotificationKey] = enable
     }
     
     func isNotificationEnabled() -> Bool {
-        return Defaults[notificationKey].bool ?? false
+        return Defaults[NotificationKey].bool ?? false
     }
 }

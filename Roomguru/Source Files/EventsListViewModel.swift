@@ -27,7 +27,7 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
         var pathToReturn: Path?
         
         itemize { (path: Path, item: CalendarEntry) in
-            if date.between(earlier: item.event.start!, later: item.event.end!) {
+            if item.event.start!.isEarlierThan(date) {
                 pathToReturn = path
             }
         }

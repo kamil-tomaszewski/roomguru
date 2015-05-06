@@ -29,6 +29,10 @@ extension NSDate {
         return compare(date) == .OrderedAscending
     }
     
+    func isLaterThan(date: NSDate) -> Bool {
+        return compare(date) == .OrderedDescending
+    }
+    
     func dayTimeRange() -> TimeRange {
         return (min: midnight, max: hour(23).minute(59).second(59).date)
     }

@@ -16,7 +16,6 @@ class EventsListViewController: UIViewController {
     private weak var aView: EventsListView?
     private var calendarIDs: [String] = []
     private var viewModel: EventsListViewModel<CalendarEntry>?
-    private var selectedIndexPaths = [NSIndexPath]()
     private var revocable = false
 
     convenience init(date: NSDate, calendarIDs: [String], revocable: Bool) {
@@ -92,7 +91,7 @@ extension EventsListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let event = viewModel?.eventAtIndex(indexPath)
-        let cell: UITableViewCell!
+        let cell: EventCell!
         
         if revocable {
             cell = tableView.dequeueReusableCell(RevocableEventCell.self)
@@ -103,9 +102,10 @@ extension EventsListViewController: UITableViewDataSource {
                 configureFreeEventCell(cell as! FreeEventCell, forEvent: freeEvent)
             } else {
                 cell = tableView.dequeueReusableCell(EventCell.self)
-                configureEventCell(cell as! EventCell, forEvent: event!)
+                configureEventCell(cell, forEvent: event!)
             }
         }
+        
         return cell
     }
 
@@ -135,6 +135,16 @@ extension EventsListViewController {
         cell.textLabel?.text = event.summary
         cell.timeMinLabel.text = event.startTime
         cell.timeMaxLabel.text = event.endTime
+        
+        let now = NSDate()
+        
+        if now.isLaterThan(event.end!) {
+            cell.setStyle(.Past)
+        } else if now.between(earlier: event.start!, later: event.end!) {
+            cell.setStyle(.Current)
+        } else {
+            cell.setStyle(.Future)
+        }
     }
     
     func configureRevocableEventCell(cell: RevocableEventCell, forEvent event: Event, indexPath: NSIndexPath) {
