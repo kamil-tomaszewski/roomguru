@@ -18,6 +18,10 @@ extension UIColor {
         return .rgb(69, 76, 87)
     }
     
+    class func ngGreenColor() -> UIColor {
+        return .rgb(105, 219, 101)
+    }
+    
     class func ngOrangeColor() -> UIColor {
         return .rgb(243, 166, 62)
     }

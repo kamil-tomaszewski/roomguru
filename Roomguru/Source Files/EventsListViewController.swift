@@ -159,7 +159,7 @@ private extension EventsListViewController {
         cell.bookButton.addTarget(self, action: Selector("didTapBookButton:"))
         
         if let tuple = viewModel?.isFreeEventSelectedAtIndex(indexPath) {     
-            cell.contentView.backgroundColor = tuple.selected ? .ngRedColor() : .ngOrangeColor()
+            cell.contentView.backgroundColor = tuple.selected ? .ngGreenColor() : .ngOrangeColor()
             cell.bookButton.hidden = !tuple.lastUserSelection
         }
     }
