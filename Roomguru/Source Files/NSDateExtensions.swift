@@ -9,6 +9,18 @@
 import Foundation
 import DateKit
 
+enum DateGranulation {
+    case Minute, Hour, Day
+    
+    func interval() -> Int {
+        switch self {
+        case .Minute: return 60
+        case .Hour: return 60*60
+        case .Day: return 60*60*24
+        }
+    }
+}
+
 extension NSDate {
     
     func isToday() -> Bool {
@@ -35,6 +47,14 @@ extension NSDate {
     
     func dayTimeRange() -> TimeRange {
         return (min: midnight, max: hour(23).minute(59).second(59).date)
+    }
+    
+    func nextDateWithGranulation(granulation: DateGranulation, multiplier: Float) -> NSDate {
+        let roundTo = NSTimeInterval(Float(granulation.interval()) * multiplier)
+        let timestamp = timeIntervalSince1970
+        let next = (timestamp - fmod(timestamp, roundTo)) + roundTo
+        
+        return NSDate(timeIntervalSince1970: next)
     }
 }
 
