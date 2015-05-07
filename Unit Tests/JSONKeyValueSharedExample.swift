@@ -15,9 +15,10 @@ class JSONKeyValueSharedExample: QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("json key value") { (sharedExampleContext: SharedExampleContext) in
             var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
-            
-            let key = configDict["key"] as! SubscriptType
+                        
+            let key = configDict["key"] as! String
             let value: AnyObject = configDict["value"]!
+            let valueJSON = JSON(value)
             let sut = (configDict["sut"] as! TestJSON).json
             
             it("should not be empty") {
@@ -28,8 +29,8 @@ class JSONKeyValueSharedExample: QuickConfiguration {
             context("sut for \(key)") {
                 
                 it("should have correct value") {
-                    let result: AnyObject = sut[key] as! AnyObject
-                    expect(result).to(equal(value))
+                    let result = (sut[key] == valueJSON)
+                    expect(result).to(beTrue())
                 }
             }
         }

@@ -11,10 +11,10 @@ import Quick
 
 import SwiftyJSON
 
-private extension Attendee {
-    
+extension Attendee {
+        
     var rawStatus: String {
-        get { return status?.rawValue ?? "fixtureIncorrectStatus" }
+        get { return status.rawValue }
     }
 }
 
@@ -31,38 +31,41 @@ class AttendeeSpec: QuickSpec {
         ] as [String: String]
         
         context("correct json") {
-        
-            beforeEach {
-                json = JSON([
+            
+            itBehavesLike("model object") {
+                var localJSON = JSON([
                     "displayName": "fixtureName",
                     "email": "fixtureEmail",
                     "responseStatus": "accepted"
                 ])
-            }
-            
-            itBehavesLike("model object") {
-                [
+                
+                return [
                     "factory": factory,
-                    "json": TestJSON(json: json),
+                    "json": TestJSON(json: localJSON),
                     "map": map
                 ]
             }
         }
         
         context("incorrect json") {
-
-            beforeEach {
-                json = JSON([
+            
+            itBehavesLike("model object") {
+                let localJSON = JSON([
                     "displayName": "fixtureName",
                     "email": "fixtureEmail",
                     "responseStatus": "fixtureIncorrectStatus"
                 ])
-            }
-            
-            itBehavesLike("model object") {
-                [
+                
+                let expectedJSON = JSON([
+                    "displayName": "fixtureName",
+                    "email": "fixtureEmail",
+                    "responseStatus": "unknown"
+                ])
+                
+                return [
                     "factory": factory,
-                    "json": TestJSON(json: json),
+                    "json": TestJSON(json: localJSON),
+                    "expectedJSON": TestJSON(json: expectedJSON),
                     "map": map
                 ]
             }

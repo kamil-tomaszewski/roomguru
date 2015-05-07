@@ -10,13 +10,13 @@ import UIKit
 import SwiftyJSON
 
 enum Status: String {
-    case Awaiting = "needsAction", NotGoing = "declined" , Maybe = "tentative", Going = "accepted"
+    case Awaiting = "needsAction", NotGoing = "declined" , Maybe = "tentative", Going = "accepted", Unknown = "unknown"
 }
 
 class Attendee: ModelObject, NSSecureCoding {
     var name:    String?
     var email:   String?
-    var status:  Status?
+    var status:  Status = .Unknown
     
     var isOrganizer = false
     var isResource  = false
@@ -34,7 +34,7 @@ class Attendee: ModelObject, NSSecureCoding {
         self.email = aDecoder.decodeObjectForKey("email") as? String
         
         if let status = aDecoder.decodeObjectForKey("status") as? String {
-            self.status = Status(rawValue: status)
+            self.status = Status(rawValue: status) ?? .Unknown
         }
         
         self.isOrganizer = aDecoder.decodeBoolForKey("isOrganizer")
@@ -43,7 +43,7 @@ class Attendee: ModelObject, NSSecureCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: "name")
         aCoder.encodeObject(self.email, forKey: "email")
-        aCoder.encodeObject(self.status?.rawValue, forKey: "status")
+        aCoder.encodeObject(self.status.rawValue, forKey: "status")
         aCoder.encodeBool(self.isOrganizer, forKey: "isOrganizer")
     }
     
@@ -65,10 +65,10 @@ class Attendee: ModelObject, NSSecureCoding {
     }
     
     override func toJSON() -> JSON {
-        var json = JSON([])
+        var json = JSON([:])
         json["displayName"].string = name
         json["email"].string = email
-        json["responseStatus"].string = status?.rawValue
+        json["responseStatus"].string = status.rawValue
         return json
     }
     
@@ -76,8 +76,8 @@ class Attendee: ModelObject, NSSecureCoding {
         name = json["displayName"].string
         email = json["email"].string
         
-        if let _string = json["responseStatus"].string {
-            status = Status(rawValue: _string)
+        if let responseStatus = json["responseStatus"].string {
+            status = Status(rawValue: responseStatus) ?? .Unknown
         }
         
         func assignIfExists(inout aBool: Bool, value: JSON) {

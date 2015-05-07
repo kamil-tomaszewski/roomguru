@@ -103,6 +103,7 @@ private extension EventDetailsViewModel {
         case .NotGoing: return .Ban
         case .Maybe: return .Question
         case .Going: return .Check
+        case .Unknown: return .Question
         }
     }
 }

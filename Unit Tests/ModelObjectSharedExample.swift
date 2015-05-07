@@ -1,4 +1,4 @@
-//
+ //
 //  ModelObjectSharedExample.swift
 //  Roomguru
 //
@@ -40,13 +40,13 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
                         
             let factory = configDict["factory"] as! ModelObjectFactory
             let testJSON = configDict["json"] as! TestJSON
-            let json = testJSON.json
+            let expectedJSON = (configDict["expectedJSON"] ?? testJSON) as! TestJSON
             let map = configDict["map"] as! [String: String]
             
             var sut: ModelObject!
             
             beforeEach {
-                sut = factory.modelObjectWithJSON(json)
+                sut = factory.modelObjectWithJSON(testJSON.json)
             }
             
             describe("protocol conformance") {
@@ -87,30 +87,30 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
             describe("mapping JSON to sut") {
                 
                 beforeEach {
-                    sut.map(json)
+                    sut.map(testJSON.json)
                 }
                 
                 itBehavesLike("mapping JSON to model object") {
-                    [
+                    let sut = factory.modelObjectWithJSON(testJSON.json)
+                    sut.map(testJSON.json)
+                    return [
                         "sut": sut,
-                        "json": testJSON,
+                        "json": expectedJSON,
                         "map": map
                     ]
                 }
             }
             
             describe("mapping sut to JSON") {
-                
-                var resultJSON: JSON!
-                
-                beforeEach {
-                    resultJSON = sut.toJSON()
-                }
-                
+
                 itBehavesLike("mapping model object to JSON") {
-                    [
+                    sut = factory.modelObjectWithJSON(testJSON.json)
+                    var resultJSON = sut.toJSON()
+                    var testJSON = TestJSON(json: resultJSON)
+                    
+                    return [
                         "modelObject": sut,
-                        "sut": TestJSON(json: resultJSON),
+                        "sut": testJSON,
                         "map": map
                     ]
                 }
@@ -126,7 +126,7 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
 private class ModelObjectMappingSharedExampleConfiguration: QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("mapping JSON to model object") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
+            var configDict = sharedExampleContext() as! [String: AnyObject]
             
             let sut = configDict["sut"] as! ModelObject
             let json = (configDict["json"] as! TestJSON).json
@@ -136,7 +136,7 @@ private class ModelObjectMappingSharedExampleConfiguration: QuickConfiguration {
                 itBehavesLike("object key value") {
                     [
                         "key": objectKey,
-                        "value": json[jsonKey] as! AnyObject,
+                        "value": json[jsonKey].anyObject,
                         "sut": sut
                     ]
                 }
@@ -155,10 +155,10 @@ private class ModelObjectToJSONSharedExampleConfiguration: QuickConfiguration {
             let map = configDict["map"] as! [String: String]
             
             for (jsonKey, objectKey) in map {
-                let value: AnyObject = modelObject.valueForKey(objectKey)!
                 
                 itBehavesLike("json key value") {
-                    [
+                    let value: AnyObject = modelObject.valueForKey(objectKey) ?? ""
+                    return [
                         "key": jsonKey,
                         "value": value,
                         "sut": sut

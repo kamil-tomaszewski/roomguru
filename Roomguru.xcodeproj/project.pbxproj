@@ -170,6 +170,7 @@
 		BF2B69401AF0F48B00AC2CC4 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */; };
 		BF2D529E1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */; };
 		BF2D52A01AF8DD2700EEEF81 /* ModelObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */; };
+		BF3A178F1AFA32A2007D95B6 /* JSONExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A178E1AFA32A2007D95B6 /* JSONExtensions.swift */; };
 		BF3B25A21ADD467400242859 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A11ADD467400242859 /* EditEventViewModel.swift */; };
 		BF3B25A41ADD610700242859 /* EventQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A31ADD610700242859 /* EventQuery.swift */; };
 		BF3CAD611AEE3D2200B1F684 /* ResultActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */; };
@@ -392,6 +393,7 @@
 		BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtensions.swift; path = "Roomguru/Source Files/UILabelExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjectSharedExample.swift; sourceTree = "<group>"; };
 		BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjectSpec.swift; sourceTree = "<group>"; };
+		BF3A178E1AFA32A2007D95B6 /* JSONExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONExtensions.swift; sourceTree = "<group>"; };
 		BF3B25A11ADD467400242859 /* EditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewModel.swift; path = "Roomguru/Source Files/EditEventViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		BF3B25A31ADD610700242859 /* EventQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventQuery.swift; path = "Roomguru/Source Files/EventQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultActionItem.swift; path = "Roomguru/Source Files/ResultActionItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -640,6 +642,7 @@
 			children = (
 				BFF5D1671AF8E84600C40B76 /* NSDataTestExtensions.swift */,
 				BFF5D1691AF8E84600C40B76 /* UIImageTestExtensions.swift */,
+				BF3A178E1AFA32A2007D95B6 /* JSONExtensions.swift */,
 			);
 			name = Helper;
 			path = Helpers;
@@ -1433,6 +1436,7 @@
 				BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */,
 				BF2D52A01AF8DD2700EEEF81 /* ModelObjectSpec.swift in Sources */,
 				BFF5D16D1AF8F74700C40B76 /* ModelObject.swift in Sources */,
+				BF3A178F1AFA32A2007D95B6 /* JSONExtensions.swift in Sources */,
 				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
 				BF2D529E1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift in Sources */,

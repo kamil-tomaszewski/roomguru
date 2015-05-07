@@ -9,6 +9,8 @@
 import Nimble
 import Quick
 
+import SwiftyJSON
+
 class ObjectKeyValueSharedExample: QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples("object key value") { (sharedExampleContext: SharedExampleContext) in
@@ -16,6 +18,7 @@ class ObjectKeyValueSharedExample: QuickConfiguration {
             
             let key = configDict["key"] as! String
             let value: AnyObject = configDict["value"]!
+            let valueJSON = JSON(value)
             let sut = configDict["sut"] as! NSObject
             
             it("should have key") {
@@ -26,8 +29,9 @@ class ObjectKeyValueSharedExample: QuickConfiguration {
             context("sut for \(key)") {
                 
                 it("should have correct value") {
-                    let result: AnyObject = sut.valueForKey(key)!
-                    expect(result).to(equal(value))
+                    let sutValueJSON = JSON(sut.valueForKey(key)!)
+                    let result = (sutValueJSON == valueJSON)
+                    expect(result).to(beTrue())
                 }
             }
         }

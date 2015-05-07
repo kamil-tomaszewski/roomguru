@@ -170,7 +170,7 @@ extension Event {
     
     func isCanceled() -> Bool {
         if let rooms = rooms {
-            return rooms.filter { $0.status == .NotGoing }.count > 0
+            return rooms.filter { ($0.status as Status) == .NotGoing }.count > 0
         }
         return true
     }
