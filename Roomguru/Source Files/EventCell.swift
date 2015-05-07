@@ -72,10 +72,12 @@ class EventCell: UITableViewCell, Reusable {
             upperLabel.left == upperLabel.superview!.left + 10
             upperLabel.bottom == upperLabel.superview!.centerY
             upperLabel.height == 20
+            upperLabel.width == 60
             
             lowerLabel.left == upperLabel.left
             lowerLabel.top == lowerLabel.superview!.centerY
             lowerLabel.height == upperLabel.height
+            lowerLabel.width == 60
             
             badge.height == 30
             badge.right == badge.superview!.right - 4

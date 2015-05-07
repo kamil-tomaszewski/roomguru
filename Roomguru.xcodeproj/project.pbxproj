@@ -170,7 +170,6 @@
 		BF26E73F1ABAF79B00B12244 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */; };
 		BF2755D51AC1AD2500A41786 /* FreeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */; };
 		BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D61AC1B30F00A41786 /* FreeEvent.swift */; };
-		BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */; };
 		BF2755DB1AC3006100A41786 /* FreeBusyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */; };
 		BF2B69401AF0F48B00AC2CC4 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */; };
 		BF2D529E1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */; };
@@ -395,7 +394,6 @@
 		BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "Roomguru/Source Files/ListViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEventCell.swift; path = "Roomguru/Source Files/FreeEventCell.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755D61AC1B30F00A41786 /* FreeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEvent.swift; path = "Roomguru/Source Files/FreeEvent.swift"; sourceTree = SOURCE_ROOT; };
-		BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingTimesView.swift; path = "Roomguru/Source Files/BookingTimesView.swift"; sourceTree = SOURCE_ROOT; };
 		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtensions.swift; path = "Roomguru/Source Files/UILabelExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjectSharedExample.swift; sourceTree = "<group>"; };
@@ -591,7 +589,6 @@
 			children = (
 				5E8AE3081ACC1F2200A3C146 /* UIBaseTableView.swift */,
 				BFBCE1831AC1900D00D96270 /* ButtonView.swift */,
-				BF2755D81AC2C29B00A41786 /* BookingTimesView.swift */,
 				BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */,
 				5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */,
 				5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */,
@@ -1403,7 +1400,6 @@
 				BFE566081AE133F800B935BF /* GroupItem.swift in Sources */,
 				5E8A30FC1AC59DD700E31DD3 /* EventDetailsViewController.swift in Sources */,
 				BF8459991ACBDE38004965EC /* RevokeQuery.swift in Sources */,
-				BF2755D91AC2C29B00A41786 /* BookingTimesView.swift in Sources */,
 				5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */,
 				BF527C1B1AB1CFAE00A43D35 /* TabBarController.swift in Sources */,
 				BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */,

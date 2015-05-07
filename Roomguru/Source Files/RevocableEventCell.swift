@@ -20,8 +20,8 @@ class RevocableEventCell: EventCell {
     
     override func commonInit() {
         
-        revokeButton.setTitle("Revoke")
-        revokeButton.setTitleColor(UIColor.ngOrangeColor(), forState: UIControlState.Normal)
+        revokeButton.setTitle(NSLocalizedString("Revoke", comment: ""))
+        revokeButton.setTitleColor(UIColor.ngOrangeColor(), forState: .Normal)
         revokeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
         revokeButton.addTarget(self, action: Selector("didTapRevokeButton:"))
         contentView.addSubview(revokeButton)
