@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Attendee.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 27/03/15.
@@ -52,17 +52,6 @@ class Attendee: ModelObject, NSSecureCoding {
     }
     
     // MARK: JSON
-    
-    class func map(jsonArray: [JSON]?) -> [Attendee]? {
-        if let _jsonArray: [JSON] = jsonArray {
-            if _jsonArray.isEmpty {
-                return nil
-            }
-            return _jsonArray.map { Attendee(json: $0) }
-        }
-        
-        return nil
-    }
     
     override func toJSON() -> JSON {
         var json = JSON([:])

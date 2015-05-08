@@ -39,18 +39,7 @@ class TimeFrame: ModelObject {
         if let end = json["end"].string {
             endDate = formatter.dateFromString(end)!
         }
-    }
-    
-    override class func map<T where T : ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
-        if let _jsonArray = jsonArray {
-            if _jsonArray.isEmpty {
-                return nil
-            }
-            return _jsonArray.map { T(json: $0) }
-        }
-        
-        return nil
-    }
+    }    
 }
 
 extension TimeFrame {

@@ -23,6 +23,8 @@ class AttendeeSpec: QuickSpec {
     override func spec() {
         
         var factory = ModelObjectFactory(modelObjectClass: Attendee.self)
+        factory.map = { return Attendee.map($0) as [Attendee]? }
+        
         var json: JSON!
         var map = [
             "displayName": "name",

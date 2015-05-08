@@ -30,8 +30,7 @@ class ObjectKeyValueSharedExample: QuickConfiguration {
                 
                 it("should have correct value") {
                     let sutValueJSON = JSON(sut.valueForKey(key)!)
-                    let result = (sutValueJSON == valueJSON)
-                    expect(result).to(beTrue())
+                    expect(sutValueJSON).to(equal(valueJSON))
                 }
             }
         }

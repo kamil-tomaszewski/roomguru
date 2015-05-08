@@ -18,10 +18,11 @@ class TestJSON {
         self.json = json
     }
 }
-
+ 
 class ModelObjectFactory {
     
     private let modelObjectClass: ModelObject.Type
+    var map: ((jsonArray: [JSON]?) -> [ModelObject]?)!
     
     init(modelObjectClass: ModelObject.Type) {
         self.modelObjectClass = modelObjectClass
@@ -117,7 +118,24 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
             }
             
             describe("mapping array of test objects to array of JSONs") {
-                // NGRTodo: Check if objects are being mapped correctly using "mapping JSON to model object" shared example for each json in array
+                
+                let jsons: [JSON] = [testJSON.json]
+                let expectedJSONs: [JSON] = [expectedJSON.json]
+                var objects = factory.map(jsonArray: jsons)!
+                
+                it("should map to correct number of objects") {
+                    expect(objects.count).to(equal(jsons.count))
+                }
+                
+                for (index, object) in enumerate(objects) {
+                    itBehavesLike("mapping JSON to model object") {
+                        [
+                            "sut": object,
+                            "json": TestJSON(json: expectedJSONs[index]),
+                            "map": map
+                        ]
+                    }
+                }
             }
         }
     }
@@ -157,7 +175,7 @@ private class ModelObjectToJSONSharedExampleConfiguration: QuickConfiguration {
             for (jsonKey, objectKey) in map {
                 
                 itBehavesLike("json key value") {
-                    let value: AnyObject = modelObject.valueForKey(objectKey) ?? ""
+                    let value: AnyObject = modelObject.valueForKey(objectKey)!
                     return [
                         "key": jsonKey,
                         "value": value,

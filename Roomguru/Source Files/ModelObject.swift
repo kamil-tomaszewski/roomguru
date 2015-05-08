@@ -40,8 +40,12 @@ class ModelObject: NSObject, ModelJSONProtocol {
         fatalError("|\(__FUNCTION__)| function not implemented")
     }
     
-    class func map<T>(jsonArray: [JSON]?) -> [T]? {
-        fatalError( "|\(__FUNCTION__)| function not implemented")
+    class func map<T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
+        if let jsonArray: [JSON] = jsonArray where !jsonArray.isEmpty {
+            return jsonArray.map { T(json: $0) }
+        }
+        
+        return nil
     }
     
     // MARK: Internal

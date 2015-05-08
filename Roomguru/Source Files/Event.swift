@@ -104,21 +104,6 @@ class Event: ModelObject, NSSecureCoding {
     }
     
     // MARK: JSON
-    
-    override class func map<T where T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
-        if let _jsonArray = jsonArray {
-            if _jsonArray.isEmpty {
-                return nil
-            }
-            /* EXPLANATION:
-                Maping using T type failes with crash: "partial apply forwarder for Roomguru.Event"
-                That's why explicit init and casting in map() function is needed.
-            */
-            return _jsonArray.filter { $0.isValid() }.map { Event(json: $0) as! T }
-        }
-        
-        return nil
-    }
 
     override func toJSON() -> JSON {
         var json = JSON([])
@@ -176,12 +161,12 @@ extension Event {
     }
 }
 
-private extension JSON {
-    
-    func isValid() -> Bool {
-        return self["start"]["dateTime"] != nil && self["end"]["dateTime"] != nil
-    }
-}
+//private extension JSON {
+//    
+//    func isValid() -> Bool {
+//        return self["start"]["dateTime"] != nil && self["end"]["dateTime"] != nil
+//    }
+//}
 
 private extension String {
     
