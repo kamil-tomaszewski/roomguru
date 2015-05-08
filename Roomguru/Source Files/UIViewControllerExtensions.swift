@@ -45,9 +45,12 @@ extension UIViewController {
         return nil
     }
     
-    func presentControllerOfType<T:UIViewController>(controller: T.Type, animated: Bool, completion: VoidBlock?) {
-        let navigationController = NavigationController(rootViewController: T())
-        presentViewController(navigationController, animated: animated, completion: completion);
+    func presentControllerOfType<T:UIViewController>(controller: T.Type, animated: Bool, completion: ((presentedController: T) -> Void)?) {
+        let controller = T()
+        let navigationController = NavigationController(rootViewController: controller)
+        presentViewController(navigationController, animated: animated) {
+            if (completion != nil) { completion!(presentedController: controller) }
+        }
     }
     
     func addContainerViewController<T: UIViewController>(controller: T) {

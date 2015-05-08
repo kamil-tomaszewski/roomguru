@@ -13,11 +13,6 @@ class LoginView: LaunchView {
     
     let signInButton = GPPSignInButton() as GPPSignInButton
     
-    func showSignInButton(show: Bool) {
-        signInButton.hidden = !show
-        show ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
-    }
-    
     override func commonInit() {
 
         signInButton.style = kGPPSignInButtonStyleWide
@@ -36,5 +31,10 @@ class LoginView: LaunchView {
         layout(signInButton, activityIndicator) { button, indicator in
             button.center == indicator.center
         }
+    }
+    
+    func showSignInButton(show: Bool) {
+        signInButton.hidden = !show
+        show ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
     }
 }

@@ -84,7 +84,7 @@ extension CalendarNameCustomizerViewController: UITextFieldDelegate {
 private extension CalendarNameCustomizerViewController {
 
     func save() {
-        if aView?.textField.text.length > 0 {
+        if aView?.textField.text.lengthByTrimmingWhitespaceCharacters() > 0 {
             delegate?.calendarNameCustomizerViewController(self, didEndEditngWithNewName: aView?.textField.text)
             navigationController?.popViewControllerAnimated(true)
         } else {

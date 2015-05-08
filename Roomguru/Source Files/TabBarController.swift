@@ -38,11 +38,17 @@ class TabBarController: UITabBarController {
     }
     
     func presentLoginViewController(animated: Bool, error: NSError? = nil, completion: VoidBlock? = nil) {
-        
+
         if let login = controllersOfTypeInNavigationStack(LoginViewController.self)?.first, error = error {
             login.showError(error)
         } else {
-            presentControllerOfType(LoginViewController.self, animated: animated, completion: completion)
+            presentControllerOfType(LoginViewController.self, animated: animated) { loginViewController in
+            
+                if let error = error {
+                    loginViewController.showError(error)
+                }
+                if completion != nil { completion!() }
+            }
         }
     }
     
@@ -51,7 +57,9 @@ class TabBarController: UITabBarController {
         if let login = controllersOfTypeInNavigationStack(LoginViewController.self)?.first {
             login.pushCalendarPickerViewController()
         } else {
-            presentControllerOfType(CalendarPickerViewController.self, animated: animated, completion: completion)
+            presentControllerOfType(CalendarPickerViewController.self, animated: animated) { _ in
+                if completion != nil { completion!() }
+            }
         }
     }
     

@@ -13,4 +13,8 @@ extension String {
     var length: Int {
         return count(self)
     }
+    
+    func lengthByTrimmingWhitespaceCharacters() -> Int {
+        return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).length
+    }
 }

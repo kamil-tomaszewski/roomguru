@@ -87,7 +87,7 @@ private extension AppDelegate {
             
             if authenticated {
                 
-                let didUserSelectCalendars = CalendarPersistenceStore.sharedStore.calendars.count > 0
+                let didUserSelectCalendars = !CalendarPersistenceStore.sharedStore.calendars.isEmpty
                 if didUserSelectCalendars {
                     fade(.Out, launchViewController?.view) {
                         launchViewController = nil
