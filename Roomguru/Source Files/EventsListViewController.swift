@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class EventsListViewController: UIViewController {
     
@@ -93,25 +94,19 @@ extension EventsListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let event = viewModel?.eventAtIndex(indexPath)
-        let cell: EventCell!
+        let cell = dequeueCellForEvent(event!, inTableView: tableView)
         
-        if revocable {
-            cell = tableView.dequeueReusableCell(RevocableEventCell.self)
-            configureRevocableEventCell(cell as! RevocableEventCell, forEvent: event!, indexPath: indexPath)
-            
+        let now = NSDate()
+        
+        if now.isLaterThan(event!.end) {
+            cell.setStyle(.Past)
+        } else if now.between(earlier: event!.start, later: event!.end) {
+            cell.setStyle(.Current)
         } else {
-            if let freeEvent = event as? FreeEvent {
-                cell = tableView.dequeueReusableCell(FreeEventCell.self)
-                configureFreeEventCell(cell as! FreeEventCell, forEvent: freeEvent, indexPath: indexPath)
-            } else {
-                cell = tableView.dequeueReusableCell(EventCell.self)
-                configureEventCell(cell, forEvent: event!)
-            }
+            cell.setStyle(.Future)
         }
         
-        // NGRTodo: to improve (calling NSDate() twice in this method)
-        let now = NSDate()
-        cell.ongoingBadge.hidden = !now.between(earlier: event!.start, later: event!.end)
+        configureCell(cell, forEvent: event!, indexPath: indexPath)
         
         return cell
     }
@@ -119,20 +114,41 @@ extension EventsListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return (viewModel?.eventAtIndex(indexPath) is FreeEvent) ? 44 : 60
     }
+    
+    func dequeueCellForEvent(event: Event, inTableView tableView: UITableView) -> EventCell {
+        if revocable {
+            return tableView.dequeueReusableCell(RevocableEventCell.self)
+        } else if let freeEvent = event as? FreeEvent {
+            return tableView.dequeueReusableCell(FreeEventCell.self)
+        } else {
+            return tableView.dequeueReusableCell(EventCell.self)
+        }
+    }
 }
 
 // MARK: UIControl methods
 
 extension EventsListViewController {
     
-    func revokeEventAtIndexPath(indexPath: NSIndexPath){
-        if let event = viewModel?.eventAtIndex(indexPath){
-            BookingManager.revokeEvent(event, success: {
-                self.viewModel?.removeAtIndexPath(indexPath)
-                self.aView?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                }, failure: { error in
+    func revokeEventAtIndexPath(indexPath: NSIndexPath) {
+        if let event = viewModel?.eventAtIndex(indexPath) {
+            
+            PKHUD.sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
+            PKHUD.sharedHUD.dimsBackground = false
+            PKHUD.sharedHUD.contentView.backgroundColor = .rgb(243, 166, 62)
+            PKHUD.sharedHUD.show()
+           
+            BookingManager.revokeEvent(event) { (success, error) in
+            
+                PKHUD.sharedHUD.hide()
+                
+                if let error = error {
                     UIAlertView(error: error).show()
-            })
+                } else {
+                    self.viewModel?.removeAtIndexPath(indexPath)
+                    self.aView?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                }
+            }
         }
     }
     
@@ -150,6 +166,19 @@ private extension EventsListViewController {
     
     // MARK: Cell configuration
     
+    func configureCell(cell: EventCell, forEvent event: Event, indexPath: NSIndexPath) {
+        
+        if cell.isKindOfClass(RevocableEventCell.self) {
+            configureRevocableEventCell(cell as! RevocableEventCell, forEvent: event, indexPath: indexPath)
+            
+        } else if cell.isKindOfClass(FreeEventCell.self)  {
+            configureFreeEventCell(cell as! FreeEventCell, forEvent: event as! FreeEvent, indexPath: indexPath)
+            
+        } else if cell.isKindOfClass(EventCell.self)  {
+            configureEventCell(cell, forEvent: event)
+        }
+    }
+    
     func configureFreeEventCell(cell: FreeEventCell, forEvent event: FreeEvent, indexPath: NSIndexPath) {
         let minutes = event.duration/60
         
@@ -158,7 +187,7 @@ private extension EventsListViewController {
         cell.timeMaxLabel.text = event.endTime
         cell.bookButton.addTarget(self, action: Selector("didTapBookButton:"))
         
-        if let tuple = viewModel?.isFreeEventSelectedAtIndex(indexPath) {     
+        if let tuple = viewModel?.isFreeEventSelectedAtIndex(indexPath) {
             cell.contentView.backgroundColor = tuple.selected ? .ngGreenColor() : .ngOrangeColor()
             cell.bookButton.hidden = !tuple.lastUserSelection
         }
@@ -168,16 +197,6 @@ private extension EventsListViewController {
         cell.textLabel?.text = event.summary
         cell.timeMinLabel.text = event.startTime
         cell.timeMaxLabel.text = event.endTime
-        
-        let now = NSDate()
-        
-        if now.isLaterThan(event.end) {
-            cell.setStyle(.Past)
-        } else if now.between(earlier: event.start, later: event.end) {
-            cell.setStyle(.Current)
-        } else {
-            cell.setStyle(.Future)
-        }
     }
     
     func configureRevocableEventCell(cell: RevocableEventCell, forEvent event: Event, indexPath: NSIndexPath) {
@@ -209,6 +228,11 @@ private extension EventsListViewController {
                 
                 if let error = error {
                     self?.showErrorPlaceholder()
+                } else {
+                    self?.viewModel = EventsListViewModel(calendarEntries)
+                    self?.aView?.tableView.reloadData()
+                    self?.scrollToNowAnimated(false)
+                    fade(.In, self?.aView?.tableView, duration: 0.5) { }
                 }
             }
             
@@ -217,10 +241,10 @@ private extension EventsListViewController {
             eventsProvider.calendarEntriesForTimeRange(date.dayTimeRange()) { [weak self] (calendarEntries, error) in
                 
                 if let error = error {
-                   self?.showErrorPlaceholder()
+                    self?.showErrorPlaceholder()
                     
                 } else if calendarEntries.isEmpty {
-                    self?.aView?.placeholderView.hidden = false
+                    self?.aView?.showPlaceholder(text: NSLocalizedString("Weekend day.\nGo away from your computer and relax!", comment: ""))
                     
                 } else {
                     self?.viewModel = EventsListViewModel(calendarEntries)
@@ -233,8 +257,8 @@ private extension EventsListViewController {
     }
     
     func showErrorPlaceholder() {
-        aView?.placeholderView.text = NSLocalizedString("Sorry, something went wrong.\n\nA team of highly trained monkeys has been dispatched to deal with this situation.\n\nTo reload, tap on the room name located on the navigation bar.", comment: "")
-        aView?.placeholderView.hidden = false
+        let text = NSLocalizedString("Sorry, something went wrong.\n\nA team of highly trained monkeys has been dispatched to deal with this situation.\n\nTo reload, tap on the room name located on the navigation bar.", comment: "")
+        aView?.showPlaceholder(withIcon: .MehO, text: text)
     }
     
     func scrollToNowAnimated(animated: Bool) {

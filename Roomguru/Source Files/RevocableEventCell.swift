@@ -11,7 +11,7 @@ import Cartography
 
 class RevocableEventCell: EventCell {
     
-    let revokeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    private let revokeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
     var revokeButtonHandler : VoidBlock?
     
     override class func reuseIdentifier() -> String {
@@ -21,7 +21,7 @@ class RevocableEventCell: EventCell {
     override func commonInit() {
         
         revokeButton.setTitle(NSLocalizedString("Revoke", comment: ""))
-        revokeButton.setTitleColor(UIColor.ngOrangeColor(), forState: .Normal)
+        revokeButton.setTitleColor(UIColor.ngRedColor(), forState: .Normal)
         revokeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(15.0)
         revokeButton.addTarget(self, action: Selector("didTapRevokeButton:"))
         contentView.addSubview(revokeButton)
@@ -41,8 +41,19 @@ class RevocableEventCell: EventCell {
     }
     
     func didTapRevokeButton(sender:UIButton) {
-        if let handler = revokeButtonHandler{
+        if let handler = revokeButtonHandler {
             handler()
+        }
+    }
+    
+    override func setStyle(style: EventCellDisplayStyle) {
+        super.setStyle(style)
+        
+        switch style {
+        case .Past:
+            revokeButton.hidden = true
+        case .Current, .Future:
+            revokeButton.hidden = false
         }
     }
 }

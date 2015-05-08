@@ -11,18 +11,8 @@ import Cartography
 
 class EmptyCalendarPlaceholderView: UIView {
     
-    private let placeholderIconLabel = UILabel.calendarIconLabel()
-    private let infoLabel = UILabel()
-    
-    var text: String? {
-        get { return infoLabel.text }
-        set { infoLabel.text = newValue }
-    }
-    
-    convenience init(frame: CGRect = CGRectZero, text: String) {
-        self.init(frame: frame)
-        infoLabel.text = text
-    }
+    let placeholderIconLabel = UILabel.fontAwesomeLabel()
+    let infoLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

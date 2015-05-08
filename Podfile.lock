@@ -40,6 +40,7 @@ PODS:
   - Mockingjay/XCTest (0.2.0):
     - Mockingjay/Core
   - Nimble (0.4.2)
+  - PKHUD (2.0.1)
   - Quick (0.3.1)
   - SwiftyJSON (2.2.0)
   - SwiftyUserDefaults (1.0.0)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - KIF (~> 3.0)
   - Mockingjay
   - Nimble (~> 0.4.2)
+  - PKHUD (from `https://github.com/pkluz/PKHUD.git`, commit `86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa`)
   - Quick (~> 0.3.1)
   - SwiftyJSON (~> 2.2.0)
   - SwiftyUserDefaults (from `git@github.com:radex/SwiftyUserDefaults.git`, commit
@@ -72,6 +74,9 @@ EXTERNAL SOURCES:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
     :git: https://github.com/SnowdogApps/DateKit.git
+  PKHUD:
+    :commit: 86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa
+    :git: https://github.com/pkluz/PKHUD.git
   SwiftyUserDefaults:
     :branch: swift-1.2
     :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
@@ -86,6 +91,9 @@ CHECKOUT OPTIONS:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
     :git: https://github.com/SnowdogApps/DateKit.git
+  PKHUD:
+    :commit: 86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa
+    :git: https://github.com/pkluz/PKHUD.git
   SwiftyUserDefaults:
     :branch: swift-1.2
     :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
@@ -102,6 +110,7 @@ SPEC CHECKSUMS:
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
   Mockingjay: 8635bddf88b7c93833db67e1dc54b8ffe7efe921
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
+  PKHUD: a35d89fd82d0aeb67f53de086b3029aea3423b74
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f

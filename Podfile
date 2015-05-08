@@ -30,6 +30,12 @@ pod 'CryptoSwift', '~> 0.0.10'
 
 pod 'AKPickerView-Swift'
 
+#pod 'PKHUD', '~> 2.0.1' - Latest Pod is not compiling in Xcode 6.3
+pod 'PKHUD',
+    :git => "https://github.com/pkluz/PKHUD.git",
+    :commit => "86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa"
+    :branch => "master"
+
 pod 'SwiftyUserDefaults',
     :git => "git@github.com:radex/SwiftyUserDefaults.git",
     :commit => "e467e0f712e3ac1d1ceb7f9020ffd02e487e8893",

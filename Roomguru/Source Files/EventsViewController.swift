@@ -122,11 +122,20 @@ extension EventsViewController: EventsPageViewControllerDelegate {
 extension EventsViewController: AKPickerViewDataSource {
     
     func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
-        return CalendarPersistenceStore.sharedStore.calendars.count
+        if mode == .Revocable {
+            return 1
+        } else {
+            return CalendarPersistenceStore.sharedStore.calendars.count
+        }
     }
 
     func pickerView(pickerView: AKPickerView, titleForItem item: Int) -> String {
-        return CalendarPersistenceStore.sharedStore.rooms()[item].name
+        
+        if mode == .Revocable {
+            return NSLocalizedString("All rooms", comment: "")
+        } else {
+            return CalendarPersistenceStore.sharedStore.rooms()[item].name
+        }
     }
 }
 
@@ -141,11 +150,6 @@ extension EventsViewController: AKPickerViewDelegate {
 private extension EventsViewController {
     
     func recreatePickerView() {
-        
-        if mode == .Revocable {
-            navigationItem.titleView = nil
-            return
-        }
         
         /* NOTE: Calling explicitly pickerView.reloadData() doesn't reload it's content. So when amount of calendars decreases.
         numberOfItemsInPickerView() delegate doesn't fire and pickerView has wrong number of items what leads crash.

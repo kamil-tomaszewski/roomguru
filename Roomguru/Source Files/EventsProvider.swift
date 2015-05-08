@@ -73,7 +73,7 @@ private extension EventsProvider {
             var events: [Event] = []
             
             if revocable {
-                events = self.onlyCreatedByUserActiveEvents(response)
+                events = self.onlyActiveEventsWhereUserIsAttendee(response)
             } else {
                 events = self.onlyActiveEvents(response)
             }
@@ -82,12 +82,26 @@ private extension EventsProvider {
         return []
     }
     
-    func onlyActiveEvents (events: [Event]) -> [Event] {
+    func onlyActiveEvents(events: [Event]) -> [Event] {
         return events.filter{ !$0.isCanceled() }
     }
     
-    func onlyCreatedByUserActiveEvents (events: [Event]) -> [Event] {
+    func onlyCreatedByUserActiveEvents(events: [Event]) -> [Event] {
         let userEmail = UserPersistenceStore.sharedStore.user?.email
-        return events.filter{ !$0.isCanceled() && $0.creator?.email == userEmail}
+        return onlyActiveEvents(events).filter { $0.creator?.email == userEmail }
+    }
+    
+    func onlyActiveEventsWhereUserIsAttendee(events: [Event]) -> [Event] {
+        let userEmail = UserPersistenceStore.sharedStore.user?.email
+        return onlyActiveEvents(events).filter {
+            
+            var isAttendee = false
+            
+            if let attendees = $0.attendees {
+                isAttendee = !attendees.filter { $0.email == userEmail }.isEmpty
+            }
+            
+            return $0.creator?.email == userEmail || isAttendee
+        }
     }
 }

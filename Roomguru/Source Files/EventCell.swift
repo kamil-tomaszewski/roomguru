@@ -93,5 +93,7 @@ class EventCell: UITableViewCell, Reusable {
         timeMaxLabel.textColor = styleColors.textColor
         timeMinLabel.textColor = styleColors.textColor
         textLabel?.textColor = styleColors.textColor
+        
+        ongoingBadge.hidden = (style != .Current)
     }
 }

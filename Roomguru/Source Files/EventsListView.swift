@@ -11,11 +11,11 @@ import Cartography
 
 class EventsListView: UIBaseTableView {
     
-    private(set) var placeholderView: EmptyCalendarPlaceholderView!
+    private var placeholderView: EmptyCalendarPlaceholderView!
     
     override func commonInit() {
         
-        placeholderView = EmptyCalendarPlaceholderView(frame: frame, text: NSLocalizedString("Weekend day.\nGo away from your computer and relax!", comment: ""))
+        placeholderView = EmptyCalendarPlaceholderView(frame: frame)
         addSubview(placeholderView)
         
         super.commonInit()
@@ -30,5 +30,11 @@ class EventsListView: UIBaseTableView {
         layout(placeholderView) { placeholder in
             placeholder.edges == placeholder.superview!.edges; return
         }
+    }
+    
+    func showPlaceholder(show: Bool = true, withIcon icon: FontAwesome = .CalendarO, text: String) {
+        placeholderView.hidden = !show
+        placeholderView.placeholderIconLabel.text = String.fontAwesomeIconWithName(icon)
+        placeholderView.infoLabel.text = text
     }
 }

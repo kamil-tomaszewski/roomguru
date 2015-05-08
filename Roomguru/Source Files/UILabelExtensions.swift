@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 // MARK: Factory methods
 
 extension UILabel {
@@ -22,12 +21,11 @@ extension UILabel {
         return leftViewLabel
     }
     
-    class func calendarIconLabel() -> UILabel {
+    class func fontAwesomeLabel() -> UILabel {
         let label = UILabel()
         label.font = .fontAwesomeOfSize(100)
         label.textAlignment = .Center
         label.textColor = .ngOrangeColor()
-        label.text = .fontAwesomeIconWithName(.CalendarO)
         return label
     }
 }
