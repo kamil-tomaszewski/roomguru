@@ -59,7 +59,8 @@ DEPENDENCIES:
   - KIF (~> 3.0)
   - Mockingjay
   - Nimble (~> 0.4.2)
-  - PKHUD (from `https://github.com/pkluz/PKHUD.git`, commit `86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa`)
+  - PKHUD (from `https://github.com/pkluz/PKHUD.git`, commit `86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa`,
+    branch `master`)
   - Quick (~> 0.3.1)
   - SwiftyJSON (~> 2.2.0)
   - SwiftyUserDefaults (from `git@github.com:radex/SwiftyUserDefaults.git`, commit
@@ -75,6 +76,7 @@ EXTERNAL SOURCES:
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
     :git: https://github.com/SnowdogApps/DateKit.git
   PKHUD:
+    :branch: master
     :commit: 86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa
     :git: https://github.com/pkluz/PKHUD.git
   SwiftyUserDefaults:
@@ -92,6 +94,7 @@ CHECKOUT OPTIONS:
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
     :git: https://github.com/SnowdogApps/DateKit.git
   PKHUD:
+    :branch: master
     :commit: 86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa
     :git: https://github.com/pkluz/PKHUD.git
   SwiftyUserDefaults:
@@ -116,4 +119,4 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
   URITemplate: 0dbf40f0e378eb9c6d04cc08e6101fb82d126dc3
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.37.1
