@@ -161,13 +161,6 @@ extension Event {
     }
 }
 
-//private extension JSON {
-//    
-//    func isValid() -> Bool {
-//        return self["start"]["dateTime"] != nil && self["end"]["dateTime"] != nil
-//    }
-//}
-
 private extension String {
     
     func date() -> NSDate {

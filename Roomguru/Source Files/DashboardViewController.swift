@@ -71,10 +71,9 @@ private extension DashboardViewController {
                 UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
                 self.aView?.tableView.reloadData()
                 
-                }, failure: { (error: NSError) in
-                    UIAlertView(error: error).show()
-                }
-            )
+            }, failure: { (error: NSError) in
+                UIAlertView(error: error).show()
+            })
         })
         
         return BookingConfirmationViewController(viewModel: viewModel)

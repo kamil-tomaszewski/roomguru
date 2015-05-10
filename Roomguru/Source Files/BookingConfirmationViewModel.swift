@@ -11,17 +11,15 @@ import DateKit
 
 class BookingConfirmationViewModel {
     
-    var summary: String = NSLocalizedString("Summary", comment: "")
+    var summary = ""
     
-    var title: String? {
+    var title: String {
         get {
-            if let startDate = calendarTime.0?.startDate, endDate = calendarTime.0?.endDate {
-                let startDateString = timeFormatter.stringFromDate(startDate)
-                let endDateString = timeFormatter.stringFromDate(endDate)
-                let name = CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
-                return "Room " + name + " | " + startDateString + " - " + endDateString
-            }
-            return nil
+            let startDate = calendarTime.0.startDate, endDate = calendarTime.0.endDate
+            let startDateString = timeFormatter.stringFromDate(startDate)
+            let endDateString = timeFormatter.stringFromDate(endDate)
+            let name = CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
+            return "Room " + name + " | " + startDateString + " - " + endDateString
         }
     }
     
@@ -64,28 +62,30 @@ class BookingConfirmationViewModel {
 extension BookingConfirmationViewModel {
     
     func bookingTimeDuration() -> NSTimeInterval {
-        return actualBookingTime.0?.duration() ?? 0
+        return actualBookingTime.0.duration()
     }
     
     func isValid() -> Bool {
-        return summary.length >= 5
+        return validate(summary)
+    }
+    
+    func validate(text: String) -> Bool {
+        return text.length >= 5
     }
     
     func addBookingTimeMinutes(minutes: Int) {
-        
-        if let actualTimeFrame = actualBookingTime.0 {
-            let endDate = actualTimeFrame.endDate.minutes.add(minutes).date
-            let timeFrame = TimeFrame(startDate: actualTimeFrame.startDate, endDate: endDate, availability: actualTimeFrame.availability)
-            self.actualBookingTime = (timeFrame, actualBookingTime.1)
-        }
+        let actualTimeFrame = actualBookingTime.0
+        let endDate = actualTimeFrame.endDate.minutes.add(minutes).date
+        let timeFrame = TimeFrame(startDate: actualTimeFrame.startDate, endDate: endDate, availability: actualTimeFrame.availability)
+        actualBookingTime = (timeFrame, actualBookingTime.1)
     }
     
     func canAddMinutes() -> Bool {
-        return actualBookingTime.0?.duration() < calendarTime.0?.duration()
+        return actualBookingTime.0.duration() < calendarTime.0.duration()
     }
     
     func canSubstractMinutes() -> Bool {
-        return actualBookingTime.0?.duration() > minimumBookingTime
+        return actualBookingTime.0.duration() > minimumBookingTime
     }
     
     func confirmBooking() {

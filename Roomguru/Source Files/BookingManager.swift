@@ -57,13 +57,12 @@ class BookingManager: NSObject {
     
     class func bookTimeFrame(calendarTime: CalendarTimeFrame, summary: String, success: (event: Event) -> Void, failure: ErrorBlock) {
 
-        let query = BookingQuery(calendarTime)
-        query.summary = summary
+        let query = BookingQuery(calendarTimeFrame: calendarTime, summary: summary)
         
         NetworkManager.sharedInstance.request(query, success: { response in
             
-            if let _response = response {
-                let event = Event(json: _response)
+            if let response = response {
+                let event = Event(json: response)
                 success(event: event)
             } else {
                 let message = NSLocalizedString("Problem booking event occurred", comment: "")
@@ -100,7 +99,7 @@ extension BookingManager {
         }
         
         frames.sort {
-            $0?.0?.startDate <= $1?.0?.startDate
+            $0?.0.startDate <= $1?.0.startDate
         }
         
         return frames[0]

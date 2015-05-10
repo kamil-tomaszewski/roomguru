@@ -9,7 +9,7 @@
 import Foundation
 import DateKit
 
-typealias CalendarTimeFrame = (TimeFrame?, String)
+typealias CalendarTimeFrame = (TimeFrame, String)
 
 class AvailabilityCalendar: NSObject {
     

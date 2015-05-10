@@ -35,7 +35,9 @@ class BookingConfirmationViewController: UIViewController {
         
         aView?.moreMinutesButton.enabled = viewModel.canAddMinutes()
         aView?.summaryTextField.delegate = self
+        aView?.summaryTextField.addTarget(self, action: "textFieldDidChangeText:", forControlEvents: UIControlEvents.EditingChanged)
         
+        updateViewForValidationResult(viewModel.isValid())
         updateActualBookingTimeLabel()
         connectActions()
     }
@@ -46,6 +48,8 @@ class BookingConfirmationViewController: UIViewController {
 extension BookingConfirmationViewController {
     
     func didTapConfirmButton(sender: UIButton) {
+        view.findFirstResponder()?.resignFirstResponder()
+        
         dismissViewControllerAnimated(true) { [weak self] in
             self?.viewModel.confirmBooking()
         }
@@ -77,10 +81,20 @@ extension BookingConfirmationViewController {
 
 extension BookingConfirmationViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldDidEndEditing(textField: UITextField) {
         viewModel.summary = textField.text
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension BookingConfirmationViewController {
+    
+    func textFieldDidChangeText(textField: UITextField) {
+        updateViewForValidationResult(viewModel.validate(textField.text))
     }
 }
 

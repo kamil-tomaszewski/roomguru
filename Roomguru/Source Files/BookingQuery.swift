@@ -8,25 +8,76 @@
 
 import Foundation
 import Alamofire
+import DateKit
 
 class BookingQuery: Query {
     
+    private static var URLExtension = "/calendars/primary/events"
+    
+    private var attendees: [[String: String]] = []
+    private let dateFormatter = NSDateFormatter()
+    
     // MARK: Initializers
     
-    convenience init(_ calendarTimeFrame: CalendarTimeFrame) {
-        let URLExtension = "/calendars/" + calendarTimeFrame.1 + "/events"
-        self.init(.POST, URLExtension: URLExtension, parameters: nil, encoding: .JSON)
+    convenience init(calendarEntry: CalendarEntry) {
+        self.init(.PUT)
         
-        startDate = calendarTimeFrame.0?.startDate
-        endDate = calendarTimeFrame.0?.endDate
+        calendarID = calendarEntry.calendarID
+        
+        let event = calendarEntry.event
+        
+        summary = event.summary ?? ""
+        startDate = event.start
+        endDate = event.end
+        
+        let emails = event.attendees?.filter { $0.email != nil }.map { $0.email! }
+        if var emails = emails {
+            addAttendees(emails)
+        }
+        
+        updateCalendarAsAttendee(nil, new: calendarID)
     }
     
-    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .URL) {
+    convenience init(calendarTimeFrame: CalendarTimeFrame, summary: String = "") {
+        self.init(.POST)
+        
+        self.summary = summary
+        calendarID = calendarTimeFrame.1
+        
+        startDate = calendarTimeFrame.0.startDate
+        endDate = calendarTimeFrame.0.endDate
+        
+        updateCalendarAsAttendee(nil, new: calendarID)
+    }
+    
+    required init(_ HTTPMethod: Alamofire.Method, URLExtension: String = BookingQuery.URLExtension, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .JSON) {
+
+        calendarID = ""
+        
         super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters, encoding: encoding)
+        
         timeZone = NSTimeZone.localTimeZone().name
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        addLoggedUserAsAttendee()
     }
     
     // MARK: Parameters
+    
+    var calendarID: String {
+        willSet { updateCalendarAsAttendee(calendarID, new: newValue) }
+    }
+    
+    var allDay: Bool {
+        get { return isAllDay() }
+        set {
+            if newValue {
+                setAllDay(startDate ?? NSDate())
+            } else {
+                cancelAllDay()
+            }
+        }
+    }
     
     var summary: String {
         get { return self[SummaryKey] as? String ?? "" }
@@ -51,15 +102,54 @@ class BookingQuery: Query {
         }
     }
     
-    // MARK: Private keys
+    var status: EventStatus {
+        get {
+            if let status = self[StatusKey] as? String {
+                return EventStatus(rawValue: status) ?? .Confirmed
+            }
+            return .Confirmed
+        }
+        set { self[StatusKey] = newValue.rawValue }
+    }
     
-    private let TimeZoneKey = "timeZone"
-    private let SummaryKey = "summary"
+    // MARK: Attendees
+    
+    func addAttendees(emails: [String]) {
+        for email in emails {
+            addAttendee(email)
+        }
+    }
+    
+    func addAttendee(email: String) {
+        addAttendeesByDictionary([EmailKey : email])
+    }
+    
+    func setAttendees(emails: [String]) {
+        attendees = []
+        for email in emails {
+            attendees.append([EmailKey : email])
+        }
+        self[AttendeesKey] = attendees
+    }
+    
+    func removeAttendee(email: String) {
+        removeOccurencesOfElement(attendees, [EmailKey: email])
+        self[AttendeesKey] = attendees
+    }
+    
+    // MARK: Private keys
+
+    private let AttendeesKey = "attendees"
     private let DateKey = "date"
     private let DateTimeKey = "dateTime"
-    private let StartKey = "start"
+    private let EmailKey = "email"
     private let EndKey = "end"
-    
+    private let ResponseStatusKey = "responseStatus"
+    private let StartKey = "start"
+    private let StatusKey = "status"
+    private let SummaryKey = "summary"
+    private let TimeZoneKey = "timeZone"
+
     // MARK: Private functions
     
     private func dateForKey(key: String) -> NSDate? {
@@ -94,5 +184,81 @@ class BookingQuery: Query {
             return timeZone
         }
         return NSTimeZone.localTimeZone().name
+    }
+    
+    private func addAttendeesByDictionary(attendeeDict: [String: String]) {
+        attendees.append(attendeeDict)
+        self[AttendeesKey] = attendees
+    }
+    
+    private func addLoggedUserAsAttendee() {
+        if let user = UserPersistenceStore.sharedStore.user {
+            addAttendeesByDictionary([
+                EmailKey: user.email,
+                ResponseStatusKey: "accepted"
+            ])
+        }
+    }
+    
+    private func updateCalendarAsAttendee(old: String?, new: String) {
+        if let old = old { removeAttendee(old) }
+        addAttendeesByDictionary([
+            EmailKey: new,
+            ResponseStatusKey: "accepted"
+        ])
+    }
+    
+    private func isAllDay() -> Bool {
+        var result = false
+        
+        if var startDict = self[StartKey] as? [String: AnyObject] {
+            result = startDict[DateKey] != nil && startDict[DateTimeKey] == nil
+        }
+        
+        if var endDict = self[EndKey] as? [String: AnyObject] where result {
+            result = endDict[DateKey] != nil && endDict[DateTimeKey] == nil
+        }
+        
+        return result
+    }
+    
+    private func setAllDay(date: NSDate) {
+        let start = date.midnight
+        let end = date.tomorrow.midnight.seconds - 1
+        
+        let startString = dateFormatter.stringFromDate(start)
+        let endString = dateFormatter.stringFromDate(end)
+        
+        if var startDict = self[StartKey] as? [String: AnyObject] {
+            startDict[DateKey] = startString
+            startDict.removeValueForKey(DateTimeKey)
+        } else {
+            self[StartKey] = [
+                DateKey: startString,
+                TimeZoneKey: timeZone
+            ]
+        }
+        
+        if var endDict = self[EndKey] as? [String: AnyObject] {
+            endDict[DateKey] = endString
+            endDict.removeValueForKey(DateTimeKey)
+        } else {
+            self[EndKey] = [
+                DateKey: endString,
+                TimeZoneKey: timeZone
+            ]
+        }
+    }
+    
+    private func cancelAllDay() {
+        if var startDict = self[StartKey] as? [String: AnyObject], let startDate = startDate {
+            startDict[DateTimeKey] = dateFormatter.stringFromDate(startDate)
+            startDict.removeValueForKey(DateTimeKey)
+        }
+        
+        if var endDict = self[EndKey] as? [String: AnyObject], let endDate = endDate {
+            endDict[DateTimeKey] = dateFormatter.stringFromDate(endDate)
+            endDict.removeValueForKey(DateTimeKey)
+        }
     }
 }
