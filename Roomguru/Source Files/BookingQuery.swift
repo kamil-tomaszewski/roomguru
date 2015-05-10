@@ -133,7 +133,7 @@ class BookingQuery: Query {
     }
     
     func removeAttendee(email: String) {
-        removeOccurencesOfElement(attendees, [EmailKey: email])
+        attendees = attendees.filter { $0[self.EmailKey] != email }
         self[AttendeesKey] = attendees
     }
     
