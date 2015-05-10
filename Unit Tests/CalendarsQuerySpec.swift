@@ -9,27 +9,27 @@
 import Nimble
 import Quick
 
-import SwiftyJSON
+import Alamofire
 
 class CalendarsQuerySpec: QuickSpec {
     
     override func spec(){
         
-        var sut: CalendarsQuery?
+        var testQuery: CalendarsQuery!
+        let mockQuery = MockQuery(HTTPMethod: "GET", URLExtension: "/users/me/calendarList", parameterEncoding: "URL")
         
         describe("when initializing") {
+            testQuery = CalendarsQuery()
             
-            beforeEach {
-                sut = CalendarsQuery()
+            itBehavesLike("queryable") {
+                [
+                    "testQuery": testQuery,
+                    "mockQuery": mockQuery,
+                ]
             }
             
-            afterEach {
-                sut = nil
-            }
-            
-            it("should have proper URL extension") {
-                let URLExtension = "/users/me/calendarList"
-                expect(sut!.URLExtension).to(equal(URLExtension))
+            it("should have proper parameters") {
+                expect(testQuery.parameters).to(beNil())
             }
         }
     }

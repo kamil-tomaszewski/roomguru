@@ -131,15 +131,16 @@ extension EventsListViewController: UITableViewDataSource {
 extension EventsListViewController {
     
     func revokeEventAtIndexPath(indexPath: NSIndexPath) {
-        if let event = viewModel?.eventAtIndex(indexPath) {
+        if let eventID = viewModel?.eventAtIndex(indexPath)?.identifier, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
             
             PKHUD.sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
             PKHUD.sharedHUD.dimsBackground = false
             PKHUD.sharedHUD.contentView.backgroundColor = .rgb(243, 166, 62)
             PKHUD.sharedHUD.show()
            
-            BookingManager.revokeEvent(event) { (success, error) in
+            BookingManager.revokeEvent(eventID, userEmail: userEmail) { (success, error) in
             
+                
                 PKHUD.sharedHUD.hide()
                 
                 if let error = error {

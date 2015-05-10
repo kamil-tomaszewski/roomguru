@@ -144,6 +144,7 @@
 		5EFE00FB1ADE97DA0083FB8E /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */; };
 		5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
 		741485D61AF0ED40008A38CD /* RevocableEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741485D51AF0ED40008A38CD /* RevocableEventCell.swift */; };
+		741699BD1AFFDED300F42474 /* QueryableSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */; };
 		74433FB61AFB56DC00B7ED50 /* CalendarsQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */; };
 		74433FB71AFB56DC00B7ED50 /* RevokeQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */; };
 		74433FB91AFB573600B7ED50 /* CalendarsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA23741AF0BEA200446712 /* CalendarsQuery.swift */; };
@@ -373,6 +374,7 @@
 		5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchViewController.swift; path = "Roomguru/Source Files/LaunchViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
 		741485D51AF0ED40008A38CD /* RevocableEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevocableEventCell.swift; path = "Roomguru/Source Files/RevocableEventCell.swift"; sourceTree = SOURCE_ROOT; };
+		741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryableSharedExample.swift; sourceTree = "<group>"; };
 		74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeQuerySpec.swift; sourceTree = "<group>"; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
@@ -915,6 +917,7 @@
 			children = (
 				74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */,
 				74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */,
+				741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */,
 			);
 			name = "Queries Tests";
 			sourceTree = "<group>";
@@ -1476,6 +1479,7 @@
 				BFF5D16A1AF8E84600C40B76 /* NSDataTestExtensions.swift in Sources */,
 				BF7E2FA91AF7C4A800A51A0F /* GroupedListViewModel.swift in Sources */,
 				5E0618F51AEA357B00006F61 /* UserPersistenceStoreSpec.swift in Sources */,
+				741699BD1AFFDED300F42474 /* QueryableSharedExample.swift in Sources */,
 				5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */,
 				5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */,
 				5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */,

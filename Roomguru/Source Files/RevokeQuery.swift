@@ -11,14 +11,8 @@ import Alamofire
 
 class RevokeQuery: Query {
     
-    convenience init(_ event: Event) {
-        
-        var URLExtension = ""
-
-        if let eventID = event.identifier as String?, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
-            URLExtension = "/calendars/" + userEmail + "/events/" + eventID
-        }
-        
+    convenience init(eventID: String, userEmail: String) {
+        var URLExtension = "/calendars/" + userEmail + "/events/" + eventID
         self.init(.DELETE, URLExtension: URLExtension)
     }
 
