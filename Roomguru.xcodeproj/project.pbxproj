@@ -145,11 +145,14 @@
 		5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
 		741485D61AF0ED40008A38CD /* RevocableEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741485D51AF0ED40008A38CD /* RevocableEventCell.swift */; };
 		741699BD1AFFDED300F42474 /* QueryableSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */; };
+		743821431B00F9E200AEC354 /* EventsQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743821421B00F9E200AEC354 /* EventsQuerySpec.swift */; };
 		74433FB61AFB56DC00B7ED50 /* CalendarsQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */; };
 		74433FB71AFB56DC00B7ED50 /* RevokeQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */; };
 		74433FB91AFB573600B7ED50 /* CalendarsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA23741AF0BEA200446712 /* CalendarsQuery.swift */; };
 		74433FBA1AFB574200B7ED50 /* RevokeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8459981ACBDE38004965EC /* RevokeQuery.swift */; };
 		74433FBB1AFB574E00B7ED50 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
+		74851CC41B00FAB700228483 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
+		74851CC51B00FAC300228483 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD21AC093A00020DFC4 /* Pageable.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */; };
 		7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */; };
@@ -375,6 +378,7 @@
 		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
 		741485D51AF0ED40008A38CD /* RevocableEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevocableEventCell.swift; path = "Roomguru/Source Files/RevocableEventCell.swift"; sourceTree = SOURCE_ROOT; };
 		741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryableSharedExample.swift; sourceTree = "<group>"; };
+		743821421B00F9E200AEC354 /* EventsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeQuerySpec.swift; sourceTree = "<group>"; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
@@ -915,6 +919,7 @@
 		74433FB81AFB56EB00B7ED50 /* Queries Tests */ = {
 			isa = PBXGroup;
 			children = (
+				743821421B00F9E200AEC354 /* EventsQuerySpec.swift */,
 				74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */,
 				74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */,
 				741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */,
@@ -1447,6 +1452,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74851CC51B00FAC300228483 /* Pageable.swift in Sources */,
+				74851CC41B00FAB700228483 /* EventsQuery.swift in Sources */,
 				74433FBB1AFB574E00B7ED50 /* Queryable.swift in Sources */,
 				74433FBA1AFB574200B7ED50 /* RevokeQuery.swift in Sources */,
 				74433FB91AFB573600B7ED50 /* CalendarsQuery.swift in Sources */,
@@ -1485,6 +1492,7 @@
 				5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */,
 				74433FB61AFB56DC00B7ED50 /* CalendarsQuerySpec.swift in Sources */,
 				5EB3A09D1AEA707600DB0585 /* EventDetailsViewModelSpec.swift in Sources */,
+				743821431B00F9E200AEC354 /* EventsQuerySpec.swift in Sources */,
 				5EB3A09F1AEA71D700DB0585 /* Attendee.swift in Sources */,
 				5EF4C7C51AEE3B5E0050201A /* SettingsStoreSpec.swift in Sources */,
 				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
