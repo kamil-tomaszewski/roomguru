@@ -37,15 +37,18 @@ class BookingConfirmationView: UIView {
 extension BookingConfirmationView {
     
     func markErrorOnSummaryTextField() {
-        summaryTextField.leftViewMode = .Always
-        summaryTextField.clearButtonMode = .WhileEditing
-        summaryTextField.leftInset = 30
+        updateAccessoryLabelWithFontAwesome(.ExclamationCircle, color: .ngRedColor())
     }
     
     func removeErrorFromSummaryTextField() {
-        summaryTextField.leftViewMode = .Never
-        summaryTextField.clearButtonMode = .Never
-        summaryTextField.leftInset = 5
+        updateAccessoryLabelWithFontAwesome(.CheckCircle, color: .ngGreenColor())
+    }
+    
+    private func updateAccessoryLabelWithFontAwesome(fontAwesome: FontAwesome, color: UIColor) {
+        if let label = summaryTextField.leftView as? UILabel {
+            label.text = .fontAwesomeIconWithName(fontAwesome)
+            label.textColor = color
+        }
     }
 }
 
@@ -55,6 +58,7 @@ private extension BookingConfirmationView {
         backgroundColor = .whiteColor()
         
         summaryTextField.leftView = UILabel.roundedExclamationMarkLabel(CGRectMake(0, 0, 30, 30))
+        summaryTextField.leftViewMode = .Always
         markErrorOnSummaryTextField()
         
         configureButtonsAppearance()
@@ -158,5 +162,6 @@ private extension BookingConfirmationView {
     func configureTextFieldAppearance() {
         summaryTextField.placeholder = NSLocalizedString("Summary (min. 5 characters)", comment: "")
         summaryTextField.borderStyle = .RoundedRect
+        summaryTextField.leftInset = 30
     }
 }
