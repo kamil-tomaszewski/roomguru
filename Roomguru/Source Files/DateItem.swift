@@ -19,6 +19,8 @@ class DateItem: GroupItem {
     var validation: DateValidationBlock?
     var onValueChanged: DateBlock?
     
+    var shouldBeSelected = true
+    
     init(title: String, date: NSDate = NSDate()) {
         self.date = date
         
@@ -28,7 +30,6 @@ class DateItem: GroupItem {
         super.init(title: title, category: .Date)
     }
     
-    private var _validationError: NSError?
     private let dateFormatter = NSDateFormatter()
 }
 
@@ -48,8 +49,8 @@ extension DateItem: Testable {
     var valueToValidate: AnyObject { get { return date } }
     
     var validationError: NSError? {
-        get { return _validationError }
-        set { _validationError = newValue }
+        get { return validate(valueToValidate) }
+        set {}
     }
     
     func validate(object: AnyObject) -> NSError? {

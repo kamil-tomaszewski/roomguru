@@ -232,6 +232,7 @@ class BookingQuery: Query {
         if var startDict = self[StartKey] as? [String: AnyObject] {
             startDict[DateKey] = startString
             startDict.removeValueForKey(DateTimeKey)
+            self[StartKey] = startDict
         } else {
             self[StartKey] = [
                 DateKey: startString,
@@ -242,6 +243,7 @@ class BookingQuery: Query {
         if var endDict = self[EndKey] as? [String: AnyObject] {
             endDict[DateKey] = endString
             endDict.removeValueForKey(DateTimeKey)
+            self[EndKey] = endDict
         } else {
             self[EndKey] = [
                 DateKey: endString,
@@ -251,14 +253,12 @@ class BookingQuery: Query {
     }
     
     private func cancelAllDay() {
-        if var startDict = self[StartKey] as? [String: AnyObject], let startDate = startDate {
-            startDict[DateTimeKey] = dateFormatter.stringFromDate(startDate)
-            startDict.removeValueForKey(DateTimeKey)
+        if var startDict = self[StartKey] as? [String: AnyObject] {
+            startDict.removeValueForKey(DateKey)
         }
         
-        if var endDict = self[EndKey] as? [String: AnyObject], let endDate = endDate {
-            endDict[DateTimeKey] = dateFormatter.stringFromDate(endDate)
-            endDict.removeValueForKey(DateTimeKey)
+        if var endDict = self[EndKey] as? [String: AnyObject] {
+            endDict.removeValueForKey(DateKey)
         }
     }
 }

@@ -14,6 +14,7 @@ class TextItem: GroupItem {
     var onValueChanged: StringBlock?
     var validation: StringValidationBlock?
     var text: String
+    var shouldBeFirstResponder = false
     
     init(title: String = "", placeholder: String, text: String = "") {
         self.placeholder = placeholder
@@ -22,9 +23,34 @@ class TextItem: GroupItem {
     }
 }
 
-extension TextItem: UITextFieldDelegate {
+// MARK: Binding
 
+extension TextItem {
+    
+    func bindTextField(textField: UITextField) {
+        textField.addTarget(self, action: "textFieldDidChangeText:", forControlEvents: UIControlEvents.EditingChanged)
+        textField.delegate = self
+    }
+    
+    func unbindTextField(textField: UITextField) {
+        textField.delegate = nil
+        textField.removeTarget(self, action: "textFieldDidChangeText:", forControlEvents: UIControlEvents.EditingChanged)
+    }
+    
+    func textFieldDidChangeText(textField: UITextField) {
+        text = textField.text
+        onValueChanged?(string: text)
+    }
+}
+
+extension TextItem: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        shouldBeFirstResponder = true
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        shouldBeFirstResponder = false
         textField.resignFirstResponder()
         return true
     }

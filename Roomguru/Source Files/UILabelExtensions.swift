@@ -13,12 +13,16 @@ import UIKit
 extension UILabel {
     
     class func roundedExclamationMarkLabel(frame: CGRect) -> UILabel {
-        let leftViewLabel = UILabel(frame: frame)
-        leftViewLabel.font = .fontAwesomeOfSize(18)
-        leftViewLabel.text = .fontAwesomeIconWithName(.ExclamationCircle)
-        leftViewLabel.textColor = .ngRedColor()
-        leftViewLabel.textAlignment = .Center
-        return leftViewLabel
+        return fontAwesomeLabelWithFrame(frame, fontSize: 18, fontAwesome: .ExclamationCircle, color: UIColor.ngRedColor())
+    }
+    
+    class func fontAwesomeLabelWithFrame(frame: CGRect, fontSize size: CGFloat, fontAwesome: FontAwesome, color: UIColor) -> UILabel {
+        let label = UILabel(frame: frame)
+        label.font = .fontAwesomeOfSize(size)
+        label.text = .fontAwesomeIconWithName(fontAwesome)
+        label.textColor = color
+        label.textAlignment = .Center
+        return label
     }
     
     class func fontAwesomeLabel() -> UILabel {

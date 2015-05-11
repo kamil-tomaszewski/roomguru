@@ -49,7 +49,6 @@ class EditEventViewController: UIViewController {
 extension EditEventViewController: ModelUpdatable {
     
     func didChangeItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
-        self.view.endEditing(true)
         aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
     }
         
@@ -145,8 +144,8 @@ extension EditEventViewController: UITableViewDataSource {
 extension EditEventViewController: UITableViewDelegate {
         
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowIfSelectedAnimated(true)
         viewModel.handleSelectionAtIndexPath(indexPath)
+        tableView.deselectRowIfSelectedAnimated(true)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -156,6 +155,12 @@ extension EditEventViewController: UITableViewDelegate {
             item.bindDatePicker(cell.datePicker)
         } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
             item.bindSwitchControl(cell.switchControl)
+        } else if let item = item as? TextItem, cell = cell as? TextFieldCell {
+            item.bindTextField(cell.textField)
+            
+            if item.shouldBeFirstResponder {
+                cell.textField.becomeFirstResponder()
+            }
         }
     }
     
@@ -170,6 +175,8 @@ extension EditEventViewController: UITableViewDelegate {
                 item.unbindDatePicker(cell.datePicker)
             } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
                 item.unbindSwitchControl(cell.switchControl)
+            } else if let item = item as? TextItem, cell = cell as? TextFieldCell {
+                item.unbindTextField(cell.textField)
             }
         }
     }
@@ -203,7 +210,6 @@ extension EditEventViewController {
 private extension EditEventViewController {
     
     func configureTextFieldCell(cell: TextFieldCell, forItem item: TextItem) {
-        cell.textField.delegate = item
         cell.textField.placeholder = item.placeholder
         cell.validationError = item.validationError
         cell.textField.text = item.text
@@ -211,7 +217,6 @@ private extension EditEventViewController {
     }
     
     func configureSwitchCell(cell: SwitchCell, forItem item: SwitchItem) {
-        item.bindSwitchControl(cell.switchControl)
         cell.textLabel?.text = item.title
         cell.selectionStyle = .None
     }
@@ -220,6 +225,7 @@ private extension EditEventViewController {
         cell.textLabel?.text = item.title
         cell.setSelectedLabelColor(item.selected)
         cell.setDateText(item.dateString, withValidationError: item.validationError)
+        cell.shouldBeSelected = item.shouldBeSelected
     }
     
     func configureTextViewCell(cell: TextViewCell, forItem item: LongTextItem) {
@@ -236,6 +242,7 @@ private extension EditEventViewController {
         cell.textLabel?.text = item.title
         cell.detailLabel.text = item.detailDescription
         cell.accessoryType = .DisclosureIndicator
+        cell.isRequired = item is Testable
     }
     
     func configureRightDetailTextCell(cell: RightDetailTextCell, forItem item: ResultActionItem) {

@@ -15,19 +15,22 @@ class RightDetailTextCell: UITableViewCell, Reusable {
         return "TableViewRightDetailTextCellReuseIdentifier"
     }
     
+    var isRequired = false {
+        didSet {
+            invalidateIndentation()
+            leftAccessoryLabel.hidden = !isRequired
+        }
+    }
     let detailLabel = UILabel()
     
     private var leftAccessoryLabel = UILabel()
     
     var validationError: NSError? {
         didSet {
-            if validationError != nil {
-                leftAccessoryLabel.hidden = false
-                indentationLevel = 3
-            } else {
-                leftAccessoryLabel.hidden = true
-                indentationLevel = 0
-            }
+            let isError = validationError != nil
+            let fontAwesome: FontAwesome = isError ? .ExclamationCircle : .CheckCircle
+            leftAccessoryLabel.textColor = isError ? .ngRedColor() : .ngGreenColor()
+            leftAccessoryLabel.text = .fontAwesomeIconWithName(fontAwesome)
         }
     }
     
@@ -51,12 +54,13 @@ private extension RightDetailTextCell {
         contentView.addSubview(leftAccessoryLabel)
         
         defineConstraints()
+        invalidateIndentation()
     }
     
     func defineConstraints() {
         
         layout(detailLabel) { detail in
-            detail.right == detail.superview!.right - 35
+            detail.right == detail.superview!.right
             detail.width == CGRectGetWidth(self.frame) * 0.6
             detail.centerY == detail.superview!.centerY
         }
@@ -70,8 +74,12 @@ private extension RightDetailTextCell {
     }
     
     func accessoryLabel() -> UILabel {
-        let accessoryViewLabel = UILabel.roundedExclamationMarkLabel(CGRectMake(0, 0, 30, 30))
-        accessoryViewLabel.hidden = true
-        return accessoryViewLabel
+        let label = UILabel.roundedExclamationMarkLabel(CGRectMake(0, 0, 30, 30))
+        label.hidden = true
+        return label
+    }
+    
+    func invalidateIndentation() {
+        indentationLevel = isRequired ? 3 : 0
     }
 }

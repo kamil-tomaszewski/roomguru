@@ -95,13 +95,29 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             }
         }
 
-        allDayItem.onValueChanged = { state in
-            let date = startDateItem.date
-            self.eventQuery.allDay = state
-            startDateItem.date = date.midnight
-            endDateItem.date = date.tomorrow.midnight.seconds - 1
-            if let indexPaths = self.indexPathsForItems([startDateItem, endDateItem] as [GroupItem]) {
-                self.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+        allDayItem.onValueChanged = { [weak self] state in
+            
+            self?.eventQuery.allDay = state
+            var date: NSDate!
+            
+            if state {
+                date = startDateItem.date
+                startDateItem.date = date.midnight.second(59).date
+                endDateItem.date = date.tomorrow.midnight.seconds - 1
+            } else {
+                date = NSDate().minutes + 1
+                startDateItem.date = date
+                endDateItem.date = date.minutes + 30
+                
+                self?.eventQuery.startDate = startDateItem.date
+                self?.eventQuery.endDate = endDateItem.date
+            }
+            
+            startDateItem.shouldBeSelected = !state
+            endDateItem.shouldBeSelected = !state
+            
+            if let indexPaths = self?.indexPathsForItems([startDateItem, endDateItem] as [GroupItem]) {
+                self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
             }
         }
         
@@ -118,6 +134,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 }
             }
         }
+        
         endDateItem.onValueChanged = { [weak self] date in
             if let query = self?.eventQuery where !query.allDay {
                 query.endDate = date
@@ -176,7 +193,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         }
         
         endDateItem.validation = { date in
-            if date < startDateItem.date {
+            if date <= startDateItem.date {
                 let message = NSLocalizedString("Cannot pick date earlier than", comment: "") + " " + startDateItem.dateString
                 return NSError(message: message)
             }
@@ -212,6 +229,10 @@ extension EditEventViewModel {
     
     private func handleSelectionOfDateItem(item: DateItem, atIndexPath indexPath: NSIndexPath) {
             
+        if eventQuery.allDay {
+            return
+        }
+        
         var dateItems: [DateItem] = []
         let collapseIndexPaths = indexPathsForItemOfType(DatePickerItem.self)
         

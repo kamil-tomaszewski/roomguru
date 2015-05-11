@@ -16,6 +16,12 @@ class DateCell: UITableViewCell, Reusable {
     }
     
     let dateLabel = UILabel()
+    var shouldBeSelected = true {
+        didSet {
+            let color: UIColor = shouldBeSelected ? .blackColor() : .lightGrayColor()
+            dateLabel.textColor = color
+        }
+    }
     
     private var textAttributes = [NSObject: AnyObject]()
     
@@ -32,7 +38,7 @@ class DateCell: UITableViewCell, Reusable {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected {
+        if selected && shouldBeSelected {
             toggleLabelColor()
         }
     }

@@ -11,6 +11,8 @@ import Cartography
 
 class TextFieldCell: UITableViewCell, Reusable {
     
+    private static var accessoryViewFrame = CGRectMake(0, 0, 30, 30)
+    
     class func reuseIdentifier() -> String {
         return "TableViewTextFieldCellReuseIdentifier"
     }
@@ -18,15 +20,10 @@ class TextFieldCell: UITableViewCell, Reusable {
     let textField = TextField()
     var validationError: NSError? {
         didSet {
-            if validationError != nil {
-                textField.leftViewMode = .Always
-                textField.clearButtonMode = .WhileEditing
-                textField.leftInset = 30
-            } else {
-                textField.leftViewMode = .Never
-                textField.clearButtonMode = .Never
-                textField.leftInset = 5
-            }
+            let isError = (validationError != nil)
+            let fontAwesome: FontAwesome = isError ? .ExclamationCircle : .CheckCircle
+            let color: UIColor = isError ? .ngRedColor() : .ngGreenColor()
+            updateAccessoryLabelWithFontAwesome(fontAwesome, color: color)
         }
     }
     
@@ -51,20 +48,22 @@ private extension TextFieldCell {
     }
     
     func configureTextField(textField: TextField) {
-        textField.leftView = UILabel.roundedExclamationMarkLabel(CGRectMake(0, 0, 30, 30))
+        textField.leftView = accessoryLabel()
         textField.leftViewMode = .Always
         textField.clearButtonMode = .Never
         textField.tintColor = .ngOrangeColor()
+        textField.leftInset = 30
     }
     
-    func leftViewForTextField() -> UIView {
-        let leftViewFrame = CGRectMake(0, 0, 30, 30)
-        let leftViewLabel = UILabel(frame: leftViewFrame)
-        leftViewLabel.font = UIFont.fontAwesomeOfSize(18)
-        leftViewLabel.text = String.fontAwesomeIconWithName(.ExclamationCircle)
-        leftViewLabel.textColor = UIColor.ngRedColor()
-        leftViewLabel.textAlignment = .Center
-        return leftViewLabel
+    func accessoryLabel() -> UILabel {
+        return UILabel.roundedExclamationMarkLabel(TextFieldCell.accessoryViewFrame)
+    }
+    
+    func updateAccessoryLabelWithFontAwesome(fontAwesome: FontAwesome, color: UIColor) {
+        if let label = textField.leftView as? UILabel {
+            label.text = .fontAwesomeIconWithName(fontAwesome)
+            label.textColor = color
+        }
     }
     
     func defineConstraints() {
