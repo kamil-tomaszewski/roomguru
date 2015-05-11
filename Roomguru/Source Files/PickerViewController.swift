@@ -21,6 +21,7 @@ protocol PickerViewControllerDelegate {
 class PickerViewController: UIViewController {
     
     var delegate: TableViewConfigurable?
+    var shouldPopAfterSelection = true
     
     private var aView = UIBaseTableView()
     private var viewModel = ListViewModel<PickerItem>([PickerItem]())
@@ -90,6 +91,10 @@ extension PickerViewController: UITableViewDelegate {
             item.selected = true
             onSelectionBlock(item: item)
             tableView.reloadData()
+        }
+        
+        if shouldPopAfterSelection {
+            navigationController?.popViewControllerAnimated(true)
         }
     }
 }
