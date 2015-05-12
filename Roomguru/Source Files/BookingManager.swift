@@ -22,8 +22,8 @@ class BookingManager: NSObject {
             
             var calendars: [AvailabilityCalendar] = []
             
-            if let _calendarsFreeBusyDictionary = response?["calendars"].dictionaryValue {
-                for calendar in _calendarsFreeBusyDictionary {
+            if let calendarsFreeBusyDictionary = response?["calendars"].dictionaryValue {
+                for calendar in calendarsFreeBusyDictionary {
                     
                     let calendarJSON: [String : JSON] = calendar.1.dictionaryValue
                     
@@ -33,7 +33,7 @@ class BookingManager: NSObject {
                 }
                 
                 if calendars.isEmpty {
-                    calendars.append(AvailabilityCalendar(calendarID: _calendarsFreeBusyDictionary.keys.first as String!, timeFrames: []))
+                    calendars.append(AvailabilityCalendar(calendarID: calendarsFreeBusyDictionary.keys.first as String!, timeFrames: []))
                 }
                 
             } else {

@@ -193,6 +193,9 @@
 		BF3B25A21ADD467400242859 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A11ADD467400242859 /* EditEventViewModel.swift */; };
 		BF3B25A41ADD610700242859 /* EventQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A31ADD610700242859 /* EventQuery.swift */; };
 		BF3CAD611AEE3D2200B1F684 /* ResultActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */; };
+		BF49CC591B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */; };
+		BF49CC5B1B00F2F500ACAEC1 /* MaskingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49CC5A1B00F2F500ACAEC1 /* MaskingViewController.swift */; };
+		BF49CC5D1B00F5F300ACAEC1 /* MaskingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49CC5C1B00F5F300ACAEC1 /* MaskingView.swift */; };
 		BF4C0D211AE299B50040BDBF /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */; };
 		BF4C0D231AE29B730040BDBF /* DatePickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */; };
 		BF4F2DF41ADBEE3600834B60 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */; };
@@ -424,6 +427,9 @@
 		BF3B25A11ADD467400242859 /* EditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewModel.swift; path = "Roomguru/Source Files/EditEventViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		BF3B25A31ADD610700242859 /* EventQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventQuery.swift; path = "Roomguru/Source Files/EventQuery.swift"; sourceTree = SOURCE_ROOT; };
 		BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultActionItem.swift; path = "Roomguru/Source Files/ResultActionItem.swift"; sourceTree = SOURCE_ROOT; };
+		BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertViewTransitionDelegate.swift; path = "Roomguru/Source Files/AlertViewTransitionDelegate.swift"; sourceTree = SOURCE_ROOT; };
+		BF49CC5A1B00F2F500ACAEC1 /* MaskingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskingViewController.swift; path = "Roomguru/Source Files/MaskingViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BF49CC5C1B00F5F300ACAEC1 /* MaskingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskingView.swift; path = "Roomguru/Source Files/MaskingView.swift"; sourceTree = SOURCE_ROOT; };
 		BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerCell.swift; path = "Roomguru/Source Files/DatePickerCell.swift"; sourceTree = SOURCE_ROOT; };
 		BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerItem.swift; path = "Roomguru/Source Files/DatePickerItem.swift"; sourceTree = SOURCE_ROOT; };
 		BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewController.swift; path = "Roomguru/Source Files/EditEventViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -592,6 +598,7 @@
 		5E0720061AB6D90D009C270E /* Controllers' Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF49CC5C1B00F5F300ACAEC1 /* MaskingView.swift */,
 				5E15F1391AD804CF00E1F8BC /* LaunchView.swift */,
 				5E7A9E491AB04DB30042E16F /* LoginView.swift */,
 				5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */,
@@ -849,6 +856,7 @@
 				BF2755D61AC1B30F00A41786 /* FreeEvent.swift */,
 				BF0A9E4D1AD540290088ED79 /* User.swift */,
 				BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */,
+				BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */,
 			);
 			name = "Object & Models";
 			sourceTree = "<group>";
@@ -872,6 +880,7 @@
 				5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */,
 				BF26E73A1ABAC95000B12244 /* EventsListViewController.swift */,
 				5E746FE01AF049170049131F /* WeekCarouselViewController.swift */,
+				BF49CC5A1B00F2F500ACAEC1 /* MaskingViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1383,6 +1392,7 @@
 				BFE5660C1AE13C7200B935BF /* SwitchItem.swift in Sources */,
 				BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */,
 				5E569DD21AF01C42009F8EC0 /* EventsViewController.swift in Sources */,
+				BF49CC591B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift in Sources */,
 				BF7A9A2F1AE8D4ED00ACF014 /* PickerItemCell.swift in Sources */,
 				BF2755D71AC1B30F00A41786 /* FreeEvent.swift in Sources */,
 				5EFE00FB1ADE97DA0083FB8E /* LaunchViewController.swift in Sources */,
@@ -1393,6 +1403,7 @@
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */,
 				BF3B25A21ADD467400242859 /* EditEventViewModel.swift in Sources */,
+				BF49CC5B1B00F2F500ACAEC1 /* MaskingViewController.swift in Sources */,
 				5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */,
 				5EA452D81B020A1D006CA0FA /* MyEventsListCoordinator.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
@@ -1412,6 +1423,7 @@
 				741485D61AF0ED40008A38CD /* RevocableEventCell.swift in Sources */,
 				BF5134301AEE548F00456839 /* KeyboardPresenceHandler.swift in Sources */,
 				5EF4C7C31AEE34690050201A /* SettingsViewModel.swift in Sources */,
+				BF49CC5D1B00F5F300ACAEC1 /* MaskingView.swift in Sources */,
 				BF4C0D231AE29B730040BDBF /* DatePickerItem.swift in Sources */,
 				5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */,
 				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,

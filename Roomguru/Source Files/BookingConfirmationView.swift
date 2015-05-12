@@ -81,15 +81,15 @@ private extension BookingConfirmationView {
     func defineConstraints() {
         
         layout(confirmButton, cancelButton) { confirm, cancel in
-            confirm.left == confirm.superview!.left + 20
-            confirm.bottom == confirm.superview!.bottom - 20
+            confirm.left == confirm.superview!.left + 10
+            confirm.bottom == confirm.superview!.bottom - 10
             
-            cancel.right == confirm.superview!.right - 20
-            cancel.bottom == confirm.superview!.bottom - 20
+            cancel.right == confirm.superview!.right - 10
+            cancel.bottom == confirm.superview!.bottom - 10
             
-            confirm.right == cancel.left - 20
+            confirm.right == cancel.left - 10
             
-            confirm.height == 50
+            confirm.height == 40
             confirm.width == cancel.width
             cancel.height == confirm.height
         }
@@ -119,24 +119,25 @@ private extension BookingConfirmationView {
         }
         
         layout(summaryTextField) { textField in
-            textField.top == textField.superview!.top + 84
-            textField.left == textField.superview!.left + 20
-            textField.right == textField.superview!.right - 20
+            textField.top == textField.superview!.top + 54
+            textField.left == textField.superview!.left + 10
+            textField.right == textField.superview!.right - 10
             textField.height == 30
             return
         }
     }
     
     func configureButtonsAppearance() {
-        setupButton(&lessMinutesButton, withTitle: NSLocalizedString("<", comment: ""))
-        setupButton(&moreMinutesButton, withTitle: NSLocalizedString(">", comment: ""))
+        setupButton(&lessMinutesButton, withFontAwesome: .ArrowLeft)
+        setupButton(&moreMinutesButton, withFontAwesome: .ArrowRight)
         
         setupRoundButton(&confirmButton, withTitle: NSLocalizedString("Book", comment: ""), color: .ngOrangeColor())
         setupRoundButton(&cancelButton, withTitle: NSLocalizedString("Cancel", comment: ""), color: .ngOrangeColor())
     }
     
-    func setupButton(inout button: UIButton, withTitle title: String) {
-        button.setTitle(title)
+    func setupButton(inout button: UIButton, withFontAwesome fontAwesome: FontAwesome) {
+        button.titleLabel?.font = .fontAwesomeOfSize(16)
+        button.setTitle(String.fontAwesomeIconWithName(fontAwesome))
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
 
