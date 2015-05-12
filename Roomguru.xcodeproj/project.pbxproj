@@ -153,6 +153,12 @@
 		74433FBB1AFB574E00B7ED50 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
 		74851CC41B00FAB700228483 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
 		74851CC51B00FAC300228483 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD21AC093A00020DFC4 /* Pageable.swift */; };
+		74F309C31B01F15100EB5D5D /* EventQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F309C21B01F15100EB5D5D /* EventQuerySpec.swift */; };
+		74F309C41B01F1AD00EB5D5D /* EventQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A31ADD610700242859 /* EventQuery.swift */; };
+		74F309C51B01F1FE00EB5D5D /* BookingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26B27A1AC58E3000F95DD3 /* BookingQuery.swift */; };
+		74F309C61B01F24200EB5D5D /* CalendarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF84599A1ACBE328004965EC /* CalendarEntry.swift */; };
+		74F309C81B01F2F400EB5D5D /* AvailabilityCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */; };
+		74F309C91B01F30900EB5D5D /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */; };
 		76E969DD61F6B2F95773D3E0 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B91D6E71AC004440080DD91 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */; };
 		7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */; };
@@ -381,6 +387,7 @@
 		743821421B00F9E200AEC354 /* EventsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeQuerySpec.swift; sourceTree = "<group>"; };
+		74F309C21B01F15100EB5D5D /* EventQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventQuerySpec.swift; sourceTree = "<group>"; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFrame.swift; path = "Roomguru/Source Files/TimeFrame.swift"; sourceTree = SOURCE_ROOT; };
@@ -923,6 +930,7 @@
 				74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */,
 				74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */,
 				741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */,
+				74F309C21B01F15100EB5D5D /* EventQuerySpec.swift */,
 			);
 			name = "Queries Tests";
 			sourceTree = "<group>";
@@ -1452,6 +1460,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74F309C91B01F30900EB5D5D /* TimeFrame.swift in Sources */,
+				74F309C81B01F2F400EB5D5D /* AvailabilityCalendar.swift in Sources */,
+				74F309C61B01F24200EB5D5D /* CalendarEntry.swift in Sources */,
+				74F309C51B01F1FE00EB5D5D /* BookingQuery.swift in Sources */,
+				74F309C41B01F1AD00EB5D5D /* EventQuery.swift in Sources */,
 				74851CC51B00FAC300228483 /* Pageable.swift in Sources */,
 				74851CC41B00FAB700228483 /* EventsQuery.swift in Sources */,
 				74433FBB1AFB574E00B7ED50 /* Queryable.swift in Sources */,
@@ -1470,6 +1483,7 @@
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
 				5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */,
 				5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */,
+				74F309C31B01F15100EB5D5D /* EventQuerySpec.swift in Sources */,
 				BFC4CC981AF9F2A30070007B /* AttendeeSpec.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
 				BFC4CC9A1AFA01450070007B /* JSONKeyValueSharedExample.swift in Sources */,
