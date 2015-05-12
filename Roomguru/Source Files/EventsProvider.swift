@@ -10,20 +10,33 @@ import Foundation
 import DateKit
 import Async
 
+private enum FilterType {
+    case Active, ActiveWhereUserIsAttendeeOrCreator
+}
+
 class EventsProvider {
     
-    private var timeRange: TimeRange!
-    var calendarIDs: [String] = []
-
-    func calendarEntriesForTimeRange(timeRange: TimeRange, completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
+    private let timeRange: TimeRange
+    private var filterType: FilterType!
+    
+    let calendarIDs: [String]
+    
+    init(calendarIDs: [String], timeRange: TimeRange) {
+        self.timeRange = timeRange
+        self.calendarIDs = calendarIDs
+    }
+    
+    func activeCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
         
-        entriesWithCalendarIDs(calendarIDs, timeRange: timeRange, revocable: false) { [weak self] (result, error) in
+        filterType = .Active
+        
+        entriesWithCalendarIDs(calendarIDs, timeRange: timeRange) { (result, error) in
             
             var calendarEntriesToReturn: [CalendarEntry] = []
             
             Async.background {
                 if let activeEvents = result {
-                    calendarEntriesToReturn = FreeEventsProvider.fillActiveEventsWithFreeEvents(activeEvents, inTimeRange: timeRange)
+                    calendarEntriesToReturn = FreeEventsProvider.fillActiveEventsWithFreeEvents(activeEvents, inTimeRange: self.timeRange)
                 }
             }.main {
                 completion(calendarEntries: calendarEntriesToReturn, error: error)
@@ -31,9 +44,11 @@ class EventsProvider {
         }
     }
     
-    func revocableCalendarEntriesForTimeRange(timeRange: TimeRange, completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
+    func userActiveCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
         
-        entriesWithCalendarIDs(calendarIDs, timeRange: timeRange, revocable: true) { (result, error) in
+        filterType = .ActiveWhereUserIsAttendeeOrCreator
+        
+        entriesWithCalendarIDs(calendarIDs, timeRange: timeRange) { (result, error) in
             
             var calendarEntriesToReturn: [CalendarEntry] = []
 
@@ -50,14 +65,13 @@ class EventsProvider {
 
 private extension EventsProvider {
     
-    func entriesWithCalendarIDs(calendarIDs: [String], timeRange: TimeRange, revocable: Bool, completion: (result: [CalendarEntry]?, error: NSError?) -> Void) {
+    func entriesWithCalendarIDs(calendarIDs: [String], timeRange: TimeRange, completion: (result: [CalendarEntry]?, error: NSError?) -> Void) {
         
-        self.timeRange = timeRange
         let queries: [PageableQuery] = EventsQuery.queriesForCalendarIdentifiers(calendarIDs, withTimeRange: timeRange)
         
         NetworkManager.sharedInstance.chainedRequest(queries, construct: { (query, response: [Event]?) -> [CalendarEntry] in
             
-            return self.constructChainedRequestWithQuery(query, response: response, revocable: revocable)
+            return self.constructChainedRequestWithQuery(query, response: response)
             
             }, success: { [weak self] (result: [CalendarEntry]?) in
                 completion(result: result, error: nil)
@@ -67,16 +81,17 @@ private extension EventsProvider {
         })
     }
     
-    func constructChainedRequestWithQuery(query: PageableQuery, response: [Event]?, revocable: Bool) -> [CalendarEntry] {
+    func constructChainedRequestWithQuery(query: PageableQuery, response: [Event]?) -> [CalendarEntry] {
         
         if let query = query as? EventsQuery, response = response {
             var events: [Event] = []
             
-            if revocable {
-                events = self.onlyActiveEventsWhereUserIsAttendee(response)
-            } else {
+            if filterType == .Active {
                 events = self.onlyActiveEvents(response)
+            } else {
+                events = self.onlyActiveEventsWhereUserIsAttendee(response)
             }
+
             return CalendarEntry.caledarEntries(query.calendarID, events: events)
         }
         return []
@@ -84,11 +99,6 @@ private extension EventsProvider {
     
     func onlyActiveEvents(events: [Event]) -> [Event] {
         return events.filter{ !$0.isCanceled() }
-    }
-    
-    func onlyCreatedByUserActiveEvents(events: [Event]) -> [Event] {
-        let userEmail = UserPersistenceStore.sharedStore.user?.email
-        return onlyActiveEvents(events).filter { $0.creator?.email == userEmail }
     }
     
     func onlyActiveEventsWhereUserIsAttendee(events: [Event]) -> [Event] {

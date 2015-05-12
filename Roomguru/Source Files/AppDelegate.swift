@@ -90,11 +90,13 @@ private extension AppDelegate {
                 let didUserSelectCalendars = !CalendarPersistenceStore.sharedStore.calendars.isEmpty
                 if didUserSelectCalendars {
                     fade(.Out, launchViewController?.view) {
+                        launchViewController?.view.removeFromSuperview()
                         launchViewController = nil
                     }
                 } else {
                     tabBarController.presentCalendarPickerViewController(false) {
                         fade(.Out, launchViewController?.view) {
+                            launchViewController?.view.removeFromSuperview()
                             launchViewController = nil
                         }
                     }
@@ -102,6 +104,7 @@ private extension AppDelegate {
             } else {
                 tabBarController.presentLoginViewController(false, error: error) {
                     fade(.Out, launchViewController?.view) {
+                        launchViewController?.view.removeFromSuperview()
                         launchViewController = nil
                     }
                 }

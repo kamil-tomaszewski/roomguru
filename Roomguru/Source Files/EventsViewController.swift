@@ -9,21 +9,13 @@
 import UIKit
 import AKPickerView_Swift
 
-enum DisplayMode {
-    case Revocable, Browsable
-}
-
-// NGRTodo: Implementation of Revocable EventsViewController behaviour is needed
-
-class EventsViewController: UIViewController {
+class EventsViewController: UIViewController, EventsPageViewControllerDelegate {
     
     private weak var aView: EventsView?
-    private var mode = DisplayMode.Browsable
     private var selectedCalendarID: String?
     
-    init(mode: DisplayMode) {
+    required init() {
         super.init(nibName: nil, bundle: nil)
-        self.mode = mode
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -52,7 +44,7 @@ class EventsViewController: UIViewController {
         pageViewController.showEventListWithDate(NSDate(), animated: false)
         aView?.eventsPageView = pageViewController.view
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("userDidChangePersistentCalendars"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
+        registerNotifications()
     
         if CalendarPersistenceStore.sharedStore.rooms().isEmpty {
             aView?.showPlaceholderView(true)
@@ -65,9 +57,7 @@ class EventsViewController: UIViewController {
         removeContainerController(WeekCarouselViewController.self)
         removeContainerController(EventsPageViewController.self)
         
-        if let pickerView = navigationItem.titleView {
-            NSNotificationCenter.defaultCenter().removeObserver(pickerView)
-        }
+        registerNotifications(false)
     }
     
     func userDidChangePersistentCalendars() {
@@ -83,6 +73,35 @@ class EventsViewController: UIViewController {
         recreatePickerView()
         reloadEventList()
     }
+    
+    func registerNotifications(_ register: Bool = true) {
+        
+        if register {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("userDidChangePersistentCalendars"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
+        } else {
+            NSNotificationCenter.defaultCenter().removeObserver(self)
+        }
+    }
+    
+    func reloadEventList() {
+        if let eventsPageViewController = containerControllersOfType(EventsPageViewController.self).first {
+            let date = eventsPageViewController.currentlyDisplayingDay
+            eventsPageViewController.showEventListWithDate(date, animated: false)
+        }
+    }
+    
+    // MARK: EventsPageViewControllerDelegate //declaration from extension cannot be ovveride yet.
+    
+    func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate) {
+        if let weekCarouselController = containerControllersOfType(WeekCarouselViewController.self).first {
+            weekCarouselController.scrollToSelectedDate(date, animated: true)
+        }
+    }
+    
+    func eventsListCoordinatorForDate(date: NSDate) -> EventsListCoordinator {
+        let calendarIDs = (selectedCalendarID != nil) ? [selectedCalendarID!] : []
+        return EventsListCoordinator(date: date, calendarIDs: calendarIDs)
+    }
 }
 
 extension EventsViewController: WeekCarouselViewControllerDelegate {
@@ -94,48 +113,14 @@ extension EventsViewController: WeekCarouselViewControllerDelegate {
     }
 }
 
-extension EventsViewController: EventsPageViewControllerDelegate {
-    
-    func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate) {
-        if let weekCarouselController = containerControllersOfType(WeekCarouselViewController.self).first {
-            weekCarouselController.scrollToSelectedDate(date, animated: true)
-        }
-    }
-    
-    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String]? {
-        switch mode {
-        case .Browsable:
-            if let selectedCalendarID = selectedCalendarID {
-                return [selectedCalendarID]
-            }
-            return nil
-        case .Revocable:
-            return CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }
-        }
-    }
-    
-    func shouldEventsPageViewControllerAllowToRevokeEvents(controller: EventsPageViewController) -> Bool {
-        return mode == .Revocable
-    }
-}
-
 extension EventsViewController: AKPickerViewDataSource {
     
     func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
-        if mode == .Revocable {
-            return 1
-        } else {
-            return CalendarPersistenceStore.sharedStore.calendars.count
-        }
+        return CalendarPersistenceStore.sharedStore.calendars.count
     }
 
     func pickerView(pickerView: AKPickerView, titleForItem item: Int) -> String {
-        
-        if mode == .Revocable {
-            return NSLocalizedString("All rooms", comment: "")
-        } else {
-            return CalendarPersistenceStore.sharedStore.rooms()[item].name
-        }
+        return CalendarPersistenceStore.sharedStore.rooms()[item].name
     }
 }
 
@@ -158,12 +143,5 @@ private extension EventsViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         navigationItem.titleView = pickerView
-    }
-    
-    func reloadEventList() {
-        if let eventsPageViewController = containerControllersOfType(EventsPageViewController.self).first {
-            let date = eventsPageViewController.currentlyDisplayingDay
-            eventsPageViewController.showEventListWithDate(date, animated: false)
-        }
     }
 }

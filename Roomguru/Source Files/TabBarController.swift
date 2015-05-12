@@ -68,9 +68,8 @@ class TabBarController: UITabBarController {
     private func setupEmbeddedViewControllers() {
         
         viewControllers = [
-            NavigationController(rootViewController: DashboardViewController()),
-            NavigationController(rootViewController: EventsViewController(mode: .Browsable)),
-            NavigationController(rootViewController: EventsViewController(mode: .Revocable)),
+            NavigationController(rootViewController: MyEventsViewController()),
+            NavigationController(rootViewController: EventsViewController()),
             NavigationController(rootViewController: SettingsViewController())
         ]
         
@@ -83,9 +82,8 @@ class TabBarController: UITabBarController {
             viewController.title = title
         }
         
-        setTitleForControllerAtIndex(0, NSLocalizedString("Dashboard", comment: ""))
+        setTitleForControllerAtIndex(0, NSLocalizedString("My Events", comment: ""))
         setTitleForControllerAtIndex(1, NSLocalizedString("Events", comment: ""))
-        setTitleForControllerAtIndex(2, NSLocalizedString("Revoke", comment: ""))
-        setTitleForControllerAtIndex(3, NSLocalizedString("Settings", comment: ""))
+        setTitleForControllerAtIndex(2, NSLocalizedString("Settings", comment: ""))
     }
 }

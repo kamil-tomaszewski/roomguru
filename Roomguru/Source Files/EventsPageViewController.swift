@@ -11,15 +11,14 @@ import UIKit
 protocol EventsPageViewControllerDelegate {
     
     func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate)
-    func calendarIdentifiersToShowByEventsPageViewController(controller: EventsPageViewController) -> [String]?
-    func shouldEventsPageViewControllerAllowToRevokeEvents(controller: EventsPageViewController) -> Bool
+    func eventsListCoordinatorForDate(date: NSDate) -> EventsListCoordinator
 }
 
 class EventsPageViewController: UIPageViewController {
     
-    var currentlyDisplayingDay: NSDate { get { return (viewControllers.first as? EventsListViewController)?.date ?? NSDate() }}
+    var currentlyDisplayingDay: NSDate { get { return (viewControllers.first as? EventsListViewController)?.coordinator.date ?? NSDate() }}
     
-    private var eventsDelegate: EventsPageViewControllerDelegate?
+    private var eventsDelegate: EventsPageViewControllerDelegate!
 
     required init(delegate: EventsPageViewControllerDelegate) {
         self.eventsDelegate = delegate
@@ -40,7 +39,7 @@ class EventsPageViewController: UIPageViewController {
     func showEventListWithDate(date: NSDate, animated: Bool) {
         let direction = scollDirectionBasedOnDate(date)
         setViewControllers([
-            EventsListViewController(date: date, calendarIDs: calendarIDs(), revocable: shouldAllowToRevokeEvents())
+            EventsListViewController(coordinator: eventsDelegate.eventsListCoordinatorForDate(date))
         ], direction: direction, animated: animated, completion: nil)
     }
 }
@@ -54,7 +53,7 @@ extension EventsPageViewController: UIPageViewControllerDelegate {
         }
         
         if let eventsViewController = pageViewController.viewControllers.first as? EventsListViewController {
-            eventsDelegate?.eventsPageViewController(self, didScrollToDate: eventsViewController.date)
+            eventsDelegate?.eventsPageViewController(self, didScrollToDate: eventsViewController.coordinator.date)
         }
     }
 }
@@ -64,8 +63,8 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         if let eventsViewController = viewController as? EventsListViewController {
-            var date = eventsViewController.date--
-            return EventsListViewController(date: date, calendarIDs: calendarIDs(), revocable: shouldAllowToRevokeEvents())
+            var date = eventsViewController.coordinator.date--
+            return EventsListViewController(coordinator: eventsDelegate.eventsListCoordinatorForDate(date))
         }
         return nil
     }
@@ -73,8 +72,8 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         if let eventsViewController = viewController as? EventsListViewController {
-            var date = eventsViewController.date++
-            return EventsListViewController(date: date, calendarIDs: calendarIDs(), revocable: shouldAllowToRevokeEvents())
+            var date = eventsViewController.coordinator.date++
+            return EventsListViewController(coordinator: eventsDelegate.eventsListCoordinatorForDate(date))
         }
         return nil
     }
@@ -82,19 +81,11 @@ extension EventsPageViewController: UIPageViewControllerDataSource {
 
 private extension EventsPageViewController {
     
-    func calendarIDs() -> [String] {
-        return eventsDelegate?.calendarIdentifiersToShowByEventsPageViewController(self) ?? []
-    }
-    
     func scollDirectionBasedOnDate(date: NSDate) -> UIPageViewControllerNavigationDirection {
         
         if let eventsViewController = viewControllers.first as? EventsListViewController {
-            return eventsViewController.date < date ? .Forward : .Reverse
+            return eventsViewController.coordinator.date < date ? .Forward : .Reverse
         }
         return .Forward
-    }
-    
-    func shouldAllowToRevokeEvents() -> Bool {
-        return eventsDelegate?.shouldEventsPageViewControllerAllowToRevokeEvents(self) ?? false
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.swift
+//  MyEventsViewController.swift
 //  Roomguru
 //
 //  Created by Patryk Kaczmarek on 11.03.2015.
@@ -7,30 +7,46 @@
 //
 
 import UIKit
+import AKPickerView_Swift
 
-// NGRTodo: should be replaced by MyEventsViewController
-
-class DashboardViewController: UIViewController {
-
-    private weak var aView: DashboardView?
+class MyEventsViewController: EventsViewController {
     
-    // MARK: View life cycle
-
-    override func loadView() {
-        aView = loadViewWithClass(DashboardView.self)
+    required init() {
+        super.init()
     }
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerNotifications(false)
+        title = NSLocalizedString("My Events", comment: "")
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("didTapPlusButton:"))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Book First", comment: ""), style: .Plain, target: self, action: Selector("didTapBookRoomButton:"))
+    }
+
+    override func eventsListCoordinatorForDate(date: NSDate) -> EventsListCoordinator {
+        
+        let calendarIDs = CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }
+        return MyEventsListCoordinator(date: date, calendarIDs: calendarIDs)
+    }
+    
+    override func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
+        return 1
+    }
+    
+    override func pickerView(pickerView: AKPickerView, titleForItem item: Int) -> String {
+        return NSLocalizedString("All rooms", comment: "")
     }
 }
 
 // MARK: Actions
 
-extension DashboardViewController {
+extension MyEventsViewController {
  
     func didTapBookRoomButton(sender: UIButton) {
         
@@ -59,7 +75,7 @@ extension DashboardViewController {
 
 // MARK: Private Methods
 
-private extension DashboardViewController {
+private extension MyEventsViewController {
     
     func bookingConfirmationViewControllerWithCalendarTime(calendarTime: CalendarTimeFrame) -> BookingConfirmationViewController {
         
@@ -69,7 +85,8 @@ private extension DashboardViewController {
                 
                 let message = NSLocalizedString("Booked room", comment: "") + " from " + event.startTime + " to " + event.endTime
                 UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
-                self.aView?.tableView.reloadData()
+
+                self.reloadEventList()
                 
             }, failure: { (error: NSError) in
                 UIAlertView(error: error).show()

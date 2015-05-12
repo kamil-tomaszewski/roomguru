@@ -32,9 +32,12 @@ class EventsListView: UIBaseTableView {
         }
     }
     
-    func showPlaceholder(show: Bool = true, withIcon icon: FontAwesome = .CalendarO, text: String) {
+    func showPlaceholder(show: Bool, withIcon icon: FontAwesome?, text: String) {
+        tableView.hidden = show
         placeholderView.hidden = !show
-        placeholderView.placeholderIconLabel.text = String.fontAwesomeIconWithName(icon)
         placeholderView.infoLabel.text = text
+        if let icon = icon {
+            placeholderView.placeholderIconLabel.text = String.fontAwesomeIconWithName(icon)
+        }
     }
 }

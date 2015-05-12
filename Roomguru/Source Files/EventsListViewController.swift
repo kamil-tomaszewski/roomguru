@@ -11,25 +11,22 @@ import PKHUD
 
 class EventsListViewController: UIViewController {
     
-    private(set) var date = NSDate()
-
-    private let eventsProvider = EventsProvider()
     private weak var aView: EventsListView?
-    private var viewModel: EventsListViewModel<CalendarEntry>?
-    private var revocable = false
+    private(set) var coordinator: EventsListCoordinator
 
-    convenience init(date: NSDate, calendarIDs: [String], revocable: Bool) {
+    convenience init(coordinator: EventsListCoordinator) {
         self.init()
-        self.revocable = revocable
-        self.date = date
-        eventsProvider.calendarIDs = calendarIDs
+        self.coordinator = coordinator
+        
     }
     
     init() {
+        self.coordinator = EventsListCoordinator(date: NSDate(), calendarIDs: [])
         super.init(nibName:nil,bundle:nil)
     }
     
     required init(coder aDecoder: NSCoder) {
+        self.coordinator = EventsListCoordinator(date: NSDate(), calendarIDs: [])
         super.init(coder: aDecoder)
     }
     
@@ -51,6 +48,20 @@ class EventsListViewController: UIViewController {
             self.aView?.tableView.deselectRowIfSelectedAnimated(true)
         }
     }
+    
+    func loadData() {
+        coordinator.loadDataWithCompletion { [weak self] (status, message, icon) in
+            
+            switch status {
+            case .Failed, .Empty:
+                self?.aView?.showPlaceholder(true, withIcon: icon, text: message)
+            case .Success:
+                self?.aView?.tableView.reloadData()
+                self?.scrollToNowAnimated(false)
+                fade(.In, self?.aView?.tableView, duration: 0.5) { }
+            }
+        }
+    }
 }
 
 // MARK: UITableViewDelegate
@@ -59,12 +70,12 @@ extension EventsListViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let event = viewModel?.eventAtIndex(indexPath)
+        let event = coordinator.viewModel?.eventAtIndex(indexPath)
         
         if let freeEvent = event as? FreeEvent {
 
-            viewModel?.selectOrDeselectFreeEventAtIndexPath(indexPath)
-            var indexPaths = viewModel?.indexPathsToReload() ?? []
+            coordinator.viewModel?.selectOrDeselectFreeEventAtIndexPath(indexPath)
+            var indexPaths = coordinator.viewModel?.indexPathsToReload() ?? []
             indexPaths.append(indexPath)
             aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
 
@@ -75,7 +86,7 @@ extension EventsListViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return viewModel?.isSelectableIndex(indexPath) ?? true
+        return coordinator.viewModel?.isSelectableIndex(indexPath) ?? true
     }
 }
 
@@ -84,16 +95,16 @@ extension EventsListViewController: UITableViewDelegate {
 extension EventsListViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return viewModel?.sectionsCount() ?? 0
+        return coordinator.viewModel?.sectionsCount() ?? 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?[section].count ?? 0
+        return coordinator.viewModel?[section].count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let event = viewModel?.eventAtIndex(indexPath)
+        let event = coordinator.viewModel?.eventAtIndex(indexPath)
         let cell = dequeueCellForEvent(event!, inTableView: tableView)
         
         let now = NSDate()
@@ -112,11 +123,11 @@ extension EventsListViewController: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return (viewModel?.eventAtIndex(indexPath) is FreeEvent) ? 44 : 60
+        return (coordinator.viewModel?.eventAtIndex(indexPath) is FreeEvent) ? 44 : 60
     }
     
     func dequeueCellForEvent(event: Event, inTableView tableView: UITableView) -> EventCell {
-        if revocable {
+        if coordinator.revocable() {
             return tableView.dequeueReusableCell(RevocableEventCell.self)
         } else if let freeEvent = event as? FreeEvent {
             return tableView.dequeueReusableCell(FreeEventCell.self)
@@ -131,23 +142,21 @@ extension EventsListViewController: UITableViewDataSource {
 extension EventsListViewController {
     
     func revokeEventAtIndexPath(indexPath: NSIndexPath) {
-        if let eventID = viewModel?.eventAtIndex(indexPath)?.identifier, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
+        if let eventID = coordinator.viewModel?.eventAtIndex(indexPath)?.identifier, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
             
             PKHUD.sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
             PKHUD.sharedHUD.dimsBackground = false
-            PKHUD.sharedHUD.contentView.backgroundColor = .rgb(243, 166, 62)
             PKHUD.sharedHUD.show()
            
             BookingManager.revokeEvent(eventID, userEmail: userEmail) { (success, error) in
             
-                
                 PKHUD.sharedHUD.hide()
                 
                 if let error = error {
                     UIAlertView(error: error).show()
                 } else {
-                    self.viewModel?.removeAtIndexPath(indexPath)
-                    self.aView?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                    self.coordinator.viewModel?.removeAtIndexPath(indexPath)
+                    self.aView?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Top)
                 }
             }
         }
@@ -156,9 +165,9 @@ extension EventsListViewController {
     // NGRTodo: attach book view controller:
     
     func didTapBookButton(sender: UIButton) {
-        if let timeRange = viewModel?.selectedTimeRangeToBook() {
+        if let timeRange = coordinator.viewModel?.selectedTimeRangeToBook() {
             println("min: \(timeRange.min), max: \(timeRange.max)")
-            println("selected calendar ID: \(eventsProvider.calendarIDs.first)")
+            println("selected calendar ID: \(coordinator.eventsProvider.calendarIDs.first)")
         }
     }
 }
@@ -188,7 +197,7 @@ private extension EventsListViewController {
         cell.timeMaxLabel.text = event.endTime
         cell.bookButton.addTarget(self, action: Selector("didTapBookButton:"))
         
-        if let tuple = viewModel?.isFreeEventSelectedAtIndex(indexPath) {
+        if let tuple = coordinator.viewModel?.isFreeEventSelectedAtIndex(indexPath) {
             cell.contentView.backgroundColor = tuple.selected ? .ngGreenColor() : .ngOrangeColor()
             cell.bookButton.hidden = !tuple.lastUserSelection
         }
@@ -207,6 +216,10 @@ private extension EventsListViewController {
         cell.revokeButtonHandler = { [weak self] in
             self?.revokeEventAtIndexPath(indexPath)
         }
+        
+        if let viewModel = coordinator.viewModel {
+            cell.revokeButton.hidden = !viewModel.isUserAllowedToRevokeEvent(event)
+        }
     }
     
     // MARK:
@@ -221,56 +234,15 @@ private extension EventsListViewController {
         aView?.tableView.registerClass(RevocableEventCell.self)
     }
     
-    func loadData() {
-        
-        if revocable {
-            
-            eventsProvider.revocableCalendarEntriesForTimeRange(date.dayTimeRange()) { [weak self] (calendarEntries, error) in
-                
-                if let error = error {
-                    self?.showErrorPlaceholder()
-                } else {
-                    self?.viewModel = EventsListViewModel(calendarEntries)
-                    self?.aView?.tableView.reloadData()
-                    self?.scrollToNowAnimated(false)
-                    fade(.In, self?.aView?.tableView, duration: 0.5) { }
-                }
-            }
-            
-        } else {
-            
-            eventsProvider.calendarEntriesForTimeRange(date.dayTimeRange()) { [weak self] (calendarEntries, error) in
-                
-                if let error = error {
-                    self?.showErrorPlaceholder()
-                    
-                } else if calendarEntries.isEmpty {
-                    self?.aView?.showPlaceholder(text: NSLocalizedString("Weekend day.\nGo away from your computer and relax!", comment: ""))
-                    
-                } else {
-                    self?.viewModel = EventsListViewModel(calendarEntries)
-                    self?.aView?.tableView.reloadData()
-                    self?.scrollToNowAnimated(false)
-                    fade(.In, self?.aView?.tableView, duration: 0.5) { }
-                }
-            }
-        }
-    }
-    
-    func showErrorPlaceholder() {
-        let text = NSLocalizedString("Sorry, something went wrong.\n\nA team of highly trained monkeys has been dispatched to deal with this situation.\n\nTo reload, tap on the room name located on the navigation bar.", comment: "")
-        aView?.showPlaceholder(withIcon: .MehO, text: text)
-    }
-    
     func scrollToNowAnimated(animated: Bool) {
         
         let now = NSDate()
         
-        if !date.isSameDayAs(now) {
+        if !coordinator.date.isSameDayAs(now) {
             return
         }
         
-        if let path = viewModel?.indexOfItemWithDate(now) {
+        if let path = coordinator.viewModel?.indexOfItemWithDate(now) {
             let indexPath = NSIndexPath(forRow: path.row, inSection: path.section)
             aView?.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: animated)
         }

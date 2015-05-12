@@ -11,7 +11,7 @@ import Cartography
 
 class RevocableEventCell: EventCell {
     
-    private let revokeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    let revokeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
     var revokeButtonHandler : VoidBlock?
     
     override class func reuseIdentifier() -> String {
