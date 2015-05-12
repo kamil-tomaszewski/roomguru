@@ -60,3 +60,10 @@ private extension QueryableSharedExample {
         }
     }
 }
+
+func queryDateFormatter() -> NSDateFormatter {
+    let formatter: NSDateFormatter = NSDateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    formatter.timeZone = NSTimeZone.localTimeZone()
+    return formatter
+}

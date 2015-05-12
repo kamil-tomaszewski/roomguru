@@ -19,13 +19,10 @@ class FreeBusyQuerySpec: QuickSpec {
         var testQuery: FreeBusyQuery!
         let mockQuery = MockQuery(HTTPMethod: "POST", URLExtension: "/freeBusy", parameterEncoding: "JSON")
         
-        let formatter: NSDateFormatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        formatter.timeZone = NSTimeZone.localTimeZone()
         let today = NSDate()
         
-        var fixtureTimeMin = formatter.stringFromDate(today)
-        var fixtureTimeMax = formatter.stringFromDate(today.days + 2)
+        var fixtureTimeMin = queryDateFormatter().stringFromDate(today)
+        var fixtureTimeMax = queryDateFormatter().stringFromDate(today.days + 2)
         let fixtureTimeZone = "Europe/Warsaw"
         let fixtureItems = fixtureCalendarIDs.map { ["id": $0] }
 
@@ -42,8 +39,7 @@ class FreeBusyQuerySpec: QuickSpec {
             }
             
             it("should have proper parameters") {
-                var testQueryParameters = testQuery.parameters!
-                expect(testQueryParameters).to(equal(mockQueryParameters))
+                expect(testQuery.parameters!).to(equal(mockQueryParameters))
             }
         }
     }

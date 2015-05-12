@@ -29,8 +29,7 @@ class EventQuerySpec: QuickSpec {
             }
             
             it("should have proper parameters") {
-                var testQueryParameters = testQuery.parameters!
-                expect(testQueryParameters).to(equal(mockQueryParameters))
+                expect(testQuery.parameters!).to(equal(mockQueryParameters))
             }
         }
     }

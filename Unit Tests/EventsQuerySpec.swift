@@ -21,6 +21,12 @@ class EventsQuerySpec: QuickSpec {
             let mockQuery = MockQuery(HTTPMethod: "GET", URLExtension: URLExtension, parameterEncoding: "URL")
             mockQueries.append(mockQuery)
         }
+        
+        var fixtureTimeMin = queryDateFormatter().stringFromDate(timeRange.min!)
+        var fixtureTimeMax = queryDateFormatter().stringFromDate(timeRange.max!)
+
+        var mockQueryParameters = [:]
+        mockQueryParameters = ["maxResults": 100, "orderBy" : "startTime", "singleEvents" : "true", "timeMax" : fixtureTimeMax, "timeMin" : fixtureTimeMin]
 
         describe ("when initializing single query with single calendar identifier") {
             let testQuery = EventsQuery(calendarID: fixtureCalendarIDs.first!, timeRange: timeRange)
@@ -41,7 +47,7 @@ class EventsQuerySpec: QuickSpec {
             }
             
             it("should have proper parameters") {
-                // NGRTodo: testing query paramaters needs to be implemented:
+                expect(testQuery.parameters!).to(equal(mockQueryParameters))
             }
         }
         
@@ -71,7 +77,7 @@ class EventsQuerySpec: QuickSpec {
                 }
                 
                 it("should have proper parameters") {
-                    // NGRTodo: testing query paramaters needs to be implemented
+                    expect(testQuery.parameters!).to(equal(mockQueryParameters))
                 }
             }
         }
