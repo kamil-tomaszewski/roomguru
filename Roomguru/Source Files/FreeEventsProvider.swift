@@ -19,7 +19,7 @@ class FreeEventsProvider {
         var referenceDate = timeRange.min!
         var index = 0
         
-        while referenceDate.isEarlierThan(timeRange.max!) {
+        while referenceDate < timeRange.max! {
 
             // there is no entry after reference date. Means all active entries has beed populated:
             if index == sortedEntries.count {

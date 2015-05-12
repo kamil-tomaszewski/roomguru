@@ -29,20 +29,11 @@ extension NSDate {
     }
     
     func isSameDayAs(date: NSDate) -> Bool {
-        return days == date.days && months == date.months && years == date.years
+        return compare(toDate: date).same
     }
     
     func isEarlierThanToday() -> Bool {
-        let today = NSDate()
-        return isEarlierThan(today)
-    }
-    
-    func isEarlierThan(date: NSDate) -> Bool {
-        return compare(date) == .OrderedAscending
-    }
-    
-    func isLaterThan(date: NSDate) -> Bool {
-        return compare(date) == .OrderedDescending
+        return self < NSDate()
     }
     
     func dayTimeRange() -> TimeRange {

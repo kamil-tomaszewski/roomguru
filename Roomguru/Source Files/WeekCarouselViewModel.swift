@@ -57,7 +57,7 @@ class WeekCarouselViewModel {
         var startDate = monday.days - 28
         let endDate = monday.days + 28
         
-        while startDate.isEarlierThan(endDate) {
+        while startDate < endDate {
             
             days.append(startDate)
             startDate = startDate.days + 1

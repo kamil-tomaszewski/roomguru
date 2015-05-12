@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DateKit
 
 class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
     
@@ -25,7 +26,7 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
         var pathToReturn: Path?
         
         itemize { (path: Path, item: CalendarEntry) in
-            if item.event.start.isEarlierThan(date) {
+            if item.event.start < date {
                 pathToReturn = path
             }
         }
