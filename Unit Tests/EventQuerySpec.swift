@@ -15,6 +15,8 @@ class EventQuerySpec: QuickSpec {
         
         var testQuery: EventQuery!
         let mockQuery = MockQuery(HTTPMethod: "POST", URLExtension: "/calendars/primary/events", parameterEncoding: "JSON")
+        var mockQueryParameters = [:]
+        mockQueryParameters = ["status" : "confirmed"]
         
         describe("when initializing") {
             testQuery = EventQuery()
@@ -27,7 +29,8 @@ class EventQuerySpec: QuickSpec {
             }
             
             it("should have proper parameters") {
-                // NGRTodo: testing query paramaters needs to be implemented
+                var testQueryParameters = testQuery.parameters!
+                expect(testQueryParameters).to(equal(mockQueryParameters))
             }
         }
     }
