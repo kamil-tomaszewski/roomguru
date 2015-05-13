@@ -8,14 +8,31 @@
 
 import Nimble
 import Quick
-
 import SwiftyJSON
-import DateKit
 
 class BookingQuerySpec: QuickSpec {
     
     let fixtureCalendarID = "FixtureCalendarID"
     let fixtureSummary = "FixtureSummary"
+    let fixtureEmailFirst = "FixtureEmail.1"
+    let fixtureEmailSecond = "FixtureEmail.2"
+    let fixtureEmailThird = "FixtureEmail.3"
+    
+    var fixtureStartDate: NSDate {
+        return NSDate(timeIntervalSince1970: 0)
+    }
+    
+    var fixtureEndDate: NSDate {
+        return NSDate(timeIntervalSince1970: 240)
+    }
+    
+    var fixtureEndDateAsString: String {
+        return queryDateFormatter().stringFromDate(fixtureEndDate)
+    }
+    
+    var fixtureStartDateAsString: String {
+        return queryDateFormatter().stringFromDate(fixtureStartDate)
+    }
     
     override func spec() {
         
@@ -23,6 +40,18 @@ class BookingQuerySpec: QuickSpec {
             
             var mockCalendarEntry = CalendarEntry(calendarID: self.fixtureCalendarID, event: self.mockedEvent())
             let mockQuery = MockQuery(HTTPMethod: "PUT", URLExtension: "/calendars/primary/events", parameterEncoding: "JSON")
+            var mockQueryParameters = [:]
+            
+            mockQueryParameters =
+                ["attendees":[
+                    ["email" : self.fixtureEmailFirst],
+                    ["email" : self.fixtureEmailSecond],
+                    ["email" : self.fixtureEmailThird],
+                    ["email" : self.fixtureCalendarID, "responseStatus" : "accepted"]],
+                "end" : ["dateTime":self.fixtureEndDateAsString, "timeZone" : "Europe/Warsaw"],
+                "start" : ["dateTime":self.fixtureStartDateAsString, "timeZone" : "Europe/Warsaw"],
+                "summary" : self.fixtureSummary]
+            
             let testQuery = BookingQuery(calendarEntry: mockCalendarEntry)
             
             itBehavesLike("queryable") {
@@ -33,19 +62,13 @@ class BookingQuerySpec: QuickSpec {
             }
             
             it("should have proper parameters") {
-               // NGRTodo: implement query parameters testing
+                expect(testQuery.parameters!).to(equal(mockQueryParameters))
             }
         }
         
         describe("when initializing with calendar time frame and summary") {
             
-            let startDate = NSDate(timeIntervalSince1970: 0)
-            let endDate = NSDate(timeIntervalSince1970: 240)
-        
-            let endDateAsString = queryDateFormatter().stringFromDate(endDate)
-            let startDateAsString = queryDateFormatter().stringFromDate(startDate)
-            
-            let timeFrame = TimeFrame(startDate: startDate, endDate: endDate, availability: .NotAvailable)
+            let timeFrame = TimeFrame(startDate: self.fixtureStartDate, endDate: self.fixtureEndDate, availability: .NotAvailable)
             let fixtureCalendarTimeFrame: CalendarTimeFrame = (timeFrame, self.fixtureCalendarID)
             
             let mockQuery = MockQuery(HTTPMethod: "POST", URLExtension: "/calendars/primary/events", parameterEncoding: "JSON")
@@ -55,10 +78,10 @@ class BookingQuerySpec: QuickSpec {
                     "email" : self.fixtureCalendarID,
                     "responseStatus" : "accepted" ]],
                 "end" : [
-                    "dateTime" : endDateAsString,
+                    "dateTime" : self.fixtureEndDateAsString,
                     "timeZone":"Europe/Warsaw"],
                 "start" : [
-                    "dateTime" : startDateAsString,
+                    "dateTime" : self.fixtureStartDateAsString,
                     "timeZone":"Europe/Warsaw"],
                 "summary" : self.fixtureSummary]
             
@@ -87,12 +110,12 @@ private extension BookingQuerySpec {
             "summary" : fixtureSummary,
             "status" : "confirmed",
             "htmlLink" : "",
-            "start" : ["dateTime" : "2015-04-24T01:00:00-07:00"],
-            "end" : ["dateTime" : "2015-04-24T01:30:00-07:00"],
+            "start" : ["dateTime" : self.fixtureStartDateAsString],
+            "end" : ["dateTime" : self.fixtureEndDateAsString],
             "attendees" : [
-                mockedAttendeeJSONWithName("FixtureName.1", email: "FixtureEmail.1", status: .Awaiting),
-                mockedAttendeeJSONWithName("FixtureName.2", email: "FixtureEmail.2", status: .Going),
-                mockedAttendeeJSONWithName("FixtureName.3", email: "FixtureEmail.3", status: .Maybe),
+                mockedAttendeeJSONWithName("FixtureName.1", email: fixtureEmailFirst, status: .Awaiting),
+                mockedAttendeeJSONWithName("FixtureName.2", email: fixtureEmailSecond, status: .Going),
+                mockedAttendeeJSONWithName("FixtureName.3", email: fixtureEmailThird, status: .Maybe),
                 mockedRoomJSONWithName("FixtureRoom.1", email: "FixtureRoomEmail.1"),
                 mockedRoomJSONWithName("FixtureRoom.2", email: "FixtureRoomEmail.2")
             ],
