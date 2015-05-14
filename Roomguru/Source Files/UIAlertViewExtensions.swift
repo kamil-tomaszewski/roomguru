@@ -24,8 +24,19 @@ extension UIAlertView {
 extension UIAlertView {
     
     class func alertViewForBookedEvent(event: Event, inRoomNamed name: String) -> UIAlertView {
-        let message = NSLocalizedString("Booked room", comment: "") + " " + name + " from " + event.startTime + " to " + event.endTime
+        
         let title = NSLocalizedString("Success", comment: "")
+        let ending = " from " + event.startTime + " to " + event.endTime
+        let declinedRooms = event.rooms?.filter { $0.status == Status.NotGoing }
+
+        var message: String!
+        
+        if declinedRooms?.count > 0 {
+            message = NSLocalizedString("Room", comment: "") + " " + name + NSLocalizedString("declined event", comment: "") + ending
+        } else {
+            message = NSLocalizedString("Booked room", comment: "") + " " + name + ending
+        }
+        
         return UIAlertView(title: title, message: message)
     }
 }
