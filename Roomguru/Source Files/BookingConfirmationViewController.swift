@@ -42,6 +42,11 @@ class BookingConfirmationViewController: UIViewController {
         connectActions()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        aView?.summaryTextField.becomeFirstResponder()
+    }
+    
     private func basicTitleView() -> BasicTitleView {
         let basicTitleView = BasicTitleView(frame: navigationController!.navigationBar.frame)
         basicTitleView.textLabel.text = viewModel.title
