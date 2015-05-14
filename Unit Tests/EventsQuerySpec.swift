@@ -22,8 +22,8 @@ class EventsQuerySpec: QuickSpec {
             mockQueries.append(mockQuery)
         }
         
-        var fixtureTimeMin = queryDateFormatter().stringFromDate(timeRange.min!)
-        var fixtureTimeMax = queryDateFormatter().stringFromDate(timeRange.max!)
+        var fixtureTimeMin = queryDateFormatter().stringFromDate(timeRange.min)
+        var fixtureTimeMax = queryDateFormatter().stringFromDate(timeRange.max)
 
         var mockQueryParameters = [:]
         mockQueryParameters = ["maxResults": 100, "orderBy" : "startTime", "singleEvents" : "true", "timeMax" : fixtureTimeMax, "timeMin" : fixtureTimeMin]
