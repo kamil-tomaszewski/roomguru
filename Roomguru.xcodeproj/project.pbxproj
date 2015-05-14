@@ -159,6 +159,7 @@
 		746F8B0C1B0340F7005E746A /* BookingQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8B0B1B0340F7005E746A /* BookingQuerySpec.swift */; };
 		74851CC41B00FAB700228483 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
 		74851CC51B00FAC300228483 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD21AC093A00020DFC4 /* Pageable.swift */; };
+		7497CF181B04B7100059B4DB /* QuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497CF171B04B7100059B4DB /* QuerySpec.swift */; };
 		74F309C31B01F15100EB5D5D /* EventQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F309C21B01F15100EB5D5D /* EventQuerySpec.swift */; };
 		74F309C41B01F1AD00EB5D5D /* EventQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A31ADD610700242859 /* EventQuery.swift */; };
 		74F309C51B01F1FE00EB5D5D /* BookingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26B27A1AC58E3000F95DD3 /* BookingQuery.swift */; };
@@ -401,6 +402,7 @@
 		744C9E781B0200A2000D9E5C /* FreeBusyQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeBusyQuerySpec.swift; sourceTree = "<group>"; };
 		746B1ED21B049C60009FB084 /* PageableQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageableQuerySpec.swift; sourceTree = "<group>"; };
 		746F8B0B1B0340F7005E746A /* BookingQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingQuerySpec.swift; sourceTree = "<group>"; };
+		7497CF171B04B7100059B4DB /* QuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuerySpec.swift; sourceTree = "<group>"; };
 		74F309C21B01F15100EB5D5D /* EventQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventQuerySpec.swift; sourceTree = "<group>"; };
 		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
@@ -956,6 +958,7 @@
 				744C9E781B0200A2000D9E5C /* FreeBusyQuerySpec.swift */,
 				746F8B0B1B0340F7005E746A /* BookingQuerySpec.swift */,
 				746B1ED21B049C60009FB084 /* PageableQuerySpec.swift */,
+				7497CF171B04B7100059B4DB /* QuerySpec.swift */,
 			);
 			name = "Queries Tests";
 			sourceTree = "<group>";
@@ -1546,6 +1549,7 @@
 				5EF4C7C81AEE40100050201A /* SettingsStore.swift in Sources */,
 				BFFB513A1AED87B30065F051 /* ListViewModelSpec.swift in Sources */,
 				BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */,
+				7497CF181B04B7100059B4DB /* QuerySpec.swift in Sources */,
 				746F8B0C1B0340F7005E746A /* BookingQuerySpec.swift in Sources */,
 				BF8867681AE93364009DA028 /* Listable.swift in Sources */,
 				5EA900F71AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift in Sources */,

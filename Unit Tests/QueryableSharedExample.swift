@@ -47,6 +47,10 @@ class QueryableSharedExample: QuickConfiguration {
                 var parameterEncodingAsString = self.stringForParameterEncoding(testQuery.encoding)
                 expect(parameterEncodingAsString).to(equal(mockQuery.parameterEncoding))
             }
+            
+            it("should have empty full path") {
+                expect(testQuery.fullPath).to(equal(""))
+            }
         }
     }
 }
