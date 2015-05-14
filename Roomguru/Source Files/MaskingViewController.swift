@@ -39,4 +39,10 @@ class MaskingViewController: UIViewController {
         aView.contentView.addSubview(contentViewController.view)
         contentViewController.didMoveToParentViewController(self)        
     }
+    
+    deinit {
+        contentViewController.willMoveToParentViewController(nil)
+        contentViewController.view.removeFromSuperview()
+        contentViewController.removeFromParentViewController()
+    }
 }
