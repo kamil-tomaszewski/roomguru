@@ -78,7 +78,21 @@ extension EditEventViewController: Presenter {
 extension EditEventViewController: KeyboardPresenceHandlerDelegate {
     
     func firstReponderForHandler(handler: KeyboardPresenceHandler) -> UIView? {
+        return findFirstResponder()
+    }
+    
+    func findFirstResponder() -> UIView? {
         return aView?.findFirstResponder()
+    }
+}
+
+// MARK: UIScrollViewDelegate
+
+extension EditEventViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        let actualResponder = findFirstResponder()
+        actualResponder?.resignFirstResponder()
     }
 }
 
