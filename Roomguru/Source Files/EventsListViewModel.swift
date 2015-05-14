@@ -100,7 +100,9 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
     }
     
     func isUserAllowedToRevokeEvent(event: Event) -> Bool {
-        return event.creator?.email == UserPersistenceStore.sharedStore.user?.email
+        let isCreator = event.creator?.email == UserPersistenceStore.sharedStore.user?.email
+        let doesEventEndLaterThanNow = NSDate() < event.end
+        return doesEventEndLaterThanNow && isCreator
     }
 }
 
