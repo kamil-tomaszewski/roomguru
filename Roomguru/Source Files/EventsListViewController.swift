@@ -176,10 +176,10 @@ extension EventsListViewController {
             let viewModel = BookingConfirmationViewModel(calendarTimeFrame: calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
                 
                 BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
-                        
-                    let message = NSLocalizedString("Booked room", comment: "") + " from " + event.startTime + " to " + event.endTime
-                    UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
-                        
+                    
+                    let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(actualCalendarTime.1)
+                    UIAlertView.alertViewForBookedEvent(event, inRoomNamed: roomName).show()
+                    
                     self.loadData()
                         
                 }, failure: { (error: NSError) in

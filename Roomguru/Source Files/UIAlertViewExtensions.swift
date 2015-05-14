@@ -18,3 +18,14 @@ extension UIAlertView {
         self.init(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
     }
 }
+
+// MARK: Factory methods
+
+extension UIAlertView {
+    
+    class func alertViewForBookedEvent(event: Event, inRoomNamed name: String) -> UIAlertView {
+        let message = NSLocalizedString("Booked room", comment: "") + " " + name + " from " + event.startTime + " to " + event.endTime
+        let title = NSLocalizedString("Success", comment: "")
+        return UIAlertView(title: title, message: message)
+    }
+}
