@@ -132,7 +132,7 @@ private extension BookingConfirmationView {
         setupButton(&moreMinutesButton, withFontAwesome: .ArrowRight)
         
         setupRoundButton(&confirmButton, withTitle: NSLocalizedString("Book", comment: ""), color: .ngOrangeColor())
-        setupRoundButton(&cancelButton, withTitle: NSLocalizedString("Cancel", comment: ""), color: .ngOrangeColor())
+        setupRoundButton(&cancelButton, withTitle: NSLocalizedString("Cancel", comment: ""), color: .ngRedColor())
     }
     
     func setupButton(inout button: UIButton, withFontAwesome fontAwesome: FontAwesome) {

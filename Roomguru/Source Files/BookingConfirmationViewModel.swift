@@ -19,7 +19,13 @@ class BookingConfirmationViewModel {
             let startDateString = timeFormatter.stringFromDate(startDate)
             let endDateString = timeFormatter.stringFromDate(endDate)
             let name = CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
-            return "Room " + name + " | " + startDateString + " - " + endDateString
+            return startDateString + " - " + endDateString
+        }
+    }
+    
+    var detailTitle: String {
+        get {
+            return CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
         }
     }
     

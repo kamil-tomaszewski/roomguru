@@ -34,10 +34,10 @@ class BasicTitleView: UIView {
     func defineConstraints() {
         
         layout(textLabel, detailTextLabel) { text, detail in
-            text.top == text.superview!.top
+            text.top == text.superview!.top + 7
             text.left == text.superview!.left
             text.right == text.superview!.right
-            text.height == 20
+            text.height == 16
             
             detail.top == text.bottom
             detail.left == detail.superview!.left

@@ -31,7 +31,7 @@ class BookingConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        navigationItem.title = viewModel.title
+        navigationItem.titleView = basicTitleView()
         
         aView?.moreMinutesButton.enabled = viewModel.canAddMinutes()
         aView?.summaryTextField.delegate = self
@@ -40,6 +40,13 @@ class BookingConfirmationViewController: UIViewController {
         updateViewForValidationResult(viewModel.isValid())
         updateActualBookingTimeLabel()
         connectActions()
+    }
+    
+    private func basicTitleView() -> BasicTitleView {
+        let basicTitleView = BasicTitleView(frame: navigationController!.navigationBar.frame)
+        basicTitleView.textLabel.text = viewModel.title
+        basicTitleView.detailTextLabel.text = viewModel.detailTitle
+        return basicTitleView
     }
 }
 
