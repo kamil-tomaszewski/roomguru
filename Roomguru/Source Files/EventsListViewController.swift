@@ -13,6 +13,7 @@ class EventsListViewController: UIViewController {
     
     private weak var aView: EventsListView?
     private(set) var coordinator: EventsListCoordinator
+    private let alertViewTransitionDelegate = AlertViewTransitionDelegate()
 
     convenience init(coordinator: EventsListCoordinator) {
         self.init()
@@ -165,7 +166,37 @@ extension EventsListViewController {
     // NGRTodo: attach book view controller:
     
     func didTapBookButton(sender: UIButton) {
-        if let timeRange = coordinator.viewModel?.selectedTimeRangeToBook() {
+        let timeRange = coordinator.viewModel?.selectedTimeRangeToBook()
+        
+        if let timeRange = timeRange, calendarID = coordinator.eventsProvider.calendarIDs.first {
+            
+            let timeFrame = TimeFrame(startDate: timeRange.min, endDate: timeRange.max, availability: .Available)
+            let calendarTime = (timeFrame, calendarID)
+            
+            let viewModel = BookingConfirmationViewModel(calendarTimeFrame: calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
+                
+                BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
+                        
+                    let message = NSLocalizedString("Booked room", comment: "") + " from " + event.startTime + " to " + event.endTime
+                    UIAlertView(title: NSLocalizedString("Success", comment: ""), message: message).show()
+                        
+                    self.loadData()
+                        
+                }, failure: { (error: NSError) in
+                    UIAlertView(error: error).show()
+                })
+            })
+                
+            let controller = BookingConfirmationViewController(viewModel: viewModel)
+            let navigationVC = NavigationController(rootViewController: controller)
+            let maskingVC = MaskingViewController(contentViewController: navigationVC)
+            maskingVC.modalPresentationStyle = .Custom
+            maskingVC.transitioningDelegate = alertViewTransitionDelegate
+            
+            presentViewController(maskingVC, animated: true) {
+                self.alertViewTransitionDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
+            }
+
             println("min: \(timeRange.min), max: \(timeRange.max)")
             println("selected calendar ID: \(coordinator.eventsProvider.calendarIDs.first)")
         }

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 // MARK: Types
 
-typealias TimeRange = (min: NSDate?, max: NSDate?)
+typealias TimeRange = (min: NSDate, max: NSDate)
 
 // MARK: - Closures
 

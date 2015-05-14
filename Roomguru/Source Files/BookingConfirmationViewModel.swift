@@ -43,25 +43,16 @@ class BookingConfirmationViewModel {
         calendarTime = calendarTimeFrame
         confirmation = onConfirmation
         actualBookingTime = calendarTimeFrame
-        
         configureFormatters()
-        setupActualBookingTime()
     }
     
     // MARK: Private
     
     private func configureFormatters() {
-        self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
-        self.timeFormatter.timeZone = NSTimeZone.localTimeZone()
-        self.dateFormatter.dateStyle = .ShortStyle
-        self.timeFormatter.timeStyle = .ShortStyle
-    }
-    
-    private func setupActualBookingTime() {
-        let today = NSDate()
-        let endDate = today.minutes.add(30).date
-        let timeFrame = TimeFrame(startDate: today, endDate: endDate, availability: .Available)
-        actualBookingTime = (timeFrame, calendarTime.1)
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        timeFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateStyle = .ShortStyle
+        timeFormatter.timeStyle = .ShortStyle
     }
 }
 
