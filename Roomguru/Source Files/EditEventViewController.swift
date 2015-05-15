@@ -91,6 +91,7 @@ extension EditEventViewController: KeyboardPresenceHandlerDelegate {
 extension EditEventViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        viewModel.resignFirstResponderOnItems()
         let actualResponder = findFirstResponder()
         actualResponder?.resignFirstResponder()
     }

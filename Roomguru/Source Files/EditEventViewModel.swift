@@ -286,6 +286,19 @@ extension EditEventViewModel {
     }
 }
 
+// MARK: First responder 
+
+extension EditEventViewModel {
+    
+    func resignFirstResponderOnItems() {
+        itemize { path, item in
+            if let item = item as? TextItem {
+                item.shouldBeFirstResponder = false
+            }
+        }
+    }
+}
+
 // MARK: Validation
 
 extension EditEventViewModel {
