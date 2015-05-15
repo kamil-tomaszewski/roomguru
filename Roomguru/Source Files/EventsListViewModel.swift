@@ -113,7 +113,7 @@ private extension EventsListViewModel {
     }
     
     func isFreeEventAfterIndexSelected(indexPath: NSIndexPath) -> Bool {
-        if (indexPath.row == self[0].count) {
+        if (indexPath.row == self[0].count - 1) {
             return false
         }
         if let freeEvent = self[indexPath.row + 1]?.event as? FreeEvent {
