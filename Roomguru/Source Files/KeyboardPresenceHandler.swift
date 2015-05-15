@@ -17,7 +17,6 @@ class KeyboardPresenceHandler {
     var delegate: KeyboardPresenceHandlerDelegate?
     
     private let scrollView: UIScrollView
-    private let keyboardOffset: CGFloat = 80.0
     
     private var currentResponder: UIView?
     private var currentKeyboardProperties: KeyboardProperties?
@@ -91,27 +90,27 @@ private extension KeyboardPresenceHandler {
 
     func scrollToResponder(responder: UIView, withKeyboardProperties properties: KeyboardProperties) {
         
-        var animations: VoidBlock!
-        let responderConvertedFrame = responder.convertFrameToView(scrollView)
-        
         var contentOffsetDiff: CGFloat = 0.0
         
-        if let originalOffset = originalOffset {
-            contentOffsetDiff = scrollView.contentOffset.y - originalOffset.y
-        }
-        
-        let respondersMaxY = responderConvertedFrame.maxY
+        let responderConvertedFrame = responder.convertFrameToView(scrollView)
         let keyboardMinY = properties.endFrame.minY
         
+        var respondersMaxY = responderConvertedFrame.maxY
+
+        if let originalOffset = originalOffset {
+            contentOffsetDiff = scrollView.contentOffset.y - originalOffset.y
+            respondersMaxY -= originalOffset.y
+        }
+        
         if respondersMaxY - contentOffsetDiff >= keyboardMinY { // Responder is behind the keyboard
-            let diff = (respondersMaxY - keyboardMinY) + keyboardOffset
+            let diff = respondersMaxY - keyboardMinY
             animate(properties, animations: {
                 self.scrollView.contentOffset.increaseYBy(diff)
                 self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, diff, 0)
             })
             
         } else if respondersMaxY >= keyboardMinY { // Responder has changed and would be behind the keyboard
-            let diff = keyboardMinY - respondersMaxY + keyboardOffset
+            let diff = keyboardMinY - respondersMaxY
             
             if var originalOffset = originalOffset {
                 originalOffset.increaseYBy(diff)
