@@ -70,6 +70,29 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         
         eventQuery = query
         
+        // MARK: Fill items
+        
+        summaryItem.text = eventQuery.summary
+        allDayItem.on = eventQuery.allDay
+
+        if let startDate = eventQuery.startDate {
+            startDateItem.date = startDate
+        }
+
+        if let endDate = eventQuery.endDate {
+            endDateItem.date = endDate
+        }
+        
+        repeatItem.detailDescription = eventQuery.recurrence?.lowercaseString.uppercaseFirstLetter ?? ""
+
+        let calendarName = CalendarPersistenceStore.sharedStore.nameMatchingID(eventQuery.calendarID)
+        let room = CalendarPersistenceStore.sharedStore.rooms().filter { $0.id == query.calendarID }.map { RoomItem(room: $0) }.first
+        
+        if let room = room {
+            calendarItem.result = room
+            calendarItem.detailDescription = room.title
+        }
+        
         // MARK: Super init
         
         super.init(items: [

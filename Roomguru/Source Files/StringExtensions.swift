@@ -17,4 +17,10 @@ extension String {
     func lengthByTrimmingWhitespaceCharacters() -> Int {
         return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).length
     }
+    
+    var uppercaseFirstLetter: String {
+        let foundationString = self as NSString
+        let firstLetter = foundationString.substringToIndex(1).uppercaseString
+        return foundationString.stringByReplacingCharactersInRange(NSMakeRange(0, 1), withString: firstLetter)
+    }
 }

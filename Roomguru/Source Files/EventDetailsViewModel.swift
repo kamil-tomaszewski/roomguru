@@ -12,7 +12,7 @@ typealias AttendeeInfo = (name: String?, email: String?, status: Status?)
 
 class EventDetailsViewModel {
     
-    private let event: Event?
+    let event: Event?
     private let formatter: NSDateFormatter
     
     init(event: Event?) {

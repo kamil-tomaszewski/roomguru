@@ -20,7 +20,8 @@ class BookingQuery: Query {
     // MARK: Initializers
     
     convenience init(calendarEntry: CalendarEntry) {
-        self.init(.PUT)
+        let URLExtension = BookingQuery.URLExtension + "/" + calendarEntry.event.identifier!
+        self.init(.PUT, URLExtension: URLExtension)
         
         calendarID = calendarEntry.calendarID
         

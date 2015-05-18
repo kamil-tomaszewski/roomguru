@@ -249,7 +249,6 @@ private extension EditEventViewController {
     }
     
     func configureDatePickerCell(cell: DatePickerCell, forItem item: DatePickerItem) {
-        cell.datePicker.setDate(item.date, animated: false)
         cell.selectionStyle = .None
     }
     
@@ -273,20 +272,20 @@ private extension EditEventViewController {
     // MARK: Configuration
     
     func setupTableView() {
-        let tableView = aView?.tableView
+        let tableView = aView!.tableView
         
-        tableView?.estimatedRowHeight = 44.0
-        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
-        tableView?.dataSource = self
-        tableView?.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
-        tableView?.registerClass(TextFieldCell.self)
-        tableView?.registerClass(SwitchCell.self)
-        tableView?.registerClass(DateCell.self)
-        tableView?.registerClass(TextViewCell.self)
-        tableView?.registerClass(DatePickerCell.self)
-        tableView?.registerClass(RightDetailTextCell.self)
+        tableView.registerClass(TextFieldCell.self)
+        tableView.registerClass(SwitchCell.self)
+        tableView.registerClass(DateCell.self)
+        tableView.registerClass(TextViewCell.self)
+        tableView.registerClass(DatePickerCell.self)
+        tableView.registerClass(RightDetailTextCell.self)
     }
     
     func setupBarButtons() {

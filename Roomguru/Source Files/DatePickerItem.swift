@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 class DatePickerItem: GroupItem {
     
@@ -20,6 +21,7 @@ class DatePickerItem: GroupItem {
     }
     
     func bindDatePicker(datePicker: UIDatePicker) {
+        Async.main { datePicker.setDate(self.date, animated: false) }
         datePicker.addTarget(self, action: "didChangeDate:forEvents:", forControlEvents: .ValueChanged)
     }
     

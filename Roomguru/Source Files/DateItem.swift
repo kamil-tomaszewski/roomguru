@@ -10,10 +10,7 @@ import UIKit
 
 class DateItem: GroupItem {
 
-    var date: NSDate {
-        didSet { validationError = nil }
-    }
-    
+    var date: NSDate
     var dateString: String { get { return dateFormatter.stringFromDate(date) } }
 
     var validation: DateValidationBlock?

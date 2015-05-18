@@ -10,6 +10,7 @@ import UIKit
 
 class SwitchItem: GroupItem {
     
+    var on = false
     var onValueChanged: BoolBlock?
     
     init(title: String) {
@@ -25,6 +26,7 @@ class SwitchItem: GroupItem {
     }
     
     func didChangeSwitchState(sender: UISwitch, forEvents events: UIControlEvents) {
+        on = sender.on
         onValueChanged?(bool: sender.on)
     }
 }

@@ -9,7 +9,9 @@
 import UIKit
 import Cartography
 
-class DatePickerCell: UITableViewCell, Reusable {
+class DatePickerCell: UITableViewCell, Reusable {    
+    
+    var date = NSDate()
     
     class func reuseIdentifier() -> String {
         return "TableViewDatePickerCellReuseIdentifier"
@@ -31,6 +33,7 @@ class DatePickerCell: UITableViewCell, Reusable {
 private extension DatePickerCell {
     
     func commonInit() {
+        datePicker.setDate(date, animated: false)
         datePicker.datePickerMode = .DateAndTime
         contentView.addSubview(datePicker)
         
@@ -39,7 +42,7 @@ private extension DatePickerCell {
     
     func defineConstraints() {
         
-        let width = CGRectGetWidth(self.frame)
+        let width = CGRectGetWidth(frame)
         frame = CGRectMake(0, 0, width, 160.0)
         
         layout(datePicker) { picker in

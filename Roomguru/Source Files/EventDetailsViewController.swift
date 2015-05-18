@@ -34,6 +34,8 @@ class EventDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         hideBackBarButtonTitle()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "didTapEditBarButton:")
         title = NSLocalizedString("Event Details", comment: "")
         setupTableView()
     }
@@ -146,15 +148,29 @@ extension EventDetailsViewController {
             if let error = error {
                 UIAlertView(error: error).show()
             }
-        };
+        }
     }
 }
 
-// MARKL Private
+// MARK: Actions
+
+extension EventDetailsViewController {
+
+    func didTapEditBarButton(sender: UIBarButtonItem) {
+        let event = self.viewModel.event!
+        let calendarEntry = CalendarEntry(calendarID: event.rooms!.first!.email!, event: event)
+        let viewModel = EditEventViewModel(calendarEntry: calendarEntry)
+        let editEventController = EditEventViewController(viewModel: viewModel)
+        let navigationController = NavigationController(rootViewController: editEventController)
+        presentViewController(navigationController, animated: true, completion: nil)
+    }
+}
+
+// MARK: Private
 
 private extension EventDetailsViewController {
     
-    private func attendeeInfoForIndexPath(indexPath: NSIndexPath) -> AttendeeInfo {
+    func attendeeInfoForIndexPath(indexPath: NSIndexPath) -> AttendeeInfo {
         if indexPath.section == 1 {
             return viewModel.location(indexPath.row)
         } else if indexPath.section == 2 {
@@ -164,7 +180,7 @@ private extension EventDetailsViewController {
         }
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         aView?.tableView.delegate = self;
         aView?.tableView.dataSource = self;
         aView?.tableView.registerClass(AttendeeCell.self)
