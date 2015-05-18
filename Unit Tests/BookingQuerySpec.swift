@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class BookingQuerySpec: QuickSpec {
     
+    let fixtureEventID = "FixtureIdentifier"
     let fixtureCalendarID = "FixtureCalendarID"
     let fixtureSummary = "FixtureSummary"
     let fixtureEmailFirst = "FixtureEmail.1"
@@ -39,7 +40,8 @@ class BookingQuerySpec: QuickSpec {
         describe("when initializing with calendar entry") {
             
             var mockCalendarEntry = CalendarEntry(calendarID: self.fixtureCalendarID, event: self.mockedEvent())
-            let mockQuery = MockQuery(HTTPMethod: "PUT", URLExtension: "/calendars/primary/events", parameterEncoding: "JSON")
+            let URLExtension = "/calendars/primary/events/" + self.fixtureEventID
+            let mockQuery = MockQuery(HTTPMethod: "PUT", URLExtension: URLExtension, parameterEncoding: "JSON")
             var mockQueryParameters = [:]
             
             mockQueryParameters =
@@ -106,7 +108,7 @@ private extension BookingQuerySpec {
     func mockedEvent() -> Event {
         
         return Event(json: JSON([
-            "id" : "Fixture Identifier",
+            "id" : fixtureEventID,
             "summary" : fixtureSummary,
             "status" : "confirmed",
             "htmlLink" : "",
