@@ -35,9 +35,18 @@ class EventQuery: BookingQuery {
         set { self[DescriptionKey] = newValue }
     }
     
-    var recurrence: String {
-        get { return (self[RecurrenceKey] as! [String]).first ?? "" }
-        set { self[RecurrenceKey] = [newValue] }
+    var recurrence: String? {
+        get {
+            if let recurrences = self[RecurrenceKey] as? [String] {
+                return recurrences.first
+            }
+            return nil
+        }
+        set {
+            if let recurrence = newValue {
+                self[RecurrenceKey] = [recurrence]
+            }
+        }
     }
     
     // MARK: Keys
