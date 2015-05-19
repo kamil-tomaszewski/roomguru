@@ -24,7 +24,6 @@ class MyEventsViewController: EventsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        registerNotifications(false)
         title = NSLocalizedString("My Events", comment: "")
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("didTapPlusButton:"))

@@ -47,42 +47,42 @@ class TabBarController: UITabBarController {
                 if let error = error {
                     loginViewController.showError(error)
                 }
-                if completion != nil { completion!() }
+                completion?()
             }
         }
     }
     
     func presentCalendarPickerViewController(animated: Bool, completion: VoidBlock? = nil) {
         
-        let calendarPickerCompletion: () -> Void = {
-            let controllers = self.viewControllers?.map { ($0 as! NavigationController).viewControllers.first }.filter { $0 is EventsViewController }.map { $0 as! EventsViewController }
-            if let controllers = controllers {
-                
-                for controller in controllers {
-                    controller.updateSelectedCalendar()
-                    controller.updateControllerState()
-                    if let eventsPageViewController = controller.containerControllersOfType(EventsPageViewController.self).first {
-                        let date = eventsPageViewController.currentlyDisplayingDay
-                        eventsPageViewController.showEventListWithDate(date, animated: true)
-                    }
-                }
-            }
-        }
-
-        
         if let login = controllersOfTypeInNavigationStack(LoginViewController.self)?.first {
-            login.pushCalendarPickerViewController(calendarPickerCompletion)
+            login.pushCalendarPickerViewController() {
+                self.refreshFirstTab()
+            }
         } else {
-            presentControllerOfType(CalendarPickerViewController.self, animated: animated) { controller in
-                controller.completion = calendarPickerCompletion
+            presentControllerOfType(CalendarPickerViewController.self, animated: animated) { calendarPickerViewController in
+                calendarPickerViewController.saveCompletionBlock = {
+                    self.refreshFirstTab()
+                }
                 completion?()
             }
         }
     }
     
-    // MARK: Private Methods
+    func refreshFirstTab() {
+        
+        let controller = viewControllers?.map { ($0 as! NavigationController).viewControllers.first }.filter { $0 is MyEventsViewController }.map { $0 as! MyEventsViewController }.first
+        if let controller = controller {
+
+            controller.updateSelectedCalendar()
+            controller.updateControllerState()
+            controller.reloadEventList()
+        }
+    }
+}
+
+private extension TabBarController {
     
-    private func setupEmbeddedViewControllers() {
+    func setupEmbeddedViewControllers() {
         
         viewControllers = [
             NavigationController(rootViewController: MyEventsViewController()),

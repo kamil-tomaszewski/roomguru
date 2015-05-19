@@ -89,6 +89,7 @@ private extension AppDelegate {
                 
                 let didUserSelectCalendars = !CalendarPersistenceStore.sharedStore.calendars.isEmpty
                 if didUserSelectCalendars {
+                    tabBarController.refreshFirstTab()
                     fade(.Out, launchViewController?.view) {
                         launchViewController?.view.removeFromSuperview()
                         launchViewController = nil

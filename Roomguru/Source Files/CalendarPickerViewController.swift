@@ -15,7 +15,7 @@ class CalendarPickerViewController: UIViewController {
     var viewModel: CalendarPickerViewModel?
     private var currentEditingIndexPath: NSIndexPath?
     
-    var completion: (() -> Void)?
+    var saveCompletionBlock: VoidBlock?
     
     // MARK: View life cycle
     
@@ -161,12 +161,12 @@ extension CalendarPickerViewController {
     
     func didTapSaveBarButtonItem(sender: UIBarButtonItem) {
         viewModel?.save()
+        saveCompletionBlock?()
         
         if isModal() {
-            dismissViewControllerAnimated(true, completion: completion)
+            dismissViewControllerAnimated(true, completion: nil)
         } else {
             navigationController?.popViewControllerAnimated(true)
-            completion?()
         }
     }
     

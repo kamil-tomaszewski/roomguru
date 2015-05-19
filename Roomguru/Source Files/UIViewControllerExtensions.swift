@@ -49,7 +49,7 @@ extension UIViewController {
         let controller = T()
         let navigationController = NavigationController(rootViewController: controller)
         presentViewController(navigationController, animated: animated) {
-            if (completion != nil) { completion!(presentedController: controller) }
+            completion?(presentedController: controller)
         }
     }
     

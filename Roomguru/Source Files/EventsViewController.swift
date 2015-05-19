@@ -55,25 +55,9 @@ class EventsViewController: UIViewController, EventsPageViewControllerDelegate {
     
     func userDidChangePersistentCalendars() {
         
-        if let calendarID = (CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first) {
-            aView?.showPlaceholderView(false)
-            selectedCalendarID = calendarID
-        } else {
-            aView?.showPlaceholderView(true)
-            selectedCalendarID = nil
-        }
-        
+        updateSelectedCalendar()
         recreatePickerView()
         reloadEventList()
-    }
-    
-    func registerNotifications(_ register: Bool = true) {
-        
-        if register {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("userDidChangePersistentCalendars"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
-        } else {
-            NSNotificationCenter.defaultCenter().removeObserver(self)
-        }
     }
     
     func reloadEventList() {
@@ -86,6 +70,8 @@ class EventsViewController: UIViewController, EventsPageViewControllerDelegate {
     func updateSelectedCalendar() {
         if let calendarID = (CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first) {
             selectedCalendarID = calendarID
+        } else {
+            selectedCalendarID = nil
         }
     }
     
@@ -152,5 +138,14 @@ private extension EventsViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         navigationItem.titleView = pickerView
+    }
+    
+    func registerNotifications(_ register: Bool = true) {
+        
+        if register {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("userDidChangePersistentCalendars"), name: CalendarPersistentStoreDidChangePersistentCalendars, object: nil)
+        } else {
+            NSNotificationCenter.defaultCenter().removeObserver(self)
+        }
     }
 }
