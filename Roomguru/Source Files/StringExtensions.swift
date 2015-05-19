@@ -19,6 +19,9 @@ extension String {
     }
     
     var uppercaseFirstLetter: String {
+        
+        if length == 0 { return self }
+        
         let foundationString = self as NSString
         let firstLetter = foundationString.substringToIndex(1).uppercaseString
         return foundationString.stringByReplacingCharactersInRange(NSMakeRange(0, 1), withString: firstLetter)
