@@ -42,7 +42,12 @@ class BookingConfirmationViewModel {
     init(calendarTimeFrame: CalendarTimeFrame, onConfirmation: (CalendarTimeFrame, String) -> Void) {
         calendarTime = calendarTimeFrame
         confirmation = onConfirmation
-        actualBookingTime = calendarTimeFrame
+        
+        let actualTimeFrame = calendarTimeFrame.0
+        let actualStartDate = actualTimeFrame.startDate
+        let actualEndDate = actualTimeFrame.duration() > 30*60 ? actualStartDate.minutes + 30 : actualTimeFrame.0.endDate
+            
+        actualBookingTime = (TimeFrame(startDate: actualStartDate, endDate: actualEndDate, availability: actualTimeFrame.availability), calendarTimeFrame.1)
         configureFormatters()
     }
     
