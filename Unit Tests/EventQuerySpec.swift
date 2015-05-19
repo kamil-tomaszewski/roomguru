@@ -12,6 +12,8 @@ import Quick
 class EventQuerySpec: QuickSpec {
     
     override func spec() {
+      
+        var sut: EventQuery!
         
         describe("when initializing") {
            
@@ -19,32 +21,46 @@ class EventQuerySpec: QuickSpec {
             var mockQueryParameters = [:]
             mockQueryParameters = ["status" : "confirmed"]
             
-            let testQuery = EventQuery()
+            sut = EventQuery()
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "testQuery": sut,
                     "mockQuery": mockQuery,
                 ]
             }
             
+            beforeEach {
+                sut = EventQuery()
+            }
+            
+            afterEach {
+                sut = nil
+            }
+            
             it("should have proper parameters") {
-                expect(testQuery.parameters!).to(equal(mockQueryParameters))
+                expect(sut.parameters!).to(equal(mockQueryParameters))
             }
         }
         
         describe("when setting event description") {
-           
+            
             let fixtureEventDescription = "FixtureEventDescription"
             
             var mockQueryParameters = [:]
             mockQueryParameters = ["status" : "confirmed", "description" : fixtureEventDescription]
             
-            let testQuery = EventQuery()
-            testQuery.eventDescription = fixtureEventDescription
-          
+            beforeEach {
+                sut = EventQuery()
+                sut.eventDescription = fixtureEventDescription
+            }
+            
+            afterEach {
+                sut = nil
+            }
+            
             it("should have proper parameters") {
-                expect(testQuery.parameters!).to(equal(mockQueryParameters))
+                expect(sut.parameters!).to(equal(mockQueryParameters))
             }
         }
         
@@ -54,12 +70,18 @@ class EventQuerySpec: QuickSpec {
                 
             var mockQueryParameters = [:]
             mockQueryParameters = ["status" : "confirmed", "recurrence" : [fixtureRecurrence]]
-                
-            let testQuery = EventQuery()
-            testQuery.recurrence = fixtureRecurrence
+            
+            beforeEach {
+                sut = EventQuery()
+                sut.recurrence = fixtureRecurrence
+            }
+            
+            afterEach {
+                sut = nil
+            }
             
             it("should have proper parameters") {
-                expect(testQuery.parameters!).to(equal(mockQueryParameters))
+                expect(sut.parameters!).to(equal(mockQueryParameters))
             }
         }
     }
