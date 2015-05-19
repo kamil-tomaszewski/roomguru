@@ -54,11 +54,28 @@ class TabBarController: UITabBarController {
     
     func presentCalendarPickerViewController(animated: Bool, completion: VoidBlock? = nil) {
         
+        let calendarPickerCompletion: () -> Void = {
+            let controllers = self.viewControllers?.map { ($0 as! NavigationController).viewControllers.first }.filter { $0 is EventsViewController }.map { $0 as! EventsViewController }
+            if let controllers = controllers {
+                
+                for controller in controllers {
+                    controller.updateSelectedCalendar()
+                    controller.updateControllerState()
+                    if let eventsPageViewController = controller.containerControllersOfType(EventsPageViewController.self).first {
+                        let date = eventsPageViewController.currentlyDisplayingDay
+                        eventsPageViewController.showEventListWithDate(date, animated: true)
+                    }
+                }
+            }
+        }
+
+        
         if let login = controllersOfTypeInNavigationStack(LoginViewController.self)?.first {
-            login.pushCalendarPickerViewController()
+            login.pushCalendarPickerViewController(calendarPickerCompletion)
         } else {
-            presentControllerOfType(CalendarPickerViewController.self, animated: animated) { _ in
-                if completion != nil { completion!() }
+            presentControllerOfType(CalendarPickerViewController.self, animated: animated) { controller in
+                controller.completion = calendarPickerCompletion
+                completion?()
             }
         }
     }

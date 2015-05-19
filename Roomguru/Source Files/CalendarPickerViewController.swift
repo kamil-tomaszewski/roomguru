@@ -15,6 +15,8 @@ class CalendarPickerViewController: UIViewController {
     var viewModel: CalendarPickerViewModel?
     private var currentEditingIndexPath: NSIndexPath?
     
+    var completion: (() -> Void)?
+    
     // MARK: View life cycle
     
     override func loadView() {
@@ -161,9 +163,10 @@ extension CalendarPickerViewController {
         viewModel?.save()
         
         if isModal() {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismissViewControllerAnimated(true, completion: completion)
         } else {
             navigationController?.popViewControllerAnimated(true)
+            completion?()
         }
     }
     

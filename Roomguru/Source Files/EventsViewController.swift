@@ -30,9 +30,7 @@ class EventsViewController: UIViewController, EventsPageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let calendarID = (CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first) {
-            selectedCalendarID = calendarID
-        }
+        updateSelectedCalendar()
         
         let weekCarouselViewController = WeekCarouselViewController()
         addContainerViewController(weekCarouselViewController)
@@ -45,12 +43,7 @@ class EventsViewController: UIViewController, EventsPageViewControllerDelegate {
         aView?.eventsPageView = pageViewController.view
         
         registerNotifications()
-    
-        if CalendarPersistenceStore.sharedStore.rooms().isEmpty {
-            aView?.showPlaceholderView(true)
-        } else {
-            recreatePickerView()
-        }
+        updateControllerState()
     }
     
     deinit {
@@ -90,7 +83,23 @@ class EventsViewController: UIViewController, EventsPageViewControllerDelegate {
         }
     }
     
-    // MARK: EventsPageViewControllerDelegate //declaration from extension cannot be ovveride yet.
+    func updateSelectedCalendar() {
+        if let calendarID = (CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }.first) {
+            selectedCalendarID = calendarID
+        }
+    }
+    
+    func updateControllerState() {
+        
+        if CalendarPersistenceStore.sharedStore.rooms().isEmpty {
+            aView?.showPlaceholderView(true)
+        } else {
+            aView?.showPlaceholderView(false)
+            recreatePickerView()
+        }
+    }
+    
+    // MARK: EventsPageViewControllerDelegate //declaration from extension cannot be override yet.
     
     func eventsPageViewController(controller: EventsPageViewController, didScrollToDate date: NSDate) {
         if let weekCarouselController = containerControllersOfType(WeekCarouselViewController.self).first {

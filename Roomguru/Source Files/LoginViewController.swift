@@ -36,10 +36,11 @@ class LoginViewController: UIViewController  {
     
     // MARK: Public
     
-    func pushCalendarPickerViewController() {
+    func pushCalendarPickerViewController(completion: () -> Void) {
         aView?.avatarView.imageView.image = UserPersistenceStore.sharedStore.userImage()
         
         let calendarPickerViewController = CalendarPickerViewController()
+        calendarPickerViewController.completion = completion
         calendarPickerViewController.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(calendarPickerViewController, animated: true)
     }
