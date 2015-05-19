@@ -244,7 +244,7 @@ private extension EditEventViewController {
     }
     
     func configureTextViewCell(cell: TextViewCell, forItem item: LongTextItem) {
-        cell.textView.attributedText = item.attributedPlaceholder
+        cell.textView.attributedText = item.attributedText ?? item.attributedPlaceholder
         cell.textView.delegate = item
     }
     

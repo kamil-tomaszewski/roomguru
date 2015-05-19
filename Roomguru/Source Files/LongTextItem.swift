@@ -9,7 +9,17 @@
 import UIKit
 
 class LongTextItem: GroupItem {
+    var text: String?
     var placeholder: String
+    
+    var attributedText: NSAttributedString? {
+        get {
+            if let text = text where !text.isEmpty {
+                return NSAttributedString(string: text, attributes: textAttributes)
+            }
+            return nil
+        }
+    }
     var attributedPlaceholder: NSAttributedString {
         get { return NSAttributedString(string: placeholder, attributes: placeholderAttributes) }
     }
@@ -49,6 +59,7 @@ extension LongTextItem: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(textView: UITextView) {
+        text = textView.text
         onValueChanged?(string: textView.text)
         
         if textView.text.isEmpty {
