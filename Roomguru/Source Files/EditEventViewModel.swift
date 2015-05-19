@@ -197,6 +197,10 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             return controller
         }
         
+        descriptionItem.onValueChanged = { [weak self] description in
+            self?.eventQuery.eventDescription = description
+        }
+        
         // MARK: Validation
         
         summaryItem.validation = { string in
