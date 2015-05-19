@@ -106,12 +106,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         // MARK: onValueChanged blocks
         
         summaryItem.onValueChanged = { [weak self] text in
-            if let error = summaryItem.validate(text) {
-                summaryItem.validationError = error
-            } else {
-                summaryItem.validationError = nil
-                query.summary = text
-            }
+            query.summary = text
             
             if let indexPaths = self?.indexPathsForItems([summaryItem] as [GroupItem]) {
                 self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
@@ -152,9 +147,10 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             let probableEndDate = date.minutes + 30
             if endDateItem.date < probableEndDate {
                 endDateItem.date = probableEndDate
-                if let indexPaths = self?.indexPathsForItems([endDateItem]) {
-                    self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
-                }
+            }
+
+            if let indexPaths = self?.indexPathsForItems([endDateItem]) {
+                self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
             }
         }
         
@@ -266,9 +262,17 @@ extension EditEventViewModel {
         if let pickersIndexPaths = collapseIndexPaths {
             
             for pickerIndexPath in pickersIndexPaths {
+
+                let section = pickerIndexPath.section
+                let row = pickerIndexPath.row
+                
+                if let pickerItem = self[section][row] as? DatePickerItem {
+                    pickerItem.unbindDatePicker()
+                }
+
                 removeAtIndexPath(pickerIndexPath)
                 
-                if let dateItem = self[pickerIndexPath.section][pickerIndexPath.row-1] as? DateItem {
+                if let dateItem = self[section][row-1] as? DateItem {
                     dateItem.selected = false
                     dateItems.append(dateItem)
                 }
@@ -285,16 +289,12 @@ extension EditEventViewModel {
             
             item.selected = true
             
-            let pickerItem = DatePickerItem(date: item.date) { date in
-                if let error = item.validate(date) {
-                    item.validationError = error
-                } else {
-                    item.date = date
-                    item.update()
-                }
+            let pickerItem = DatePickerItem(date: item.date) { [weak self] date in
+                item.date = date
+                item.update()
                 
-                if let indexPaths = self.indexPathsForItems([item]) {
-                    self.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                if let indexPaths = self?.indexPathsForItems([item]) {
+                    self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
                 }
             }
             

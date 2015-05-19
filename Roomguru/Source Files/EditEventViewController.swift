@@ -180,15 +180,14 @@ extension EditEventViewController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let section = indexPath.section
-        let row = indexPath.row
+        let cellIndexPath = tableView.indexPathForCell(cell) ?? indexPath
+        let section = cellIndexPath.section
+        let row = cellIndexPath.row
         
         if row < viewModel[section].count {
             let item = viewModel[section][row]
             
-            if let item = item as? DatePickerItem, cell = cell as? DatePickerCell {
-                item.unbindDatePicker(cell.datePicker)
-            } else if let item = item as? SwitchItem, cell = cell as? SwitchCell {
+            if let item = item as? SwitchItem, cell = cell as? SwitchCell {
                 item.unbindSwitchControl(cell.switchControl)
             } else if let item = item as? TextItem, cell = cell as? TextFieldCell {
                 item.unbindTextField(cell.textField)
