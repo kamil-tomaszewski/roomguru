@@ -183,7 +183,7 @@ def build_and_distribute
 
   report_info "Building the application archive, this may take a while..."
   FileUtils.mkdir_p ipa_build_dir
-  sh "ipa build #{ipa_build_flags.join(" ")} | xcpretty -c; exit ${PIPESTATUS[0]}"
+  sh "ipa build #{ipa_build_flags.join(" ")}; exit ${PIPESTATUS[0]}"
   report_failure "Failed to build the application archive", $?.exitstatus unless $?.success?
 
   FileUtils.cd ipa_build_dir do
