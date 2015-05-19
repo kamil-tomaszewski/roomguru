@@ -10,7 +10,6 @@ import Nimble
 import Quick
 
 import Alamofire
-import ObjectiveC
 
 
 class QuerySpec: QuickSpec {
@@ -22,32 +21,17 @@ class QuerySpec: QuickSpec {
         describe("when initializing") {
             
             let mockQuery = MockQuery(HTTPMethod:"POST", URLExtension: fixtureURLExtension, parameterEncoding: "URL")
-            let testQuery = Query(Alamofire.Method.POST, URLExtension: fixtureURLExtension, parameters: nil, encoding: .URL)
+            let sut = Query(Alamofire.Method.POST, URLExtension: fixtureURLExtension, parameters: nil, encoding: .URL)
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "testQuery": sut,
                     "mockQuery": mockQuery,
                 ]
             }
             
-            it("should have proper parameters") {
-                expect(testQuery.parameters).to(beNil())
-            }
-        }
-        
-        describe("when setting full path") {
-            
-            let fixtureBaseURL = "FixtureBaseURL"
-            let fixtureAuthKey = "FixtureAuthKey"
-            
-            let mockFullPath = fixtureBaseURL + fixtureURLExtension + fixtureAuthKey
-            
-            let testQuery = Query(Alamofire.Method.POST, URLExtension: fixtureURLExtension, parameters: nil, encoding: .URL)
-            testQuery.setFullPath(fixtureBaseURL, authKey: fixtureAuthKey)
-
-            it("should have proper full path URL") {
-                expect(testQuery.fullPath).to(equal(mockFullPath))
+            it("should have nil parameters") {
+                expect(sut.parameters).to(beNil())
             }
         }
     }

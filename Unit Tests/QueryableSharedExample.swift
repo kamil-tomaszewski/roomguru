@@ -32,24 +32,31 @@ class QueryableSharedExample: QuickConfiguration {
             
             var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
             
-            let testQuery = configDict["testQuery"] as! Query
+            let sut = configDict["testQuery"] as! Query
             let mockQuery = configDict["mockQuery"] as! MockQuery
             
+            let fixtureBaseURL = "FixtureBaseURL"
+            let fixtureAuthKey = "FixtureAuthKey"
+            
+            let mockFullPath = fixtureBaseURL + sut.URLExtension + fixtureAuthKey
+            
+            sut.setFullPath(fixtureBaseURL, authKey: fixtureAuthKey)
+            
             it("should have proper HTTP method") {
-                expect(testQuery.HTTPMethod.rawValue).to(equal(mockQuery.HTTPMethod))
+                expect(sut.HTTPMethod.rawValue).to(equal(mockQuery.HTTPMethod))
             }
             
             it("should have proper URL extension") {
-                expect(testQuery.URLExtension).to(equal(mockQuery.URLExtension))
+                expect(sut.URLExtension).to(equal(mockQuery.URLExtension))
             }
             
             it("should have proper encoding") {
-                var parameterEncodingAsString = self.stringForParameterEncoding(testQuery.encoding)
+                var parameterEncodingAsString = self.stringForParameterEncoding(sut.encoding)
                 expect(parameterEncodingAsString).to(equal(mockQuery.parameterEncoding))
             }
             
-            it("should have empty full path") {
-                expect(testQuery.fullPath).to(equal(""))
+            it("should have proper full path") {
+                expect(sut.fullPath).to(equal(mockFullPath))
             }
         }
     }
