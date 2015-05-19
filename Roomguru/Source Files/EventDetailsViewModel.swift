@@ -52,6 +52,14 @@ class EventDetailsViewModel {
         return infoWithAttendee(event?.rooms?[index])
     }
     
+    func isEventEditable() -> Bool {
+        if let event = event {
+            let isCreator = event.creator?.email == UserPersistenceStore.sharedStore.user?.email
+            return isCreator
+        }
+        return false
+    }
+    
     func summary() -> NSAttributedString {
         
         var attributedString = NSMutableAttributedString()

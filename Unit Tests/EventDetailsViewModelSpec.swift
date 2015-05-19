@@ -62,6 +62,37 @@ class EventDetailsViewModelSpec: QuickSpec {
                 expect(summary).to(contain("10:30 AM"))
                 expect(summary).to(contain("Fixture summary"))
             }
+            
+            describe("when user email is stored and is same as creator email") {
+                
+                beforeEach {
+                    UserPersistenceStore.sharedStore.registerUserWithEmail("FixtureEmail.4")
+                }
+                
+                afterEach {
+                    UserPersistenceStore.sharedStore.clear()
+                }
+                
+                it("should be editable") {
+                    expect(sut!.isEventEditable()).to(beTrue())
+                }
+            }
+            
+            
+            describe("when user email is stored and is different than creator email") {
+                
+                beforeEach {
+                    UserPersistenceStore.sharedStore.registerUserWithEmail("FixtureEmail.3")
+                }
+                
+                afterEach {
+                    UserPersistenceStore.sharedStore.clear()
+                }
+                
+                it("should not be editable") {
+                    expect(sut!.isEventEditable()).to(beFalse())
+                }
+            }
         }
     }
 }

@@ -35,7 +35,10 @@ class EventDetailsViewController: UIViewController {
         
         hideBackBarButtonTitle()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "didTapEditBarButton:")
+        if viewModel.isEventEditable() {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "didTapEditBarButton:")
+        }
+
         title = NSLocalizedString("Event Details", comment: "")
         setupTableView()
     }
