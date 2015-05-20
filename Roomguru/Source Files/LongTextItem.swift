@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 class LongTextItem: GroupItem {
     var text: String?
@@ -48,8 +49,17 @@ extension LongTextItem: UITextViewDelegate {
     
     func textViewDidBeginEditing(textView: UITextView) {
         if textView.attributedText == attributedPlaceholder {
+            Async.main {
+                textView.selectedRange = NSMakeRange(0, 0);
+            }
+        }
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if textView.attributedText == attributedPlaceholder {
             textView.attributedText = NSAttributedString(string: "", attributes: textAttributes)
         }
+        return true
     }
     
     func textViewDidChange(textView: UITextView) {
