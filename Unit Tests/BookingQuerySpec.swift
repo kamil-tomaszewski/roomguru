@@ -42,9 +42,8 @@ class BookingQuerySpec: QuickSpec {
             var mockCalendarEntry = CalendarEntry(calendarID: self.fixtureCalendarID, event: self.mockedEvent())
             let URLExtension = "/calendars/primary/events/" + self.fixtureEventID
             let mockQuery = MockQuery(HTTPMethod: "PUT", URLExtension: URLExtension, parameterEncoding: "JSON")
-            var mockQueryParameters = [:]
-            
-            mockQueryParameters =
+
+            let mockQueryParameters =
                 ["attendees":[
                     ["email" : self.fixtureEmailFirst],
                     ["email" : self.fixtureEmailSecond],
@@ -54,17 +53,14 @@ class BookingQuerySpec: QuickSpec {
                 "start" : ["dateTime":self.fixtureStartDateAsString, "timeZone" : "Europe/Warsaw"],
                 "summary" : self.fixtureSummary]
             
-            let testQuery = BookingQuery(calendarEntry: mockCalendarEntry)
+            let sut = BookingQuery(calendarEntry: mockCalendarEntry)
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "sut": sut,
                     "mockQuery": mockQuery,
+                    "mockQueryParameters": mockQueryParameters
                 ]
-            }
-            
-            it("should have proper parameters") {
-                expect(testQuery.parameters!).to(equal(mockQueryParameters))
             }
         }
         
@@ -87,17 +83,14 @@ class BookingQuerySpec: QuickSpec {
                     "timeZone":"Europe/Warsaw"],
                 "summary" : self.fixtureSummary]
             
-            let testQuery = BookingQuery(calendarTimeFrame: fixtureCalendarTimeFrame, summary: self.fixtureSummary)
+            let sut = BookingQuery(calendarTimeFrame: fixtureCalendarTimeFrame, summary: self.fixtureSummary)
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "sut": sut,
                     "mockQuery": mockQuery,
+                    "mockQueryParameters": mockQueryParameters
                 ]
-            }
-            
-            it("should have proper parameters") {
-                expect(testQuery.parameters!).to(equal(mockQueryParameters))
             }
         }
     }

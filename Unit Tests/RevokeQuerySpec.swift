@@ -17,21 +17,17 @@ class RevokeQuerySpec: QuickSpec {
         var fixtureEventID = "FixtureIdentifier"
         var fixtureUserEmail = "FixtureUserEmail"
         var URLExtension: String = "/calendars/" + fixtureUserEmail + "/events/" + fixtureEventID
-        var testQuery: RevokeQuery!
+        var sut: RevokeQuery!
         let mockQuery = MockQuery(HTTPMethod: "DELETE", URLExtension: URLExtension, parameterEncoding: "URL")
         
         describe("when initializing") {
-            testQuery = RevokeQuery(eventID: fixtureEventID, userEmail: fixtureUserEmail)
+            sut = RevokeQuery(eventID: fixtureEventID, userEmail: fixtureUserEmail)
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "sut": sut,
                     "mockQuery": mockQuery,
                 ]
-            }
-            
-            it("should have proper parameters") {
-                expect(testQuery.parameters).to(beNil())
             }
         }
     }

@@ -16,7 +16,7 @@ class FreeBusyQuerySpec: QuickSpec {
     override func spec() {
         
         let fixtureCalendarIDs = ["FixtureCalendarID.1", "FixtureCalendarID.2", "FixtureCalendarID.3"]
-        var testQuery: FreeBusyQuery!
+        var sut: FreeBusyQuery!
         let mockQuery = MockQuery(HTTPMethod: "POST", URLExtension: "/freeBusy", parameterEncoding: "JSON")
         
         let today = NSDate()
@@ -29,17 +29,14 @@ class FreeBusyQuerySpec: QuickSpec {
         let mockQueryParameters = ["timeMax":fixtureTimeMax, "timeMin" : fixtureTimeMin, "timeZone" : fixtureTimeZone, "items" : fixtureItems]
         
         describe("when initializing") {
-            testQuery = FreeBusyQuery(calendarsIDs: fixtureCalendarIDs)
+            sut = FreeBusyQuery(calendarsIDs: fixtureCalendarIDs)
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "sut": sut,
                     "mockQuery": mockQuery,
+                    "mockQueryParameters": mockQueryParameters
                 ]
-            }
-            
-            it("should have proper parameters") {
-                expect(testQuery.parameters!).to(equal(mockQueryParameters))
             }
         }
     }

@@ -32,15 +32,9 @@ class QueryableSharedExample: QuickConfiguration {
             
             var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
             
-            let sut = configDict["testQuery"] as! Query
+            let sut = configDict["sut"] as! Query
             let mockQuery = configDict["mockQuery"] as! MockQuery
-            
-            let fixtureBaseURL = "FixtureBaseURL"
-            let fixtureAuthKey = "FixtureAuthKey"
-            
-            let mockFullPath = fixtureBaseURL + sut.URLExtension + fixtureAuthKey
-            
-            sut.setFullPath(fixtureBaseURL, authKey: fixtureAuthKey)
+            var mockQueryParameters = configDict["mockQueryParameters"] as? [String: AnyObject]
             
             it("should have proper HTTP method") {
                 expect(sut.HTTPMethod.rawValue).to(equal(mockQuery.HTTPMethod))
@@ -55,8 +49,34 @@ class QueryableSharedExample: QuickConfiguration {
                 expect(parameterEncodingAsString).to(equal(mockQuery.parameterEncoding))
             }
             
-            it("should have proper full path") {
-                expect(sut.fullPath).to(equal(mockFullPath))
+            context("testing parameters") {
+            
+                if let mockParameters = mockQueryParameters {
+                    
+                    var params = [:]
+                    params = mockParameters
+                    
+                    it("should have proper parameters") {
+                        expect(sut.parameters).to(equal(params))
+                    }
+                } else {
+                    
+                    it("should have nil parameters") {
+                        expect(sut.parameters).to(beNil())
+                    }
+                }
+            }
+            
+            context("setting full path") {
+                
+                let fixtureBaseURL = "FixtureBaseURL"
+                let fixtureAuthKey = "FixtureAuthKey"
+                let mockFullPath = fixtureBaseURL + sut.URLExtension + fixtureAuthKey
+                sut.setFullPath(fixtureBaseURL, authKey: fixtureAuthKey)
+                
+                it("should have proper full path") {
+                    expect(sut.fullPath).to(equal(mockFullPath))
+                }
             }
         }
     }

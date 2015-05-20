@@ -25,46 +25,44 @@ class EventsQuerySpec: QuickSpec {
         var fixtureTimeMin = queryDateFormatter().stringFromDate(timeRange.min)
         var fixtureTimeMax = queryDateFormatter().stringFromDate(timeRange.max)
 
-        var mockQueryParameters = [:]
-        mockQueryParameters = ["maxResults": 100, "orderBy" : "startTime", "singleEvents" : "true", "timeMax" : fixtureTimeMax, "timeMin" : fixtureTimeMin]
+        let mockQueryParameters = ["maxResults": 100, "orderBy" : "startTime", "singleEvents" : "true", "timeMax" : fixtureTimeMax, "timeMin" : fixtureTimeMin]
 
         describe ("when initializing single query with single calendar identifier") {
-            let testQuery = EventsQuery(calendarID: fixtureCalendarIDs.first!, timeRange: timeRange)
+            let sut = EventsQuery(calendarID: fixtureCalendarIDs.first!, timeRange: timeRange)
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "sut": sut,
                     "mockQuery": mockQueries.first!,
+                    "mockQueryParameters": mockQueryParameters
                 ]
             }
             
             it("should have proper time max") {
-                expect(testQuery.timeMax).to(equal(timeRange.max))
+                expect(sut.timeMax).to(equal(timeRange.max))
             }
             
             it("should have proper time min") {
-                expect(testQuery.timeMin).to(equal(timeRange.min))
+                expect(sut.timeMin).to(equal(timeRange.min))
             }
             
-            it("should have proper parameters") {
-                expect(testQuery.parameters!).to(equal(mockQueryParameters))
-            }
         }
         
         describe ("when creating array of queries from array of calendar identifiers") {
-            let testQueries = EventsQuery.queriesForCalendarIdentifiers(fixtureCalendarIDs, withTimeRange: timeRange)
+            let sut = EventsQuery.queriesForCalendarIdentifiers(fixtureCalendarIDs, withTimeRange: timeRange)
 
             it("should return proper number of queries") {
-                expect(testQueries.count).to(equal(fixtureCalendarIDs.count))
+                expect(sut.count).to(equal(fixtureCalendarIDs.count))
             }
             
-            for var i = 0; i < testQueries.count; i++ {
-                let testQuery = testQueries[i]
+            for var i = 0; i < sut.count; i++ {
+                let testQuery = sut[i]
                 
                 itBehavesLike("queryable") {
                     [
-                        "testQuery": testQuery,
+                        "sut": testQuery,
                         "mockQuery": mockQueries[i],
+                        "mockQueryParameters": mockQueryParameters
                     ]
                 }
                 
@@ -74,10 +72,6 @@ class EventsQuerySpec: QuickSpec {
                 
                 it("should have proper time min") {
                     expect(testQuery.timeMin).to(equal(timeRange.min))
-                }
-                
-                it("should have proper parameters") {
-                    expect(testQuery.parameters!).to(equal(mockQueryParameters))
                 }
             }
         }

@@ -25,13 +25,9 @@ class PageableQuerySpec: QuickSpec {
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": sut,
+                    "sut": sut,
                     "mockQuery": mockQuery,
                 ]
-            }
-            
-            it("should have nil parameters") {
-                expect(sut.parameters).to(beNil())
             }
             
             it("should have no page token") {

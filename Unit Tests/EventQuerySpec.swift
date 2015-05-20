@@ -25,21 +25,10 @@ class EventQuerySpec: QuickSpec {
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": sut,
+                    "sut": sut,
                     "mockQuery": mockQuery,
+                    "mockQueryParameters": mockQueryParameters
                 ]
-            }
-            
-            beforeEach {
-                sut = EventQuery()
-            }
-            
-            afterEach {
-                sut = nil
-            }
-            
-            it("should have proper parameters") {
-                expect(sut.parameters!).to(equal(mockQueryParameters))
             }
         }
         

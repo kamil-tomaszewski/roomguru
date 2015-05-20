@@ -15,21 +15,17 @@ class CalendarsQuerySpec: QuickSpec {
     
     override func spec(){
         
-        var testQuery: CalendarsQuery!
+        var sut: CalendarsQuery!
         let mockQuery = MockQuery(HTTPMethod: "GET", URLExtension: "/users/me/calendarList", parameterEncoding: "URL")
         
         describe("when initializing") {
-            testQuery = CalendarsQuery()
+            sut = CalendarsQuery()
             
             itBehavesLike("queryable") {
                 [
-                    "testQuery": testQuery,
+                    "sut": sut,
                     "mockQuery": mockQuery,
                 ]
-            }
-            
-            it("should have proper parameters") {
-                expect(testQuery.parameters).to(beNil())
             }
         }
     }
