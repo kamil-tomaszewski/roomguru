@@ -72,11 +72,9 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
         // when one of two, means event is boundary event
         } else if beforeFreeEvent || afterFreeEvent {
             return true
-        // when contains, means one event left and this one has been selected
-        } else if containsIndexPath(indexPath) {
-            return true
+        // when contains, means one event left and exactly this one has been selected
         } else {
-            return false
+            return containsIndexPath(indexPath)
         }
     }
     
