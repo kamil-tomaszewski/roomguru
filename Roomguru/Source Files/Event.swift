@@ -27,8 +27,8 @@ class Event: ModelObject, NSSecureCoding {
     private(set) var startDate:  String!
     private(set) var endDate:    String!
     private(set) var creator:    Attendee?
-    private(set) var attendees:  [Attendee]?
-    private(set) var rooms:      [Attendee]?
+    private(set) var attendees:  [Attendee] = []
+    private(set) var rooms:      [Attendee] = []
     
     // Properties based on API:
     private(set) var startTime:  String!
@@ -78,7 +78,7 @@ class Event: ModelObject, NSSecureCoding {
         self.endDate = aDecoder.decodeObjectForKey("endDate") as? String
         self.hangoutLink = aDecoder.decodeObjectForKey("hangoutLink") as? String
         self.iCalUID = aDecoder.decodeObjectForKey("iCalUID") as? String
-        self.attendees = aDecoder.decodeObjectForKey("attendees") as? [Attendee]
+        self.attendees = aDecoder.decodeObjectForKey("attendees") as! [Attendee]
         
     }
     
@@ -154,10 +154,17 @@ class Event: ModelObject, NSSecureCoding {
 extension Event {
     
     func isCanceled() -> Bool {
-        if let rooms = rooms {
-            return rooms.filter { ($0.status as Status) == .NotGoing }.count > 0
-        }
-        return true
+        return rooms.filter { ($0.status as Status) == .NotGoing }.count > 0
+    }
+    
+    func addRoomWithEmail(email: String, name: String) {
+        let room = Attendee(json: JSON([]))
+        room.email = email
+        room.name = name
+        room.isRoom = true
+        room.isResource = true
+        
+        rooms.append(room)
     }
 }
 

@@ -107,9 +107,9 @@ private extension EventsProvider {
             
             var isAttendee = false
             
-            if let attendees = $0.attendees {
-                isAttendee = !attendees.filter { $0.email == userEmail }.isEmpty
-            }
+//            if let attendees = {
+                isAttendee = !$0.attendees.filter { $0.email == userEmail }.isEmpty
+//            }
             
             return $0.creator?.email == userEmail || isAttendee
         }

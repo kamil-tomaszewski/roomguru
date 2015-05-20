@@ -13,10 +13,12 @@ class EventDetailsViewController: UIViewController {
     
     private weak var aView: EventDetailsView?
     private var viewModel: EventDetailsViewModel
+    private var didUpdateBlock: VoidBlock?
     
     // MARK: View life cycle
     
-    init(event: Event?) {
+    init(event: Event?, didUpdateBlock: VoidBlock? = nil) {
+        self.didUpdateBlock = didUpdateBlock
         self.viewModel = EventDetailsViewModel(event: event)
         super.init(nibName: nil, bundle: nil);
     }
@@ -161,12 +163,13 @@ extension EventDetailsViewController {
 
     func didTapEditBarButton(sender: UIBarButtonItem) {
         let event = self.viewModel.event!
-        let calendarEntry = CalendarEntry(calendarID: event.rooms!.first!.email!, event: event)
+        let calendarEntry = CalendarEntry(calendarID: event.rooms.first!.email!, event: event)
         let viewModel = EditEventViewModel(calendarEntry: calendarEntry)
         let editEventController = EditEventViewController(viewModel: viewModel)
         editEventController.updateCompletionBlock = { event in
             self.viewModel = EventDetailsViewModel(event: event)
             self.aView?.tableView.reloadData()
+            self.didUpdateBlock?()
         }
         
         let navigationController = NavigationController(rootViewController: editEventController)

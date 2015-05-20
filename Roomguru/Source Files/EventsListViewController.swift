@@ -81,7 +81,9 @@ extension EventsListViewController: UITableViewDelegate {
             aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
 
         } else {
-            let controller = EventDetailsViewController(event: event)
+            let controller = EventDetailsViewController(event: event) {
+                self.loadData()
+            }
             navigationController?.pushViewController(controller, animated: true)
         }
     }
@@ -194,9 +196,6 @@ extension EventsListViewController {
             presentViewController(maskingVC, animated: true) {
                 self.alertViewTransitionDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
             }
-
-            println("min: \(timeRange.min), max: \(timeRange.max)")
-            println("selected calendar ID: \(coordinator.eventsProvider.calendarIDs.first)")
         }
     }
 }

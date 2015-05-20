@@ -31,10 +31,7 @@ class BookingQuery: Query {
         startDate = event.start
         endDate = event.end
         
-        let emails = event.attendees?.filter { $0.email != nil }.map { $0.email! }
-        if var emails = emails {
-            addAttendees(emails)
-        }
+        addAttendees(event.attendees.filter { $0.email != nil }.map { $0.email! })
         
         updateCalendarAsAttendee(nil, new: calendarID)
     }

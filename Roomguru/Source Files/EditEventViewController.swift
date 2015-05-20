@@ -219,6 +219,7 @@ extension EditEventViewController {
                 UIAlertView(title: title, message: message).show()
                 
             } else if let event = event {
+                
                 self.updateCompletionBlock?(event: event)
                 self.dismissSelf(self.viewModel)
             }

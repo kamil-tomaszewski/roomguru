@@ -27,11 +27,11 @@ extension UIAlertView {
         
         let title = NSLocalizedString("Success", comment: "")
         let ending = " from " + event.startTime + " to " + event.endTime
-        let declinedRooms = event.rooms?.filter { $0.status == Status.NotGoing }
+        let declinedRooms = event.rooms.filter { $0.status == Status.NotGoing }
 
         var message: String!
         
-        if declinedRooms?.count > 0 {
+        if declinedRooms.count > 0 {
             message = NSLocalizedString("Room", comment: "") + " " + name + NSLocalizedString("declined event", comment: "") + ending
         } else {
             message = NSLocalizedString("Booked room", comment: "") + " " + name + ending

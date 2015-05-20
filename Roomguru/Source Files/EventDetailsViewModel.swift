@@ -24,11 +24,11 @@ class EventDetailsViewModel {
     // MARK: numbers
     
     func numberOfGuests() -> Int {
-        return event?.attendees?.count ?? 0
+        return event?.attendees.count ?? 0
     }
     
     func numberOfLocations() -> Int {
-        return event?.rooms?.count ?? 0
+        return event?.rooms.count ?? 0
     }
     
     // MARK: text
@@ -41,7 +41,7 @@ class EventDetailsViewModel {
     }
     
     func attendee(index: Int) -> AttendeeInfo {
-        return infoWithAttendee(event?.attendees?[index])
+        return infoWithAttendee(event?.attendees[index])
     }
     
     func owner() -> AttendeeInfo {
@@ -49,7 +49,7 @@ class EventDetailsViewModel {
     }
     
     func location(index: Int) -> AttendeeInfo {
-        return infoWithAttendee(event?.rooms?[index])
+        return infoWithAttendee(event?.rooms[index])
     }
     
     func isEventEditable() -> Bool {

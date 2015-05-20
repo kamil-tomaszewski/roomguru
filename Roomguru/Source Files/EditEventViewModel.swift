@@ -359,10 +359,12 @@ extension EditEventViewModel {
         
         NetworkManager.sharedInstance.request(eventQuery, success: { response in
             
-            println(response)
+            if let var response = response {
             
-            if let response = response {
-                completion(event: Event(json: response), error: nil)
+                response["attendees"] = self.fixResponse(response)
+                let event = Event(json: response)
+                
+                completion(event: event, error: nil)
             } else {
                 let error = NSError(message: NSLocalizedString("Server sent empty response", comment: ""))
                 completion(event: nil, error: error)
@@ -379,5 +381,39 @@ extension EditEventViewModel {
                 item.update()
             }
         }
+    }
+    
+    private func fixResponse(response: JSON) -> JSON {
+        
+        /* NOTICE:
+        * When editing event Google Calendar doesn't return "self" in response (in resource)
+        * because is waiting for resource acceptation.
+        *
+        * To avoid UI glitches, resource here is mocked
+        * as that one which was send in request.
+        */
+        
+        var mockedAttendees: [[String : String]] = []
+        
+        for attendee in response["attendees"].arrayValue {
+            
+            var mockedAttendee = [
+                "email" : attendee["email"].object as! String,
+                "displayName" : attendee["displayName"].object as! String,
+                "responseStatus" : attendee["responseStatus"].object as! String
+            ]
+            
+            if let resource = attendee["resource"].object as? Bool {
+                mockedAttendee["resource"] = resource ? "true" : "false"
+            }
+            if let isSelf = attendee["resource"].object as? Bool {
+                mockedAttendee["self"] = isSelf ? "true" : "false"
+            } else {
+                mockedAttendee["self"] = "false"
+            }
+            
+            mockedAttendees.append(mockedAttendee)
+        }
+        return JSON(mockedAttendees)
     }
 }

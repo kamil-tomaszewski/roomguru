@@ -16,6 +16,7 @@ class TabBarController: UITabBarController {
         
         self.tabBar.tintColor = UIColor.ngOrangeColor()
         self.tabBar.barTintColor = UIColor.ngBarTranslucentGrayColor()
+        self.delegate = self
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -76,6 +77,16 @@ class TabBarController: UITabBarController {
             controller.updateSelectedCalendar()
             controller.updateControllerState()
             controller.reloadEventList()
+        }
+    }
+}
+
+extension TabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
+        if let eventViewController = (viewController as? NavigationController)?.viewControllers.first as? EventsViewController {
+            eventViewController.reloadEventList()
         }
     }
 }
