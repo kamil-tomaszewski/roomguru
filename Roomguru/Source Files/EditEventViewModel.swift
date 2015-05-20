@@ -8,6 +8,7 @@
 
 import Foundation
 import DateKit
+import SwiftyJSON
 
 protocol ModelUpdatable {
     func didChangeItemsAtIndexPaths(indexPaths: [NSIndexPath])
@@ -330,7 +331,7 @@ extension EditEventViewModel {
 
 extension EditEventViewModel {
     
-    func isModelValid() -> Bool {
+    func isModelValid() -> NSError? {
         var reloadIndexPaths: [NSIndexPath] = []
         var errors: [NSError] = []
         
@@ -345,7 +346,7 @@ extension EditEventViewModel {
         }
         
         delegate?.didChangeItemsAtIndexPaths(reloadIndexPaths)
-        return errors.isEmpty
+        return errors.first
     }
 }
 
@@ -353,9 +354,23 @@ extension EditEventViewModel {
 
 extension EditEventViewModel {
     
-    func saveEvent(success: ResponseBlock, failure: ErrorBlock) {
+    func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {
         itemsUpdates()
-        NetworkManager.sharedInstance.request(eventQuery, success: success, failure: failure)
+        
+        NetworkManager.sharedInstance.request(eventQuery, success: { response in
+            
+            println(response)
+            
+            if let response = response {
+                completion(event: Event(json: response), error: nil)
+            } else {
+                let error = NSError(message: NSLocalizedString("Server sent empty response", comment: ""))
+                completion(event: nil, error: error)
+            }
+            
+        }, failure: { error in
+            completion(event: nil, error: error)
+        })
     }
     
     private func itemsUpdates() {

@@ -145,8 +145,6 @@ extension EventsListViewController {
     func revokeEventAtIndexPath(indexPath: NSIndexPath) {
         if let eventID = coordinator.viewModel?.eventAtIndex(indexPath)?.identifier, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
             
-            PKHUD.sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
-            PKHUD.sharedHUD.dimsBackground = false
             PKHUD.sharedHUD.show()
            
             BookingManager.revokeEvent(eventID, userEmail: userEmail) { (success, error) in

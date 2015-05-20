@@ -7,6 +7,7 @@
 
 import UIKit
 import HockeySDK
+import PKHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,15 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        setupVendors()
+        application.statusBarStyle = .LightContent
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window!.rootViewController = TabBarController()
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         
-        application.statusBarStyle = .LightContent
-
+        setupVendors()
         authenticate()
 
         return true
@@ -121,5 +121,8 @@ private extension AppDelegate {
         #endif
         
         NetworkManager.sharedInstance.setServerURL(Constants.GooglePlus.ServerURL)
+        
+        PKHUD.sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
+        PKHUD.sharedHUD.dimsBackground = false
     }
 }

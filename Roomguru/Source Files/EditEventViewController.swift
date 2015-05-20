@@ -7,12 +7,13 @@
 //
 
 import Foundation
-
+import PKHUD
 
 class EditEventViewController: UIViewController {
     
     private weak var aView: GroupedBaseTableView?
-    var keyboardHandler: KeyboardPresenceHandler!
+    private var keyboardHandler: KeyboardPresenceHandler!
+    var updateCompletionBlock: ((event: Event) -> Void)?
     
     init(viewModel: EditEventViewModel<GroupItem>) {
         self.viewModel = viewModel
@@ -91,9 +92,7 @@ extension EditEventViewController: KeyboardPresenceHandlerDelegate {
 extension EditEventViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        viewModel.resignFirstResponderOnItems()
-        let actualResponder = findFirstResponder()
-        actualResponder?.resignFirstResponder()
+        endEditing()
     }
 }
 
@@ -201,20 +200,33 @@ extension EditEventViewController: UITableViewDelegate {
 extension EditEventViewController {
     
     func didTapSaveBarButton(sender: UIBarButtonItem) {
-        view.endEditing(true)
+        endEditing()
         
-        if viewModel.isModelValid() {
-            viewModel.saveEvent({ response in
-                self.dismissSelf(self.viewModel)
-            }, failure: { error in
+        if let error = viewModel.isModelValid() {
+            UIAlertView(error: error).show()
+            return
+        }
+        
+        PKHUD.sharedHUD.show()
+        
+        viewModel.saveEvent() { (event, error) in
+            
+            PKHUD.sharedHUD.hide()
+            
+            if let error = error {
                 let title = NSLocalizedString("Oh no!", comment: "")
                 let message = NSLocalizedString("There was a problem with creating your event. Please try again later.", comment: "")
                 UIAlertView(title: title, message: message).show()
-            })
+                
+            } else if let event = event {
+                self.updateCompletionBlock?(event: event)
+                self.dismissSelf(self.viewModel)
+            }
         }
     }
     
     func didTapDismissBarButton(sender: UIBarButtonItem) {
+        endEditing()
         dismissSelf(sender)
     }
 }
@@ -262,6 +274,11 @@ private extension EditEventViewController {
         configureRightDetailTextCell(cell, forItem: item as ActionItem)
         cell.validationError = item.validationError
     }
+    
+    func endEditing() {
+        viewModel.resignFirstResponderOnItems()
+        findFirstResponder()?.resignFirstResponder()
+    }
 }
 
 // MARK: Private
@@ -288,11 +305,8 @@ private extension EditEventViewController {
     }
     
     func setupBarButtons() {
-        let dismissSelector = Selector("didTapDismissBarButton:")
-        let saveSelector = Selector("didTapSaveBarButton:")
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: saveSelector)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: dismissSelector)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: Selector("didTapSaveBarButton:"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: Selector("didTapDismissBarButton:"))
     }
 }
 

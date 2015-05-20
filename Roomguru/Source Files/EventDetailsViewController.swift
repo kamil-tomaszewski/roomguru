@@ -12,7 +12,7 @@ import AFNetworking
 class EventDetailsViewController: UIViewController {
     
     private weak var aView: EventDetailsView?
-    private let viewModel: EventDetailsViewModel
+    private var viewModel: EventDetailsViewModel
     
     // MARK: View life cycle
     
@@ -164,6 +164,11 @@ extension EventDetailsViewController {
         let calendarEntry = CalendarEntry(calendarID: event.rooms!.first!.email!, event: event)
         let viewModel = EditEventViewModel(calendarEntry: calendarEntry)
         let editEventController = EditEventViewController(viewModel: viewModel)
+        editEventController.updateCompletionBlock = { event in
+            self.viewModel = EventDetailsViewModel(event: event)
+            self.aView?.tableView.reloadData()
+        }
+        
         let navigationController = NavigationController(rootViewController: editEventController)
         presentViewController(navigationController, animated: true, completion: nil)
     }
