@@ -96,12 +96,6 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
         selectedFreeEvents.sort { $0.start <= $1.start }
         return TimeRange(min: selectedFreeEvents.first!.start, max: selectedFreeEvents.last!.end)
     }
-    
-    func isUserAllowedToRevokeEvent(event: Event) -> Bool {
-        let isCreator = event.creator?.email == UserPersistenceStore.sharedStore.user?.email
-        let doesEventEndLaterThanNow = NSDate() < event.end
-        return doesEventEndLaterThanNow && isCreator
-    }
 }
 
 private extension EventsListViewModel {

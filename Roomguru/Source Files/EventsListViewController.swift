@@ -245,8 +245,10 @@ private extension EventsListViewController {
             self?.revokeEventAtIndexPath(indexPath)
         }
         
-        if let viewModel = coordinator.viewModel {
-            cell.revokeButton.hidden = !viewModel.isUserAllowedToRevokeEvent(event)
+        if let email = event.creator?.email where email == UserPersistenceStore.sharedStore.user?.email {
+            cell.revokeButton.hidden = event.end < NSDate()
+        } else {
+            cell.revokeButton.hidden = true
         }
         
         let calendar = CalendarPersistenceStore.sharedStore.calendars.filter { $0.identifier == event.rooms.first!.email }.first
