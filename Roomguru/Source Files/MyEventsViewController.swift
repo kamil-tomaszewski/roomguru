@@ -51,9 +51,13 @@ extension MyEventsViewController {
 
     func didTapBookRoomButton(sender: UIButton) {
 
-        // NGRTodo: this shouldn't be done here. User shouldn't wait for server response.
-
+        let barButtonItem = navigationItem.leftBarButtonItem
+        navigationItem.leftBarButtonItem = UIBarButtonItem.loaderItemWithTintColor(.ngOrangeColor())
+        
         BookingManager.findClosestAvailableRoom { (calendarTime, error) in
+            
+            self.navigationItem.leftBarButtonItem = barButtonItem
+            
             if let error = error {
                 UIAlertView(error: error).show()
 
