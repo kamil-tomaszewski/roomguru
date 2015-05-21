@@ -18,10 +18,9 @@ class ResultActionItem: ActionItem {
 
 extension ResultActionItem: Validatable {
     
-    var valueToValidate: AnyObject { get { return result ?? "" } }
+    var valueToValidate: AnyObject { return result ?? "" }
     var validationError: NSError? {
-        get { return validate(valueToValidate) }
-        set {}
+        return validate(valueToValidate)
     }
         
     func validate(object: AnyObject) -> NSError? {

@@ -74,10 +74,9 @@ extension TextItem: Updatable {
 
 extension TextItem: Validatable {
     
-    var valueToValidate: AnyObject { get { return text } }
+    var valueToValidate: AnyObject { return text }
     var validationError: NSError? {
-        get { return validate(valueToValidate) }
-        set {}
+        return validate(valueToValidate)
     }
     
     func validate(object: AnyObject) -> NSError? {

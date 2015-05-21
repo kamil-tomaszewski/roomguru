@@ -43,11 +43,10 @@ extension DateItem: Updatable {
 
 extension DateItem: Validatable {
     
-    var valueToValidate: AnyObject { get { return date } }
+    var valueToValidate: AnyObject { return date }
     
     var validationError: NSError? {
-        get { return validate(valueToValidate) }
-        set {}
+        return validate(valueToValidate)
     }
     
     func validate(object: AnyObject) -> NSError? {

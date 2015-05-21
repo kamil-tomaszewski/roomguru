@@ -373,8 +373,7 @@ extension EditEventViewModel {
         
         itemize { (path, item) in
             if var item = item as? Validatable {
-                if let error = item.validate(item.valueToValidate) {
-                    item.validationError = error
+                if let error = item.validationError {
                     errors.append(error)
                 }
                 reloadIndexPaths.append(NSIndexPath(forRow: path.row, inSection: path.section))

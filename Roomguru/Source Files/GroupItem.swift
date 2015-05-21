@@ -14,7 +14,7 @@ protocol Updatable {
 
 protocol Validatable {
     var valueToValidate: AnyObject { get }
-    var validationError: NSError? { get set }
+    var validationError: NSError? { get }
     func validate(object: AnyObject) -> NSError?
 }
 
