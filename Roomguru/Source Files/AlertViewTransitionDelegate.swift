@@ -138,24 +138,35 @@ class DismissAlertViewAnimationController: AlertViewAnimationController {
         let maskingView = fromViewController.aView.maskingView
         let fromView = fromViewController.aView.contentView
         
+        let duration = transitionDuration(transitionContext)
         let containerView = transitionContext.containerView()
         containerView.addSubview(fromViewController.view)
         
         dynamicAnimator = UIDynamicAnimator(referenceView: transitionContext.containerView())
         
         let gravityBehavior = UIGravityBehavior(items: [fromView])
-        gravityBehavior.magnitude = 20.0
+        gravityBehavior.magnitude = 15.0
         dynamicAnimator?.addBehavior(gravityBehavior)
         
+        let dynamicItemBehavior = UIDynamicItemBehavior(items: [fromView])
+        dynamicItemBehavior.allowsRotation = true
+        dynamicItemBehavior.addAngularVelocity(randomAngularVelocity(), forItem: fromView)
+        dynamicAnimator?.addBehavior(dynamicItemBehavior)
+        
         maskingView.alpha = 0.7
-        UIView.animateWithDuration(transitionDuration(transitionContext)) {
+        UIView.animateWithDuration(duration) {
             maskingView.alpha = 0.0
         }
         
-        Async.main(after: transitionDuration(transitionContext)) {
+        Async.main(after: duration) {
             self.dynamicAnimator = nil
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         }
+    }
+    
+    private func randomAngularVelocity() -> CGFloat {
+        var coeff = (Int(arc4random() % 100) - 50) < 0 ? -1.0 : 1.0
+        return CGFloat(coeff) * CGFloat((arc4random() % 3) + 1)
     }
 }
 
