@@ -37,9 +37,9 @@ class FreeBusyQuery: Query {
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .JSON) {
         super.init(HTTPMethod, URLExtension: URLExtension, parameters: parameters, encoding: encoding)
         
-        let today = NSDate()
-        self[TimeMinKey] = formatter.stringFromDate(today)
-        self[TimeMaxKey] = formatter.stringFromDate(today.days + 2)
+        let todaysMidnight = NSDate().midnight
+        self[TimeMinKey] = formatter.stringFromDate(todaysMidnight)
+        self[TimeMaxKey] = formatter.stringFromDate(todaysMidnight.days + 2)
         self[TimeZoneKey] = "Europe/Warsaw"
     }
     

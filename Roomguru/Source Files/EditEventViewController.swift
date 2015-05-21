@@ -209,19 +209,28 @@ extension EditEventViewController {
         
         PKHUD.sharedHUD.show()
         
-        viewModel.saveEvent() { (event, error) in
-            
-            PKHUD.sharedHUD.hide()
+        viewModel.isSlotAvailable() { error in
             
             if let error = error {
-                let title = NSLocalizedString("Oh no!", comment: "")
-                let message = NSLocalizedString("There was a problem with creating your event. Please try again later.", comment: "")
-                UIAlertView(title: title, message: message).show()
+                PKHUD.sharedHUD.hide()
+                UIAlertView(error: error).show()
+                return
+            }
+
+            self.viewModel.saveEvent() { (event, error) in
                 
-            } else if let event = event {
+                PKHUD.sharedHUD.hide()
                 
-                self.updateCompletionBlock?(event: event)
-                self.dismissSelf(self.viewModel)
+                if let error = error {
+                    let title = NSLocalizedString("Oh no!", comment: "")
+                    let message = NSLocalizedString("There was a problem with creating your event. Please try again later.", comment: "")
+                    UIAlertView(title: title, message: message).show()
+                    
+                } else if let event = event {
+                    
+                    self.updateCompletionBlock?(event: event)
+                    self.dismissSelf(self.viewModel)
+                }
             }
         }
     }

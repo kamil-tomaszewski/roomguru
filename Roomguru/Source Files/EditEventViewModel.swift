@@ -145,7 +145,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 query.startDate = date
             }
             
-            let probableEndDate = date.minutes + 30
+            let probableEndDate = date.minutes + Int(Constants.Timeline.MinimumEventDuration/60)
             if endDateItem.date < probableEndDate {
                 endDateItem.date = probableEndDate
             }
@@ -211,6 +211,10 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         startDateItem.validation = { date in
             if date < NSDate().midnight {
                 let message = NSLocalizedString("Cannot pick date earlier than today's midnight", comment: "")
+                return NSError(message: message)
+                
+            } else if endDateItem.date.timeIntervalSinceDate(date) < Constants.Timeline.MinimumEventDuration {
+                let message = NSLocalizedString("Cannot create event shorter than \(Constants.Timeline.MinimumEventDuration/60) minutes", comment: "")
                 return NSError(message: message)
             }
             return nil
@@ -360,7 +364,6 @@ extension EditEventViewModel {
 extension EditEventViewModel {
     
     func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {
-        itemsUpdates()
         
         NetworkManager.sharedInstance.request(eventQuery, success: { response in
             
@@ -377,6 +380,75 @@ extension EditEventViewModel {
             
         }, failure: { error in
             completion(event: nil, error: error)
+        })
+    }
+    
+    func isSlotAvailable(completion: (error: NSError?) -> Void) {
+        itemsUpdates()
+        
+        let query = FreeBusyQuery(calendarsIDs: [eventQuery.calendarID])
+        
+        NetworkManager.sharedInstance.request(query, success: { response in
+           
+            
+            if let response = response {
+                
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                formatter.timeZone = NSTimeZone.localTimeZone()
+                
+                var timeFrames: [TimeFrame]?
+                let timeMin = formatter.dateFromString(response["timeMin"].string!)
+                let timeMax = formatter.dateFromString(response["timeMax"].string!)
+  
+                for calendar in response["calendars"].dictionaryValue {
+                    let calendarJSON = calendar.1.dictionaryValue
+                    timeFrames = TimeFrame.map(calendarJSON["busy"]?.arrayValue)
+                }
+
+                var freeTimeRanges: [TimeRange] = []
+                
+                if let timeFrames = timeFrames {
+                    
+                    for index in 0...timeFrames.count  {
+                        
+                        var min, max: NSDate!
+   
+                        if index == 0 {
+                            min = timeMin
+                            max = timeFrames[index].startDate
+                            
+                        } else if index == timeFrames.count {
+                            min = timeFrames[index - 1].endDate
+                            max = timeMax
+                            
+                        } else {
+                            min = timeFrames[index - 1].endDate
+                            max = timeFrames[index].startDate
+                        }
+                        
+                        if max.timeIntervalSinceDate(min) > 0 {
+                            freeTimeRanges.append((min: min ,max: max))
+                        }
+                    }
+                }
+
+                var error: NSError?
+                let filteredTimesRanges = freeTimeRanges.filter { self.eventQuery.startDate! >= $0.min && self.eventQuery.endDate! <= $0.max }
+
+                if filteredTimesRanges.isEmpty {
+                    error = NSError(message: NSLocalizedString("The room is busy in provided time range", comment: ""))
+                }
+                completion(error: error)
+                return
+            }
+            
+            let error = NSError(message: NSLocalizedString("Server respond with empty response", comment: ""))
+            completion(error: error)
+            
+            
+            }, failure: { error in
+                completion(error: error)
         })
     }
     
