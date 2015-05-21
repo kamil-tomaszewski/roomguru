@@ -132,6 +132,29 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 self?.eventQuery.endDate = endDateItem.date
             }
             
+            func togglePickerForDateItem(item: DateItem) {
+                if item.highlighted {
+                    let indexPath = self?.indexPathsForItems([item])?.first
+                    
+                    if let indexPath = indexPath {
+                        let nextIndexPath = NSIndexPath(forRow: indexPath.row+1, inSection: indexPath.section)
+                        
+                        if state {
+                            self?.removeAtIndexPath(nextIndexPath)
+                            self?.delegate?.removedItemsAtIndexPaths([nextIndexPath])
+                        } else {
+                            if let pickerItem = self?.datePickerItemForDateItem(item) {
+                                self?.addItem(pickerItem, atIndexPath: nextIndexPath)
+                                self?.delegate?.addedItemsAtIndexPaths([nextIndexPath])
+                            }
+                        }
+                    }
+                }
+            }
+            
+            togglePickerForDateItem(startDateItem)
+            togglePickerForDateItem(endDateItem)
+            
             startDateItem.active = !state
             endDateItem.active = !state
             
@@ -299,14 +322,7 @@ extension EditEventViewModel {
             
             item.highlighted = true
             
-            let pickerItem = DatePickerItem(date: item.date) { [weak self] date in
-                item.date = date
-                item.update()
-                
-                if let indexPaths = self?.indexPathsForItems([item]) {
-                    self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
-                }
-            }
+            let pickerItem = datePickerItemForDateItem(item)
             
             if var currentIndexPath = indexPathsForItems([item])?.first {
                 currentIndexPath = NSIndexPath(forRow: currentIndexPath.row+1, inSection: currentIndexPath.section)
@@ -321,9 +337,20 @@ extension EditEventViewModel {
             presenter?.presentViewController(controller)
         }
     }
+    
+    private func datePickerItemForDateItem(item: DateItem) -> DatePickerItem {
+        return DatePickerItem(date: item.date) { [weak self] date in
+            item.date = date
+            item.update()
+            
+            if let indexPaths = self?.indexPathsForItems([item]) {
+                self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+            }
+        }
+    }
 }
 
-// MARK: First responder 
+// MARK: First responder
 
 extension EditEventViewModel {
     
