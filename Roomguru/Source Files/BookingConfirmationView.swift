@@ -19,7 +19,7 @@ class BookingConfirmationView: UIView {
     private(set) var lessMinutesButton = UIButton.buttonWithType(.System) as! UIButton
     private(set) var moreMinutesButton = UIButton.buttonWithType(.System) as! UIButton
     
-    let summaryTextField = TextField()
+    let summaryTextField = InsetTextField()
     
     private let minutesShortLabel = UILabel(frame: CGRectMake(0, 0, 200, 40))
     

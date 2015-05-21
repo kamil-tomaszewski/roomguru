@@ -17,7 +17,7 @@ class TextFieldCell: UITableViewCell, Reusable {
         return "TableViewTextFieldCellReuseIdentifier"
     }
     
-    let textField = TextField()
+    let textField = InsetTextField()
     var validationError: NSError? {
         didSet {
             let isError = (validationError != nil)
@@ -47,7 +47,7 @@ private extension TextFieldCell {
         defineConstraints()
     }
     
-    func configureTextField(textField: TextField) {
+    func configureTextField(textField: InsetTextField) {
         textField.leftView = accessoryLabel()
         textField.leftViewMode = .Always
         textField.clearButtonMode = .Never

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextField: UITextField {
+class InsetTextField: UITextField {
     var leftInset: CGFloat = 0.0
     var rightInset: CGFloat = 0.0
     
