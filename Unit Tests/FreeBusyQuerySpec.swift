@@ -19,7 +19,7 @@ class FreeBusyQuerySpec: QuickSpec {
         var sut: FreeBusyQuery!
         let mockQuery = MockQuery(HTTPMethod: "POST", URLExtension: "/freeBusy", parameterEncoding: "JSON")
         
-        let today = NSDate()
+        let today = NSDate().midnight
         
         var fixtureTimeMin = queryDateFormatter().stringFromDate(today)
         var fixtureTimeMax = queryDateFormatter().stringFromDate(today.days + 2)
