@@ -37,10 +37,10 @@ class EventDetailsViewController: UIViewController {
         
         hideBackBarButtonTitle()
         
-        if viewModel.isEventEditable() {
+        if let email = viewModel.event?.creator?.email where email == UserPersistenceStore.sharedStore.user?.email {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "didTapEditBarButton:")
         }
-
+        
         title = NSLocalizedString("Event Details", comment: "")
         setupTableView()
     }
@@ -155,11 +155,6 @@ extension EventDetailsViewController {
             }
         }
     }
-}
-
-// MARK: Actions
-
-extension EventDetailsViewController {
 
     func didTapEditBarButton(sender: UIBarButtonItem) {
         let event = self.viewModel.event!

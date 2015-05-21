@@ -11,7 +11,7 @@ import Foundation
 typealias AttendeeInfo = (name: String?, email: String?, status: Status?)
 
 class EventDetailsViewModel {
-    
+
     let event: Event?
     private let formatter: NSDateFormatter
     
@@ -50,14 +50,6 @@ class EventDetailsViewModel {
     
     func location(index: Int) -> AttendeeInfo {
         return infoWithAttendee(event?.rooms[index])
-    }
-    
-    func isEventEditable() -> Bool {
-        if let event = event {
-            let isCreator = event.creator?.email == UserPersistenceStore.sharedStore.user?.email
-            return isCreator
-        }
-        return false
     }
     
     func summary() -> NSAttributedString {

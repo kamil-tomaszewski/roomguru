@@ -14,7 +14,7 @@ import SwiftyJSON
 class EventDetailsViewModelSpec: QuickSpec {
     override func spec() {
         
-        var sut: EventDetailsViewModel?
+        var sut: EventDetailsViewModel!
         
         describe("when initializing with event") {
             
@@ -27,71 +27,40 @@ class EventDetailsViewModelSpec: QuickSpec {
             }
             
             it("should have proper number of guests") {
-                expect(sut!.numberOfGuests()).to(equal(3))
+                expect(sut.numberOfGuests()).to(equal(3))
             }
 
             it("should have proper number of locations") {
-                expect(sut!.numberOfLocations()).to(equal(2))
+                expect(sut.numberOfLocations()).to(equal(2))
             }
             
             it("should owner info be properly given") {
-                let owner = sut!.owner()
+                let owner = sut.owner()
                 expect(owner.email).to(equal("FixtureEmail.4"))
                 expect(owner.name).to(equal("FixtureName.4"))
                 expect(owner.status?.rawValue).to(equal("accepted"))
             }
             
             it("should icon for existing status be not nil") {
-                expect(sut!.iconWithStatus(.Going)).toNot(beNil())
+                expect(sut.iconWithStatus(.Going)).toNot(beNil())
             }
             
             it("should icon for non existing status be nil") {
-                expect(sut!.iconWithStatus(nil)).to(beNil())
+                expect(sut.iconWithStatus(nil)).to(beNil())
             }
             
             it("should location be properly set") {
-                let location = sut!.location(0)
+                let location = sut.location(0)
                 expect(location.name).to(equal("FixtureRoom.1"))
                 expect(location.email).to(equal("FixtureRoomEmail.1"))
             }
             
             it("should have properly formatted dates in summary") {
-                let summary = sut!.summary().string
+                let summary = sut.summary().string
                 expect(summary).to(contain("April, 24 Fri 2015"))
                 expect(summary).to(contain("10:00 AM"))
                 expect(summary).to(contain("10:30 AM"))
                 expect(summary).to(contain("Fixture summary"))
-            }
-            
-            describe("when user email is stored and is same as creator email") {
-                
-                beforeEach {
-                    UserPersistenceStore.sharedStore.registerUserWithEmail("FixtureEmail.4")
-                }
-                
-                afterEach {
-                    UserPersistenceStore.sharedStore.clear()
-                }
-                
-                it("should be editable") {
-                    expect(sut!.isEventEditable()).to(beTrue())
-                }
-            }
-            
-            
-            describe("when user email is stored and is different than creator email") {
-                
-                beforeEach {
-                    UserPersistenceStore.sharedStore.registerUserWithEmail("FixtureEmail.3")
-                }
-                
-                afterEach {
-                    UserPersistenceStore.sharedStore.clear()
-                }
-                
-                it("should not be editable") {
-                    expect(sut!.isEventEditable()).to(beFalse())
-                }
             }
         }
     }
