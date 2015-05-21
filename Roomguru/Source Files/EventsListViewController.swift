@@ -18,7 +18,6 @@ class EventsListViewController: UIViewController {
     convenience init(coordinator: EventsListCoordinator) {
         self.init()
         self.coordinator = coordinator
-        
     }
     
     init() {
@@ -50,7 +49,7 @@ class EventsListViewController: UIViewController {
         }
     }
     
-    func loadData() {
+    func loadData(completion: VoidBlock? = nil) {
         coordinator.loadDataWithCompletion { [weak self] (status, message, icon) in
             
             switch status {
@@ -61,6 +60,8 @@ class EventsListViewController: UIViewController {
                 self?.scrollToNowAnimated(false)
                 fade(.In, self?.aView?.tableView, duration: 0.5) { }
             }
+            
+            completion?()
         }
     }
 }
@@ -198,6 +199,12 @@ extension EventsListViewController {
             }
         }
     }
+    
+    func didPullRefreshControl(refreshControl: UIRefreshControl) {
+        loadData() {
+            refreshControl.endRefreshing()
+        }
+    }
 }
 
 private extension EventsListViewController {
@@ -267,6 +274,10 @@ private extension EventsListViewController {
         aView?.tableView.registerClass(EventCell.self)
         aView?.tableView.registerClass(FreeEventCell.self)
         aView?.tableView.registerClass(RevocableEventCell.self)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("didPullRefreshControl:"), forControlEvents: .ValueChanged)
+        aView?.tableView.addSubview(refreshControl)
     }
     
     func scrollToNowAnimated(animated: Bool) {
