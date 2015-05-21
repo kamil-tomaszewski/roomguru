@@ -72,7 +72,7 @@ extension TextItem: Updatable {
 
 // MARK: Testable 
 
-extension TextItem: Testable {
+extension TextItem: Validatable {
     
     var valueToValidate: AnyObject { get { return text } }
     var validationError: NSError? {

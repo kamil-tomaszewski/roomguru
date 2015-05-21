@@ -16,7 +16,7 @@ class ResultActionItem: ActionItem {
 
 // MARK: Testable
 
-extension ResultActionItem: Testable {
+extension ResultActionItem: Validatable {
     
     var valueToValidate: AnyObject { get { return result ?? "" } }
     var validationError: NSError? {

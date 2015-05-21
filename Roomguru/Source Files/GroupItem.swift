@@ -12,7 +12,7 @@ protocol Updatable {
     func update()
 }
 
-protocol Testable {
+protocol Validatable {
     var valueToValidate: AnyObject { get }
     var validationError: NSError? { get set }
     func validate(object: AnyObject) -> NSError?

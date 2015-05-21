@@ -277,7 +277,7 @@ private extension EditEventViewController {
         cell.textLabel?.text = item.title
         cell.detailLabel.text = item.detailDescription
         cell.accessoryType = .DisclosureIndicator
-        cell.isRequired = item is Testable
+        cell.isRequired = item is Validatable
     }
     
     func configureRightDetailTextCell(cell: RightDetailTextCell, forItem item: ResultActionItem) {

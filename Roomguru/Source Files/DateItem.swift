@@ -41,7 +41,7 @@ extension DateItem: Updatable {
 
 // MARK: Testable
 
-extension DateItem: Testable {
+extension DateItem: Validatable {
     
     var valueToValidate: AnyObject { get { return date } }
     
