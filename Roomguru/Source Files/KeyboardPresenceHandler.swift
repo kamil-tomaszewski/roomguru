@@ -105,7 +105,7 @@ private extension KeyboardPresenceHandler {
         if respondersMaxY - contentOffsetDiff >= keyboardMinY { // Responder is behind the keyboard
             let diff = respondersMaxY - keyboardMinY
             animate(properties, animations: {
-                self.scrollView.contentOffset.increaseYBy(diff)
+                self.scrollView.contentOffset.y += diff
                 self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, diff, 0)
             })
             
@@ -113,7 +113,7 @@ private extension KeyboardPresenceHandler {
             let diff = keyboardMinY - respondersMaxY
             
             if var originalOffset = originalOffset {
-                originalOffset.increaseYBy(diff)
+                originalOffset.y += diff
                 animate(properties, animations: {
                     self.scrollView.contentOffset = originalOffset
                     self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, diff, 0)

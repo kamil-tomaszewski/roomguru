@@ -172,7 +172,6 @@
 		7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */; };
 		7B91D6EF1AC034410080DD91 /* AvailabilityCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BF01C8E31AEEB133003422AD /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */; };
 		BF01C8E71AEF8048003422AD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* TextField.swift */; };
 		BF0A9E4E1AD540290088ED79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9E4D1AD540290088ED79 /* User.swift */; };
 		BF1EA1A01AF783DC008FECB8 /* BookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */; };
@@ -408,7 +407,6 @@
 		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFrame.swift; path = "Roomguru/Source Files/TimeFrame.swift"; sourceTree = SOURCE_ROOT; };
 		7B91D6EE1AC034410080DD91 /* AvailabilityCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvailabilityCalendar.swift; path = "Roomguru/Source Files/AvailabilityCalendar.swift"; sourceTree = SOURCE_ROOT; };
-		BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointExtensions.swift; path = "Roomguru/Source Files/CGPointExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF01C8E61AEF8048003422AD /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = "Roomguru/Source Files/TextField.swift"; sourceTree = SOURCE_ROOT; };
 		BF0A9E4D1AD540290088ED79 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Roomguru/Source Files/User.swift"; sourceTree = SOURCE_ROOT; };
 		BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewModel.swift; path = "Roomguru/Source Files/BookingConfirmationViewModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -990,7 +988,6 @@
 				5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */,
 				5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */,
 				5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */,
-				BF01C8E21AEEB133003422AD /* CGPointExtensions.swift */,
 				5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */,
 				BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */,
 				5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */,
@@ -1467,7 +1464,6 @@
 				5EDEACF31ADFDD7600C4351B /* SettingsCollectionViewHeader.swift in Sources */,
 				BFD6AC111AD82D0D007B3ECF /* BasicTitleView.swift in Sources */,
 				BFF1B57D1AE7BE6700F9767E /* RoomItem.swift in Sources */,
-				BF01C8E31AEEB133003422AD /* CGPointExtensions.swift in Sources */,
 				5E15F1451ADC314500E1F8BC /* UserDiskManager.swift in Sources */,
 				5E746FDF1AF03C150049131F /* EventsView.swift in Sources */,
 				5E8858421AF0F12A00EF08F1 /* WeekCarouselViewModel.swift in Sources */,
