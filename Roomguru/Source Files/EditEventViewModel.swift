@@ -217,8 +217,13 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         }
         
         endDateItem.validation = { date in
-            if date <= startDateItem.date {
-                let message = NSLocalizedString("Cannot pick date earlier than", comment: "") + " " + startDateItem.dateString
+            
+            let calendarUnits: [NSCalendarUnit] = [.CalendarUnitYear, .CalendarUnitMonth, .CalendarUnitDay, .CalendarUnitHour, .CalendarUnitMinute]
+            let comparisonResult = date.compare(toDate: startDateItem.date, byUnits: calendarUnits)
+            
+            if comparisonResult.notDescending {
+                let reason = comparisonResult.ascending ? NSLocalizedString("date earlier than", comment: "") : NSLocalizedString("same date as", comment: "")
+                let message = NSLocalizedString("Cannot pick", comment: "") + " " + reason + " " + startDateItem.dateString
                 return NSError(message: message)
             }
             return nil
