@@ -80,18 +80,18 @@ private extension BookingConfirmationView {
     
     func defineConstraints() {
         
-        layout(confirmButton, cancelButton) { confirm, cancel in
-            confirm.left == confirm.superview!.left + 10
-            confirm.bottom == confirm.superview!.bottom - 10
+        layout(cancelButton, confirmButton) { cancel, confirm in
+            cancel.left == cancel.superview!.left + 10
+            cancel.bottom == cancel.superview!.bottom - 10
             
-            cancel.right == confirm.superview!.right - 10
-            cancel.bottom == confirm.superview!.bottom - 10
+            confirm.right == cancel.superview!.right - 10
+            confirm.bottom == cancel.superview!.bottom - 10
             
-            confirm.right == cancel.left - 10
+            cancel.right == confirm.left - 10
             
-            confirm.height == 40
-            confirm.width == cancel.width
-            cancel.height == confirm.height
+            cancel.height == 40
+            cancel.width == confirm.width
+            confirm.height == cancel.height
         }
         
         layout(minutesToBookLabel, minutesShortLabel) { book, short in
