@@ -50,7 +50,7 @@ class Event: ModelObject, NSSecureCoding {
     }
 
     // Computed properties:
-    var duration: NSTimeInterval { get { return ceil(end.timeIntervalSinceDate(start)) } }
+    var duration: NSTimeInterval { return ceil(end.timeIntervalSinceDate(start)) }
     
     override init() {
         super.init()

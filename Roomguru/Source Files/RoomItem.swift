@@ -11,7 +11,7 @@ import Foundation
 class RoomItem: PickerItem {
     
     override var title: String { get { return room.name } set {} }
-    var id: String { get { return room.id } }
+    var id: String { return room.id }
     
     private let room: (name: String, id: String)
     

@@ -10,7 +10,7 @@ import Foundation
 
 class User: NSObject, NSSecureCoding {
     
-    class var key: String { get { return "logged_user" } }
+    class var key: String { return "logged_user" }
     
     private(set) var email: String = ""
     

@@ -10,6 +10,12 @@ import Foundation
 
 extension UIViewController {
     
+    var isModal: Bool {
+        return presentingViewController?.presentedViewController == self
+                || (navigationController != nil && navigationController?.presentingViewController?.presentedViewController == navigationController)
+                || tabBarController?.presentingViewController is UITabBarController
+    }
+    
     func loadViewWithClass<T where T: UIView>(view: T.Type) -> T {
         
         let _view: T = view(frame: UIScreen.mainScreen().applicationFrame)
@@ -26,12 +32,6 @@ extension UIViewController {
                 controller.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
             }
         }
-    }
-    
-    func isModal() -> Bool {
-        return presentingViewController?.presentedViewController == self
-            || (navigationController != nil && navigationController?.presentingViewController?.presentedViewController == navigationController)
-            || tabBarController?.presentingViewController is UITabBarController
     }
     
     func dismissSelf(sender: AnyObject?) {

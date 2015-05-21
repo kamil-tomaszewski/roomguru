@@ -16,7 +16,7 @@ protocol EventsPageViewControllerDelegate {
 
 class EventsPageViewController: UIPageViewController {
     
-    var currentlyDisplayingDay: NSDate { get { return (viewControllers.first as? EventsListViewController)?.coordinator.date ?? NSDate() }}
+    var currentlyDisplayingDay: NSDate { return (viewControllers.first as? EventsListViewController)?.coordinator.date ?? NSDate() }
     
     private var eventsDelegate: EventsPageViewControllerDelegate!
 

@@ -29,7 +29,7 @@ class CalendarPickerViewController: UIViewController {
         self.title = NSLocalizedString("Pick your calendars", comment: "")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .Plain, target: self, action: Selector("didTapSaveBarButtonItem:"))
         
-        if isModal() {
+        if isModal {
             setSelectAllBarButton()
         }
         setupTableView()
@@ -62,7 +62,7 @@ private extension CalendarPickerViewController {
                 self?.setBarButtonItemState()
             } else {
                 
-                if let this = self where this.isModal() {
+                if let this = self where this.isModal {
                     this.setSignOutBarButton()
                 }
                 
@@ -91,7 +91,7 @@ private extension CalendarPickerViewController {
 extension CalendarPickerViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.count() ?? 0
+        return viewModel?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -156,14 +156,14 @@ extension CalendarPickerViewController: CalendarNameCustomizerViewControllerDele
 extension CalendarPickerViewController {
     
     func setBarButtonItemState() {
-        self.navigationItem.rightBarButtonItem?.enabled = viewModel?.shouldProcceed() ?? false
+        self.navigationItem.rightBarButtonItem?.enabled = viewModel?.shouldProcceed ?? false
     }
     
     func didTapSaveBarButtonItem(sender: UIBarButtonItem) {
         viewModel?.save()
         saveCompletionBlock?()
         
-        if isModal() {
+        if isModal {
             dismissViewControllerAnimated(true, completion: nil)
         } else {
             navigationController?.popViewControllerAnimated(true)

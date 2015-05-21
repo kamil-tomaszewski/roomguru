@@ -42,11 +42,11 @@ class Query: Queryable {
  
     // MARK: Query parameters
     
-    var HTTPMethod: Alamofire.Method { get { return _HTTPMethod } }
-    var URLExtension: String { get { return _URLExtension } }
-    var parameters: QueryParameters? { get { return _parameters } }
-    var fullPath: String { get { return _fullPath } }
-    var encoding: Alamofire.ParameterEncoding { get { return _encoding } }
+    var HTTPMethod: Alamofire.Method { return _HTTPMethod }
+    var URLExtension: String { return _URLExtension }
+    var parameters: QueryParameters? { return _parameters }
+    var fullPath: String { return _fullPath }
+    var encoding: Alamofire.ParameterEncoding { return _encoding }
     
     // MARK: Internal
     

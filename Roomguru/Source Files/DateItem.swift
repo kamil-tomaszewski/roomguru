@@ -11,7 +11,7 @@ import UIKit
 class DateItem: GroupItem {
 
     var date: NSDate
-    var dateString: String { get { return dateFormatter.stringFromDate(date) } }
+    var dateString: String { return dateFormatter.stringFromDate(date) }
 
     var validation: DateValidationBlock?
     var onValueChanged: DateBlock?

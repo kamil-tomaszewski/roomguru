@@ -15,22 +15,15 @@ class EventDetailsViewModel {
     let event: Event?
     private let formatter: NSDateFormatter
     
+    var numberOfGuests: Int { return event?.attendees.count ?? 0 }
+    var numberOfLocations: Int { return event?.rooms.count ?? 0 }
+    
     init(event: Event?) {
         self.event = event
         self.formatter = NSDateFormatter()
         self.formatter.dateFormat = "MMMM, dd eee YYYY"
     }
-    
-    // MARK: numbers
-    
-    func numberOfGuests() -> Int {
-        return event?.attendees.count ?? 0
-    }
-    
-    func numberOfLocations() -> Int {
-        return event?.rooms.count ?? 0
-    }
-    
+
     // MARK: text
     
     func hangoutURL() -> NSURL? {

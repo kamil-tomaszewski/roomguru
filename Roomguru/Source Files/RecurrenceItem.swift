@@ -20,12 +20,10 @@ class RecurrenceItem: PickerItem {
     
     var recurrence: Recurrence
     var value: String {
-        get {
-            if recurrence == .None {
-                return recurrence.rawValue
-            }
-            return "RRULE:FREQ=" + recurrence.rawValue + ";BYDAY=MO,TU,WE,TH,FR"
+        if recurrence == .None {
+            return recurrence.rawValue
         }
+        return "RRULE:FREQ=" + recurrence.rawValue + ";BYDAY=MO,TU,WE,TH,FR"
     }
     
     init(title: String, recurrence: Recurrence, selected: Bool = false) {

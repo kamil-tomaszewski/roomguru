@@ -29,7 +29,7 @@ protocol Listable {
 
 class List<T> : Listable {
     
-    var count: Int { get { return items.count } }
+    var count: Int { return items.count }
     
     var items: [T]
     

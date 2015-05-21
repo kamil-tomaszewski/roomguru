@@ -32,7 +32,7 @@ class EventsQuery: PageableQuery {
     
     // MARK: Query parameters
     
-    var calendarID: String { get { return _calendarID } }
+    var calendarID: String { return _calendarID }
     
     var maxResults: Int? {
         get { return self[MaxResultsKey] as! Int? }

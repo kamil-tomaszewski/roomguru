@@ -12,6 +12,9 @@ class CalendarPickerViewModel {
 
     private var calendars: [(isSelected: Bool, calendar: Calendar)]
     
+    var shouldProcceed: Bool { return !calendars.filter { $0.isSelected }.isEmpty }
+    var count: Int { return calendars.count }
+    
     init(calendars: [Calendar]) {
         self.calendars = calendars.filter { $0.isResource() }.map {
             let selected = CalendarPersistenceStore.sharedStore.isCalendarPersisted($0)
@@ -28,14 +31,6 @@ class CalendarPickerViewModel {
     
     func shouldSelectCalendarAtIndex(index: Int) -> Bool {
         return calendars[index].isSelected
-    }
-    
-    func shouldProcceed() -> Bool {
-        return !self.calendars.filter { $0.isSelected }.isEmpty
-    }
-    
-    func count() -> Int {
-        return calendars.count
     }
     
     func saveNameForCalendarAtIndexWithSelection(index: Int, name: String?) {

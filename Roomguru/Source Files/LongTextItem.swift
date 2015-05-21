@@ -14,15 +14,13 @@ class LongTextItem: GroupItem {
     var placeholder: String
     
     var attributedText: NSAttributedString? {
-        get {
-            if let text = text where !text.isEmpty {
-                return NSAttributedString(string: text, attributes: textAttributes)
-            }
-            return nil
+        if let text = text where !text.isEmpty {
+            return NSAttributedString(string: text, attributes: textAttributes)
         }
+        return nil
     }
     var attributedPlaceholder: NSAttributedString {
-        get { return NSAttributedString(string: placeholder, attributes: placeholderAttributes) }
+        return NSAttributedString(string: placeholder, attributes: placeholderAttributes)
     }
         
     var onValueChanged: StringBlock?

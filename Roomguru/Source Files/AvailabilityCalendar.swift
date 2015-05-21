@@ -108,8 +108,6 @@ private extension AvailabilityCalendar {
 extension AvailabilityCalendar: Printable {
     
     override var description: String {
-        get {
-            return calendarID + "\n" + " | ".join(timeFrames.map { $0.description })
-        }
+        return calendarID + "\n" + " | ".join(timeFrames.map { $0.description })
     }
 }

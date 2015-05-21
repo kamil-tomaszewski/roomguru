@@ -27,11 +27,11 @@ class EventDetailsViewModelSpec: QuickSpec {
             }
             
             it("should have proper number of guests") {
-                expect(sut.numberOfGuests()).to(equal(3))
+                expect(sut.numberOfGuests).to(equal(3))
             }
 
             it("should have proper number of locations") {
-                expect(sut.numberOfLocations()).to(equal(2))
+                expect(sut.numberOfLocations).to(equal(2))
             }
             
             it("should owner info be properly given") {

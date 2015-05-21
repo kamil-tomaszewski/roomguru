@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         
         setupVendors()
-        authenticate()
+        presentAuthenticationScreenAndBeginAuthentication()
 
         return true
     }
@@ -72,7 +72,7 @@ private extension AppDelegate {
         }
     }
     
-    func authenticate() {
+    func presentAuthenticationScreenAndBeginAuthentication() {
         
         let tabBarController = window!.rootViewController as! TabBarController
         var launchViewController: UIViewController? = NavigationController(rootViewController: LaunchViewController())

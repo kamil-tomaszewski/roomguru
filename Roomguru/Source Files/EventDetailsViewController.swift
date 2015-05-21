@@ -65,8 +65,8 @@ extension EventDetailsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 1: return viewModel.numberOfLocations()
-        case 3: return viewModel.numberOfGuests()
+        case 1: return viewModel.numberOfLocations
+        case 3: return viewModel.numberOfGuests
         default:
             return 1
         }

@@ -27,11 +27,11 @@ class CalendarPickerViewModelSpec: QuickSpec {
             }
             
             it("should filter resource calendars and contain 3 calendars") {
-                expect(sut!.count()).to(equal(3))
+                expect(sut!.count).to(equal(3))
             }
             
             it("should not procceed when any of calendar is not selected") {
-                expect(sut!.shouldProcceed()).to(beFalse())
+                expect(sut!.shouldProcceed).to(beFalse())
             }
             
             it("should not select any calendar") {
@@ -47,7 +47,7 @@ class CalendarPickerViewModelSpec: QuickSpec {
                 }
                 
                 it("should allow to procceed") {
-                    expect(sut!.shouldProcceed()).to(beTrue())
+                    expect(sut!.shouldProcceed).to(beTrue())
                 }
                 
                 it("should select only 1st calendar") {
@@ -64,7 +64,7 @@ class CalendarPickerViewModelSpec: QuickSpec {
                     }
                     
                     it("should not allow to procceed") {
-                        expect(sut!.shouldProcceed()).to(beFalse())
+                        expect(sut!.shouldProcceed).to(beFalse())
                     }
                     
                     it("should not select any calendar") {
@@ -82,7 +82,7 @@ class CalendarPickerViewModelSpec: QuickSpec {
                 }
                 
                 it("should allow to procceed") {
-                    expect(sut!.shouldProcceed()).to(beTrue())
+                    expect(sut!.shouldProcceed).to(beTrue())
                 }
                 
                 it("should select only 1st calendar") {

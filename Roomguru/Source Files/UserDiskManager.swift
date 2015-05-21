@@ -11,7 +11,7 @@ import Foundation
 class UserDiskManager {
     
     private let directoryName = "Profile"
-    var profileDirectoryPath: String {get { return directoryPath() }}
+    var profileDirectoryPath: String { return directoryPath() }
     
     init() {
         createDirectoryIfNeeded()
