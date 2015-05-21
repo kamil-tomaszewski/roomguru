@@ -16,7 +16,7 @@ class DateItem: GroupItem {
     var validation: DateValidationBlock?
     var onValueChanged: DateBlock?
     
-    var shouldBeSelected = true
+    var highlighted = false
     
     init(title: String, date: NSDate = NSDate()) {
         self.date = date

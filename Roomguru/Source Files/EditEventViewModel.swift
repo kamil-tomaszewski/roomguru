@@ -132,8 +132,8 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 self?.eventQuery.endDate = endDateItem.date
             }
             
-            startDateItem.shouldBeSelected = !state
-            endDateItem.shouldBeSelected = !state
+            startDateItem.active = !state
+            endDateItem.active = !state
             
             if let indexPaths = self?.indexPathsForItems([startDateItem, endDateItem] as [GroupItem]) {
                 self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
@@ -279,7 +279,7 @@ extension EditEventViewModel {
                 removeAtIndexPath(pickerIndexPath)
                 
                 if let dateItem = self[section][row-1] as? DateItem {
-                    dateItem.selected = false
+                    dateItem.highlighted = false
                     dateItems.append(dateItem)
                 }
             }
@@ -291,9 +291,9 @@ extension EditEventViewModel {
             }
         }
         
-        if !item.selected && !contains(dateItems, item) {
+        if !item.highlighted && !contains(dateItems, item) {
             
-            item.selected = true
+            item.highlighted = true
             
             let pickerItem = DatePickerItem(date: item.date) { [weak self] date in
                 item.date = date

@@ -16,9 +16,9 @@ class DateCell: UITableViewCell, Reusable {
     }
     
     let dateLabel = UILabel()
-    var shouldBeSelected = true {
+    var shouldBeGreyedOut = false {
         didSet {
-            let color: UIColor = shouldBeSelected ? .blackColor() : .lightGrayColor()
+            let color: UIColor = shouldBeGreyedOut ? .lightGrayColor() : .blackColor()
             dateLabel.textColor = color
         }
     }
@@ -38,7 +38,7 @@ class DateCell: UITableViewCell, Reusable {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected && shouldBeSelected {
+        if selected && !shouldBeGreyedOut {
             toggleLabelColor()
         }
     }
@@ -49,8 +49,8 @@ class DateCell: UITableViewCell, Reusable {
         setDateLabelText(text, withAttributes: textAttributes)
     }
     
-    func setSelectedLabelColor(selected: Bool) {
-        let color: UIColor = selected  ? .ngOrangeColor() : .blackColor()
+    func setHighlightedLabelColor(selected: Bool) {
+        let color: UIColor = selected ? .ngOrangeColor() : shouldBeGreyedOut ? .lightGrayColor() : .blackColor()
         setLabelColor(color)
     }
 }

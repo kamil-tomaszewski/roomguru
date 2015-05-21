@@ -26,7 +26,7 @@ class GroupItem: NSObject {
     
     let title: String
     let category: Category
-    var selected = false
+    var active = true
     
     init(title: String, category: Category) {
         self.title = title

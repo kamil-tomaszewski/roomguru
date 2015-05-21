@@ -250,9 +250,9 @@ private extension EditEventViewController {
     
     func configureDateCell(cell: DateCell, forItem item: DateItem) {
         cell.textLabel?.text = item.title
-        cell.setSelectedLabelColor(item.selected)
         cell.setDateText(item.dateString, withValidationError: item.validationError)
-        cell.shouldBeSelected = item.shouldBeSelected
+        cell.shouldBeGreyedOut = !item.active
+        cell.setHighlightedLabelColor(item.highlighted && item.active)
     }
     
     func configureTextViewCell(cell: TextViewCell, forItem item: LongTextItem) {
