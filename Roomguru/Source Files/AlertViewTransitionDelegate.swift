@@ -174,8 +174,8 @@ private extension UIViewController {
 extension CGPoint {
 
     func distanceTo(point: CGPoint) -> CGFloat {
-        let x_diff = pow(point.x - x, 2)
-        let y_diff = pow(point.y - y, 2)
-        return sqrt(x_diff + y_diff)
+        let dx = pow(point.x - x, 2)
+        let dy = pow(point.y - y, 2)
+        return sqrt(dx + dy)
     }
 }

@@ -138,11 +138,11 @@ class Event: ModelObject, NSSecureCoding {
         creator = Attendee(json: json["creator"])
         
         let array = json["attendees"].arrayValue
-        if let _array: [Attendee] = Attendee.map(array) {
+        if let array: [Attendee] = Attendee.map(array) {
             
-            let copiedArray = _array
+            let copiedArray = array
 
-            attendees = _array.filter { !$0.isResource && !$0.isRoom }
+            attendees = array.filter { !$0.isResource && !$0.isRoom }
             rooms = copiedArray.filter { $0.isRoom }
         }
 

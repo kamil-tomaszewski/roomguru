@@ -64,11 +64,11 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
     // MARK: JSON mapping
     
     class func map(jsonArray: [JSON]?) -> [Calendar]? {
-        if let _jsonArray: [JSON] = jsonArray {
-            if _jsonArray.isEmpty == true {
+        if let jsonArray: [JSON] = jsonArray {
+            if jsonArray.isEmpty == true {
                 return nil
             }
-            return _jsonArray.map { Calendar(json: $0) }
+            return jsonArray.map { Calendar(json: $0) }
         }
         
         return nil
