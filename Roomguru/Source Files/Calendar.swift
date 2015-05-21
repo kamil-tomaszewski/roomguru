@@ -14,6 +14,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
     private let Summary = "summary"
     private let Identifier = "identifier"
     private let Name = "name"
+    private let Color = "color"
 
     private let ResourceIdentifier = "resource.calendar.google.com"
     
@@ -24,6 +25,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
     var kind:       String?
     var timezone:   String?
     var name:       String?
+    var colorHex:   String?
     
     required init(json: JSON) {
         super.init(json: json)
@@ -41,6 +43,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         decode(&summary, forKey: Summary)
         decode(&identifier, forKey: Identifier)
         decode(&name, forKey: Name)
+        decode(&colorHex, forKey: Color)
     }
 
     func isResource() -> Bool {
@@ -51,6 +54,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         aCoder.encodeObject(summary, forKey: Summary)
         aCoder.encodeObject(identifier, forKey: Identifier)
         aCoder.encodeObject(name, forKey: Name)
+        aCoder.encodeObject(colorHex, forKey: Color)
     }
     
     class func supportsSecureCoding() -> Bool {
@@ -78,6 +82,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         json["kind"].string = kind
         json["summary"].string = summary
         json["timeZone"].string = timezone
+        json["backgroundColor"].string = colorHex
         return json
     }
     
@@ -88,6 +93,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
         kind = json["kind"].string
         summary = json["summary"].string
         timezone = json["timeZone"].string
+        colorHex = json["backgroundColor"].string
         name = CalendarPersistenceStore.sharedStore.matchingCalendar(self)?.name
     }
 }

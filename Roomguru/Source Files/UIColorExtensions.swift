@@ -34,6 +34,21 @@ extension UIColor {
         return .rgb(199, 199, 205)
     }
     
+    class func hex(hex: String) -> UIColor {
+                
+        let colorHex = hex.hasPrefix("#") ? hex.substringFromIndex(advance(hex.startIndex, 1)) : hex
+        let scanner = NSScanner(string: colorHex)
+        
+        var rgbValue: UInt64 = 0
+        scanner.scanHexLongLong(&rgbValue)
+        
+        let r = Int((rgbValue & 0xFF0000) >> 16)
+        let g = Int((rgbValue & 0x00FF00) >> 8)
+        let b = Int(rgbValue & 0x0000FF)
+        
+        return rgb(r, g, b)
+    }
+    
     class func rgb(r: NSInteger, _ g: NSInteger, _ b: NSInteger) -> UIColor {
         return .rgba(r, g, b, 1)
     }

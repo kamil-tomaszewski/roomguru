@@ -248,6 +248,11 @@ private extension EventsListViewController {
         if let viewModel = coordinator.viewModel {
             cell.revokeButton.hidden = !viewModel.isUserAllowedToRevokeEvent(event)
         }
+        
+        let calendar = CalendarPersistenceStore.sharedStore.calendars.filter { $0.identifier == event.rooms.first!.email }.first
+        if let calendar = calendar, colorHex = calendar.colorHex {
+            cell.colorView.backgroundColor = UIColor.hex(colorHex)
+        }
     }
     
     // MARK:
