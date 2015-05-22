@@ -50,13 +50,17 @@ class EventsListViewController: UIViewController {
     }
     
     func loadData(completion: VoidBlock? = nil) {
+        
+        aView?.showPlaceholder(false, withIcon: nil, text: "")
         coordinator.loadDataWithCompletion { [weak self] (status, message, icon) in
+            
+            self?.aView?.tableView.reloadData()
             
             switch status {
             case .Failed, .Empty:
                 self?.aView?.showPlaceholder(true, withIcon: icon, text: message)
+                self?.aView?.tableView.alpha = 1.0
             case .Success:
-                self?.aView?.tableView.reloadData()
                 self?.scrollToNowAnimated(false)
                 fade(.In, self?.aView?.tableView, duration: 0.5) { }
             }
@@ -232,6 +236,7 @@ private extension EventsListViewController {
 
         aView?.tableView.dataSource = self
         aView?.tableView.delegate = self
+        aView?.tableView.backgroundColor = UIColor.clearColor()
 
         aView?.tableView.registerClass(EventCell.self)
         aView?.tableView.registerClass(FreeEventCell.self)
