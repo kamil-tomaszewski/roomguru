@@ -41,6 +41,8 @@ private extension AttendeeCell {
     
     func commonInit() {
         
+        lengthenSeparatorLine()
+        
         headerLabel.font = .systemFontOfSize(16)
         contentView.addSubview(headerLabel)
         

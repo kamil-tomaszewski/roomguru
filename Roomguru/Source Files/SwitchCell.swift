@@ -31,6 +31,7 @@ class SwitchCell: UITableViewCell, Reusable {
 private extension SwitchCell {
     
     func commonInit() {
+        
         switchControl.onTintColor = UIColor.ngOrangeColor()
         contentView.addSubview(switchControl)
         

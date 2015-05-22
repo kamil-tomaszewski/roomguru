@@ -45,9 +45,7 @@ class EventCell: UITableViewCell, Reusable {
     
     func commonInit() {
         
-        layoutMargins = UIEdgeInsetsZero
-        preservesSuperviewLayoutMargins = false
-        separatorInset = UIEdgeInsetsZero
+        lengthenSeparatorLine()
         
         indentationLevel = 8
         

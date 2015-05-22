@@ -12,15 +12,15 @@ extension UIApplication {
     
     class func openURLIfPossible(url: NSURL?, completion: (success: Bool, error: NSError?) -> Void) {
         
-        if let _url = url {
-            if self.sharedApplication().canOpenURL(_url) {
-                self.sharedApplication().openURL(_url)
+        if let url = url {
+            if self.sharedApplication().canOpenURL(url) {
+                self.sharedApplication().openURL(url)
                 completion(success: true, error: nil)
             } else {
                 completion(success: false, error: NSError(message: "Couldn't open hangout link."))
             }
         } else {
-            completion(success: false, error: NSError(message: "Hangout link is broken."))
+            completion(success: false, error: NSError(message: "Link is broken."))
         }
     }
 }

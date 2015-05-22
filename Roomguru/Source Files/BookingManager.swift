@@ -73,7 +73,7 @@ class BookingManager: NSObject {
         }, failure: failure)
     }
     
-    class func revokeEvent(eventID: String, userEmail: String, completion: (success: Bool, error: NSError?) -> ()) {
+    class func revokeEvent(eventID: String, userEmail: String, completion: (success: Bool, error: NSError?) -> Void) {
         let query = RevokeQuery(eventID: eventID, userEmail: userEmail)
         NetworkManager.sharedInstance.request(query, success: { response in
             completion(success: true, error: nil)

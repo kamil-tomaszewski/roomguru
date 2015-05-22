@@ -43,6 +43,9 @@ class DescriptionCell: UITableViewCell, Reusable {
 private extension DescriptionCell {
     
     func commonInit() {
+        
+        lengthenSeparatorLine()
+        
         textLabel?.numberOfLines = 0
     }
 }

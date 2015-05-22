@@ -31,6 +31,9 @@ class ButtonCell: UITableViewCell, Reusable {
 private extension ButtonCell {
     
     func commonInit() {
+        
+        lengthenSeparatorLine()
+        
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
         contentView.addSubview(button)

@@ -131,9 +131,7 @@ extension EventsListViewController: UITableViewDataSource {
     }
     
     func dequeueCellForEvent(event: Event, inTableView tableView: UITableView) -> EventCell {
-        if coordinator.revocable() {
-            return tableView.dequeueReusableCell(RevocableEventCell.self)
-        } else if let freeEvent = event as? FreeEvent {
+        if let freeEvent = event as? FreeEvent {
             return tableView.dequeueReusableCell(FreeEventCell.self)
         } else {
             return tableView.dequeueReusableCell(EventCell.self)
@@ -144,25 +142,6 @@ extension EventsListViewController: UITableViewDataSource {
 // MARK: UIControl methods
 
 extension EventsListViewController {
-    
-    func revokeEventAtIndexPath(indexPath: NSIndexPath) {
-        if let eventID = coordinator.viewModel?.eventAtIndex(indexPath)?.identifier, userEmail = UserPersistenceStore.sharedStore.user?.email as String? {
-            
-            PKHUD.sharedHUD.show()
-           
-            BookingManager.revokeEvent(eventID, userEmail: userEmail) { (success, error) in
-            
-                PKHUD.sharedHUD.hide()
-                
-                if let error = error {
-                    UIAlertView(error: error).show()
-                } else {
-                    self.coordinator.viewModel?.removeAtIndexPath(indexPath)
-                    self.aView?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Top)
-                }
-            }
-        }
-    }
     
     // NGRTodo: attach book view controller:
     
@@ -213,10 +192,7 @@ private extension EventsListViewController {
     
     func configureCell(cell: EventCell, forEvent event: Event, indexPath: NSIndexPath) {
         
-        if cell.isKindOfClass(RevocableEventCell.self) {
-            configureRevocableEventCell(cell as! RevocableEventCell, forEvent: event, indexPath: indexPath)
-            
-        } else if cell.isKindOfClass(FreeEventCell.self)  {
+        if cell.isKindOfClass(FreeEventCell.self)  {
             configureFreeEventCell(cell as! FreeEventCell, forEvent: event as! FreeEvent, indexPath: indexPath)
             
         } else if cell.isKindOfClass(EventCell.self)  {
@@ -239,29 +215,15 @@ private extension EventsListViewController {
     }
     
     func configureEventCell(cell: EventCell, forEvent event: Event) {
-        cell.textLabel?.text = event.summary
-        cell.timeMinLabel.text = event.startTime
-        cell.timeMaxLabel.text = event.endTime
-    }
-    
-    func configureRevocableEventCell(cell: RevocableEventCell, forEvent event: Event, indexPath: NSIndexPath) {
-        cell.textLabel?.text = event.summary
-        cell.timeMinLabel.text = event.startTime
-        cell.timeMaxLabel.text = event.endTime
-        cell.revokeButtonHandler = { [weak self] in
-            self?.revokeEventAtIndexPath(indexPath)
-        }
-        
-        if let email = event.creator?.email where email == UserPersistenceStore.sharedStore.user?.email {
-            cell.revokeButton.hidden = event.end < NSDate()
-        } else {
-            cell.revokeButton.hidden = true
-        }
         
         let calendar = CalendarPersistenceStore.sharedStore.calendars.filter { $0.identifier == event.rooms.first!.email }.first
         if let calendar = calendar, colorHex = calendar.colorHex {
             cell.colorView.backgroundColor = UIColor.hex(colorHex)
         }
+        
+        cell.textLabel?.text = event.summary
+        cell.timeMinLabel.text = event.startTime
+        cell.timeMaxLabel.text = event.endTime
     }
     
     // MARK:
@@ -273,8 +235,7 @@ private extension EventsListViewController {
 
         aView?.tableView.registerClass(EventCell.self)
         aView?.tableView.registerClass(FreeEventCell.self)
-        aView?.tableView.registerClass(RevocableEventCell.self)
-        
+
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("didPullRefreshControl:"), forControlEvents: .ValueChanged)
         aView?.tableView.addSubview(refreshControl)

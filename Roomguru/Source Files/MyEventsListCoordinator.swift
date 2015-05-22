@@ -26,8 +26,4 @@ class MyEventsListCoordinator: EventsListCoordinator {
             }
         }
     }
-    
-    override func revocable() -> Bool {
-        return true
-    }
 }

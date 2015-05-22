@@ -40,9 +40,5 @@ class EventsListCoordinator {
             }
         }
     }
-    
-    func revocable() -> Bool {
-        return false
-    }
 }
 

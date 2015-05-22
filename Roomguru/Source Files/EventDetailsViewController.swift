@@ -8,12 +8,20 @@
 
 import UIKit
 import AFNetworking
+import PKHUD
 
 class EventDetailsViewController: UIViewController {
     
     private weak var aView: EventDetailsView?
     private var viewModel: EventDetailsViewModel
     private var didUpdateBlock: VoidBlock?
+    
+    private var editable: Bool {
+        if let email = viewModel.event?.creator?.email where email == UserPersistenceStore.sharedStore.user?.email {
+            return true
+        }
+        return false
+    }
     
     // MARK: View life cycle
     
@@ -37,7 +45,7 @@ class EventDetailsViewController: UIViewController {
         
         hideBackBarButtonTitle()
         
-        if let email = viewModel.event?.creator?.email where email == UserPersistenceStore.sharedStore.user?.email {
+        if editable {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "didTapEditBarButton:")
         }
         
@@ -65,10 +73,11 @@ extension EventDetailsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        case 0, 2: return 1
         case 1: return viewModel.numberOfLocations
         case 3: return viewModel.numberOfGuests
         default:
-            return 1
+            return editable ? 2 : 1
         }
     }
     
@@ -99,11 +108,21 @@ extension EventDetailsViewController: UITableViewDataSource {
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCell(ButtonCell.self)
-            cell.button.setTitle(NSLocalizedString("Join Hangout meeting!", comment: ""))
-            cell.button.addTarget(self, action: "didTapHangoutButton:")
-            cell.button.backgroundColor = UIColor.ngOrangeColor()
             
+            let cell = tableView.dequeueReusableCell(ButtonCell.self)
+            func configureButtonWithTitle(title: String, action: String, color: UIColor) {
+                cell.button.setTitle(title)
+                cell.button.addTarget(self, action: Selector(action))
+                cell.button.backgroundColor = color
+            }
+            
+            switch indexPath.row {
+            case 0:
+                configureButtonWithTitle(NSLocalizedString("Join Hangout meeting!", comment: ""), "didTapHangoutButton:", .ngOrangeColor())
+            default:
+                configureButtonWithTitle(NSLocalizedString("Revoke event", comment: ""), "didTapRevokeEventButton:", .ngRedColor())
+            }
+
             return cell
         }
     }
@@ -154,6 +173,33 @@ extension EventDetailsViewController {
                 UIAlertView(error: error).show()
             }
         }
+    }
+    
+    func didTapRevokeEventButton(sender: UIButton) {
+        
+        let title = NSLocalizedString("Are you sure?", comment: "")
+        let message = NSLocalizedString("When proceed, will delete event pernamently.", comment: "")
+        let alertController = UIAlertController.destroyAlertControllerWithTitle(title, message: message) {
+            
+            if let email = UserPersistenceStore.sharedStore.user?.email, eventID = self.viewModel.event?.identifier {
+                
+                PKHUD.sharedHUD.show()
+                
+                BookingManager.revokeEvent(eventID, userEmail: email) { (success, error) in
+                    
+                    PKHUD.sharedHUD.hide()
+                    
+                    if let error = error {
+                        UIAlertView(error: error).show()
+                    } else {
+                        self.didUpdateBlock?()
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
+                }
+            }
+        }
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
     func didTapEditBarButton(sender: UIBarButtonItem) {
