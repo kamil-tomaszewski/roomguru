@@ -23,28 +23,16 @@ class BookingQuery: Query {
         let URLExtension = BookingQuery.URLExtension + "/" + calendarEntry.event.identifier!
         self.init(.PUT, URLExtension: URLExtension)
         
-        calendarID = calendarEntry.calendarID
+        populateQueryWithCalendarEntry(calendarEntry)
         
-        let event = calendarEntry.event
-        
-        summary = event.summary ?? ""
-        startDate = event.start
-        endDate = event.end
-        
-        addAttendees(event.attendees.filter { $0.email != nil }.map { $0.email! })
-        
+        addAttendees(calendarEntry.event.attendees.filter { $0.email != nil }.map { $0.email! })
         updateCalendarAsAttendee(nil, new: calendarID)
     }
     
-    convenience init(calendarTimeFrame: CalendarTimeFrame, summary: String = "") {
+    convenience init(quickCalendarEntry calendarEntry: CalendarEntry) {
         self.init(.POST)
         
-        self.summary = summary
-        calendarID = calendarTimeFrame.1
-        
-        startDate = calendarTimeFrame.0.startDate
-        endDate = calendarTimeFrame.0.endDate
-        
+        populateQueryWithCalendarEntry(calendarEntry)
         updateCalendarAsAttendee(nil, new: calendarID)
     }
     
@@ -258,5 +246,13 @@ class BookingQuery: Query {
         if var endDict = self[EndKey] as? [String: AnyObject] {
             endDict.removeValueForKey(DateKey)
         }
+    }
+    
+    private func populateQueryWithCalendarEntry(calendarEntry: CalendarEntry) {
+        
+        calendarID = calendarEntry.calendarID
+        summary = calendarEntry.event.summary ?? ""
+        startDate = calendarEntry.event.start
+        endDate = calendarEntry.event.end
     }
 }

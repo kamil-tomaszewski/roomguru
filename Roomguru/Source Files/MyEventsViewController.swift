@@ -54,24 +54,20 @@ extension MyEventsViewController {
         let barButtonItem = navigationItem.leftBarButtonItem
         navigationItem.leftBarButtonItem = UIBarButtonItem.loaderItemWithTintColor(.ngOrangeColor())
         
-        BookingManager.findClosestAvailableRoom { (calendarTime, error) in
+        BookingManager.firstBookableCalendarEntry { (entry, error) in
+            
             
             self.navigationItem.leftBarButtonItem = barButtonItem
             
             if let error = error {
                 UIAlertView(error: error).show()
-
-            } else if let calendarTime = calendarTime {
-
-                let confirmationViewController = self.bookingConfirmationViewControllerWithCalendarTime(calendarTime)
-                let navigationVC = NavigationController(rootViewController: confirmationViewController)
-
-                let maskingVC = MaskingViewController(contentViewController: navigationVC)
-                maskingVC.transitioningDelegate = self.alertViewTransitioninigDelegate
-                maskingVC.modalPresentationStyle = .Custom
-                self.presentViewController(maskingVC, animated: true) {
-                    self.alertViewTransitioninigDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
-                }
+                
+            } else if let entry = entry {
+                self.presentBookingConfirmationViewControllerWithCalendarEntry(entry)
+                
+            } else {
+                let message = NSLocalizedString("No available room found", comment: "")
+                UIAlertView(message: message).show()
             }
         }
     }
@@ -84,26 +80,35 @@ extension MyEventsViewController {
     }
 }
 
-// MARK: Private Methods
-
 private extension MyEventsViewController {
-
-    func bookingConfirmationViewControllerWithCalendarTime(calendarTime: CalendarTimeFrame) -> BookingConfirmationViewController {
-
-        let viewModel = BookingConfirmationViewModel(calendarTimeFrame: calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
-
-            BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
-                
-                let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(actualCalendarTime.1)
-                UIAlertView.alertViewForBookedEvent(event, inRoomNamed: roomName).show()
+ 
+    func presentBookingConfirmationViewControllerWithCalendarEntry(entry: CalendarEntry) {
+        
+        let bookingConfirmationViewController = BookingConfirmationViewController(bookableEntry: entry) { bookedEntry in
+            self.bookCalendarEntry(entry)
+        }
+        
+        let navigationVC = NavigationController(rootViewController: bookingConfirmationViewController)
+        let maskingVC = MaskingViewController(contentViewController: navigationVC)
+        maskingVC.transitioningDelegate = self.alertViewTransitioninigDelegate
+        maskingVC.modalPresentationStyle = .Custom
+        self.presentViewController(maskingVC, animated: true) {
+            self.alertViewTransitioninigDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
+        }
+    }
+    
+    func bookCalendarEntry(entry: CalendarEntry) {
+        
+        BookingManager.bookCalendarEntry(entry) { (event, error) in
+            
+            if let error = error {
+                UIAlertView(error: error).show()
+            } else {
+                let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
+                UIAlertView.alertViewForBookedEvent(entry.event, inRoomNamed: roomName).show()
                 
                 self.reloadEventList()
-
-            }, failure: { (error: NSError) in
-                UIAlertView(error: error).show()
-            })
-        })
-
-        return BookingConfirmationViewController(viewModel: viewModel)
+            }
+        }
     }
 }

@@ -8,69 +8,95 @@
 
 import Foundation
 import DateKit
-import SwiftyUserDefaults
 import SwiftyJSON
 
 class BookingManager: NSObject {
     
-    class func findClosestAvailableRoom(completion: (calendarTime: CalendarTimeFrame?, error: NSError?) -> Void) {
+    class func firstBookableCalendarEntry(completion: (entry: CalendarEntry?, error: NSError?) -> Void) {
         
-        let allRooms = CalendarPersistenceStore.sharedStore.rooms().map {$0.id }
-        let query = FreeBusyQuery(calendarsIDs: allRooms)
-        
-        NetworkManager.sharedInstance.request(query, success: { response in
+        bookableCalendarEntries { (entries, error) in
             
-            var calendars: [AvailabilityCalendar] = []
-            
-            if let calendarsFreeBusyDictionary = response?["calendars"].dictionaryValue {
-                for calendar in calendarsFreeBusyDictionary {
-                    
-                    let calendarJSON: [String : JSON] = calendar.1.dictionaryValue
-                    
-                    if let timeFrames: [TimeFrame] = TimeFrame.map(calendarJSON["busy"]?.arrayValue) {
-                        calendars.append(AvailabilityCalendar(calendarID: calendar.0, timeFrames: timeFrames))
-                    }
-                }
-                
-                if calendars.isEmpty {
-                    calendars.append(AvailabilityCalendar(calendarID: calendarsFreeBusyDictionary.keys.first as String!, timeFrames: []))
-                }
-                
-            } else {
-                let message = NSLocalizedString("Failed retrieving data", comment: "")
-                completion(calendarTime: nil, error: NSError(message: message))
+            if let error = error {
+                completion(entry: nil, error: error)
+                return
+            } else if entries == nil {
+                completion(entry: nil, error: nil)
                 return
             }
             
-            if let closestFreeTime = self.closestFreeTimeFrameInCalendars(calendars) {
-                completion(calendarTime: closestFreeTime, error: nil)
-            } else {
-                let message = NSLocalizedString("No free rooms from", comment: "") + " \(query.startDate) " + NSLocalizedString("to", comment: "") + " \(query.endDate)"
-                completion(calendarTime: nil, error: NSError(message: message))
+            // Take calendar entries from one calendar depending on first element, which is the first available free event
+            let freeCalendarEntriesWithSameCalendarID = entries!.filter { entries!.first?.calendarID == $0.calendarID }
+            
+            // No result found:
+            if freeCalendarEntriesWithSameCalendarID.isEmpty {
+                completion(entry: nil, error: nil)
+                return
             }
             
-            }, failure: { error in
-                completion(calendarTime: nil, error: error)
+            // Calendar ID and start event is known:
+            let freeEventStartDate = freeCalendarEntriesWithSameCalendarID.first!.event.start
+            let calendarID = freeCalendarEntriesWithSameCalendarID.first!.calendarID
+            
+            var freeEventEndDate: NSDate!
+            
+            // look for end of free event:
+            for (index, freeCalendarEntry) in enumerate(freeCalendarEntriesWithSameCalendarID) {
+                
+                if index == freeCalendarEntriesWithSameCalendarID.count - 1 {
+                    freeEventEndDate = freeCalendarEntry.event.end
+                    break
+                }
+                
+                if freeCalendarEntry.event.end != freeCalendarEntriesWithSameCalendarID[index + 1].event.start {
+                    freeEventEndDate = freeCalendarEntry.event.end
+                    break
+                }
             }
-        )
+            
+            // return calendar entry with time frames and calendar ID:
+            let freeEvent = FreeEvent(startDate: freeEventStartDate, endDate: freeEventEndDate)
+            let freeCalendarEntry = CalendarEntry(calendarID: calendarID, event: freeEvent)
+            completion(entry: freeCalendarEntry, error: nil)
+        }
     }
     
-    class func bookTimeFrame(calendarTime: CalendarTimeFrame, summary: String, success: (event: Event) -> Void, failure: ErrorBlock) {
-
-        let query = BookingQuery(calendarTimeFrame: calendarTime, summary: summary)
+    class func bookableCalendarEntries(completion: (entries: [CalendarEntry]?, error: NSError?) -> Void) {
         
+        let allRooms = CalendarPersistenceStore.sharedStore.rooms().map { $0.id }
+        let query = FreeBusyQuery(calendarsIDs: allRooms)
+        
+        let eventsProvider = EventsProvider(calendarIDs: allRooms, timeRange: NSDate().dayTimeRange)
+        eventsProvider.activeCalendarEntriesWithCompletion { (calendarEntries, error) -> Void in
+            
+            if let error = error {
+                completion(entries: nil, error: error)
+                return
+            }
+            
+            // Gather only free events and sort them by date:
+            var freeCalendarEntries = calendarEntries.filter { $0.event is FreeEvent }
+            freeCalendarEntries.sort { $0.event.start <= $1.event.start }
+            
+            completion(entries: freeCalendarEntries, error: nil)
+        }
+    }
+    
+    class func bookCalendarEntry(calendarEntry: CalendarEntry, completion: (event: Event?, error: NSError?) -> Void) {
+
+        let query = BookingQuery(quickCalendarEntry: calendarEntry)
         NetworkManager.sharedInstance.request(query, success: { response in
             
             if let response = response {
                 let event = Event(json: response)
-                success(event: event)
+                completion(event: event, error: nil)
             } else {
-                let message = NSLocalizedString("Problem booking event occurred", comment: "")
-                let error = NSError(message: message)
-                failure(error: error)
+                let error = NSError(message: NSLocalizedString("Problem booking event occurred", comment: ""))
+                completion(event: nil, error: error)
             }
             
-        }, failure: failure)
+            }, failure: { error in
+                completion(event: nil, error: error)
+        })
     }
     
     class func revokeEvent(eventID: String, userEmail: String, completion: (success: Bool, error: NSError?) -> Void) {
@@ -80,28 +106,5 @@ class BookingManager: NSObject {
             }, failure: { error in
             completion(success: false, error: error)
         })
-    }
-}
-
-extension BookingManager {
-    
-    class func closestFreeTimeFrameInCalendars(calendars: [AvailabilityCalendar]) -> CalendarTimeFrame? {
-        
-        if calendars.isEmpty { return nil }
-        
-        var frames = calendars.map { $0.closestFreeTimeFrame() }.filter { $0 != nil }
-        
-        if frames.isEmpty {
-            let now = NSDate()
-            let endDate = now.tomorrow.midnight.seconds - 1
-            let timeFrame = TimeFrame(startDate: now, endDate: endDate , availability: .Available)
-            return (timeFrame, calendars[0].calendarID)
-        }
-        
-        frames.sort {
-            $0?.0.startDate <= $1?.0.startDate
-        }
-        
-        return frames[0]
     }
 }

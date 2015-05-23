@@ -35,8 +35,8 @@ class EventsProvider {
             var calendarEntriesToReturn: [CalendarEntry] = []
             
             Async.background {
-                if let activeEvents = result {
-                    calendarEntriesToReturn = FreeEventsProvider.fillActiveEventsWithFreeEvents(activeEvents, inTimeRange: self.timeRange)
+                if let entries = result {
+                    calendarEntriesToReturn = FreeEventsProvider().populateEntriesWithFreeEvents(entries, inTimeRange: self.timeRange, usingCalenadIDs: self.calendarIDs)
                 }
             }.main {
                 completion(calendarEntries: calendarEntriesToReturn, error: error)

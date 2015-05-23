@@ -23,6 +23,8 @@ enum DateGranulation {
 
 extension NSDate {
     
+    var dayTimeRange: TimeRange { return (min: midnight, max: hour(23).minute(59).second(59).date) }
+    
     func isToday() -> Bool {
         let today = NSDate()
         return isSameDayAs(today)
@@ -34,10 +36,6 @@ extension NSDate {
     
     func isEarlierThanToday() -> Bool {
         return self < NSDate()
-    }
-    
-    func dayTimeRange() -> TimeRange {
-        return (min: midnight, max: hour(23).minute(59).second(59).date)
     }
     
     func nextDateWithGranulation(granulation: DateGranulation, multiplier: Float) -> NSDate {

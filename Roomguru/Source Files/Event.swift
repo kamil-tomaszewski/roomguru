@@ -157,14 +157,8 @@ extension Event {
         return rooms.filter { ($0.status as Status) == .NotGoing }.count > 0
     }
     
-    func addRoomWithEmail(email: String, name: String) {
-        let room = Attendee(json: JSON([]))
-        room.email = email
-        room.name = name
-        room.isRoom = true
-        room.isResource = true
-        
-        rooms.append(room)
+    func setCustomSummary(text: String) {
+        summary = text
     }
 }
 

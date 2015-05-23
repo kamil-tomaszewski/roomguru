@@ -21,7 +21,7 @@ class EventsListCoordinator {
     
     init(date: NSDate, calendarIDs: [String]) {
         self.date = date
-        self.eventsProvider = EventsProvider(calendarIDs: calendarIDs, timeRange: date.dayTimeRange())
+        self.eventsProvider = EventsProvider(calendarIDs: calendarIDs, timeRange: date.dayTimeRange)
     }
     
     func loadDataWithCompletion(completion: (status: ResponseStatus, message: String, icon: FontAwesome?) -> Void) {

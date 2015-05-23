@@ -26,6 +26,7 @@ struct Constants {
     
     struct Timeline {
         static let MinimumEventDuration: NSTimeInterval = 60*15 //15 minutes
+        static let DefaultEventDuration: NSTimeInterval = 60*30 //30 minutes
         static let TimeStep: NSTimeInterval = 60*30 // 30 minutes
         
         // Time range within you can book events.

@@ -11,82 +11,62 @@ import DateKit
 
 class BookingConfirmationViewModel {
     
-    var summary = ""
+    var bookingDurationInMinutes: String { return "\(Int(bookingDuration/60))" }
+    var canAddMinutes: Bool { return bookingDuration < entry.event.duration }
+    var canSubstractMinutes: Bool { return bookingDuration > minimumEventDuration }
     
     var title: String {
-        let startDate = calendarTime.0.startDate, endDate = calendarTime.0.endDate
-        let startDateString = timeFormatter.stringFromDate(startDate)
-        let endDateString = timeFormatter.stringFromDate(endDate)
-        let name = CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
-        return startDateString + " - " + endDateString
+        let name = CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
+        return entry.event.startTime + " - " + entry.event.endTime
     }
     
     var detailTitle: String {
-        return CalendarPersistenceStore.sharedStore.nameMatchingID(calendarTime.1)
+        return CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
     }
     
-    private let calendarTime: CalendarTimeFrame
-    private var actualBookingTime: CalendarTimeFrame
+    private var bookingDuration: NSTimeInterval!
+    private let minimumEventDuration = Constants.Timeline.MinimumEventDuration
     
-    private var dateFormatter: NSDateFormatter = NSDateFormatter()
-    private var timeFormatter: NSDateFormatter = NSDateFormatter()
-
-    private let confirmation: (CalendarTimeFrame, String) -> Void
+    let entry: CalendarEntry!
     
-    private let minimumBookingTime = NSTimeInterval(900)
-    
-    init(calendarTimeFrame: CalendarTimeFrame, onConfirmation: (CalendarTimeFrame, String) -> Void) {
-        calendarTime = calendarTimeFrame
-        confirmation = onConfirmation
-        
-        let actualTimeFrame = calendarTimeFrame.0
-        let actualStartDate = actualTimeFrame.startDate
-        let actualEndDate = actualTimeFrame.duration() > 30*60 ? actualStartDate.minutes + 30 : actualTimeFrame.0.endDate
-            
-        actualBookingTime = (TimeFrame(startDate: actualStartDate, endDate: actualEndDate, availability: actualTimeFrame.availability), calendarTimeFrame.1)
-        configureFormatters()
-    }
-    
-    // MARK: Private
-    
-    private func configureFormatters() {
-        dateFormatter.timeZone = NSTimeZone.localTimeZone()
-        timeFormatter.timeZone = NSTimeZone.localTimeZone()
-        dateFormatter.dateStyle = .ShortStyle
-        timeFormatter.timeStyle = .ShortStyle
+    init(entry: CalendarEntry) {
+        self.entry = entry
+        self.bookingDuration = (entry.event.duration < Constants.Timeline.DefaultEventDuration) ? entry.event.duration : Constants.Timeline.DefaultEventDuration
     }
 }
 
 extension BookingConfirmationViewModel {
-    
-    func bookingTimeDuration() -> NSTimeInterval {
-        return actualBookingTime.0.duration()
-    }
-    
+
     func isValid() -> Bool {
-        return validate(summary)
+        if let summary = entry.event.summary {
+            return validate(summary)
+        }
+        return false
     }
     
     func validate(text: String) -> Bool {
         return text.length >= 5
     }
     
-    func addBookingTimeMinutes(minutes: Int) {
-        let actualTimeFrame = actualBookingTime.0
-        let endDate = actualTimeFrame.endDate.minutes.add(minutes).date
-        let timeFrame = TimeFrame(startDate: actualTimeFrame.startDate, endDate: endDate, availability: actualTimeFrame.availability)
-        actualBookingTime = (timeFrame, actualBookingTime.1)
+    func decreaseBookingTime() {
+        
+        if !canSubstractMinutes {
+            return
+        }
+        bookingDuration = bookingDuration - minimumEventDuration
     }
     
-    func canAddMinutes() -> Bool {
-        return actualBookingTime.0.duration() < calendarTime.0.duration()
-    }
-    
-    func canSubstractMinutes() -> Bool {
-        return actualBookingTime.0.duration() > minimumBookingTime
-    }
-    
-    func confirmBooking() {
-        confirmation(actualBookingTime, summary)
+    func increaseBookingTime() {
+        
+        if !canAddMinutes {
+            return
+        }
+        
+        var newBookingDuration = bookingDuration + minimumEventDuration
+        
+        if newBookingDuration > entry.event.duration {
+            newBookingDuration = entry.event.duration
+        }
+        bookingDuration = newBookingDuration
     }
 }

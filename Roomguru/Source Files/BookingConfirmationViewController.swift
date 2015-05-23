@@ -10,11 +10,13 @@ import UIKit
 
 class BookingConfirmationViewController: UIViewController {
     
-    let viewModel: BookingConfirmationViewModel
+    private let viewModel: BookingConfirmationViewModel
     private weak var aView: BookingConfirmationView?
+    private var didConfirmBlock: ((bookedEntry: CalendarEntry) -> Void)?
     
-    init(viewModel: BookingConfirmationViewModel) {
-        self.viewModel = viewModel
+    init(bookableEntry: CalendarEntry, didConfirmBlock: ((bookedEntry: CalendarEntry) -> Void)? = nil) {
+        self.didConfirmBlock = didConfirmBlock
+        self.viewModel = BookingConfirmationViewModel(entry: bookableEntry)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -33,7 +35,7 @@ class BookingConfirmationViewController: UIViewController {
        
         navigationItem.titleView = basicTitleView()
         
-        aView?.moreMinutesButton.enabled = viewModel.canAddMinutes()
+        aView?.moreMinutesButton.enabled = viewModel.canAddMinutes
         aView?.summaryTextField.delegate = self
         aView?.summaryTextField.addTarget(self, action: "textFieldDidChangeText:", forControlEvents: UIControlEvents.EditingChanged)
         
@@ -63,7 +65,9 @@ extension BookingConfirmationViewController {
         view.findFirstResponder()?.resignFirstResponder()
         
         dismissViewControllerAnimated(true) { [weak self] in
-            self?.viewModel.confirmBooking()
+            if let this = self {
+                this.didConfirmBlock?(bookedEntry: this.viewModel.entry)
+            }
         }
     }
     
@@ -72,19 +76,19 @@ extension BookingConfirmationViewController {
     }
     
     func didTapLessMinutesButton(sender: UIButton) {
-        viewModel.addBookingTimeMinutes(-15)
+        viewModel.decreaseBookingTime()
         updateActualBookingTimeLabel()
         
-        sender.enabled = viewModel.canSubstractMinutes()
-        aView?.moreMinutesButton.enabled = viewModel.canAddMinutes()
+        sender.enabled = viewModel.canSubstractMinutes
+        aView?.moreMinutesButton.enabled = viewModel.canAddMinutes
     }
     
     func didTapMoreMinutesButton(sender: UIButton) {
-        viewModel.addBookingTimeMinutes(15)
+        viewModel.increaseBookingTime()
         updateActualBookingTimeLabel()
         
-        sender.enabled = viewModel.canAddMinutes()
-        aView?.lessMinutesButton.enabled = viewModel.canSubstractMinutes()
+        sender.enabled = viewModel.canAddMinutes
+        aView?.lessMinutesButton.enabled = viewModel.canSubstractMinutes
     }
 }
 
@@ -94,7 +98,7 @@ extension BookingConfirmationViewController {
 extension BookingConfirmationViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
-        viewModel.summary = textField.text
+        viewModel.entry.event.setCustomSummary(textField.text)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -135,7 +139,6 @@ private extension BookingConfirmationViewController {
     }
 
     func updateActualBookingTimeLabel() {
-        let duration = viewModel.bookingTimeDuration()
-        aView?.minutesToBookLabel.text = "\(Int(duration/60))"
+        aView?.minutesToBookLabel.text = viewModel.bookingDurationInMinutes
     }
 }

@@ -10,39 +10,63 @@ import Foundation
 
 class FreeEventsProvider {
     
-    class func fillActiveEventsWithFreeEvents(activeEntries: [CalendarEntry], inTimeRange timeRange: TimeRange) -> [CalendarEntry] {
+    func populateEntriesWithFreeEvents(entriesToFill: [CalendarEntry], inTimeRange timeRange: TimeRange, usingCalenadIDs calendarIDs: [String]) -> [CalendarEntry] {
+
+        var entries: [CalendarEntry] = []
+        var entriesSortedByCalendarIDs: [[CalendarEntry]] = []
+
+        for calendarID in calendarIDs {
+            let entriesFromOneCalendar = entriesToFill.filter { $0.calendarID == calendarID }
+            entries += populateEntriesWithFreeEvents(entriesFromOneCalendar, inTimeRange: timeRange)
+        }
         
-        let sortedEntries = CalendarEntry.sortedByDate(activeEntries)
+        return entries
+    }
+}
+
+private extension FreeEventsProvider {
+    
+    /* NOTICE:
+     * pass entries ONLY with SAME calendar ID
+     */
+    func populateEntriesWithFreeEvents(entriesToFill: [CalendarEntry], inTimeRange timeRange: TimeRange) -> [CalendarEntry] {
+        
+        let sortedEntriesToFill = CalendarEntry.sortedByDate(entriesToFill)
         let timeStep = Constants.Timeline.TimeStep
-        
         var entries: [CalendarEntry] = []
         var referenceDate = timeRange.min
         var index = 0
         
+        let calendarID = entriesToFill.first?.calendarID ?? ""
+        
         while referenceDate < timeRange.max {
-
+            
             // there is no entry after reference date. Means all active entries has beed populated:
-            if index == sortedEntries.count {
+            if index == sortedEntriesToFill.count {
                 
                 let nextHalfHourDate = referenceDate.nextDateWithGranulation(.Hour, multiplier: 0.5)
                 let timeBetweenReferenceDateAndNextHalfHour = nextHalfHourDate.timeIntervalSinceDate(referenceDate)
                 
-                addFreeEventCalendarEntryToEntries(&entries, withStartDate: referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextHalfHour))
+                if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextHalfHour)) {
+                    entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
+                }
                 increase(&referenceDate, by: timeBetweenReferenceDateAndNextHalfHour)
-               
+                
             // active entries still exists and should be populated in entries array:
             } else {
-            
-                let entry = sortedEntries[index]
+                
+                let entry = sortedEntriesToFill[index]
                 let timeBetweenReferenceDateAndTheClosestEntry = ceil(entry.event.start.timeIntervalSinceDate(referenceDate))
                 
                 // there is entry in less than next timeStep seconds:
                 if timeBetweenReferenceDateAndTheClosestEntry < timeStep && timeBetweenReferenceDateAndTheClosestEntry > 0 {
                     
-                    addFreeEventCalendarEntryToEntries(&entries, withStartDate: referenceDate, endDate: entry.event.start)
+                    if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: entry.event.start) {
+                        entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
+                    }
                     increase(&referenceDate, by: timeBetweenReferenceDateAndTheClosestEntry)
                     
-                // there is no entry in next timeStep seconds:
+                    // there is no entry in next timeStep seconds:
                 } else if timeBetweenReferenceDateAndTheClosestEntry >= timeStep {
                     
                     let nextHalfHourDate = referenceDate.nextDateWithGranulation(.Hour, multiplier: 0.5)
@@ -51,15 +75,20 @@ class FreeEventsProvider {
                     // one of the event ended earlier than in half an hour (google speedy meetings):
                     if timeBetweenReferenceDateAndNextHalfHour < timeStep {
                         
-                        addFreeEventCalendarEntryToEntries(&entries, withStartDate: referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextHalfHour))
+                        if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextHalfHour)) {
+                            entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
+                        }
                         increase(&referenceDate, by: timeBetweenReferenceDateAndNextHalfHour)
-
+                        
                     } else {
-                        addFreeEventCalendarEntryToEntries(&entries, withStartDate: referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeStep))
+                        
+                        if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeStep)) {
+                            entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
+                        }
                         increase(&referenceDate)
                     }
                     
-                // add event cause it's event time frame:
+                    // add event cause it's event time frame:
                 } else {
                     entries.append(entry)
                     increase(&referenceDate, by: entry.event.duration)
@@ -70,26 +99,23 @@ class FreeEventsProvider {
         }
         return entries
     }
-}
-
-private extension FreeEventsProvider {
     
-    class func addFreeEventCalendarEntryToEntries(inout entries: [CalendarEntry], var withStartDate startDate: NSDate, endDate: NSDate)  {
+    func createFreeEntryWithStartDate(var startDate: NSDate, endDate: NSDate) -> FreeEvent?  {
         
         // cannot book in not declared days
         let weekday = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitWeekday, fromDate: startDate)
         if !contains(Constants.Timeline.BookingDays, weekday) {
-            return
+            return nil
         }
         
         // cannot book earlier than defined
         if startDate.timeIntervalSinceDate(startDate.midnight) < Constants.Timeline.BookingRange.min {
-            return
+            return nil
         }
         
         // cannot book later than defined
         if startDate.timeIntervalSinceDate(startDate.midnight) > Constants.Timeline.BookingRange.max {
-            return
+            return nil
         }
         
         // If earlier than now, change start date of event.
@@ -103,14 +129,13 @@ private extension FreeEventsProvider {
         
         // cannot be shorter than MinimumEventDuration
         if eventDuration < Constants.Timeline.MinimumEventDuration {
-            return
+            return nil
         }
         
-        let freeEvent = FreeEvent(startDate: startDate, endDate: endDate)
-        entries.append(CalendarEntry(calendarID: "", event: freeEvent))
+        return FreeEvent(startDate: startDate, endDate: endDate)
     }
     
-    class func increase(inout date: NSDate, by timeInterval: NSTimeInterval = Constants.Timeline.TimeStep) {
+    func increase(inout date: NSDate, by timeInterval: NSTimeInterval = Constants.Timeline.TimeStep) {
         date = date.dateByAddingTimeInterval(timeInterval)
     }
 }

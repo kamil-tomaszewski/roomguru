@@ -157,29 +157,29 @@ extension EventsListViewController {
             let timeFrame = TimeFrame(startDate: timeRange.min, endDate: timeRange.max, availability: .Available)
             let calendarTime = (timeFrame, calendarID)
             
-            let viewModel = BookingConfirmationViewModel(calendarTimeFrame: calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
-                
-                BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
-                    
-                    let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(actualCalendarTime.1)
-                    UIAlertView.alertViewForBookedEvent(event, inRoomNamed: roomName).show()
-                    
-                    self.loadData()
-                        
-                }, failure: { (error: NSError) in
-                    UIAlertView(error: error).show()
-                })
-            })
-                
-            let controller = BookingConfirmationViewController(viewModel: viewModel)
-            let navigationVC = NavigationController(rootViewController: controller)
-            let maskingVC = MaskingViewController(contentViewController: navigationVC)
-            maskingVC.modalPresentationStyle = .Custom
-            maskingVC.transitioningDelegate = alertViewTransitionDelegate
+//            let viewModel = BookingConfirmationViewModel(calendarTimeFrame: calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
+//                
+//                BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
+//                    
+//                    let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(actualCalendarTime.1)
+//                    UIAlertView.alertViewForBookedEvent(event, inRoomNamed: roomName).show()
+//                    
+//                    self.loadData()
+//                        
+//                }, failure: { (error: NSError) in
+//                    UIAlertView(error: error).show()
+//                })
+//            })
             
-            presentViewController(maskingVC, animated: true) {
-                self.alertViewTransitionDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
-            }
+//            let controller = BookingConfirmationViewController(viewModel: viewModel)
+//            let navigationVC = NavigationController(rootViewController: controller)
+//            let maskingVC = MaskingViewController(contentViewController: navigationVC)
+//            maskingVC.modalPresentationStyle = .Custom
+//            maskingVC.transitioningDelegate = alertViewTransitionDelegate
+//            
+//            presentViewController(maskingVC, animated: true) {
+//                self.alertViewTransitionDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
+//            }
         }
     }
     
