@@ -202,9 +202,8 @@ extension EventDetailsViewController {
     func didTapEditBarButton(sender: UIBarButtonItem) {
         let event = self.viewModel.event!
         let calendarEntry = CalendarEntry(calendarID: event.rooms.first!.email!, event: event)
-        let viewModel = EditEventViewModel(calendarEntry: calendarEntry)
-        let editEventController = EditEventViewController(viewModel: viewModel)
-        editEventController.updateCompletionBlock = { event in
+        
+        let editEventController = EditEventViewController(calendarEntry: calendarEntry) { event in
             self.viewModel = EventDetailsViewModel(event: event)
             self.aView?.tableView.reloadData()
             self.didUpdateBlock?()

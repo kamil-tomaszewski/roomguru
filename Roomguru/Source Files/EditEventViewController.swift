@@ -13,11 +13,13 @@ class EditEventViewController: UIViewController {
     
     private weak var aView: GroupedBaseTableView?
     private var keyboardHandler: KeyboardPresenceHandler!
-    private var viewModel = EditEventViewModel()
-    var updateCompletionBlock: ((event: Event) -> Void)?
+    private var viewModel: EditEventViewModel<GroupItem>!
+    private var didSaveBlock: ((event: Event) -> Void)?
     
-    init(viewModel: EditEventViewModel<GroupItem>) {
-        self.viewModel = viewModel
+    init(calendarEntry: CalendarEntry? = nil, didSaveBlock: ((event: Event) -> Void)?) {
+        
+        self.didSaveBlock = didSaveBlock
+        self.viewModel = (calendarEntry == nil) ? EditEventViewModel() : EditEventViewModel(calendarEntry: calendarEntry!)
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
         self.viewModel.presenter = self
@@ -225,7 +227,7 @@ extension EditEventViewController {
                     
                 } else if let event = event {
                     
-                    self.updateCompletionBlock?(event: event)
+                    self.didSaveBlock?(event: event)
                     self.dismissSelf(self.viewModel)
                 }
             }

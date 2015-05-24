@@ -73,9 +73,10 @@ extension MyEventsViewController {
     }
     
     func didTapPlusButton(sender: UIBarButtonItem) {
-        let viewModel = EditEventViewModel()
-        let controller = EditEventViewController(viewModel: viewModel)
-        let navigationController = NavigationController(rootViewController: controller)
+        let editEventViewController = EditEventViewController() { event in
+            self.reloadEventList()
+        }
+        let navigationController = NavigationController(rootViewController: editEventViewController)
         presentViewController(navigationController, animated: true, completion: nil)
     }
 }
