@@ -70,12 +70,12 @@ class BookingQuery: Query {
         set { self[SummaryKey] = newValue }
     }
     
-    var startDate: NSDate? {
+    var startDate: NSDate! {
         get { return dateForKey(StartKey) }
         set { setDate(newValue, forKey: StartKey) }
     }
     
-    var endDate: NSDate? {
+    var endDate: NSDate! {
         get { return dateForKey(EndKey) }
         set { setDate(newValue, forKey: EndKey) }
     }

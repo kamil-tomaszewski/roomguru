@@ -127,10 +127,10 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 date = NSDate().minutes + 1
                 startDateItem.date = date
                 endDateItem.date = date.minutes + 30
-                
-                self?.eventQuery.startDate = startDateItem.date
-                self?.eventQuery.endDate = endDateItem.date
             }
+            
+            self?.eventQuery.startDate = startDateItem.date
+            self?.eventQuery.endDate = endDateItem.date
             
             func togglePickerForDateItem(item: DateItem) {
                 if item.highlighted {
@@ -460,7 +460,7 @@ extension EditEventViewModel {
                 }
 
                 var error: NSError?
-                let filteredTimesRanges = freeTimeRanges.filter { self.eventQuery.startDate! >= $0.min && self.eventQuery.endDate! <= $0.max }
+                let filteredTimesRanges = freeTimeRanges.filter { self.eventQuery.startDate >= $0.min && self.eventQuery.endDate <= $0.max }
 
                 if filteredTimesRanges.isEmpty {
                     error = NSError(message: NSLocalizedString("The room is busy in provided time range", comment: ""))
