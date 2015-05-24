@@ -11,35 +11,35 @@ import AKPickerView_Swift
 
 class MyEventsViewController: EventsViewController {
     private weak var aView: DashboardView?
-    private let alertViewTransitioninigDelegate = AlertViewTransitionDelegate()
-
+    private let alertViewTransitioningDelegate = AlertViewTransitionDelegate()
+    
     required init() {
         super.init()
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = NSLocalizedString("My Events", comment: "")
-
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("didTapPlusButton:"))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Book First", comment: ""), style: .Plain, target: self, action: Selector("didTapBookRoomButton:"))
     }
-
+    
     override func eventsListCoordinatorForDate(date: NSDate) -> EventsListCoordinator {
-
+        
         let calendarIDs = CalendarPersistenceStore.sharedStore.rooms().map{ $0.id }
         return MyEventsListCoordinator(date: date, calendarIDs: calendarIDs)
     }
-
+    
     override func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
         return 1
     }
-
+    
     override func pickerView(pickerView: AKPickerView, titleForItem item: Int) -> String {
         return NSLocalizedString("All rooms", comment: "")
     }
@@ -48,9 +48,9 @@ class MyEventsViewController: EventsViewController {
 // MARK: Actions
 
 extension MyEventsViewController {
-
+    
     func didTapBookRoomButton(sender: UIButton) {
-
+        
         let barButtonItem = navigationItem.leftBarButtonItem
         navigationItem.leftBarButtonItem = UIBarButtonItem.loaderItemWithTintColor(.ngOrangeColor())
         
@@ -71,7 +71,7 @@ extension MyEventsViewController {
             }
         }
     }
-
+    
     func didTapPlusButton(sender: UIBarButtonItem) {
         let viewModel = EditEventViewModel()
         let controller = EditEventViewController(viewModel: viewModel)
@@ -81,7 +81,7 @@ extension MyEventsViewController {
 }
 
 private extension MyEventsViewController {
- 
+    
     func presentBookingConfirmationViewControllerWithCalendarEntry(entry: CalendarEntry) {
         
         let bookingConfirmationViewController = BookingConfirmationViewController(bookableEntry: entry) { bookedEntry in
@@ -90,10 +90,10 @@ private extension MyEventsViewController {
         
         let navigationVC = NavigationController(rootViewController: bookingConfirmationViewController)
         let maskingVC = MaskingViewController(contentViewController: navigationVC)
-        maskingVC.transitioningDelegate = self.alertViewTransitioninigDelegate
+        maskingVC.transitioningDelegate = alertViewTransitioningDelegate
         maskingVC.modalPresentationStyle = .Custom
-        self.presentViewController(maskingVC, animated: true) {
-            self.alertViewTransitioninigDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
+        presentViewController(maskingVC, animated: true) {
+            self.alertViewTransitioningDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
         }
     }
     

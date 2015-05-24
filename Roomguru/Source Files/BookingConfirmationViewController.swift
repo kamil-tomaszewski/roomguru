@@ -14,6 +14,8 @@ class BookingConfirmationViewController: UIViewController {
     private weak var aView: BookingConfirmationView?
     private var didConfirmBlock: ((bookedEntry: CalendarEntry) -> Void)?
     
+    var editable = true
+    
     init(bookableEntry: CalendarEntry, didConfirmBlock: ((bookedEntry: CalendarEntry) -> Void)? = nil) {
         self.didConfirmBlock = didConfirmBlock
         self.viewModel = BookingConfirmationViewModel(entry: bookableEntry)
@@ -34,6 +36,11 @@ class BookingConfirmationViewController: UIViewController {
         super.viewDidLoad()
        
         navigationItem.titleView = basicTitleView()
+        
+        if !editable {
+            aView?.lessMinutesButton.hidden = true
+            aView?.moreMinutesButton.hidden = true
+        }
         
         aView?.moreMinutesButton.enabled = viewModel.canAddMinutes
         aView?.summaryTextField.delegate = self
@@ -139,6 +146,10 @@ private extension BookingConfirmationViewController {
     }
 
     func updateActualBookingTimeLabel() {
-        aView?.minutesToBookLabel.text = viewModel.bookingDurationInMinutes
+        if editable {
+            aView?.minutesToBookLabel.text = viewModel.bookingDurationInMinutes
+        } else {
+            aView?.minutesToBookLabel.text = "\(Int(viewModel.entry.event.duration/60))"
+        }
     }
 }

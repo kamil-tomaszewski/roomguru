@@ -13,6 +13,7 @@ class EditEventViewController: UIViewController {
     
     private weak var aView: GroupedBaseTableView?
     private var keyboardHandler: KeyboardPresenceHandler!
+    private var viewModel = EditEventViewModel()
     var updateCompletionBlock: ((event: Event) -> Void)?
     
     init(viewModel: EditEventViewModel<GroupItem>) {
@@ -41,10 +42,6 @@ class EditEventViewController: UIViewController {
         setupBarButtons()
         setupTableView()
     }
-    
-    // MARK: Private
-    
-    private var viewModel = EditEventViewModel()
 }
 
 extension EditEventViewController: ModelUpdatable {

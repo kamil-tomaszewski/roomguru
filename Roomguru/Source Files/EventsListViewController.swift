@@ -13,7 +13,7 @@ class EventsListViewController: UIViewController {
     
     private weak var aView: EventsListView?
     private(set) var coordinator: EventsListCoordinator
-    private let alertViewTransitionDelegate = AlertViewTransitionDelegate()
+    private let alertViewTransitioningDelegate = AlertViewTransitionDelegate()
 
     convenience init(coordinator: EventsListCoordinator) {
         self.init()
@@ -147,45 +147,52 @@ extension EventsListViewController: UITableViewDataSource {
 
 extension EventsListViewController {
     
-    // NGRTodo: attach book view controller:
-    
     func didTapBookButton(sender: UIButton) {
         let timeRange = coordinator.viewModel?.selectedTimeRangeToBook()
         
         if let timeRange = timeRange, calendarID = coordinator.eventsProvider.calendarIDs.first {
-            
-            let timeFrame = TimeFrame(startDate: timeRange.min, endDate: timeRange.max, availability: .Available)
-            let calendarTime = (timeFrame, calendarID)
-            
-//            let viewModel = BookingConfirmationViewModel(calendarTimeFrame: calendarTime, onConfirmation: { (actualCalendarTime, summary) -> Void in
-//                
-//                BookingManager.bookTimeFrame(actualCalendarTime, summary: summary, success: { (event: Event) in
-//                    
-//                    let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(actualCalendarTime.1)
-//                    UIAlertView.alertViewForBookedEvent(event, inRoomNamed: roomName).show()
-//                    
-//                    self.loadData()
-//                        
-//                }, failure: { (error: NSError) in
-//                    UIAlertView(error: error).show()
-//                })
-//            })
-            
-//            let controller = BookingConfirmationViewController(viewModel: viewModel)
-//            let navigationVC = NavigationController(rootViewController: controller)
-//            let maskingVC = MaskingViewController(contentViewController: navigationVC)
-//            maskingVC.modalPresentationStyle = .Custom
-//            maskingVC.transitioningDelegate = alertViewTransitionDelegate
-//            
-//            presentViewController(maskingVC, animated: true) {
-//                self.alertViewTransitionDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
-//            }
+
+            let freeEvent = FreeEvent(startDate: timeRange.min, endDate: timeRange.max)
+            let calendarEntry = CalendarEntry(calendarID: calendarID, event: freeEvent)
+    
+            presentBookingConfirmationViewControllerWithCalendarEntry(calendarEntry)
         }
     }
     
     func didPullRefreshControl(refreshControl: UIRefreshControl) {
         loadData() {
             refreshControl.endRefreshing()
+        }
+    }
+    
+    func presentBookingConfirmationViewControllerWithCalendarEntry(entry: CalendarEntry) {
+        
+        let bookingConfirmationViewController = BookingConfirmationViewController(bookableEntry: entry) { bookedEntry in
+            self.bookCalendarEntry(entry)
+        }
+        bookingConfirmationViewController.editable = false
+        
+        let navigationVC = NavigationController(rootViewController: bookingConfirmationViewController)
+        let maskingVC = MaskingViewController(contentViewController: navigationVC)
+        maskingVC.transitioningDelegate = alertViewTransitioningDelegate
+        maskingVC.modalPresentationStyle = .Custom
+        presentViewController(maskingVC, animated: true) {
+            self.alertViewTransitioningDelegate.bindViewController(maskingVC, withView: maskingVC.aView.contentView)
+        }
+    }
+    
+    func bookCalendarEntry(entry: CalendarEntry) {
+        
+        BookingManager.bookCalendarEntry(entry) { (event, error) in
+            
+            if let error = error {
+                UIAlertView(error: error).show()
+            } else {
+                let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
+                UIAlertView.alertViewForBookedEvent(entry.event, inRoomNamed: roomName).show()
+                
+                self.loadData()
+            }
         }
     }
 }
