@@ -21,7 +21,7 @@ protocol Presenter {
 
 class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
     
-    let networkCooperator: EditEventNetworkCooperator
+    private let networkCooperator: EditEventNetworkCooperator
     private var rooms: [RoomItem]
     
     var delegate: ModelUpdatable?
@@ -33,11 +33,13 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         let query: EventQuery
         
         if let calendarEntry = calendarEntry {
-            title = NSLocalizedString("New Event", comment: "")
+            title = NSLocalizedString("Edit Event", comment: "")
             query = EventQuery(calendarEntry: calendarEntry)
         } else {
-            title = NSLocalizedString("Edit Event", comment: "")
+            title = NSLocalizedString("New Event", comment: "")
             query = EventQuery()
+            query.startDate = NSDate().seconds(0)
+            query.endDate = query.startDate.dateByAddingTimeInterval(Constants.Timeline.MinimumEventDuration)
         }
         networkCooperator = EditEventNetworkCooperator(query: query)
         rooms = CalendarPersistenceStore.sharedStore.rooms().map { RoomItem(room: $0) }
@@ -369,8 +371,6 @@ extension EditEventViewModel {
         var reloadIndexPaths: [NSIndexPath] = []
         var errors: [NSError] = []
         
-        updateItems()
-        
         itemize { (path, item) in
             if var item = item as? Validatable {
                 if let error = item.validationError {
@@ -385,7 +385,15 @@ extension EditEventViewModel {
     }
 }
 
+// MARK: Saving
+
 extension EditEventViewModel {
+    
+    func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {
+        
+        updateItems()
+        networkCooperator.saveEvent(completion)
+    }
     
     private func updateItems() {
         itemize {

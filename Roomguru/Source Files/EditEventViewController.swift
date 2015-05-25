@@ -208,7 +208,7 @@ extension EditEventViewController {
         
         PKHUD.sharedHUD.show()
         
-        viewModel.networkCooperator.saveEvent { (event, error) in
+        viewModel.saveEvent { (event, error) in
             
             PKHUD.sharedHUD.hide()
             

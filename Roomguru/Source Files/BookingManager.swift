@@ -63,7 +63,6 @@ class BookingManager: NSObject {
     class func bookableCalendarEntries(completion: (entries: [CalendarEntry]?, error: NSError?) -> Void) {
         
         let allRooms = CalendarPersistenceStore.sharedStore.rooms().map { $0.id }
-        let query = FreeBusyQuery(calendarsIDs: allRooms)
         
         let eventsProvider = EventsProvider(calendarIDs: allRooms, timeRange: NSDate().dayTimeRange)
         eventsProvider.activeCalendarEntriesWithCompletion { (calendarEntries, error) -> Void in

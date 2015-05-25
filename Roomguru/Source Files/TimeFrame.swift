@@ -27,6 +27,12 @@ class TimeFrame: ModelObject {
         super.init()
     }
 
+    init(startDate: NSDate, endDate: NSDate) {
+        super.init(json: JSON([]))
+        self.startDate = startDate
+        self.endDate = endDate
+    }
+    
     required init(json: JSON) {
         super.init(json: json)
     }

@@ -26,13 +26,24 @@ class BookingConfirmationViewModel {
     
     let entry: CalendarEntry!
     var canAddMinutes: Bool { return expectedEventEndDate != entry.event.end }
-    var canSubstractMinutes: Bool { return expectedEventEndDate != minimumEndDate }
+    var canSubstractMinutes: Bool {
+        
+        let minimumEventDuration = Constants.Timeline.MinimumEventDuration
+        let willNewEndDatePassEventDurationRequirement = expectedEventEndDate.timeIntervalSinceDate(entry.event.start) - minimumEventDuration  > minimumEventDuration
+        return expectedEventEndDate != minimumEndDate && willNewEndDatePassEventDurationRequirement
+    }
     
     private var expectedEventEndDate: NSDate!
     
     // minimum end date is start date rounded to next 15 minutes: (eg. start date 15:32:23 will return 15:45:00)
     private var minimumEndDate: NSDate {
-        return entry.event.start.nextDateWithGranulation(.Minute, multiplier: 15)
+        
+        let nextDateRoundedTo15Minutes = entry.event.start.nextDateWithGranulation(.Minute, multiplier: 15)
+        let isTimeIntervalFromStartDateToNextRoundedDateAllowed = nextDateRoundedTo15Minutes.timeIntervalSinceDate(entry.event.start) > Constants.Timeline.DefaultEventDuration
+        if isTimeIntervalFromStartDateToNextRoundedDateAllowed {
+            return nextDateRoundedTo15Minutes
+        }
+        return entry.event.start.nextDateWithGranulation(.Minute, multiplier: 30)
     }
 
     init(entry: CalendarEntry) {
@@ -56,7 +67,7 @@ class BookingConfirmationViewModel {
     }
     
     func decreaseBookingTime() {
-
+        
         let previousRoundedDateTo15Minutes = expectedEventEndDate.previousDateWithGranulation(.Minute, multiplier: 15)
         let timeIntervalFromStartDateToRoundedDate = previousRoundedDateTo15Minutes.timeIntervalSinceDate(entry.event.start)
         
@@ -68,7 +79,7 @@ class BookingConfirmationViewModel {
     }
     
     func increaseBookingTime() {
-        
+
         let nextRoundedDateTo15Minutes = expectedEventEndDate.nextDateWithGranulation(.Minute, multiplier: 15)
         let timeIntervalFromStartDateToRoundedDate = entry.event.end.timeIntervalSinceDate(nextRoundedDateTo15Minutes)
         

@@ -37,12 +37,14 @@ class BookingConfirmationViewController: UIViewController {
        
         navigationItem.titleView = basicTitleView()
         
-        if !editable {
+        if editable {
+            aView?.moreMinutesButton.enabled = viewModel.canAddMinutes
+            aView?.lessMinutesButton.enabled = viewModel.canSubstractMinutes
+        } else {
             aView?.lessMinutesButton.hidden = true
             aView?.moreMinutesButton.hidden = true
         }
         
-        aView?.moreMinutesButton.enabled = viewModel.canAddMinutes
         aView?.summaryTextField.delegate = self
         aView?.summaryTextField.addTarget(self, action: "textFieldDidChangeText:", forControlEvents: UIControlEvents.EditingChanged)
         

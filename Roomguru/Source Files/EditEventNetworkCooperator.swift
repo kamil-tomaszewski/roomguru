@@ -13,9 +13,12 @@ import SwiftyJSON
 class EditEventNetworkCooperator {
     
     let eventQuery: EventQuery
+    private let currentEditingEventInitialStartDate, currentEditingEventInitialEndDate: NSDate
     
     init(query: EventQuery) {
         eventQuery = query
+        currentEditingEventInitialStartDate = query.startDate
+        currentEditingEventInitialEndDate = query.endDate
     }
     
     func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {
@@ -54,15 +57,15 @@ private extension EditEventNetworkCooperator {
                 
                 response["attendees"] = self.fixResponse(response)
                 let event = Event(json: response)
-                
                 completion(event: event, error: nil)
+                
             } else {
                 let error = NSError(message: NSLocalizedString("Server sent empty response", comment: ""))
                 completion(event: nil, error: error)
             }
             
-            }, failure: { error in
-                completion(event: nil, error: error)
+        }, failure: { error in
+            completion(event: nil, error: error)
         })
     }
     
@@ -87,14 +90,21 @@ private extension EditEventNetworkCooperator {
                     busyTimeFrames = TimeFrame.map(calendarJSON["busy"]?.arrayValue)
                 }
 
-                var error: NSError?
-                let freeTimeRanges = self.fillRevertedBusyTimeFramesWithFreeTimeRanges(busyTimeFrames, timeMin: timeMin, timeMax: timeMax)
-                let filteredFreeTimeRanges = freeTimeRanges.filter { self.eventQuery.startDate >= $0.min && self.eventQuery.endDate <= $0.max }
+                busyTimeFrames = self.excludeCurrentEditingEventFromBusyTimeFrames(busyTimeFrames)
                 
-                if filteredFreeTimeRanges.isEmpty {
+                var error: NSError?
+                let freeTimeRanges = self.fillRevertedBusyTimeFramesWithFreeTimeRanges(busyTimeFrames, startWithDate: timeMin, endWithDate: timeMax)
+                
+                let available = freeTimeRanges.filter {
+                    let doesAnyOfAvailableFreeTimeRangeContainCurrentlyEditingEventNewTimeRange = self.eventQuery.startDate >= $0.min && self.eventQuery.endDate <= $0.max
+                    return doesAnyOfAvailableFreeTimeRangeContainCurrentlyEditingEventNewTimeRange
+                }.count > 0
+                
+                if !available {
                     error = NSError(message: NSLocalizedString("The room is busy in provided time range", comment: ""))
                 }
-                completion(available: error == nil, error: error)
+                
+                completion(available: available, error: error)
                 return
             }
             
@@ -106,10 +116,41 @@ private extension EditEventNetworkCooperator {
         })
     }
     
-    func fillRevertedBusyTimeFramesWithFreeTimeRanges(busyTimeFrames: [TimeFrame]?, timeMin: NSDate?, timeMax: NSDate?) -> [TimeRange] {
+    func excludeCurrentEditingEventFromBusyTimeFrames(busyTimeFrames: [TimeFrame]?) -> [TimeFrame]? {
         
-        // add current editing event time range, because it should be editable:
-        var freeTimeRanges: [TimeRange] = [(min: self.eventQuery.startDate ,max: self.eventQuery.endDate)]
+        if busyTimeFrames == nil {
+           return nil
+        }
+        
+        var array: [TimeFrame] = []
+        for busyTimeFrame in busyTimeFrames! {
+            
+            if currentEditingEventInitialStartDate >= busyTimeFrame.startDate && currentEditingEventInitialEndDate <= busyTimeFrame.endDate {
+                
+                let isInBusyTimeFrameAnyOtherEventBeforeCurrentlyEditingEvent = currentEditingEventInitialStartDate > busyTimeFrame.startDate
+                // if yes then add busy time range
+                if isInBusyTimeFrameAnyOtherEventBeforeCurrentlyEditingEvent {
+                    let busyTimeFrameBeforeCyrrentlyEditingEvent = TimeFrame(startDate: busyTimeFrame.startDate, endDate: currentEditingEventInitialStartDate)
+                    array.append(busyTimeFrameBeforeCyrrentlyEditingEvent)
+                }
+                
+                let isInBusyTimeFrameAnyOtherEventAfterCurrentlyEditingEvent = currentEditingEventInitialEndDate < busyTimeFrame.endDate
+                // if yes then add busy time range
+                if isInBusyTimeFrameAnyOtherEventAfterCurrentlyEditingEvent {
+                    let busyTimeFrameAfterCurrentlyEditingEvent = TimeFrame(startDate: currentEditingEventInitialEndDate, endDate: busyTimeFrame.endDate)
+                    array.append(busyTimeFrameAfterCurrentlyEditingEvent)
+                }
+            } else {
+                array.append(busyTimeFrame)
+            }
+        }
+            
+        return array
+    }
+    
+    func fillRevertedBusyTimeFramesWithFreeTimeRanges(busyTimeFrames: [TimeFrame]?, startWithDate timeMin: NSDate?, endWithDate timeMax: NSDate?) -> [TimeRange] {
+        
+        var freeTimeRanges: [TimeRange] = []
         
         if let busyTimeFrames = busyTimeFrames {
             
@@ -135,6 +176,7 @@ private extension EditEventNetworkCooperator {
                 }
             }
         }
+        
         return freeTimeRanges
     }
     
