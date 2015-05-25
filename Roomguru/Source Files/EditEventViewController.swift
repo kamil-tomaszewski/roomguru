@@ -218,14 +218,14 @@ extension EditEventViewController {
             } else if let event = event {
                 
                 self.didSaveBlock?(event: event)
-                self.dismissSelf(self.viewModel)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
     
     func didTapDismissBarButton(sender: UIBarButtonItem) {
         endEditing()
-        dismissSelf(sender)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

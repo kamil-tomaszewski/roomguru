@@ -72,56 +72,26 @@ private extension EditEventNetworkCooperator {
         
         NetworkManager.sharedInstance.request(query, success: { response in
             
-            println(self.eventQuery.startDate)
-            println(self.eventQuery.endDate)
-            
             if let response = response {
                 
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 formatter.timeZone = NSTimeZone.localTimeZone()
                 
-                var timeFrames: [TimeFrame]?
+                var busyTimeFrames: [TimeFrame]?
                 let timeMin = formatter.dateFromString(response["timeMin"].string!)
                 let timeMax = formatter.dateFromString(response["timeMax"].string!)
                 
                 for calendar in response["calendars"].dictionaryValue {
                     let calendarJSON = calendar.1.dictionaryValue
-                    timeFrames = TimeFrame.map(calendarJSON["busy"]?.arrayValue)
+                    busyTimeFrames = TimeFrame.map(calendarJSON["busy"]?.arrayValue)
                 }
-                
-                // add current editing event time range, because it should be editable:
-                var freeTimeRanges: [TimeRange] = [(min: self.eventQuery.startDate ,max: self.eventQuery.endDate)]
-                
-                if let timeFrames = timeFrames {
-                    
-                    for index in 0...timeFrames.count  {
-                        
-                        var min, max: NSDate!
-                        
-                        if index == 0 {
-                            min = timeMin
-                            max = timeFrames[index].startDate
-                            
-                        } else if index == timeFrames.count {
-                            min = timeFrames[index - 1].endDate
-                            max = timeMax
-                            
-                        } else {
-                            min = timeFrames[index - 1].endDate
-                            max = timeFrames[index].startDate
-                        }
-                        
-                        if max.timeIntervalSinceDate(min) > 0 {
-                            freeTimeRanges.append(TimeRange(min: min ,max: max))
-                        }
-                    }
-                }
-                
+
                 var error: NSError?
-                let filteredTimesRanges = freeTimeRanges.filter { self.eventQuery.startDate >= $0.min && self.eventQuery.endDate <= $0.max }
+                let freeTimeRanges = self.fillRevertedBusyTimeFramesWithFreeTimeRanges(busyTimeFrames, timeMin: timeMin, timeMax: timeMax)
+                let filteredFreeTimeRanges = freeTimeRanges.filter { self.eventQuery.startDate >= $0.min && self.eventQuery.endDate <= $0.max }
                 
-                if filteredTimesRanges.isEmpty {
+                if filteredFreeTimeRanges.isEmpty {
                     error = NSError(message: NSLocalizedString("The room is busy in provided time range", comment: ""))
                 }
                 completion(available: error == nil, error: error)
@@ -136,7 +106,39 @@ private extension EditEventNetworkCooperator {
         })
     }
     
-    private func fixResponse(response: JSON) -> JSON {
+    func fillRevertedBusyTimeFramesWithFreeTimeRanges(busyTimeFrames: [TimeFrame]?, timeMin: NSDate?, timeMax: NSDate?) -> [TimeRange] {
+        
+        // add current editing event time range, because it should be editable:
+        var freeTimeRanges: [TimeRange] = [(min: self.eventQuery.startDate ,max: self.eventQuery.endDate)]
+        
+        if let busyTimeFrames = busyTimeFrames {
+            
+            for index in 0...busyTimeFrames.count  {
+                
+                var min, max: NSDate!
+                
+                if index == 0 {
+                    min = timeMin
+                    max = busyTimeFrames[index].startDate
+                    
+                } else if index == busyTimeFrames.count {
+                    min = busyTimeFrames[index - 1].endDate
+                    max = timeMax
+                    
+                } else {
+                    min = busyTimeFrames[index - 1].endDate
+                    max = busyTimeFrames[index].startDate
+                }
+                
+                if max.timeIntervalSinceDate(min) > 0 {
+                    freeTimeRanges.append(TimeRange(min: min ,max: max))
+                }
+            }
+        }
+        return freeTimeRanges
+    }
+    
+    func fixResponse(response: JSON) -> JSON {
         
         /* NOTICE:
         * When editing event Google Calendar doesn't return "self" in response (in resource)
