@@ -76,13 +76,18 @@ extension EventsListViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
         let event = coordinator.viewModel?.eventAtIndex(indexPath)
         
         if let freeEvent = event as? FreeEvent {
 
             coordinator.viewModel?.selectOrDeselectFreeEventAtIndexPath(indexPath)
             var indexPaths = coordinator.viewModel?.indexPathsToReload() ?? []
-            indexPaths.append(indexPath)
+            
+            if let viewModel = coordinator.viewModel where !viewModel.containsIndexPath(indexPath) {
+                indexPaths.append(indexPath)
+            }
             aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
 
         } else {

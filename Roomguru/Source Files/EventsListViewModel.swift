@@ -36,7 +36,7 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
     func selectOrDeselectFreeEventAtIndexPath(indexPath: NSIndexPath) {
         
         if containsIndexPath(indexPath) {
-            selectedFreeEventPaths = selectedFreeEventPaths.filter {$0 != indexPath}
+            selectedFreeEventPaths = selectedFreeEventPaths.filter { $0 != indexPath }
         } else {
             selectedFreeEventPaths.append(indexPath)
         }
@@ -96,13 +96,13 @@ class EventsListViewModel<T: CalendarEntry>: ListViewModel<CalendarEntry> {
         selectedFreeEvents.sort { $0.start <= $1.start }
         return TimeRange(min: selectedFreeEvents.first!.start, max: selectedFreeEvents.last!.end)
     }
-}
-
-private extension EventsListViewModel {
     
     func containsIndexPath(indexPath: NSIndexPath) -> Bool {
         return find(selectedFreeEventPaths, indexPath) != nil
     }
+}
+
+private extension EventsListViewModel {
     
     func isFreeEventAfterIndexSelected(indexPath: NSIndexPath) -> Bool {
         if (indexPath.row == self[0].count - 1) {
