@@ -44,14 +44,17 @@ class BookingQuerySpec: QuickSpec {
             let mockQuery = MockQuery(HTTPMethod: "PUT", URLExtension: URLExtension, parameterEncoding: "JSON")
 
             let mockQueryParameters =
-                ["attendees":[
+            [
+                "attendees":[
+                    ["email" : self.fixtureCalendarID, "responseStatus" : "accepted"],
                     ["email" : self.fixtureEmailFirst],
                     ["email" : self.fixtureEmailSecond],
-                    ["email" : self.fixtureEmailThird],
-                    ["email" : self.fixtureCalendarID, "responseStatus" : "accepted"]],
+                    ["email" : self.fixtureEmailThird]
+                ],
                 "end" : ["dateTime":self.fixtureEndDateAsString, "timeZone" : "Europe/Warsaw"],
                 "start" : ["dateTime":self.fixtureStartDateAsString, "timeZone" : "Europe/Warsaw"],
-                "summary" : self.fixtureSummary]
+                "summary" : self.fixtureSummary
+            ]
             
             let sut = BookingQuery(calendarEntry: mockCalendarEntry)
             
@@ -66,13 +69,15 @@ class BookingQuerySpec: QuickSpec {
         
         describe("when initializing with calendar time frame and summary") {
             
-            let timeFrame = TimeFrame(startDate: self.fixtureStartDate, endDate: self.fixtureEndDate, availability: .NotAvailable)
-            let fixtureCalendarTimeFrame: CalendarTimeFrame = (timeFrame, self.fixtureCalendarID)
+            let freeEvent = FreeEvent(startDate: self.fixtureStartDate, endDate: self.fixtureEndDate)
+            freeEvent.setCustomSummary(self.fixtureSummary)
+            let fixtureFreeCalendarEntry = CalendarEntry(calendarID: self.fixtureCalendarID, event: freeEvent)
             
             let mockQuery = MockQuery(HTTPMethod: "POST", URLExtension: "/calendars/primary/events", parameterEncoding: "JSON")
             var mockQueryParameters = [:]
             mockQueryParameters =
-                ["attendees" : [[
+            [
+                "attendees" : [[
                     "email" : self.fixtureCalendarID,
                     "responseStatus" : "accepted" ]],
                 "end" : [
@@ -81,9 +86,10 @@ class BookingQuerySpec: QuickSpec {
                 "start" : [
                     "dateTime" : self.fixtureStartDateAsString,
                     "timeZone":"Europe/Warsaw"],
-                "summary" : self.fixtureSummary]
+                "summary" : self.fixtureSummary
+            ]
             
-            let sut = BookingQuery(calendarTimeFrame: fixtureCalendarTimeFrame, summary: self.fixtureSummary)
+            let sut = BookingQuery(quickCalendarEntry: fixtureFreeCalendarEntry)
             
             itBehavesLike("queryable") {
                 [

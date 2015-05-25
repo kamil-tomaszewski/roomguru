@@ -26,14 +26,12 @@ class BookingQuery: Query {
         populateQueryWithCalendarEntry(calendarEntry)
         
         addAttendees(calendarEntry.event.attendees.filter { $0.email != nil }.map { $0.email! })
-        updateCalendarAsAttendee(nil, new: calendarID)
     }
     
     convenience init(quickCalendarEntry calendarEntry: CalendarEntry) {
         self.init(.POST)
         
         populateQueryWithCalendarEntry(calendarEntry)
-        updateCalendarAsAttendee(nil, new: calendarID)
     }
     
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String = BookingQuery.URLExtension, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .JSON) {

@@ -14,6 +14,7 @@ import SwiftyJSON
 class NetworkManager: NSObject {
     private var serverURL = ""
     private var clientID = ""
+    private var key: String { return "?key=" + clientID }
     
     class var sharedInstance: NetworkManager {
         struct Static {
@@ -60,12 +61,12 @@ private extension GTMOAuth2Authentication {
 extension NetworkManager {
     
     func request(query: Query, success: ResponseBlock, failure: ErrorBlock) {
-        query.setFullPath(serverURL, authKey: key())
+        query.setFullPath(serverURL, authKey: key)
         QueryRequest(query).resume(success, failure: failure)
     }
     
     func requestList<T: ModelJSONProtocol>(query: PageableQuery, success: (response: [T]?) -> (), failure: ErrorBlock) {
-        query.setFullPath(serverURL, authKey: key())
+        query.setFullPath(serverURL, authKey: key)
         PageableRequest<T>(query).resume(success, failure)
     }
     
@@ -105,14 +106,5 @@ extension NetworkManager {
                 success(result)
             }
         }
-    }
-}
-
-// MARK: Private
-
-private extension NetworkManager {
-
-    private func key() -> String {
-        return "?key=" + clientID
     }
 }

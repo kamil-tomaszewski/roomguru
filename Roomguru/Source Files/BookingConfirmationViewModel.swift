@@ -53,7 +53,13 @@ extension BookingConfirmationViewModel {
         if !canSubstractMinutes {
             return
         }
-        bookingDuration = bookingDuration - minimumEventDuration
+        var newBookingDuration = bookingDuration - minimumEventDuration
+        
+        if newBookingDuration < minimumEventDuration {
+            newBookingDuration = minimumEventDuration
+        }
+        
+        bookingDuration = newBookingDuration
     }
     
     func increaseBookingTime() {
