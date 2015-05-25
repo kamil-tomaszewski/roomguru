@@ -8,7 +8,6 @@
 
 import Foundation
 import DateKit
-import SwiftyJSON
 
 protocol ModelUpdatable {
     func didChangeItemsAtIndexPaths(indexPaths: [NSIndexPath])
@@ -22,23 +21,25 @@ protocol Presenter {
 
 class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
     
+    let networkCooperator: EditEventNetworkCooperator
+    private var rooms: [RoomItem]
+    
     var delegate: ModelUpdatable?
     var presenter: Presenter?
     var title: String
     
-    convenience init(calendarEntry: CalendarEntry) {
-        let query = EventQuery(calendarEntry: calendarEntry)
-        self.init(query: query)
-        title = NSLocalizedString("Edit Event", comment: "")
-    }
-    
-    convenience init() {
-        self.init(query: EventQuery())
-    }
-    
-    init(query: EventQuery) {
+    init(calendarEntry: CalendarEntry?) {
         
-        title = NSLocalizedString("New Event", comment: "")
+        let query: EventQuery
+        
+        if let calendarEntry = calendarEntry {
+            title = NSLocalizedString("New Event", comment: "")
+            query = EventQuery(calendarEntry: calendarEntry)
+        } else {
+            title = NSLocalizedString("Edit Event", comment: "")
+            query = EventQuery()
+        }
+        networkCooperator = EditEventNetworkCooperator(query: query)
         rooms = CalendarPersistenceStore.sharedStore.rooms().map { RoomItem(room: $0) }
 
         let reccurenceItems = [
@@ -69,24 +70,22 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         let calendarItem = ResultActionItem(title: calendarTitle, detailDescription: noneDetail)
         let descriptionItem = LongTextItem(placeholder: longTextPlaceholder)
         
-        eventQuery = query
-        
         // MARK: Fill items
         
-        summaryItem.text = eventQuery.summary
-        allDayItem.on = eventQuery.allDay
+        summaryItem.text = networkCooperator.eventQuery.summary
+        allDayItem.on = networkCooperator.eventQuery.allDay
 
-        if let startDate = eventQuery.startDate {
+        if let startDate = networkCooperator.eventQuery.startDate {
             startDateItem.date = startDate
         }
 
-        if let endDate = eventQuery.endDate {
+        if let endDate = networkCooperator.eventQuery.endDate {
             endDateItem.date = endDate
         }
         
-        repeatItem.detailDescription = eventQuery.recurrence?.lowercaseString.uppercaseFirstLetter ?? ""
+        repeatItem.detailDescription = networkCooperator.eventQuery.recurrence?.lowercaseString.uppercaseFirstLetter ?? ""
 
-        let calendarName = CalendarPersistenceStore.sharedStore.nameMatchingID(eventQuery.calendarID)
+        let calendarName = CalendarPersistenceStore.sharedStore.nameMatchingID(networkCooperator.eventQuery.calendarID)
         let room = CalendarPersistenceStore.sharedStore.rooms().filter { $0.id == query.calendarID }.map { RoomItem(room: $0) }.first
         
         if let room = room {
@@ -109,7 +108,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         // MARK: onValueChanged blocks
         
         summaryItem.onValueChanged = { [weak self] text in
-            query.summary = text
+            self?.networkCooperator.eventQuery.summary = text
             
             if let indexPaths = self?.indexPathsForItems([summaryItem] as [GroupItem]) {
                 self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
@@ -118,7 +117,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
 
         allDayItem.onValueChanged = { [weak self] state in
             
-            self?.eventQuery.allDay = state
+            self?.networkCooperator.eventQuery.allDay = state
             var date: NSDate!
             
             if state {
@@ -131,8 +130,8 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 endDateItem.date = date.minutes + 30
             }
             
-            self?.eventQuery.startDate = startDateItem.date
-            self?.eventQuery.endDate = endDateItem.date
+            self?.networkCooperator.eventQuery.startDate = startDateItem.date
+            self?.networkCooperator.eventQuery.endDate = endDateItem.date
             
             func togglePickerForDateItem(item: DateItem) {
                 if item.highlighted {
@@ -166,7 +165,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         }
         
         startDateItem.onValueChanged = { [weak self] date in
-            if let query = self?.eventQuery where !query.allDay {
+            if let query = self?.networkCooperator.eventQuery where !query.allDay {
                 query.startDate = date
             }
             
@@ -181,7 +180,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         }
         
         endDateItem.onValueChanged = { [weak self] date in
-            if let query = self?.eventQuery where !query.allDay {
+            if let query = self?.networkCooperator.eventQuery where !query.allDay {
                 query.endDate = date
             }
         }
@@ -192,7 +191,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 if let item = item as? RoomItem {
                     calendarItem.detailDescription = item.title
                     calendarItem.result = item.id
-                    self?.eventQuery.calendarID = item.id
+                    self?.networkCooperator.eventQuery.calendarID = item.id
                     
                     if let indexPaths = self?.indexPathsForItems([calendarItem]) {
                         self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
@@ -208,7 +207,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
                 if let item = item as? RecurrenceItem {
                     repeatItem.detailDescription = item.title
-                    self?.eventQuery.recurrence = item.value
+                    self?.networkCooperator.eventQuery.recurrence = item.value
 
                     if let indexPaths = self?.indexPathsForItems([repeatItem]) {
                         self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
@@ -220,7 +219,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         }
         
         descriptionItem.onValueChanged = { [weak self] description in
-            self?.eventQuery.eventDescription = description
+            self?.networkCooperator.eventQuery.eventDescription = description
         }
         
         // MARK: Validation
@@ -266,9 +265,6 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             return nil
         }
     }
-    
-    private var eventQuery: EventQuery
-    private var rooms: [RoomItem]
 }
 
 // MARK: Date pickers handling
@@ -287,7 +283,7 @@ extension EditEventViewModel {
     
     private func handleSelectionOfDateItem(item: DateItem, atIndexPath indexPath: NSIndexPath) {
             
-        if eventQuery.allDay {
+        if networkCooperator.eventQuery.allDay {
             return
         }
         
@@ -373,6 +369,8 @@ extension EditEventViewModel {
         var reloadIndexPaths: [NSIndexPath] = []
         var errors: [NSError] = []
         
+        itemsUpdates()
+        
         itemize { (path, item) in
             if var item = item as? Validatable {
                 if let error = item.validationError {
@@ -387,98 +385,7 @@ extension EditEventViewModel {
     }
 }
 
-// MARK: Event saving
-
 extension EditEventViewModel {
-    
-    func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {
-        
-        NetworkManager.sharedInstance.request(eventQuery, success: { response in
-            
-            if let var response = response {
-            
-                response["attendees"] = self.fixResponse(response)
-                let event = Event(json: response)
-                
-                completion(event: event, error: nil)
-            } else {
-                let error = NSError(message: NSLocalizedString("Server sent empty response", comment: ""))
-                completion(event: nil, error: error)
-            }
-            
-        }, failure: { error in
-            completion(event: nil, error: error)
-        })
-    }
-    
-    func isSlotAvailable(completion: (error: NSError?) -> Void) {
-        itemsUpdates()
-        
-        let query = FreeBusyQuery(calendarsIDs: [eventQuery.calendarID])
-        
-        NetworkManager.sharedInstance.request(query, success: { response in
-           
-            
-            if let response = response {
-                
-                let formatter = NSDateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                formatter.timeZone = NSTimeZone.localTimeZone()
-                
-                var timeFrames: [TimeFrame]?
-                let timeMin = formatter.dateFromString(response["timeMin"].string!)
-                let timeMax = formatter.dateFromString(response["timeMax"].string!)
-  
-                for calendar in response["calendars"].dictionaryValue {
-                    let calendarJSON = calendar.1.dictionaryValue
-                    timeFrames = TimeFrame.map(calendarJSON["busy"]?.arrayValue)
-                }
-
-                var freeTimeRanges: [TimeRange] = []
-                
-                if let timeFrames = timeFrames {
-                    
-                    for index in 0...timeFrames.count  {
-                        
-                        var min, max: NSDate!
-   
-                        if index == 0 {
-                            min = timeMin
-                            max = timeFrames[index].startDate
-                            
-                        } else if index == timeFrames.count {
-                            min = timeFrames[index - 1].endDate
-                            max = timeMax
-                            
-                        } else {
-                            min = timeFrames[index - 1].endDate
-                            max = timeFrames[index].startDate
-                        }
-                        
-                        if max.timeIntervalSinceDate(min) > 0 {
-                            freeTimeRanges.append((min: min ,max: max))
-                        }
-                    }
-                }
-
-                var error: NSError?
-                let filteredTimesRanges = freeTimeRanges.filter { self.eventQuery.startDate >= $0.min && self.eventQuery.endDate <= $0.max }
-
-                if filteredTimesRanges.isEmpty {
-                    error = NSError(message: NSLocalizedString("The room is busy in provided time range", comment: ""))
-                }
-                completion(error: error)
-                return
-            }
-            
-            let error = NSError(message: NSLocalizedString("Server respond with empty response", comment: ""))
-            completion(error: error)
-            
-            
-            }, failure: { error in
-                completion(error: error)
-        })
-    }
     
     private func itemsUpdates() {
         itemize {
@@ -486,39 +393,5 @@ extension EditEventViewModel {
                 item.update()
             }
         }
-    }
-    
-    private func fixResponse(response: JSON) -> JSON {
-        
-        /* NOTICE:
-        * When editing event Google Calendar doesn't return "self" in response (in resource)
-        * because is waiting for resource acceptation.
-        *
-        * To avoid UI glitches, resource here is mocked
-        * as that one which was send in request.
-        */
-        
-        var mockedAttendees: [[String : String]] = []
-        
-        for attendee in response["attendees"].arrayValue {
-            
-            var mockedAttendee = [
-                "email" : attendee["email"].object as! String,
-                "displayName" : attendee["displayName"].object as! String,
-                "responseStatus" : attendee["responseStatus"].object as! String
-            ]
-            
-            if let resource = attendee["resource"].object as? Bool {
-                mockedAttendee["resource"] = resource ? "true" : "false"
-            }
-            if let isSelf = attendee["resource"].object as? Bool {
-                mockedAttendee["self"] = isSelf ? "true" : "false"
-            } else {
-                mockedAttendee["self"] = "false"
-            }
-            
-            mockedAttendees.append(mockedAttendee)
-        }
-        return JSON(mockedAttendees)
     }
 }

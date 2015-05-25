@@ -102,6 +102,7 @@
 		5EA572FE1AC5C20B00AA0FD6 /* AttendeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */; };
 		5EA900F71AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */; };
 		5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */; };
+		5EAF39F31B11EAF40032EFDF /* EditEventNetworkCooperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAF39F21B11EAF40032EFDF /* EditEventNetworkCooperator.swift */; };
 		5EAFD7301AAF261E00B75582 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD72F1AAF261E00B75582 /* AddressBook.framework */; };
 		5EAFD7321AAF262400B75582 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */; };
 		5EAFD7341AAF262E00B75582 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAFD7331AAF262E00B75582 /* Foundation.framework */; };
@@ -355,6 +356,7 @@
 		5EA452D71B020A1D006CA0FA /* MyEventsListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventsListCoordinator.swift; path = "Roomguru/Source Files/MyEventsListCoordinator.swift"; sourceTree = SOURCE_ROOT; };
 		5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendeeCell.swift; path = "Roomguru/Source Files/AttendeeCell.swift"; sourceTree = SOURCE_ROOT; };
 		5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewModelSpec.swift; sourceTree = "<group>"; };
+		5EAF39F21B11EAF40032EFDF /* EditEventNetworkCooperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventNetworkCooperator.swift; path = "Roomguru/Source Files/EditEventNetworkCooperator.swift"; sourceTree = SOURCE_ROOT; };
 		5EAFD72F1AAF261E00B75582 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5EAFD7331AAF262E00B75582 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -921,6 +923,7 @@
 				5E46CAB21AFA026300AD9B70 /* FreeEventsProvider.swift */,
 				5EA452A01B00AA49006CA0FA /* EventsListCoordinator.swift */,
 				5EA452D71B020A1D006CA0FA /* MyEventsListCoordinator.swift */,
+				5EAF39F21B11EAF40032EFDF /* EditEventNetworkCooperator.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -1385,6 +1388,7 @@
 				5E746FEF1AF06C1D0049131F /* RoomHorizontalPicker.swift in Sources */,
 				5EFE00F71ADE87990083FB8E /* RoomguruLabel.swift in Sources */,
 				BF527C201AB1D53700A43D35 /* Event.swift in Sources */,
+				5EAF39F31B11EAF40032EFDF /* EditEventNetworkCooperator.swift in Sources */,
 				BFC79C611AE4455A00EEB8DE /* RightDetailTextCell.swift in Sources */,
 				BF84599B1ACBE328004965EC /* CalendarEntry.swift in Sources */,
 				BF2B69401AF0F48B00AC2CC4 /* UILabelExtensions.swift in Sources */,
@@ -1673,6 +1677,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_SHADOW = NO;
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";
@@ -1702,6 +1707,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_SHADOW = NO;
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";
@@ -1866,6 +1872,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_SHADOW = NO;
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";
@@ -1983,6 +1990,7 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_SHADOW = NO;
 				INFOPLIST_FILE = "Supporting Files/Roomguru-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Roomguru-Bridging-Header.h";

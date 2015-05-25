@@ -19,7 +19,7 @@ class EditEventViewController: UIViewController {
     init(calendarEntry: CalendarEntry? = nil, didSaveBlock: ((event: Event) -> Void)?) {
         
         self.didSaveBlock = didSaveBlock
-        self.viewModel = (calendarEntry == nil) ? EditEventViewModel() : EditEventViewModel(calendarEntry: calendarEntry!)
+        self.viewModel = EditEventViewModel(calendarEntry: calendarEntry)
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
         self.viewModel.presenter = self
@@ -208,28 +208,17 @@ extension EditEventViewController {
         
         PKHUD.sharedHUD.show()
         
-        viewModel.isSlotAvailable() { error in
+        viewModel.networkCooperator.saveEvent { (event, error) in
+            
+            PKHUD.sharedHUD.hide()
             
             if let error = error {
-                PKHUD.sharedHUD.hide()
                 UIAlertView(error: error).show()
-                return
-            }
-
-            self.viewModel.saveEvent() { (event, error) in
                 
-                PKHUD.sharedHUD.hide()
+            } else if let event = event {
                 
-                if let error = error {
-                    let title = NSLocalizedString("Oh no!", comment: "")
-                    let message = NSLocalizedString("There was a problem with creating your event. Please try again later.", comment: "")
-                    UIAlertView(title: title, message: message).show()
-                    
-                } else if let event = event {
-                    
-                    self.didSaveBlock?(event: event)
-                    self.dismissSelf(self.viewModel)
-                }
+                self.didSaveBlock?(event: event)
+                self.dismissSelf(self.viewModel)
             }
         }
     }
