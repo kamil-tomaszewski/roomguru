@@ -32,7 +32,7 @@ class EventsListView: UIBaseTableView {
         }
     }
     
-    func showPlaceholder(show: Bool, withIcon icon: FontAwesome?, text: String) {
+    func showPlaceholder(show: Bool, withIcon icon: FontAwesome? = nil, text: String = "") {
         placeholderView.hidden = !show
         placeholderView.infoLabel.text = text
         if let icon = icon {

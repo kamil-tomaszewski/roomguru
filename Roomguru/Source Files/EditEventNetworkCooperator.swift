@@ -20,7 +20,7 @@ class EditEventNetworkCooperator {
     
     func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {
         
-        isSlotAvailable() { error in
+        checkEventsAvailability() { (available, error) in
             
             if let error = error {
                 completion(event: nil, error: error)
@@ -50,7 +50,7 @@ private extension EditEventNetworkCooperator {
         
         NetworkManager.sharedInstance.request(eventQuery, success: { response in
             
-            if let var response = response {
+            if var response = response {
                 
                 response["attendees"] = self.fixResponse(response)
                 let event = Event(json: response)
@@ -66,7 +66,7 @@ private extension EditEventNetworkCooperator {
         })
     }
     
-    func isSlotAvailable(completion: (error: NSError?) -> Void) {
+    func checkEventsAvailability(completion: (available: Bool, error: NSError?) -> Void) {
         
         let query = FreeBusyQuery(calendarsIDs: [eventQuery.calendarID])
         
@@ -121,15 +121,15 @@ private extension EditEventNetworkCooperator {
                 if filteredTimesRanges.isEmpty {
                     error = NSError(message: NSLocalizedString("The room is busy in provided time range", comment: ""))
                 }
-                completion(error: error)
+                completion(available: error == nil, error: error)
                 return
             }
             
             let error = NSError(message: NSLocalizedString("Server respond with empty response", comment: ""))
-            completion(error: error)
+            completion(available: false, error: error)
             
             }, failure: { error in
-                completion(error: error)
+                completion(available: false, error: error)
         })
     }
     
@@ -166,5 +166,4 @@ private extension EditEventNetworkCooperator {
         }
         return JSON(mockedAttendees)
     }
-    
 }

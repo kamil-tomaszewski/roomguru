@@ -51,7 +51,7 @@ class EventsListViewController: UIViewController {
     
     func loadData(completion: VoidBlock? = nil) {
         
-        aView?.showPlaceholder(false, withIcon: nil, text: "")
+        aView?.showPlaceholder(false)
         coordinator.loadDataWithCompletion { [weak self] (status, message, icon) in
             
             self?.aView?.tableView.reloadData()

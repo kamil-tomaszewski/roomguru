@@ -369,7 +369,7 @@ extension EditEventViewModel {
         var reloadIndexPaths: [NSIndexPath] = []
         var errors: [NSError] = []
         
-        itemsUpdates()
+        updateItems()
         
         itemize { (path, item) in
             if var item = item as? Validatable {
@@ -387,7 +387,7 @@ extension EditEventViewModel {
 
 extension EditEventViewModel {
     
-    private func itemsUpdates() {
+    private func updateItems() {
         itemize {
             if let item = $1 as? Updatable {
                 item.update()
