@@ -72,6 +72,8 @@ private extension EditEventNetworkCooperator {
         
         NetworkManager.sharedInstance.request(query, success: { response in
             
+            println(self.eventQuery.startDate)
+            println(self.eventQuery.endDate)
             
             if let response = response {
                 
@@ -88,7 +90,8 @@ private extension EditEventNetworkCooperator {
                     timeFrames = TimeFrame.map(calendarJSON["busy"]?.arrayValue)
                 }
                 
-                var freeTimeRanges: [TimeRange] = []
+                // add current editing event time range, because it should be editable:
+                var freeTimeRanges: [TimeRange] = [(min: self.eventQuery.startDate ,max: self.eventQuery.endDate)]
                 
                 if let timeFrames = timeFrames {
                     
@@ -110,7 +113,7 @@ private extension EditEventNetworkCooperator {
                         }
                         
                         if max.timeIntervalSinceDate(min) > 0 {
-                            freeTimeRanges.append((min: min ,max: max))
+                            freeTimeRanges.append(TimeRange(min: min ,max: max))
                         }
                     }
                 }
