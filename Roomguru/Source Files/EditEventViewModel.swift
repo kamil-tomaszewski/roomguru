@@ -94,6 +94,8 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             calendarItem.detailDescription = room.title
         }
         
+        descriptionItem.text = eventQuery.eventDescription
+        
         // MARK: Super init
         
         super.init(items: [

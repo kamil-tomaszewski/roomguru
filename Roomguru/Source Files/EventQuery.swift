@@ -28,6 +28,11 @@ class EventQuery: BookingQuery {
         status = .Confirmed
     }
     
+    override func populateQueryWithCalendarEntry(calendarEntry: CalendarEntry) {
+        super.populateQueryWithCalendarEntry(calendarEntry)
+        eventDescription = calendarEntry.event.eventDescription
+    }
+    
     // MARK: Parameters
     
     var eventDescription: String? {

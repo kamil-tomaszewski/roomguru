@@ -248,7 +248,7 @@ class BookingQuery: Query {
         }
     }
     
-    private func populateQueryWithCalendarEntry(calendarEntry: CalendarEntry) {
+    func populateQueryWithCalendarEntry(calendarEntry: CalendarEntry) {
         
         calendarID = calendarEntry.calendarID
         summary = calendarEntry.event.summary ?? ""

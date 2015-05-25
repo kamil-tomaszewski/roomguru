@@ -24,6 +24,7 @@ class Event: ModelObject, NSSecureCoding {
     private(set) var location:   String?
     private(set) var hangoutLink:String?
     private(set) var iCalUID:    String?
+    private(set) var eventDescription: String?
     private(set) var startDate:  String!
     private(set) var endDate:    String!
     private(set) var creator:    Attendee?
@@ -114,6 +115,7 @@ class Event: ModelObject, NSSecureCoding {
         json["htmlLink"].string = htmlLink
         json["summary"].string = summary
         json["location"].string = location
+        json["description"].string = eventDescription
         json["start"].string = startDate
         json["end"].string = endDate
         
@@ -134,7 +136,8 @@ class Event: ModelObject, NSSecureCoding {
         endDate = json["end"]["dateTime"].string
         hangoutLink = json["hangoutLink"].string
         iCalUID = json["iCalUID"].string
-
+        eventDescription = json["description"].string
+        
         creator = Attendee(json: json["creator"])
         
         let array = json["attendees"].arrayValue
