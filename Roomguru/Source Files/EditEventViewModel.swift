@@ -93,7 +93,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             calendarItem.detailDescription = room.title
         }
         
-        descriptionItem.text = eventQuery.eventDescription
+        descriptionItem.text = networkCooperator.eventQuery.eventDescription
         
         // MARK: Super init
         
