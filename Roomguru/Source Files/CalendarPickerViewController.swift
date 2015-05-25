@@ -12,7 +12,7 @@ import SwiftyJSON
 class CalendarPickerViewController: UIViewController {
         
     private weak var aView: CalendarPickerView?
-    var viewModel: CalendarPickerViewModel?
+    private var viewModel: CalendarPickerViewModel?
     private var currentEditingIndexPath: NSIndexPath?
     
     var saveCompletionBlock: VoidBlock?
@@ -66,14 +66,12 @@ private extension CalendarPickerViewController {
                     this.setSignOutBarButton()
                 }
                 
-                let title = NSLocalizedString("Oh no!", comment: "")
                 let message = NSLocalizedString("No resource calendars were find. Please add resource calendars to your Google account.", comment: "")
-                UIAlertView(title: title, message: message).show()
+                UIAlertView(message: message).show()
             }
             
         }, failure: { error in
-            let title = NSLocalizedString("Oh no!", comment: "")
-            UIAlertView(title: title, message: error.localizedDescription).show()
+            UIAlertView(error: error).show()
         })
     }
     

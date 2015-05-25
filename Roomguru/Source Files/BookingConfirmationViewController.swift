@@ -55,13 +55,6 @@ class BookingConfirmationViewController: UIViewController {
         super.viewDidAppear(animated)
         aView?.summaryTextField.becomeFirstResponder()
     }
-    
-    private func basicTitleView() -> BasicTitleView {
-        let basicTitleView = BasicTitleView(frame: navigationController!.navigationBar.frame)
-        basicTitleView.textLabel.text = viewModel.title
-        basicTitleView.detailTextLabel.text = viewModel.detailTitle
-        return basicTitleView
-    }
 }
 
 // MARK: Actions
@@ -70,6 +63,7 @@ extension BookingConfirmationViewController {
     
     func didTapConfirmButton(sender: UIButton) {
         view.findFirstResponder()?.resignFirstResponder()
+        viewModel.prepareToSave()
         
         dismissViewControllerAnimated(true) { [weak self] in
             if let this = self {
@@ -124,6 +118,13 @@ extension BookingConfirmationViewController {
 // MARK: Private
 
 private extension BookingConfirmationViewController {
+    
+    func basicTitleView() -> BasicTitleView {
+        let basicTitleView = BasicTitleView(frame: navigationController!.navigationBar.frame)
+        basicTitleView.textLabel.text = viewModel.title
+        basicTitleView.detailTextLabel.text = viewModel.detailTitle
+        return basicTitleView
+    }
     
     func updateViewForValidationResult(result: Bool) {
         if result {

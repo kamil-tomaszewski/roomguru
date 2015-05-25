@@ -10,10 +10,11 @@ import Foundation
 import DateKit
 
 enum DateGranulation {
-    case Minute, Hour, Day
+    case Second, Minute, Hour, Day
     
-    func interval() -> Int {
+    func granulationDurationRepresentation() -> Int {
         switch self {
+        case .Second: return 1
         case .Minute: return 60
         case .Hour: return 60*60
         case .Day: return 60*60*24
@@ -39,11 +40,22 @@ extension NSDate {
     }
     
     func nextDateWithGranulation(granulation: DateGranulation, multiplier: Float) -> NSDate {
-        let roundTo = NSTimeInterval(Float(granulation.interval()) * multiplier)
+        let roundTo = NSTimeInterval(Float(granulation.granulationDurationRepresentation()) * multiplier)
         let timestamp = timeIntervalSince1970
         let next = (timestamp - fmod(timestamp, roundTo)) + roundTo
         
         return NSDate(timeIntervalSince1970: next)
+    }
+    
+    func previousDateWithGranulation(granulation: DateGranulation, multiplier: Float) -> NSDate {
+        let roundTo = NSTimeInterval(Float(granulation.granulationDurationRepresentation()) * multiplier)
+        let timestamp = timeIntervalSince1970
+        var previous = (timestamp - fmod(timestamp, roundTo))
+        if timeIntervalSince1970 - previous == 0 {
+            previous -= roundTo
+        }
+        
+        return NSDate(timeIntervalSince1970: previous)
     }
 }
 

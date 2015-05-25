@@ -11,9 +11,9 @@ import DateKit
 
 class BookingConfirmationViewModel {
     
-    var bookingDurationInMinutes: String { return "\(Int(bookingDuration/60))" }
-    var canAddMinutes: Bool { return bookingDuration < entry.event.duration }
-    var canSubstractMinutes: Bool { return bookingDuration > minimumEventDuration }
+    var bookingDurationInMinutes: String {
+        return "\(Int(ceil(expectedEventEndDate.timeIntervalSinceDate(entry.event.start)))/60)"
+    }
     
     var title: String {
         let name = CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
@@ -24,18 +24,25 @@ class BookingConfirmationViewModel {
         return CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
     }
     
-    private var bookingDuration: NSTimeInterval!
-    private let minimumEventDuration = Constants.Timeline.MinimumEventDuration
-    
     let entry: CalendarEntry!
+    var canAddMinutes: Bool { return expectedEventEndDate != entry.event.end }
+    var canSubstractMinutes: Bool { return expectedEventEndDate != minimumEndDate }
     
+    private var expectedEventEndDate: NSDate!
+    
+    // minimum end date is start date rounded to next 15 minutes: (eg. start date 15:32:23 will return 15:45:00)
+    private var minimumEndDate: NSDate {
+        return entry.event.start.nextDateWithGranulation(.Minute, multiplier: 15)
+    }
+
     init(entry: CalendarEntry) {
         self.entry = entry
-        self.bookingDuration = (entry.event.duration < Constants.Timeline.DefaultEventDuration) ? entry.event.duration : Constants.Timeline.DefaultEventDuration
+        expectedEventEndDate = (entry.event.duration > Constants.Timeline.DefaultEventDuration) ? minimumEndDate : entry.event.end
     }
-}
-
-extension BookingConfirmationViewModel {
+    
+    func prepareToSave() {
+        entry.event.end = expectedEventEndDate
+    }
 
     func isValid() -> Bool {
         if let summary = entry.event.summary {
@@ -49,30 +56,26 @@ extension BookingConfirmationViewModel {
     }
     
     func decreaseBookingTime() {
+
+        let previousRoundedDateTo15Minutes = expectedEventEndDate.previousDateWithGranulation(.Minute, multiplier: 15)
+        let timeIntervalFromStartDateToRoundedDate = previousRoundedDateTo15Minutes.timeIntervalSinceDate(entry.event.start)
         
-        if !canSubstractMinutes {
-            return
+        if timeIntervalFromStartDateToRoundedDate <= Constants.Timeline.MinimumEventDuration {
+            expectedEventEndDate = minimumEndDate
+        } else {
+            expectedEventEndDate = previousRoundedDateTo15Minutes
         }
-        var newBookingDuration = bookingDuration - minimumEventDuration
-        
-        if newBookingDuration < minimumEventDuration {
-            newBookingDuration = minimumEventDuration
-        }
-        
-        bookingDuration = newBookingDuration
     }
     
     func increaseBookingTime() {
         
-        if !canAddMinutes {
-            return
-        }
+        let nextRoundedDateTo15Minutes = expectedEventEndDate.nextDateWithGranulation(.Minute, multiplier: 15)
+        let timeIntervalFromStartDateToRoundedDate = entry.event.end.timeIntervalSinceDate(nextRoundedDateTo15Minutes)
         
-        var newBookingDuration = bookingDuration + minimumEventDuration
-        
-        if newBookingDuration > entry.event.duration {
-            newBookingDuration = entry.event.duration
+        if timeIntervalFromStartDateToRoundedDate <= 0 {
+            expectedEventEndDate = entry.event.end
+        } else {
+            expectedEventEndDate = nextRoundedDateTo15Minutes
         }
-        bookingDuration = newBookingDuration
     }
 }
