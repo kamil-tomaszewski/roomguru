@@ -28,6 +28,10 @@ class GPPAuthenticator: NSObject {
         sharedSignIn.delegate = self
     }
 
+    static var isUserAuthenticated: Bool {
+        return GPPSignIn.sharedInstance().hasAuthInKeychain()
+    }
+    
     func authenticateWithCompletion(completion: AuthenticatorCompletionBlock) {
         
         self.completion = completion

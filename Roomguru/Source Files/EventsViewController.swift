@@ -122,8 +122,12 @@ extension EventsViewController: AKPickerViewDataSource {
 extension EventsViewController: AKPickerViewDelegate {
     
     func pickerView(pickerView: AKPickerView, didSelectItem item: Int) {
-        selectedCalendarID = CalendarPersistenceStore.sharedStore.rooms()[item].id
-        reloadEventList()
+        
+        let rooms = CalendarPersistenceStore.sharedStore.rooms()
+        if rooms.count > 0 {
+            selectedCalendarID = rooms[item].id
+            reloadEventList()
+        }
     }
 }
 

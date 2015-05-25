@@ -29,7 +29,7 @@ class LoginViewController: UIViewController  {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let shouldShowSignInButton = UserPersistenceStore.sharedStore.user == nil
+        let shouldShowSignInButton = !GPPAuthenticator.isUserAuthenticated || UserPersistenceStore.sharedStore.user == nil
         aView?.showSignInButton(shouldShowSignInButton)
         aView?.avatarView.imageView.image = UserPersistenceStore.sharedStore.userImage()
     }
