@@ -7,6 +7,50 @@
 //
 
 import Foundation
+import FontAwesomeIconFactory
+
+
+class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    private weak var tabBarController: TabBarController!
+    
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        
+        let fromView: UIView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        let fromViewController: UIViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let toView: UIView = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        let toViewController: UIViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        
+        transitionContext.containerView().addSubview(fromView)
+        transitionContext.containerView().addSubview(toView)
+        
+        let fromViewControllerIndex = find(self.tabBarController.viewControllers
+            as! [UIViewController], fromViewController)
+        let toViewControllerIndex = find(self.tabBarController.viewControllers! as! [UIViewController], toViewController)
+        
+        var direction: CGFloat!
+        if fromViewControllerIndex < toViewControllerIndex {
+            direction = 1
+        } else {
+            direction = -1
+        }
+        
+        toView.frame = CGRectMake(direction * toView.frame.width, 0, toView.frame.width, toView.frame.height)
+        let fromNewFrame = CGRectMake(-1 * direction * fromView.frame.width, 0, fromView.frame.width, fromView.frame.height)
+        
+        UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
+            toView.frame = fromView.frame
+            fromView.frame = fromNewFrame
+            }) { (Bool) -> Void in
+                transitionContext.completeTransition(true)
+        }
+    }
+
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+        return 0.3
+    }
+}
+
 
 class TabBarController: UITabBarController {
     
@@ -89,6 +133,13 @@ extension TabBarController: UITabBarControllerDelegate {
             eventViewController.reloadEventList()
         }
     }
+    
+    func tabBarController(tabBarController: UITabBarController, animationControllerForTransitionFromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        let transitionAnimator = TransitionAnimator()
+        transitionAnimator.tabBarController = self
+        return transitionAnimator
+    }
 }
 
 private extension TabBarController {
@@ -101,17 +152,20 @@ private extension TabBarController {
             NavigationController(rootViewController: SettingsViewController())
         ]
         
-        func setTitleForControllerAtIndex(index: Int, title: String) {
+        let fontFactory = NIKFontAwesomeIconFactory.tabBarItemIconFactory()
+        
+        func setTitleAndIconForControllerAtIndex(index: Int, title: String, icon: NIKFontAwesomeIcon) {
             let tabBarItem = self.tabBar.items![index] as! UITabBarItem
             tabBarItem.title = title
+            tabBarItem.image = fontFactory.createImageForIcon(icon)
             
             let navigation = self.viewControllers![index] as! UINavigationController
             let viewController = navigation.viewControllers.first as! UIViewController
             viewController.title = title
         }
         
-        setTitleForControllerAtIndex(0, NSLocalizedString("My Events", comment: ""))
-        setTitleForControllerAtIndex(1, NSLocalizedString("Events", comment: ""))
-        setTitleForControllerAtIndex(2, NSLocalizedString("Settings", comment: ""))
+        setTitleAndIconForControllerAtIndex(0, NSLocalizedString("My Events", comment: ""), .CalendarO)
+        setTitleAndIconForControllerAtIndex(1, NSLocalizedString("Events", comment: ""), .Calendar)
+        setTitleAndIconForControllerAtIndex(2, NSLocalizedString("Settings", comment: ""), .User)
     }
 }

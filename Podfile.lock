@@ -26,6 +26,7 @@ PODS:
   - Cartography (0.5.0)
   - CryptoSwift (0.0.10)
   - DateKit (0.1.1)
+  - FontAwesomeIconFactory (2.0)
   - KIF (3.2.1):
     - KIF/XCTest (= 3.2.1)
   - KIF/XCTest (3.2.1)
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - CryptoSwift (~> 0.0.10)
   - DateKit (from `https://github.com/SnowdogApps/DateKit.git`, commit `4c953cf5a70a14f88d154bdfd710019f20a10b49`,
     branch `master`)
+  - FontAwesomeIconFactory
   - KIF (~> 3.0)
   - Mockingjay
   - Nimble (~> 0.4.2)
@@ -110,6 +112,7 @@ SPEC CHECKSUMS:
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CryptoSwift: 3b886d001f50deb65623a8967d68f6b8bf8d9ba1
   DateKit: 1bd5fbff0131575fdc6fa56d820e7779bc025256
+  FontAwesomeIconFactory: d161a1832f8220d764033e0fcc4f4a8388495ab7
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
   Mockingjay: 8635bddf88b7c93833db67e1dc54b8ffe7efe921
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32

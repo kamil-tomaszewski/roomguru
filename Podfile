@@ -46,6 +46,7 @@ pod 'DateKit',
     :commit => "4c953cf5a70a14f88d154bdfd710019f20a10b49",
     :branch => "master"
 
+pod 'FontAwesomeIconFactory'
 
 target 'Tests' do link_with 'Unit Tests', 'Functional Tests'
 
