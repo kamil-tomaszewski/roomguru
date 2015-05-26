@@ -9,49 +9,6 @@
 import Foundation
 import FontAwesomeIconFactory
 
-
-class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
-    private weak var tabBarController: TabBarController!
-    
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        
-        let fromView: UIView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-        let fromViewController: UIViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toView: UIView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-        let toViewController: UIViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        
-        transitionContext.containerView().addSubview(fromView)
-        transitionContext.containerView().addSubview(toView)
-        
-        let fromViewControllerIndex = find(self.tabBarController.viewControllers
-            as! [UIViewController], fromViewController)
-        let toViewControllerIndex = find(self.tabBarController.viewControllers! as! [UIViewController], toViewController)
-        
-        var direction: CGFloat!
-        if fromViewControllerIndex < toViewControllerIndex {
-            direction = 1
-        } else {
-            direction = -1
-        }
-        
-        toView.frame = CGRectMake(direction * toView.frame.width, 0, toView.frame.width, toView.frame.height)
-        let fromNewFrame = CGRectMake(-1 * direction * fromView.frame.width, 0, fromView.frame.width, fromView.frame.height)
-        
-        UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
-            toView.frame = fromView.frame
-            fromView.frame = fromNewFrame
-            }) { (Bool) -> Void in
-                transitionContext.completeTransition(true)
-        }
-    }
-
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        return 0.3
-    }
-}
-
-
 class TabBarController: UITabBarController {
     
     init() {
@@ -136,9 +93,9 @@ extension TabBarController: UITabBarControllerDelegate {
     
     func tabBarController(tabBarController: UITabBarController, animationControllerForTransitionFromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        let transitionAnimator = TransitionAnimator()
-        transitionAnimator.tabBarController = self
-        return transitionAnimator
+        let tabBarTransitionAnimator = TabBarTransitionAnimator()
+        tabBarTransitionAnimator.tabBarController = self
+        return tabBarTransitionAnimator
     }
 }
 
