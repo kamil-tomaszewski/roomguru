@@ -12,7 +12,7 @@ import DateKit
 class BookingConfirmationViewModel {
     
     var bookingDurationInMinutes: String {
-        return "\(Int(ceil(expectedEventEndDate.timeIntervalSinceDate(entry.event.start)))/60)"
+        return "\(Int(NSDate.timeIntervalBetweenDates(start: entry.event.start, end: expectedEventEndDate))/60)"
     }
     
     var title: String {
@@ -59,6 +59,7 @@ class BookingConfirmationViewModel {
     }
     
     func prepareToSave() {
+        
         entry.event.end = expectedEventEndDate
     }
 

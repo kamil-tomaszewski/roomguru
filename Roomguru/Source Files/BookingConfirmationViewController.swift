@@ -65,7 +65,10 @@ extension BookingConfirmationViewController {
     
     func didTapConfirmButton(sender: UIButton) {
         view.findFirstResponder()?.resignFirstResponder()
-        viewModel.prepareToSave()
+        
+        if editable {
+            viewModel.prepareToSave()
+        }
         
         dismissViewControllerAnimated(true) { [weak self] in
             if let this = self {
