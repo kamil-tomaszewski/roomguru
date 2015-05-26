@@ -14,6 +14,7 @@ class CalendarPickerCell: UITableViewCell, Reusable {
     let checkmarkLabel = UILabel()
     let headerLabel = UILabel()
     let footerLabel = UILabel()
+    let colorView = UIView()
     
     class func reuseIdentifier() -> String {
         return "TableViewCalendarPickerCellReuseIdentifier"
@@ -50,6 +51,9 @@ private extension CalendarPickerCell {
         footerLabel.font = .systemFontOfSize(12)
         contentView.addSubview(footerLabel)
         
+        colorView.backgroundColor = UIColor.clearColor()
+        addSubview(colorView)
+        
         defineConstraints()
     }
     
@@ -73,6 +77,13 @@ private extension CalendarPickerCell {
             bottomLabel.top == topLabel.bottom
             bottomLabel.height == topLabel.height
             bottomLabel.width == topLabel.width
+        }
+        
+        layout(colorView) { color in
+            color.left == color.superview!.left
+            color.top == color.superview!.top
+            color.bottom == color.superview!.bottom
+            color.width == 4
         }
     }
 }

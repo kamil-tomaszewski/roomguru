@@ -57,6 +57,14 @@ class CalendarPickerViewModel {
         }
     }
     
+    func calendarColorAtIndex(index: Int) -> UIColor? {
+        
+        if let colorHex = calendars[index].calendar.colorHex {
+            return UIColor.hex(colorHex)
+        }
+        return nil
+    }
+    
     func textForCalendarAtIndex(index: Int) -> (mainText: String?, detailText: String?) {
         
         let picker = calendars[index]

@@ -96,11 +96,15 @@ extension CalendarPickerViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(CalendarPickerCell.self)
         
-        let strings = viewModel?.textForCalendarAtIndex(indexPath.row)
-        cell.headerLabel.text = strings?.mainText
-        cell.footerLabel.text = strings?.detailText
-        cell.checkmarkLabel.hidden = !viewModel!.shouldSelectCalendarAtIndex(indexPath.row)
-        
+        if let viewModel = viewModel {
+            
+            let strings = viewModel.textForCalendarAtIndex(indexPath.row)
+            cell.headerLabel.text = strings.mainText
+            cell.footerLabel.text = strings.detailText
+            cell.checkmarkLabel.hidden = !viewModel.shouldSelectCalendarAtIndex(indexPath.row)
+            cell.colorView.backgroundColor = viewModel.calendarColorAtIndex(indexPath.row)
+        }
+
         return cell
     }
 }
@@ -114,6 +118,14 @@ extension CalendarPickerViewController: UITableViewDelegate {
         viewModel?.selectOrDeselectCalendarAtIndex(indexPath.row)
         setBarButtonItemState()
         tableView.reloadAndDeselectRowAtIndexPath(indexPath)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CalendarPickerCell
+        cell.colorView.backgroundColor = viewModel?.calendarColorAtIndex(indexPath.row)
+    }
+    
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CalendarPickerCell
+        cell.colorView.backgroundColor = viewModel?.calendarColorAtIndex(indexPath.row)
     }
     
     func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {

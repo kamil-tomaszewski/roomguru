@@ -79,6 +79,7 @@
 		5E7A9E561AB060AC0042E16F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */; };
 		5E7A9E581AB060BB0042E16F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E571AB060BB0042E16F /* QuickLook.framework */; };
 		5E7A9E5A1AB060C60042E16F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E591AB060C60042E16F /* QuartzCore.framework */; };
+		5E84CE411B1453B300E47C32 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */; };
 		5E8858401AF0E7AD00EF08F1 /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88583F1AF0E7AD00EF08F1 /* EventsListViewModel.swift */; };
 		5E8858421AF0F12A00EF08F1 /* WeekCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */; };
 		5E8858461AF10FD500EF08F1 /* NSCalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */; };
@@ -1536,6 +1537,7 @@
 				5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */,
 				5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */,
 				74F309C31B01F15100EB5D5D /* EventQuerySpec.swift in Sources */,
+				5E84CE411B1453B300E47C32 /* UIColorExtensions.swift in Sources */,
 				BFC4CC981AF9F2A30070007B /* AttendeeSpec.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
 				BFC4CC9A1AFA01450070007B /* JSONKeyValueSharedExample.swift in Sources */,

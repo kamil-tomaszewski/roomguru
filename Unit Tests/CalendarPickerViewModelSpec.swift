@@ -40,6 +40,11 @@ class CalendarPickerViewModelSpec: QuickSpec {
                 }
             }
             
+            it("should have color") {
+                let color = sut!.calendarColorAtIndex(0)
+                expect(color).to(equal(UIColor.redColor()))
+            }
+            
             describe("when selecting calendar") {
                 
                 beforeEach {
@@ -147,20 +152,21 @@ private extension CalendarPickerViewModelSpec {
     func mockedCalendars() -> [Calendar] {
         
         return [
-            mockCalendarWithID("Fixture ID.1", accessRole: "Fixture Access Role.1", summary: "Fixture Summary.1", etag: "Fixture etag.1", resource: true),
-            mockCalendarWithID("Fixture ID.2", accessRole: "Fixture Access Role.2", summary: "Fixture Summary.2", etag: "Fixture etag.2", resource: true),
-            mockCalendarWithID("Fixture ID.3", accessRole: "Fixture Access Role.3", summary: "Fixture Summary.3", etag: "Fixture etag.3", resource: true),
-            mockCalendarWithID("Fixture ID.4", accessRole: "Fixture Access Role.4", summary: "Fixture Summary.4", etag: "Fixture etag.4", resource: false),
+            mockCalendarWithID("Fixture ID.1", accessRole: "Fixture Access Role.1", summary: "Fixture Summary.1", etag: "Fixture etag.1", color:"#FF0000"),
+            mockCalendarWithID("Fixture ID.2", accessRole: "Fixture Access Role.2", summary: "Fixture Summary.2", etag: "Fixture etag.2", color:"#041436"),
+            mockCalendarWithID("Fixture ID.3", accessRole: "Fixture Access Role.3", summary: "Fixture Summary.3", etag: "Fixture etag.3", color:"#DDDDDD"),
+            mockCalendarWithID("Fixture ID.4", accessRole: "Fixture Access Role.4", summary: "Fixture Summary.4", etag: "Fixture etag.4", color: "", resource: false),
         ]
     }
     
-    func mockCalendarWithID(id: String, accessRole: String, summary: String, etag: String, resource: Bool) -> Calendar {
+    func mockCalendarWithID(id: String, accessRole: String, summary: String, etag: String, color: String, resource: Bool = true) -> Calendar {
         
         return Calendar(json: JSON([
             "id" : resource ? id + "resource.calendar.google.com" : id,
             "accessRole" : accessRole,
             "summary" : summary,
-            "etag" : etag
+            "etag" : etag,
+            "backgroundColor" : color
         ]))
     }
 }
