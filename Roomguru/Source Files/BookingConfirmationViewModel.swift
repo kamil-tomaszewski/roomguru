@@ -16,8 +16,12 @@ class BookingConfirmationViewModel {
     }
     
     var title: String {
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        
         let name = CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
-        return entry.event.startTime + " - " + entry.event.endTime
+        let startTime = formatter.stringFromDate(entry.event.start.roundTo(.Minute))
+        return startTime + " - " + entry.event.endTime
     }
     
     var detailTitle: String {
@@ -25,12 +29,14 @@ class BookingConfirmationViewModel {
     }
     
     let entry: CalendarEntry!
+    
+    var minimumEventDuration: NSTimeInterval { return Constants.Timeline.MinimumEventDuration }
+    
     var canAddMinutes: Bool { return expectedEventEndDate != entry.event.end }
     var canSubstractMinutes: Bool {
         
-        let minimumEventDuration = Constants.Timeline.MinimumEventDuration
-        let willNewEndDatePassEventDurationRequirement = expectedEventEndDate.timeIntervalSinceDate(entry.event.start) - minimumEventDuration  > minimumEventDuration
-        return expectedEventEndDate != minimumEndDate && willNewEndDatePassEventDurationRequirement
+        let willNewEndDatePassEventDurationRequirement = NSDate.timeIntervalBetweenDates(start: entry.event.start, end: expectedEventEndDate.minutes - 15) >= minimumEventDuration
+        return expectedEventEndDate >= minimumEndDate && willNewEndDatePassEventDurationRequirement
     }
     
     private var expectedEventEndDate: NSDate!
@@ -39,11 +45,12 @@ class BookingConfirmationViewModel {
     private var minimumEndDate: NSDate {
         
         let nextDateRoundedTo15Minutes = entry.event.start.nextDateWithGranulation(.Minute, multiplier: 15)
-        let isTimeIntervalFromStartDateToNextRoundedDateAllowed = nextDateRoundedTo15Minutes.timeIntervalSinceDate(entry.event.start) > Constants.Timeline.DefaultEventDuration
+        let isTimeIntervalFromStartDateToNextRoundedDateAllowed = NSDate.timeIntervalBetweenDates(start: entry.event.start, end: nextDateRoundedTo15Minutes) > Constants.Timeline.DefaultEventDuration
+        
         if isTimeIntervalFromStartDateToNextRoundedDateAllowed {
             return nextDateRoundedTo15Minutes
         }
-        return entry.event.start.nextDateWithGranulation(.Minute, multiplier: 30)
+        return nextDateRoundedTo15Minutes.minutes + 15
     }
 
     init(entry: CalendarEntry) {
@@ -69,9 +76,9 @@ class BookingConfirmationViewModel {
     func decreaseBookingTime() {
         
         let previousRoundedDateTo15Minutes = expectedEventEndDate.previousDateWithGranulation(.Minute, multiplier: 15)
-        let timeIntervalFromStartDateToRoundedDate = previousRoundedDateTo15Minutes.timeIntervalSinceDate(entry.event.start)
+        let timeIntervalFromStartDateToRoundedDate = NSDate.timeIntervalBetweenDates(start: entry.event.start, end: previousRoundedDateTo15Minutes)
         
-        if timeIntervalFromStartDateToRoundedDate <= Constants.Timeline.MinimumEventDuration {
+        if timeIntervalFromStartDateToRoundedDate < minimumEventDuration {
             expectedEventEndDate = minimumEndDate
         } else {
             expectedEventEndDate = previousRoundedDateTo15Minutes
@@ -81,9 +88,9 @@ class BookingConfirmationViewModel {
     func increaseBookingTime() {
 
         let nextRoundedDateTo15Minutes = expectedEventEndDate.nextDateWithGranulation(.Minute, multiplier: 15)
-        let timeIntervalFromStartDateToRoundedDate = entry.event.end.timeIntervalSinceDate(nextRoundedDateTo15Minutes)
+        let timeIntervalFromStartDateToRoundedDate = NSDate.timeIntervalBetweenDates(start: nextRoundedDateTo15Minutes, end: entry.event.end)
         
-        if timeIntervalFromStartDateToRoundedDate <= 0 {
+        if timeIntervalFromStartDateToRoundedDate < minimumEventDuration {
             expectedEventEndDate = entry.event.end
         } else {
             expectedEventEndDate = nextRoundedDateTo15Minutes

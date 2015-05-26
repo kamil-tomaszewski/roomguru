@@ -31,6 +31,12 @@ extension NSDate {
         return isSameDayAs(today)
     }
     
+    func roundTo(dateGranulation: DateGranulation) -> NSDate {
+        let unitDuration = NSTimeInterval(dateGranulation.granulationDurationRepresentation())
+        let seconds = round(timeIntervalSinceReferenceDate/unitDuration) * unitDuration
+        return NSDate(timeIntervalSinceReferenceDate:seconds)
+    }
+    
     func isSameDayAs(date: NSDate) -> Bool {
         return compare(toDate: date).same
     }
@@ -51,11 +57,15 @@ extension NSDate {
         let roundTo = NSTimeInterval(Float(granulation.granulationDurationRepresentation()) * multiplier)
         let timestamp = timeIntervalSince1970
         var previous = (timestamp - fmod(timestamp, roundTo))
-        if timeIntervalSince1970 - previous == 0 {
+        if floor(timestamp) - previous == 0 {
             previous -= roundTo
         }
         
         return NSDate(timeIntervalSince1970: previous)
+    }
+    
+    class func timeIntervalBetweenDates(#start: NSDate, end: NSDate) -> NSTimeInterval {
+        return ceil(end.timeIntervalSinceDate(start))
     }
 }
 

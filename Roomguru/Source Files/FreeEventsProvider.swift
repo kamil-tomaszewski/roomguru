@@ -56,7 +56,7 @@ private extension FreeEventsProvider {
             } else {
                 
                 let entry = sortedEntriesToFill[index]
-                let timeBetweenReferenceDateAndTheClosestEntry = ceil(entry.event.start.timeIntervalSinceDate(referenceDate))
+                let timeBetweenReferenceDateAndTheClosestEntry = NSDate.timeIntervalBetweenDates(start: referenceDate, end: entry.event.start)
                 
                 // there is entry in less than next timeStep seconds:
                 if timeBetweenReferenceDateAndTheClosestEntry < timeStep && timeBetweenReferenceDateAndTheClosestEntry > 0 {
@@ -70,7 +70,7 @@ private extension FreeEventsProvider {
                 } else if timeBetweenReferenceDateAndTheClosestEntry >= timeStep {
                     
                     let nextHalfHourDate = referenceDate.nextDateWithGranulation(.Hour, multiplier: 0.5)
-                    let timeBetweenReferenceDateAndNextHalfHour = ceil(nextHalfHourDate.timeIntervalSinceDate(referenceDate))
+                    let timeBetweenReferenceDateAndNextHalfHour = NSDate.timeIntervalBetweenDates(start: referenceDate, end: nextHalfHourDate)
                     
                     // one of the event ended earlier than in half an hour (google speedy meetings):
                     if timeBetweenReferenceDateAndNextHalfHour < timeStep {
@@ -125,7 +125,7 @@ private extension FreeEventsProvider {
             startDate = NSDate()
         }
         
-        let eventDuration = ceil(endDate.timeIntervalSinceDate(startDate))
+        let eventDuration = NSDate.timeIntervalBetweenDates(start: startDate, end: endDate)
         
         // cannot be shorter than MinimumEventDuration
         if eventDuration < Constants.Timeline.MinimumEventDuration {

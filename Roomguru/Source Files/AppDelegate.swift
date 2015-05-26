@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupVendors()
         presentAuthenticationScreenAndBeginAuthentication()
-
+        
         return true
     }
     
