@@ -12,11 +12,7 @@ import Async
 class GPPAuthenticator: NSObject {
     
     typealias AuthenticatorCompletionBlock = (authenticated: Bool, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
-    
-    static var wasUserEverAuthenticated: Bool {
-        return GPPSignIn.sharedInstance().hasAuthInKeychain()
-    }
-    
+        
     static var isUserAuthenticated: Bool {
         return GPPSignIn.sharedInstance().authentication != nil
     }

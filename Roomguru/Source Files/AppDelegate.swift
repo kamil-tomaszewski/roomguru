@@ -49,12 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         
-        if !authenticator.isAuthenticating && GPPAuthenticator.wasUserEverAuthenticated && !GPPAuthenticator.isUserAuthenticated {
+        if !authenticator.isAuthenticating && !GPPAuthenticator.isUserAuthenticated {
             // NGRTemp: Temporary solution to the problem of losing authentication after ~30mins idle time
-            showGoogleSignInButtonInLoginViewController(true)
             presentAuthenticationScreenAndBeginAuthentication()
         }
     }
+    
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
