@@ -141,7 +141,11 @@ private extension EventsViewController {
         let pickerView = RoomHorizontalPicker(frame: navigationController!.titleViewFrame())
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.selectItem(0, animated: false)
+        
+        if numberOfItemsInPickerView(pickerView) > 0 {
+            pickerView.selectItem(0, animated: false)
+        }
+        
         navigationItem.titleView = pickerView
     }
     
