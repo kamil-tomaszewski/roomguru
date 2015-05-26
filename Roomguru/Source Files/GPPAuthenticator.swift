@@ -13,6 +13,14 @@ class GPPAuthenticator: NSObject {
     
     typealias AuthenticatorCompletionBlock = (authenticated: Bool, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
     
+    static var wasUserEverAuthenticated: Bool {
+        return GPPSignIn.sharedInstance().hasAuthInKeychain()
+    }
+    
+    static var isUserAuthenticated: Bool {
+        return GPPSignIn.sharedInstance().authentication != nil
+    }
+    
     private var completion: AuthenticatorCompletionBlock!
     private(set) var isAuthenticating = false
     
@@ -27,12 +35,10 @@ class GPPAuthenticator: NSObject {
         sharedSignIn.shouldFetchGooglePlusUser = true
         sharedSignIn.delegate = self
     }
-
-    static var isUserAuthenticated: Bool {
-        return GPPSignIn.sharedInstance().hasAuthInKeychain()
-    }
     
     func authenticateWithCompletion(completion: AuthenticatorCompletionBlock) {
+        
+        isAuthenticating = true
         
         self.completion = completion
         
@@ -50,7 +56,6 @@ class GPPAuthenticator: NSObject {
     }
     
     func handleURL(url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        isAuthenticating = true
         return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
