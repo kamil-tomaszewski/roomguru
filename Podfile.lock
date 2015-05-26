@@ -20,9 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AKPickerView-Swift (0.2.0)
+  - AKPickerView-Swift (0.2.1)
   - Alamofire (1.2.1)
-  - Async (1.1.1)
+  - Async (1.2.1)
   - Cartography (0.5.0)
   - CryptoSwift (0.0.10)
   - DateKit (0.1.1)
@@ -30,49 +30,34 @@ PODS:
   - KIF (3.2.1):
     - KIF/XCTest (= 3.2.1)
   - KIF/XCTest (3.2.1)
-  - Mockingjay (0.2.0):
-    - Mockingjay/Core (= 0.2.0)
-    - Mockingjay/Session (= 0.2.0)
-    - Mockingjay/XCTest (= 0.2.0)
-  - Mockingjay/Core (0.2.0):
-    - URITemplate (~> 1.2)
-  - Mockingjay/Session (0.2.0):
-    - Mockingjay/Core
-  - Mockingjay/XCTest (0.2.0):
-    - Mockingjay/Core
   - Nimble (0.4.2)
   - PKHUD (2.0.1)
   - Quick (0.3.1)
   - SwiftyJSON (2.2.0)
-  - SwiftyUserDefaults (1.0.0)
-  - URITemplate (1.2.0)
+  - SwiftyUserDefaults (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.2)
-  - AKPickerView-Swift
+  - AKPickerView-Swift (~> 0.2.1)
   - Alamofire (~> 1.2.0)
-  - Async (from `git@github.com:duemunk/Async.git`, commit `a61663f4469df082ac0b3311d9c4b8cd32185336`,
-    branch `master`)
+  - Async (from `https://github.com/duemunk/Async.git`, tag `1.2.1`)
   - Cartography (~> 0.5.0)
   - CryptoSwift (~> 0.0.10)
   - DateKit (from `https://github.com/SnowdogApps/DateKit.git`, commit `4c953cf5a70a14f88d154bdfd710019f20a10b49`,
     branch `master`)
   - FontAwesomeIconFactory
   - KIF (~> 3.0)
-  - Mockingjay
   - Nimble (~> 0.4.2)
   - PKHUD (from `https://github.com/pkluz/PKHUD.git`, commit `86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa`,
     branch `master`)
   - Quick (~> 0.3.1)
   - SwiftyJSON (~> 2.2.0)
-  - SwiftyUserDefaults (from `git@github.com:radex/SwiftyUserDefaults.git`, commit
-    `e467e0f712e3ac1d1ceb7f9020ffd02e487e8893`, branch `swift-1.2`)
+  - SwiftyUserDefaults (~> 1.1.0)
 
 EXTERNAL SOURCES:
   Async:
-    :branch: master
-    :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
-    :git: git@github.com:duemunk/Async.git
+    :git: https://github.com/duemunk/Async.git
+    :tag: 1.2.1
   DateKit:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
@@ -81,16 +66,11 @@ EXTERNAL SOURCES:
     :branch: master
     :commit: 86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa
     :git: https://github.com/pkluz/PKHUD.git
-  SwiftyUserDefaults:
-    :branch: swift-1.2
-    :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
-    :git: git@github.com:radex/SwiftyUserDefaults.git
 
 CHECKOUT OPTIONS:
   Async:
-    :branch: master
-    :commit: a61663f4469df082ac0b3311d9c4b8cd32185336
-    :git: git@github.com:duemunk/Async.git
+    :git: https://github.com/duemunk/Async.git
+    :tag: 1.2.1
   DateKit:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
@@ -99,27 +79,21 @@ CHECKOUT OPTIONS:
     :branch: master
     :commit: 86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa
     :git: https://github.com/pkluz/PKHUD.git
-  SwiftyUserDefaults:
-    :branch: swift-1.2
-    :commit: e467e0f712e3ac1d1ceb7f9020ffd02e487e8893
-    :git: git@github.com:radex/SwiftyUserDefaults.git
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
-  AKPickerView-Swift: b53f039d6c337a1faef1c7bfcd824c7be69c5333
+  AKPickerView-Swift: 7989ebd544dc2adcbb56ffd48bbb8d3c3ea2d71d
   Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
-  Async: 4ba79915d3f43324db9e1e296db324cb896fa266
+  Async: d9ee6fc9c415d44fcb892f4c289d1e79ce8ae92d
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CryptoSwift: 3b886d001f50deb65623a8967d68f6b8bf8d9ba1
   DateKit: 1bd5fbff0131575fdc6fa56d820e7779bc025256
   FontAwesomeIconFactory: d161a1832f8220d764033e0fcc4f4a8388495ab7
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
-  Mockingjay: 8635bddf88b7c93833db67e1dc54b8ffe7efe921
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   PKHUD: a35d89fd82d0aeb67f53de086b3029aea3423b74
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
-  SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
-  URITemplate: 0dbf40f0e378eb9c6d04cc08e6101fb82d126dc3
+  SwiftyUserDefaults: ae600cd466daa1420a058d09aefbf45ccb6caf1e
 
 COCOAPODS: 0.37.1

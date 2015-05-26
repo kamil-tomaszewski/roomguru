@@ -15,12 +15,12 @@ use_frameworks!
 xcodeproj 'Roomguru', 'Development' => :debug, 'Production' => :release, 'Staging' => :release, 'Test' => :debug
 
 pod 'AFNetworking', '~> 2.5.2'
+
 pod 'Alamofire', '~> 1.2.0'
 
 pod 'Async',
-    :git => "git@github.com:duemunk/Async.git",
-    :commit => "a61663f4469df082ac0b3311d9c4b8cd32185336",
-    :branch => "master"
+    :git => "https://github.com/duemunk/Async.git",
+    :tag => "1.2.1"
 
 pod 'SwiftyJSON', '~> 2.2.0'
 
@@ -28,18 +28,15 @@ pod 'Cartography', '~> 0.5.0'
 
 pod 'CryptoSwift', '~> 0.0.10'
 
-pod 'AKPickerView-Swift'
+pod 'AKPickerView-Swift', '~> 0.2.1'
+
+pod 'SwiftyUserDefaults', '~> 1.1.0'
 
 #pod 'PKHUD', '~> 2.0.1' - Latest Pod is not compiling in Xcode 6.3
 pod 'PKHUD',
     :git => "https://github.com/pkluz/PKHUD.git",
     :commit => "86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa",
     :branch => "master"
-
-pod 'SwiftyUserDefaults',
-    :git => "git@github.com:radex/SwiftyUserDefaults.git",
-    :commit => "e467e0f712e3ac1d1ceb7f9020ffd02e487e8893",
-    :branch => "swift-1.2"
 
 pod 'DateKit',
     :git => "https://github.com/SnowdogApps/DateKit.git",
@@ -57,9 +54,6 @@ target 'Tests' do link_with 'Unit Tests', 'Functional Tests'
         :configurations => ['Test']
 
     pod 'Nimble', '~> 0.4.2',
-        :configurations => ['Test']
-        
-    pod 'Mockingjay',
         :configurations => ['Test']
 end
 
