@@ -33,8 +33,8 @@ class EventsListView: UIBaseTableView {
     }
     
     func showPlaceholder(show: Bool, withIcon icon: FontAwesome? = nil, text: String = "") {
-        loadingSpinner.stopAnimating()
-        loadingSpinner.hidden = show
+        
+        show ? loadingSpinner.stopAnimating() : loadingSpinner.startAnimating()
         
         placeholderView.hidden = !show
         placeholderView.infoLabel.text = text
