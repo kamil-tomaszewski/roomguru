@@ -11,7 +11,7 @@ import Cartography
 
 class UIBaseTableView: UIView {
     
-    private(set) var loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray);
+    private(set) var loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     private(set) var tableView = EventedTableView()
     
     convenience override init(frame: CGRect) {
@@ -48,8 +48,8 @@ class UIBaseTableView: UIView {
     func defineConstraints() {
         
         layout(tableView, loadingSpinner) { table, spinner in
-            table.edges == table.superview!.edges;
-            spinner.center == table.center;
+            table.edges == table.superview!.edges
+            spinner.center == table.center
         }
     }
 }
