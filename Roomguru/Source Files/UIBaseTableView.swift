@@ -50,7 +50,6 @@ class UIBaseTableView: UIView {
         layout(tableView, loadingSpinner) { table, spinner in
             table.edges == table.superview!.edges;
             spinner.center == table.center;
-            return
         }
     }
 }
