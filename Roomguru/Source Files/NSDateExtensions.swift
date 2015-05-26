@@ -22,6 +22,19 @@ enum DateGranulation {
     }
 }
 
+enum DateInterpolation {
+    case None, Floor, Ceil, Round
+    
+    func interpolate(value: Double) -> Double {
+        switch self {
+        case .None: return value
+        case .Floor: return floor(value)
+        case .Ceil: return ceil(value)
+        case .Round: return round(value)
+        }
+    }
+}
+
 extension NSDate {
     
     var dayTimeRange: TimeRange { return (min: midnight, max: hour(23).minute(59).second(59).date) }
@@ -31,10 +44,10 @@ extension NSDate {
         return isSameDayAs(today)
     }
     
-    func roundTo(dateGranulation: DateGranulation) -> NSDate {
+    func roundTo(dateGranulation: DateGranulation, interpolation: DateInterpolation = .Round) -> NSDate {
         let unitDuration = NSTimeInterval(dateGranulation.granulationDurationRepresentation())
-        let seconds = round(timeIntervalSinceReferenceDate/unitDuration) * unitDuration
-        return NSDate(timeIntervalSinceReferenceDate:seconds)
+        let referenceDate = interpolation.interpolate(timeIntervalSinceReferenceDate/unitDuration) * unitDuration
+        return NSDate(timeIntervalSinceReferenceDate:referenceDate)
     }
     
     func isSameDayAs(date: NSDate) -> Bool {
