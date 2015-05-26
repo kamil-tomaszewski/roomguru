@@ -11,14 +11,15 @@ import Cartography
 
 class UIBaseTableView: UIView {
     
-    private(set) var tableView = UITableView()
+    private(set) var loadingSpinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray);
+    private(set) var tableView = EventedTableView()
     
     convenience override init(frame: CGRect) {
         self.init(frame: frame, tableViewStyle: .Plain)
     }
     
     init(frame: CGRect, tableViewStyle: UITableViewStyle) {
-        tableView = UITableView(frame: frame, style: tableViewStyle)
+        tableView = EventedTableView(frame: frame, style: tableViewStyle)
         super.init(frame: frame)
         commonInit()
     }
@@ -31,13 +32,25 @@ class UIBaseTableView: UIView {
     func commonInit() {
         tableView.hideSeparatorForEmptyCells()
         addSubview(tableView)
+        addSubview(loadingSpinner)
         defineConstraints()
+        
+        tableView.didReloadWithData = {
+            self.loadingSpinner.stopAnimating()
+        }
+        tableView.didReloadWithoutData = {
+            if !self.loadingSpinner.isAnimating() {
+                self.loadingSpinner.startAnimating()
+            }
+        }
     }
     
     func defineConstraints() {
         
-        layout(tableView) { table in
-            table.edges == table.superview!.edges; return
+        layout(tableView, loadingSpinner) { table, spinner in
+            table.edges == table.superview!.edges;
+            spinner.center == table.center;
+            return
         }
     }
 }

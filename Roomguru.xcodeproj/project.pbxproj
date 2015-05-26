@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2161DCAB1B1459C800DD0AD9 /* EventedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161DCAA1B1459C800DD0AD9 /* EventedTableView.swift */; };
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5E003E631ACB290700AE55C1 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */; };
 		5E04B9EB1AF0729700405BFB /* WeekdaysBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */; };
@@ -280,6 +281,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2161DCAA1B1459C800DD0AD9 /* EventedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventedTableView.swift; path = "Roomguru/Source Files/EventedTableView.swift"; sourceTree = SOURCE_ROOT; };
 		5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLExtensions.swift; path = "Roomguru/Source Files/NSURLExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekdaysBar.swift; path = "Roomguru/Source Files/WeekdaysBar.swift"; sourceTree = SOURCE_ROOT; };
 		5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPersistenceStoreSpec.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */,
 				5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */,
 				5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */,
+				2161DCAA1B1459C800DD0AD9 /* EventedTableView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -1456,6 +1459,7 @@
 				5E04B9EB1AF0729700405BFB /* WeekdaysBar.swift in Sources */,
 				5ECF36BD1AB325BD00BE6EA1 /* SettingsView.swift in Sources */,
 				5E46CAB31AFA026300AD9B70 /* FreeEventsProvider.swift in Sources */,
+				2161DCAB1B1459C800DD0AD9 /* EventedTableView.swift in Sources */,
 				5EA452A11B00AA49006CA0FA /* EventsListCoordinator.swift in Sources */,
 				5EF1C5F41AD425CD00CC9173 /* CalendarNameCustomizerView.swift in Sources */,
 				5EF1C5F21AD425B200CC9173 /* CalendarNameCustomizerViewController.swift in Sources */,
