@@ -49,7 +49,12 @@ class EditEventViewController: UIViewController {
 extension EditEventViewController: ModelUpdatable {
     
     func didChangeItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
-        aView?.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.None)
+        for indexPath: NSIndexPath in indexPaths {
+            if let cell = aView?.tableView.cellForRowAtIndexPath(indexPath) {
+                let item = viewModel[indexPath.section][indexPath.row]
+                configureEventCell(cell, forItem: item)
+            }
+        }
     }
         
     func addedItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
@@ -132,21 +137,7 @@ extension EditEventViewController: UITableViewDataSource {
         let item = viewModel[indexPath.section][indexPath.row]
         let cell = tableView.cellForItemCategory(item.category)
         
-        if let item = item as? TextItem {
-            configureTextFieldCell(cell as! TextFieldCell, forItem: item)
-        } else if let item = item as? SwitchItem {
-            configureSwitchCell(cell as! SwitchCell, forItem: item)
-        } else if let item = item as? DateItem {
-            configureDateCell(cell as! DateCell, forItem: item)
-        } else if let item = item as? LongTextItem {
-            configureTextViewCell(cell as! TextViewCell, forItem: item)
-        } else if let item = item as? DatePickerItem {
-            configureDatePickerCell(cell as! DatePickerCell, forItem: item)
-        } else if let item = item as? ResultActionItem {
-            configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
-        } else if let item = item as? ActionItem {
-            configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
-        }
+        configureEventCell(cell, forItem: item)
         
         return cell ?? UITableViewCell()
     }
@@ -232,6 +223,24 @@ extension EditEventViewController {
 // MARK: Cell configuration
 
 private extension EditEventViewController {
+    
+    func configureEventCell(cell: UITableViewCell, forItem item: GroupItem) {
+        if let item = item as? TextItem {
+            configureTextFieldCell(cell as! TextFieldCell, forItem: item)
+        } else if let item = item as? SwitchItem {
+            configureSwitchCell(cell as! SwitchCell, forItem: item)
+        } else if let item = item as? DateItem {
+            configureDateCell(cell as! DateCell, forItem: item)
+        } else if let item = item as? LongTextItem {
+            configureTextViewCell(cell as! TextViewCell, forItem: item)
+        } else if let item = item as? DatePickerItem {
+            configureDatePickerCell(cell as! DatePickerCell, forItem: item)
+        } else if let item = item as? ResultActionItem {
+            configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
+        } else if let item = item as? ActionItem {
+            configureRightDetailTextCell(cell as! RightDetailTextCell, forItem: item)
+        }
+    }
     
     func configureTextFieldCell(cell: TextFieldCell, forItem item: TextItem) {
         cell.textField.placeholder = item.placeholder
