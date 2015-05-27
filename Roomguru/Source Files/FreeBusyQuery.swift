@@ -24,10 +24,11 @@ class FreeBusyQuery: Query {
         }
         return nil
     }
-    
-    convenience init(calendarsIDs: [String]) {
+        
+    convenience init(calendarsIDs: [String], eventEndDate: NSDate) {
         self.init(.POST, URLExtension: "/freeBusy")
         self[ItemsKey] = calendarsIDs.map { ["id": $0] }
+        self[TimeMaxKey] = formatter.stringFromDate(eventEndDate.days + 1)
     }
     
     required init(_ HTTPMethod: Alamofire.Method, URLExtension: String, parameters: QueryParameters? = nil, encoding: Alamofire.ParameterEncoding = .JSON) {
@@ -35,7 +36,6 @@ class FreeBusyQuery: Query {
         
         let todaysMidnight = NSDate().midnight
         self[TimeMinKey] = formatter.stringFromDate(todaysMidnight)
-        self[TimeMaxKey] = formatter.stringFromDate(todaysMidnight.days + 2)
         self[TimeZoneKey] = "Europe/Warsaw"
     }
     
