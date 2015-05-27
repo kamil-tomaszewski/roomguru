@@ -161,6 +161,7 @@
 		5EFE00FB1ADE97DA0083FB8E /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */; };
 		5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
 		741699BD1AFFDED300F42474 /* QueryableSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */; };
+		742B9C7C1B15EB4600D7CDC7 /* TimeFrameSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */; };
 		743821431B00F9E200AEC354 /* EventsQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743821421B00F9E200AEC354 /* EventsQuerySpec.swift */; };
 		74433FB61AFB56DC00B7ED50 /* CalendarsQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */; };
 		74433FB71AFB56DC00B7ED50 /* RevokeQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */; };
@@ -412,6 +413,7 @@
 		5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchViewController.swift; path = "Roomguru/Source Files/LaunchViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
 		741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryableSharedExample.swift; sourceTree = "<group>"; };
+		742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFrameSpec.swift; sourceTree = "<group>"; };
 		743821421B00F9E200AEC354 /* EventsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeQuerySpec.swift; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 				BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */,
 				BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */,
 				BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */,
+				742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -1546,6 +1549,7 @@
 				5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */,
 				74F309C31B01F15100EB5D5D /* EventQuerySpec.swift in Sources */,
 				5E84CE411B1453B300E47C32 /* UIColorExtensions.swift in Sources */,
+				742B9C7C1B15EB4600D7CDC7 /* TimeFrameSpec.swift in Sources */,
 				BFC4CC981AF9F2A30070007B /* AttendeeSpec.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
 				BFC4CC9A1AFA01450070007B /* JSONKeyValueSharedExample.swift in Sources */,
