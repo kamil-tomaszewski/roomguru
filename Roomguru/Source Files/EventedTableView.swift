@@ -14,7 +14,7 @@ class EventedTableView : UITableView {
     var didReloadWithoutData: VoidBlock?
     
     override func reloadData() {
-        super.reloadData();
+        super.reloadData()
         
         if let datasource = dataSource {
             let numberOfRows = datasource.tableView(self, numberOfRowsInSection: 0)
