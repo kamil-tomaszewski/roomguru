@@ -18,10 +18,9 @@ extension UIViewController {
     
     func loadViewWithClass<T: UIView>(viewType: T.Type) -> T {
         
-        let view: T = T(frame: UIScreen.mainScreen().applicationFrame)
+        view = T(frame: UIScreen.mainScreen().applicationFrame)
         view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
-        self.view = view
-        return view
+        return view as! T
     }
     
     func hideBackBarButtonTitle() {
