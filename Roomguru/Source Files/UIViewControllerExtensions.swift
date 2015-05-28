@@ -16,12 +16,12 @@ extension UIViewController {
                 || tabBarController?.presentingViewController is UITabBarController
     }
     
-    func loadViewWithClass<T where T: UIView>(view: T.Type) -> T {
+    func loadViewWithClass<T: UIView>(viewType: T.Type) -> T {
         
-        let _view: T = view(frame: UIScreen.mainScreen().applicationFrame)
-        _view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
-        self.view = _view
-        return _view
+        let view: T = T(frame: UIScreen.mainScreen().applicationFrame)
+        view.autoresizingMask = .FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
+        self.view = view
+        return view
     }
     
     func hideBackBarButtonTitle() {
