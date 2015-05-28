@@ -27,16 +27,10 @@ class QueryRequest {
     func resume(success: ResponseBlock, failure: ErrorBlock) {
         request = createRequest()
         request.responseJSON { (request, response, json, error) -> Void in
-                    
-            if let responseError: NSError = error as NSError? {
+            
+            if let responseError = self.validateResponse(response, withError: error) {
                 failure(error: responseError)
                 return
-            } else if response?.statusCode == 401 {
-                self.handleAuthorizationExpirationError(failure)
-            } else if response?.statusCode >= 400 {
-                let message = NSLocalizedString("Failed retrieving data", comment: "")
-                let otherError = NSError(message: message)
-                failure(error: otherError)
             }
             
             if let responseJSON: AnyObject = json {
@@ -55,14 +49,26 @@ class QueryRequest {
                 
                 failure(error: otherError)
             }
-            
         }
     }
     
-    private func handleAuthorizationExpirationError(failure: ErrorBlock) {
-        let message = NSLocalizedString("Authorization expired. Please log in again.", comment: "")
-        failure(error: NSError(message: message))
-        NSNotificationCenter.defaultCenter().postNotificationName(GoogleAPIAuthorizationExpired, object: nil)
+    private func validateResponse(response: NSHTTPURLResponse?, withError error: NSError?) -> NSError? {
+        if let responseError = checkResponseForError(response) {
+            return responseError
+        }
+        return error
+    }
+    
+    private func checkResponseForError(response: NSHTTPURLResponse?) -> NSError? {
+        if response?.statusCode == 401 {
+            let message = NSLocalizedString("Authorization expired. Please log in again.", comment: "")
+            NSNotificationCenter.defaultCenter().postNotificationName(GoogleAPIAuthorizationExpired, object: nil)
+            return NSError(message: message)
+        } else if response?.statusCode >= 400 {
+            let message = NSLocalizedString("Failed retrieving data", comment: "")
+            return NSError(message: message)
+        }
+        return nil
     }
 }
 
@@ -90,11 +96,9 @@ extension PageableRequest {
         
         request.responseJSON { (request, response, json, error) -> Void in
             
-            if let responseError: NSError = error as NSError? {
+            if let responseError = self.validateResponse(response, withError: error) {
                 failure(error: responseError)
                 return
-            } else if response?.statusCode == 401 {
-                self.handleAuthorizationExpirationError(failure)
             }
             
             if let responseJSON: AnyObject = json {
