@@ -33,25 +33,23 @@ class TimeFrameSpec: QuickSpec {
                 sut = nil
             }
             
-            it("shoud have proper start date"){
+            it("shoud have proper start date") {
                 expect(sut.startDate).to(equal(fixtureStartDate))
             }
             
-            it("shoud have proper end date"){
+            it("shoud have proper end date") {
                 expect(sut.endDate).to(equal(fixtureEndDate))
             }
             
-            it("shoud have proper availability"){
-                let availabilityAsString = self.stringFromTimeFrameAvailability(sut.availability)
-                let fixtureAvailabilityAsString = self.stringFromTimeFrameAvailability(fixtureAvailability)
-                expect(availabilityAsString).to(equal(fixtureAvailabilityAsString))
+            it("shoud have proper availability") {
+                expect(sut.availability.description ).to(equal(fixtureAvailability.description))
             }
             
-            it("shoud have proper duration"){
+            it("shoud have proper duration") {
                 expect(sut.duration()).to(equal(fixtureDuration))
             }
             
-            it("shoud have proper description"){
+            it("shoud have proper description") {
                 let fixtureDescription = self.fixtureDescription(fixtureStartDate, endDate: fixtureEndDate, duration: fixtureDuration, availability: fixtureAvailability)
                 expect(sut.description).to(equal(fixtureDescription))
             }
@@ -69,37 +67,26 @@ class TimeFrameSpec: QuickSpec {
                 sut = nil
             }
             
-            it("shoud have proper start date"){
+            it("shoud have proper start date") {
                 expect(sut.startDate).to(equal(fixtureStartDate))
             }
             
-            it("shoud have proper end date"){
+            it("shoud have proper end date") {
                 expect(sut.endDate).to(equal(fixtureEndDate))
             }
             
-            it("shoud have proper availability"){
-                let availabilityAsString = self.stringFromTimeFrameAvailability(sut.availability)
-                let fixtureAvailabilityAsString = self.stringFromTimeFrameAvailability(fixtureAvailability)
-                expect(availabilityAsString).to(equal(fixtureAvailabilityAsString))
+            it("shoud have proper availability") {
+                expect(sut.availability.description ).to(equal(fixtureAvailability.description))   
             }
             
-            it("shoud have proper duration"){
+            it("shoud have proper duration") {
                 expect(sut.duration()).to(equal(fixtureDuration))
             }
             
-            it("shoud have proper description"){
+            it("shoud have proper description") {
                 let fixtureDescription = self.fixtureDescription(fixtureStartDate, endDate: fixtureEndDate, duration: fixtureDuration, availability: fixtureAvailability)
                 expect(sut.description).to(equal(fixtureDescription))
             }
-        }
-    }
-    
-    func stringFromTimeFrameAvailability(availability: TimeFrameAvailability) -> String {
-        switch availability {
-            case .Available:
-                return "Available"
-            case .NotAvailable:
-                return "Not available"
         }
     }
     
