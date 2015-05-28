@@ -31,6 +31,8 @@ class QueryRequest {
             if let responseError: NSError = error as NSError? {
                 failure(error: responseError)
                 return
+            } else if response?.statusCode == 401 {
+                self.handleAuthorizationExpirationError(failure)
             } else if response?.statusCode >= 400 {
                 let message = NSLocalizedString("Failed retrieving data", comment: "")
                 let otherError = NSError(message: message)
@@ -57,6 +59,11 @@ class QueryRequest {
         }
     }
     
+    private func handleAuthorizationExpirationError(failure: ErrorBlock) {
+        let message = NSLocalizedString("Authorization expired. Please log in again.", comment: "")
+        failure(error: NSError(message: message))
+        NSNotificationCenter.defaultCenter().postNotificationName(GoogleAPIAuthorizationExpired, object: nil)
+    }
 }
 
 class PageableRequest<T: ModelJSONProtocol>: QueryRequest {
@@ -86,6 +93,8 @@ extension PageableRequest {
             if let responseError: NSError = error as NSError? {
                 failure(error: responseError)
                 return
+            } else if response?.statusCode == 401 {
+                self.handleAuthorizationExpirationError(failure)
             }
             
             if let responseJSON: AnyObject = json {

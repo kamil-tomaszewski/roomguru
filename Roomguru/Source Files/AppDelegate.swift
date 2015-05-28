@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupVendors()
         presentAuthenticationScreenAndBeginAuthentication()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAuthorizationExpiration:", name: GoogleAPIAuthorizationExpired, object: nil)
+        
         return true
     }
     
@@ -50,18 +52,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         
         if !authenticator.isAuthenticating && !GPPAuthenticator.isUserAuthenticated {
-            // NGRTemp: Temporary solution to the problem of losing authentication after ~30mins idle time
             authenticator.signOut()
             UserPersistenceStore.sharedStore.clear()
             presentAuthenticationScreenAndBeginAuthentication()
         }
     }
     
+    func applicationWillTerminate(application: UIApplication) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
         showGoogleSignInButtonInLoginViewController(false)
         return authenticator.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func handleAuthorizationExpiration(notification: NSNotification) {
+        let tabBarViewController = window!.rootViewController as! TabBarController
+        let loginViewController = tabBarViewController.controllersOfTypeInNavigationStack(LoginViewController.self)
+        
+        if loginViewController == nil {
+            presentAuthenticationScreenAndBeginAuthentication()
+        }
     }
 }
 

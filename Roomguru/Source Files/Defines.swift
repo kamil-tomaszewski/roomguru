@@ -34,3 +34,4 @@ typealias QueryParameters = [String: AnyObject]
 // MARK: Notifications
 
 let CalendarPersistentStoreDidChangePersistentCalendars = "CalendarPersistentStoreDidChangePersistentCalendars"
+let GoogleAPIAuthorizationExpired = "GoogleAPIAuthorizationExpired"
