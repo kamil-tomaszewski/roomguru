@@ -71,7 +71,8 @@ private extension EditEventNetworkCooperator {
     
     func checkEventsAvailability(completion: (available: Bool, error: NSError?) -> Void) {
         
-        let query = FreeBusyQuery(calendarsIDs: [eventQuery.calendarID], eventEndDate: eventQuery.endDate)
+        let querySearchTimeRange = TimeRange(min: NSDate().midnight, max: eventQuery.endDate.days + 1)
+        let query = FreeBusyQuery(calendarsIDs: [eventQuery.calendarID], searchTimeRange: querySearchTimeRange)
         
         NetworkManager.sharedInstance.request(query, success: { response in
             

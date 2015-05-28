@@ -19,18 +19,17 @@ class FreeBusyQuerySpec: QuickSpec {
         var sut: FreeBusyQuery!
         let mockQuery = MockQuery(HTTPMethod: "POST", URLExtension: "/freeBusy", parameterEncoding: "JSON")
         
-        let today = NSDate().midnight
-        let eventEndDate = NSDate().midnight.days + 1
+        let fixtureSearchTimeRange: TimeRange = (min: NSDate().midnight, max: NSDate().midnight.days + 2)
         
-        var fixtureTimeMin = queryDateFormatter().stringFromDate(today)
-        var fixtureTimeMax = queryDateFormatter().stringFromDate(eventEndDate.days + 1)
+        var fixtureTimeMin = queryDateFormatter().stringFromDate(fixtureSearchTimeRange.min)
+        var fixtureTimeMax = queryDateFormatter().stringFromDate(fixtureSearchTimeRange.max)
         let fixtureTimeZone = "Europe/Warsaw"
         let fixtureItems = fixtureCalendarIDs.map { ["id": $0] }
 
         let mockQueryParameters = ["timeMax":fixtureTimeMax, "timeMin" : fixtureTimeMin, "timeZone" : fixtureTimeZone, "items" : fixtureItems]
         
         describe("when initializing") {
-            sut = FreeBusyQuery(calendarsIDs: fixtureCalendarIDs, eventEndDate: eventEndDate)
+            sut = FreeBusyQuery(calendarsIDs: fixtureCalendarIDs, searchTimeRange: fixtureSearchTimeRange)
             
             itBehavesLike("queryable") {
                 [
