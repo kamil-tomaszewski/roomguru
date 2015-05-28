@@ -221,7 +221,6 @@
 		BF527C1F1AB1D53700A43D35 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1C1AB1D53700A43D35 /* Calendar.swift */; };
 		BF527C201AB1D53700A43D35 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1D1AB1D53700A43D35 /* Event.swift */; };
 		BF527C211AB1D53700A43D35 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1E1AB1D53700A43D35 /* ModelObject.swift */; };
-		BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */; };
 		BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7521151AE92E8500B8BDE8 /* ListSpec.swift */; };
 		BF7A9A2F1AE8D4ED00ACF014 /* PickerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */; };
 		BF7E2FA71AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */; };
@@ -461,7 +460,6 @@
 		BF527C1C1AB1D53700A43D35 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = "Roomguru/Source Files/Calendar.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1D1AB1D53700A43D35 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = "Roomguru/Source Files/Event.swift"; sourceTree = SOURCE_ROOT; };
 		BF527C1E1AB1D53700A43D35 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelObject.swift; path = "Roomguru/Source Files/ModelObject.swift"; sourceTree = SOURCE_ROOT; };
-		BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = "Roomguru/Source Files/ArrayExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF7521151AE92E8500B8BDE8 /* ListSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSpec.swift; sourceTree = "<group>"; };
 		BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItemCell.swift; path = "Roomguru/Source Files/PickerItemCell.swift"; sourceTree = SOURCE_ROOT; };
 		BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedListViewModelSpec.swift; sourceTree = "<group>"; };
@@ -1000,7 +998,6 @@
 			children = (
 				5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */,
 				5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */,
-				BF5CDC8A1ABB7987001018DA /* ArrayExtensions.swift */,
 				7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */,
 				5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */,
 				5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */,
@@ -1365,7 +1362,6 @@
 				BFBDFAB81AE45C31007A451F /* AvatarView.swift in Sources */,
 				5E0720251AB728D7009C270E /* UIViewControllerExtensions.swift in Sources */,
 				BFBCE1841AC1900D00D96270 /* ButtonView.swift in Sources */,
-				BF5CDC8B1ABB7987001018DA /* ArrayExtensions.swift in Sources */,
 				BF26B27B1AC58E3000F95DD3 /* BookingQuery.swift in Sources */,
 				BF26B27D1AC59FCE00F95DD3 /* BookingConfirmationView.swift in Sources */,
 				5E8AE3091ACC1F2200A3C146 /* UIBaseTableView.swift in Sources */,
