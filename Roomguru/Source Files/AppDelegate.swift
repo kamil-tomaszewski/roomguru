@@ -51,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if !authenticator.isAuthenticating && !GPPAuthenticator.isUserAuthenticated {
             // NGRTemp: Temporary solution to the problem of losing authentication after ~30mins idle time
+            authenticator.signOut()
+            UserPersistenceStore.sharedStore.clear()
             presentAuthenticationScreenAndBeginAuthentication()
         }
     }
