@@ -49,7 +49,7 @@ class EditEventViewController: UIViewController {
 extension EditEventViewController: ModelUpdatable {
     
     func didChangeItemsAtIndexPaths(indexPaths: [NSIndexPath]) {
-        for indexPath: NSIndexPath in indexPaths {
+        for indexPath in indexPaths {
             if let cell = aView?.tableView.cellForRowAtIndexPath(indexPath) {
                 let item = viewModel[indexPath.section][indexPath.row]
                 configureEventCell(cell, forItem: item)
