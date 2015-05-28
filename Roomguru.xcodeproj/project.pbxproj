@@ -106,7 +106,7 @@
 		5E9289AF1B13229F0079CE36 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		5E9289B01B1322B80079CE36 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */; };
 		5E9289B11B1322C80079CE36 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
-		5E9289B21B1322D70079CE36 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* Constants.swift */; };
+		5E9289B21B1322D70079CE36 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */; };
 		5E9289B31B1322ED0079CE36 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858471AF11B1300EF08F1 /* NSDateExtensions.swift */; };
 		5E9289B41B13264A0079CE36 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
 		5EA452A11B00AA49006CA0FA /* EventsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA452A01B00AA49006CA0FA /* EventsListCoordinator.swift */; };
@@ -154,7 +154,7 @@
 		5EF4C7C91AEE40780050201A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4C7C21AEE34690050201A /* SettingsViewModel.swift */; };
 		5EF4C7CA1AEE42970050201A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */; };
 		5EFC1ED91AC591EB00CE9D27 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */; };
-		5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* Constants.swift */; };
+		5EFC763D1ACB3C9F0005892E /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */; };
 		5EFE00F31ADE71CF0083FB8E /* SettingsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */; };
 		5EFE00F51ADE79210083FB8E /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */; };
 		5EFE00F71ADE87990083FB8E /* RoomguruLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */; };
@@ -406,7 +406,7 @@
 		5EF4C7C41AEE3B5E0050201A /* SettingsStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStoreSpec.swift; sourceTree = "<group>"; };
 		5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModelSpec.swift; sourceTree = "<group>"; };
 		5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attendee.swift; path = "Roomguru/Source Files/Attendee.swift"; sourceTree = SOURCE_ROOT; };
-		5EFC763C1ACB3C9F0005892E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Roomguru/Source Files/Constants.swift"; sourceTree = SOURCE_ROOT; };
+		5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConfiguration.swift; path = "Roomguru/Source Files/AppConfiguration.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableHeaderView.swift; path = "Roomguru/Source Files/SettingsTableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = "Roomguru/Source Files/UIViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomguruLabel.swift; path = "Roomguru/Source Files/RoomguruLabel.swift"; sourceTree = SOURCE_ROOT; };
@@ -844,6 +844,7 @@
 			isa = PBXGroup;
 			children = (
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
+				5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */,
 				BFF755201AE52C4B00F68DB9 /* Protocols */,
 				BF527C0F1AB1A70C00A43D35 /* Networking */,
 				5E51B7981AA9C3280018EDA9 /* Object & Models */,
@@ -869,7 +870,6 @@
 		5E51B7981AA9C3280018EDA9 /* Object & Models */ = {
 			isa = PBXGroup;
 			children = (
-				5EFC763C1ACB3C9F0005892E /* Constants.swift */,
 				5ED4C76F1ACC3DC80084E52F /* Defines.swift */,
 				7BC955BC1AB96CFD00138716 /* Google Calendar */,
 				BFECD1131AC0B26200F60086 /* Queries */,
@@ -1435,7 +1435,7 @@
 				5E8A31001AC5A43400E31DD3 /* UITableViewExtensions.swift in Sources */,
 				BF3B25A21ADD467400242859 /* EditEventViewModel.swift in Sources */,
 				BF49CC5B1B00F2F500ACAEC1 /* MaskingViewController.swift in Sources */,
-				5EFC763D1ACB3C9F0005892E /* Constants.swift in Sources */,
+				5EFC763D1ACB3C9F0005892E /* AppConfiguration.swift in Sources */,
 				5EA452D81B020A1D006CA0FA /* MyEventsListCoordinator.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
 				5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */,
@@ -1556,7 +1556,7 @@
 				5EF4C7CA1AEE42970050201A /* ListViewModel.swift in Sources */,
 				5EF4C7C71AEE3EC30050201A /* SettingsViewModelSpec.swift in Sources */,
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
-				5E9289B21B1322D70079CE36 /* Constants.swift in Sources */,
+				5E9289B21B1322D70079CE36 /* AppConfiguration.swift in Sources */,
 				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,
 				5EB3A09E1AEA714800DB0585 /* Event.swift in Sources */,
 				5E9289B01B1322B80079CE36 /* NSErrorExtensions.swift in Sources */,

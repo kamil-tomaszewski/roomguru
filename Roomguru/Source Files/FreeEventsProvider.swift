@@ -32,7 +32,7 @@ private extension FreeEventsProvider {
     func populateEntriesWithFreeEvents(entriesToFill: [CalendarEntry], inTimeRange timeRange: TimeRange) -> [CalendarEntry] {
         
         let sortedEntriesToFill = CalendarEntry.sortedByDate(entriesToFill)
-        let timeStep = Constants.Timeline.TimeStep
+        let timeStep = AppConfiguration.Timeline.TimeStep
         var entries: [CalendarEntry] = []
         var referenceDate = timeRange.min
         var index = 0
@@ -104,17 +104,17 @@ private extension FreeEventsProvider {
         
         // cannot book in not declared days
         let weekday = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitWeekday, fromDate: startDate)
-        if !contains(Constants.Timeline.BookingDays, weekday) {
+        if !contains(AppConfiguration.Timeline.BookingDays, weekday) {
             return nil
         }
         
         // cannot book earlier than defined
-        if startDate.timeIntervalSinceDate(startDate.midnight) < Constants.Timeline.BookingRange.min {
+        if startDate.timeIntervalSinceDate(startDate.midnight) < AppConfiguration.Timeline.BookingRange.min {
             return nil
         }
         
         // cannot book later than defined
-        if startDate.timeIntervalSinceDate(startDate.midnight) > Constants.Timeline.BookingRange.max {
+        if startDate.timeIntervalSinceDate(startDate.midnight) > AppConfiguration.Timeline.BookingRange.max {
             return nil
         }
         
@@ -128,14 +128,14 @@ private extension FreeEventsProvider {
         let eventDuration = NSDate.timeIntervalBetweenDates(start: startDate, end: endDate)
         
         // cannot be shorter than MinimumEventDuration
-        if eventDuration < Constants.Timeline.MinimumEventDuration {
+        if eventDuration < AppConfiguration.Timeline.MinimumEventDuration {
             return nil
         }
         
         return FreeEvent(startDate: startDate, endDate: endDate)
     }
     
-    func increase(inout date: NSDate, by timeInterval: NSTimeInterval = Constants.Timeline.TimeStep) {
+    func increase(inout date: NSDate, by timeInterval: NSTimeInterval = AppConfiguration.Timeline.TimeStep) {
         date = date.dateByAddingTimeInterval(timeInterval)
     }
 }

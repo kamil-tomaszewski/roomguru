@@ -1,5 +1,5 @@
 //
-//  Constants.swift
+//  AppConfiguration.swift
 //  Roomguru
 //
 //  Created by Bartosz Kopiński on 26/03/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Constants {
+struct AppConfiguration {
     struct HockeyApp {
         static let ClientID = "e0b60ed8278c9ee0aed4007fffd86458"
     }
