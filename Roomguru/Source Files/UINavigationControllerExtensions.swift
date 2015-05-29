@@ -10,7 +10,7 @@ import Foundation
 
 extension UINavigationController {
     
-    func titleViewFrame() -> CGRect {
+    var titleViewFrame: CGRect {
         return CGRectMake(0, 0, CGRectGetWidth(navigationBar.frame), CGRectGetHeight(navigationBar.frame))
     }
 }
