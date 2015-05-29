@@ -7,20 +7,26 @@
 //
 
 import Foundation
+import DateKit
 import Async
 
 class GPPAuthenticator: NSObject {
     
     typealias AuthenticatorCompletionBlock = (authenticated: Bool, auth: GTMOAuth2Authentication? ,error: NSError?) -> Void
-        
+
     static var isUserAuthenticated: Bool {
         return GPPSignIn.sharedInstance().authentication != nil
     }
     
-    private var completion: AuthenticatorCompletionBlock!
+    private let completion: AuthenticatorCompletionBlock
+    private var refreshCompletion: ((authenticated: Bool) -> Void)?
     private(set) var isAuthenticating = false
+    private var tokenExpirationDate: NSDate?
     
-    override init() {
+    init(completion: AuthenticatorCompletionBlock) {
+        
+        self.completion = completion
+
         super.init()
         
         let sharedSignIn = GPPSignIn.sharedInstance();
@@ -32,17 +38,12 @@ class GPPAuthenticator: NSObject {
         sharedSignIn.delegate = self
     }
     
-    func authenticateWithCompletion(completion: AuthenticatorCompletionBlock) {
+    func startAuthentication() {
         
         isAuthenticating = true
         
-        self.completion = completion
-        
         if GPPSignIn.sharedInstance().hasAuthInKeychain() {
-            
-            if !GPPSignIn.sharedInstance().trySilentAuthentication() {
-                self.completion(authenticated: false, auth: nil, error: nil)
-            }
+            GPPSignIn.sharedInstance().trySilentAuthentication()
             
         } else {
             Async.main(after: 0.2) {
@@ -52,11 +53,29 @@ class GPPAuthenticator: NSObject {
     }
     
     func handleURL(url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        isAuthenticating = true
         return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     func signOut() {
         GPPSignIn.sharedInstance().signOut()
+    }
+    
+    func manuallyHandleTokenRefresh(completion: ((authenticated: Bool) -> Void)) {
+        
+        if let tokenExpirationDate = tokenExpirationDate {
+            
+            //NGRTemp: intentionally left. do not remove!
+            println(tokenExpirationDate)
+            
+            if NSDate() >= tokenExpirationDate {
+                self.refreshCompletion = completion
+                GPPSignIn.sharedInstance().trySilentAuthentication()
+                
+            } else {
+                completion(authenticated: true)
+            }
+        }
     }
 }
 
@@ -67,14 +86,35 @@ extension GPPAuthenticator: GPPSignInDelegate {
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
         isAuthenticating = false
         if (error != nil) {
-            completion(authenticated: false, auth: nil, error: error)
+            
+            if let refreshCompletion = refreshCompletion {
+                refreshCompletion(authenticated: false)
+            } else {
+                completion(authenticated: false, auth: nil, error: error)
+            }
+            
         } else {
-            completion(authenticated: true, auth: auth, error: nil)
+            tokenExpirationDate = auth.expirationDate
+            
+            if let refreshCompletion = refreshCompletion {
+                refreshCompletion(authenticated: false)
+            } else {
+                completion(authenticated: true, auth: auth, error: nil)
+            }
         }
+        
+        refreshCompletion = nil
     }
     
     func didDisconnectWithError(error: NSError!) {
         isAuthenticating = false
-        completion(authenticated: false, auth: nil, error: error)
+        
+        if let refreshCompletion = refreshCompletion {
+            refreshCompletion(authenticated: false)
+        } else {
+            completion(authenticated: false, auth: nil, error: error)
+        }
+
+        refreshCompletion = nil
     }
 }

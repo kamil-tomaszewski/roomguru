@@ -15,6 +15,7 @@ class NetworkManager: NSObject {
     private var serverURL = ""
     private var clientID = ""
     private var key: String { return "?key=" + clientID }
+    private var authenticator: GPPAuthenticator { return (UIApplication.sharedApplication().delegate as! AppDelegate).authenticator }
     
     class var sharedInstance: NetworkManager {
         struct Static {
@@ -61,13 +62,35 @@ private extension GTMOAuth2Authentication {
 extension NetworkManager {
     
     func request(query: Query, success: ResponseBlock, failure: ErrorBlock) {
-        query.setFullPath(serverURL, authKey: key)
-        QueryRequest(query).resume(success, failure: failure)
+        
+        authenticator.manuallyHandleTokenRefresh { authenticated in
+            
+            if authenticated {
+                query.setFullPath(self.serverURL, authKey: self.key)
+                QueryRequest(query).resume(success, failure: failure)
+                
+            } else {
+                //NGRTodo: pick better solution
+                //failure(error: NSError(message: "Token expired. Please log in"))
+                (UIApplication.sharedApplication().delegate as! AppDelegate).presentAuthenticationScreenAndBeginAuthentication()
+            }
+        }
     }
     
     func requestList<T: ModelJSONProtocol>(query: PageableQuery, success: (response: [T]?) -> (), failure: ErrorBlock) {
-        query.setFullPath(serverURL, authKey: key)
-        PageableRequest<T>(query).resume(success, failure)
+        
+        authenticator.manuallyHandleTokenRefresh { authenticated in
+            
+            if authenticated {
+                query.setFullPath(self.serverURL, authKey: self.key)
+                PageableRequest<T>(query).resume(success, failure)
+                
+            } else {
+                //NGRTodo: pick better solution
+                //failure(error: NSError(message: "Token expired. Please log in"))
+                (UIApplication.sharedApplication().delegate as! AppDelegate).presentAuthenticationScreenAndBeginAuthentication()
+            }
+        }
     }
     
     /**

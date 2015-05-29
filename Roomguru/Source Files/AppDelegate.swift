@@ -13,7 +13,7 @@ import PKHUD
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private let authenticator = GPPAuthenticator()
+    private(set) var authenticator: GPPAuthenticator!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -26,8 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupVendors()
         presentAuthenticationScreenAndBeginAuthentication()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAuthorizationExpiration:", name: GoogleAPIAuthorizationExpired, object: nil)
         
         return true
     }
@@ -51,10 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         
-        if !authenticator.isAuthenticating && !GPPAuthenticator.isUserAuthenticated {
-            authenticator.signOut()
-            UserPersistenceStore.sharedStore.clear()
-            presentAuthenticationScreenAndBeginAuthentication()
+        if !authenticator.isAuthenticating {
+            showGoogleSignInButtonInLoginViewController(true)
         }
     }
     
@@ -68,35 +64,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return authenticator.handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
-    func handleAuthorizationExpiration(notification: NSNotification) {
-        let tabBarViewController = window!.rootViewController as! TabBarController
-        let loginViewController = tabBarViewController.controllersOfTypeInNavigationStack(LoginViewController.self)
-        
-        if loginViewController == nil {
-            presentAuthenticationScreenAndBeginAuthentication()
-        }
-    }
-}
-
-// MARK: Private
-
-private extension AppDelegate {
-    
-    func showGoogleSignInButtonInLoginViewController(show: Bool) {
-        
-        let tabBarViewController = window!.rootViewController as! TabBarController
-        if let loginView = tabBarViewController.controllersOfTypeInNavigationStack(LoginViewController.self)?.first?.view as? LoginView {
-            loginView.showSignInButton(show)
-        }
-    }
-    
     func presentAuthenticationScreenAndBeginAuthentication() {
         
         let tabBarController = window!.rootViewController as! TabBarController
         var launchViewController: UIViewController? = NavigationController(rootViewController: LaunchViewController())
         window!.addSubview(launchViewController!.view)
         
-        authenticator.authenticateWithCompletion { (authenticated, auth, error) in
+        
+        authenticator = GPPAuthenticator() {  (authenticated, auth, error) in
 
             if let auth = auth {
                 UserPersistenceStore.sharedStore.registerUserWithEmail(auth.userEmail)
@@ -128,6 +103,21 @@ private extension AppDelegate {
                     }
                 }
             }
+        }
+        
+        authenticator.startAuthentication()
+    }
+}
+
+// MARK: Private
+    
+private extension AppDelegate {
+
+    func showGoogleSignInButtonInLoginViewController(show: Bool) {
+        
+        let tabBarViewController = window!.rootViewController as! TabBarController
+        if let loginView = tabBarViewController.controllersOfTypeInNavigationStack(LoginViewController.self)?.first?.view as? LoginView {
+            loginView.showSignInButton(show)
         }
     }
     
