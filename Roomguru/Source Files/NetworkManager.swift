@@ -117,15 +117,16 @@ extension NetworkManager {
                 result += construct(query, response)
                 dispatch_group_leave(group)
                 
-            }, failure: { (error) -> () in
-                failure(error: error)
+            }, failure: { error in
                 requestError = error
                 dispatch_group_leave(group)
             })
         }
         
         dispatch_group_notify(group, queue) {
-            if requestError == nil {
+            if let requestError = requestError {
+                failure(error: requestError)
+            } else {
                 success(result)
             }
         }
