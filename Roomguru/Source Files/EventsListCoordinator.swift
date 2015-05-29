@@ -31,8 +31,7 @@ class EventsListCoordinator {
             self?.viewModel = EventsListViewModel(calendarEntries)
             
             if let error = error {
-                let message = NSLocalizedString("Sorry, something went wrong.\n\nTo reload, tap again on the navigation bar.", comment: "")
-                completion(status: .Failed, message: message, icon: .MehO)
+                completion(status: .Failed, message: error.localizedDescription, icon: .MehO)
             } else if calendarEntries.isEmpty {
                 completion(status: .Empty, message: NSLocalizedString("Weekend day.\nGo away and relax!", comment: ""), icon: .CalendarO)
             } else {

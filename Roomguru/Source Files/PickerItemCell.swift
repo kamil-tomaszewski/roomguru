@@ -41,7 +41,7 @@ private extension PickerItemCell {
         indentationLevel = 3
         tintColor = .ngOrangeColor()
         checkmarkLabel.font = .fontAwesomeOfSize(18)
-        checkmarkLabel.text = String.fontAwesomeIconWithName(.Check)
+        checkmarkLabel.text = String.fontAwesomeIconWithName(FontAwesome.Check)
         checkmarkLabel.textColor = .ngOrangeColor()
         checkmarkLabel.textAlignment = .Center
     }

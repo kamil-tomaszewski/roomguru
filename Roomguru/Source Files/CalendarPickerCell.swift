@@ -39,7 +39,7 @@ private extension CalendarPickerCell {
         accessoryType = .DetailButton
         
         checkmarkLabel.font = .fontAwesomeOfSize(18)
-        checkmarkLabel.text = String.fontAwesomeIconWithName(.Check)
+        checkmarkLabel.text = String.fontAwesomeIconWithName(FontAwesome.Check)
         checkmarkLabel.textColor = .ngOrangeColor()
         checkmarkLabel.textAlignment = .Center
         contentView.addSubview(checkmarkLabel)

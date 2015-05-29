@@ -63,32 +63,30 @@ extension NetworkManager {
     
     func request(query: Query, success: ResponseBlock, failure: ErrorBlock) {
         
-        authenticator.manuallyHandleTokenRefresh { authenticated in
+        authenticator.manuallyHandleTokenRefresh { (authenticated, error) in
             
             if authenticated {
                 query.setFullPath(self.serverURL, authKey: self.key)
                 QueryRequest(query).resume(success, failure: failure)
                 
             } else {
-                //NGRTodo: pick better solution
-                //failure(error: NSError(message: "Token expired. Please log in"))
-                (UIApplication.sharedApplication().delegate as! AppDelegate).presentAuthenticationScreenAndBeginAuthentication()
+                let error = NSError(message: "Session expired. Please log in again.")
+                failure(error: error)
             }
         }
     }
     
     func requestList<T: ModelJSONProtocol>(query: PageableQuery, success: (response: [T]?) -> (), failure: ErrorBlock) {
         
-        authenticator.manuallyHandleTokenRefresh { authenticated in
+        authenticator.manuallyHandleTokenRefresh { (authenticated, error) in
             
             if authenticated {
                 query.setFullPath(self.serverURL, authKey: self.key)
                 PageableRequest<T>(query).resume(success, failure)
                 
             } else {
-                //NGRTodo: pick better solution
-                //failure(error: NSError(message: "Token expired. Please log in"))
-                (UIApplication.sharedApplication().delegate as! AppDelegate).presentAuthenticationScreenAndBeginAuthentication()
+                let error = NSError(message: "Session expired. Please log in again.")
+                failure(error: error)
             }
         }
     }

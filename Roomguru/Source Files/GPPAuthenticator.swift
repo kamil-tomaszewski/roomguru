@@ -19,9 +19,7 @@ class GPPAuthenticator: NSObject {
     }
     
     private let completion: AuthenticatorCompletionBlock
-    private var refreshCompletion: ((authenticated: Bool) -> Void)?
     private(set) var isAuthenticating = false
-    private var tokenExpirationDate: NSDate?
     
     init(completion: AuthenticatorCompletionBlock) {
         
@@ -61,19 +59,14 @@ class GPPAuthenticator: NSObject {
         GPPSignIn.sharedInstance().signOut()
     }
     
-    func manuallyHandleTokenRefresh(completion: ((authenticated: Bool) -> Void)) {
+    func manuallyHandleTokenRefresh(completion: ((authenticated: Bool, error: NSError?) -> Void)) {
         
-        if let tokenExpirationDate = tokenExpirationDate {
-            
+        if GPPSignIn.sharedInstance().authentication != nil {
             //NGRTemp: intentionally left. do not remove!
-            println(tokenExpirationDate)
+            println(GPPSignIn.sharedInstance().authentication.expirationDate)
             
-            if NSDate() >= tokenExpirationDate {
-                self.refreshCompletion = completion
-                GPPSignIn.sharedInstance().trySilentAuthentication()
-                
-            } else {
-                completion(authenticated: true)
+            GPPSignIn.sharedInstance().authentication.authorizeRequest(nil) { error in
+                completion(authenticated: error == nil, error: error)
             }
         }
     }
@@ -84,37 +77,18 @@ class GPPAuthenticator: NSObject {
 extension GPPAuthenticator: GPPSignInDelegate {
     
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
+        
         isAuthenticating = false
         if (error != nil) {
-            
-            if let refreshCompletion = refreshCompletion {
-                refreshCompletion(authenticated: false)
-            } else {
-                completion(authenticated: false, auth: nil, error: error)
-            }
-            
+            completion(authenticated: false, auth: nil, error: error)
+
         } else {
-            tokenExpirationDate = auth.expirationDate
-            
-            if let refreshCompletion = refreshCompletion {
-                refreshCompletion(authenticated: false)
-            } else {
-                completion(authenticated: true, auth: auth, error: nil)
-            }
+            completion(authenticated: true, auth: auth, error: nil)
         }
-        
-        refreshCompletion = nil
     }
     
     func didDisconnectWithError(error: NSError!) {
         isAuthenticating = false
-        
-        if let refreshCompletion = refreshCompletion {
-            refreshCompletion(authenticated: false)
-        } else {
-            completion(authenticated: false, auth: nil, error: error)
-        }
-
-        refreshCompletion = nil
+        completion(authenticated: false, auth: nil, error: error)
     }
 }

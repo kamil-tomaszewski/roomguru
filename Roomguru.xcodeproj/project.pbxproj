@@ -35,6 +35,106 @@
 		5E569DCD1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */; };
 		5E569DCF1AEFA375009F8EC0 /* DayCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */; };
 		5E569DD21AF01C42009F8EC0 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DD11AF01C42009F8EC0 /* EventsViewController.swift */; };
+		5E57399E1B18A37A00AEC231 /* GPPAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */; };
+		5E57399F1B18A3E300AEC231 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */; };
+		5E5739A01B18A41500AEC231 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */; };
+		5E5739A11B18A42000AEC231 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD7431AAF270C00B75582 /* LoginViewController.swift */; };
+		5E5739A21B18A42B00AEC231 /* CalendarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */; };
+		5E5739A31B18A43700AEC231 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */; };
+		5E5739A41B18A43F00AEC231 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871951AB0660500C7FEE8 /* MyEventsViewController.swift */; };
+		5E5739A51B18A44700AEC231 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DD11AF01C42009F8EC0 /* EventsViewController.swift */; };
+		5E5739A61B18A44D00AEC231 /* TabBarTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EE92FB1B148FE100200957 /* TabBarTransitionAnimator.swift */; };
+		5E5739A71B18A45800AEC231 /* EventsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */; };
+		5E5739A81B18A46000AEC231 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FDE1AF03C150049131F /* EventsView.swift */; };
+		5E5739A91B18A46C00AEC231 /* EventsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA452A01B00AA49006CA0FA /* EventsListCoordinator.swift */; };
+		5E5739AA1B18A47300AEC231 /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AE3041ACC174000A3C146 /* CalendarPickerView.swift */; };
+		5E5739AB1B18A48200AEC231 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* DashboardView.swift */; };
+		5E5739AC1B18A48900AEC231 /* AlertViewTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */; };
+		5E5739AD1B18A49700AEC231 /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88583F1AF0E7AD00EF08F1 /* EventsListViewModel.swift */; };
+		5E5739AE1B18A49D00AEC231 /* UIBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AE3081ACC1F2200A3C146 /* UIBaseTableView.swift */; };
+		5E5739AF1B18A4A300AEC231 /* EmptyCalendarPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */; };
+		5E5739B01B18A52400AEC231 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */; };
+		5E5739B11B18A52800AEC231 /* EventedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161DCAA1B1459C800DD0AD9 /* EventedTableView.swift */; };
+		5E5739B21B18A5BC00AEC231 /* MyEventsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA452D71B020A1D006CA0FA /* MyEventsListCoordinator.swift */; };
+		5E5739B31B18A5C800AEC231 /* UIBarButtonItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9C47E61B0E29E200C5ACF5 /* UIBarButtonItemExtensions.swift */; };
+		5E5739B41B18A5CF00AEC231 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
+		5E5739B51B18A5D100AEC231 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */; };
+		5E5739B61B18A5D700AEC231 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */; };
+		5E5739B71B18A5DB00AEC231 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */; };
+		5E5739B81B18A5DE00AEC231 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */; };
+		5E5739B91B18A5E100AEC231 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */; };
+		5E5739BA1B18A5E400AEC231 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */; };
+		5E5739BB1B18A5E700AEC231 /* UIAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1BA3051ACB608000827BB6 /* UIAlertViewExtensions.swift */; };
+		5E5739BC1B18A5EA00AEC231 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */; };
+		5E5739BD1B18A5EC00AEC231 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */; };
+		5E5739BE1B18A5EF00AEC231 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */; };
+		5E5739BF1B18A5F300AEC231 /* NSCalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */; };
+		5E5739C01B18A5F900AEC231 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE6BF541B0F0D5B0051E530 /* UIAlertControllerExtensions.swift */; };
+		5E5739C11B18A5FC00AEC231 /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE6BF561B0F14810051E530 /* UITableViewCellExtensions.swift */; };
+		5E5739C21B18A60600AEC231 /* BookingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */; };
+		5E5739C31B18A64700AEC231 /* BookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */; };
+		5E5739C41B18A64E00AEC231 /* BookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */; };
+		5E5739C51B18A65800AEC231 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* TextField.swift */; };
+		5E5739C61B18A67400AEC231 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */; };
+		5E5739C71B18A68100AEC231 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */; };
+		5E5739C81B18A68400AEC231 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */; };
+		5E5739C91B18A68800AEC231 /* CalendarNameCustomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */; };
+		5E5739CA1B18A68B00AEC231 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */; };
+		5E5739CB1B18A69000AEC231 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B5781AE79E7300F9767E /* PickerViewController.swift */; };
+		5E5739CC1B18A69500AEC231 /* EventsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73A1ABAC95000B12244 /* EventsListViewController.swift */; };
+		5E5739CD1B18A69900AEC231 /* WeekCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FE01AF049170049131F /* WeekCarouselViewController.swift */; };
+		5E5739CE1B18A69C00AEC231 /* MaskingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49CC5A1B00F2F500ACAEC1 /* MaskingViewController.swift */; };
+		5E5739CF1B18A6A900AEC231 /* EditEventNetworkCooperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAF39F21B11EAF40032EFDF /* EditEventNetworkCooperator.swift */; };
+		5E5739D01B18A6B400AEC231 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A11ADD467400242859 /* EditEventViewModel.swift */; };
+		5E5739D11B18A6B900AEC231 /* WeekCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */; };
+		5E5739D21B18A6BF00AEC231 /* TextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566091AE1342300B935BF /* TextItem.swift */; };
+		5E5739D31B18A6C200AEC231 /* SwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660B1AE13C7200B935BF /* SwitchItem.swift */; };
+		5E5739D41B18A6C400AEC231 /* DateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660D1AE1526000B935BF /* DateItem.swift */; };
+		5E5739D51B18A6C700AEC231 /* LongTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */; };
+		5E5739D61B18A6CA00AEC231 /* DatePickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */; };
+		5E5739D71B18A6CC00AEC231 /* PickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */; };
+		5E5739D81B18A6D000AEC231 /* ActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */; };
+		5E5739D91B18A6D200AEC231 /* RoomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */; };
+		5E5739DA1B18A6D400AEC231 /* RecurrenceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE814541AE8413C00369522 /* RecurrenceItem.swift */; };
+		5E5739DB1B18A6D700AEC231 /* ResultActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */; };
+		5E5739DC1B18A6EF00AEC231 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1831AC1900D00D96270 /* ButtonView.swift */; };
+		5E5739DD1B18A6F300AEC231 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */; };
+		5E5739DE1B18A6F800AEC231 /* BorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */; };
+		5E5739DF1B18A6FC00AEC231 /* BasicTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */; };
+		5E5739E01B18A71300AEC231 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC49D941ADC75F500B798F5 /* AvatarView.swift */; };
+		5E5739E11B18A71500AEC231 /* GroupedBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */; };
+		5E5739E21B18A71700AEC231 /* SettingsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */; };
+		5E5739E31B18A71900AEC231 /* RoomguruLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */; };
+		5E5739E41B18A71B00AEC231 /* SettingsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */; };
+		5E5739E51B18A71F00AEC231 /* RoomHorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */; };
+		5E5739E61B18A72200AEC231 /* WeekdaysBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */; };
+		5E5739E71B18A72B00AEC231 /* MaskingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49CC5C1B00F5F300ACAEC1 /* MaskingView.swift */; };
+		5E5739E81B18A72E00AEC231 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1391AD804CF00E1F8BC /* LaunchView.swift */; };
+		5E5739E91B18A73700AEC231 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9E491AB04DB30042E16F /* LoginView.swift */; };
+		5E5739EA1B18A73A00AEC231 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */; };
+		5E5739EB1B18A73F00AEC231 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */; };
+		5E5739EC1B18A74200AEC231 /* CalendarNameCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C5F31AD425CD00CC9173 /* CalendarNameCustomizerView.swift */; };
+		5E5739ED1B18A74700AEC231 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E7381ABAC94100B12244 /* EventsListView.swift */; };
+		5E5739EE1B18A74900AEC231 /* WeekCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCA1AEFA015009F8EC0 /* WeekCarouselView.swift */; };
+		5E5739EF1B18A74E00AEC231 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E75F3821AF3F8AB00D1F23B /* ButtonCell.swift */; };
+		5E5739F01B18A75200AEC231 /* FreeEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */; };
+		5E5739F11B18A75200AEC231 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBCE1851AC1920200D96270 /* EventCell.swift */; };
+		5E5739F21B18A75200AEC231 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* SwitchCell.swift */; };
+		5E5739F31B18A75200AEC231 /* AttendeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */; };
+		5E5739F41B18A75200AEC231 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */; };
+		5E5739F51B18A75200AEC231 /* CalendarPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AFF6B1AD3D4E900FB73CD /* CalendarPickerCell.swift */; };
+		5E5739F61B18A75200AEC231 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */; };
+		5E5739F71B18A75200AEC231 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5660F1AE15B2400B935BF /* DateCell.swift */; };
+		5E5739F81B18A75200AEC231 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */; };
+		5E5739F91B18A75200AEC231 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */; };
+		5E5739FA1B18A75200AEC231 /* RightDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */; };
+		5E5739FB1B18A75200AEC231 /* PickerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */; };
+		5E5739FC1B18A75700AEC231 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */; };
+		5E5739FD1B18A75700AEC231 /* DayCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */; };
+		5E5739FE1B18A76700AEC231 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF755231AE52C6500F68DB9 /* Reusable.swift */; };
+		5E5739FF1B18A76C00AEC231 /* KeyboardPresenceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */; };
+		5E573A001B18A7A600AEC231 /* WeekCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */; };
+		5E573A011B18A7C200AEC231 /* StickyExpandableFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */; };
 		5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
 		5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */; };
 		5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
@@ -1518,6 +1618,7 @@
 				744C9E7A1B020126000D9E5C /* FreeBusyQuery.swift in Sources */,
 				5E9289AC1B1322720079CE36 /* BookingManager.swift in Sources */,
 				74F309C91B01F30900EB5D5D /* TimeFrame.swift in Sources */,
+				5E5739CB1B18A69000AEC231 /* PickerViewController.swift in Sources */,
 				74F309C61B01F24200EB5D5D /* CalendarEntry.swift in Sources */,
 				74F309C51B01F1FE00EB5D5D /* BookingQuery.swift in Sources */,
 				74F309C41B01F1AD00EB5D5D /* EventQuery.swift in Sources */,
@@ -1525,66 +1626,165 @@
 				74851CC41B00FAB700228483 /* EventsQuery.swift in Sources */,
 				5E9289AB1B13226E0079CE36 /* FreeEvent.swift in Sources */,
 				74433FBB1AFB574E00B7ED50 /* Queryable.swift in Sources */,
+				5E5739E31B18A71900AEC231 /* RoomguruLabel.swift in Sources */,
+				5E5739F11B18A75200AEC231 /* EventCell.swift in Sources */,
 				744C9E791B0200A2000D9E5C /* FreeBusyQuerySpec.swift in Sources */,
+				5E5739F91B18A75200AEC231 /* DatePickerCell.swift in Sources */,
+				5E5739CA1B18A68B00AEC231 /* LaunchViewController.swift in Sources */,
 				74433FBA1AFB574200B7ED50 /* RevokeQuery.swift in Sources */,
+				5E5739E91B18A73700AEC231 /* LoginView.swift in Sources */,
+				5E5739E71B18A72B00AEC231 /* MaskingView.swift in Sources */,
 				74433FB91AFB573600B7ED50 /* CalendarsQuery.swift in Sources */,
 				BFC4CC961AF9EA190070007B /* ObjectKeyValueSharedExample.swift in Sources */,
+				5E5739C01B18A5F900AEC231 /* UIAlertControllerExtensions.swift in Sources */,
+				5E5739BD1B18A5EC00AEC231 /* UIViewExtensions.swift in Sources */,
+				5E5739D91B18A6D200AEC231 /* RoomItem.swift in Sources */,
+				5E5739E01B18A71300AEC231 /* AvatarView.swift in Sources */,
 				5E9289AD1B1322830079CE36 /* EventsProvider.swift in Sources */,
+				5E5739E41B18A71B00AEC231 /* SettingsCollectionViewHeader.swift in Sources */,
 				BF9F9FE11AF233BC0081B817 /* ListViewModelSharedExample.swift in Sources */,
 				BF7521161AE92E8500B8BDE8 /* ListSpec.swift in Sources */,
 				BF2D52A01AF8DD2700EEEF81 /* ModelObjectSpec.swift in Sources */,
+				5E5739EC1B18A74200AEC231 /* CalendarNameCustomizerView.swift in Sources */,
+				5E5739AD1B18A49700AEC231 /* EventsListViewModel.swift in Sources */,
+				5E5739FD1B18A75700AEC231 /* DayCarouselCell.swift in Sources */,
+				5E5739EE1B18A74900AEC231 /* WeekCarouselView.swift in Sources */,
 				746B1ED31B049C60009FB084 /* PageableQuerySpec.swift in Sources */,
 				BFF5D16D1AF8F74700C40B76 /* ModelObject.swift in Sources */,
 				BF3A178F1AFA32A2007D95B6 /* JSONExtensions.swift in Sources */,
 				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
+				5E5739B81B18A5DE00AEC231 /* NSAttributedStringExtensions.swift in Sources */,
+				5E5739DB1B18A6D700AEC231 /* ResultActionItem.swift in Sources */,
+				5E5739D41B18A6C400AEC231 /* DateItem.swift in Sources */,
 				74433FB71AFB56DC00B7ED50 /* RevokeQuerySpec.swift in Sources */,
 				5EE73F2A1AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift in Sources */,
+				5E5739BE1B18A5EF00AEC231 /* UINavigationControllerExtensions.swift in Sources */,
 				BF2D529E1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift in Sources */,
+				5E5739C81B18A68400AEC231 /* EventDetailsViewController.swift in Sources */,
+				5E5739BB1B18A5E700AEC231 /* UIAlertViewExtensions.swift in Sources */,
+				5E5739FA1B18A75200AEC231 /* RightDetailTextCell.swift in Sources */,
+				5E5739A41B18A43F00AEC231 /* MyEventsViewController.swift in Sources */,
+				5E5739ED1B18A74700AEC231 /* EventsListView.swift in Sources */,
 				5E67FE751AE91F8C003AB827 /* UserDiskManagerSpec.swift in Sources */,
+				5E5739EF1B18A74E00AEC231 /* ButtonCell.swift in Sources */,
+				5E5739DE1B18A6F800AEC231 /* BorderTextField.swift in Sources */,
+				5E5739AB1B18A48200AEC231 /* DashboardView.swift in Sources */,
+				5E5739CC1B18A69500AEC231 /* EventsListViewController.swift in Sources */,
+				5E5739A61B18A44D00AEC231 /* TabBarTransitionAnimator.swift in Sources */,
+				5E5739E61B18A72200AEC231 /* WeekdaysBar.swift in Sources */,
 				5EA900F81AEE060000A66FC8 /* CalendarPickerViewModel.swift in Sources */,
 				5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */,
+				5E5739B91B18A5E100AEC231 /* NSURLExtensions.swift in Sources */,
+				5E5739E81B18A72E00AEC231 /* LaunchView.swift in Sources */,
+				5E5739DA1B18A6D400AEC231 /* RecurrenceItem.swift in Sources */,
+				5E5739B41B18A5CF00AEC231 /* UIViewControllerExtensions.swift in Sources */,
+				5E5739B01B18A52400AEC231 /* UILabelExtensions.swift in Sources */,
+				5E5739F31B18A75200AEC231 /* AttendeeCell.swift in Sources */,
 				74F309C31B01F15100EB5D5D /* EventQuerySpec.swift in Sources */,
+				5E5739CD1B18A69900AEC231 /* WeekCarouselViewController.swift in Sources */,
 				5E84CE411B1453B300E47C32 /* UIColorExtensions.swift in Sources */,
+				5E5739CE1B18A69C00AEC231 /* MaskingViewController.swift in Sources */,
 				742B9C7C1B15EB4600D7CDC7 /* TimeFrameSpec.swift in Sources */,
+				5E5739A51B18A44700AEC231 /* EventsViewController.swift in Sources */,
 				BFC4CC981AF9F2A30070007B /* AttendeeSpec.swift in Sources */,
+				5E5739D71B18A6CC00AEC231 /* PickerItem.swift in Sources */,
+				5E5739B61B18A5D700AEC231 /* UITableViewExtensions.swift in Sources */,
+				5E573A011B18A7C200AEC231 /* StickyExpandableFlowLayout.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
+				5E5739A31B18A43700AEC231 /* NavigationController.swift in Sources */,
 				BFC4CC9A1AFA01450070007B /* JSONKeyValueSharedExample.swift in Sources */,
+				5E57399F1B18A3E300AEC231 /* AppDelegate.swift in Sources */,
+				5E5739D31B18A6C200AEC231 /* SwitchItem.swift in Sources */,
 				5EF4C7CA1AEE42970050201A /* ListViewModel.swift in Sources */,
+				5E57399E1B18A37A00AEC231 /* GPPAuthenticator.swift in Sources */,
+				5E5739F51B18A75200AEC231 /* CalendarPickerCell.swift in Sources */,
 				5EF4C7C71AEE3EC30050201A /* SettingsViewModelSpec.swift in Sources */,
+				5E5739AC1B18A48900AEC231 /* AlertViewTransitionDelegate.swift in Sources */,
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
+				5E5739C41B18A64E00AEC231 /* BookingConfirmationView.swift in Sources */,
 				5E9289B21B1322D70079CE36 /* AppConfiguration.swift in Sources */,
+				5E5739A21B18A42B00AEC231 /* CalendarPickerViewController.swift in Sources */,
+				5E5739AF1B18A4A300AEC231 /* EmptyCalendarPlaceholderView.swift in Sources */,
 				5E67FE5C1AE90474003AB827 /* UserImageDownloader.swift in Sources */,
+				5E5739C91B18A68800AEC231 /* CalendarNameCustomizerViewController.swift in Sources */,
 				5EB3A09E1AEA714800DB0585 /* Event.swift in Sources */,
+				5E5739C11B18A5FC00AEC231 /* UITableViewCellExtensions.swift in Sources */,
 				5E9289B01B1322B80079CE36 /* NSErrorExtensions.swift in Sources */,
+				5E5739CF1B18A6A900AEC231 /* EditEventNetworkCooperator.swift in Sources */,
+				5E5739D81B18A6D000AEC231 /* ActionItem.swift in Sources */,
+				5E5739FB1B18A75200AEC231 /* PickerItemCell.swift in Sources */,
+				5E5739C51B18A65800AEC231 /* TextField.swift in Sources */,
+				5E5739A91B18A46C00AEC231 /* EventsListCoordinator.swift in Sources */,
 				BF7E2FA71AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift in Sources */,
 				BF7E2FA81AF7C40A00A51A0F /* GroupItem.swift in Sources */,
+				5E5739A71B18A45800AEC231 /* EventsPageViewController.swift in Sources */,
+				5E5739A81B18A46000AEC231 /* EventsView.swift in Sources */,
+				5E5739F81B18A75200AEC231 /* TextViewCell.swift in Sources */,
+				5E5739B31B18A5C800AEC231 /* UIBarButtonItemExtensions.swift in Sources */,
+				5E5739F71B18A75200AEC231 /* DateCell.swift in Sources */,
+				5E5739D51B18A6C700AEC231 /* LongTextItem.swift in Sources */,
 				5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */,
+				5E5739AA1B18A47300AEC231 /* CalendarPickerView.swift in Sources */,
+				5E5739F21B18A75200AEC231 /* SwitchCell.swift in Sources */,
+				5E5739EB1B18A73F00AEC231 /* EventDetailsView.swift in Sources */,
+				5E5739DC1B18A6EF00AEC231 /* ButtonView.swift in Sources */,
 				BFF5D16C1AF8E84600C40B76 /* UIImageTestExtensions.swift in Sources */,
+				5E5739BA1B18A5E400AEC231 /* UIApplicationExtensions.swift in Sources */,
+				5E5739B11B18A52800AEC231 /* EventedTableView.swift in Sources */,
+				5E5739B71B18A5DB00AEC231 /* UICollectionViewExtensions.swift in Sources */,
+				5E5739D11B18A6B900AEC231 /* WeekCarouselViewModel.swift in Sources */,
+				5E573A001B18A7A600AEC231 /* WeekCarouselFlowLayout.swift in Sources */,
 				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,
+				5E5739AE1B18A49D00AEC231 /* UIBaseTableView.swift in Sources */,
+				5E5739D61B18A6CA00AEC231 /* DatePickerItem.swift in Sources */,
+				5E5739DD1B18A6F300AEC231 /* HeaderLabel.swift in Sources */,
 				5E9289AF1B13229F0079CE36 /* NetworkManager.swift in Sources */,
+				5E5739C61B18A67400AEC231 /* EditEventViewController.swift in Sources */,
 				BFF5D16A1AF8E84600C40B76 /* NSDataTestExtensions.swift in Sources */,
 				BF7E2FA91AF7C4A800A51A0F /* GroupedListViewModel.swift in Sources */,
+				5E5739F61B18A75200AEC231 /* TextFieldCell.swift in Sources */,
 				5E0618F51AEA357B00006F61 /* UserPersistenceStoreSpec.swift in Sources */,
 				741699BD1AFFDED300F42474 /* QueryableSharedExample.swift in Sources */,
 				5E67FE5D1AE9047A003AB827 /* UserDiskManager.swift in Sources */,
 				5E9289B31B1322ED0079CE36 /* NSDateExtensions.swift in Sources */,
 				5E67FE5B1AE9046D003AB827 /* UserPersistenceStore.swift in Sources */,
 				5E67FE711AE904DD003AB827 /* FontAwesome.swift in Sources */,
+				5E5739FE1B18A76700AEC231 /* Reusable.swift in Sources */,
+				5E5739E51B18A71F00AEC231 /* RoomHorizontalPicker.swift in Sources */,
+				5E5739EA1B18A73A00AEC231 /* SettingsView.swift in Sources */,
+				5E5739F41B18A75200AEC231 /* DescriptionCell.swift in Sources */,
 				74433FB61AFB56DC00B7ED50 /* CalendarsQuerySpec.swift in Sources */,
 				5EB3A09D1AEA707600DB0585 /* EventDetailsViewModelSpec.swift in Sources */,
+				5E5739E11B18A71500AEC231 /* GroupedBaseTableView.swift in Sources */,
+				5E5739C21B18A60600AEC231 /* BookingConfirmationViewController.swift in Sources */,
 				743821431B00F9E200AEC354 /* EventsQuerySpec.swift in Sources */,
+				5E5739BC1B18A5EA00AEC231 /* StringExtensions.swift in Sources */,
 				5EB3A09F1AEA71D700DB0585 /* Attendee.swift in Sources */,
 				5E9289AE1B1322850079CE36 /* FreeEventsProvider.swift in Sources */,
 				5EF4C7C51AEE3B5E0050201A /* SettingsStoreSpec.swift in Sources */,
+				5E5739F01B18A75200AEC231 /* FreeEventCell.swift in Sources */,
+				5E5739B21B18A5BC00AEC231 /* MyEventsListCoordinator.swift in Sources */,
+				5E5739D01B18A6B400AEC231 /* EditEventViewModel.swift in Sources */,
+				5E5739E21B18A71700AEC231 /* SettingsTableHeaderView.swift in Sources */,
+				5E5739A11B18A42000AEC231 /* LoginViewController.swift in Sources */,
 				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
+				5E5739C31B18A64700AEC231 /* BookingConfirmationViewModel.swift in Sources */,
+				5E5739BF1B18A5F300AEC231 /* NSCalendarExtensions.swift in Sources */,
 				5E9289B11B1322C80079CE36 /* Requests.swift in Sources */,
 				5EF4C7C81AEE40100050201A /* SettingsStore.swift in Sources */,
+				5E5739D21B18A6BF00AEC231 /* TextItem.swift in Sources */,
 				BFFB513A1AED87B30065F051 /* ListViewModelSpec.swift in Sources */,
 				BFD2A1E91AEA563A00428AAB /* SectionSpec.swift in Sources */,
 				7497CF181B04B7100059B4DB /* QuerySpec.swift in Sources */,
+				5E5739A01B18A41500AEC231 /* TabBarController.swift in Sources */,
+				5E5739B51B18A5D100AEC231 /* UIButtonExtensions.swift in Sources */,
 				746F8B0C1B0340F7005E746A /* BookingQuerySpec.swift in Sources */,
+				5E5739DF1B18A6FC00AEC231 /* BasicTitleView.swift in Sources */,
 				BF8867681AE93364009DA028 /* Listable.swift in Sources */,
+				5E5739C71B18A68100AEC231 /* SettingsViewController.swift in Sources */,
 				5EA900F71AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift in Sources */,
+				5E5739FC1B18A75700AEC231 /* SettingsCell.swift in Sources */,
+				5E5739FF1B18A76C00AEC231 /* KeyboardPresenceHandler.swift in Sources */,
 				5EF4C7C91AEE40780050201A /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
