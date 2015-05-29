@@ -70,6 +70,10 @@ extension ListViewModel: Itemizable {
 
 extension ListViewModel: IndexPathOperatable {
     
+    func getItemAtIndexPath(indexPath: NSIndexPath) -> T {
+        return sections[indexPath.section][indexPath.row];
+    }
+    
     func addItem(item: T, atIndexPath indexPath: NSIndexPath) {
         sections[indexPath.section].add(item, atIndex: indexPath.row)
     }

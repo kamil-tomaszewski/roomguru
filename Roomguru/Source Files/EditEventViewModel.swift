@@ -142,13 +142,13 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                     if let indexPath = indexPath {
                         let nextIndexPath = NSIndexPath(forRow: indexPath.row+1, inSection: indexPath.section)
                         
-                        if state {
-                            self?.removeAtIndexPath(nextIndexPath)
-                            self?.delegate?.removedItemsAtIndexPaths([nextIndexPath])
-                        } else {
-                            if let pickerItem = self?.datePickerItemForDateItem(item) {
-                                self?.addItem(pickerItem, atIndexPath: nextIndexPath)
-                                self?.delegate?.addedItemsAtIndexPaths([nextIndexPath])
+                        if !state {
+                            let nextItem = self?.getItemAtIndexPath(nextIndexPath) as? DatePickerItem
+                            if nextItem == nil {
+                                if let pickerItem = self?.datePickerItemForDateItem(item) {
+                                    self?.addItem(pickerItem, atIndexPath: nextIndexPath)
+                                    self?.delegate?.addedItemsAtIndexPaths([nextIndexPath])
+                                }
                             }
                         }
                     }
