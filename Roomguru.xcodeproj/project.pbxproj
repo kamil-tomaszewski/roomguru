@@ -260,6 +260,7 @@
 		5EFE00F71ADE87990083FB8E /* RoomguruLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */; };
 		5EFE00FB1ADE97DA0083FB8E /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */; };
 		5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */; };
+		74092C461B18AB580074A2B1 /* CalendarSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74092C451B18AB580074A2B1 /* CalendarSpec.swift */; };
 		741699BD1AFFDED300F42474 /* QueryableSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */; };
 		742B9C7C1B15EB4600D7CDC7 /* TimeFrameSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */; };
 		743821431B00F9E200AEC354 /* EventsQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743821421B00F9E200AEC354 /* EventsQuerySpec.swift */; };
@@ -511,6 +512,7 @@
 		5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomguruLabel.swift; path = "Roomguru/Source Files/RoomguruLabel.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchViewController.swift; path = "Roomguru/Source Files/LaunchViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
+		74092C451B18AB580074A2B1 /* CalendarSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSpec.swift; sourceTree = "<group>"; };
 		741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryableSharedExample.swift; sourceTree = "<group>"; };
 		742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFrameSpec.swift; sourceTree = "<group>"; };
 		743821421B00F9E200AEC354 /* EventsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsQuerySpec.swift; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 		5E3A98371AA73A6500CE2F20 /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				74092C471B18AB640074A2B1 /* Object & Models Tests */,
 				74433FB81AFB56EB00B7ED50 /* Queries Tests */,
 				BF8867651AE93262009DA028 /* Shared Behaviors */,
 				5E147CBC1AA8B54100EDD97C /* Helper */,
@@ -914,8 +917,6 @@
 				5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */,
 				BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */,
 				BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */,
-				BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */,
-				BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */,
 				742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */,
 			);
 			path = "Unit Tests";
@@ -1064,6 +1065,16 @@
 				5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		74092C471B18AB640074A2B1 /* Object & Models Tests */ = {
+			isa = PBXGroup;
+			children = (
+				74092C451B18AB580074A2B1 /* CalendarSpec.swift */,
+				BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */,
+				BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */,
+			);
+			name = "Object & Models Tests";
 			sourceTree = "<group>";
 		};
 		74433FB81AFB56EB00B7ED50 /* Queries Tests */ = {
@@ -1685,6 +1696,7 @@
 				5E84CE411B1453B300E47C32 /* UIColorExtensions.swift in Sources */,
 				5E5739CE1B18A69C00AEC231 /* MaskingViewController.swift in Sources */,
 				742B9C7C1B15EB4600D7CDC7 /* TimeFrameSpec.swift in Sources */,
+				74092C461B18AB580074A2B1 /* CalendarSpec.swift in Sources */,
 				5E5739A51B18A44700AEC231 /* EventsViewController.swift in Sources */,
 				BFC4CC981AF9F2A30070007B /* AttendeeSpec.swift in Sources */,
 				5E5739D71B18A6CC00AEC231 /* PickerItem.swift in Sources */,
