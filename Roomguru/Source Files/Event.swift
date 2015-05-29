@@ -107,7 +107,7 @@ class Event: ModelObject, NSSecureCoding {
     // MARK: JSON
 
     override func toJSON() -> JSON {
-        var json = JSON([])
+        var json = JSON([:])
         json["kind"].string = kind
         json["etag"].string = etag
         json["identifier"].string = identifier

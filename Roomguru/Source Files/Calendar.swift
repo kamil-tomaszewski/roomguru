@@ -75,7 +75,7 @@ class Calendar: ModelObject, NSSecureCoding, Equatable {
     }
     
     override func toJSON() -> JSON {
-        var json = JSON([])
+        var json = JSON([:])
         json["accessRole"].string = accessRole
         json["etag"].string = etag
         json["id"].string = identifier
