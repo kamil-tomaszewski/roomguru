@@ -175,7 +175,7 @@ extension EventDetailsViewController {
     func didTapRevokeEventButton(sender: UIButton) {
         
         let title = NSLocalizedString("Are you sure?", comment: "")
-        let message = NSLocalizedString("When proceed, will delete event pernamently.", comment: "")
+        let message = NSLocalizedString("When proceed, will delete event permanently.", comment: "")
         let alertController = UIAlertController.destroyAlertControllerWithTitle(title, message: message) {
             
             if let email = UserPersistenceStore.sharedStore.user?.email, eventID = self.viewModel.event?.identifier {
