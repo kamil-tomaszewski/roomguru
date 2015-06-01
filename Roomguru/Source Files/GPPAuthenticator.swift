@@ -57,6 +57,7 @@ class GPPAuthenticator: NSObject {
     
     func signOut() {
         GPPSignIn.sharedInstance().signOut()
+        NetworkManager.sharedInstance.enableTokenStore(false)
     }
 }
 

@@ -27,8 +27,8 @@ class NetworkManager: NSObject {
     }
     
     // Enable token store AFTER receiving auth from Google
-    func enableTokenStore() {
-        tokenStore = GPPTokenStore()
+    func enableTokenStore(_ enable: Bool = true) {
+        tokenStore = enable ? GPPTokenStore() : nil
         updateAuthorizationHeader()
     }
 }
@@ -118,6 +118,8 @@ private extension NetworkManager {
         
         if let tokenStore = tokenStore {
             Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": tokenStore.authorizationHeader()]
+        } else {
+            Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = nil
         }
     }
 }

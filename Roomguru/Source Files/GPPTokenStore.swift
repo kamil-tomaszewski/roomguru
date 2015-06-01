@@ -11,6 +11,12 @@ import Alamofire
 import SwiftyJSON
 import DateKit
 
+/* NOTICE:
+ * This class is workaround for g+ issue with refreshing token.
+ * Raw request is used.
+ * Please use accessToken from this class (not GTMOAuth2Authentication.accessToken).
+ */
+
 class GPPTokenStore {
     
     private var token: GTMOAuth2Authentication { return GPPSignIn.sharedInstance().authentication }
