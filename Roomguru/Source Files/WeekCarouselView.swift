@@ -100,7 +100,7 @@ private extension WeekCarouselView {
             button.left == button.superview!.left
             button.bottom == button.superview!.bottom
             button.height == label.height
-            button.width == 100
+            button.width == 60
         }
     }
 }
