@@ -71,11 +71,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.addSubview(launchViewController!.view)
         
         
-        authenticator = GPPAuthenticator() {  (authenticated, auth, error) in
+        authenticator = GPPAuthenticator() { (authenticated, auth, error) in
 
             if let auth = auth {
                 UserPersistenceStore.sharedStore.registerUserWithEmail(auth.userEmail)
-                NetworkManager.sharedInstance.setAuthentication(auth)
+                NetworkManager.sharedInstance.enableTokenStore()
             }
             
             if authenticated {
@@ -128,7 +128,8 @@ private extension AppDelegate {
             BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         #endif
         
-        NetworkManager.sharedInstance.setServerURL(AppConfiguration.GooglePlus.ServerURL)
+        NetworkManager.sharedInstance.serverURL = AppConfiguration.GooglePlus.ServerURL
+        NetworkManager.sharedInstance.clientID = AppConfiguration.GooglePlus.ClientID
         
         PKHUD.sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
         PKHUD.sharedHUD.dimsBackground = false

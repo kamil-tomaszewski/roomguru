@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DateKit
 import Async
 
 class GPPAuthenticator: NSObject {
@@ -20,6 +19,7 @@ class GPPAuthenticator: NSObject {
     
     private let completion: AuthenticatorCompletionBlock
     private(set) var isAuthenticating = false
+    private var expirationDate: NSDate?
     
     init(completion: AuthenticatorCompletionBlock) {
         
@@ -57,18 +57,6 @@ class GPPAuthenticator: NSObject {
     
     func signOut() {
         GPPSignIn.sharedInstance().signOut()
-    }
-    
-    func manuallyHandleTokenRefresh(completion: ((authenticated: Bool, error: NSError?) -> Void)) {
-        
-        if GPPSignIn.sharedInstance().authentication != nil {
-            //NGRTemp: intentionally left. do not remove!
-            println(GPPSignIn.sharedInstance().authentication.expirationDate)
-            
-            GPPSignIn.sharedInstance().authentication.authorizeRequest(nil) { error in
-                completion(authenticated: error == nil, error: error)
-            }
-        }
     }
 }
 
