@@ -26,7 +26,7 @@ class QueryRequest {
     
     func resume(success: ResponseBlock, failure: ErrorBlock) {
         request = createRequest()
-        request.responseJSON { (request, response, json, error) -> Void in
+        request.responseJSON { (_, response, json, error) in
             
             if let responseError = self.validateResponse(response, withError: error) {
                 failure(error: responseError)
@@ -61,12 +61,9 @@ class QueryRequest {
     
     private func checkResponseForError(response: NSHTTPURLResponse?) -> NSError? {
         if response?.statusCode == 401 {
-            let message = NSLocalizedString("Authorization expired. Please log in again.", comment: "")
-            NSNotificationCenter.defaultCenter().postNotificationName(GoogleAPIAuthorizationExpired, object: nil)
-            return NSError(message: message)
+            return NSError(message: NSLocalizedString("Authorization expired. Please log in again.", comment: ""))
         } else if response?.statusCode >= 400 {
-            let message = NSLocalizedString("Failed retrieving data", comment: "")
-            return NSError(message: message)
+            return NSError(message: NSLocalizedString("Failed retrieving data", comment: ""))
         }
         return nil
     }
@@ -90,11 +87,11 @@ class PageableRequest<T: ModelJSONProtocol>: QueryRequest {
 
 extension PageableRequest {
     
-    func resume(success: (response: [T]?) -> (), _ failure: ErrorBlock) {
+    func resume(success: (response: [T]?) -> Void, _ failure: ErrorBlock) {
         
         request = createRequest()
         
-        request.responseJSON { (request, response, json, error) -> Void in
+        request.responseJSON { (_, response, json, error) in
             
             if let responseError = self.validateResponse(response, withError: error) {
                 failure(error: responseError)
