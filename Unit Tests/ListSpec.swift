@@ -11,8 +11,6 @@ import Quick
 
 import Roomguru
 
-class FixtureItem {}
-
 class ListSpec: QuickSpec {
     
     override func spec() {
