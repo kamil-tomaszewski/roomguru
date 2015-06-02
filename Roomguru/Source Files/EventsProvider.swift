@@ -105,8 +105,24 @@ private extension EventsProvider {
         let userEmail = UserPersistenceStore.sharedStore.user?.email
         return onlyActiveEvents(events).filter {
             
-            let isAttendee = !$0.attendees.filter { $0.email == userEmail }.isEmpty
-            return $0.creator?.email == userEmail || isAttendee
+            // is user an attendee:
+            let isAttendee = !$0.attendees.filter {
+                $0.email == userEmail
+                
+                if let email = $0.email, userEmail = userEmail {
+                    return email.isEqualToEmail(userEmail, comparisionPart: .Local)
+                }
+                return false
+            }.isEmpty
+            
+
+            // is user creator of an event:
+            var isCreator = false
+            if let email = $0.creator?.email, userEmail = userEmail {
+                isCreator = email.isEqualToEmail(userEmail, comparisionPart: .Local)
+            }
+            
+            return isCreator || isAttendee
         }
     }
 }

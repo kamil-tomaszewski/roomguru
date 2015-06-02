@@ -17,7 +17,10 @@ class EventDetailsViewController: UIViewController {
     private var didUpdateBlock: VoidBlock?
     
     private var editable: Bool {
-        return viewModel.event?.creator?.email == UserPersistenceStore.sharedStore.user?.email
+        if let localEmail = UserPersistenceStore.sharedStore.user?.email, creatorEmail = viewModel.event?.creator?.email {
+            return creatorEmail.isEqualToEmail(localEmail, comparisionPart: .Local)
+        }
+        return false
     }
     
     // MARK: View life cycle
