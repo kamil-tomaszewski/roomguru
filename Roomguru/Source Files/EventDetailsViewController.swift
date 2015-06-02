@@ -101,6 +101,9 @@ extension EventDetailsViewController: UITableViewDataSource {
             // hide for locations:
             cell.footerLabel.hidden = (indexPath.section == 1)
             
+            //hide for organizers:
+            cell.statusLabel.hidden = (indexPath.section == 2 || indexPath.section == 1)
+            
             if let url = NSURL.gravatarURLWithEmail(info.email) {
                 cell.avatarView.imageView.setImageWithURL(url)
             }
