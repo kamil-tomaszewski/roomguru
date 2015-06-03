@@ -915,24 +915,14 @@
 		5E3A98371AA73A6500CE2F20 /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
-				74092C471B18AB640074A2B1 /* Object & Models Tests */,
-				74433FB81AFB56EB00B7ED50 /* Queries Tests */,
 				BF8867651AE93262009DA028 /* Shared Behaviors */,
 				5E147CBC1AA8B54100EDD97C /* Helper */,
-				5EE73F291AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift */,
-				5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */,
-				5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */,
+				74092C471B18AB640074A2B1 /* Object & Models Tests */,
+				74433FB81AFB56EB00B7ED50 /* Queries Tests */,
+				5E7527D91B1F3EB0007D35A3 /* Managers Tests */,
+				5E7527DA1B1F3EBC007D35A3 /* ViewModels Tests */,
 				BF7521151AE92E8500B8BDE8 /* ListSpec.swift */,
-				5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */,
-				21875E9C1B186688003E1E59 /* EditEventViewModelSpec.swift */,
 				BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */,
-				5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */,
-				5EF4C7C41AEE3B5E0050201A /* SettingsStoreSpec.swift */,
-				5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */,
-				BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */,
-				BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */,
-				742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */,
-				5E71519B1B1F1EDF0032CD3D /* GPPTokenStoreSpec.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -1043,6 +1033,31 @@
 			name = "Collection Cells";
 			sourceTree = "<group>";
 		};
+		5E7527D91B1F3EB0007D35A3 /* Managers Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5EF4C7C41AEE3B5E0050201A /* SettingsStoreSpec.swift */,
+				5EE73F291AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift */,
+				5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */,
+				5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */,
+				5E71519B1B1F1EDF0032CD3D /* GPPTokenStoreSpec.swift */,
+			);
+			name = "Managers Tests";
+			sourceTree = "<group>";
+		};
+		5E7527DA1B1F3EBC007D35A3 /* ViewModels Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */,
+				21875E9C1B186688003E1E59 /* EditEventViewModelSpec.swift */,
+				5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */,
+				5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */,
+				BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */,
+				BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */,
+			);
+			name = "ViewModels Tests";
+			sourceTree = "<group>";
+		};
 		5E769F071ACEDC200061289D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,6 +1105,7 @@
 				74092C451B18AB580074A2B1 /* CalendarSpec.swift */,
 				BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */,
 				BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */,
+				742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */,
 			);
 			name = "Object & Models Tests";
 			sourceTree = "<group>";
