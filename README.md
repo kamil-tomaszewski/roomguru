@@ -1,98 +1,33 @@
-# Just another iOS project
+# Roomguru
 
-Welcome to the **just another iOS swift** project.
+Roomguru is an open source app for managing meetings in your busy working day. It uses Google resource calendars for representing rooms. Google account is required to authenticate with application. Google app has to be created in Google apps to obtain application identifier.
 
-### Tools & requirements
+App is totally free to use for everyone.
 
-- Xcode 6.0 with iOS 8.0 SDK
-- [Carthage](https://github.com/Carthage/Carthage) 0.5
-- [CocoaPods](https://github.com/CocoaPods/CocoaPods) 0.36.0.rc1 or newer
+## Requirements
 
-### Configuration
+Roomguru requires Google app set up in Google apps service. You will also need [resource calendars](https://support.google.com/a/answer/1686462?hl=en) to use this app.
 
-Assuming the above tools are already installed, run the following commands after cloning the repository:
+## Configuration
 
-- `carthage update`
-- `pod install`
+## Distribution
 
-### Coding guidelines
+We're not providing any distribution channel for Roomguru. If you want to use our app in your team, we have nothing against it, however we can't provide you with any service to distribute it.
 
-- Respect [Ray Wenderlich's Swift style guide](https://github.com/raywenderlich/swift-style-guide).
-- Use [clang-format Xcode plugin](https://github.com/travisjeffery/ClangFormat-Xcode). Enable the "File" and "Format on save" options. 
-- The code must be readable and self-explanatory - full variable names, meaningful methods, etc.
-- Write documentation comments in header files **only when needed** (eg. hacks, tricky parts).
-- **Write tests** for every bug you fix and every feature you deliver.
-- **Don't leave** any commented-out code.
-- Don't use pure `#pragma message` for warnings. Use the `NGRTemporary` and `NGRWorkInProgress` macros accordingly.
-- Use **feature flags** (located in `Project-Features.h` file) for enabling or disabling major features.
+We recommend to use [Hockey App](http://hockeyapp.net), [Testflight](https://developer.apple.com/testflight/) or [Apple Enterprise accounts](https://developer.apple.com/programs/ios/enterprise/). You can also install Roomguru on your colleagues' devices using Xcode - the hard way.
 
-### Workflow
+## Contribution
 
-- Always hit ⌘U (Product → Test) before committing.
-- Always commit to master. No remote branches, forks and pull requests.
-- Wait for CI build to succeed before delivering a Pivotal story.
-- Use `[ci skip]` in the commit message just for non-code changes.
+You're more than welcome to contribute. Report issue if you:
+* found a problem,
+* want to ask question,
+* have improvement proposal.
 
-### Push notifications
+## Authors
 
-Use [Houston gem](https://github.com/nomad/Houston) for dealing with push notifications.
+* [Patryk Kaczmarek](https://github.com/PatrykKaczmarek)
+* [Radosław Szeja](https://github.com/rad3ks)
+* [Aleksander Popko](https://github.com/APbjj)
+* [Wojciech Trzasko](https://github.com/WojciechTrzasko)
 
-### Examples
-
-#### Good commit message
-
-```none
-Fix foo in bar using baz
-
-[#12345678]
-[0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b]
-```
-
-#### Correct push notification format
-
-```js
-{
-   'aps': {
-       'alert': 'Title string',
-       // ...
-   },
-   'url': 'project://uri',
-   // ...
-}
-```
-
-#### Sending a notification from command-line
-
-```bash
-$ gem install houston
-$ apn push "<device_registration_token>" \
-   -c project_apn.pem \
-   -m "Notification Title"
-```
-
-#### Sending push notifications from ruby
-
-```ruby
-# push.rb
-require 'houston'
-
-APN = Houston::Client.development
-APN.certificate = File.read("/path/to/apple_push_notification.pem")
-
-token = "<device_registration_token>" # Find in Installations table
-
-notification = Houston::Notification.new(device: token)
-notification.alert = "Hello, World!"
-notification.badge = 57
-notification.content_available = true
-notification.custom_data = {
-  url: 'project://uri'
-}
-
-APN.push(notification)
-```
-
-```bash
-$ gem install houston
-$ ruby push.rb
-```
+Copyright © 2014 - 2015 [Netguru](https://netguru.co)
