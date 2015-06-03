@@ -25,11 +25,11 @@ class TimeFrameSpec: QuickSpec {
             
             let fixtureAvailability: TimeFrameAvailability = .Available
             
-            beforeEach() {
+            beforeEach {
                 sut = TimeFrame(startDate: fixtureStartDate, endDate: fixtureEndDate, availability: fixtureAvailability)
             }
             
-            afterEach() {
+            afterEach {
                 sut = nil
             }
             
@@ -59,11 +59,11 @@ class TimeFrameSpec: QuickSpec {
             
             let fixtureAvailability: TimeFrameAvailability = .NotAvailable
             
-            beforeEach() {
+            beforeEach {
                sut = TimeFrame(startDate: fixtureStartDate, endDate: fixtureEndDate)
             }
             
-            afterEach() {
+            afterEach {
                 sut = nil
             }
             

@@ -28,7 +28,7 @@ class SettingsStoreSpec: QuickSpec {
         
         describe("when enable notification") {
             
-            beforeEach() {
+            beforeEach {
                 sut!.enableNotification(true)
             }
             
@@ -38,7 +38,7 @@ class SettingsStoreSpec: QuickSpec {
             
             describe("and disabling them") {
                 
-                beforeEach() {
+                beforeEach {
                     sut!.enableNotification(false)
                 }
                 
