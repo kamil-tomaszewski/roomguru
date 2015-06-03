@@ -214,6 +214,8 @@
 		5E746FE71AF04C0F0049131F /* EventsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */; };
 		5E746FED1AF064130049131F /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */; };
 		5E746FEF1AF06C1D0049131F /* RoomHorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */; };
+		5E7527DC1B1F40BC007D35A3 /* EventsListCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7527DB1B1F40BC007D35A3 /* EventsListCoordinatorSpec.swift */; };
+		5E7527DE1B1F4F6E007D35A3 /* EventsListCoordinatorSharedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7527DD1B1F4F6E007D35A3 /* EventsListCoordinatorSharedExample.swift */; };
 		5E75F3811AF3775000D1F23B /* EventsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E75F3801AF3775000D1F23B /* EventsProvider.swift */; };
 		5E75F3831AF3F8AB00D1F23B /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E75F3821AF3F8AB00D1F23B /* ButtonCell.swift */; };
 		5E769F061ACEDC180061289D /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
@@ -450,6 +452,8 @@
 		5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsPageViewController.swift; path = "Roomguru/Source Files/EventsPageViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UINavigationControllerExtensions.swift; path = "Roomguru/Source Files/UINavigationControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomHorizontalPicker.swift; path = "Roomguru/Source Files/RoomHorizontalPicker.swift"; sourceTree = SOURCE_ROOT; };
+		5E7527DB1B1F40BC007D35A3 /* EventsListCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListCoordinatorSpec.swift; sourceTree = "<group>"; };
+		5E7527DD1B1F4F6E007D35A3 /* EventsListCoordinatorSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListCoordinatorSharedExample.swift; sourceTree = "<group>"; };
 		5E75F3801AF3775000D1F23B /* EventsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsProvider.swift; path = "Roomguru/Source Files/EventsProvider.swift"; sourceTree = SOURCE_ROOT; };
 		5E75F3821AF3F8AB00D1F23B /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonCell.swift; path = "Roomguru/Source Files/ButtonCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPersistenceStore.swift; path = "Roomguru/Source Files/CalendarPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
@@ -1041,6 +1045,7 @@
 				5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */,
 				5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */,
 				5E71519B1B1F1EDF0032CD3D /* GPPTokenStoreSpec.swift */,
+				5E7527DB1B1F40BC007D35A3 /* EventsListCoordinatorSpec.swift */,
 			);
 			name = "Managers Tests";
 			sourceTree = "<group>";
@@ -1180,6 +1185,7 @@
 				BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */,
 				BFC4CC951AF9EA190070007B /* ObjectKeyValueSharedExample.swift */,
 				BFC4CC991AFA01450070007B /* JSONKeyValueSharedExample.swift */,
+				5E7527DD1B1F4F6E007D35A3 /* EventsListCoordinatorSharedExample.swift */,
 			);
 			name = "Shared Behaviors";
 			sourceTree = "<group>";
@@ -1704,6 +1710,7 @@
 				BFF5D16D1AF8F74700C40B76 /* ModelObject.swift in Sources */,
 				BF3A178F1AFA32A2007D95B6 /* JSONExtensions.swift in Sources */,
 				2164E7DE1B1DEA7800B27A91 /* AttendeeSpec.swift in Sources */,
+				5E7527DE1B1F4F6E007D35A3 /* EventsListCoordinatorSharedExample.swift in Sources */,
 				21875EA31B187BBA003E1E59 /* EventQuerySpec.swift in Sources */,
 				21875ECE1B1881B7003E1E59 /* ResultActionItem.swift in Sources */,
 				BF8867671AE932CB009DA028 /* ListableSharedExample.swift in Sources */,
@@ -1749,6 +1756,7 @@
 				2164E7DC1B1DEA7800B27A91 /* GroupedListViewModelSpec.swift in Sources */,
 				21875ECF1B1881BE003E1E59 /* LongTextItem.swift in Sources */,
 				2164E7CE1B1DEA7200B27A91 /* EventDetailsViewModelSpec.swift in Sources */,
+				5E7527DC1B1F40BC007D35A3 /* EventsListCoordinatorSpec.swift in Sources */,
 				5EF4C7CA1AEE42970050201A /* ListViewModel.swift in Sources */,
 				5E57399E1B18A37A00AEC231 /* GPPAuthenticator.swift in Sources */,
 				5E5739F51B18A75200AEC231 /* CalendarPickerCell.swift in Sources */,

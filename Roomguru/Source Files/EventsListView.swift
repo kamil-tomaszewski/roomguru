@@ -32,7 +32,7 @@ class EventsListView: UIBaseTableView {
         }
     }
     
-    func showPlaceholder(show: Bool, withIcon icon: FontAwesome? = nil, text: String = "") {
+    func showPlaceholder(show: Bool, withIcon icon: FontAwesome? = nil, text: String? = nil) {
         
         show ? loadingSpinner.stopAnimating() : loadingSpinner.startAnimating()
         

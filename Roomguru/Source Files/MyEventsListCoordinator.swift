@@ -10,7 +10,7 @@ import Foundation
 
 class MyEventsListCoordinator: EventsListCoordinator {
     
-    override func loadDataWithCompletion(completion: (status: ResponseStatus, message: String, icon: FontAwesome?) -> Void)  {
+    override func loadDataWithCompletion(completion: (status: ResponseStatus, message: String?, icon: FontAwesome?) -> Void)  {
 
         eventsProvider.userActiveCalendarEntriesWithCompletion { [weak self] (calendarEntries, error) in
                 
@@ -21,7 +21,7 @@ class MyEventsListCoordinator: EventsListCoordinator {
             } else if calendarEntries.isEmpty {
                 completion(status: .Empty, message: NSLocalizedString("You haven't got any meetings this day.\n\nFinally peace and quiet.", comment: ""), icon: .SmileO)
             } else {
-                completion(status: .Success, message: "", icon: nil)
+                completion(status: .Success, message: nil, icon: nil)
             }
         }
     }

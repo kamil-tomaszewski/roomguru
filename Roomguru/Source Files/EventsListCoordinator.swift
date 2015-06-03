@@ -24,7 +24,7 @@ class EventsListCoordinator {
         self.eventsProvider = EventsProvider(calendarIDs: calendarIDs, timeRange: date.dayTimeRange)
     }
     
-    func loadDataWithCompletion(completion: (status: ResponseStatus, message: String, icon: FontAwesome?) -> Void) {
+    func loadDataWithCompletion(completion: (status: ResponseStatus, message: String?, icon: FontAwesome?) -> Void) {
         
         eventsProvider.activeCalendarEntriesWithCompletion { [weak self] (calendarEntries, error) in
             
@@ -35,7 +35,7 @@ class EventsListCoordinator {
             } else if calendarEntries.isEmpty {
                 completion(status: .Empty, message: NSLocalizedString("Weekend day.\nGo away and relax!", comment: ""), icon: .CalendarO)
             } else {
-                completion(status: .Success, message: "", icon: nil)
+                completion(status: .Success, message: nil, icon: nil)
             }
         }
     }
