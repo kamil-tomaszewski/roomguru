@@ -83,6 +83,11 @@ class EventsListCoordinatorSharedExample: QuickConfiguration {
                     expect(status.toString()).to(equal(expectedStatus))
                 }
             }
+            
+            // test viewModel hook:
+            it("should have view model") {
+                expect(sut.viewModel).toNot(beNil())
+            }
         }
     }
 }
