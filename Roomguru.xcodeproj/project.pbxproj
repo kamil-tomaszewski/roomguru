@@ -290,6 +290,7 @@
 		5EF4C7C81AEE40100050201A /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4C7C01AEE33C50050201A /* SettingsStore.swift */; };
 		5EF4C7C91AEE40780050201A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4C7C21AEE34690050201A /* SettingsViewModel.swift */; };
 		5EF4C7CA1AEE42970050201A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */; };
+		5EF988DB1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF988DA1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift */; };
 		5EFC1ED91AC591EB00CE9D27 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */; };
 		5EFC763D1ACB3C9F0005892E /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */; };
 		5EFE00F31ADE71CF0083FB8E /* SettingsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */; };
@@ -521,6 +522,7 @@
 		5EF4C7C21AEE34690050201A /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5EF4C7C41AEE3B5E0050201A /* SettingsStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStoreSpec.swift; sourceTree = "<group>"; };
 		5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModelSpec.swift; sourceTree = "<group>"; };
+		5EF988DA1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsListCoordinatorSpec.swift; sourceTree = "<group>"; };
 		5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attendee.swift; path = "Roomguru/Source Files/Attendee.swift"; sourceTree = SOURCE_ROOT; };
 		5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConfiguration.swift; path = "Roomguru/Source Files/AppConfiguration.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableHeaderView.swift; path = "Roomguru/Source Files/SettingsTableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
@@ -1046,6 +1048,7 @@
 				5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */,
 				5E71519B1B1F1EDF0032CD3D /* GPPTokenStoreSpec.swift */,
 				5E7527DB1B1F40BC007D35A3 /* EventsListCoordinatorSpec.swift */,
+				5EF988DA1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift */,
 			);
 			name = "Managers Tests";
 			sourceTree = "<group>";
@@ -1677,6 +1680,7 @@
 				74F309C91B01F30900EB5D5D /* TimeFrame.swift in Sources */,
 				5E5739CB1B18A69000AEC231 /* PickerViewController.swift in Sources */,
 				74F309C61B01F24200EB5D5D /* CalendarEntry.swift in Sources */,
+				5EF988DB1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift in Sources */,
 				74F309C51B01F1FE00EB5D5D /* BookingQuery.swift in Sources */,
 				21875EA11B187BBA003E1E59 /* RevokeQuerySpec.swift in Sources */,
 				74F309C41B01F1AD00EB5D5D /* EventQuery.swift in Sources */,

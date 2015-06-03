@@ -67,9 +67,7 @@ class EventsListCoordinatorSpec: QuickSpec {
             class MockEventsProvider: EventsProvider {
                 override func activeCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
                     
-                    let event = Event()
-                    let calendarEntry = CalendarEntry(calendarID: "Fixture Calendar ID", event: event)
-
+                    let calendarEntry = CalendarEntry(calendarID: "Fixture Calendar ID", event: Event())
                     completion(calendarEntries: [calendarEntry], error: nil)
                 }
             }
