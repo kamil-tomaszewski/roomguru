@@ -7,32 +7,32 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
 import DateKit
 
 /* NOTICE:
- * This class is workaround for g+ issue with refreshing token.
- * Raw request is used.
- * Please use accessToken from this class (not GTMOAuth2Authentication.accessToken).
- */
+* This class is workaround for g+ issue with refreshing token.
+* Raw request is used.
+* Please use accessToken from this class (not GTMOAuth2Authentication.accessToken).
+*/
 
 class GPPTokenStore {
     
-    private var token: GTMOAuth2Authentication { return GPPSignIn.sharedInstance().authentication }
+    private var auth: GTMOAuth2Authentication
     
-    private var tokenExpirationDate: NSDate
-    private var accessToken: String
+    private(set) var tokenExpirationDate: NSDate
+    private(set) var accessToken: String
     
-    init() {
-        let token = GPPSignIn.sharedInstance().authentication
-
-        tokenExpirationDate = token.expirationDate
-        accessToken = token.accessToken
+    var networkCoordinator = GPPTokenStoreNetworkCoordinator()
+    
+    init(auth: GTMOAuth2Authentication) {
+        self.auth = auth
+        
+        tokenExpirationDate = auth.expirationDate
+        accessToken = auth.accessToken
     }
     
     func authorizationHeader() -> String {
-        return token.tokenType + " " + accessToken
+        return auth.tokenType + " " + accessToken
     }
     
     func refreshTokenIfNeeded(#id: String, completion: ((didRefresh: Bool, error: NSError?) -> Void)) {
@@ -43,33 +43,22 @@ class GPPTokenStore {
             return
         }
         
-        var parameters = token.refreshParameters
+        var parameters = auth.refreshParameters
         parameters["client_id"] = id
         
-        Alamofire
-            .request(.POST, "https://www.googleapis.com/oauth2/v3/token", parameters: parameters)
-            .responseJSON { (_, _, data, error) in
+        networkCoordinator.refreshAccessToken(parameters: parameters) { (tokenInfo, error) in
             
-            if let error = error {
-                completion(didRefresh: false, error: error)
-                return
-
-            } else if let data: AnyObject = data {
+            var didRefresh = false
+            
+            if let tokenInfo = tokenInfo {
+                didRefresh = true
                 
-                let json = JSON(data)
+                self.tokenExpirationDate = tokenInfo.expirationDate
+                self.accessToken = tokenInfo.accessToken
                 
-                if let accessToken = json["access_token"].string, expiresIn = json["expires_in"].int {
-                    
-                    self.tokenExpirationDate = NSDate().seconds + expiresIn
-                    self.accessToken = accessToken
-                    
-                    completion(didRefresh: true, error: nil)
-                    return
-                }
             }
-                
-            let error = NSError(message: NSLocalizedString("Session expired. Please log in again.", comment: ""))
-            completion(didRefresh: false, error: error)
+            
+            completion(didRefresh: didRefresh, error: error)
         }
     }
 }

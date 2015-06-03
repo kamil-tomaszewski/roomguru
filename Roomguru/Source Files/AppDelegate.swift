@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             if let auth = auth {
                 UserPersistenceStore.sharedStore.registerUserWithEmail(auth.userEmail)
-                NetworkManager.sharedInstance.enableTokenStore()
+                NetworkManager.sharedInstance.enableTokenStore(auth: auth)
             }
             
             if authenticated {
