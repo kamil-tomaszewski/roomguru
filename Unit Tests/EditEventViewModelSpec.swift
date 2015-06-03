@@ -14,9 +14,9 @@ import SwiftyJSON
 class EditEventViewModelSpec: QuickSpec {
     override func spec() {
         
+        var sut: EditEventViewModel<GroupItem>!
+        
         describe("initializing with calendar entry") {
-            
-            var sut: EditEventViewModel<GroupItem>!
             
             beforeEach {
                 sut = EditEventViewModel(calendarEntry: self.mockedCalendarEntry())
@@ -36,9 +36,7 @@ class EditEventViewModelSpec: QuickSpec {
         }
         
         describe("initializing without calendar entry") {
-            
-            var sut: EditEventViewModel<GroupItem>!
-            
+                        
             beforeEach {
                 sut = EditEventViewModel(calendarEntry: nil)
             }
