@@ -15,7 +15,7 @@ class GPPTokenStoreNetworkCoordinator {
     func refreshAccessToken(#parameters: [String: AnyObject], completion: ((tokenInfo: (accessToken: String, expirationDate: NSDate)?, error: NSError?)-> Void)) {
         
         Alamofire
-            .request(.POST, "https://www.googleapis.com/oauth2/v3/token", parameters: parameters)
+            .request(.POST, AppConfiguration.GooglePlus.RefreshTokenURL, parameters: parameters)
             .responseJSON { (_, _, data, error) in
                 
                 if let error = error {

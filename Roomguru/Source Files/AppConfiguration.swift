@@ -16,6 +16,7 @@ struct AppConfiguration {
     struct GooglePlus {
         static let Scope = ["https://www.googleapis.com/auth/calendar", kGTLAuthScopePlusUserinfoEmail]
         static let ServerURL = "https://www.googleapis.com/calendar/v3"
+        static let RefreshTokenURL = "https://www.googleapis.com/oauth2/v3/token"
 
         #if ENV_STAGING
             static let ClientID = "860224755984-etmsurv60hiq7dds925q79tdp3a62b1t.apps.googleusercontent.com"

@@ -51,22 +51,28 @@ class GPPTokenStoreSpec: QuickSpec {
                 sut = nil
             }
             
-            it("token should not be refreshd") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (didRefresh, _) in
-                    expect(didRefresh).to(beFalse())
-                })
+            it("token should not be refreshed") {
+                var didRefreshToken = true
+                sut.refreshTokenIfNeeded(id: "") { (didRefresh, _) in
+                    didRefreshToken = didRefresh
+                }
+                expect(didRefreshToken).toEventually(beFalse())
             }
             
             it("error should be nil") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, error) in
-                    expect(error).to(beNil())
-                })
+                var refreshError: NSError?
+                sut.refreshTokenIfNeeded(id: "") { (_, error) in
+                    refreshError = error
+                }
+                expect(refreshError).toEventually(beNil())
             }
             
             it("access token should be same as previous") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, _) in
-                    expect(sut.accessToken).to(equal("Fixture Access Token"))
-                })
+                var accessToken = ""
+                sut.refreshTokenIfNeeded(id: "") { (_, _) in
+                    accessToken = sut.accessToken
+                }
+                expect(accessToken).toEventually(equal("Fixture Access Token"))
             }
         }
         
@@ -92,28 +98,33 @@ class GPPTokenStoreSpec: QuickSpec {
                 sut = nil
             }
             
-            it("token should be refreshd") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (didRefresh, _) in
-                    expect(didRefresh).to(beTrue())
-                })
+            it("token should be refreshed") {
+                var didRefreshToken = false
+                sut.refreshTokenIfNeeded(id: "") { (didRefresh, _) in
+                    didRefreshToken = didRefresh
+                }
+                expect(didRefreshToken).toEventually(beTrue())
             }
             
             it("error should be nil") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, error) in
-                    expect(error).to(beNil())
-                })
+                var refreshError: NSError?
+                sut.refreshTokenIfNeeded(id: "") { (_, error) in
+                    refreshError = error
+                }
+                expect(refreshError).toEventually(beNil())
             }
             
             it("access token should be new") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, _) in
-                    expect(sut.accessToken).to(equal("Fixture New Access Token"))
-                })
+                var accessToken = ""
+                sut.refreshTokenIfNeeded(id: "") { (_, _) in
+                    accessToken = sut.accessToken
+                }
+                expect(accessToken).toEventually(equal("Fixture New Access Token"))
             }
             
             it("should set new expiration date") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, _) in
-                    expect(sut.tokenExpirationDate).to(equal(NSDate(timeIntervalSince1970: 1000)))
-                })
+                sut.refreshTokenIfNeeded(id: "") { (_, _) in }
+                expect(sut.tokenExpirationDate).toEventually(equal(NSDate(timeIntervalSince1970: 1000)))
             }
         }
         
@@ -139,28 +150,37 @@ class GPPTokenStoreSpec: QuickSpec {
                 sut = nil
             }
             
-            it("token should be refreshd") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (didRefresh, _) in
-                    expect(didRefresh).to(beFalse())
-                })
+            it("token should not be refreshed") {
+                var didRefreshToken = true
+                sut.refreshTokenIfNeeded(id: "") { (didRefresh, _) in
+                    didRefreshToken = didRefresh
+                }
+                expect(didRefreshToken).toEventually(beFalse())
             }
             
-            it("error should be nil") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, error) in
-                    expect(error).toNot(beNil())
-                })
+            it("error should not be nil") {
+                var refreshError: NSError?
+                
+                waitUntil { done in
+                    sut.refreshTokenIfNeeded(id: "") { (_, error) in
+                        refreshError = error
+                        done()
+                    }
+                }
+                expect(refreshError).toNot(beNil())
             }
             
             it("access token should be same as previous") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, _) in
-                    expect(sut.accessToken).to(equal("Fixture Access Token"))
-                })
+                var accessToken = ""
+                sut.refreshTokenIfNeeded(id: "") { (_, _) in
+                    accessToken = sut.accessToken
+                }
+                expect(accessToken).toEventually(equal("Fixture Access Token"))
             }
             
             it("should set new expiration date") {
-                sut.refreshTokenIfNeeded(id: "", completion: { (_, _) in
-                    expect(sut.tokenExpirationDate).to(equal(tokenExpirationDate))
-                })
+                sut.refreshTokenIfNeeded(id: "") { (_, _) in }
+                expect(sut.tokenExpirationDate).to(equal(tokenExpirationDate))
             }
         }
     }
