@@ -46,13 +46,13 @@ private extension FreeEventsProvider {
             // there is no entry after reference date. Means all active entries has beed populated:
             if index == sortedEntriesToFill.count {
                 
-                let nextHalfHourDate = referenceDate.nextDateWithGranulation(.Hour, multiplier: 0.5)
-                let timeBetweenReferenceDateAndNextHalfHour = nextHalfHourDate.timeIntervalSinceDate(referenceDate)
+                let nextRoundedDate = referenceDate.nextDateWithGranulation(.Second, multiplier: Float(timeStep))
+                let timeBetweenReferenceDateAndNextRoundedDate = nextRoundedDate.timeIntervalSinceDate(referenceDate)
                 
-                if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextHalfHour)) {
+                if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextRoundedDate)) {
                     entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
                 }
-                increase(&referenceDate, by: timeBetweenReferenceDateAndNextHalfHour)
+                increase(&referenceDate, by: timeBetweenReferenceDateAndNextRoundedDate)
                 
             // active entries still exists and should be populated in entries array:
             } else {
@@ -68,29 +68,29 @@ private extension FreeEventsProvider {
                     }
                     increase(&referenceDate, by: timeBetweenReferenceDateAndTheClosestEntry)
                     
-                    // there is no entry in next timeStep seconds:
+                // there is no entry in next timeStep seconds:
                 } else if timeBetweenReferenceDateAndTheClosestEntry >= timeStep {
                     
-                    let nextHalfHourDate = referenceDate.nextDateWithGranulation(.Hour, multiplier: 0.5)
-                    let timeBetweenReferenceDateAndNextHalfHour = NSDate.timeIntervalBetweenDates(start: referenceDate, end: nextHalfHourDate)
+                    let nextRoundedDate = referenceDate.nextDateWithGranulation(.Second, multiplier: Float(timeStep))
+                    let timeBetweenReferenceDateAndNextRoundedDate = NSDate.timeIntervalBetweenDates(start: referenceDate, end: nextRoundedDate)
                     
                     // one of the event ended earlier than in half an hour (google speedy meetings):
-                    if timeBetweenReferenceDateAndNextHalfHour < timeStep {
+                    if timeBetweenReferenceDateAndNextRoundedDate < timeStep {
                         
-                        if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextHalfHour)) {
+                        if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeBetweenReferenceDateAndNextRoundedDate)) {
                             entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
                         }
-                        increase(&referenceDate, by: timeBetweenReferenceDateAndNextHalfHour)
+                        increase(&referenceDate, by: timeBetweenReferenceDateAndNextRoundedDate)
                         
                     } else {
                         
                         if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeStep)) {
                             entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
                         }
-                        increase(&referenceDate, by: configuration.timeStep)
+                        increase(&referenceDate, by: timeStep)
                     }
                     
-                    // add event cause it's event time frame:
+                // add event cause it's event time frame:
                 } else {
                     entries.append(entry)
                     increase(&referenceDate, by: entry.event.duration)
@@ -99,6 +99,10 @@ private extension FreeEventsProvider {
                 }
             }
         }
+        
+        // at the end add entries which wasn't added by algorithm (eg. are beyond specified timeRange)
+        entries += sortedEntriesToFill.filter { !contains(entries, $0) }
+        
         return entries
     }
     
@@ -123,7 +127,7 @@ private extension FreeEventsProvider {
         // If earlier than now, change start date of event.
         // If will pass second condition, it means startDate is around current hour.
         // It it will be past, eventDuration will give minuse value, so next condition will break adding event.
-        if startDate.isEarlierThanToday() {
+        if !configuration.bookablePast && startDate.isEarlierThanToday()  {
             startDate = NSDate()
         }
         

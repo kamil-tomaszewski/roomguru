@@ -110,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // MARK: Private
-    
+
 private extension AppDelegate {
 
     func showGoogleSignInButtonInLoginViewController(show: Bool) {

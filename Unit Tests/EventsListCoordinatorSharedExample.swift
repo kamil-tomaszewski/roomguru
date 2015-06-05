@@ -12,9 +12,7 @@ import Quick
 import SwiftyJSON
 
 class EventsListCoordinatorSharedExample: QuickConfiguration {
-    
     override class func configure(configuration: Configuration) {
-        
         sharedExamples("events coordinator") { (sharedExampleContext: SharedExampleContext) in
             
             var config: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
