@@ -10,6 +10,8 @@ import Foundation
 
 class FreeEventsProvider {
     
+    var configuration = TimelineConfiguration()
+    
     func populateEntriesWithFreeEvents(entriesToFill: [CalendarEntry], inTimeRange timeRange: TimeRange, usingCalenadIDs calendarIDs: [String]) -> [CalendarEntry] {
 
         var entries: [CalendarEntry] = []
@@ -32,7 +34,7 @@ private extension FreeEventsProvider {
     func populateEntriesWithFreeEvents(entriesToFill: [CalendarEntry], inTimeRange timeRange: TimeRange) -> [CalendarEntry] {
         
         let sortedEntriesToFill = CalendarEntry.sortedByDate(entriesToFill)
-        let timeStep = AppConfiguration.Timeline.TimeStep
+        let timeStep = configuration.timeStep
         var entries: [CalendarEntry] = []
         var referenceDate = timeRange.min
         var index = 0
@@ -85,7 +87,7 @@ private extension FreeEventsProvider {
                         if let freeEvent = createFreeEntryWithStartDate(referenceDate, endDate: referenceDate.dateByAddingTimeInterval(timeStep)) {
                             entries.append(CalendarEntry(calendarID: calendarID, event: freeEvent))
                         }
-                        increase(&referenceDate)
+                        increase(&referenceDate, by: configuration.timeStep)
                     }
                     
                     // add event cause it's event time frame:
@@ -104,17 +106,17 @@ private extension FreeEventsProvider {
         
         // cannot book in not declared days
         let weekday = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitWeekday, fromDate: startDate)
-        if !contains(AppConfiguration.Timeline.BookingDays, weekday) {
+        if !contains(configuration.bookingDays, weekday) {
             return nil
         }
         
         // cannot book earlier than defined
-        if startDate.timeIntervalSinceDate(startDate.midnight) < AppConfiguration.Timeline.BookingRange.min {
+        if startDate.timeIntervalSinceDate(startDate.midnight) < configuration.bookingRange.min {
             return nil
         }
         
         // cannot book later than defined
-        if startDate.timeIntervalSinceDate(startDate.midnight) > AppConfiguration.Timeline.BookingRange.max {
+        if startDate.timeIntervalSinceDate(startDate.midnight) > configuration.bookingRange.max {
             return nil
         }
         
@@ -128,14 +130,14 @@ private extension FreeEventsProvider {
         let eventDuration = NSDate.timeIntervalBetweenDates(start: startDate, end: endDate)
         
         // cannot be shorter than MinimumEventDuration
-        if eventDuration < AppConfiguration.Timeline.MinimumEventDuration {
+        if eventDuration < configuration.minimumEventDuration {
             return nil
         }
         
         return FreeEvent(startDate: startDate, endDate: endDate)
     }
     
-    func increase(inout date: NSDate, by timeInterval: NSTimeInterval = AppConfiguration.Timeline.TimeStep) {
+    func increase(inout date: NSDate, by timeInterval: NSTimeInterval) {
         date = date.dateByAddingTimeInterval(timeInterval)
     }
 }

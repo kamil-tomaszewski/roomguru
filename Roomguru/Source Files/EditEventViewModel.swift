@@ -27,6 +27,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
     var delegate: ModelUpdatable?
     var presenter: Presenter?
     var title: String
+    var timelineConfiguration = TimelineConfiguration()
     
     init(calendarEntry: CalendarEntry?) {
         
@@ -39,7 +40,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             title = NSLocalizedString("New Event", comment: "")
             query = EventQuery()
             query.startDate = NSDate().seconds(0)
-            query.endDate = query.startDate.dateByAddingTimeInterval(AppConfiguration.Timeline.MinimumEventDuration)
+            query.endDate = query.startDate.dateByAddingTimeInterval(timelineConfiguration.minimumEventDuration)
         }
         networkCooperator = EditEventNetworkCooperator(query: query)
         rooms = CalendarPersistenceStore.sharedStore.rooms().map { RoomItem(room: $0) }
@@ -171,7 +172,7 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 query.startDate = date
             }
             
-            let probableEndDate = date.minutes + Int(AppConfiguration.Timeline.MinimumEventDuration/60)
+            let probableEndDate = date.minutes + Int(self?.timelineConfiguration.minimumEventDuration ?? 0)/60
             if endDateItem.date < probableEndDate {
                 endDateItem.date = probableEndDate
             }
@@ -239,8 +240,8 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 let message = NSLocalizedString("Cannot pick date earlier than today's midnight", comment: "")
                 return NSError(message: message)
                 
-            } else if endDateItem.date.timeIntervalSinceDate(date) < AppConfiguration.Timeline.MinimumEventDuration {
-                let message = NSLocalizedString("Cannot create event shorter than \(AppConfiguration.Timeline.MinimumEventDuration/60) minutes", comment: "")
+            } else if endDateItem.date.timeIntervalSinceDate(date) < self.timelineConfiguration.minimumEventDuration {
+                let message = NSLocalizedString("Cannot create event shorter than \(self.timelineConfiguration.minimumEventDuration/60) minutes", comment: "")
                 return NSError(message: message)
             }
             return nil

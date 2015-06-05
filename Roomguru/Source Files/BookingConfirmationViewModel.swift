@@ -28,9 +28,10 @@ class BookingConfirmationViewModel {
         return CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
     }
     
+    var timelineConfiguration = TimelineConfiguration()
     let entry: CalendarEntry!
     
-    var minimumEventDuration: NSTimeInterval { return AppConfiguration.Timeline.MinimumEventDuration }
+    var minimumEventDuration: NSTimeInterval { return timelineConfiguration.minimumEventDuration }
     
     var canAddMinutes: Bool { return expectedEventEndDate != entry.event.end }
     var canSubstractMinutes: Bool {
@@ -45,7 +46,7 @@ class BookingConfirmationViewModel {
     private var minimumEndDate: NSDate {
         
         let nextDateRoundedTo15Minutes = entry.event.start.nextDateWithGranulation(.Minute, multiplier: 15)
-        let isTimeIntervalFromStartDateToNextRoundedDateAllowed = NSDate.timeIntervalBetweenDates(start: entry.event.start, end: nextDateRoundedTo15Minutes) > AppConfiguration.Timeline.DefaultEventDuration
+        let isTimeIntervalFromStartDateToNextRoundedDateAllowed = NSDate.timeIntervalBetweenDates(start: entry.event.start, end: nextDateRoundedTo15Minutes) > timelineConfiguration.defaultEventDuration
         
         if isTimeIntervalFromStartDateToNextRoundedDateAllowed {
             return nextDateRoundedTo15Minutes
@@ -55,7 +56,7 @@ class BookingConfirmationViewModel {
 
     init(entry: CalendarEntry) {
         self.entry = entry
-        expectedEventEndDate = (entry.event.duration > AppConfiguration.Timeline.DefaultEventDuration) ? minimumEndDate : entry.event.end
+        expectedEventEndDate = (entry.event.duration > timelineConfiguration.defaultEventDuration) ? minimumEndDate : entry.event.end
     }
     
     func prepareToSave() {
