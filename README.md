@@ -2,7 +2,7 @@
 
 Roomguru is an open source app for managing meetings in your busy working day. It uses Google resource calendars for representing rooms. Google account is required to authenticate with application. Google app has to be created in Google apps to obtain application identifier.
 
-App is totally free to use for everyone.
+App is under MIT [license](https://github.com/netguru/roomguru/blob/master/LICENSE.md)
 
 ## Requirements
 
