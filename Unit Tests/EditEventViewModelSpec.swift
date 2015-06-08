@@ -92,14 +92,23 @@ class EditEventViewModelSpec: QuickSpec {
                     }
                 }
                 
-                context("when event duration is to short") {
+                context("when minimum event duration is set to 60 minutes") {
                     
                     beforeEach {
-                        sut.endDateItem.date = NSDate(timeIntervalSinceNow: 100)
+                        var configuration = self.timelineConfiguration()
+                        configuration.minimumEventDuration = 60*60
+                        sut.configuration = configuration
                     }
                     
-                    it("should return validation error") {
-                        expect(sut.isModelValid()).toNot(beNil())
+                    context("and event takes only 10 minutes") {
+                        
+                        beforeEach {
+                            sut.endDateItem.date = NSDate(timeIntervalSinceNow: 60*10)
+                        }
+                        
+                        it("should return validation error") {
+                            expect(sut.isModelValid()).toNot(beNil())
+                        }
                     }
                 }
                 
@@ -135,6 +144,19 @@ class EditEventViewModelSpec: QuickSpec {
 }
 
 private extension EditEventViewModelSpec {
+    
+    func timelineConfiguration() -> TimelineConfiguration {
+        
+        var configuration = TimelineConfiguration()
+        configuration.minimumEventDuration = 60*15
+        configuration.defaultEventDuration = 60*30
+        configuration.timeStep = 60*30
+        configuration.bookingRange = (0, 60*60*23 + 59) // 0.00 AM to 11:59 PM
+        configuration.bookingDays = [1, 2, 3, 4, 5, 6, 7]
+        configuration.bookablePast = false
+        
+        return configuration
+    }
     
     func mockedCalendarEntry() -> CalendarEntry {
         return CalendarEntry(calendarID: "Fixture Identifier", event: mockedEvent());
