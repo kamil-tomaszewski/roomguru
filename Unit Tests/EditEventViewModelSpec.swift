@@ -97,7 +97,7 @@ class EditEventViewModelSpec: QuickSpec {
                     beforeEach {
                         var configuration = self.timelineConfiguration()
                         configuration.minimumEventDuration = 60*60
-                        sut.configuration = configuration
+                        sut.timelineConfiguration = configuration
                     }
                     
                     context("and event takes only 10 minutes") {
@@ -179,7 +179,7 @@ private extension EditEventViewModelSpec {
                 mockedRoomJSONWithName("FixtureRoom.2", email: "FixtureRoomEmail.2")
             ],
             "creator" : mockedAttendeeJSONWithName("FixtureName.4", email: "FixtureEmail.4", status: .Going)
-            ]))
+        ]))
     }
     
     func mockedAttendeeJSONWithName(name: String, email: String, status: Status) -> [String : String] {
