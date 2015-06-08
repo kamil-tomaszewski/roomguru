@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         
+        println(NSBundle.mainBundle().infoDictionary)
+        
         setupVendors()
         presentAuthenticationScreenAndBeginAuthentication()
         
@@ -123,9 +125,11 @@ private extension AppDelegate {
     
     func setupVendors() {
         #if !ENV_DEVELOPMENT
-            BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientID);
-            BITHockeyManager.sharedHockeyManager().startManager();
-            BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
+            if Constants.HockeyApp.ClientID.length > 0 {
+                BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientID);
+                BITHockeyManager.sharedHockeyManager().startManager();
+                BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
+            }
         #endif
         
         NetworkManager.sharedInstance.serverURL = Constants.GooglePlus.ServerURL
