@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /* NOTICE
  * Rename this struct to Constants. Also remember to rename file in project tree.
  * If you want store this keys on your own repository,
