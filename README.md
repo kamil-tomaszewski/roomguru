@@ -10,6 +10,25 @@ Roomguru requires Google app set up in Google apps service. You will also need [
 
 ## Configuration
 
+All you have to do to build & run Roomguru is to follow 9 simple steps:
+
+1. Clone project `git clone https://github.com/netguru/roomguru.git`.
+2. Create the Google Developers Console project according to [step 1](https://developers.google.com/+/mobile/ios/getting-started). Bundle ID depends on project build configuration:
+	- Staging: `co.netguru.roomguru.staging`
+	- Development: `co.netguru.roomguru`
+	- Production: `co.netguru.roomguru`
+	- Test: `co.netguru.roomguru`
+
+	If you wish to change it, go to Roomguru target: `Build settings` -> `User Defined` -> `BUNDLE_ID`.
+
+3. Remove `Constants.swift` - is highlighted on red.
+4. Rename `Constants_Sample.swift` file to `Constants.swift`. Also remember to rename struct within this file.
+5. If you want store keys on your own repository, remove `Constants.swift` from `.gitignore`.
+6. Copy received `ClientID` from Google and paste it to `Constants` -> `GooglePlus` -> `ClientID`.
+7. If you wish to distribute Roomguru via [HockeyApp](https://rink.hockeyapp.net/) copy `App ID` from Hockey and paste to `Constants` -> `HockeyApp` -> `ClientID`.
+8. Run `carthage update` and `pod install`.
+9. Build & Run. Enjoy!
+
 ## Distribution
 
 We're not providing any distribution channel for Roomguru. If you want to use our app in your team, we have nothing against it, however we can't provide you with any service to distribute it.
