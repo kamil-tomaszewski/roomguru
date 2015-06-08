@@ -101,7 +101,7 @@ def run_xcode_tests(scheme, in_matrix: true)
 
   report_info "Running tests in scheme '#{scheme}', this may take a while..."
 
-  sh "xcodebuild #{flags} test | xcpretty -c ; exit ${PIPESTATUS[0]}"
+  sh "xcodebuild #{flags} test | tee $CIRCLE_ARTIFACTS/xcodebuild_raw.log | xcpretty -c ; exit ${PIPESTATUS[0]}"
 
   report_failure "Application #{scheme} failed", $?.exitstatus unless $?.success?
 end
