@@ -24,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.backgroundColor = UIColor.whiteColor()
         window!.makeKeyAndVisible()
         
-        println(NSBundle.mainBundle().infoDictionary)
-        
         setupVendors()
         presentAuthenticationScreenAndBeginAuthentication()
         
