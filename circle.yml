@@ -44,4 +44,4 @@ deployment:
     branch: master
     commands:
       - bundle exec rake build-and-distribute:
-          timeout: 1200
+          timeout: 3600
