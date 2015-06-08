@@ -177,6 +177,10 @@
 		5E573A011B18A7C200AEC231 /* StickyExpandableFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */; };
 		5E573A061B1BBAF200AEC231 /* GPPTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E573A051B1BBAF200AEC231 /* GPPTokenStore.swift */; };
 		5E573A071B1BBAF200AEC231 /* GPPTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E573A051B1BBAF200AEC231 /* GPPTokenStore.swift */; };
+		5E63A1E11B25D7900059D569 /* Constants_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E63A1E01B25D7900059D569 /* Constants_Sample.swift */; };
+		5E63A1E31B25DA160059D569 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E63A1E21B25DA160059D569 /* Constants.swift */; };
+		5E63A1E41B25DB860059D569 /* Constants_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E63A1E01B25D7900059D569 /* Constants_Sample.swift */; };
+		5E63A1E51B25DB910059D569 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E63A1E21B25DA160059D569 /* Constants.swift */; };
 		5E6759CB1AC5BDA1008AFF61 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */; };
 		5E6759CD1AC5BDEF008AFF61 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */; };
 		5E67FE581AE90431003AB827 /* CalendarPersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */; };
@@ -252,7 +256,6 @@
 		5E9289AF1B13229F0079CE36 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */; };
 		5E9289B01B1322B80079CE36 /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */; };
 		5E9289B11B1322C80079CE36 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFECD1101AC0AF5100F60086 /* Requests.swift */; };
-		5E9289B21B1322D70079CE36 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */; };
 		5E9289B31B1322ED0079CE36 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8858471AF11B1300EF08F1 /* NSDateExtensions.swift */; };
 		5E9289B41B13264A0079CE36 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7A9E4C1AB060820042E16F /* HockeySDK.framework */; };
 		5EA452A11B00AA49006CA0FA /* EventsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA452A01B00AA49006CA0FA /* EventsListCoordinator.swift */; };
@@ -295,7 +298,6 @@
 		5EF4C7CA1AEE42970050201A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */; };
 		5EF988DB1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF988DA1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift */; };
 		5EFC1ED91AC591EB00CE9D27 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */; };
-		5EFC763D1ACB3C9F0005892E /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */; };
 		5EFE00F31ADE71CF0083FB8E /* SettingsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */; };
 		5EFE00F51ADE79210083FB8E /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */; };
 		5EFE00F71ADE87990083FB8E /* RoomguruLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */; };
@@ -443,6 +445,8 @@
 		5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayCarouselCell.swift; path = "Roomguru/Source Files/DayCarouselCell.swift"; sourceTree = SOURCE_ROOT; };
 		5E569DD11AF01C42009F8EC0 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "Roomguru/Source Files/EventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E573A051B1BBAF200AEC231 /* GPPTokenStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPTokenStore.swift; path = "Roomguru/Source Files/GPPTokenStore.swift"; sourceTree = SOURCE_ROOT; };
+		5E63A1E01B25D7900059D569 /* Constants_Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants_Sample.swift; path = "Source Files/Constants_Sample.swift"; sourceTree = SOURCE_ROOT; };
+		5E63A1E21B25DA160059D569 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Roomguru/Source Files/Constants.swift"; sourceTree = SOURCE_ROOT; };
 		5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = Frameworks/FontAwesome.swift; sourceTree = "<group>"; };
 		5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Roomguru/Resources/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
 		5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewExtensions.swift; path = "Roomguru/Source Files/UICollectionViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
@@ -529,7 +533,6 @@
 		5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModelSpec.swift; sourceTree = "<group>"; };
 		5EF988DA1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsListCoordinatorSpec.swift; sourceTree = "<group>"; };
 		5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attendee.swift; path = "Roomguru/Source Files/Attendee.swift"; sourceTree = SOURCE_ROOT; };
-		5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConfiguration.swift; path = "Roomguru/Source Files/AppConfiguration.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableHeaderView.swift; path = "Roomguru/Source Files/SettingsTableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = "Roomguru/Source Files/UIViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomguruLabel.swift; path = "Roomguru/Source Files/RoomguruLabel.swift"; sourceTree = SOURCE_ROOT; };
@@ -959,7 +962,8 @@
 			isa = PBXGroup;
 			children = (
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
-				5EFC763C1ACB3C9F0005892E /* AppConfiguration.swift */,
+				5E63A1E01B25D7900059D569 /* Constants_Sample.swift */,
+				5E63A1E21B25DA160059D569 /* Constants.swift */,
 				5E8F93B11B21BDD000C4A4B5 /* TimelineConfiguration.swift */,
 				BFF755201AE52C4B00F68DB9 /* Protocols */,
 				BF527C0F1AB1A70C00A43D35 /* Networking */,
@@ -1590,10 +1594,10 @@
 				BF4F2DF81ADC0A0500834B60 /* GroupedListViewModel.swift in Sources */,
 				5EF4C7C11AEE33C50050201A /* SettingsStore.swift in Sources */,
 				BF8077361AC93F7500B75096 /* BookingConfirmationViewController.swift in Sources */,
+				5E63A1E31B25DA160059D569 /* Constants.swift in Sources */,
 				2164E7E91B1EF49200B27A91 /* EditEventNetworkCooperator.swift in Sources */,
 				7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */,
 				BF49CC5B1B00F2F500ACAEC1 /* MaskingViewController.swift in Sources */,
-				5EFC763D1ACB3C9F0005892E /* AppConfiguration.swift in Sources */,
 				5EA452D81B020A1D006CA0FA /* MyEventsListCoordinator.swift in Sources */,
 				BF251AD31AC093A00020DFC4 /* Pageable.swift in Sources */,
 				5E8A30FE1AC59DEB00E31DD3 /* EventDetailsView.swift in Sources */,
@@ -1602,6 +1606,7 @@
 				2164E7F31B1EF5B600B27A91 /* UIViewControllerExtensions.swift in Sources */,
 				5E8CB6F61AC56F2F000A4E14 /* UIColorExtensions.swift in Sources */,
 				5E569DCB1AEFA015009F8EC0 /* WeekCarouselView.swift in Sources */,
+				5E63A1E11B25D7900059D569 /* Constants_Sample.swift in Sources */,
 				2164E7EB1B1EF4B700B27A91 /* DatePickerItem.swift in Sources */,
 				5EFE00F31ADE71CF0083FB8E /* SettingsTableHeaderView.swift in Sources */,
 				BFB0E5101ADFD6EA00B0C0A4 /* TextFieldCell.swift in Sources */,
@@ -1776,7 +1781,6 @@
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
 				5E5739C41B18A64E00AEC231 /* BookingConfirmationView.swift in Sources */,
 				21875EBB1B187BC1003E1E59 /* EditEventViewModelSpec.swift in Sources */,
-				5E9289B21B1322D70079CE36 /* AppConfiguration.swift in Sources */,
 				5E5739A21B18A42B00AEC231 /* CalendarPickerViewController.swift in Sources */,
 				5E573A071B1BBAF200AEC231 /* GPPTokenStore.swift in Sources */,
 				5E5739AF1B18A4A300AEC231 /* EmptyCalendarPlaceholderView.swift in Sources */,
@@ -1812,6 +1816,7 @@
 				5E5739D11B18A6B900AEC231 /* WeekCarouselViewModel.swift in Sources */,
 				5E573A001B18A7A600AEC231 /* WeekCarouselFlowLayout.swift in Sources */,
 				21875EA41B187BBA003E1E59 /* FreeBusyQuerySpec.swift in Sources */,
+				5E63A1E41B25DB860059D569 /* Constants_Sample.swift in Sources */,
 				21875ED81B188A80003E1E59 /* Reusable.swift in Sources */,
 				21875EA01B187BBA003E1E59 /* CalendarsQuerySpec.swift in Sources */,
 				5E71519A1B1F1EC70032CD3D /* GPPTokenStoreNetworkCoordinator.swift in Sources */,
@@ -1842,6 +1847,7 @@
 				5E5739B21B18A5BC00AEC231 /* MyEventsListCoordinator.swift in Sources */,
 				5E8F93B51B21C21300C4A4B5 /* FreeEventsProviderSpec.swift in Sources */,
 				5E5739E21B18A71700AEC231 /* SettingsTableHeaderView.swift in Sources */,
+				5E63A1E51B25DB910059D569 /* Constants.swift in Sources */,
 				5E5739A11B18A42000AEC231 /* LoginViewController.swift in Sources */,
 				5E67FE591AE9044C003AB827 /* Calendar.swift in Sources */,
 				5E5739C31B18A64700AEC231 /* BookingConfirmationViewModel.swift in Sources */,

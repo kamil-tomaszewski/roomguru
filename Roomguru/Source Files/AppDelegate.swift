@@ -123,13 +123,13 @@ private extension AppDelegate {
     
     func setupVendors() {
         #if !ENV_DEVELOPMENT
-            BITHockeyManager.sharedHockeyManager().configureWithIdentifier(AppConfiguration.HockeyApp.ClientID);
+            BITHockeyManager.sharedHockeyManager().configureWithIdentifier(Constants.HockeyApp.ClientID);
             BITHockeyManager.sharedHockeyManager().startManager();
             BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation();
         #endif
         
-        NetworkManager.sharedInstance.serverURL = AppConfiguration.GooglePlus.ServerURL
-        NetworkManager.sharedInstance.clientID = AppConfiguration.GooglePlus.ClientID
+        NetworkManager.sharedInstance.serverURL = Constants.GooglePlus.ServerURL
+        NetworkManager.sharedInstance.clientID = Constants.GooglePlus.ClientID
         
         PKHUD.sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
         PKHUD.sharedHUD.dimsBackground = false

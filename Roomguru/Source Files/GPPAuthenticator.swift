@@ -28,8 +28,8 @@ class GPPAuthenticator: NSObject {
         super.init()
         
         let sharedSignIn = GPPSignIn.sharedInstance();
-        sharedSignIn.clientID = AppConfiguration.GooglePlus.ClientID
-        sharedSignIn.scopes = AppConfiguration.GooglePlus.Scope
+        sharedSignIn.clientID = Constants.GooglePlus.ClientID
+        sharedSignIn.scopes = Constants.GooglePlus.Scope
         sharedSignIn.shouldFetchGoogleUserID = true
         sharedSignIn.shouldFetchGoogleUserEmail = true
         sharedSignIn.shouldFetchGooglePlusUser = true

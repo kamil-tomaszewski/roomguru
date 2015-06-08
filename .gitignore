@@ -57,3 +57,6 @@ vendor
 
 # Merge files
 .orig
+
+# Configuration
+Constants.swift
