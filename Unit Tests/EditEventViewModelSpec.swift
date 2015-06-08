@@ -33,6 +33,87 @@ class EditEventViewModelSpec: QuickSpec {
             it("should return validation error") {
                 expect(sut.isModelValid()).toNot(beNil())
             }
+            
+            context("when resign first responder on items") {
+                
+                beforeEach {
+                    sut.resignFirstResponderOnItems()
+                }
+                
+                it("should not have first responder") {
+                    expect(sut.summaryItem.shouldBeFirstResponder).toEventually(beFalsy())
+                }
+            }
+            
+            describe("after filling form with data") {
+                
+                beforeEach {
+                    sut.summaryItem.text = "Fixture summary"
+                    sut.startDateItem.date = NSDate()
+                    sut.endDateItem.date = NSDate(timeIntervalSinceNow: 30000)
+                    sut.calendarItem.result = "Fixture result"
+                }
+                
+                it("should not return validation error when everthing is valid ") {
+                    expect(sut.isModelValid()).to(beNil())
+                }
+                
+                context("when summary is too short") {
+                    
+                    beforeEach {
+                        sut.summaryItem.text = "A"
+                    }
+                    
+                    it("should return validation error") {
+                        expect(sut.isModelValid()).toNot(beNil())
+                    }
+                }
+                
+                context("when start date is earlier that today") {
+                    
+                    beforeEach {
+                        sut.startDateItem.date = NSDate(timeIntervalSince1970: 1000)
+                    }
+                    
+                    it("should return validation error") {
+                        expect(sut.isModelValid()).toNot(beNil())
+                    }
+                }
+                
+                context("when end date is earlier than start date") {
+                    
+                    beforeEach {
+                        sut.startDateItem.date = NSDate(timeIntervalSinceNow: 1000)
+                        sut.endDateItem.date = NSDate()
+                    }
+                    
+                    it("should return validation error") {
+                        expect(sut.isModelValid()).toNot(beNil())
+                    }
+                }
+                
+                context("when event duration is to short") {
+                    
+                    beforeEach {
+                        sut.endDateItem.date = NSDate(timeIntervalSinceNow: 100)
+                    }
+                    
+                    it("should return validation error") {
+                        expect(sut.isModelValid()).toNot(beNil())
+                    }
+                }
+                
+                context("when user didn't choose room") {
+                    
+                    beforeEach {
+                        sut.calendarItem.result = nil
+                    }
+                    
+                    it("should return validation error") {
+                        expect(sut.isModelValid()).toNot(beNil())
+                    }
+                }
+            }
         }
         
         describe("initializing without calendar entry") {

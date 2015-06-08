@@ -29,6 +29,14 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
     var title: String
     var timelineConfiguration = TimelineConfiguration()
     
+    let summaryItem : TextItem
+    let allDayItem : SwitchItem
+    let startDateItem : DateItem
+    let endDateItem : DateItem
+    let repeatItem : ActionItem
+    let calendarItem : ResultActionItem
+    let descriptionItem : LongTextItem
+    
     init(calendarEntry: CalendarEntry?) {
         
         let query: EventQuery
@@ -65,13 +73,13 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         
         // MARK: Create items
         
-        let summaryItem = TextItem(placeholder: summaryPlaceholder)
-        let allDayItem = SwitchItem(title: allDayTitle)
-        let startDateItem = DateItem(title: startDateTitle)
-        let endDateItem = DateItem(title: endDateTitle, date: startDateItem.date.minutes + 30)
-        let repeatItem = ActionItem(title: repeatTitle, detailDescription: noneDetail)
-        let calendarItem = ResultActionItem(title: calendarTitle, detailDescription: noneDetail)
-        let descriptionItem = LongTextItem(placeholder: longTextPlaceholder)
+        summaryItem = TextItem(placeholder: summaryPlaceholder)
+        allDayItem = SwitchItem(title: allDayTitle)
+        startDateItem = DateItem(title: startDateTitle)
+        endDateItem = DateItem(title: endDateTitle, date: startDateItem.date.minutes + 30)
+        repeatItem = ActionItem(title: repeatTitle, detailDescription: noneDetail)
+        calendarItem = ResultActionItem(title: calendarTitle, detailDescription: noneDetail)
+        descriptionItem = LongTextItem(placeholder: longTextPlaceholder)
         
         // MARK: Fill items
         
@@ -113,8 +121,10 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         summaryItem.onValueChanged = { [weak self] text in
             self?.networkCooperator.eventQuery.summary = text
             
-            if let indexPaths = self?.indexPathsForItems([summaryItem] as [GroupItem]) {
-                self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+            if let summaryItemUnwrapped = self?.summaryItem {
+                if let indexPaths = self?.indexPathsForItems([summaryItemUnwrapped] as [GroupItem]) {
+                    self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                }
             }
         }
 
@@ -124,17 +134,17 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             var date: NSDate!
             
             if state {
-                date = startDateItem.date
-                startDateItem.date = date.midnight.second(59).date
-                endDateItem.date = date.tomorrow.midnight.seconds - 1
+                date = self?.startDateItem.date
+                self?.startDateItem.date = date.midnight.second(59).date
+                self?.endDateItem.date = date.tomorrow.midnight.seconds - 1
             } else {
                 date = NSDate().minutes + 1
-                startDateItem.date = date
-                endDateItem.date = date.minutes + 30
+                self?.startDateItem.date = date
+                self?.endDateItem.date = date.minutes + 30
             }
             
-            self?.networkCooperator.eventQuery.startDate = startDateItem.date
-            self?.networkCooperator.eventQuery.endDate = endDateItem.date
+            self?.networkCooperator.eventQuery.startDate = self?.startDateItem.date
+            self?.networkCooperator.eventQuery.endDate = self?.endDateItem.date
             
             func togglePickerForDateItem(item: DateItem) {
                 if item.highlighted {
@@ -156,14 +166,23 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 }
             }
             
-            togglePickerForDateItem(startDateItem)
-            togglePickerForDateItem(endDateItem)
+            if let startDateItemUnwrapped = self?.startDateItem {
+                togglePickerForDateItem(startDateItemUnwrapped)
+            }
+            if let endDateItemUnwrapped = self?.endDateItem {
+                togglePickerForDateItem(endDateItemUnwrapped)
+            }
             
-            startDateItem.active = !state
-            endDateItem.active = !state
+            self?.startDateItem.active = !state
+            self?.endDateItem.active = !state
             
-            if let indexPaths = self?.indexPathsForItems([startDateItem, endDateItem] as [GroupItem]) {
-                self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+            let startDateItemUnwrapped : DateItem?
+            let endDateItemUnwrapped : DateItem?
+            
+            if let startDateItemUnwrapped = self?.startDateItem, let endDateItemUnwrapped = self?.endDateItem {
+                if let indexPaths = self?.indexPathsForItems([startDateItemUnwrapped, endDateItemUnwrapped] as [GroupItem]) {
+                    self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                }
             }
         }
         
@@ -172,13 +191,15 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 query.startDate = date
             }
             
-            let probableEndDate = date.minutes + Int(self?.timelineConfiguration.minimumEventDuration ?? 0)/60
-            if endDateItem.date < probableEndDate {
-                endDateItem.date = probableEndDate
+            let probableEndDate = date.minutes + Int(AppConfiguration.Timeline.MinimumEventDuration/60)
+            if self?.endDateItem.date < probableEndDate {
+                self?.endDateItem.date = probableEndDate
             }
 
-            if let indexPaths = self?.indexPathsForItems([endDateItem]) {
-                self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+            if let endDateItemUnwrapped = self?.endDateItem {
+                if let indexPaths = self?.indexPathsForItems([endDateItemUnwrapped]) {
+                    self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                }
             }
         }
         
@@ -192,12 +213,14 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             let viewModel = ListViewModel(self.rooms) as ListViewModel<PickerItem>
             let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
                 if let item = item as? RoomItem {
-                    calendarItem.detailDescription = item.title
-                    calendarItem.result = item.id
+                    self?.calendarItem.detailDescription = item.title
+                    self?.calendarItem.result = item.id
                     self?.networkCooperator.eventQuery.calendarID = item.id
                     
-                    if let indexPaths = self?.indexPathsForItems([calendarItem]) {
-                        self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                    if let calendarItemUnwrapped = self?.calendarItem {
+                        if let indexPaths = self?.indexPathsForItems([calendarItemUnwrapped]) {
+                            self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                        }
                     }
                 }
             }
@@ -209,11 +232,13 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
             let viewModel = ListViewModel(reccurenceItems) as ListViewModel<PickerItem>
             let controller = PickerViewController(viewModel: viewModel) { [weak self] item in
                 if let item = item as? RecurrenceItem {
-                    repeatItem.detailDescription = item.title
+                    self?.repeatItem.detailDescription = item.title
                     self?.networkCooperator.eventQuery.recurrence = item.value
 
-                    if let indexPaths = self?.indexPathsForItems([repeatItem]) {
-                        self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                    if let repeatItemUnwrapped = self?.repeatItem {
+                        if let indexPaths = self?.indexPathsForItems([repeatItemUnwrapped]) {
+                            self?.delegate?.didChangeItemsAtIndexPaths(indexPaths)
+                        }
                     }
                 }
             }
@@ -240,8 +265,8 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
                 let message = NSLocalizedString("Cannot pick date earlier than today's midnight", comment: "")
                 return NSError(message: message)
                 
-            } else if endDateItem.date.timeIntervalSinceDate(date) < self.timelineConfiguration.minimumEventDuration {
-                let message = NSLocalizedString("Cannot create event shorter than \(self.timelineConfiguration.minimumEventDuration/60) minutes", comment: "")
+            } else if self.endDateItem.date.timeIntervalSinceDate(date) < AppConfiguration.Timeline.MinimumEventDuration {
+                let message = NSLocalizedString("Cannot create event shorter than \(AppConfiguration.Timeline.MinimumEventDuration/60) minutes", comment: "")
                 return NSError(message: message)
             }
             return nil
@@ -250,11 +275,11 @@ class EditEventViewModel<T: GroupItem>: GroupedListViewModel<GroupItem> {
         endDateItem.validation = { date in
             
             let calendarUnits: [NSCalendarUnit] = [.CalendarUnitYear, .CalendarUnitMonth, .CalendarUnitDay, .CalendarUnitHour, .CalendarUnitMinute]
-            let comparisonResult = date.compare(toDate: startDateItem.date, byUnits: calendarUnits)
+            let comparisonResult = date.compare(toDate: self.startDateItem.date, byUnits: calendarUnits)
             
             if comparisonResult.notDescending {
                 let reason = comparisonResult.ascending ? NSLocalizedString("date earlier than", comment: "") : NSLocalizedString("same date as", comment: "")
-                let message = NSLocalizedString("Cannot pick", comment: "") + " " + reason + " " + startDateItem.dateString
+                let message = NSLocalizedString("Cannot pick", comment: "") + " " + reason + " " + self.startDateItem.dateString
                 return NSError(message: message)
             }
             return nil
