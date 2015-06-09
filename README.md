@@ -21,8 +21,8 @@ All you have to do to build & run Roomguru is to follow 9 simple steps:
 
 	If you wish to change it, go to Roomguru target: `Build settings` -> `User Defined` -> `BUNDLE_ID`.
 
-3. Remove `Constants.swift` - is highlighted on red.
-4. Rename `Constants_Sample.swift` file to `Constants.swift`. Also remember to rename struct within this file.
+3. Copy `Constants_Sample.swift` as `Constants.swift` in project root directory: `cd Roomguru/Source\ Files/ && cp Constants_Sample.swift Constants.swift`
+4. Rename struct within `Constants.swift` file to `Constants`. You can remove `Constants_Sample.swift` now.
 5. If you want store keys on your own repository, remove `Constants.swift` from `.gitignore`.
 6. Copy received `ClientID` from Google and paste it to `Constants` -> `GooglePlus` -> `ClientID`.
 7. If you wish to distribute Roomguru via [HockeyApp](https://rink.hockeyapp.net/) copy `App ID` from Hockey and paste to `Constants` -> `HockeyApp` -> `ClientID`.
