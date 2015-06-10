@@ -45,7 +45,6 @@ class EventsQuerySpec: QuickSpec {
             it("should have proper time min") {
                 expect(sut.timeMin).to(equal(timeRange.min))
             }
-            
         }
         
         describe ("when creating array of queries from array of calendar identifiers") {
@@ -55,13 +54,13 @@ class EventsQuerySpec: QuickSpec {
                 expect(sut.count).to(equal(fixtureCalendarIDs.count))
             }
             
-            for var i = 0; i < sut.count; i++ {
-                let testQuery = sut[i]
+            for index in 0..<sut.count {
+                let testQuery = sut[index]
                 
                 itBehavesLike("queryable") {
                     [
                         "sut": testQuery,
-                        "mockQuery": mockQueries[i],
+                        "mockQuery": mockQueries[index],
                         "mockQueryParameters": mockQueryParameters
                     ]
                 }
