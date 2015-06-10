@@ -25,6 +25,9 @@ class EventsProviderNetworkCooperator {
                 completion(result: [], error: error)
         })
     }
+}
+
+private extension EventsProviderNetworkCooperator {
     
     func constructChainedRequestWithQuery(query: PageableQuery, response: [Event]?) -> [CalendarEntry] {
         
