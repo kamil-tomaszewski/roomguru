@@ -71,6 +71,11 @@ class FreeEventsProviderSpec: QuickSpec {
                             let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
                             expect(calendarEntries.count).to(equal(2))
                         }
+                        
+                        it("should have exactly 2 free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(2))
+                        }
                     }
                 }
                 
@@ -103,6 +108,11 @@ class FreeEventsProviderSpec: QuickSpec {
                         it("should return 4 entries") { // 60 minutes time available / 15 minutes every event = 4 entries
                             let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
                             expect(calendarEntries.count).to(equal(4))
+                        }
+                        
+                        it("should have exactly 4 free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(4))
                         }
                     }
 
@@ -224,6 +234,11 @@ class FreeEventsProviderSpec: QuickSpec {
                         it("should return 3 calendar entries") {
                             let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
                             expect(calendarEntries.count).to(equal(3))
+                        }
+                        
+                        it("should have no free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(0))
                         }
                     }
 
@@ -353,14 +368,216 @@ class FreeEventsProviderSpec: QuickSpec {
                             let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
                             expect(calendarEntries.count).to(equal(3))
                         }
+                        
+                        it("should have no free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(0))
+                        }
+                    }
+                    
+                    context("when booking in Wednesday is disabled") {
+                        
+                        beforeEach {
+                            var configuration = self.timelineConfiguration()
+                            configuration.bookingDays = [1, 2, 3, 5, 6, 7] // exclude Wednesday: NSDate(timeIntervalSinceReferenceDate: 60*60*24*365*30) is 4 day of week
+                            sut.configuration = configuration
+                        }
+                        
+                        it("should return 3 entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(3))
+                        }
                     }
                 }
             }
             
-            pending("with various calendar IDs") {
+            describe("with various calendar IDs") {
                 
-            }
+                beforeEach {
+                    calendarIDs = ["Fixture Calendar ID.1", "Fixture Calendar ID.2"]
+                }
+                
+                describe("in the past") {
+                    
+                    beforeEach {
+                        timeRange = self.timeRange(fromDate: NSDate(timeIntervalSinceReferenceDate: 60*60*10), duration: 60*60*6)
+                        
+                        let start1 = NSDate(timeIntervalSinceReferenceDate: 60*60*10) //+10h
+                        let start2 = NSDate(timeIntervalSinceReferenceDate: 60*60*10.5) //+10.5h
+                        let start3 = NSDate(timeIntervalSinceReferenceDate: 60*60*12) //+12h
+                        
+                        calendarEntries = [
+                            self.mockCalendarEntryWithCalendarID("Fixture Calendar ID.1", start: start1, duration:60*30),
+                            self.mockCalendarEntryWithCalendarID("Fixture Calendar ID.1", start: start2, duration:60*30),
+                            self.mockCalendarEntryWithCalendarID("Fixture Calendar ID.2", start: start3, duration:60*30)
+                        ]
+                    }
+                    
+                    context("when booking wih default configuration") {
+                        
+                        beforeEach {
+                            sut.configuration = self.timelineConfiguration()
+                        }
+                        
+                        it("should return 3 calendar entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(3))
+                        }
+                        
+                        it("should have no free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(0))
+                        }
+                    }
+                    
+                    context("when booking in the past is allowed") {
+                        
+                        beforeEach {
+                            var configuration = self.timelineConfiguration()
+                            configuration.bookablePast = true
+                            sut.configuration = configuration
+                        }
+                        
+                        it("should return 24 entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(24))
+                        }
+                        
+                        it("should have exactly 9 free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(21))
+                        }
+                    }
+                }
+                
+                describe("in the future") {
+                    
+                    beforeEach {
+                        let date = NSDate(timeIntervalSinceReferenceDate: 60*60*24*365*30 + 60*60*10) //+10h
+                        timeRange = self.timeRange(fromDate: date, duration: 60*60*4)
+                        
+                        let start1 = NSDate(timeIntervalSinceReferenceDate: 60*60*24*365*30 + 60*60*10) //+10h
+                        let start2 = NSDate(timeIntervalSinceReferenceDate: 60*60*24*365*30 + 60*60*10.5) //+10.5h
+                        let start3 = NSDate(timeIntervalSinceReferenceDate: 60*60*24*365*30 + 60*60*12) //+12h
+                        
+                        calendarEntries = [
+                            self.mockCalendarEntryWithCalendarID("Fixture Calendar ID.1", start: start1, duration:60*30),
+                            self.mockCalendarEntryWithCalendarID("Fixture Calendar ID.1", start: start2, duration:60*30),
+                            self.mockCalendarEntryWithCalendarID("Fixture Calendar ID.2", start: start3, duration:60*30)
+                        ]
+                    }
+                    
+                    context("when booking wih default configuration") {
+                        
+                        beforeEach {
+                            sut.configuration = self.timelineConfiguration()
+                        }
+                        
+                        it("should return 16 calendar entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(16))
+                        }
+                        
+                        it("should have exactly 13 free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(13))
+                        }
+                    }
+                    
+                    context("when time step is set to 15 minutes") {
+                        
+                        beforeEach {
+                            var configuration = self.timelineConfiguration()
+                            configuration.timeStep = 60*15
+                            sut.configuration = configuration
+                        }
+                        
+                        it("should return 29 calendar entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(29))
+                        }
+                        
+                        it("should have exactly 26 free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(26))
+                        }
+                    }
 
+                    context("when minimum event duration is set to 1 hour") {
+                        
+                        beforeEach {
+                            var configuration = self.timelineConfiguration()
+                            configuration.minimumEventDuration = 60*60
+                            sut.configuration = configuration
+                        }
+                        
+                        it("should return 3 calendar entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(3))
+                        }
+                        
+                        it("should not have free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(0))
+                        }
+                    }
+
+                    context("when booking earlier than allowed") {
+                        
+                        beforeEach {
+                            var configuration = self.timelineConfiguration()
+                            configuration.bookingRange = (60*60*15, 60*60*20) // 3.00 PM to 8:00 PM
+                            sut.configuration = configuration
+                        }
+                        
+                        it("should return 3 entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(3))
+                        }
+                        
+                        it("should not have free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(0))
+                        }
+                    }
+
+                    context("when booking later than allowed") {
+                        
+                        beforeEach {
+                            var configuration = self.timelineConfiguration()
+                            configuration.bookingRange = (60*60*10, 60*60*15) // 10.00 AM to 15:00 AM
+                            sut.configuration = configuration
+                            
+                            let date = NSDate(timeIntervalSinceReferenceDate: 60*60*24*365*30 + 60*60*16) // round date + 16 hours
+                            timeRange = self.timeRange(fromDate: date, duration: 60*60)
+                        }
+                        
+                        it("should return 3 entries") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.count).to(equal(3))
+                        }
+                        
+                        it("should have no free events") {
+                            let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                            expect(calendarEntries.filter { $0.event is FreeEvent }.count).to(equal(0))
+                        }
+                    }
+                }
+                
+                context("when booking in Wednesday is disabled") {
+                    
+                    beforeEach {
+                        var configuration = self.timelineConfiguration()
+                        configuration.bookingDays = [1, 2, 3, 5, 6, 7] // exclude Wednesday: NSDate(timeIntervalSinceReferenceDate: 60*60*24*365*30) is 4 day of week
+                        sut.configuration = configuration
+                    }
+                    
+                    it("should return 3 entries") {
+                        let calendarEntries = sut.populateEntriesWithFreeEvents(calendarEntries, inTimeRange: timeRange, usingCalenadIDs: calendarIDs)
+                        expect(calendarEntries.count).to(equal(3))
+                    }
+                }
+            }
         }
     }
 }
