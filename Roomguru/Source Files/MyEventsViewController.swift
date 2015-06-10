@@ -60,14 +60,14 @@ extension MyEventsViewController {
             self.navigationItem.leftBarButtonItem = barButtonItem
             
             if let error = error {
-                UIAlertView(error: error).show()
+                self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
                 
             } else if let entry = entry {
                 self.presentBookingConfirmationViewControllerWithCalendarEntry(entry)
                 
             } else {
                 let message = NSLocalizedString("No available room found", comment: "")
-                UIAlertView(message: message).show()
+                self.presentViewController(UIAlertController(message: message), animated: true, completion: nil)
             }
         }
     }
@@ -103,10 +103,11 @@ private extension MyEventsViewController {
         BookingManager.bookCalendarEntry(entry) { (event, error) in
             
             if let error = error {
-                UIAlertView(error: error).show()
+                self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
             } else {
                 let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
-                UIAlertView.alertViewForBookedEvent(entry.event, inRoomNamed: roomName).show()
+                let alertController = UIAlertController.alertControllerForBookedEvent(entry.event, inRoomNamed: roomName)
+                self.presentViewController(alertController, animated: true, completion: nil)
                 
                 self.reloadEventList()
             }

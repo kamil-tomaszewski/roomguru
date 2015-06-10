@@ -173,7 +173,7 @@ extension EventDetailsViewController {
         
         UIApplication.openURLIfPossible(viewModel.hangoutURL()) { (success, error) in
             if let error = error {
-                UIAlertView(error: error).show()
+                self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
             }
         }
     }
@@ -193,7 +193,7 @@ extension EventDetailsViewController {
                     PKHUD.sharedHUD.hide()
                     
                     if let error = error {
-                        UIAlertView(error: error).show()
+                        self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
                     } else {
                         self.didUpdateBlock?()
                         self.navigationController?.popViewControllerAnimated(true)

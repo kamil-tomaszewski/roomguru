@@ -47,7 +47,8 @@ class LoginViewController: UIViewController  {
     
     func showError(error: NSError) {
         aView?.showSignInButton(true)
-        UIAlertView(error: error).show()
+        
+        self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
     }
     
     func didTapSignInButton(sender: GPPSignInButton) {

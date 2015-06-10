@@ -193,7 +193,7 @@ extension EditEventViewController {
         endEditing()
         
         if let error = viewModel.isModelValid() {
-            UIAlertView(error: error).show()
+            self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
             return
         }
         
@@ -204,7 +204,7 @@ extension EditEventViewController {
             PKHUD.sharedHUD.hide()
             
             if let error = error {
-                UIAlertView(error: error).show()
+                self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
                 
             } else if let event = event {
                 

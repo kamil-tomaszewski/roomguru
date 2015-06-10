@@ -88,7 +88,8 @@ private extension CalendarNameCustomizerViewController {
             delegate?.calendarNameCustomizerViewController(self, didEndEditngWithNewName: aView?.textField.text)
             navigationController?.popViewControllerAnimated(true)
         } else {
-            UIAlertView(title: NSLocalizedString("Oh no!", comment: ""), message: NSLocalizedString("Provided name should have at least 1 sign", comment: "")).show()
+            let message = NSLocalizedString("Provided name should have at least 1 sign", comment: "")
+            self.presentViewController(UIAlertController(message: message), animated: true, completion: nil)
         }
     }
 }

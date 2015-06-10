@@ -191,10 +191,11 @@ extension EventsListViewController {
         BookingManager.bookCalendarEntry(entry) { (event, error) in
             
             if let error = error {
-                UIAlertView(error: error).show()
+                self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)
             } else {
                 let roomName = CalendarPersistenceStore.sharedStore.nameMatchingID(entry.calendarID)
-                UIAlertView.alertViewForBookedEvent(entry.event, inRoomNamed: roomName).show()
+                let alertController = UIAlertController.alertControllerForBookedEvent(entry.event, inRoomNamed: roomName)
+                self.presentViewController(alertController, animated: true, completion: nil)
                 
                 self.loadData()
             }
