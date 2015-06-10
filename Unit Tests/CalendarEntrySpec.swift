@@ -49,16 +49,18 @@ class CalendarEntrySpec: QuickSpec {
                 expect(sut.event).to(equal(mockEventFirst))
             }
             
-            context("protocol conformance") {
+            context("archiving and unarchiving") {
                 
-                it("should implement NSSecureCoding Protocol") {
-                    let result = (sut as Any) is NSSecureCoding
-                    expect(result).to(beTrue())
+                it("should have the same calendarID after archiving and unarchiving") {
+                    let archivedCalendarEntry = NSKeyedArchiver.archivedDataWithRootObject(sut)
+                    let unarchivedCalendarEntry = NSKeyedUnarchiver.unarchiveObjectWithData(archivedCalendarEntry) as! CalendarEntry
+                    expect(sut.calendarID).to(equal(unarchivedCalendarEntry.calendarID))
                 }
                 
-                it("should be a subclass of NSObject") {
-                    let result = (sut as Any) is NSObject
-                    expect(result).to(beTrue())
+                it("should have the same event identifier after archiving and unarchiving") {
+                    let archivedCalendarEntry = NSKeyedArchiver.archivedDataWithRootObject(sut)
+                    let unarchivedCalendarEntry = NSKeyedUnarchiver.unarchiveObjectWithData(archivedCalendarEntry) as! CalendarEntry
+                    expect(sut.event.identifier).to(equal(unarchivedCalendarEntry.event.identifier))
                 }
             }
         }
@@ -74,7 +76,7 @@ class CalendarEntrySpec: QuickSpec {
             
             context("every calendar entry from array") {
                 
-                for var index = 0; index < sut.count; ++index {
+                for index in 0..<sut.count {
                 
                     let calendarEntry = sut[index]
                     let mockCalendarEntry = mockCalendarEntries[index]
@@ -145,7 +147,7 @@ private extension CalendarEntrySpec {
     
     func mockedCalendarEntries(calendarID: String, events: [Event]) -> [CalendarEntry] {
         var entries: [CalendarEntry] = []
-        for event in events{
+        for event in events {
             let entry = CalendarEntry(calendarID: calendarID, event: event)
             entries.append(entry)
         }
