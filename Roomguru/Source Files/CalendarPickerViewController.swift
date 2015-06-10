@@ -67,7 +67,8 @@ private extension CalendarPickerViewController {
                 }
                 
                 let message = NSLocalizedString("No resource calendars were find. Please add resource calendars to your Google account.", comment: "")
-                UIAlertView(message: message).show()
+                
+                UIAlertView(title: NSLocalizedString("Oh no!", comment: ""), message: message, delegate: self, cancelButtonTitle: nil, otherButtonTitles: "OK", "Read more").show()
             }
             
         }, failure: { error in
@@ -81,6 +82,19 @@ private extension CalendarPickerViewController {
     
     func setSelectAllBarButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select All", comment: ""), style: .Plain, target: self, action: Selector("didTapSelectAllBarButtonItem:"))
+    }
+}
+
+extension CalendarPickerViewController: UIAlertViewDelegate {
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        switch buttonIndex {
+        case 1:
+            UIApplication.sharedApplication().openURL(Constants.Google.ResourceCalendarsURL!)
+        default:
+            return
+        }
     }
 }
 

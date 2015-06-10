@@ -27,4 +27,8 @@ struct Constants_Sample {
         
         static let ClientID = ""
     }
+    
+    struct Google {
+        static let ResourceCalendarsURL = NSURL(string: "https://support.google.com/a/answer/1686462?hl=en")
+    }
 }
