@@ -309,6 +309,7 @@
 		74433FBA1AFB574200B7ED50 /* RevokeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8459981ACBDE38004965EC /* RevokeQuery.swift */; };
 		74433FBB1AFB574E00B7ED50 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
 		744C9E7A1B020126000D9E5C /* FreeBusyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */; };
+		745127DF1B27B1C20043121C /* CalendarEntrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745127DE1B27B1C20043121C /* CalendarEntrySpec.swift */; };
 		74851CC41B00FAB700228483 /* EventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */; };
 		74851CC51B00FAC300228483 /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251AD21AC093A00020DFC4 /* Pageable.swift */; };
 		74EE92FC1B148FE100200957 /* TabBarTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EE92FB1B148FE100200957 /* TabBarTransitionAnimator.swift */; };
@@ -545,6 +546,7 @@
 		74433FB41AFB56DC00B7ED50 /* CalendarsQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarsQuerySpec.swift; sourceTree = "<group>"; };
 		74433FB51AFB56DC00B7ED50 /* RevokeQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokeQuerySpec.swift; sourceTree = "<group>"; };
 		744C9E781B0200A2000D9E5C /* FreeBusyQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeBusyQuerySpec.swift; sourceTree = "<group>"; };
+		745127DE1B27B1C20043121C /* CalendarEntrySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEntrySpec.swift; sourceTree = "<group>"; };
 		746B1ED21B049C60009FB084 /* PageableQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageableQuerySpec.swift; sourceTree = "<group>"; };
 		746F8B0B1B0340F7005E746A /* BookingQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingQuerySpec.swift; sourceTree = "<group>"; };
 		7497CF171B04B7100059B4DB /* QuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuerySpec.swift; sourceTree = "<group>"; };
@@ -1125,6 +1127,7 @@
 				BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */,
 				BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */,
 				742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */,
+				745127DE1B27B1C20043121C /* CalendarEntrySpec.swift */,
 			);
 			name = "Object & Models Tests";
 			sourceTree = "<group>";
@@ -1780,6 +1783,7 @@
 				5E5739AC1B18A48900AEC231 /* AlertViewTransitionDelegate.swift in Sources */,
 				5EB3A0A01AEA827A00DB0585 /* EventDetailsViewModel.swift in Sources */,
 				5E5739C41B18A64E00AEC231 /* BookingConfirmationView.swift in Sources */,
+				745127DF1B27B1C20043121C /* CalendarEntrySpec.swift in Sources */,
 				21875EBB1B187BC1003E1E59 /* EditEventViewModelSpec.swift in Sources */,
 				5E5739A21B18A42B00AEC231 /* CalendarPickerViewController.swift in Sources */,
 				5E573A071B1BBAF200AEC231 /* GPPTokenStore.swift in Sources */,
