@@ -6,6 +6,10 @@ You can also read our blog post [Introducing: Roomguru Open Source Swift App](ht
 
 App is under MIT [license](https://github.com/netguru/roomguru/blob/master/LICENSE.md).
 
+<p align="center" >
+  <img src="https://raw.github.com/netguru/roomguru/master/Assets/roomguru-app.jpg" alt="Roomguru" title="Roomguru">
+</p>
+
 ## Requirements
 
 Roomguru requires Google app set up in Google apps service. You will also need [resource calendars](https://support.google.com/a/answer/1686462?hl=en) to use this app.
