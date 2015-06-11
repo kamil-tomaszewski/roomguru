@@ -11,7 +11,7 @@ import Cartography
 
 class ButtonCell: UITableViewCell, Reusable {
         
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "TableButtonCellReuseIdentifier"
     }
     

@@ -13,7 +13,7 @@ class DatePickerCell: UITableViewCell, Reusable {
     
     var date = NSDate()
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "TableViewDatePickerCellReuseIdentifier"
     }
     

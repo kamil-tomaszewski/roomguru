@@ -13,7 +13,7 @@ class TextFieldCell: UITableViewCell, Reusable {
     
     private static var accessoryViewFrame = CGRectMake(0, 0, 30, 30)
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "TableViewTextFieldCellReuseIdentifier"
     }
     

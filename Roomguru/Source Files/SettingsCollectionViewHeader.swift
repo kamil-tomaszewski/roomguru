@@ -15,7 +15,7 @@ class SettingsCollectionViewHeader: UICollectionReusableView, Reusable {
     private let avatarView = AvatarView(frame: CGRectMake(0, 0, 110, 110))
     private let backgroundImageView = UIImageView()
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "SettingsCollectionViewHeaderReuseIdentifier"
     }
     

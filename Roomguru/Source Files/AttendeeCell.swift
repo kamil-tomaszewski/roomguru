@@ -16,7 +16,7 @@ class AttendeeCell: UITableViewCell, Reusable {
     let footerLabel = UILabel()
     let avatarView = AvatarView(frame: CGRectMake(0, 0, 40, 40))
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "TableViewAttendeeCellReuseIdentifier"
     }
     

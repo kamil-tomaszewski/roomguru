@@ -14,27 +14,27 @@ extension UICollectionView {
         case Cell, Header, Footer
     }
     
-    func registerClass<T where T: UICollectionReusableView, T: Reusable>(aClass: T.Type, type: Type) {
+    func registerClass<T: UICollectionReusableView where T: Reusable>(aClass: T.Type, type: Type) {
         
         switch(type) {
         case .Cell:
-            registerClass(aClass, forCellWithReuseIdentifier: T.reuseIdentifier())
+            registerClass(aClass, forCellWithReuseIdentifier: T.reuseIdentifier)
         case .Header:
-            registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier())
+            registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier)
         case .Footer:
-            registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier())
+            registerClass(aClass, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier)
         }
     }
     
-    func dequeueReusableClass<T where T: UICollectionReusableView, T: Reusable>(aClass: T.Type, forIndexPath indexPath: NSIndexPath, type: Type) -> T {
+    func dequeueReusableClass<T: UICollectionReusableView where T: Reusable>(aClass: T.Type, forIndexPath indexPath: NSIndexPath, type: Type) -> T {
         
         switch(type) {
         case .Cell:
-            return dequeueReusableCellWithReuseIdentifier(T.reuseIdentifier(), forIndexPath: indexPath) as! T
+            return dequeueReusableCellWithReuseIdentifier(T.reuseIdentifier, forIndexPath: indexPath) as! T
         case .Header:
-            return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier(), forIndexPath: indexPath) as! T
+            return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier, forIndexPath: indexPath) as! T
         case .Footer:
-            return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier(), forIndexPath: indexPath) as! T
+            return dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier, forIndexPath: indexPath) as! T
         }
     }
 }

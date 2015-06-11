@@ -15,7 +15,7 @@ enum DayCellStyle {
 
 class DayCarouselCell: UICollectionViewCell, Reusable {
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "UICollectionViewDayCarouselCellReuseIdentifier"
     }
     

@@ -21,7 +21,7 @@ class FreeEventCell: EventCell {
     
     private var cellState: FreeEventCellState = .Normal
     
-    override class func reuseIdentifier() -> String {
+    override class var reuseIdentifier: String {
         return "TableViewFreeEventCellReuseIdentifier"
     }
 

@@ -13,7 +13,7 @@ class PickerItemCell: UITableViewCell, Reusable {
     
     let checkmarkLabel = UILabel()
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "TableViewPickerItemCellReuseIdentifier"
     }
     

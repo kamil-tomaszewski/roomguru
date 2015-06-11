@@ -116,7 +116,7 @@ extension EditEventViewController: TableViewConfigurable {
     }
     
     func reuseIdenfitierForItem(item: PickerItem) -> String {
-        return PickerItemCell.reuseIdentifier()
+        return PickerItemCell.reuseIdentifier
     }
 }
 

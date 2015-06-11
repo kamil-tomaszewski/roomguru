@@ -29,7 +29,7 @@ class EventCell: UITableViewCell, Reusable {
     let ongoingBadge = UILabel()
     let colorView = UIView()
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "TableViewEventCellReuseIdentifier"
     }
     

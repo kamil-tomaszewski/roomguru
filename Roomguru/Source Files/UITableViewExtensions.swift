@@ -24,11 +24,11 @@ extension UITableView {
         tableFooterView = UIView(frame: CGRectZero)
     }
     
-    func registerClass<T where T: UITableViewCell, T: Reusable>(aClass: T.Type) {
-        registerClass(aClass, forCellReuseIdentifier: T.reuseIdentifier())
+    func registerClass<T: UITableViewCell where T: Reusable>(aClass: T.Type) {
+        registerClass(aClass, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
-    func dequeueReusableCell<T where T: UITableViewCell, T: Reusable>(aClass: T.Type) -> T {
-        return dequeueReusableCellWithIdentifier(T.reuseIdentifier()) as! T
+    func dequeueReusableCell<T: UITableViewCell where T: Reusable>(aClass: T.Type) -> T {
+        return dequeueReusableCellWithIdentifier(T.reuseIdentifier) as! T
     }
 }

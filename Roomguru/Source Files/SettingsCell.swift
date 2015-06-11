@@ -11,7 +11,7 @@ import Cartography
 
 class SettingsCell: UICollectionViewCell, Reusable {
     
-    class func reuseIdentifier() -> String {
+    class var reuseIdentifier: String {
         return "UICollectionViewSettingsCellReuseIdentifier"
     }
 
