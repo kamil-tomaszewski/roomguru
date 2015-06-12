@@ -16,6 +16,7 @@ class EventsProvider {
     
     let calendarIDs: [String]
     var networkCooperator = EventsProviderNetworkCooperator()
+    var freeEventsProvider = FreeEventsProvider()
     
     init(calendarIDs: [String], timeRange: TimeRange) {
         self.timeRange = timeRange
@@ -31,7 +32,7 @@ class EventsProvider {
             Async.background {
                 if let entries = entries {
                     let filteredEntries = self.onlyActiveEntries(entries)
-                    calendarEntriesToReturn = FreeEventsProvider().populateEntriesWithFreeEvents(filteredEntries, inTimeRange: self.timeRange, usingCalenadIDs: self.calendarIDs)
+                    calendarEntriesToReturn = self.freeEventsProvider.populateEntriesWithFreeEvents(filteredEntries, inTimeRange: self.timeRange, usingCalenadIDs: self.calendarIDs)
                 }
             }.main {
                 completion(calendarEntries: calendarEntriesToReturn, error: error)
