@@ -18,11 +18,11 @@ class EventsProviderNetworkCooperator {
             
             return self.constructChainedRequestWithQuery(query, response: response)
             
-            }, success: { [weak self] (result: [CalendarEntry]?) in
-                completion(result: result, error: nil)
-                
-            }, failure: { error in
-                completion(result: [], error: error)
+        }, success: { [weak self] (result: [CalendarEntry]?) in
+            completion(result: result, error: nil)
+            
+        }, failure: { error in
+            completion(result: [], error: error)
         })
     }
 }

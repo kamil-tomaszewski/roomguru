@@ -185,8 +185,6 @@ class EventsProviderSpec: QuickSpec {
                 }
             }
             
-            
-            
             context("and provider return result") {
                 
                 beforeEach {

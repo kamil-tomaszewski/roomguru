@@ -49,18 +49,37 @@ class CalendarEntrySpec: QuickSpec {
                 expect(sut.event).to(equal(mockEventFirst))
             }
             
-            context("archiving and unarchiving") {
+            context("after archving") {
                 
-                it("should have the same calendarID after archiving and unarchiving") {
-                    let archivedCalendarEntry = NSKeyedArchiver.archivedDataWithRootObject(sut)
-                    let unarchivedCalendarEntry = NSKeyedUnarchiver.unarchiveObjectWithData(archivedCalendarEntry) as! CalendarEntry
-                    expect(sut.calendarID).to(equal(unarchivedCalendarEntry.calendarID))
+                var archivedCalendarEntry: NSData!
+                
+                beforeEach {
+                    archivedCalendarEntry = NSKeyedArchiver.archivedDataWithRootObject(sut)
                 }
                 
-                it("should have the same event identifier after archiving and unarchiving") {
-                    let archivedCalendarEntry = NSKeyedArchiver.archivedDataWithRootObject(sut)
-                    let unarchivedCalendarEntry = NSKeyedUnarchiver.unarchiveObjectWithData(archivedCalendarEntry) as! CalendarEntry
-                    expect(sut.event.identifier).to(equal(unarchivedCalendarEntry.event.identifier))
+                afterEach {
+                    archivedCalendarEntry = nil
+                }
+                
+                context("and unarchiving") {
+                    
+                    var unarchivedCalendarEntry: CalendarEntry!
+                    
+                    beforeEach {
+                        unarchivedCalendarEntry = NSKeyedUnarchiver.unarchiveObjectWithData(archivedCalendarEntry) as! CalendarEntry
+                    }
+                    
+                    afterEach {
+                        unarchivedCalendarEntry = nil
+                    }
+                    
+                    it("should calendarEntry have the same calendarID") {
+                        expect(sut.calendarID).to(equal(unarchivedCalendarEntry.calendarID))
+                    }
+                    
+                    it("should calendarEntry have the same event identifier") {
+                        expect(sut.event.identifier).to(equal(unarchivedCalendarEntry.event.identifier))
+                    }
                 }
             }
         }
@@ -74,21 +93,20 @@ class CalendarEntrySpec: QuickSpec {
                 expect(sut.count).to(equal(mockCalendarEntries.count))
             }
             
-            context("every calendar entry from array") {
+            it("every calendar should have proper Calendar ID") {
                 
-                for index in 0..<sut.count {
-                    
-                    let calendarEntry = sut[index]
-                    let mockCalendarEntry = mockCalendarEntries[index]
-                    
-                    it("should have proper Calendar ID") {
-                        expect(calendarEntry.calendarID).to(equal(mockCalendarEntry.calendarID))
-                    }
-                    
-                    it("should have proper event") {
-                        expect(calendarEntry.event).to(equal(mockCalendarEntry.event))
-                    }
-                }
+                let ownedCalendarIDs = sut.map { $0.calendarID }
+                let mockedCalendarIDs = mockCalendarEntries.map { $0.calendarID }
+                
+                expect(ownedCalendarIDs).to(equal(mockedCalendarIDs))
+            }
+            
+            it("every calendar should have proper event") {
+                
+                let ownedEvents = sut.map { $0.event }
+                let mocekdEvents = mockCalendarEntries.map { $0.event }
+                
+                expect(ownedEvents).to(equal(mocekdEvents))
             }
         }
         
