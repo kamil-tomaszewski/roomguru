@@ -33,93 +33,96 @@ class MyEventsListCoordinatorSpec: QuickSpec {
                 expect(sut.eventsProvider.calendarIDs).to(contain("Fixture Calendar ID.1", "Fixture Calendar ID.2"))
             }
         }
-
-        describe("when requesting for data and there are no calendar entries") {
+        
+        describe("when requesting for data") {
             
-            class MockEventsProvider: EventsProvider {
-                override func userActiveCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
-                    completion(calendarEntries: [], error: nil)
-                }
-            }
-            
-            sut = MyEventsListCoordinator(date: NSDate(), calendarIDs: [])
-            let mockEventsProvider = MockEventsProvider(calendarIDs: sut.eventsProvider.calendarIDs, timeRange: sut.date.dayTimeRange)
-            sut.eventsProvider = mockEventsProvider
-            
-            itBehavesLike("events coordinator") {
-                [
-                    "status" : "Empty",
-                    "message" : [
-                        "value" : "You haven't got any meetings this day.\n\nFinally peace and quiet.",
-                        "isNil" : false
-                    ],
-                    "icon" : [
-                        "value" : String.fontAwesomeIconWithName(FontAwesome.SmileO),
-                        "isNil" : false
-                    ],
-                    "sut": sut
-                ]
-            }
-        }
-
-        describe("when requesting for data and there are calendar entries") {
-            
-            class MockEventsProvider: EventsProvider {
-                override func userActiveCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
-                    
-                    let calendarEntry = CalendarEntry(calendarID: "Fixture Calendar ID", event: Event())
-                    completion(calendarEntries: [calendarEntry], error: nil)
-                }
-            }
-            
-            sut = MyEventsListCoordinator(date: NSDate(), calendarIDs: [])
-            let mockEventsProvider = MockEventsProvider(calendarIDs: sut.eventsProvider.calendarIDs, timeRange: sut.date.dayTimeRange)
-            sut.eventsProvider = mockEventsProvider
-            
-            itBehavesLike("events coordinator") {
-                [
-                    "status" : "Success",
-                    "message" : [
-                        "value" : "",
-                        "isNil" : true
-                    ],
-                    "icon" : [
-                        "value" : "",
-                        "isNil" : true
-                    ],
-                    "sut": sut
-                ]
-            }
-        }
-
-        describe("when requesting for data and an error occured") {
-            
-            class MockEventsProvider: EventsProvider {
+            context("and there are no calendar entries") {
                 
-                override func userActiveCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
-                    
-                    let error = NSError(message: "Fixture Error Message")
-                    completion(calendarEntries: [], error: error)
+                class MockEventsProvider: EventsProvider {
+                    override func userActiveCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
+                        completion(calendarEntries: [], error: nil)
+                    }
+                }
+                
+                sut = MyEventsListCoordinator(date: NSDate(), calendarIDs: [])
+                let mockEventsProvider = MockEventsProvider(calendarIDs: sut.eventsProvider.calendarIDs, timeRange: sut.date.dayTimeRange)
+                sut.eventsProvider = mockEventsProvider
+                
+                itBehavesLike("events coordinator") {
+                    [
+                        "status" : "Empty",
+                        "message" : [
+                            "value" : "You haven't got any meetings this day.\n\nFinally peace and quiet.",
+                            "isNil" : false
+                        ],
+                        "icon" : [
+                            "value" : String.fontAwesomeIconWithName(FontAwesome.SmileO),
+                            "isNil" : false
+                        ],
+                        "sut": sut
+                    ]
                 }
             }
             
-            sut = MyEventsListCoordinator(date: NSDate(), calendarIDs: [])
-            let mockEventsProvider = MockEventsProvider(calendarIDs: sut.eventsProvider.calendarIDs, timeRange: sut.date.dayTimeRange)
-            sut.eventsProvider = mockEventsProvider
+            context("and there are calendar entries") {
+                
+                class MockEventsProvider: EventsProvider {
+                    override func userActiveCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
+                        
+                        let calendarEntry = CalendarEntry(calendarID: "Fixture Calendar ID", event: Event())
+                        completion(calendarEntries: [calendarEntry], error: nil)
+                    }
+                }
+                
+                sut = MyEventsListCoordinator(date: NSDate(), calendarIDs: [])
+                let mockEventsProvider = MockEventsProvider(calendarIDs: sut.eventsProvider.calendarIDs, timeRange: sut.date.dayTimeRange)
+                sut.eventsProvider = mockEventsProvider
+                
+                itBehavesLike("events coordinator") {
+                    [
+                        "status" : "Success",
+                        "message" : [
+                            "value" : "",
+                            "isNil" : true
+                        ],
+                        "icon" : [
+                            "value" : "",
+                            "isNil" : true
+                        ],
+                        "sut": sut
+                    ]
+                }
+            }
             
-            itBehavesLike("events coordinator") {
-                [
-                    "status" : "Failed",
-                    "message" : [
-                        "value" : "Fixture Error Message",
-                        "isNil" : false
-                    ],
-                    "icon" : [
-                        "value" : String.fontAwesomeIconWithName(FontAwesome.MehO),
-                        "isNil" : false
-                    ],
-                    "sut": sut
-                ]
+            context("and an error occured") {
+                
+                class MockEventsProvider: EventsProvider {
+                    
+                    override func userActiveCalendarEntriesWithCompletion(completion: (calendarEntries: [CalendarEntry], error: NSError?) -> Void) {
+                        
+                        let error = NSError(message: "Fixture Error Message")
+                        completion(calendarEntries: [], error: error)
+                    }
+                }
+                
+                sut = MyEventsListCoordinator(date: NSDate(), calendarIDs: [])
+                let mockEventsProvider = MockEventsProvider(calendarIDs: sut.eventsProvider.calendarIDs, timeRange: sut.date.dayTimeRange)
+                sut.eventsProvider = mockEventsProvider
+                
+                itBehavesLike("events coordinator") {
+                    [
+                        "status" : "Failed",
+                        "message" : [
+                            "value" : "Fixture Error Message",
+                            "isNil" : false
+                        ],
+                        "icon" : [
+                            "value" : String.fontAwesomeIconWithName(FontAwesome.MehO),
+                            "isNil" : false
+                        ],
+                        "sut": sut
+                    ]
+                }
             }
         }
     }

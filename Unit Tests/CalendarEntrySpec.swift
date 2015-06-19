@@ -17,7 +17,7 @@ class CalendarEntrySpec: QuickSpec {
     override func spec() {
         
         let fixtureCalendarID = "FixtureCalendarID"
-    
+        
         let mockEventFirst = self.mockedEvent("FirstFixtureID", startDate: "2015-04-24T01:00:00-07:00", endDate: "2015-04-24T01:30:00-07:00")
         let mockEventSecond = self.mockedEvent("SecondFixtureID", startDate: "2015-08-24T01:00:00-07:00", endDate: "2015-08-24T01:30:00-07:00")
         let mockEventThird = self.mockedEvent("ThirdFixtureID", startDate: "2015-06-24T01:00:00-07:00", endDate: "2015-06-24T01:30:00-07:00")
@@ -30,7 +30,7 @@ class CalendarEntrySpec: QuickSpec {
         
         
         describe("When initialized") {
-           
+            
             var sut: CalendarEntry!
             
             beforeEach {
@@ -77,14 +77,14 @@ class CalendarEntrySpec: QuickSpec {
             context("every calendar entry from array") {
                 
                 for index in 0..<sut.count {
-                
+                    
                     let calendarEntry = sut[index]
                     let mockCalendarEntry = mockCalendarEntries[index]
-                
+                    
                     it("should have proper Calendar ID") {
                         expect(calendarEntry.calendarID).to(equal(mockCalendarEntry.calendarID))
                     }
-                
+                    
                     it("should have proper event") {
                         expect(calendarEntry.event).to(equal(mockCalendarEntry.event))
                     }
@@ -124,7 +124,7 @@ private extension CalendarEntrySpec {
                 mockedRoomJSONWithName("FixtureRoom.2", email: "FixtureRoomEmail.2")
             ],
             "creator" : mockedAttendeeJSONWithName("FixtureName.4", email: "FixtureEmail.4", status: .Going)
-            ]))
+        ]))
     }
     
     func mockedAttendeeJSONWithName(name: String, email: String, status: Status) -> [String : String] {
