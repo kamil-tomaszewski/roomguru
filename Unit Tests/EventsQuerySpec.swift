@@ -53,26 +53,23 @@ class EventsQuerySpec: QuickSpec {
             it("should return proper number of queries") {
                 expect(sut.count).to(equal(fixtureCalendarIDs.count))
             }
-            
-            for index in 0..<sut.count {
-                let testQuery = sut[index]
-                
-                itBehavesLike("queryable") {
-                    [
-                        "sut": testQuery,
-                        "mockQuery": mockQueries[index],
-                        "mockQueryParameters": mockQueryParameters
-                    ]
-                }
-                
-                it("should have proper time max") {
-                    expect(testQuery.timeMax).to(equal(timeRange.max))
-                }
-                
-                it("should have proper time min") {
-                    expect(testQuery.timeMin).to(equal(timeRange.min))
-                }
-            }
+
+			it("every calendar should have proper time max") {
+				let isTimeMaxProper = self.containsOnlyTrue(sut.map { $0.timeMax == timeRange.max })
+				expect(isTimeMaxProper).to(beTrue())
+			}
+			
+			it("every calendar should have proper time min") {
+				let isTimeMinProper = self.containsOnlyTrue(sut.map { $0.timeMin == timeRange.min })
+				expect(isTimeMinProper).to(beTrue())
+			}
         }
     }
+}
+
+private extension EventsQuerySpec {
+	
+	func containsOnlyTrue(flags: [Bool]) -> Bool{
+		return !contains(flags, false)
+	}
 }
