@@ -28,7 +28,6 @@
 		2164E7E41B1DEE0A00B27A91 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B25A11ADD467400242859 /* EditEventViewModel.swift */; };
 		2164E7E51B1DEE1C00B27A91 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */; };
 		2164E7E61B1EEF4900B27A91 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */; };
-		2164E7E71B1EF32300B27A91 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF755231AE52C6500F68DB9 /* Reusable.swift */; };
 		2164E7E91B1EF49200B27A91 /* EditEventNetworkCooperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAF39F21B11EAF40032EFDF /* EditEventNetworkCooperator.swift */; };
 		2164E7EA1B1EF4AB00B27A91 /* PickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */; };
 		2164E7EB1B1EF4B700B27A91 /* DatePickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */; };
@@ -59,13 +58,14 @@
 		21875ED31B188319003E1E59 /* EventedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2161DCAA1B1459C800DD0AD9 /* EventedTableView.swift */; };
 		21875ED41B188359003E1E59 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */; };
 		21875ED51B18886B003E1E59 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */; };
-		21875ED81B188A80003E1E59 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF755231AE52C6500F68DB9 /* Reusable.swift */; };
 		3FBDD1B2DABF053615250478 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E863DC0075B8561A39153AA0 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5E003E631ACB290700AE55C1 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */; };
 		5E04B9EB1AF0729700405BFB /* WeekdaysBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */; };
 		5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720031AB6D8FF009C270E /* SwitchCell.swift */; };
 		5E07202A1AB73846009C270E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0720291AB73846009C270E /* DashboardView.swift */; };
 		5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED4C76F1ACC3DC80084E52F /* Defines.swift */; };
+		5E0A090A1B394B63001C0E8A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A09091B394B63001C0E8A /* Reusable.swift */; };
+		5E0A090B1B394B63001C0E8A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A09091B394B63001C0E8A /* Reusable.swift */; };
 		5E15F13A1AD804CF00E1F8BC /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1391AD804CF00E1F8BC /* LaunchView.swift */; };
 		5E15F13F1ADBE28A00E1F8BC /* GPPAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */; };
 		5E15F1431ADC2B8300E1F8BC /* UserImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */; };
@@ -118,7 +118,7 @@
 		5E5739C21B18A60600AEC231 /* BookingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */; };
 		5E5739C31B18A64700AEC231 /* BookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */; };
 		5E5739C41B18A64E00AEC231 /* BookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */; };
-		5E5739C51B18A65800AEC231 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* TextField.swift */; };
+		5E5739C51B18A65800AEC231 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* InsetTextField.swift */; };
 		5E5739C61B18A67400AEC231 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */; };
 		5E5739C71B18A68100AEC231 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */; };
 		5E5739C81B18A68400AEC231 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */; };
@@ -323,7 +323,7 @@
 		7B91D6EB1AC01E0E0080DD91 /* BookingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */; };
 		7B91D6ED1AC024A70080DD91 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */; };
 		96B0A12C6682F9B408E5CF68 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0759062D32339F0F1B138E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BF01C8E71AEF8048003422AD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* TextField.swift */; };
+		BF01C8E71AEF8048003422AD /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C8E61AEF8048003422AD /* InsetTextField.swift */; };
 		BF0A9E4E1AD540290088ED79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9E4D1AD540290088ED79 /* User.swift */; };
 		BF1EA1A01AF783DC008FECB8 /* BookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */; };
 		BF251ACD1AC083F30020DFC4 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF251ACC1AC083F30020DFC4 /* Queryable.swift */; };
@@ -400,29 +400,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2161DCAA1B1459C800DD0AD9 /* EventedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventedTableView.swift; path = "Roomguru/Source Files/EventedTableView.swift"; sourceTree = SOURCE_ROOT; };
+		2161DCAA1B1459C800DD0AD9 /* EventedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventedTableView.swift; path = "Roomguru/Source Files/Views/Common/EventedTableView.swift"; sourceTree = SOURCE_ROOT; };
 		2164E7C81B1DA44E00B27A91 /* FixtureItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureItem.swift; sourceTree = "<group>"; };
 		21875E9C1B186688003E1E59 /* EditEventViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventViewModelSpec.swift; sourceTree = "<group>"; };
-		5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLExtensions.swift; path = "Roomguru/Source Files/NSURLExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekdaysBar.swift; path = "Roomguru/Source Files/WeekdaysBar.swift"; sourceTree = SOURCE_ROOT; };
+		5E003E621ACB290700AE55C1 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLExtensions.swift; path = "Roomguru/Source Files/Extensions/NSURLExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekdaysBar.swift; path = "Roomguru/Source Files/Views/Common/WeekdaysBar.swift"; sourceTree = SOURCE_ROOT; };
 		5E0618F41AEA357B00006F61 /* UserPersistenceStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPersistenceStoreSpec.swift; sourceTree = "<group>"; };
-		5E0720031AB6D8FF009C270E /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchCell.swift; path = "Roomguru/Source Files/SwitchCell.swift"; sourceTree = SOURCE_ROOT; };
-		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E0720291AB73846009C270E /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = "Roomguru/Source Files/DashboardView.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720031AB6D8FF009C270E /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchCell.swift; path = "Roomguru/Source Files/Views/TableCells/SwitchCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720241AB728D7009C270E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = "Roomguru/Source Files/Extensions/UIViewControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E0720291AB73846009C270E /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = "Roomguru/Source Files/Views/DashboardView.swift"; sourceTree = SOURCE_ROOT; };
 		5E0759062D32339F0F1B138E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E0A09091B394B63001C0E8A /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = "Roomguru/Source Files/Protocols/Reusable.swift"; sourceTree = SOURCE_ROOT; };
 		5E147CB21AA8B2CA00EDD97C /* Functional-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Functional-Tests-Info.plist"; path = "Supporting Files/Functional-Tests-Info.plist"; sourceTree = "<group>"; };
 		5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roomguru-Bridging-Header.h"; path = "Supporting Files/Roomguru-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E147CB51AA8B2D300EDD97C /* Roomguru-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Roomguru-Info.plist"; path = "Supporting Files/Roomguru-Info.plist"; sourceTree = "<group>"; };
 		5E147CB71AA8B2DC00EDD97C /* Unit-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Unit-Tests-Bridging-Header.h"; path = "Supporting Files/Unit-Tests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		5E147CB81AA8B2DC00EDD97C /* Unit-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Unit-Tests-Info.plist"; path = "Supporting Files/Unit-Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
-		5E15F1391AD804CF00E1F8BC /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchView.swift; path = "Roomguru/Source Files/LaunchView.swift"; sourceTree = SOURCE_ROOT; };
-		5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPAuthenticator.swift; path = "Roomguru/Source Files/GPPAuthenticator.swift"; sourceTree = SOURCE_ROOT; };
-		5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserImageDownloader.swift; path = "Roomguru/Source Files/UserImageDownloader.swift"; sourceTree = SOURCE_ROOT; };
-		5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDiskManager.swift; path = "Roomguru/Source Files/UserDiskManager.swift"; sourceTree = SOURCE_ROOT; };
-		5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationExtensions.swift; path = "Roomguru/Source Files/UIApplicationExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E15F1391AD804CF00E1F8BC /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchView.swift; path = "Roomguru/Source Files/Views/LaunchView.swift"; sourceTree = SOURCE_ROOT; };
+		5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPAuthenticator.swift; path = "Roomguru/Source Files/Managers/GPPAuthenticator.swift"; sourceTree = SOURCE_ROOT; };
+		5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserImageDownloader.swift; path = "Roomguru/Source Files/Managers/UserImageDownloader.swift"; sourceTree = SOURCE_ROOT; };
+		5E15F1441ADC314500E1F8BC /* UserDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDiskManager.swift; path = "Roomguru/Source Files/Managers/UserDiskManager.swift"; sourceTree = SOURCE_ROOT; };
+		5E1BA3031ACB5E8300827BB6 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplicationExtensions.swift; path = "Roomguru/Source Files/Extensions/UIApplicationExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E1FF7681AA8AB5A00467837 /* RootScreenSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootScreenSpec.swift; sourceTree = "<group>"; };
-		5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "Roomguru/Source Files/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5E3871951AB0660500C7FEE8 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventsViewController.swift; path = "Roomguru/Source Files/MyEventsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E3871931AB065B800C7FEE8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "Roomguru/Source Files/ViewControllers/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E3871951AB0660500C7FEE8 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventsViewController.swift; path = "Roomguru/Source Files/ViewControllers/MyEventsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5E38FB381AAF23F00057DD8B /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = Frameworks/GoogleOpenSource.framework; sourceTree = "<group>"; };
 		5E38FB391AAF23F00057DD8B /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = Frameworks/GooglePlus.bundle; sourceTree = "<group>"; };
 		5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = Frameworks/GooglePlus.framework; sourceTree = "<group>"; };
@@ -437,36 +438,36 @@
 		5E3A98561AA741FA00CE2F20 /* Tests-Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Production.xcconfig"; path = "Configuration/Tests-Production.xcconfig"; sourceTree = "<group>"; };
 		5E3A98571AA741FA00CE2F20 /* Tests-Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Staging.xcconfig"; path = "Configuration/Tests-Staging.xcconfig"; sourceTree = "<group>"; };
 		5E3A98581AA741FA00CE2F20 /* Tests-Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Tests-Test.xcconfig"; path = "Configuration/Tests-Test.xcconfig"; sourceTree = "<group>"; };
-		5E46CAB21AFA026300AD9B70 /* FreeEventsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEventsProvider.swift; path = "Roomguru/Source Files/FreeEventsProvider.swift"; sourceTree = SOURCE_ROOT; };
-		5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Roomguru/Source Files/StringExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E46CAB21AFA026300AD9B70 /* FreeEventsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEventsProvider.swift; path = "Roomguru/Source Files/Managers/FreeEventsProvider.swift"; sourceTree = SOURCE_ROOT; };
+		5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Roomguru/Source Files/Extensions/StringExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		5E569DCA1AEFA015009F8EC0 /* WeekCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselView.swift; path = "Roomguru/Source Files/WeekCarouselView.swift"; sourceTree = SOURCE_ROOT; };
-		5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselFlowLayout.swift; path = "Roomguru/Source Files/WeekCarouselFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
-		5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayCarouselCell.swift; path = "Roomguru/Source Files/DayCarouselCell.swift"; sourceTree = SOURCE_ROOT; };
-		5E569DD11AF01C42009F8EC0 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "Roomguru/Source Files/EventsViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5E573A051B1BBAF200AEC231 /* GPPTokenStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPTokenStore.swift; path = "Roomguru/Source Files/GPPTokenStore.swift"; sourceTree = SOURCE_ROOT; };
+		5E569DCA1AEFA015009F8EC0 /* WeekCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselView.swift; path = "Roomguru/Source Files/Views/WeekCarouselView.swift"; sourceTree = SOURCE_ROOT; };
+		5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselFlowLayout.swift; path = "Roomguru/Source Files/Layouts/WeekCarouselFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
+		5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayCarouselCell.swift; path = "Roomguru/Source Files/Views/CollectionCells/DayCarouselCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E569DD11AF01C42009F8EC0 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = "Roomguru/Source Files/ViewControllers/EventsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E573A051B1BBAF200AEC231 /* GPPTokenStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPTokenStore.swift; path = "Roomguru/Source Files/Managers/GPPTokenStore.swift"; sourceTree = SOURCE_ROOT; };
 		5E63A1E01B25D7900059D569 /* Constants_Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants_Sample.swift; path = "Roomguru/Source Files/Constants_Sample.swift"; sourceTree = SOURCE_ROOT; };
 		5E63A1E21B25DA160059D569 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Roomguru/Source Files/Constants.swift"; sourceTree = SOURCE_ROOT; };
 		5E6759CA1AC5BDA1008AFF61 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontAwesome.swift; path = Frameworks/FontAwesome.swift; sourceTree = "<group>"; };
 		5E6759CC1AC5BDEF008AFF61 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Roomguru/Resources/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
-		5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewExtensions.swift; path = "Roomguru/Source Files/UICollectionViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E67FE721AE91220003AB827 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionViewExtensions.swift; path = "Roomguru/Source Files/Extensions/UICollectionViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E67FE741AE91F8C003AB827 /* UserDiskManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDiskManagerSpec.swift; sourceTree = "<group>"; };
-		5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCell.swift; path = "Roomguru/Source Files/DescriptionCell.swift"; sourceTree = SOURCE_ROOT; };
-		5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSAttributedStringExtensions.swift; path = "Roomguru/Source Files/NSAttributedStringExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E7151981B1F1EC70032CD3D /* GPPTokenStoreNetworkCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPTokenStoreNetworkCoordinator.swift; path = "Roomguru/Source Files/GPPTokenStoreNetworkCoordinator.swift"; sourceTree = SOURCE_ROOT; };
+		5E6B40AB1AC93A9C006C47EE /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCell.swift; path = "Roomguru/Source Files/Views/TableCells/DescriptionCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E6B40AD1AC947B1006C47EE /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSAttributedStringExtensions.swift; path = "Roomguru/Source Files/Extensions/NSAttributedStringExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E7151981B1F1EC70032CD3D /* GPPTokenStoreNetworkCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPTokenStoreNetworkCoordinator.swift; path = "Roomguru/Source Files/Managers/GPPTokenStoreNetworkCoordinator.swift"; sourceTree = SOURCE_ROOT; };
 		5E71519B1B1F1EDF0032CD3D /* GPPTokenStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPPTokenStoreSpec.swift; sourceTree = "<group>"; };
-		5E746FDE1AF03C150049131F /* EventsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsView.swift; path = "Roomguru/Source Files/EventsView.swift"; sourceTree = SOURCE_ROOT; };
-		5E746FE01AF049170049131F /* WeekCarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselViewController.swift; path = "Roomguru/Source Files/WeekCarouselViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsPageViewController.swift; path = "Roomguru/Source Files/EventsPageViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UINavigationControllerExtensions.swift; path = "Roomguru/Source Files/UINavigationControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomHorizontalPicker.swift; path = "Roomguru/Source Files/RoomHorizontalPicker.swift"; sourceTree = SOURCE_ROOT; };
+		5E746FDE1AF03C150049131F /* EventsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsView.swift; path = "Roomguru/Source Files/Views/EventsView.swift"; sourceTree = SOURCE_ROOT; };
+		5E746FE01AF049170049131F /* WeekCarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselViewController.swift; path = "Roomguru/Source Files/ViewControllers/WeekCarouselViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E746FE61AF04C0F0049131F /* EventsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsPageViewController.swift; path = "Roomguru/Source Files/ViewControllers/EventsPageViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E746FEC1AF064130049131F /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UINavigationControllerExtensions.swift; path = "Roomguru/Source Files/Extensions/UINavigationControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomHorizontalPicker.swift; path = "Roomguru/Source Files/Views/Common/RoomHorizontalPicker.swift"; sourceTree = SOURCE_ROOT; };
 		5E7527DB1B1F40BC007D35A3 /* EventsListCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListCoordinatorSpec.swift; sourceTree = "<group>"; };
 		5E7527DD1B1F4F6E007D35A3 /* EventsListCoordinatorSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsListCoordinatorSharedExample.swift; sourceTree = "<group>"; };
-		5E75F3801AF3775000D1F23B /* EventsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsProvider.swift; path = "Roomguru/Source Files/EventsProvider.swift"; sourceTree = SOURCE_ROOT; };
-		5E75F3821AF3F8AB00D1F23B /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonCell.swift; path = "Roomguru/Source Files/ButtonCell.swift"; sourceTree = SOURCE_ROOT; };
-		5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPersistenceStore.swift; path = "Roomguru/Source Files/CalendarPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
-		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/LoginView.swift"; sourceTree = SOURCE_ROOT; };
+		5E75F3801AF3775000D1F23B /* EventsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsProvider.swift; path = "Roomguru/Source Files/Managers/EventsProvider.swift"; sourceTree = SOURCE_ROOT; };
+		5E75F3821AF3F8AB00D1F23B /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonCell.swift; path = "Roomguru/Source Files/Views/TableCells/ButtonCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E769F051ACEDC180061289D /* CalendarPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPersistenceStore.swift; path = "Roomguru/Source Files/Managers/CalendarPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
+		5E7A9E491AB04DB30042E16F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "Roomguru/Source Files/Views/LoginView.swift"; sourceTree = SOURCE_ROOT; };
 		5E7A9E4C1AB060820042E16F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		5E7A9E4E1AB060820042E16F /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
 		5E7A9E4F1AB060820042E16F /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
@@ -474,31 +475,31 @@
 		5E7A9E551AB060AC0042E16F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5E7A9E571AB060BB0042E16F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		5E7A9E591AB060C60042E16F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5E88583F1AF0E7AD00EF08F1 /* EventsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListViewModel.swift; path = "Roomguru/Source Files/EventsListViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselViewModel.swift; path = "Roomguru/Source Files/WeekCarouselViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSCalendarExtensions.swift; path = "Roomguru/Source Files/NSCalendarExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E8858471AF11B1300EF08F1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = "Roomguru/Source Files/NSDateExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedBaseTableView.swift; path = "Roomguru/Source Files/GroupedBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
-		5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = "Roomguru/Source Files/EventDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsView.swift; path = "Roomguru/Source Files/EventDetailsView.swift"; sourceTree = SOURCE_ROOT; };
-		5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtensions.swift; path = "Roomguru/Source Files/UITableViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E8A31011AC5B13500E31DD3 /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewModel.swift; path = "Roomguru/Source Files/EventDetailsViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E88583F1AF0E7AD00EF08F1 /* EventsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListViewModel.swift; path = "Roomguru/Source Files/ViewModels/EventsListViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E8858411AF0F12A00EF08F1 /* WeekCarouselViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselViewModel.swift; path = "Roomguru/Source Files/ViewModels/WeekCarouselViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5E8858451AF10FD500EF08F1 /* NSCalendarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSCalendarExtensions.swift; path = "Roomguru/Source Files/Extensions/NSCalendarExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E8858471AF11B1300EF08F1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensions.swift; path = "Roomguru/Source Files/Extensions/NSDateExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E88B8021ADCEFA0000B6CAF /* GroupedBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedBaseTableView.swift; path = "Roomguru/Source Files/Views/Common/GroupedBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
+		5E8A30FB1AC59DD700E31DD3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = "Roomguru/Source Files/ViewControllers/EventDetailsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E8A30FD1AC59DEB00E31DD3 /* EventDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsView.swift; path = "Roomguru/Source Files/Views/EventDetailsView.swift"; sourceTree = SOURCE_ROOT; };
+		5E8A30FF1AC5A43400E31DD3 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewExtensions.swift; path = "Roomguru/Source Files/Extensions/UITableViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E8A31011AC5B13500E31DD3 /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewModel.swift; path = "Roomguru/Source Files/ViewModels/EventDetailsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Roomguru/Source Files/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		5E8A7EEE1AA9CB6D0018F432 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Roomguru/Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5E8A7EF01AA9CB770018F432 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Roomguru/Interfaces/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
-		5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerViewController.swift; path = "Roomguru/Source Files/CalendarPickerViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5E8AE3041ACC174000A3C146 /* CalendarPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerView.swift; path = "Roomguru/Source Files/CalendarPickerView.swift"; sourceTree = SOURCE_ROOT; };
-		5E8AE3081ACC1F2200A3C146 /* UIBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseTableView.swift; path = "Roomguru/Source Files/UIBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
-		5E8AFF6B1AD3D4E900FB73CD /* CalendarPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerCell.swift; path = "Roomguru/Source Files/CalendarPickerCell.swift"; sourceTree = SOURCE_ROOT; };
-		5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = "Roomguru/Source Files/UIColorExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = "Roomguru/Source Files/NavigationController.swift"; sourceTree = SOURCE_ROOT; };
+		5E8AE3021ACC172500A3C146 /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerViewController.swift; path = "Roomguru/Source Files/ViewControllers/CalendarPickerViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5E8AE3041ACC174000A3C146 /* CalendarPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerView.swift; path = "Roomguru/Source Files/Views/CalendarPickerView.swift"; sourceTree = SOURCE_ROOT; };
+		5E8AE3081ACC1F2200A3C146 /* UIBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBaseTableView.swift; path = "Roomguru/Source Files/Views/Common/UIBaseTableView.swift"; sourceTree = SOURCE_ROOT; };
+		5E8AFF6B1AD3D4E900FB73CD /* CalendarPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerCell.swift; path = "Roomguru/Source Files/Views/TableCells/CalendarPickerCell.swift"; sourceTree = SOURCE_ROOT; };
+		5E8CB6F51AC56F2F000A4E14 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = "Roomguru/Source Files/Extensions/UIColorExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5E8CB6F71AC574E2000A4E14 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = "Roomguru/Source Files/ViewControllers/NavigationController.swift"; sourceTree = SOURCE_ROOT; };
 		5E8F93B11B21BDD000C4A4B5 /* TimelineConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineConfiguration.swift; path = "Roomguru/Source Files/TimelineConfiguration.swift"; sourceTree = SOURCE_ROOT; };
 		5E8F93B41B21C21300C4A4B5 /* FreeEventsProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeEventsProviderSpec.swift; sourceTree = "<group>"; };
-		5EA452A01B00AA49006CA0FA /* EventsListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListCoordinator.swift; path = "Roomguru/Source Files/EventsListCoordinator.swift"; sourceTree = SOURCE_ROOT; };
-		5EA452D71B020A1D006CA0FA /* MyEventsListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventsListCoordinator.swift; path = "Roomguru/Source Files/MyEventsListCoordinator.swift"; sourceTree = SOURCE_ROOT; };
-		5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendeeCell.swift; path = "Roomguru/Source Files/AttendeeCell.swift"; sourceTree = SOURCE_ROOT; };
+		5EA452A01B00AA49006CA0FA /* EventsListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListCoordinator.swift; path = "Roomguru/Source Files/Managers/EventsListCoordinator.swift"; sourceTree = SOURCE_ROOT; };
+		5EA452D71B020A1D006CA0FA /* MyEventsListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventsListCoordinator.swift; path = "Roomguru/Source Files/Managers/MyEventsListCoordinator.swift"; sourceTree = SOURCE_ROOT; };
+		5EA572FD1AC5C20B00AA0FD6 /* AttendeeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendeeCell.swift; path = "Roomguru/Source Files/Views/TableCells/AttendeeCell.swift"; sourceTree = SOURCE_ROOT; };
 		5EA900F61AEE05F500A66FC8 /* CalendarPickerViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewModelSpec.swift; sourceTree = "<group>"; };
-		5EAF39F21B11EAF40032EFDF /* EditEventNetworkCooperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventNetworkCooperator.swift; path = "Roomguru/Source Files/EditEventNetworkCooperator.swift"; sourceTree = SOURCE_ROOT; };
+		5EAF39F21B11EAF40032EFDF /* EditEventNetworkCooperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventNetworkCooperator.swift; path = "Roomguru/Source Files/Managers/EditEventNetworkCooperator.swift"; sourceTree = SOURCE_ROOT; };
 		5EAFD72F1AAF261E00B75582 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5EAFD7311AAF262400B75582 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5EAFD7331AAF262E00B75582 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -509,38 +510,38 @@
 		5EAFD73D1AAF265300B75582 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5EAFD73F1AAF265E00B75582 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5EAFD7411AAF266300B75582 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		5EAFD7431AAF270C00B75582 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Roomguru/Source Files/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5EAFD7431AAF270C00B75582 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Roomguru/Source Files/ViewControllers/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5EB3A09C1AEA707600DB0585 /* EventDetailsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewModelSpec.swift; sourceTree = "<group>"; };
-		5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderLabel.swift; path = "Roomguru/Source Files/HeaderLabel.swift"; sourceTree = SOURCE_ROOT; };
-		5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPersistenceStore.swift; path = "Roomguru/Source Files/UserPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
-		5EC49D941ADC75F500B798F5 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvatarView.swift; path = "Roomguru/Source Files/AvatarView.swift"; sourceTree = SOURCE_ROOT; };
-		5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtensions.swift; path = "Roomguru/Source Files/UIButtonExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
+		5EBCB76A1ACAA67F001F6D18 /* HeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderLabel.swift; path = "Roomguru/Source Files/Views/Common/HeaderLabel.swift"; sourceTree = SOURCE_ROOT; };
+		5EC49D921ADC606D00B798F5 /* UserPersistenceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPersistenceStore.swift; path = "Roomguru/Source Files/Managers/UserPersistenceStore.swift"; sourceTree = SOURCE_ROOT; };
+		5EC49D941ADC75F500B798F5 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvatarView.swift; path = "Roomguru/Source Files/Views/Common/AvatarView.swift"; sourceTree = SOURCE_ROOT; };
+		5ECAD56B1AB8317000DD0727 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtensions.swift; path = "Roomguru/Source Files/Extensions/UIButtonExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5ECF36BC1AB325BD00BE6EA1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "Roomguru/Source Files/Views/SettingsView.swift"; sourceTree = SOURCE_ROOT; };
 		5ED4C76F1ACC3DC80084E52F /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defines.swift; path = "Roomguru/Source Files/Defines.swift"; sourceTree = SOURCE_ROOT; };
-		5ED6522E1B2874060086B94A /* EventsProviderNetworkCooperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsProviderNetworkCooperator.swift; path = "Roomguru/Source Files/EventsProviderNetworkCooperator.swift"; sourceTree = SOURCE_ROOT; };
+		5ED6522E1B2874060086B94A /* EventsProviderNetworkCooperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsProviderNetworkCooperator.swift; path = "Roomguru/Source Files/Managers/EventsProviderNetworkCooperator.swift"; sourceTree = SOURCE_ROOT; };
 		5ED652311B287FB80086B94A /* EventsProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsProviderSpec.swift; sourceTree = "<group>"; };
-		5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyCalendarPlaceholderView.swift; path = "Roomguru/Source Files/EmptyCalendarPlaceholderView.swift"; sourceTree = SOURCE_ROOT; };
-		5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StickyExpandableFlowLayout.swift; path = "Roomguru/Source Files/StickyExpandableFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
-		5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCollectionViewHeader.swift; path = "Roomguru/Source Files/SettingsCollectionViewHeader.swift"; sourceTree = SOURCE_ROOT; };
-		5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = "Roomguru/Source Files/SettingsCell.swift"; sourceTree = SOURCE_ROOT; };
-		5EE6BF541B0F0D5B0051E530 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAlertControllerExtensions.swift; path = "Roomguru/Source Files/UIAlertControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5EE6BF561B0F14810051E530 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewCellExtensions.swift; path = "Roomguru/Source Files/UITableViewCellExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyCalendarPlaceholderView.swift; path = "Roomguru/Source Files/Views/Common/EmptyCalendarPlaceholderView.swift"; sourceTree = SOURCE_ROOT; };
+		5EDEACF01ADFD22100C4351B /* StickyExpandableFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StickyExpandableFlowLayout.swift; path = "Roomguru/Source Files/Layouts/StickyExpandableFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
+		5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCollectionViewHeader.swift; path = "Roomguru/Source Files/Views/Common/SettingsCollectionViewHeader.swift"; sourceTree = SOURCE_ROOT; };
+		5EDEACF41ADFFFA200C4351B /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = "Roomguru/Source Files/Views/CollectionCells/SettingsCell.swift"; sourceTree = SOURCE_ROOT; };
+		5EE6BF541B0F0D5B0051E530 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAlertControllerExtensions.swift; path = "Roomguru/Source Files/Extensions/UIAlertControllerExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5EE6BF561B0F14810051E530 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewCellExtensions.swift; path = "Roomguru/Source Files/Extensions/UITableViewCellExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5EE73F291AE8E17400FD518A /* CalendarPersistenceStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPersistenceStoreSpec.swift; sourceTree = "<group>"; };
-		5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerViewModel.swift; path = "Roomguru/Source Files/CalendarPickerViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerViewController.swift; path = "Roomguru/Source Files/CalendarNameCustomizerViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5EF1C5F31AD425CD00CC9173 /* CalendarNameCustomizerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerView.swift; path = "Roomguru/Source Files/CalendarNameCustomizerView.swift"; sourceTree = SOURCE_ROOT; };
-		5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderTextField.swift; path = "Roomguru/Source Files/BorderTextField.swift"; sourceTree = SOURCE_ROOT; };
-		5EF4C7C01AEE33C50050201A /* SettingsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsStore.swift; path = "Roomguru/Source Files/SettingsStore.swift"; sourceTree = SOURCE_ROOT; };
-		5EF4C7C21AEE34690050201A /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5EF095581ACD91AD001E5C69 /* CalendarPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPickerViewModel.swift; path = "Roomguru/Source Files/ViewModels/CalendarPickerViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		5EF1C5F11AD425B200CC9173 /* CalendarNameCustomizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerViewController.swift; path = "Roomguru/Source Files/ViewControllers/CalendarNameCustomizerViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5EF1C5F31AD425CD00CC9173 /* CalendarNameCustomizerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarNameCustomizerView.swift; path = "Roomguru/Source Files/Views/CalendarNameCustomizerView.swift"; sourceTree = SOURCE_ROOT; };
+		5EF1C5F51AD42C8C00CC9173 /* BorderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderTextField.swift; path = "Roomguru/Source Files/Views/Common/BorderTextField.swift"; sourceTree = SOURCE_ROOT; };
+		5EF4C7C01AEE33C50050201A /* SettingsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsStore.swift; path = "Roomguru/Source Files/Managers/SettingsStore.swift"; sourceTree = SOURCE_ROOT; };
+		5EF4C7C21AEE34690050201A /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = "Roomguru/Source Files/ViewModels/SettingsViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		5EF4C7C41AEE3B5E0050201A /* SettingsStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStoreSpec.swift; sourceTree = "<group>"; };
 		5EF4C7C61AEE3EC30050201A /* SettingsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModelSpec.swift; sourceTree = "<group>"; };
 		5EF988DA1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsListCoordinatorSpec.swift; sourceTree = "<group>"; };
-		5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attendee.swift; path = "Roomguru/Source Files/Attendee.swift"; sourceTree = SOURCE_ROOT; };
-		5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableHeaderView.swift; path = "Roomguru/Source Files/SettingsTableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
-		5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = "Roomguru/Source Files/UIViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomguruLabel.swift; path = "Roomguru/Source Files/RoomguruLabel.swift"; sourceTree = SOURCE_ROOT; };
-		5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchViewController.swift; path = "Roomguru/Source Files/LaunchViewController.swift"; sourceTree = SOURCE_ROOT; };
-		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
+		5EFC1ED81AC591EB00CE9D27 /* Attendee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attendee.swift; path = "Roomguru/Source Files/Models/Attendee.swift"; sourceTree = SOURCE_ROOT; };
+		5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableHeaderView.swift; path = "Roomguru/Source Files/Views/Common/SettingsTableHeaderView.swift"; sourceTree = SOURCE_ROOT; };
+		5EFE00F41ADE79210083FB8E /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = "Roomguru/Source Files/Extensions/UIViewExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomguruLabel.swift; path = "Roomguru/Source Files/Views/Common/RoomguruLabel.swift"; sourceTree = SOURCE_ROOT; };
+		5EFE00FA1ADE97DA0083FB8E /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchViewController.swift; path = "Roomguru/Source Files/ViewControllers/LaunchViewController.swift"; sourceTree = SOURCE_ROOT; };
+		5EFE00FC1ADEECC80083FB8E /* GPPProfileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPPProfileProvider.swift; path = "Roomguru/Source Files/Managers/GPPProfileProvider.swift"; sourceTree = SOURCE_ROOT; };
 		74092C451B18AB580074A2B1 /* CalendarSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSpec.swift; sourceTree = "<group>"; };
 		741699BC1AFFDED300F42474 /* QueryableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryableSharedExample.swift; sourceTree = "<group>"; };
 		742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFrameSpec.swift; sourceTree = "<group>"; };
@@ -552,81 +553,80 @@
 		746B1ED21B049C60009FB084 /* PageableQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageableQuerySpec.swift; sourceTree = "<group>"; };
 		746F8B0B1B0340F7005E746A /* BookingQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingQuerySpec.swift; sourceTree = "<group>"; };
 		7497CF171B04B7100059B4DB /* QuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuerySpec.swift; sourceTree = "<group>"; };
-		74EE92FB1B148FE100200957 /* TabBarTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarTransitionAnimator.swift; path = "Roomguru/Source Files/TabBarTransitionAnimator.swift"; sourceTree = SOURCE_ROOT; };
+		74EE92FB1B148FE100200957 /* TabBarTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarTransitionAnimator.swift; path = "Roomguru/Source Files/Helpers/TabBarTransitionAnimator.swift"; sourceTree = SOURCE_ROOT; };
 		74F309C21B01F15100EB5D5D /* EventQuerySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventQuerySpec.swift; sourceTree = "<group>"; };
-		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
-		7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFrame.swift; path = "Roomguru/Source Files/TimeFrame.swift"; sourceTree = SOURCE_ROOT; };
-		BF01C8E61AEF8048003422AD /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = "Roomguru/Source Files/TextField.swift"; sourceTree = SOURCE_ROOT; };
-		BF0A9E4D1AD540290088ED79 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Roomguru/Source Files/User.swift"; sourceTree = SOURCE_ROOT; };
-		BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewModel.swift; path = "Roomguru/Source Files/BookingConfirmationViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		BF251ACC1AC083F30020DFC4 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queryable.swift; path = "Roomguru/Source Files/Queryable.swift"; sourceTree = SOURCE_ROOT; };
-		BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsQuery.swift; path = "Roomguru/Source Files/EventsQuery.swift"; sourceTree = SOURCE_ROOT; };
-		BF251AD21AC093A00020DFC4 /* Pageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pageable.swift; path = "Roomguru/Source Files/Pageable.swift"; sourceTree = SOURCE_ROOT; };
-		BF26B27A1AC58E3000F95DD3 /* BookingQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingQuery.swift; path = "Roomguru/Source Files/BookingQuery.swift"; sourceTree = SOURCE_ROOT; };
-		BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationView.swift; path = "Roomguru/Source Files/BookingConfirmationView.swift"; sourceTree = SOURCE_ROOT; };
-		BF26E7381ABAC94100B12244 /* EventsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListView.swift; path = "Roomguru/Source Files/EventsListView.swift"; sourceTree = SOURCE_ROOT; };
-		BF26E73A1ABAC95000B12244 /* EventsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListViewController.swift; path = "Roomguru/Source Files/EventsListViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BF26E73C1ABAF77400B12244 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listable.swift; path = "Roomguru/Source Files/Listable.swift"; sourceTree = SOURCE_ROOT; };
-		BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "Roomguru/Source Files/ListViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEventCell.swift; path = "Roomguru/Source Files/FreeEventCell.swift"; sourceTree = SOURCE_ROOT; };
-		BF2755D61AC1B30F00A41786 /* FreeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEvent.swift; path = "Roomguru/Source Files/FreeEvent.swift"; sourceTree = SOURCE_ROOT; };
-		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
-		BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtensions.swift; path = "Roomguru/Source Files/UILabelExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		7B91D6E61AC004440080DD91 /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorExtensions.swift; path = "Roomguru/Source Files/Extensions/NSErrorExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		7B91D6EA1AC01E0E0080DD91 /* BookingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingManager.swift; path = "Roomguru/Source Files/Managers/BookingManager.swift"; sourceTree = SOURCE_ROOT; };
+		7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeFrame.swift; path = "Roomguru/Source Files/Models/TimeFrame.swift"; sourceTree = SOURCE_ROOT; };
+		BF01C8E61AEF8048003422AD /* InsetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InsetTextField.swift; path = "Roomguru/Source Files/Views/Common/InsetTextField.swift"; sourceTree = SOURCE_ROOT; };
+		BF0A9E4D1AD540290088ED79 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Roomguru/Source Files/Models/User.swift"; sourceTree = SOURCE_ROOT; };
+		BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewModel.swift; path = "Roomguru/Source Files/ViewModels/BookingConfirmationViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		BF251ACC1AC083F30020DFC4 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queryable.swift; path = "Roomguru/Source Files/Models/Queryable.swift"; sourceTree = SOURCE_ROOT; };
+		BF251AD01AC0938C0020DFC4 /* EventsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsQuery.swift; path = "Roomguru/Source Files/Models/EventsQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF251AD21AC093A00020DFC4 /* Pageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pageable.swift; path = "Roomguru/Source Files/Models/Pageable.swift"; sourceTree = SOURCE_ROOT; };
+		BF26B27A1AC58E3000F95DD3 /* BookingQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingQuery.swift; path = "Roomguru/Source Files/Models/BookingQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF26B27C1AC59FCE00F95DD3 /* BookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationView.swift; path = "Roomguru/Source Files/Views/Common/BookingConfirmationView.swift"; sourceTree = SOURCE_ROOT; };
+		BF26E7381ABAC94100B12244 /* EventsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListView.swift; path = "Roomguru/Source Files/Views/EventsListView.swift"; sourceTree = SOURCE_ROOT; };
+		BF26E73A1ABAC95000B12244 /* EventsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsListViewController.swift; path = "Roomguru/Source Files/ViewControllers/EventsListViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BF26E73C1ABAF77400B12244 /* Listable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listable.swift; path = "Roomguru/Source Files/Models/Listable.swift"; sourceTree = SOURCE_ROOT; };
+		BF26E73E1ABAF79B00B12244 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "Roomguru/Source Files/ViewModels/ListViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		BF2755D41AC1AD2500A41786 /* FreeEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEventCell.swift; path = "Roomguru/Source Files/Views/TableCells/FreeEventCell.swift"; sourceTree = SOURCE_ROOT; };
+		BF2755D61AC1B30F00A41786 /* FreeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeEvent.swift; path = "Roomguru/Source Files/Models/FreeEvent.swift"; sourceTree = SOURCE_ROOT; };
+		BF2755DA1AC3006100A41786 /* FreeBusyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreeBusyQuery.swift; path = "Roomguru/Source Files/Models/FreeBusyQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF2B693F1AF0F48B00AC2CC4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtensions.swift; path = "Roomguru/Source Files/Extensions/UILabelExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF2D529D1AF8D99F00EEEF81 /* ModelObjectSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjectSharedExample.swift; sourceTree = "<group>"; };
 		BF2D529F1AF8DD2700EEEF81 /* ModelObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjectSpec.swift; sourceTree = "<group>"; };
 		BF3A178E1AFA32A2007D95B6 /* JSONExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONExtensions.swift; sourceTree = "<group>"; };
-		BF3B25A11ADD467400242859 /* EditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewModel.swift; path = "Roomguru/Source Files/EditEventViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		BF3B25A31ADD610700242859 /* EventQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventQuery.swift; path = "Roomguru/Source Files/EventQuery.swift"; sourceTree = SOURCE_ROOT; };
-		BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultActionItem.swift; path = "Roomguru/Source Files/ResultActionItem.swift"; sourceTree = SOURCE_ROOT; };
-		BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertViewTransitionDelegate.swift; path = "Roomguru/Source Files/AlertViewTransitionDelegate.swift"; sourceTree = SOURCE_ROOT; };
-		BF49CC5A1B00F2F500ACAEC1 /* MaskingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskingViewController.swift; path = "Roomguru/Source Files/MaskingViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BF49CC5C1B00F5F300ACAEC1 /* MaskingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskingView.swift; path = "Roomguru/Source Files/MaskingView.swift"; sourceTree = SOURCE_ROOT; };
-		BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerCell.swift; path = "Roomguru/Source Files/DatePickerCell.swift"; sourceTree = SOURCE_ROOT; };
-		BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerItem.swift; path = "Roomguru/Source Files/DatePickerItem.swift"; sourceTree = SOURCE_ROOT; };
-		BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewController.swift; path = "Roomguru/Source Files/EditEventViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BF4F2DF71ADC0A0500834B60 /* GroupedListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedListViewModel.swift; path = "Roomguru/Source Files/GroupedListViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardPresenceHandler.swift; path = "Roomguru/Source Files/KeyboardPresenceHandler.swift"; sourceTree = SOURCE_ROOT; };
-		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
-		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
-		BF527C1C1AB1D53700A43D35 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = "Roomguru/Source Files/Calendar.swift"; sourceTree = SOURCE_ROOT; };
-		BF527C1D1AB1D53700A43D35 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = "Roomguru/Source Files/Event.swift"; sourceTree = SOURCE_ROOT; };
-		BF527C1E1AB1D53700A43D35 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelObject.swift; path = "Roomguru/Source Files/ModelObject.swift"; sourceTree = SOURCE_ROOT; };
+		BF3B25A11ADD467400242859 /* EditEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewModel.swift; path = "Roomguru/Source Files/ViewModels/EditEventViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		BF3B25A31ADD610700242859 /* EventQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventQuery.swift; path = "Roomguru/Source Files/Models/EventQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF3CAD601AEE3D2200B1F684 /* ResultActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultActionItem.swift; path = "Roomguru/Source Files/ViewModels/ResultActionItem.swift"; sourceTree = SOURCE_ROOT; };
+		BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertViewTransitionDelegate.swift; path = "Roomguru/Source Files/Helpers/AlertViewTransitionDelegate.swift"; sourceTree = SOURCE_ROOT; };
+		BF49CC5A1B00F2F500ACAEC1 /* MaskingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskingViewController.swift; path = "Roomguru/Source Files/ViewControllers/MaskingViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BF49CC5C1B00F5F300ACAEC1 /* MaskingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskingView.swift; path = "Roomguru/Source Files/Views/MaskingView.swift"; sourceTree = SOURCE_ROOT; };
+		BF4C0D201AE299B50040BDBF /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerCell.swift; path = "Roomguru/Source Files/Views/TableCells/DatePickerCell.swift"; sourceTree = SOURCE_ROOT; };
+		BF4C0D221AE29B730040BDBF /* DatePickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerItem.swift; path = "Roomguru/Source Files/ViewModels/DatePickerItem.swift"; sourceTree = SOURCE_ROOT; };
+		BF4F2DF31ADBEE3600834B60 /* EditEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditEventViewController.swift; path = "Roomguru/Source Files/ViewControllers/EditEventViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BF4F2DF71ADC0A0500834B60 /* GroupedListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupedListViewModel.swift; path = "Roomguru/Source Files/ViewModels/GroupedListViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardPresenceHandler.swift; path = "Roomguru/Source Files/Helpers/KeyboardPresenceHandler.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C161AB1CF8C00A43D35 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "Roomguru/Source Files/Networking/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1A1AB1CFAE00A43D35 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Roomguru/Source Files/ViewControllers/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1C1AB1D53700A43D35 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = "Roomguru/Source Files/Models/Calendar.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1D1AB1D53700A43D35 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = "Roomguru/Source Files/Models/Event.swift"; sourceTree = SOURCE_ROOT; };
+		BF527C1E1AB1D53700A43D35 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelObject.swift; path = "Roomguru/Source Files/Models/ModelObject.swift"; sourceTree = SOURCE_ROOT; };
 		BF7521151AE92E8500B8BDE8 /* ListSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSpec.swift; sourceTree = "<group>"; };
-		BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItemCell.swift; path = "Roomguru/Source Files/PickerItemCell.swift"; sourceTree = SOURCE_ROOT; };
+		BF7A9A2E1AE8D4ED00ACF014 /* PickerItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItemCell.swift; path = "Roomguru/Source Files/Views/TableCells/PickerItemCell.swift"; sourceTree = SOURCE_ROOT; };
 		BF7E2FA61AF7C2EA00A51A0F /* GroupedListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedListViewModelSpec.swift; sourceTree = "<group>"; };
-		BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewController.swift; path = "Roomguru/Source Files/BookingConfirmationViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BF8459981ACBDE38004965EC /* RevokeQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeQuery.swift; path = "Roomguru/Source Files/RevokeQuery.swift"; sourceTree = SOURCE_ROOT; };
-		BF84599A1ACBE328004965EC /* CalendarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEntry.swift; path = "Roomguru/Source Files/CalendarEntry.swift"; sourceTree = SOURCE_ROOT; };
+		BF8077351AC93F7500B75096 /* BookingConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookingConfirmationViewController.swift; path = "Roomguru/Source Files/ViewControllers/BookingConfirmationViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BF8459981ACBDE38004965EC /* RevokeQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RevokeQuery.swift; path = "Roomguru/Source Files/Models/RevokeQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BF84599A1ACBE328004965EC /* CalendarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEntry.swift; path = "Roomguru/Source Files/Models/CalendarEntry.swift"; sourceTree = SOURCE_ROOT; };
 		BF8867661AE932CB009DA028 /* ListableSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListableSharedExample.swift; sourceTree = "<group>"; };
-		BF9C47E61B0E29E200C5ACF5 /* UIBarButtonItemExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarButtonItemExtensions.swift; path = "Roomguru/Source Files/UIBarButtonItemExtensions.swift"; sourceTree = SOURCE_ROOT; };
+		BF9C47E61B0E29E200C5ACF5 /* UIBarButtonItemExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarButtonItemExtensions.swift; path = "Roomguru/Source Files/Extensions/UIBarButtonItemExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		BF9F9FE01AF233BC0081B817 /* ListViewModelSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelSharedExample.swift; sourceTree = "<group>"; };
-		BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewCell.swift; path = "Roomguru/Source Files/TextViewCell.swift"; sourceTree = SOURCE_ROOT; };
-		BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LongTextItem.swift; path = "Roomguru/Source Files/LongTextItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = "Roomguru/Source Files/TextFieldCell.swift"; sourceTree = SOURCE_ROOT; };
-		BFBA23741AF0BEA200446712 /* CalendarsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsQuery.swift; path = "Roomguru/Source Files/CalendarsQuery.swift"; sourceTree = SOURCE_ROOT; };
-		BFBCE1831AC1900D00D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = "Roomguru/Source Files/ButtonView.swift"; sourceTree = SOURCE_ROOT; };
-		BFBCE1851AC1920200D96270 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = "Roomguru/Source Files/EventCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFAA8E331AE1AA5800E6525A /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewCell.swift; path = "Roomguru/Source Files/Views/TableCells/TextViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFAA8E351AE1ABDF00E6525A /* LongTextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LongTextItem.swift; path = "Roomguru/Source Files/ViewModels/LongTextItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFB0E50F1ADFD6EA00B0C0A4 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = "Roomguru/Source Files/Views/TableCells/TextFieldCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFBA23741AF0BEA200446712 /* CalendarsQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarsQuery.swift; path = "Roomguru/Source Files/Models/CalendarsQuery.swift"; sourceTree = SOURCE_ROOT; };
+		BFBCE1831AC1900D00D96270 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonView.swift; path = "Roomguru/Source Files/Views/Common/ButtonView.swift"; sourceTree = SOURCE_ROOT; };
+		BFBCE1851AC1920200D96270 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = "Roomguru/Source Files/Views/TableCells/EventCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFC4CC951AF9EA190070007B /* ObjectKeyValueSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectKeyValueSharedExample.swift; sourceTree = "<group>"; };
 		BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendeeSpec.swift; sourceTree = "<group>"; };
 		BFC4CC991AFA01450070007B /* JSONKeyValueSharedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKeyValueSharedExample.swift; sourceTree = "<group>"; };
-		BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "Roomguru/Source Files/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightDetailTextCell.swift; path = "Roomguru/Source Files/RightDetailTextCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFC79C5E1AE443EF00EEB8DE /* ActionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionItem.swift; path = "Roomguru/Source Files/ViewModels/ActionItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFC79C601AE4455A00EEB8DE /* RightDetailTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightDetailTextCell.swift; path = "Roomguru/Source Files/Views/TableCells/RightDetailTextCell.swift"; sourceTree = SOURCE_ROOT; };
 		BFD2A1E81AEA563A00428AAB /* SectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionSpec.swift; sourceTree = "<group>"; };
-		BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicTitleView.swift; path = "Roomguru/Source Files/BasicTitleView.swift"; sourceTree = SOURCE_ROOT; };
-		BFE566071AE133F800B935BF /* GroupItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupItem.swift; path = "Roomguru/Source Files/GroupItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFE566091AE1342300B935BF /* TextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextItem.swift; path = "Roomguru/Source Files/TextItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFE5660B1AE13C7200B935BF /* SwitchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchItem.swift; path = "Roomguru/Source Files/SwitchItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFE5660D1AE1526000B935BF /* DateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateItem.swift; path = "Roomguru/Source Files/DateItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFE5660F1AE15B2400B935BF /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = "Roomguru/Source Files/DateCell.swift"; sourceTree = SOURCE_ROOT; };
-		BFE814541AE8413C00369522 /* RecurrenceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecurrenceItem.swift; path = "Roomguru/Source Files/RecurrenceItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Requests.swift"; sourceTree = SOURCE_ROOT; };
-		BFF1B5781AE79E7300F9767E /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerViewController.swift; path = "Roomguru/Source Files/PickerViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItem.swift; path = "Roomguru/Source Files/PickerItem.swift"; sourceTree = SOURCE_ROOT; };
-		BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomItem.swift; path = "Roomguru/Source Files/RoomItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFD6AC101AD82D0D007B3ECF /* BasicTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicTitleView.swift; path = "Roomguru/Source Files/Views/Common/BasicTitleView.swift"; sourceTree = SOURCE_ROOT; };
+		BFE566071AE133F800B935BF /* GroupItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupItem.swift; path = "Roomguru/Source Files/ViewModels/GroupItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFE566091AE1342300B935BF /* TextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextItem.swift; path = "Roomguru/Source Files/ViewModels/TextItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFE5660B1AE13C7200B935BF /* SwitchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchItem.swift; path = "Roomguru/Source Files/ViewModels/SwitchItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFE5660D1AE1526000B935BF /* DateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateItem.swift; path = "Roomguru/Source Files/ViewModels/DateItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFE5660F1AE15B2400B935BF /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateCell.swift; path = "Roomguru/Source Files/Views/TableCells/DateCell.swift"; sourceTree = SOURCE_ROOT; };
+		BFE814541AE8413C00369522 /* RecurrenceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecurrenceItem.swift; path = "Roomguru/Source Files/ViewModels/RecurrenceItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFECD1101AC0AF5100F60086 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Requests.swift; path = "Roomguru/Source Files/Networking/Requests.swift"; sourceTree = SOURCE_ROOT; };
+		BFF1B5781AE79E7300F9767E /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerViewController.swift; path = "Roomguru/Source Files/ViewControllers/PickerViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BFF1B57A1AE7BE4A00F9767E /* PickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickerItem.swift; path = "Roomguru/Source Files/ViewModels/PickerItem.swift"; sourceTree = SOURCE_ROOT; };
+		BFF1B57C1AE7BE6700F9767E /* RoomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomItem.swift; path = "Roomguru/Source Files/ViewModels/RoomItem.swift"; sourceTree = SOURCE_ROOT; };
 		BFF5D1671AF8E84600C40B76 /* NSDataTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataTestExtensions.swift; sourceTree = "<group>"; };
 		BFF5D1691AF8E84600C40B76 /* UIImageTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTestExtensions.swift; sourceTree = "<group>"; };
-		BFF755231AE52C6500F68DB9 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = "Roomguru/Source Files/Reusable.swift"; sourceTree = SOURCE_ROOT; };
 		BFFB51391AED87B30065F051 /* ListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelSpec.swift; sourceTree = "<group>"; };
 		E863DC0075B8561A39153AA0 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -779,7 +779,7 @@
 				5EFE00F21ADE71CF0083FB8E /* SettingsTableHeaderView.swift */,
 				5EFE00F61ADE87990083FB8E /* RoomguruLabel.swift */,
 				5EDEACF21ADFDD7600C4351B /* SettingsCollectionViewHeader.swift */,
-				BF01C8E61AEF8048003422AD /* TextField.swift */,
+				BF01C8E61AEF8048003422AD /* InsetTextField.swift */,
 				5E746FEE1AF06C1D0049131F /* RoomHorizontalPicker.swift */,
 				5E04B9EA1AF0729700405BFB /* WeekdaysBar.swift */,
 				5ED78E101AF581FD004A1845 /* EmptyCalendarPlaceholderView.swift */,
@@ -813,6 +813,16 @@
 				BF1EA19F1AF783DC008FECB8 /* BookingConfirmationViewModel.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		5E0A090C1B394BA8001C0E8A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */,
+				BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */,
+				74EE92FB1B148FE100200957 /* TabBarTransitionAnimator.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		5E147CBB1AA8B40C00EDD97C /* Helper */ = {
@@ -968,15 +978,17 @@
 				5E8A7EEA1AA9CB610018F432 /* AppDelegate.swift */,
 				5E63A1E01B25D7900059D569 /* Constants_Sample.swift */,
 				5E63A1E21B25DA160059D569 /* Constants.swift */,
+				5ED4C76F1ACC3DC80084E52F /* Defines.swift */,
 				5E8F93B11B21BDD000C4A4B5 /* TimelineConfiguration.swift */,
 				BFF755201AE52C4B00F68DB9 /* Protocols */,
 				BF527C0F1AB1A70C00A43D35 /* Networking */,
-				5E51B7981AA9C3280018EDA9 /* Object & Models */,
+				5E51B7981AA9C3280018EDA9 /* Models */,
 				7BD6CC721AB6EDB30031AED6 /* Extensions */,
 				5E51B7991AA9C3310018EDA9 /* View Controllers */,
 				5E07202B1AB73CAD009C270E /* ViewModels */,
 				5E47B6DC1AE00962007EDB43 /* Layouts */,
 				5E51B79B1AA9C3540018EDA9 /* Custom Views */,
+				5E0A090C1B394BA8001C0E8A /* Helpers */,
 				5E769F071ACEDC200061289D /* Managers */,
 			);
 			path = "Source Files";
@@ -991,10 +1003,9 @@
 			name = Layouts;
 			sourceTree = "<group>";
 		};
-		5E51B7981AA9C3280018EDA9 /* Object & Models */ = {
+		5E51B7981AA9C3280018EDA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5ED4C76F1ACC3DC80084E52F /* Defines.swift */,
 				7BC955BC1AB96CFD00138716 /* Google Calendar */,
 				BFECD1131AC0B26200F60086 /* Queries */,
 				BF527C1E1AB1D53700A43D35 /* ModelObject.swift */,
@@ -1002,11 +1013,8 @@
 				7B91D6EC1AC024A70080DD91 /* TimeFrame.swift */,
 				BF2755D61AC1B30F00A41786 /* FreeEvent.swift */,
 				BF0A9E4D1AD540290088ED79 /* User.swift */,
-				BF51342F1AEE548F00456839 /* KeyboardPresenceHandler.swift */,
-				BF49CC581B00E24000ACAEC1 /* AlertViewTransitionDelegate.swift */,
-				74EE92FB1B148FE100200957 /* TabBarTransitionAnimator.swift */,
 			);
-			name = "Object & Models";
+			name = Models;
 			sourceTree = "<group>";
 		};
 		5E51B7991AA9C3310018EDA9 /* View Controllers */ = {
@@ -1228,7 +1236,7 @@
 		BFF755201AE52C4B00F68DB9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				BFF755231AE52C6500F68DB9 /* Reusable.swift */,
+				5E0A09091B394B63001C0E8A /* Reusable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1541,6 +1549,7 @@
 				2164E7F01B1EF4FC00B27A91 /* NavigationController.swift in Sources */,
 				BFE566101AE15B2400B935BF /* DateCell.swift in Sources */,
 				2164E7EA1B1EF4AB00B27A91 /* PickerItem.swift in Sources */,
+				5E0A090A1B394B63001C0E8A /* Reusable.swift in Sources */,
 				5E7A9E4A1AB04DB30042E16F /* LoginView.swift in Sources */,
 				BF527C171AB1CF8C00A43D35 /* NetworkManager.swift in Sources */,
 				BFAA8E341AE1AA5800E6525A /* TextViewCell.swift in Sources */,
@@ -1626,7 +1635,7 @@
 				BF49CC5D1B00F5F300ACAEC1 /* MaskingView.swift in Sources */,
 				5E0720041AB6D8FF009C270E /* SwitchCell.swift in Sources */,
 				5E6B40AC1AC93A9C006C47EE /* DescriptionCell.swift in Sources */,
-				BF01C8E71AEF8048003422AD /* TextField.swift in Sources */,
+				BF01C8E71AEF8048003422AD /* InsetTextField.swift in Sources */,
 				BF0A9E4E1AD540290088ED79 /* User.swift in Sources */,
 				5E8AE3031ACC172500A3C146 /* CalendarPickerViewController.swift in Sources */,
 				5E746FE71AF04C0F0049131F /* EventsPageViewController.swift in Sources */,
@@ -1664,7 +1673,6 @@
 				2164E7F11B1EF50700B27A91 /* SwitchItem.swift in Sources */,
 				5E15F1451ADC314500E1F8BC /* UserDiskManager.swift in Sources */,
 				5E746FDF1AF03C150049131F /* EventsView.swift in Sources */,
-				2164E7E71B1EF32300B27A91 /* Reusable.swift in Sources */,
 				BF9C47E71B0E29E200C5ACF5 /* UIBarButtonItemExtensions.swift in Sources */,
 				5E8858421AF0F12A00EF08F1 /* WeekCarouselViewModel.swift in Sources */,
 				5E75F3811AF3775000D1F23B /* EventsProvider.swift in Sources */,
@@ -1763,6 +1771,7 @@
 				5E5739CE1B18A69C00AEC231 /* MaskingViewController.swift in Sources */,
 				74092C461B18AB580074A2B1 /* CalendarSpec.swift in Sources */,
 				5E5739A51B18A44700AEC231 /* EventsViewController.swift in Sources */,
+				5E0A090B1B394B63001C0E8A /* Reusable.swift in Sources */,
 				5E5739D71B18A6CC00AEC231 /* PickerItem.swift in Sources */,
 				5E5739B61B18A5D700AEC231 /* UITableViewExtensions.swift in Sources */,
 				5E573A011B18A7C200AEC231 /* StickyExpandableFlowLayout.swift in Sources */,
@@ -1800,7 +1809,7 @@
 				5E5739CF1B18A6A900AEC231 /* EditEventNetworkCooperator.swift in Sources */,
 				5E5739D81B18A6D000AEC231 /* ActionItem.swift in Sources */,
 				5E5739FB1B18A75200AEC231 /* PickerItemCell.swift in Sources */,
-				5E5739C51B18A65800AEC231 /* TextField.swift in Sources */,
+				5E5739C51B18A65800AEC231 /* InsetTextField.swift in Sources */,
 				5E5739A91B18A46C00AEC231 /* EventsListCoordinator.swift in Sources */,
 				5E8F93B31B21BDD000C4A4B5 /* TimelineConfiguration.swift in Sources */,
 				21875ED31B188319003E1E59 /* EventedTableView.swift in Sources */,
@@ -1823,7 +1832,6 @@
 				5E573A001B18A7A600AEC231 /* WeekCarouselFlowLayout.swift in Sources */,
 				21875EA41B187BBA003E1E59 /* FreeBusyQuerySpec.swift in Sources */,
 				5E63A1E41B25DB860059D569 /* Constants_Sample.swift in Sources */,
-				21875ED81B188A80003E1E59 /* Reusable.swift in Sources */,
 				21875EA01B187BBA003E1E59 /* CalendarsQuerySpec.swift in Sources */,
 				5E71519A1B1F1EC70032CD3D /* GPPTokenStoreNetworkCoordinator.swift in Sources */,
 				5E67FE5E1AE90483003AB827 /* User.swift in Sources */,

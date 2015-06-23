@@ -1,5 +1,5 @@
 //
-//  TextField.swift
+//  InsetTextField.swift
 //  Roomguru
 //
 //  Created by Radoslaw Szeja on 28/04/15.
