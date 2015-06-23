@@ -12,9 +12,11 @@ import SwiftyJSON
 
 class BookingManager: NSObject {
     
-    class func firstBookableCalendarEntry(completion: (entry: CalendarEntry?, error: NSError?) -> Void) {
+    var eventsProvider: EventsProvider?
+    
+    func firstBookableCalendarEntry(#calendarIDs: [String], completion: (entry: CalendarEntry?, error: NSError?) -> Void) {
         
-        bookableCalendarEntries { (entries, error) in
+        bookableCalendarEntries(calendarIDs: calendarIDs) { (entries, error) in
             
             if let error = error {
                 completion(entry: nil, error: error)
@@ -60,12 +62,12 @@ class BookingManager: NSObject {
         }
     }
     
-    class func bookableCalendarEntries(completion: (entries: [CalendarEntry]?, error: NSError?) -> Void) {
+    func bookableCalendarEntries(#calendarIDs: [String], completion: (entries: [CalendarEntry]?, error: NSError?) -> Void) {
         
-        let allRooms = CalendarPersistenceStore.sharedStore.rooms().map { $0.id }
-        
-        let eventsProvider = EventsProvider(calendarIDs: allRooms, timeRange: NSDate().dayTimeRange)
-        eventsProvider.activeCalendarEntriesWithCompletion { (calendarEntries, error) -> Void in
+        if eventsProvider == nil {
+            eventsProvider = EventsProvider(calendarIDs: calendarIDs, timeRange: NSDate().dayTimeRange)
+        }
+        eventsProvider!.activeCalendarEntriesWithCompletion { (calendarEntries, error) -> Void in
             
             if let error = error {
                 completion(entries: nil, error: error)
@@ -80,7 +82,7 @@ class BookingManager: NSObject {
         }
     }
     
-    class func bookCalendarEntry(calendarEntry: CalendarEntry, completion: (event: Event?, error: NSError?) -> Void) {
+    func bookCalendarEntry(calendarEntry: CalendarEntry, completion: (event: Event?, error: NSError?) -> Void) {
 
         let query = BookingQuery(quickCalendarEntry: calendarEntry)
         NetworkManager.sharedInstance.request(query, success: { response in
@@ -98,7 +100,7 @@ class BookingManager: NSObject {
         })
     }
     
-    class func revokeEvent(eventID: String, userEmail: String, completion: (success: Bool, error: NSError?) -> Void) {
+    func revokeEvent(eventID: String, userEmail: String, completion: (success: Bool, error: NSError?) -> Void) {
         let query = RevokeQuery(eventID: eventID, userEmail: userEmail)
         NetworkManager.sharedInstance.request(query, success: { response in
             completion(success: true, error: nil)

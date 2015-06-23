@@ -188,7 +188,7 @@ extension EventsListViewController {
     
     func bookCalendarEntry(entry: CalendarEntry) {
         
-        BookingManager.bookCalendarEntry(entry) { (event, error) in
+        BookingManager().bookCalendarEntry(entry) { (event, error) in
             
             if let error = error {
                 self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)

@@ -54,7 +54,9 @@ extension MyEventsViewController {
         let barButtonItem = navigationItem.leftBarButtonItem
         navigationItem.leftBarButtonItem = UIBarButtonItem.loaderItemWithTintColor(.ngOrangeColor())
         
-        BookingManager.firstBookableCalendarEntry { (entry, error) in
+        let allRoomIDs = CalendarPersistenceStore.sharedStore.rooms().map { $0.id }
+        
+        BookingManager().firstBookableCalendarEntry(calendarIDs: allRoomIDs) { (entry, error) in
             
             
             self.navigationItem.leftBarButtonItem = barButtonItem
@@ -100,7 +102,7 @@ private extension MyEventsViewController {
     
     func bookCalendarEntry(entry: CalendarEntry) {
         
-        BookingManager.bookCalendarEntry(entry) { (event, error) in
+        BookingManager().bookCalendarEntry(entry) { (event, error) in
             
             if let error = error {
                 self.presentViewController(UIAlertController(error: error), animated: true, completion: nil)

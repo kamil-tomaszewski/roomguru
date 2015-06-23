@@ -188,7 +188,7 @@ extension EventDetailsViewController {
                 
                 PKHUD.sharedHUD.show()
                 
-                BookingManager.revokeEvent(eventID, userEmail: email) { (success, error) in
+                BookingManager().revokeEvent(eventID, userEmail: email) { (success, error) in
                     
                     PKHUD.sharedHUD.hide()
                     
