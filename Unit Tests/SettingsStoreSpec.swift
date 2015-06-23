@@ -12,7 +12,7 @@ import Quick
 class SettingsStoreSpec: QuickSpec {
     override func spec() {
         
-        var sut: SettingsStore?
+        var sut: SettingsStore!
         
         beforeEach {
             sut = SettingsStore()
@@ -23,27 +23,27 @@ class SettingsStoreSpec: QuickSpec {
         }
         
         it("should have notification disabled") {
-            expect(sut!.isNotificationEnabled()).to(beFalse())
+            expect(sut.isNotificationEnabled()).to(beFalse())
         }
         
         describe("when enable notification") {
             
             beforeEach {
-                sut!.enableNotification(true)
+                sut.enableNotification(true)
             }
             
             it("should have notification enabled") {
-                expect(sut!.isNotificationEnabled()).to(beTrue())
+                expect(sut.isNotificationEnabled()).to(beTrue())
             }
             
             describe("and disabling them") {
                 
                 beforeEach {
-                    sut!.enableNotification(false)
+                    sut.enableNotification(false)
                 }
                 
                 it("should have notification disabled") {
-                    expect(sut!.isNotificationEnabled()).to(beFalse())
+                    expect(sut.isNotificationEnabled()).to(beFalse())
                 }
             }
         }
