@@ -66,6 +66,7 @@
 		5E084B8D1AF7916000D75FD8 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED4C76F1ACC3DC80084E52F /* Defines.swift */; };
 		5E0A090A1B394B63001C0E8A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A09091B394B63001C0E8A /* Reusable.swift */; };
 		5E0A090B1B394B63001C0E8A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A09091B394B63001C0E8A /* Reusable.swift */; };
+		5E0A090E1B3957EF001C0E8A /* BookingManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A090D1B3957EF001C0E8A /* BookingManagerSpec.swift */; };
 		5E15F13A1AD804CF00E1F8BC /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1391AD804CF00E1F8BC /* LaunchView.swift */; };
 		5E15F13F1ADBE28A00E1F8BC /* GPPAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F13E1ADBE28A00E1F8BC /* GPPAuthenticator.swift */; };
 		5E15F1431ADC2B8300E1F8BC /* UserImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15F1421ADC2B8300E1F8BC /* UserImageDownloader.swift */; };
@@ -411,6 +412,7 @@
 		5E0720291AB73846009C270E /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = "Roomguru/Source Files/Views/DashboardView.swift"; sourceTree = SOURCE_ROOT; };
 		5E0759062D32339F0F1B138E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0A09091B394B63001C0E8A /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = "Roomguru/Source Files/Protocols/Reusable.swift"; sourceTree = SOURCE_ROOT; };
+		5E0A090D1B3957EF001C0E8A /* BookingManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingManagerSpec.swift; sourceTree = "<group>"; };
 		5E147CB21AA8B2CA00EDD97C /* Functional-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Functional-Tests-Info.plist"; path = "Supporting Files/Functional-Tests-Info.plist"; sourceTree = "<group>"; };
 		5E147CB41AA8B2D300EDD97C /* Roomguru-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Roomguru-Bridging-Header.h"; path = "Supporting Files/Roomguru-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E147CB51AA8B2D300EDD97C /* Roomguru-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Roomguru-Info.plist"; path = "Supporting Files/Roomguru-Info.plist"; sourceTree = "<group>"; };
@@ -1073,6 +1075,7 @@
 				5EF988DA1B1F67A9002C10D0 /* MyEventsListCoordinatorSpec.swift */,
 				5E8F93B41B21C21300C4A4B5 /* FreeEventsProviderSpec.swift */,
 				5ED652311B287FB80086B94A /* EventsProviderSpec.swift */,
+				5E0A090D1B3957EF001C0E8A /* BookingManagerSpec.swift */,
 			);
 			name = "Managers Tests";
 			sourceTree = "<group>";
@@ -1871,6 +1874,7 @@
 				21875EA51B187BBA003E1E59 /* BookingQuerySpec.swift in Sources */,
 				2164E7CA1B1DEA6E00B27A91 /* CalendarPersistenceStoreSpec.swift in Sources */,
 				5E9289B11B1322C80079CE36 /* Requests.swift in Sources */,
+				5E0A090E1B3957EF001C0E8A /* BookingManagerSpec.swift in Sources */,
 				5EF4C7C81AEE40100050201A /* SettingsStore.swift in Sources */,
 				5E5739D21B18A6BF00AEC231 /* TextItem.swift in Sources */,
 				5E5739A01B18A41500AEC231 /* TabBarController.swift in Sources */,

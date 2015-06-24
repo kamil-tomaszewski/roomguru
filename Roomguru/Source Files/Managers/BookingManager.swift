@@ -12,7 +12,12 @@ import SwiftyJSON
 
 class BookingManager: NSObject {
     
+    var networkManager: NetworkManager
     var eventsProvider: EventsProvider?
+    
+    override init() {
+        networkManager = NetworkManager.sharedInstance
+    }
     
     func firstBookableCalendarEntry(#calendarIDs: [String], completion: (entry: CalendarEntry?, error: NSError?) -> Void) {
         
@@ -85,7 +90,7 @@ class BookingManager: NSObject {
     func bookCalendarEntry(calendarEntry: CalendarEntry, completion: (event: Event?, error: NSError?) -> Void) {
 
         let query = BookingQuery(quickCalendarEntry: calendarEntry)
-        NetworkManager.sharedInstance.request(query, success: { response in
+        networkManager.request(query, success: { response in
             
             if let response = response {
                 let event = Event(json: response)
@@ -102,7 +107,7 @@ class BookingManager: NSObject {
     
     func revokeEvent(eventID: String, userEmail: String, completion: (success: Bool, error: NSError?) -> Void) {
         let query = RevokeQuery(eventID: eventID, userEmail: userEmail)
-        NetworkManager.sharedInstance.request(query, success: { response in
+        networkManager.request(query, success: { response in
             completion(success: true, error: nil)
             }, failure: { error in
             completion(success: false, error: error)

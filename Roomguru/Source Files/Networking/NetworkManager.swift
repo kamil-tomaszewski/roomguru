@@ -20,7 +20,7 @@ class NetworkManager: NSObject {
     
     class var sharedInstance: NetworkManager {
         struct Static {
-            static let instance: NetworkManager = NetworkManager()
+            static let instance = NetworkManager()
         }
         
         return Static.instance
@@ -31,11 +31,6 @@ class NetworkManager: NSObject {
         tokenStore = (enable && auth != nil) ? GPPTokenStore(auth: auth!) : nil
         updateAuthorizationHeader()
     }
-}
-
-// MARK: Requests
-
-extension NetworkManager {
     
     func request(query: Query, success: ResponseBlock, failure: ErrorBlock) {
         
