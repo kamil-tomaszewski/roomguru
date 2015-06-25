@@ -13,12 +13,15 @@ import SwiftyJSON
 class EditEventNetworkCooperator {
     
     let eventQuery: EventQuery
+    var networkManager: NetworkManager
+
     private let currentEditingEventInitialStartDate, currentEditingEventInitialEndDate: NSDate
     
     init(query: EventQuery) {
         eventQuery = query
         currentEditingEventInitialStartDate = query.startDate
         currentEditingEventInitialEndDate = query.endDate
+        networkManager = NetworkManager.sharedInstance
     }
     
     func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {
@@ -51,7 +54,7 @@ private extension EditEventNetworkCooperator {
     
     func save(completion: (event: Event?, error: NSError?) -> Void) {
         
-        NetworkManager.sharedInstance.request(eventQuery, success: { response in
+        networkManager.request(eventQuery, success: { response in
             
             if var response = response {
                 
@@ -74,7 +77,7 @@ private extension EditEventNetworkCooperator {
         let querySearchTimeRange = TimeRange(min: NSDate().midnight, max: eventQuery.endDate.days + 1)
         let query = FreeBusyQuery(calendarsIDs: [eventQuery.calendarID], searchTimeRange: querySearchTimeRange)
         
-        NetworkManager.sharedInstance.request(query, success: { response in
+        networkManager.request(query, success: { response in
             
             if let response = response {
                 
