@@ -14,7 +14,7 @@ import Foundation
  * remove `Constants.swift` from .gitignore.
  */
 
-struct Constants_Sample {
+struct Constants {
     
     struct HockeyApp {
         static let ClientID = ""
