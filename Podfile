@@ -26,7 +26,9 @@ pod 'SwiftyJSON', '~> 2.2.0'
 
 pod 'Cartography', '~> 0.5.0'
 
-pod 'CryptoSwift', '~> 0.0.10'
+pod 'CryptoSwift',
+    :git => "https://github.com/krzyzanowskim/CryptoSwift.git",
+    :tag => "0.0.11"
 
 pod 'AKPickerView-Swift', '~> 0.2.1'
 
@@ -43,7 +45,7 @@ pod 'DateKit',
     :commit => "4c953cf5a70a14f88d154bdfd710019f20a10b49",
     :branch => "master"
 
-pod 'FontAwesomeIconFactory'
+pod 'FontAwesomeIconFactory', '~> 2.0'
 
 target 'Tests' do link_with 'Unit Tests', 'Functional Tests'
 

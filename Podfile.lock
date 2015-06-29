@@ -24,7 +24,7 @@ PODS:
   - Alamofire (1.2.1)
   - Async (1.2.1)
   - Cartography (0.5.0)
-  - CryptoSwift (0.0.10)
+  - CryptoSwift (0.0.11)
   - DateKit (0.1.1)
   - FontAwesomeIconFactory (2.0)
   - KIF (3.2.1):
@@ -42,10 +42,10 @@ DEPENDENCIES:
   - Alamofire (~> 1.2.0)
   - Async (from `https://github.com/duemunk/Async.git`, tag `1.2.1`)
   - Cartography (~> 0.5.0)
-  - CryptoSwift (~> 0.0.10)
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift.git`, tag `0.0.11`)
   - DateKit (from `https://github.com/SnowdogApps/DateKit.git`, commit `4c953cf5a70a14f88d154bdfd710019f20a10b49`,
     branch `master`)
-  - FontAwesomeIconFactory
+  - FontAwesomeIconFactory (~> 2.0)
   - KIF (~> 3.0)
   - Nimble (~> 0.4.2)
   - PKHUD (from `https://github.com/pkluz/PKHUD.git`, commit `86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa`,
@@ -58,6 +58,9 @@ EXTERNAL SOURCES:
   Async:
     :git: https://github.com/duemunk/Async.git
     :tag: 1.2.1
+  CryptoSwift:
+    :git: https://github.com/krzyzanowskim/CryptoSwift.git
+    :tag: 0.0.11
   DateKit:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
@@ -71,6 +74,9 @@ CHECKOUT OPTIONS:
   Async:
     :git: https://github.com/duemunk/Async.git
     :tag: 1.2.1
+  CryptoSwift:
+    :git: https://github.com/krzyzanowskim/CryptoSwift.git
+    :tag: 0.0.11
   DateKit:
     :branch: master
     :commit: 4c953cf5a70a14f88d154bdfd710019f20a10b49
@@ -86,7 +92,7 @@ SPEC CHECKSUMS:
   Alamofire: 1acfdf179aff68b41a48dff70c1ac7fa263e2bcb
   Async: d9ee6fc9c415d44fcb892f4c289d1e79ce8ae92d
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
-  CryptoSwift: 3b886d001f50deb65623a8967d68f6b8bf8d9ba1
+  CryptoSwift: 0ab68b71eaff076bddb1de4e5ac9f85f61c023e2
   DateKit: 1bd5fbff0131575fdc6fa56d820e7779bc025256
   FontAwesomeIconFactory: d161a1832f8220d764033e0fcc4f4a8388495ab7
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
