@@ -13,7 +13,7 @@ import SwiftyJSON
 class EditEventNetworkCooperator {
     
     let eventQuery: EventQuery
-    var networkManager: NetworkManager
+    lazy var networkManager = NetworkManager.sharedInstance
 
     private let currentEditingEventInitialStartDate, currentEditingEventInitialEndDate: NSDate
     
@@ -21,7 +21,6 @@ class EditEventNetworkCooperator {
         eventQuery = query
         currentEditingEventInitialStartDate = query.startDate
         currentEditingEventInitialEndDate = query.endDate
-        networkManager = NetworkManager.sharedInstance
     }
     
     func saveEvent(completion: (event: Event?, error: NSError?) -> Void) {

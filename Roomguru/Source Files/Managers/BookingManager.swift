@@ -12,12 +12,8 @@ import SwiftyJSON
 
 class BookingManager: NSObject {
     
-    var networkManager: NetworkManager
+    lazy var networkManager = NetworkManager.sharedInstance
     var eventsProvider: EventsProvider?
-    
-    override init() {
-        networkManager = NetworkManager.sharedInstance
-    }
     
     func firstBookableCalendarEntry(#calendarIDs: [String], completion: (entry: CalendarEntry?, error: NSError?) -> Void) {
         
