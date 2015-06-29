@@ -53,23 +53,23 @@ class EventsQuerySpec: QuickSpec {
             it("should return proper number of queries") {
                 expect(sut.count).to(equal(fixtureCalendarIDs.count))
             }
-
-			it("every calendar should have proper time max") {
-				let isTimeMaxProper = self.containsOnlyTrue(sut.map { $0.timeMax == timeRange.max })
-				expect(isTimeMaxProper).to(beTrue())
-			}
-			
-			it("every calendar should have proper time min") {
-				let isTimeMinProper = self.containsOnlyTrue(sut.map { $0.timeMin == timeRange.min })
-				expect(isTimeMinProper).to(beTrue())
-			}
+            
+            it("every calendar should have proper time max") {
+                let isTimeMaxProper = self.containsOnlyTrue(sut.map { $0.timeMax == timeRange.max })
+                expect(isTimeMaxProper).to(beTrue())
+            }
+            
+            it("every calendar should have proper time min") {
+                let isTimeMinProper = self.containsOnlyTrue(sut.map { $0.timeMin == timeRange.min })
+                expect(isTimeMinProper).to(beTrue())
+            }
         }
     }
 }
 
 private extension EventsQuerySpec {
-	
-	func containsOnlyTrue(flags: [Bool]) -> Bool{
-		return !contains(flags, false)
-	}
+    
+    func containsOnlyTrue(flags: [Bool]) -> Bool{
+        return !contains(flags, false)
+    }
 }
