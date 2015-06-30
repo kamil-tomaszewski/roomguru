@@ -101,7 +101,7 @@ def run_xcode_tests(scheme, in_matrix: true)
 
   report_info "Running tests in scheme '#{scheme}', this may take a while..."
 
-  sh "xctool #{flags} test -parallelize | tee $CIRCLE_ARTIFACTS/xctool_raw.log ; exit ${PIPESTATUS[0]}"
+  sh "xctool #{flags} -reporter pretty -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml -reporter plain:$CIRCLE_ARTIFACTS/xctool.log test; exit ${PIPESTATUS[0]}"
 
   report_failure "Application #{scheme} failed", $?.exitstatus unless $?.success?
 end
