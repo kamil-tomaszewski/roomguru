@@ -81,6 +81,8 @@
 		5E38FB3E1AAF23F10057DD8B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E38FB3A1AAF23F00057DD8B /* GooglePlus.framework */; };
 		5E46CAB31AFA026300AD9B70 /* FreeEventsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E46CAB21AFA026300AD9B70 /* FreeEventsProvider.swift */; };
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
+		5E5286AA1B4DE60700A33EBB /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5286A91B4DE60700A33EBB /* StringConvertible.swift */; };
+		5E5286AB1B4DE60700A33EBB /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5286A91B4DE60700A33EBB /* StringConvertible.swift */; };
 		5E569DCB1AEFA015009F8EC0 /* WeekCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCA1AEFA015009F8EC0 /* WeekCarouselView.swift */; };
 		5E569DCD1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */; };
 		5E569DCF1AEFA375009F8EC0 /* DayCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */; };
@@ -446,6 +448,7 @@
 		5E48423D1AD6843B009E1FA8 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = "Roomguru/Source Files/Extensions/StringExtensions.swift"; sourceTree = SOURCE_ROOT; };
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5E5286A91B4DE60700A33EBB /* StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringConvertible.swift; path = "Roomguru/Source Files/Protocols/StringConvertible.swift"; sourceTree = SOURCE_ROOT; };
 		5E569DCA1AEFA015009F8EC0 /* WeekCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselView.swift; path = "Roomguru/Source Files/Views/WeekCarouselView.swift"; sourceTree = SOURCE_ROOT; };
 		5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselFlowLayout.swift; path = "Roomguru/Source Files/Layouts/WeekCarouselFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
 		5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayCarouselCell.swift; path = "Roomguru/Source Files/Views/CollectionCells/DayCarouselCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -1243,6 +1246,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0A09091B394B63001C0E8A /* Reusable.swift */,
+				5E5286A91B4DE60700A33EBB /* StringConvertible.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1632,6 +1636,7 @@
 				5EFE00F31ADE71CF0083FB8E /* SettingsTableHeaderView.swift in Sources */,
 				BFB0E5101ADFD6EA00B0C0A4 /* TextFieldCell.swift in Sources */,
 				5EFE00FD1ADEECC80083FB8E /* GPPProfileProvider.swift in Sources */,
+				5E5286AA1B4DE60700A33EBB /* StringConvertible.swift in Sources */,
 				BF251AD11AC0938C0020DFC4 /* EventsQuery.swift in Sources */,
 				5E07202A1AB73846009C270E /* DashboardView.swift in Sources */,
 				5E569DCD1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift in Sources */,
@@ -1781,6 +1786,7 @@
 				5E5739D71B18A6CC00AEC231 /* PickerItem.swift in Sources */,
 				5E5739B61B18A5D700AEC231 /* UITableViewExtensions.swift in Sources */,
 				5E573A011B18A7C200AEC231 /* StickyExpandableFlowLayout.swift in Sources */,
+				5E5286AB1B4DE60700A33EBB /* StringConvertible.swift in Sources */,
 				2164E7CB1B1DEA6E00B27A91 /* UserDiskManagerSpec.swift in Sources */,
 				5EB3A09B1AEA6DB700DB0585 /* GPPProfileProvider.swift in Sources */,
 				5E5739A31B18A43700AEC231 /* NavigationController.swift in Sources */,

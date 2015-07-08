@@ -158,10 +158,6 @@ private extension String {
     }
 }
 
-@objc protocol StringConvertible {
-    func string() -> String
-}
-
 extension NSDate: StringConvertible {
     
     func string() -> String {
