@@ -16,9 +16,10 @@ enum TimeFrameAvailability {
 
 class TimeFrame: ModelObject {
     
-    var startDate: NSDate = NSDate()
-    var endDate: NSDate = NSDate()
+    var startDate = NSDate()
+    var endDate = NSDate()
     var availability: TimeFrameAvailability = .NotAvailable
+    var duration: NSTimeInterval { return endDate.timeIntervalSinceDate(startDate) }
         
     init(startDate: NSDate, endDate: NSDate, availability: TimeFrameAvailability) {
         self.startDate = startDate
@@ -48,19 +49,12 @@ class TimeFrame: ModelObject {
     }    
 }
 
-extension TimeFrame {
-    
-    func duration() -> NSTimeInterval {
-        return endDate.timeIntervalSinceDate(startDate)
-    }
-}
-
 // MARK: Debug
 
 extension TimeFrame: Printable {
     
     override var description: String {
-        return "\nstart: \(self.startDate), end: \(self.endDate), duration: \(self.duration()), availability: \(self.availability)"
+        return "\nstart: \(self.startDate), end: \(self.endDate), duration: \(self.duration), availability: \(self.availability)"
     }
 }
 

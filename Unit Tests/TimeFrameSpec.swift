@@ -46,7 +46,7 @@ class TimeFrameSpec: QuickSpec {
             }
             
             it("shoud have proper duration") {
-                expect(sut.duration()).to(equal(fixtureDuration))
+                expect(sut.duration).to(equal(fixtureDuration))
             }
             
             it("shoud have proper description") {
@@ -80,7 +80,7 @@ class TimeFrameSpec: QuickSpec {
             }
             
             it("shoud have proper duration") {
-                expect(sut.duration()).to(equal(fixtureDuration))
+                expect(sut.duration).to(equal(fixtureDuration))
             }
             
             it("shoud have proper description") {
