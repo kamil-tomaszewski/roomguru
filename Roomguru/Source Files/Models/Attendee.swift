@@ -53,14 +53,6 @@ class Attendee: ModelObject, NSSecureCoding {
     
     // MARK: JSON
     
-    override func toJSON() -> JSON {
-        var json = JSON([:])
-        json["displayName"].string = name
-        json["email"].string = email
-        json["responseStatus"].string = status.rawValue
-        return json
-    }
-    
     override func map(json: JSON) {
         name = json["displayName"].string
         email = json["email"].string

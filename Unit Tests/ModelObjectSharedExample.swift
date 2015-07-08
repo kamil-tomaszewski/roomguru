@@ -101,22 +101,7 @@ class ModelObjectSharedExampleConfiguration: QuickConfiguration {
                     ]
                 }
             }
-            
-            describe("mapping sut to JSON") {
 
-                itBehavesLike("mapping model object to JSON") {
-                    sut = factory.modelObjectWithJSON(testJSON.json)
-                    var resultJSON = sut.toJSON()
-                    var testJSON = TestJSON(json: resultJSON)
-                    
-                    return [
-                        "modelObject": sut,
-                        "sut": testJSON,
-                        "map": map
-                    ]
-                }
-            }
-            
             describe("mapping array of test objects to array of JSONs") {
                 
                 let jsons: [JSON] = [testJSON.json]
@@ -155,30 +140,6 @@ private class ModelObjectMappingSharedExampleConfiguration: QuickConfiguration {
                     [
                         "key": objectKey,
                         "value": json[jsonKey].anyObject,
-                        "sut": sut
-                    ]
-                }
-            }
-        }
-    }
-}
-
-private class ModelObjectToJSONSharedExampleConfiguration: QuickConfiguration {
-    override class func configure(configuration: Configuration) {
-        sharedExamples("mapping model object to JSON") { (sharedExampleContext: SharedExampleContext) in
-            var configDict: [String: AnyObject] = sharedExampleContext() as! [String: AnyObject]
-            
-            let modelObject = configDict["modelObject"] as! ModelObject
-            let sut = configDict["sut"] as! TestJSON
-            let map = configDict["map"] as! [String: String]
-            
-            for (jsonKey, objectKey) in map {
-                
-                itBehavesLike("json key value") {
-                    let value: AnyObject = modelObject.valueForKey(objectKey)!
-                    return [
-                        "key": jsonKey,
-                        "value": value,
                         "sut": sut
                     ]
                 }

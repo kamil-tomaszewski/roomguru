@@ -22,7 +22,7 @@ class MockModelObject: ModelObject {
     
     // MARK: Stubs
     override func map(json: JSON) {}
-    override func toJSON() -> JSON { return JSON([ "fixtureKey": "fixtureValue" ]) }
+
     override class func map<T : ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]? {
         return jsonArray?.map { T(json: $0) }
     }

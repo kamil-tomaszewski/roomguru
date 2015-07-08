@@ -106,22 +106,6 @@ class Event: ModelObject, NSSecureCoding {
     
     // MARK: JSON
 
-    override func toJSON() -> JSON {
-        var json = JSON([:])
-        json["kind"].string = kind
-        json["etag"].string = etag
-        json["identifier"].string = identifier
-        json["status"].string = status
-        json["htmlLink"].string = htmlLink
-        json["summary"].string = summary
-        json["location"].string = location
-        json["description"].string = eventDescription
-        json["start"].string = startDate
-        json["end"].string = endDate
-        
-        return json
-    }
-    
     override func map(json: JSON) {
         kind = json["kind"].string
         etag = json["etag"].string

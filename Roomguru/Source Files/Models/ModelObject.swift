@@ -13,7 +13,6 @@ protocol ModelJSONProtocol {
     
     init(json: JSON)
     
-    func toJSON() -> JSON
     func map(json: JSON)
     
     static func map<T: ModelJSONProtocol>(jsonArray: [JSON]?) -> [T]?
@@ -30,10 +29,6 @@ class ModelObject: NSObject, ModelJSONProtocol {
         formatter.timeZone = NSTimeZone.localTimeZone()
 
         map(json)
-    }
-    
-    func toJSON() -> JSON {
-        fatalError("|\(__FUNCTION__)| function not implemented")
     }
     
     func map(json: JSON) {
