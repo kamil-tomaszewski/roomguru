@@ -83,6 +83,7 @@
 		5E51B7961AA9B9C70018EDA9 /* SwiftKIFExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */; };
 		5E5286AA1B4DE60700A33EBB /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5286A91B4DE60700A33EBB /* StringConvertible.swift */; };
 		5E5286AB1B4DE60700A33EBB /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5286A91B4DE60700A33EBB /* StringConvertible.swift */; };
+		5E5286B31B4E6CFB00A33EBB /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5286B21B4E6CFB00A33EBB /* EventSpec.swift */; };
 		5E569DCB1AEFA015009F8EC0 /* WeekCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCA1AEFA015009F8EC0 /* WeekCarouselView.swift */; };
 		5E569DCD1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */; };
 		5E569DCF1AEFA375009F8EC0 /* DayCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */; };
@@ -449,6 +450,7 @@
 		5E51B7951AA9B9C70018EDA9 /* SwiftKIFExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftKIFExtension.swift; path = Helpers/SwiftKIFExtension.swift; sourceTree = "<group>"; };
 		5E51B7971AA9BC040018EDA9 /* Functional-Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Functional-Tests-Bridging-Header.h"; path = "Supporting Files/Functional-Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E5286A91B4DE60700A33EBB /* StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringConvertible.swift; path = "Roomguru/Source Files/Protocols/StringConvertible.swift"; sourceTree = SOURCE_ROOT; };
+		5E5286B21B4E6CFB00A33EBB /* EventSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
 		5E569DCA1AEFA015009F8EC0 /* WeekCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselView.swift; path = "Roomguru/Source Files/Views/WeekCarouselView.swift"; sourceTree = SOURCE_ROOT; };
 		5E569DCC1AEFA0E6009F8EC0 /* WeekCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekCarouselFlowLayout.swift; path = "Roomguru/Source Files/Layouts/WeekCarouselFlowLayout.swift"; sourceTree = SOURCE_ROOT; };
 		5E569DCE1AEFA375009F8EC0 /* DayCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayCarouselCell.swift; path = "Roomguru/Source Files/Views/CollectionCells/DayCarouselCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -1149,6 +1151,7 @@
 				BFC4CC971AF9F2A30070007B /* AttendeeSpec.swift */,
 				742B9C7B1B15EB4600D7CDC7 /* TimeFrameSpec.swift */,
 				745127DE1B27B1C20043121C /* CalendarEntrySpec.swift */,
+				5E5286B21B4E6CFB00A33EBB /* EventSpec.swift */,
 			);
 			name = "Object & Models Tests";
 			sourceTree = "<group>";
@@ -1763,6 +1766,7 @@
 				5E5739C81B18A68400AEC231 /* EventDetailsViewController.swift in Sources */,
 				5E5739FA1B18A75200AEC231 /* RightDetailTextCell.swift in Sources */,
 				5E5739A41B18A43F00AEC231 /* MyEventsViewController.swift in Sources */,
+				5E5286B31B4E6CFB00A33EBB /* EventSpec.swift in Sources */,
 				5E5739ED1B18A74700AEC231 /* EventsListView.swift in Sources */,
 				5E5739EF1B18A74E00AEC231 /* ButtonCell.swift in Sources */,
 				5E5739DE1B18A6F800AEC231 /* BorderTextField.swift in Sources */,
