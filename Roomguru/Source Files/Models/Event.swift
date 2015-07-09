@@ -52,10 +52,6 @@ class Event: ModelObject, NSSecureCoding {
 
     // Computed properties:
     var duration: NSTimeInterval { return NSDate.timeIntervalBetweenDates(start: start, end: end) }
-    
-    override init() {
-        super.init()
-    }
 
     required init(json: JSON) {
         super.init(json: json)
